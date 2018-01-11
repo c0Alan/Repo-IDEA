@@ -1,0 +1,19 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-configuration PUBLIC
+    "-//Hibernate/Hibernate Configuration DTD//EN"
+    "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+  <session-factory>
+    <!--数据库连接url配置-->
+    <property name="connection.url">jdbc:log4jdbc:jtds:sybase://192.168.12.51:5000/YWST</property>
+    <!--数据库驱动配置-->
+    <property name="connection.driver_class">com.sybase.jdbc3.jdbc.SybDataSource</property>
+    <!--数据库用户名配置-->
+    <property name="connection.username">sa</property>
+    <!--数据库密码配置-->
+    <property name="connection.password">6789@jkl</property>
+
+    <!-- DB schema will be updated if needed -->
+    <!-- <property name="hbm2ddl.auto">update</property> -->
+  </session-factory>
+</hibernate-configuration>
