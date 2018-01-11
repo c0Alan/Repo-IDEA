@@ -8,7 +8,8 @@
 	<modules>
 		<module>apacheCommons</module>
 		<module>rocketmq</module>
-	</modules>
+        <module>hibernate</module>
+    </modules>
 	<packaging>pom</packaging>
 
 	<name>demo</name>
