@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.mapper.redfox.UserMapper">
+    <resultMap id="BaseResultMap" type="com.model.redfox.User">
+        <id column="C_ID" property="cId" jdbcType="VARCHAR"/>
+        <result column="C_LoginID" property="cLoginid" jdbcType="VARCHAR"/>
+        <result column="C_Name" property="cName" jdbcType="VARCHAR"/>
+        <result column="C_Password" property="cPassword" jdbcType="CHAR"/>
+        <result column="C_Mail" property="cMail" jdbcType="VARCHAR"/>
+        <result column="C_IP" property="cIp" jdbcType="VARCHAR"/>
+        <result column="C_XMJP" property="cXmjp" jdbcType="VARCHAR"/>
+        <result column="C_CORP" property="cCorp" jdbcType="VARCHAR"/>
+        <result column="C_DEPT" property="cDept" jdbcType="VARCHAR"/>
+        <result column="N_Valid" property="nValid" jdbcType="TINYINT"/>
+        <result column="N_Order" property="nOrder" jdbcType="SMALLINT"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+    C_ID, C_LoginID, C_Name, C_Password, C_Mail, C_IP, C_XMJP, C_CORP, C_DEPT, N_Valid, 
+    N_Order
+  </sql>
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String">
+        select
+        <include refid="Base_Column_List"/>
+        from t_aty_user
+        where C_ID = #{cId,jdbcType=VARCHAR}
+    </select>
+
+    <!-- 自己加的方法 -->
+    <select id="selectAllUser" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from t_aty_user
+    </select>
+    <select id="selectCount" resultType="Integer">
+        SELECT count(1) from t_aty_user
+    </select>
+
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from t_aty_user
+    where C_ID = #{cId,jdbcType=VARCHAR}
+  </delete>
+    <insert id="insert" parameterType="com.model.redfox.User">
+    insert into t_aty_user (C_ID, C_LoginID, C_Name, 
+      C_Password, C_Mail, C_IP, 
+      C_XMJP, C_CORP, C_DEPT, 
+      N_Valid, N_Order)
+    values (#{cId,jdbcType=VARCHAR}, #{cLoginid,jdbcType=VARCHAR}, #{cName,jdbcType=VARCHAR}, 
+      #{cPassword,jdbcType=CHAR}, #{cMail,jdbcType=VARCHAR}, #{cIp,jdbcType=VARCHAR}, 
+      #{cXmjp,jdbcType=VARCHAR}, #{cCorp,jdbcType=VARCHAR}, #{cDept,jdbcType=VARCHAR}, 
+      #{nValid,jdbcType=TINYINT}, #{nOrder,jdbcType=SMALLINT})
+  </insert>
+    <insert id="insertSelective" parameterType="com.model.redfox.User">
+        insert into t_aty_user
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="cId != null">
+                C_ID,
+            </if>
+            <if test="cLoginid != null">
+                C_LoginID,
+            </if>
+            <if test="cName != null">
+                C_Name,
+            </if>
+            <if test="cPassword != null">
+                C_Password,
+            </if>
+            <if test="cMail != null">
+                C_Mail,
+            </if>
+            <if test="cIp != null">
+                C_IP,
+            </if>
+            <if test="cXmjp != null">
+                C_XMJP,
+            </if>
+            <if test="cCorp != null">
+                C_CORP,
+            </if>
+            <if test="cDept != null">
+                C_DEPT,
+            </if>
+            <if test="nValid != null">
+                N_Valid,
+            </if>
+            <if test="nOrder != null">
+                N_Order,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="cId != null">
+                #{cId,jdbcType=VARCHAR},
+            </if>
+            <if test="cLoginid != null">
+                #{cLoginid,jdbcType=VARCHAR},
+            </if>
+            <if test="cName != null">
+                #{cName,jdbcType=VARCHAR},
+            </if>
+            <if test="cPassword != null">
+                #{cPassword,jdbcType=CHAR},
+            </if>
+            <if test="cMail != null">
+                #{cMail,jdbcType=VARCHAR},
+            </if>
+            <if test="cIp != null">
+                #{cIp,jdbcType=VARCHAR},
+            </if>
+            <if test="cXmjp != null">
+                #{cXmjp,jdbcType=VARCHAR},
+            </if>
+            <if test="cCorp != null">
+                #{cCorp,jdbcType=VARCHAR},
+            </if>
+            <if test="cDept != null">
+                #{cDept,jdbcType=VARCHAR},
+            </if>
+            <if test="nValid != null">
+                #{nValid,jdbcType=TINYINT},
+            </if>
+            <if test="nOrder != null">
+                #{nOrder,jdbcType=SMALLINT},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.model.redfox.User">
+        update t_aty_user
+        <set>
+            <if test="cLoginid != null">
+                C_LoginID = #{cLoginid,jdbcType=VARCHAR},
+            </if>
+            <if test="cName != null">
+                C_Name = #{cName,jdbcType=VARCHAR},
+            </if>
+            <if test="cPassword != null">
+                C_Password = #{cPassword,jdbcType=CHAR},
+            </if>
+            <if test="cMail != null">
+                C_Mail = #{cMail,jdbcType=VARCHAR},
+            </if>
+            <if test="cIp != null">
+                C_IP = #{cIp,jdbcType=VARCHAR},
+            </if>
+            <if test="cXmjp != null">
+                C_XMJP = #{cXmjp,jdbcType=VARCHAR},
+            </if>
+            <if test="cCorp != null">
+                C_CORP = #{cCorp,jdbcType=VARCHAR},
+            </if>
+            <if test="cDept != null">
+                C_DEPT = #{cDept,jdbcType=VARCHAR},
+            </if>
+            <if test="nValid != null">
+                N_Valid = #{nValid,jdbcType=TINYINT},
+            </if>
+            <if test="nOrder != null">
+                N_Order = #{nOrder,jdbcType=SMALLINT},
+            </if>
+        </set>
+        where C_ID = #{cId,jdbcType=VARCHAR}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.model.redfox.User">
+    update t_aty_user
+    set C_LoginID = #{cLoginid,jdbcType=VARCHAR},
+      C_Name = #{cName,jdbcType=VARCHAR},
+      C_Password = #{cPassword,jdbcType=CHAR},
+      C_Mail = #{cMail,jdbcType=VARCHAR},
+      C_IP = #{cIp,jdbcType=VARCHAR},
+      C_XMJP = #{cXmjp,jdbcType=VARCHAR},
+      C_CORP = #{cCorp,jdbcType=VARCHAR},
+      C_DEPT = #{cDept,jdbcType=VARCHAR},
+      N_Valid = #{nValid,jdbcType=TINYINT},
+      N_Order = #{nOrder,jdbcType=SMALLINT}
+    where C_ID = #{cId,jdbcType=VARCHAR}
+  </update>
+</mapper>

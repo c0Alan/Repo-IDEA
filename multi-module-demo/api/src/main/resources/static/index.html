@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ZH">
+<head>
+    <meta charset="UTF-8">
+    <title>spring boot + mybatis + vue + elementui</title>
+    <link rel="stylesheet" href="//cdn.bootcss.com/element-ui/1.1.2/theme-default/index.css">
+    <script src="//cdn.bootcss.com/vue/2.1.8/vue.min.js"></script>
+    <script src="//cdn.bootcss.com/element-ui/1.1.2/index.js"></script>
+    <script src="//cdn.bootcss.com/vue-resource/1.0.3/vue-resource.min.js"></script>
+</head>
+<body>
+<div id="vm">
+    <el-row :gutter="3" style="margin: 10px 0;">
+        <el-col :span="5">
+            <el-input placeholder="输入用户名称查询" v-model="username" icon="search" @change="changeUsername"></el-input>
+        </el-col>
+    </el-row>
+    <el-table border fit :data="tableData" highlight-current-row style="width: 100%;font-size: 12px;">
+        <el-table-column type="index" width="60"></el-table-column>
+        <el-table-column prop="cName" label="用户名称"></el-table-column>
+        <el-table-column prop="cLoginid" label="性别"></el-table-column>
+        <el-table-column prop="cPassword" label="密码"></el-table-column>
+    </el-table>
+    <el-col class="toolbar" style="padding:10px;">
+        <el-pagination @current-change="findAll" :current-page="currentPage" :page-size="10"
+                       layout="total, prev, pager, next, jumper" :total="total" style="float:right"></el-pagination>
+    </el-col>
+</div>
+</body>
+<script type="text/javascript" src="index.js"> </script>
+</html>
