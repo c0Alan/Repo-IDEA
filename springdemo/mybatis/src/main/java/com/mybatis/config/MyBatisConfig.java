@@ -15,7 +15,7 @@ import javax.sql.DataSource;
 @Configuration
 public class MyBatisConfig {
     @Bean
-    @ConfigurationProperties(prefix = "spring.datasource")
+    @ConfigurationProperties(prefix = "spring.datasourcePg")
     public DataSource dataSource(){
         return new org.apache.tomcat.jdbc.pool.DataSource();
     }

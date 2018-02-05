@@ -9,8 +9,9 @@ import org.springframework.context.annotation.FilterType;
 
 @SpringBootApplication
 //@ComponentScan(basePackages = {"com.demo.redis.config", "com.demo.redis", "com.dao.config", "com.service", "com.api"})
-//@ComponentScan(basePackages = {"com.mybatis.config", "com.service.mybatis", "com.api.commons", "com.api.mybatis"})
-@ComponentScan(basePackages = {"com.redis", "com.service.redis", "com.api.commons", "com.api.redis"})
+@ComponentScan(basePackages = {"com.mybatis.config", "com.service.mybatis", "com.api.commons", "com.api.mybatis"})
+//@ComponentScan(basePackages = {"com.api.quartz"})
+//@ComponentScan(basePackages = {"com.redis", "com.service.redis", "com.api.commons", "com.api.redis"})
 //excludeFilters = {@Filter(type= FilterType.REGEX, pattern = {"com\\.*\\.redis\\.*"})})
 public class ApiApplication {
 

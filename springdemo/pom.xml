@@ -33,9 +33,12 @@
         <druid.version>1.0.11</druid.version>
         <druid.starter.version>1.1.0</druid.starter.version>
         <pagehelper.version>1.1.2</pagehelper.version>
+        <quartz.version>2.2.1</quartz.version>
 
         <!-- apache commons -->
         <commons.lang3.version>3.6</commons.lang3.version>
+
+        <postgresql>9.4.1209</postgresql>
     </properties>
 
 

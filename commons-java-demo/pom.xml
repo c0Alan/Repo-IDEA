@@ -9,6 +9,9 @@
 		<module>apacheCommons</module>
 		<module>rocketmq</module>
         <module>hibernate</module>
+        <module>juc</module>
+        <module>jdk</module>
+        <module>tools</module>
     </modules>
 	<packaging>pom</packaging>
 

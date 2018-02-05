@@ -45,6 +45,13 @@
             <version>${druid.version}</version>
         </dependency>
 
+        <!-- postgresql 驱动 -->
+        <dependency>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+            <version>${postgresql}</version>
+        </dependency>
+
         <!-- 分页插件 -->
         <dependency>
             <groupId>com.github.pagehelper</groupId>
@@ -57,21 +64,34 @@
             <artifactId>druid-spring-boot-starter</artifactId>
             <version>${druid.starter.version}</version>
         </dependency>
-
     </dependencies>
 
     <build>
         <plugins>
-            <!-- mybatis generator 自动生成代码插件 -->
             <plugin>
                 <groupId>org.mybatis.generator</groupId>
                 <artifactId>mybatis-generator-maven-plugin</artifactId>
                 <version>1.3.2</version>
                 <configuration>
-                    <configurationFile>${basedir}/src/main/resources/generator/generatorConfig.xml</configurationFile>
-                    <overwrite>true</overwrite>
+                    <configurationFile>${basedir}/src/main/resources/generator/generatorConfigPostgresql.xml</configurationFile>
                     <verbose>true</verbose>
+                    <overwrite>true</overwrite>
                 </configuration>
+                <executions>
+                    <execution>
+                        <id>Generate MyBatis Artifacts</id>
+                        <goals>
+                            <goal>generate</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <dependencies>
+                    <dependency>
+                        <groupId>org.mybatis.generator</groupId>
+                        <artifactId>mybatis-generator-core</artifactId>
+                        <version>1.3.2</version>
+                    </dependency>
+                </dependencies>
             </plugin>
         </plugins>
     </build>
