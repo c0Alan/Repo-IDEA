@@ -16,6 +16,7 @@
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="api" target="1.8" />
+      <module name="hibernate" target="1.5" />
       <module name="model" target="1.8" />
       <module name="mybatis" target="1.8" />
       <module name="redis" target="1.8" />
