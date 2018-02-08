@@ -62,6 +62,7 @@
     <orderEntry type="library" name="Maven: com.alibaba:druid-spring-boot-starter:1.1.0" level="project" />
     <orderEntry type="library" name="Maven: com.github.pagehelper:pagehelper:5.1.2" level="project" />
     <orderEntry type="library" name="Maven: com.github.jsqlparser:jsqlparser:1.0" level="project" />
+    <orderEntry type="module" module-name="hibernate" />
     <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot-starter-web:1.5.9.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot-starter:1.5.9.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot:1.5.9.RELEASE" level="project" />
@@ -92,7 +93,6 @@
     <orderEntry type="library" scope="TEST" name="Maven: net.minidev:json-smart:2.2.1" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: net.minidev:accessors-smart:1.1" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: org.ow2.asm:asm:5.0.3" level="project" />
-    <orderEntry type="library" name="Maven: org.slf4j:slf4j-api:1.7.25" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: junit:junit:4.12" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: org.assertj:assertj-core:2.6.0" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: org.mockito:mockito-core:1.10.19" level="project" />
@@ -138,5 +138,8 @@
     <orderEntry type="library" name="Maven: org.quartz-scheduler:quartz:2.2.1" level="project" />
     <orderEntry type="library" name="Maven: c3p0:c3p0:0.9.1.1" level="project" />
     <orderEntry type="library" scope="RUNTIME" name="Maven: com.h2database:h2:1.4.196" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.shiro:shiro-core:1.2.4" level="project" />
+    <orderEntry type="library" name="Maven: org.slf4j:slf4j-api:1.7.25" level="project" />
+    <orderEntry type="library" name="Maven: commons-beanutils:commons-beanutils:1.9.3" level="project" />
   </component>
 </module>

@@ -7,6 +7,7 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="api" />
+        <module name="hibernate" />
         <module name="model" />
         <module name="mybatis" />
         <module name="redis" />
@@ -16,7 +17,7 @@
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="api" target="1.8" />
-      <module name="hibernate" target="1.5" />
+      <module name="hibernate" target="1.8" />
       <module name="model" target="1.8" />
       <module name="mybatis" target="1.8" />
       <module name="redis" target="1.8" />
