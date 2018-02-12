@@ -59,11 +59,11 @@
             <version>${pagehelper.version}</version>
         </dependency>
         <!-- alibaba的druid数据库连接池 -->
-        <dependency>
-            <groupId>com.alibaba</groupId>
-            <artifactId>druid-spring-boot-starter</artifactId>
-            <version>${druid.starter.version}</version>
-        </dependency>
+        <!--<dependency>-->
+            <!--<groupId>com.alibaba</groupId>-->
+            <!--<artifactId>druid-spring-boot-starter</artifactId>-->
+            <!--<version>${druid.starter.version}</version>-->
+        <!--</dependency>-->
     </dependencies>
 
     <build>

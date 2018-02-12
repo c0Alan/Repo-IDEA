@@ -1,6 +1,5 @@
 package com.api.mybatis;
 
-import com.service.mybatis.UserService;
 import com.service.mybatis.impl.TUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;

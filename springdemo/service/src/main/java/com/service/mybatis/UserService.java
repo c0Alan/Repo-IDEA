@@ -1,8 +1,8 @@
 package com.service.mybatis;
 
 import com.github.pagehelper.PageHelper;
-import com.mybatis.mapper.UserMapper;
 import com.model.mybatis.User;
+import com.mybatis.mapper.UserMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

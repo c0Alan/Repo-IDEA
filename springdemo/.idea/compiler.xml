@@ -12,10 +12,10 @@
         <module name="mybatis" />
         <module name="redis" />
         <module name="service" />
-        <module name="shiro" />
+        <module name="shiro2" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
+    <bytecodeTargetLevel target="1.8">
       <module name="api" target="1.8" />
       <module name="hibernate" target="1.8" />
       <module name="model" target="1.8" />
@@ -23,6 +23,7 @@
       <module name="redis" target="1.8" />
       <module name="service" target="1.8" />
       <module name="shiro" target="1.8" />
+      <module name="shiro2" target="1.8" />
       <module name="springdemo" target="1.8" />
     </bytecodeTargetLevel>
   </component>

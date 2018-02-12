@@ -15,6 +15,10 @@
         <module>shiro</module>
         <module>mybatis</module>
         <module>hibernate</module>
+        <module>shiro</module>
+        <module>shiro</module>
+        <module>shiro2</module>
+        <module>shiro2</module>
     </modules>
     <packaging>pom</packaging>
 
@@ -35,6 +39,10 @@
         <druid.starter.version>1.1.0</druid.starter.version>
         <pagehelper.version>1.1.2</pagehelper.version>
         <quartz.version>2.2.1</quartz.version>
+        <shiro.version>1.4.0</shiro.version>
+        <fastjson.version>1.2.46</fastjson.version>
+        <spring-webmvc.version>4.3.9.RELEASE</spring-webmvc.version>
+        <spring.version>4.3.9.RELEASE</spring.version>
 
         <!-- apache commons -->
         <commons.lang3.version>3.6</commons.lang3.version>

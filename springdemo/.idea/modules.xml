@@ -8,7 +8,7 @@
       <module fileurl="file://$PROJECT_DIR$/mybatis/mybatis.iml" filepath="$PROJECT_DIR$/mybatis/mybatis.iml" />
       <module fileurl="file://$PROJECT_DIR$/redis/redis.iml" filepath="$PROJECT_DIR$/redis/redis.iml" />
       <module fileurl="file://$PROJECT_DIR$/service/service.iml" filepath="$PROJECT_DIR$/service/service.iml" />
-      <module fileurl="file://$PROJECT_DIR$/shiro/shiro.iml" filepath="$PROJECT_DIR$/shiro/shiro.iml" />
+      <module fileurl="file://$PROJECT_DIR$/shiro2/shiro2.iml" filepath="$PROJECT_DIR$/shiro2/shiro2.iml" />
       <module fileurl="file://$PROJECT_DIR$/springdemo.iml" filepath="$PROJECT_DIR$/springdemo.iml" />
     </modules>
   </component>
