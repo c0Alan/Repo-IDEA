@@ -15,8 +15,7 @@ public class CommonController {
 
     @RequestMapping("/")
     public String index(HttpServletResponse response) throws IOException {
-//        response.sendRedirect("/mybatis/index2.html");
-//        response.sendRedirect("/redis/index2.html");
-        return "redirect:/mybatis/index3.html";
+        /** mybatis redis hibernate */
+        return "redirect:/hibernate/index.html";
     }
 }
