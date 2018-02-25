@@ -12,13 +12,11 @@
         <module>service</module>
         <module>model</module>
         <module>redis</module>
-        <module>shiro</module>
+        <module>shiro2</module>
         <module>mybatis</module>
         <module>hibernate</module>
-        <module>shiro</module>
-        <module>shiro</module>
-        <module>shiro2</module>
-        <module>shiro2</module>
+        <module>rocketmq</module>
+        <module>springbootbook1</module>
     </modules>
     <packaging>pom</packaging>
 
@@ -46,6 +44,7 @@
 
         <!-- apache commons -->
         <commons.lang3.version>3.6</commons.lang3.version>
+        <rocketmq.version>4.2.0</rocketmq.version>
 
         <postgresql>9.4.1209</postgresql>
     </properties>
