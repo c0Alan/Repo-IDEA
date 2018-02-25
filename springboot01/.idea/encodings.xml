@@ -12,5 +12,6 @@
     <file url="file://$PROJECT_DIR$/highlight_spring4/src/main/java/com/wisely/highlight_spring4/ch3/conditional/Main.java" charset="GBK" />
     <file url="file://$PROJECT_DIR$/highlight_spring4/src/main/java/com/wisely/highlight_spring4/ch3/taskexecutor/AsyncTaskService.java" charset="GBK" />
     <file url="file://$PROJECT_DIR$/highlight_spring4/src/main/java/com/wisely/highlight_spring4/ch3/taskscheduler/ScheduledTaskService.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/highlight_springmvc4" charset="UTF-8" />
   </component>
 </project>

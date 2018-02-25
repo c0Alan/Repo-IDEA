@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/highlight_spring4/highlight_spring4.iml" filepath="$PROJECT_DIR$/highlight_spring4/highlight_spring4.iml" />
+      <module fileurl="file://$PROJECT_DIR$/highlight_springmvc4/highlight_springmvc4.iml" filepath="$PROJECT_DIR$/highlight_springmvc4/highlight_springmvc4.iml" />
       <module fileurl="file://$PROJECT_DIR$/springboot01.iml" filepath="$PROJECT_DIR$/springboot01.iml" />
     </modules>
   </component>

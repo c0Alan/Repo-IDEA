@@ -20,6 +20,13 @@ public class DemoBeanIntegrationTests {
 	public void prodBeanShouldInject(){
 		String expected = "from production profile";
 		String actual = testBean.getContent();
+		Assert.assertNotEquals(expected, actual);
+	}
+
+	@Test //5
+	public void prodBeanShouldInject2(){
+		String expected = "from production profile";
+		String actual = testBean.getContent();
 		Assert.assertEquals(expected, actual);
 	}
 
