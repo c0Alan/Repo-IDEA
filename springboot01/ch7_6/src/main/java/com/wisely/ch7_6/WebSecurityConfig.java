@@ -9,12 +9,12 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 
 @Configuration
 @EnableWebSecurity
-public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
+public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .authorizeRequests()
-                .antMatchers("/","/login").permitAll()//1根路径和/login路径不拦截
+                .antMatchers("/", "/login").permitAll()//1根路径和/login路径不拦截
                 .anyRequest().authenticated()
                 .and()
                 .formLogin()
@@ -29,12 +29,13 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
     //4
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-    		auth
+        auth
                 .inMemoryAuthentication()
                 .withUser("wyf").password("wyf").roles("USER")
                 .and()
                 .withUser("wisely").password("wisely").roles("USER");
     }
+
     //5忽略静态资源的拦截
     @Override
     public void configure(WebSecurity web) throws Exception {

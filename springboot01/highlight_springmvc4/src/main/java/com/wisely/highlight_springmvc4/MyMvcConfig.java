@@ -7,6 +7,7 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.scheduling.annotation.EnableScheduling;
+import org.springframework.scheduling.config.AnnotationDrivenBeanDefinitionParser;
 import org.springframework.web.multipart.MultipartResolver;
 import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
@@ -85,7 +86,5 @@ public class MyMvcConfig extends WebMvcConfigurerAdapter {// 2
 	public MyMessageConverter converter(){
 		return new MyMessageConverter();
 	}
-
-	
 
 }

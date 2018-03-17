@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="FrameworkDetectionExcludesConfiguration">
+    <file type="web" url="file://$PROJECT_DIR$/ch10war" />
     <file type="web" url="file://$PROJECT_DIR$/highlight_springmvc4" />
+    <file type="web" url="file://$PROJECT_DIR$/mavenwebdemo" />
   </component>
   <component name="MavenProjectsManager">
     <option name="originalFiles">
@@ -9,6 +11,33 @@
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/highlight_spring4/pom.xml" />
         <option value="$PROJECT_DIR$/highlight_springmvc4/pom.xml" />
+        <option value="$PROJECT_DIR$/ch5_2_2/pom.xml" />
+        <option value="$PROJECT_DIR$/ch5_2_3/pom.xml" />
+        <option value="$PROJECT_DIR$/ch6_2_3/pom.xml" />
+        <option value="$PROJECT_DIR$/ch6_4/pom.xml" />
+        <option value="$PROJECT_DIR$/ch6_5/pom.xml" />
+        <option value="$PROJECT_DIR$/ch7_2/pom.xml" />
+        <option value="$PROJECT_DIR$/ch7_4/pom.xml" />
+        <option value="$PROJECT_DIR$/ch7_6/pom.xml" />
+        <option value="$PROJECT_DIR$/ch7_7/pom.xml" />
+        <option value="$PROJECT_DIR$/ch8_2/pom.xml" />
+        <option value="$PROJECT_DIR$/ch8_3/pom.xml" />
+        <option value="$PROJECT_DIR$/ch8_4/pom.xml" />
+        <option value="$PROJECT_DIR$/ch8_5/pom.xml" />
+        <option value="$PROJECT_DIR$/ch8_6_1/pom.xml" />
+        <option value="$PROJECT_DIR$/ch8_6_2/pom.xml" />
+        <option value="$PROJECT_DIR$/ch9_1/pom.xml" />
+        <option value="$PROJECT_DIR$/ch9_2/pom.xml" />
+        <option value="$PROJECT_DIR$/ch9_3_4/pom.xml" />
+        <option value="$PROJECT_DIR$/ch9_3_5/pom.xml" />
+        <option value="$PROJECT_DIR$/ch9_4/pom.xml" />
+        <option value="$PROJECT_DIR$/ch10/pom.xml" />
+        <option value="$PROJECT_DIR$/ch10_4/pom.xml" />
+        <option value="$PROJECT_DIR$/ch10docker/pom.xml" />
+        <option value="$PROJECT_DIR$/ch10war/pom.xml" />
+        <option value="$PROJECT_DIR$/ch11_1/pom.xml" />
+        <option value="$PROJECT_DIR$/ch11_3/pom.xml" />
+        <option value="$PROJECT_DIR$/ch12/pom.xml" />
       </list>
     </option>
   </component>
