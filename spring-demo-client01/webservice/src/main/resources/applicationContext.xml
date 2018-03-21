@@ -8,7 +8,7 @@
         <property name="wrapped" value="true" />
     </bean>
 
-    <jaxws:endpoint id="serviceimp" address="/person"
+    <jaxws:endpoint id="helloWorldService" address="/person"
                     implementor="com.service.receiver.impl.HelloWorldImpl">
 
         <jaxws:serviceFactory>

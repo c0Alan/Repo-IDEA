@@ -10,31 +10,68 @@
     <version>1.0-SNAPSHOT</version>
     <modules>
         <module>webservice</module>
+        <module>ssm</module>
     </modules>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <java.version>1.8</java.version>
-        <mysql.version>5.1.35</mysql.version>
-        <druid.version>1.0.11</druid.version>
-        <druid.starter.version>1.1.0</druid.starter.version>
-        <pagehelper.version>1.1.2</pagehelper.version>
-        <quartz.version>2.2.1</quartz.version>
-        <shiro.version>1.4.0</shiro.version>
-        <fastjson.version>1.2.46</fastjson.version>
+
+        <!-- junit -->
+        <junit.version>4.11</junit.version>
 
         <!-- spring -->
         <spring.version>4.3.9.RELEASE</spring.version>
 
+        <!-- druid -->
+        <druid.version>1.0.11</druid.version>
+        <druid.starter.version>1.1.0</druid.starter.version>
+
+        <!-- pagehelper -->
+        <pagehelper.version>1.1.2</pagehelper.version>
+
+        <!-- quartz -->
+        <quartz.version>2.2.1</quartz.version>
+
+        <!-- fastjson -->
+        <fastjson.version>1.2.46</fastjson.version>
+
         <!-- apache commons -->
         <commons.lang3.version>3.6</commons.lang3.version>
+
+        <!-- rocketmq -->
         <rocketmq.version>4.2.0</rocketmq.version>
 
-        <postgresql>9.4.1209</postgresql>
+        <!-- shiro -->
+        <shiro.version>1.4.0</shiro.version>
+
+        <!-- 数据库操作相关 -->
+        <postgresql.version>9.4.1209</postgresql.version>
+        <mysql.version>5.1.35</mysql.version>
+        <c3p0.version>0.9.1.2</c3p0.version>
+        <mybatis.version>3.3.0</mybatis.version>
+        <mybatis-spring.version>1.2.3</mybatis-spring.version>
+
+        <!-- 日志 相关 -->
+        <logback.version>1.1.1</logback.version>
+
+        <!-- redis 相关 -->
+        <redis.version>2.7.3</redis.version>
+        <protostuff.version>1.0.8</protostuff.version>
+
+        <!-- servlet 相关 -->
+        <servlet-api.version>3.1.0</servlet-api.version>
 
         <!-- cxf -->
         <cxf.version>3.1.5</cxf.version>
+
+        <!-- cxf -->
+        <cxf.version>3.1.5</cxf.version>
+
+        <!-- apache-commons 相关 -->
+        <apache-commons.version>3.2</apache-commons.version>
+
     </properties>
 
 </project>
