@@ -8,15 +8,20 @@
     <artifactId>server-01</artifactId>
     <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
+
+
     <modules>
         <module>webservice</module>
         <module>ssm</module>
+        <module>springmvc</module>
     </modules>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <java.version>1.8</java.version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven.compiler.encoding>UTF-8</maven.compiler.encoding>
 
         <!-- junit -->
         <junit.version>4.11</junit.version>
@@ -53,6 +58,9 @@
         <mybatis.version>3.3.0</mybatis.version>
         <mybatis-spring.version>1.2.3</mybatis-spring.version>
 
+        <!-- ABase 的驱动 -->
+        <log4jdbc.version>1.2</log4jdbc.version>
+
         <!-- 日志 相关 -->
         <logback.version>1.1.1</logback.version>
 
@@ -70,8 +78,49 @@
         <cxf.version>3.1.5</cxf.version>
 
         <!-- apache-commons 相关 -->
-        <apache-commons.version>3.2</apache-commons.version>
+        <commons-collections.version>3.2</commons-collections.version>
+        <commons-lang3.version>3.6</commons-lang3.version>
 
     </properties>
+
+    <build>
+        <!--<finalName>${artifactId}-${version}</finalName>-->
+        <finalName>web</finalName>
+        <plugins>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.5.1</version>
+                <configuration>
+                    <!-- jdk 版本 -->
+                    <source>1.8</source>
+                    <target>1.8</target>
+                    <encoding>UTF-8</encoding>
+                </configuration>
+            </plugin>
+            <!-- 修改webapp目录为web -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-war-plugin</artifactId>
+                <configuration>
+                    <!-- 修改webapp目录为web -->
+                    <webappDirectory>${basedir}/src/main/web</webappDirectory>
+                    <warSourceDirectory>${basedir}/src/main/web</warSourceDirectory>
+                </configuration>
+            </plugin>
+        </plugins>
+
+        <sourceDirectory>src/main/java</sourceDirectory>
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+            </resource>
+        </resources>
+        <!--<directory>src\main\web\WEB-INF</directory>-->
+        <outputDirectory>target/web/WEB-INF/classes</outputDirectory>
+        <testOutputDirectory>target/web/WEB-INF/classes</testOutputDirectory>
+    </build>
+
 
 </project>

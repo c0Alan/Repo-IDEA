@@ -9,9 +9,10 @@ import javax.jws.WebService;
 @WebService
 public class HelloWorldImpl implements HelloWorld {
  
-    public String sayHello(String sb) {
+    public String sayHello(String param) {
         // TODO Auto-generated method stub
-        return "Hello world," +sb;
+        System.out.println(param);
+        return "Hello world," + param;
     }
  
 }

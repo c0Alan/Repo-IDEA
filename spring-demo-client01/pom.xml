@@ -7,31 +7,111 @@
     <groupId>com.spring.demo.client01</groupId>
     <artifactId>client-01</artifactId>
     <version>1.0-SNAPSHOT</version>
+    <packaging>pom</packaging>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <java.version>1.8</java.version>
-        <mysql.version>5.1.35</mysql.version>
-        <druid.version>1.0.11</druid.version>
-        <druid.starter.version>1.1.0</druid.starter.version>
-        <pagehelper.version>1.1.2</pagehelper.version>
-        <quartz.version>2.2.1</quartz.version>
-        <shiro.version>1.4.0</shiro.version>
-        <fastjson.version>1.2.46</fastjson.version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven.compiler.encoding>UTF-8</maven.compiler.encoding>
+
+        <!-- junit -->
+        <junit.version>4.11</junit.version>
 
         <!-- spring -->
         <spring.version>4.3.9.RELEASE</spring.version>
 
+        <!-- druid -->
+        <druid.version>1.0.11</druid.version>
+        <druid.starter.version>1.1.0</druid.starter.version>
+
+        <!-- pagehelper -->
+        <pagehelper.version>1.1.2</pagehelper.version>
+
+        <!-- quartz -->
+        <quartz.version>2.2.1</quartz.version>
+
+        <!-- fastjson -->
+        <fastjson.version>1.2.46</fastjson.version>
+
         <!-- apache commons -->
         <commons.lang3.version>3.6</commons.lang3.version>
+
+        <!-- rocketmq -->
         <rocketmq.version>4.2.0</rocketmq.version>
 
-        <postgresql>9.4.1209</postgresql>
+        <!-- shiro -->
+        <shiro.version>1.4.0</shiro.version>
+
+        <!-- 数据库操作相关 -->
+        <postgresql.version>9.4.1209</postgresql.version>
+        <mysql.version>5.1.35</mysql.version>
+        <c3p0.version>0.9.1.2</c3p0.version>
+        <mybatis.version>3.3.0</mybatis.version>
+        <mybatis-spring.version>1.2.3</mybatis-spring.version>
+
+        <!-- ABase 的驱动 -->
+        <log4jdbc.version>1.2</log4jdbc.version>
+
+        <!-- 日志 相关 -->
+        <logback.version>1.1.1</logback.version>
+
+        <!-- redis 相关 -->
+        <redis.version>2.7.3</redis.version>
+        <protostuff.version>1.0.8</protostuff.version>
+
+        <!-- servlet 相关 -->
+        <servlet-api.version>3.1.0</servlet-api.version>
 
         <!-- cxf -->
         <cxf.version>3.1.5</cxf.version>
+
+        <!-- cxf -->
+        <cxf.version>3.1.5</cxf.version>
+
+        <!-- apache-commons 相关 -->
+        <commons-collections.version>3.2</commons-collections.version>
+        <commons-lang3.version>3.6</commons-lang3.version>
+
     </properties>
 
+    <build>
+        <!-- 最后打包的名称 -->
+        <!--<finalName>${artifactId}-${version}</finalName>-->
+        <finalName>web</finalName>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.5.1</version>
+                <configuration>
+                    <source>1.8</source>
+                    <target>1.8</target>
+                    <encoding>UTF-8</encoding>
+                </configuration>
+            </plugin>
+            <!-- 修改webapp目录为web -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-war-plugin</artifactId>
+                <configuration>
+                    <!-- 修改webapp目录为web -->
+                    <webappDirectory>${basedir}/src/main/web</webappDirectory>
+                    <warSourceDirectory>${basedir}/src/main/web</warSourceDirectory>
+                </configuration>
+            </plugin>
+        </plugins>
 
+        <sourceDirectory>src/main/java</sourceDirectory>
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+            </resource>
+        </resources>
+        <!--<directory>src\main\web\WEB-INF</directory>-->
+        <outputDirectory>target/web/WEB-INF/classes</outputDirectory>
+        <testOutputDirectory>target/web/WEB-INF/classes</testOutputDirectory>
+
+    </build>
 </project>

@@ -20,7 +20,6 @@ import java.util.List;
 @WebService(endpointInterface="com.service.receiver.PersonService",serviceName="person")
 public class PersonServiceImpl implements PersonService {
 
-    @Override
 	public List<Person> findAll(String name){
         System.out.println("preson servcie has been called!");
         ArrayList<Person> persons = new ArrayList<Person>();
