@@ -8,7 +8,8 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.support.SimpleJpaRepository;
 
-import static com.wisely.specs.CustomerSpecs.*;
+import static com.wisely.specs.CustomerSpecs.*; // import 类之后就可以直接使用类的静态方法
+//import static com.wisely.specs.TestStatic.*;
 
 public class CustomRepositoryImpl <T, ID extends Serializable> 
 					extends SimpleJpaRepository<T, ID>  implements CustomRepository<T,ID> {
@@ -22,6 +23,7 @@ public class CustomRepositoryImpl <T, ID extends Serializable>
 
 	@Override
 	public Page<T> findByAuto(T example, Pageable pageable) {
+//		testStatic();
 		return findAll(byAuto(entityManager, example),pageable);
 	}
 

@@ -1,7 +1,7 @@
 package com.wisely.web;
 
-import java.util.List;
-
+import com.wisely.dao.PersonRepository;
+import com.wisely.domain.Person;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -10,8 +10,7 @@ import org.springframework.data.domain.Sort.Direction;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.wisely.dao.PersonRepository;
-import com.wisely.domain.Person;
+import java.util.List;
 
 @RestController
 public class DataController {
