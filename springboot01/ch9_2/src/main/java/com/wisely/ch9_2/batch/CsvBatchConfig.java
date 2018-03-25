@@ -1,7 +1,6 @@
 package com.wisely.ch9_2.batch;
 
-import javax.sql.DataSource;
-
+import com.wisely.ch9_2.domain.Person;
 import org.springframework.batch.core.Job;
 import org.springframework.batch.core.Step;
 import org.springframework.batch.core.configuration.annotation.EnableBatchProcessing;
@@ -26,98 +25,136 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.transaction.PlatformTransactionManager;
 
-import com.wisely.ch9_2.domain.Person;
+import javax.sql.DataSource;
 
 //@Configuration
-@EnableBatchProcessing
+@EnableBatchProcessing // 要使用@EnableBatchProcessing 开启批处理的支持，这点千万不要忘记。
 public class CsvBatchConfig {
 
-	@Bean
-	public ItemReader<Person> reader() throws Exception {
-		FlatFileItemReader<Person> reader = new FlatFileItemReader<Person>(); //1
-		reader.setResource(new ClassPathResource("people.csv")); //2
-	        reader.setLineMapper(new DefaultLineMapper<Person>() {{ //3
-	            setLineTokenizer(new DelimitedLineTokenizer() {{
-	                setNames(new String[] { "name","age", "nation" ,"address"});
-	            }});
-	            setFieldSetMapper(new BeanWrapperFieldSetMapper<Person>() {{
-	                setTargetType(Person.class);
-	            }});
-	        }});
-	        return reader;
-	}
-	
-	@Bean
-	public ItemProcessor<Person, Person> processor() {
-		CsvItemProcessor processor = new CsvItemProcessor(); //1
-		processor.setValidator(csvBeanValidator()); //2
-		return processor;
-	}
-	
-	
+    @Bean
+    public ItemReader<Person> reader() throws Exception {
+        FlatFileItemReader<Person> reader = new FlatFileItemReader<Person>(); // 使用FlatFileItemReader 读取文件。
+        reader.setResource(new ClassPathResource("people.csv")); // 使用FlatFileItemReader 的setResource 方法设置csv 文件的路径。
+        reader.setLineMapper(new DefaultLineMapper<Person>() {{ // 在此处对cvs 文件的数据和领域模型类做对应映射。
+            setLineTokenizer(new DelimitedLineTokenizer() {{
+                setNames(new String[]{"name", "age", "nation", "address"});
+            }});
+            setFieldSetMapper(new BeanWrapperFieldSetMapper<Person>() {{
+                setTargetType(Person.class);
+            }});
+        }});
+        return reader;
+    }
 
-	@Bean
-	public ItemWriter<Person> writer(DataSource dataSource) {//1
-		JdbcBatchItemWriter<Person> writer = new JdbcBatchItemWriter<Person>(); //2
-		writer.setItemSqlParameterSourceProvider(new BeanPropertyItemSqlParameterSourceProvider<Person>());
-		String sql = "insert into person " + "(id,name,age,nation,address) "
-				+ "values(hibernate_sequence.nextval, :name, :age, :nation,:address)";
-		writer.setSql(sql); //3
-		writer.setDataSource(dataSource);
-		return writer;
-	}
+    @Bean
+    public ItemProcessor<Person, Person> processor() {
+        CsvItemProcessor processor = new CsvItemProcessor(); // 使用我们自己定义的ltemProcessor 的实现CsvItemProcessor.
+        processor.setValidator(csvBeanValidator()); // 为processor 指定校验器为CsvBeanValidator;
+        return processor;
+    }
 
-	@Bean
-	public JobRepository jobRepository(DataSource dataSource, PlatformTransactionManager transactionManager)
-			throws Exception {
-		JobRepositoryFactoryBean jobRepositoryFactoryBean = new JobRepositoryFactoryBean();
-		jobRepositoryFactoryBean.setDataSource(dataSource);
-		jobRepositoryFactoryBean.setTransactionManager(transactionManager);
-		jobRepositoryFactoryBean.setDatabaseType("oracle");
-		return jobRepositoryFactoryBean.getObject();
-	}
+    /**
+     * Spring 能让容器中已有的Bean 以参数的形式注入，Spring Boot 己为我们定义了dataSource.
+     * @param dataSource
+     * @return
+     */
+    @Bean
+    public ItemWriter<Person> writer(DataSource dataSource) {
+        // 我们使用JDBC批处理的JdbcBatchltemWriter 来写数据到数据库。
+        JdbcBatchItemWriter<Person> writer = new JdbcBatchItemWriter<Person>(); //2
+        writer.setItemSqlParameterSourceProvider(new BeanPropertyItemSqlParameterSourceProvider<Person>());
+        String sql = "insert into person " + "(id,name,age,nation,address) "
+                + "values(hibernate_sequence.nextval, :name, :age, :nation,:address)";
+        writer.setSql(sql); // 在此设置要执行批处理的SQL 语句。
+        writer.setDataSource(dataSource);
+        return writer;
+    }
 
-	@Bean
-	public SimpleJobLauncher jobLauncher(DataSource dataSource, PlatformTransactionManager transactionManager)
-			throws Exception {
-		SimpleJobLauncher jobLauncher = new SimpleJobLauncher();
-		jobLauncher.setJobRepository(jobRepository(dataSource, transactionManager));
-		return jobLauncher;
-	}
+    /**
+     * 用来注册Job 的容器
+     * @param dataSource
+     * @param transactionManager
+     * @return
+     * @throws Exception
+     */
+    @Bean
+    public JobRepository jobRepository(DataSource dataSource, PlatformTransactionManager transactionManager)
+            throws Exception {
+        JobRepositoryFactoryBean jobRepositoryFactoryBean = new JobRepositoryFactoryBean();
+        jobRepositoryFactoryBean.setDataSource(dataSource);
+        jobRepositoryFactoryBean.setTransactionManager(transactionManager);
+        jobRepositoryFactoryBean.setDatabaseType("oracle");
+        return jobRepositoryFactoryBean.getObject();
+    }
 
-	@Bean
-	public Job importJob(JobBuilderFactory jobs, Step s1) {
-		return jobs.get("importJob")
-				.incrementer(new RunIdIncrementer())
-				.flow(s1) //1
-				.end()
-				.listener(csvJobListener()) //2
-				.build();
-	}
+    /**
+     * 用来启动Job 的接口
+     * @param dataSource
+     * @param transactionManager
+     * @return
+     * @throws Exception
+     */
+    @Bean
+    public SimpleJobLauncher jobLauncher(DataSource dataSource, PlatformTransactionManager transactionManager)
+            throws Exception {
+        SimpleJobLauncher jobLauncher = new SimpleJobLauncher();
+        jobLauncher.setJobRepository(jobRepository(dataSource, transactionManager));
+        return jobLauncher;
+    }
 
-	@Bean
-	public Step step1(StepBuilderFactory stepBuilderFactory, ItemReader<Person> reader, ItemWriter<Person> writer,
-			ItemProcessor<Person,Person> processor) {
-		return stepBuilderFactory
-				.get("step1")
-				.<Person, Person>chunk(65000) //1
-				.reader(reader) //2
-				.processor(processor) //3
-				.writer(writer) //4
-				.build();
-	}
+    /**
+     * 实际执行的任务，包含一个或多个Step
+     * Step-步骤包含ItemReader 、ItemProcessor 和ItemWrter
+     * @param jobs
+     * @param s1
+     * @return
+     */
+    @Bean
+    public Job importJob(JobBuilderFactory jobs, Step s1) {
+        return jobs.get("importJob")
+                .incrementer(new RunIdIncrementer())
+                .flow(s1) // 为Job 指定Step.
+                .end()
+                .listener(csvJobListener()) // 注册并绑定监听器到Job
+                .build();
+    }
+
+    /**
+     * Step-步骤包含ItemReader 、ItemProcessor 和ItemWrter
+     * @param stepBuilderFactory
+     * @param reader
+     * @param writer
+     * @param processor
+     * @return
+     */
+    @Bean
+    public Step step1(StepBuilderFactory stepBuilderFactory, ItemReader<Person> reader, ItemWriter<Person> writer,
+                      ItemProcessor<Person, Person> processor) {
+        return stepBuilderFactory
+                .get("step1")
+                .<Person, Person>chunk(65000) // 批处理每次提交 65000 条数据
+                .reader(reader) // 给step 绑定reader
+                .processor(processor) // 给step 绑定processor.
+                .writer(writer) // 给 step 绑定 writer
+                .build();
+    }
 
 
+    /**
+     * Job 监听器, 监听我们的Job 的执行情况
+     * @return
+     */
+    @Bean
+    public CsvJobListener csvJobListener() {
+        return new CsvJobListener();
+    }
 
-	@Bean
-	public CsvJobListener csvJobListener() {
-		return new CsvJobListener();
-	}
-
-	@Bean
-	public Validator<Person> csvBeanValidator() {
-		return new CsvBeanValidator<Person>();
-	}
-	
-
+    /**
+     * 数据校验器
+     * @return
+     */
+    @Bean
+    public Validator<Person> csvBeanValidator() {
+        return new CsvBeanValidator<Person>();
+    }
 }

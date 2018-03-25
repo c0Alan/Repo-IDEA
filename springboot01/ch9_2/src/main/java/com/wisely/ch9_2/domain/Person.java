@@ -3,52 +3,46 @@ package com.wisely.ch9_2.domain;
 import javax.validation.constraints.Size;
 
 public class Person {
-	
-	@Size(max=4,min=2) //1
-	private String name;
-	
-	private int age;
-	
-	private String nation;
-	
-	private String address;
 
-	public String getName() {
-		return name;
-	}
+    @Size(max = 4, min = 2) //1
+    private String name;
 
-	public void setName(String name) {
-		this.name = name;
-	}
+    private int age;
 
-	public int getAge() {
-		return age;
-	}
+    private String nation;
 
-	public void setAge(int age) {
-		this.age = age;
-	}
+    private String address;
 
-	public String getNation() {
-		return nation;
-	}
+    public String getName() {
+        return name;
+    }
 
-	public void setNation(String nation) {
-		this.nation = nation;
-	}
+    public void setName(String name) {
+        this.name = name;
+    }
 
-	public String getAddress() {
-		return address;
-	}
+    public int getAge() {
+        return age;
+    }
 
-	public void setAddress(String address) {
-		this.address = address;
-	}
-	
+    public void setAge(int age) {
+        this.age = age;
+    }
 
+    public String getNation() {
+        return nation;
+    }
 
+    public void setNation(String nation) {
+        this.nation = nation;
+    }
 
+    public String getAddress() {
+        return address;
+    }
 
-	
+    public void setAddress(String address) {
+        this.address = address;
+    }
 
 }

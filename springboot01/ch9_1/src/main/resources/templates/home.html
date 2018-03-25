@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" 
-	  xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4"><!-- 1 -->
+	  xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<!-- Thymeleaf 为我们提供的Spring Security 的标签支持。 -->
 <head>
 <meta content="text/html;charset=UTF-8"/>
-<title sec:authentication="name"></title> <!-- 2 -->
+<title sec:authentication="name"></title>
+    <!-- 通过sec:authentication= "name"获得当前用户的用户名。 -->
 <link rel="stylesheet" th:href="@{css/bootstrap.min.css}" />
 <style type="text/css">
 body {
@@ -38,16 +40,19 @@ body {
 		
 		<p class="bg-primary" th:text="${msg.content}"></p>
 		
-		<div sec:authorize="hasRole('ROLE_ADMIN')"> <!-- 3 -->
+		<div sec:authorize="hasRole('ROLE_ADMIN')">
+            <!-- sec:authorize="hasRo1e('ROLE_ADMJN') 意味着只有当前用户觉得为ROLE_ADMIN时，才可显示标签内内容。 -->
 		 	<p class="bg-info" th:text="${msg.etraInfo}"></p>
 		</div>	
 		
-		<div sec:authorize="hasRole('ROLE_USER')"> <!-- 4-->
+		<div sec:authorize="hasRole('ROLE_USER')">
+            <!-- sec: authorize="hasRole('ROLE_ USER ')"意味着只有当前用户觉得为ROLE USER 时，才可显示标签内内容。-->
 		 	<p class="bg-info">无更多信息显示</p>
 		</div>	
 		
         <form th:action="@{/logout}" method="post">
-            <input type="submit" class="btn btn-primary" value="注销"/><!-- 5 -->
+            <input type="submit" class="btn btn-primary" value="注销"/>
+            <!-- 注销的默认路径为/logout，常通过POST 请求才是交。 -->
         </form>
       </div>
 

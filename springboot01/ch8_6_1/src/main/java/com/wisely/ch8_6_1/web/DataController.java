@@ -1,16 +1,15 @@
 package com.wisely.ch8_6_1.web;
 
-import java.util.Collection;
-import java.util.LinkedHashSet;
-import java.util.List;
-
+import com.wisely.ch8_6_1.dao.PersonRepository;
+import com.wisely.ch8_6_1.domain.Location;
+import com.wisely.ch8_6_1.domain.Person;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.wisely.ch8_6_1.dao.PersonRepository;
-import com.wisely.ch8_6_1.domain.Location;
-import com.wisely.ch8_6_1.domain.Person;
+import java.util.Collection;
+import java.util.LinkedHashSet;
+import java.util.List;
 
 @RestController
 public class DataController {
@@ -20,7 +19,7 @@ public class DataController {
 	
 	@RequestMapping("/save")
 	public Person save(){
-		Person  p = new Person("wyf",32);
+		Person  p = new Person("tom",30);
 		Collection<Location> locations =  new LinkedHashSet<Location>();
 		Location loc1 = new Location("上海","2009");
 		Location loc2 = new Location("合肥","2010");

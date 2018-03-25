@@ -3,10 +3,11 @@ package com.wisely.ch9_2.batch;
 import org.springframework.batch.core.JobExecution;
 import org.springframework.batch.core.JobExecutionListener;
 
-public class CsvJobListener implements JobExecutionListener{ 
+public class CsvJobListener implements JobExecutionListener {
 
     long startTime;
     long endTime;
+
     @Override
     public void beforeJob(JobExecution jobExecution) {
         startTime = System.currentTimeMillis();

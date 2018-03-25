@@ -17,12 +17,22 @@ public class DemoApplication {
     public static void main(String[] args) {
         SpringApplication.run(DemoApplication.class, args);
     }
-    
+
+    /**
+     * 注册端点的Bean .
+     * @return
+     */
     @Bean
     public Endpoint<String> status() {
     	Endpoint<String> status =  new StatusEndPoint();
     	return status;
     }
+
+    /**
+     * 定义控制器方法用来改变status .
+     * @param status
+     * @return
+     */
     @RequestMapping("/change")
     public String changeStatus(String status){
     	statusService.setStatus(status);

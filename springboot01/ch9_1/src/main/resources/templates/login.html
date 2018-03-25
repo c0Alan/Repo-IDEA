@@ -32,10 +32,10 @@
      <div class="container">
 
       <div class="starter-template">
-       <p th:if="${param.logout}" class="bg-warning">已成功注销</p><!-- 1 -->
-			<p th:if="${param.error}" class="bg-danger">有错误，请重试</p> <!-- 2 -->
+       <p th:if="${param.logout}" class="bg-warning">已成功注销</p><!-- 注销成功后显示。 -->
+			<p th:if="${param.error}" class="bg-danger">有错误，请重试</p> <!-- 登录有错误时显示。 -->
 			<h2>使用账号密码登录</h2>
-			<form name="form" th:action="@{/login}" action="/login" method="POST"> <!-- 3 -->
+			<form name="form" th:action="@{/login}" action="/login" method="POST"> <!-- 默认的登录路径为login. -->
 				<div class="form-group">
 					<label for="username">账号</label>
 					<input type="text" class="form-control" name="username" value="" placeholder="账号" />

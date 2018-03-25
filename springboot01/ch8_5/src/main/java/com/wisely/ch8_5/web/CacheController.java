@@ -9,34 +9,26 @@ import com.wisely.ch8_5.service.DemoService;
 
 @RestController
 public class CacheController {
-	
-	@Autowired
-	DemoService demoService;
-	
-	
-	
-	
-	@RequestMapping("/put")
-	public Person put(Person person){
-		return demoService.save(person);
-		
-	}
 
-	
-	@RequestMapping("/able")
-	public Person cacheable(Person person){
-		
-		
-		return demoService.findOne(person);
-		
-	}
-	
-	@RequestMapping("/evit")
-	public String  evit(Long id){
-		 demoService.remove(id);
-		 return "ok";
-		
-	}
-	
+    @Autowired
+    DemoService demoService;
 
+
+    @RequestMapping("/put")
+    public Person put(Person person) {
+        return demoService.save(person);
+    }
+
+
+    @RequestMapping("/able")
+    public Person cacheable(Person person) {
+        return demoService.findOne(person);
+
+    }
+
+    @RequestMapping("/evit")
+    public String evit(Long id) {
+        demoService.remove(id);
+        return "ok";
+    }
 }
