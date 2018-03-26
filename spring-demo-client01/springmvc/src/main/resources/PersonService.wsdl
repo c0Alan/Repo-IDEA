@@ -1,6 +1,6 @@
-<?xml version='1.0' encoding='UTF-8'?><wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://impl.receiver.service.com/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns1="http://schemas.xmlsoap.org/soap/http" name="HelloWorldImplService" targetNamespace="http://impl.receiver.service.com/">
+<?xml version='1.0' encoding='UTF-8'?><wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://impl.receiver.webservice.com/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns1="http://schemas.xmlsoap.org/soap/http" name="HelloWorldImplService" targetNamespace="http://impl.receiver.webservice.com/">
   <wsdl:types>
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://impl.receiver.service.com/" elementFormDefault="unqualified" targetNamespace="http://impl.receiver.service.com/" version="1.0">
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://impl.receiver.webservice.com/" elementFormDefault="unqualified" targetNamespace="http://impl.receiver.webservice.com/" version="1.0">
 
   <xs:element name="sayHello" type="tns:sayHello"/>
 
@@ -20,12 +20,12 @@
 
 </xs:schema>
   </wsdl:types>
-  <wsdl:message name="sayHelloResponse">
-    <wsdl:part element="tns:sayHelloResponse" name="parameters">
-    </wsdl:part>
-  </wsdl:message>
   <wsdl:message name="sayHello">
     <wsdl:part element="tns:sayHello" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="sayHelloResponse">
+    <wsdl:part element="tns:sayHelloResponse" name="parameters">
     </wsdl:part>
   </wsdl:message>
   <wsdl:portType name="HelloWorldImpl">

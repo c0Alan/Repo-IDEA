@@ -20,6 +20,9 @@
         <fileset id="fileset" name="ApplicationContext" removed="false">
           <file>file://$MODULE_DIR$/src/main/resources/applicationContext.xml</file>
         </fileset>
+        <fileset id="fileset2" name="Spring Web" removed="false">
+          <file>file://$MODULE_DIR$/src/main/resources/spring/spring-web.xml</file>
+        </fileset>
       </configuration>
     </facet>
   </component>
