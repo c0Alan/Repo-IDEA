@@ -1,0 +1,29 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="com.hibernate.generator.entity.TKwSsfjmh" table="t_kw_ssfjmh" schema="db_akxt" catalog="akxt340">
+        <id name="cBh" column="c_bh"/>
+        <property name="cAjbh" column="c_ajbh"/>
+        <property name="nAjlb" column="n_ajlb"/>
+        <property name="nSlly" column="n_slly"/>
+        <property name="cSjzr" column="c_sjzr"/>
+        <property name="cSqjzlx" column="c_sqjzlx"/>
+        <property name="cSqjzyy" column="c_sqjzyy"/>
+        <property name="cJzajlx" column="c_jzajlx"/>
+        <property name="cJzdxlx" column="c_jzdxlx"/>
+        <property name="cJmhyj" column="c_jmhyj"/>
+        <property name="nSqjjje" column="n_sqjjje"/>
+        <property name="nSqhjje" column="n_sqhjje"/>
+        <property name="nHjqxT" column="n_hjqx_t"/>
+        <property name="nHjqxY" column="n_hjqx_y"/>
+        <property name="nHjjzjd" column="n_hjjzjd"/>
+        <property name="nSfSp" column="n_sf_sp"/>
+        <property name="cSpr" column="c_spr"/>
+        <property name="dSprq" column="d_sprq"/>
+        <property name="nSpzt" column="n_spzt"/>
+        <property name="nPsyj" column="n_psyj"/>
+    </class>
+</hibernate-mapping>
