@@ -11,15 +11,16 @@ import org.springframework.web.bind.annotation.RestController;
 @EnableDiscoveryClient
 @RestController
 public class SomeApplication {
-	 @Value("${my.message}") //1
-	 private String message; 
-	
-	 @RequestMapping(value = "/getsome")
-	 public String getsome(){
-		 return message;
-	 }
-	public static void main(String[] args) {
-		SpringApplication.run(SomeApplication.class, args);
-	}
+    @Value("${my.message}") // 此处通过@Value 注入的值来自于Config Server.
+    private String message;
+
+    @RequestMapping(value = "/getsome")
+    public String getsome() {
+        return message;
+    }
+
+    public static void main(String[] args) {
+        SpringApplication.run(SomeApplication.class, args);
+    }
 
 }
