@@ -21,7 +21,7 @@ public class PersonHystrixService {
     PersonService personService;
 
     /**
-     * 使用@HystrixCommand 的fallbac灿街thod 参数指定，当本方法调用失败时，
+     * 使用@HystrixCommand 的fallbackMethod 参数指定，当本方法调用失败时，
      * 调用后备方法fallbackSave 。
      *
      * @param name
