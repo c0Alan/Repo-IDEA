@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mybatis.mapper.TUserMapper">
+  <resultMap id="BaseResultMap" type="com.model.mybatis.TUser">
+    <id column="n_id" jdbcType="NUMERIC" property="nId" />
+    <result column="c_name" jdbcType="VARCHAR" property="cName" />
+    <result column="n_sex" jdbcType="NUMERIC" property="nSex" />
+    <result column="n_age" jdbcType="NUMERIC" property="nAge" />
+    <result column="c_address" jdbcType="VARCHAR" property="cAddress" />
+    <result column="c_loginid" jdbcType="VARCHAR" property="cLoginid" />
+    <result column="c_password" jdbcType="VARCHAR" property="cPassword" />
+    <result column="c_salt" jdbcType="VARCHAR" property="cSalt" />
+    <result column="n_state" jdbcType="NUMERIC" property="nState" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    n_id, c_name, n_sex, n_age, c_address, c_loginid, c_password, c_salt, n_state
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from t_user
+    where n_id = #{nId,jdbcType=NUMERIC}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    SELECT
+    <include refid="Base_Column_List" />
+    from springdemo.t_user
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from t_user
+    where n_id = #{nId,jdbcType=NUMERIC}
+  </delete>
+  <insert id="insert" parameterType="com.model.mybatis.TUser">
+    insert into t_user (n_id, c_name, n_sex, 
+      n_age, c_address, c_loginid, 
+      c_password, c_salt, n_state
+      )
+    values (#{nId,jdbcType=NUMERIC}, #{cName,jdbcType=VARCHAR}, #{nSex,jdbcType=NUMERIC}, 
+      #{nAge,jdbcType=NUMERIC}, #{cAddress,jdbcType=VARCHAR}, #{cLoginid,jdbcType=VARCHAR}, 
+      #{cPassword,jdbcType=VARCHAR}, #{cSalt,jdbcType=VARCHAR}, #{nState,jdbcType=NUMERIC}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.model.mybatis.TUser">
+    insert into t_user
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="nId != null">
+        n_id,
+      </if>
+      <if test="cName != null">
+        c_name,
+      </if>
+      <if test="nSex != null">
+        n_sex,
+      </if>
+      <if test="nAge != null">
+        n_age,
+      </if>
+      <if test="cAddress != null">
+        c_address,
+      </if>
+      <if test="cLoginid != null">
+        c_loginid,
+      </if>
+      <if test="cPassword != null">
+        c_password,
+      </if>
+      <if test="cSalt != null">
+        c_salt,
+      </if>
+      <if test="nState != null">
+        n_state,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="nId != null">
+        #{nId,jdbcType=NUMERIC},
+      </if>
+      <if test="cName != null">
+        #{cName,jdbcType=VARCHAR},
+      </if>
+      <if test="nSex != null">
+        #{nSex,jdbcType=NUMERIC},
+      </if>
+      <if test="nAge != null">
+        #{nAge,jdbcType=NUMERIC},
+      </if>
+      <if test="cAddress != null">
+        #{cAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="cLoginid != null">
+        #{cLoginid,jdbcType=VARCHAR},
+      </if>
+      <if test="cPassword != null">
+        #{cPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="cSalt != null">
+        #{cSalt,jdbcType=VARCHAR},
+      </if>
+      <if test="nState != null">
+        #{nState,jdbcType=NUMERIC},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.model.mybatis.TUser">
+    update t_user
+    <set>
+      <if test="cName != null">
+        c_name = #{cName,jdbcType=VARCHAR},
+      </if>
+      <if test="nSex != null">
+        n_sex = #{nSex,jdbcType=NUMERIC},
+      </if>
+      <if test="nAge != null">
+        n_age = #{nAge,jdbcType=NUMERIC},
+      </if>
+      <if test="cAddress != null">
+        c_address = #{cAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="cLoginid != null">
+        c_loginid = #{cLoginid,jdbcType=VARCHAR},
+      </if>
+      <if test="cPassword != null">
+        c_password = #{cPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="cSalt != null">
+        c_salt = #{cSalt,jdbcType=VARCHAR},
+      </if>
+      <if test="nState != null">
+        n_state = #{nState,jdbcType=NUMERIC},
+      </if>
+    </set>
+    where n_id = #{nId,jdbcType=NUMERIC}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.model.mybatis.TUser">
+    update t_user
+    set c_name = #{cName,jdbcType=VARCHAR},
+      n_sex = #{nSex,jdbcType=NUMERIC},
+      n_age = #{nAge,jdbcType=NUMERIC},
+      c_address = #{cAddress,jdbcType=VARCHAR},
+      c_loginid = #{cLoginid,jdbcType=VARCHAR},
+      c_password = #{cPassword,jdbcType=VARCHAR},
+      c_salt = #{cSalt,jdbcType=VARCHAR},
+      n_state = #{nState,jdbcType=NUMERIC}
+    where n_id = #{nId,jdbcType=NUMERIC}
+  </update>
+
+</mapper>

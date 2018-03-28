@@ -44,6 +44,13 @@ public class TKwSsfjmh {
     /** 批示意见/审批结果 */
     private Short nPsyj;
 
+    /**
+     *
+     *
+     * @date 2018/3/27 9:37
+     * @param java.lang.String
+     * @return java.lang.String
+     */
     public String getcBh() {
         return cBh;
     }

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.mybatis.mapper.TSysRolePermissionMapper" >
+  <resultMap id="BaseResultMap" type="com.model.mybatis.TSysRolePermission" >
+    <result column="n_permission_id" property="nPermissionId" jdbcType="NUMERIC" />
+    <result column="n_role_id" property="nRoleId" jdbcType="NUMERIC" />
+  </resultMap>
+  <insert id="insert" parameterType="com.model.mybatis.TSysRolePermission" >
+    insert into t_sys_role_permission (n_permission_id, n_role_id)
+    values (#{nPermissionId,jdbcType=NUMERIC}, #{nRoleId,jdbcType=NUMERIC})
+  </insert>
+  <insert id="insertSelective" parameterType="com.model.mybatis.TSysRolePermission" >
+    insert into t_sys_role_permission
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="nPermissionId != null" >
+        n_permission_id,
+      </if>
+      <if test="nRoleId != null" >
+        n_role_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="nPermissionId != null" >
+        #{nPermissionId,jdbcType=NUMERIC},
+      </if>
+      <if test="nRoleId != null" >
+        #{nRoleId,jdbcType=NUMERIC},
+      </if>
+    </trim>
+  </insert>
+</mapper>
