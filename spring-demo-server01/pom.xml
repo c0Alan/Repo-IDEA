@@ -15,6 +15,7 @@
         <module>ssm</module>
         <module>springmvc</module>
         <module>hibernateGenerator</module>
+        <module>mybatisGenerator</module>
     </modules>
 
     <properties>
