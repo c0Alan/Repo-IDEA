@@ -1,0 +1,18 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="com.hibernate.generator.entity.TUser" table="t_user" schema="springdemo" catalog="sd">
+        <id name="nId" column="n_id"/>
+        <property name="cName" column="c_name"/>
+        <property name="nSex" column="n_sex"/>
+        <property name="nAge" column="n_age"/>
+        <property name="cAddress" column="c_address"/>
+        <property name="cLoginid" column="c_loginid"/>
+        <property name="cPassword" column="c_password"/>
+        <property name="cSalt" column="c_salt"/>
+        <property name="nState" column="n_state"/>
+    </class>
+</hibernate-mapping>

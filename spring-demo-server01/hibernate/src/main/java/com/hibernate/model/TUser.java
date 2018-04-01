@@ -143,37 +143,4 @@ public class TUser {
         return this.cLoginid + this.cSalt;
     }
 
-//    @Override
-//    public boolean equals(Object o) {
-//        if (this == o) return true;
-//        if (o == null || getClass() != o.getClass()) return false;
-//
-//        TUser tUser = (TUser) o;
-//
-//        if (nId != tUser.nId) return false;
-//        if (cName != null ? !cName.equals(tUser.cName) : tUser.cName != null) return false;
-//        if (nSex != null ? !nSex.equals(tUser.nSex) : tUser.nSex != null) return false;
-//        if (nAge != null ? !nAge.equals(tUser.nAge) : tUser.nAge != null) return false;
-//        if (cAddress != null ? !cAddress.equals(tUser.cAddress) : tUser.cAddress != null) return false;
-//        if (cLoginid != null ? !cLoginid.equals(tUser.cLoginid) : tUser.cLoginid != null) return false;
-//        if (cPassword != null ? !cPassword.equals(tUser.cPassword) : tUser.cPassword != null) return false;
-//        if (cSalt != null ? !cSalt.equals(tUser.cSalt) : tUser.cSalt != null) return false;
-//        if (nState != null ? !nState.equals(tUser.nState) : tUser.nState != null) return false;
-//
-//        return true;
-//    }
-//
-//    @Override
-//    public int hashCode() {
-//        int result = cName != null ? cName.hashCode() : 0;
-//        result = 31 * result + (nSex != null ? nSex.hashCode() : 0);
-//        result = 31 * result + (nAge != null ? nAge.hashCode() : 0);
-//        result = 31 * result + (cAddress != null ? cAddress.hashCode() : 0);
-//        result = 31 * result + (cLoginid != null ? cLoginid.hashCode() : 0);
-//        result = 31 * result + (cPassword != null ? cPassword.hashCode() : 0);
-//        result = 31 * result + (cSalt != null ? cSalt.hashCode() : 0);
-//        result = 31 * result + (nState != null ? nState.hashCode() : 0);
-//        result = 31 * result + nId;
-//        return result;
-//    }
 }

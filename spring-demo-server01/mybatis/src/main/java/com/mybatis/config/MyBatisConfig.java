@@ -2,6 +2,7 @@ package com.mybatis.config;
 
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.SqlSessionFactoryBean;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -10,24 +11,24 @@ import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 import javax.sql.DataSource;
 
 /**
- * Created by trons on 16-4-17.
+ * MyBatis 配置类
+ *
+ * @author liuxl
+ * @date  23:15
  */
 @Configuration
 public class MyBatisConfig {
-    @Bean
-    @ConfigurationProperties(prefix = "spring.datasourcePg")
-    public DataSource dataSource(){
-        return new org.apache.tomcat.jdbc.pool.DataSource();
-    }
+    @Autowired
+    private DataSource dataSource;
 
     @Bean(name = "sqlSessionFactory")
     public SqlSessionFactory sqlSessionFactoryBean() throws Exception {
         SqlSessionFactoryBean sqlSessionFactoryBean = new SqlSessionFactoryBean();
-        sqlSessionFactoryBean.setDataSource(dataSource());
+        sqlSessionFactoryBean.setDataSource(dataSource);
 
         PathMatchingResourcePatternResolver resolver = new PathMatchingResourcePatternResolver();
 
-        sqlSessionFactoryBean.setMapperLocations(resolver.getResources("classpath:/mapping/**/*.xml"));
+        sqlSessionFactoryBean.setMapperLocations(resolver.getResources("classpath:/mapper/*.xml"));
 
         return sqlSessionFactoryBean.getObject();
     }

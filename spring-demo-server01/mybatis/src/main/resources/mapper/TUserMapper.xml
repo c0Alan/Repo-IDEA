@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.mybatis.mapper.TUserMapper">
-  <resultMap id="BaseResultMap" type="com.model.mybatis.TUser">
+  <resultMap id="BaseResultMap" type="com.mybatis.model.TUser">
     <id column="n_id" jdbcType="NUMERIC" property="nId" />
     <result column="c_name" jdbcType="VARCHAR" property="cName" />
     <result column="n_sex" jdbcType="NUMERIC" property="nSex" />
@@ -18,7 +18,7 @@
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
-    from t_user
+    from springdemo.t_user
     where n_id = #{nId,jdbcType=NUMERIC}
   </select>
   <select id="selectAll" resultMap="BaseResultMap">
@@ -30,7 +30,7 @@
     delete from t_user
     where n_id = #{nId,jdbcType=NUMERIC}
   </delete>
-  <insert id="insert" parameterType="com.model.mybatis.TUser">
+  <insert id="insert" parameterType="com.mybatis.model.TUser">
     insert into t_user (n_id, c_name, n_sex, 
       n_age, c_address, c_loginid, 
       c_password, c_salt, n_state
@@ -40,7 +40,7 @@
       #{cPassword,jdbcType=VARCHAR}, #{cSalt,jdbcType=VARCHAR}, #{nState,jdbcType=NUMERIC}
       )
   </insert>
-  <insert id="insertSelective" parameterType="com.model.mybatis.TUser">
+  <insert id="insertSelective" parameterType="com.mybatis.model.TUser">
     insert into t_user
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="nId != null">
@@ -101,7 +101,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.model.mybatis.TUser">
+  <update id="updateByPrimaryKeySelective" parameterType="com.mybatis.model.TUser">
     update t_user
     <set>
       <if test="cName != null">
@@ -131,7 +131,7 @@
     </set>
     where n_id = #{nId,jdbcType=NUMERIC}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.model.mybatis.TUser">
+  <update id="updateByPrimaryKey" parameterType="com.mybatis.model.TUser">
     update t_user
     set c_name = #{cName,jdbcType=VARCHAR},
       n_sex = #{nSex,jdbcType=NUMERIC},

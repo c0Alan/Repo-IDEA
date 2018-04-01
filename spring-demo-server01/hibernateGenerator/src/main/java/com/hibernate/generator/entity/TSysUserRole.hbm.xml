@@ -1,0 +1,10 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="com.hibernate.generator.entity.TSysUserRole" table="t_sys_user_role" schema="springdemo" catalog="sd">
+        <id name="cId" column="c_id"/>
+    </class>
+</hibernate-mapping>

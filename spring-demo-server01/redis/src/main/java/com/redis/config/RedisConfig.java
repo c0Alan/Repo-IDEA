@@ -46,7 +46,7 @@ public class RedisConfig extends CachingConfigurerSupport {
 //    @Bean
 //    @SuppressWarnings({ "rawtypes", "unchecked" })
 //    public RedisTemplate<String, String> redisTemplate(RedisConnectionFactory redisFactory){
-//        StringRedisTemplate template = new StringRedisTemplate(redisFactory);
+//        StringRedisTemplate templates = new StringRedisTemplate(redisFactory);
 //        Jackson2JsonRedisSerializer jackson2JsonRedisSerializer = new
 //                Jackson2JsonRedisSerializer(Object.class);
 //
@@ -55,9 +55,9 @@ public class RedisConfig extends CachingConfigurerSupport {
 //        om.enableDefaultTyping(ObjectMapper.DefaultTyping.NON_FINAL);
 //        jackson2JsonRedisSerializer.setObjectMapper(om);
 //
-//        template.setValueSerializer(jackson2JsonRedisSerializer);
-//        template.afterPropertiesSet();
-//        return template;
+//        templates.setValueSerializer(jackson2JsonRedisSerializer);
+//        templates.afterPropertiesSet();
+//        return templates;
 //    }
 
     @Bean
