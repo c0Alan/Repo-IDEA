@@ -2,7 +2,7 @@ package com.redis.dao;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
-import com.model.redis.User;
+import com.redis.model.User;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;

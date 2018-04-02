@@ -7,10 +7,9 @@ public class Test {
      * 2017-9-30 下午2:08:38
      */
     public static void main(String[] args) {
-        String[] arr = {"aaa", "bbb"};
-        for(String str : arr){
-            System.out.println(str);
-        }
+        Integer num1 = -1;
+        int num2 = -1;
+        System.out.println(Integer.valueOf(num2).equals(num1));
     }
 
 }
