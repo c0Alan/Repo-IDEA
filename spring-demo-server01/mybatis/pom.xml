@@ -49,22 +49,24 @@
 
     </dependencies>
 
-    <plugins>
+    <!--<build>-->
+        <!--<plugins>-->
 
-        <plugin>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-maven-plugin</artifactId>
-            <dependencies>
-                <!-- 热部署 -->
-                <dependency>
-                    <groupId>org.springframework</groupId>
-                    <artifactId>springloaded</artifactId>
-                    <version>1.2.6.RELEASE</version>
-                </dependency>
-            </dependencies>
-        </plugin>
+            <!--<plugin>-->
+                <!--<groupId>org.springframework.boot</groupId>-->
+                <!--<artifactId>spring-boot-maven-plugin</artifactId>-->
+                <!--<dependencies>-->
+                    <!--&lt;!&ndash; 热部署 &ndash;&gt;-->
+                    <!--<dependency>-->
+                        <!--<groupId>org.springframework</groupId>-->
+                        <!--<artifactId>springloaded</artifactId>-->
+                        <!--<version>1.2.6.RELEASE</version>-->
+                    <!--</dependency>-->
+                <!--</dependencies>-->
+            <!--</plugin>-->
 
-    </plugins>
+        <!--</plugins>-->
+    <!--</build>-->
 
     <!-- Using Spring Boot without the Parent POM -->
     <dependencyManagement>
