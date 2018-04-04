@@ -133,7 +133,7 @@ public class SpringMVCTest {
     /**
      * 目标方法的返回值可以是 ModelAndView 类型。 
      * 其中可以包含视图和模型信息
-     * SpringMVC 会把 ModelAndView 的 model 中数据放入到 request 域对象中. 
+     * SpringMVC 会把 ModelAndView 的 entity 中数据放入到 request 域对象中.
      * @return
      */
     @RequestMapping("/testModelAndView")
