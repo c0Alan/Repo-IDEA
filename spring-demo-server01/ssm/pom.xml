@@ -31,6 +31,12 @@
             <version>${logback.version}</version>
         </dependency>
 
+        <dependency>
+            <groupId>log4j</groupId>
+            <artifactId>log4j</artifactId>
+            <version>${log4j.version}</version>
+        </dependency>
+
         <!-- 4.Spring -->
         <!-- 1)Spring核心 -->
         <dependency>

@@ -10,6 +10,8 @@
         http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd
         http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.0.xsd">
 
+	<context:property-placeholder location="classpath:jdbc.properties" />
+
 	<!-- 自动扫描 -->
 	<context:component-scan base-package="com.ssm.dao" />
 	<context:component-scan base-package="com.ssm.service" />
@@ -17,10 +19,10 @@
 	<!-- 配置数据源 -->
 	<bean id="dataSource"
 		  class="org.springframework.jdbc.datasource.DriverManagerDataSource">
-		<property name="driverClassName" value="com.mysql.jdbc.Driver"/>
-		<property name="url" value="jdbc:mysql://localhost:3306/db_mybatis"/>
-		<property name="username" value="root"/>
-		<property name="password" value="123456"/>
+		<property name="driverClassName" value="${jdbc.driver}"/>
+		<property name="url" value="${jdbc.url}"/>
+		<property name="username" value="${jdbc.username}"/>
+		<property name="password" value="${jdbc.password}"/>
 	</bean>
 
 	<!-- 配置mybatis的sqlSessionFactory -->
