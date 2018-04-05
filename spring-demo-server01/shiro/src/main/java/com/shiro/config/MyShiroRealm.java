@@ -1,9 +1,9 @@
 package com.shiro.config;
 
-import com.hibernate.model.TSysPermission;
-import com.hibernate.model.TSysRole;
-import com.hibernate.model.TUser;
-import com.hibernate.service.UserService;
+import com.shiro.model.TSysPermission;
+import com.shiro.model.TSysRole;
+import com.shiro.model.TUser;
+import com.shiro.service.UserService;
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.AuthenticationInfo;
 import org.apache.shiro.authc.AuthenticationToken;
