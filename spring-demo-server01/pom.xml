@@ -16,6 +16,7 @@
         <module>springmvc</module>
         <module>hibernateGenerator</module>
         <module>mybatisGenerator</module>
+        <module>mavenweb</module>
     </modules>
 
     <properties>
@@ -117,10 +118,14 @@
                 <artifactId>maven-war-plugin</artifactId>
                 <configuration>
                     <!-- 修改webapp目录为web -->
-                    <webappDirectory>${basedir}/src/main/web</webappDirectory>
-                    <warSourceDirectory>${basedir}/src/main/web</warSourceDirectory>
+                    <webXml>${basedir}/src/main/web/WEB-INF/web.xml</webXml>
+                    <webappDirectory>${basedir}/target/web</webappDirectory> <!-- exploded: artifacts target output dierctory -->
+                    <warSourceDirectory>${basedir}/src/main/web</warSourceDirectory> <!-- web resource directory -->
+
                 </configuration>
             </plugin>
+
+
         </plugins>
 
         <sourceDirectory>src/main/java</sourceDirectory>
@@ -130,8 +135,11 @@
             </resource>
         </resources>
         <!--<directory>src\main\web\WEB-INF</directory>-->
+
         <outputDirectory>target/web/WEB-INF/classes</outputDirectory>
         <testOutputDirectory>target/web/WEB-INF/classes</testOutputDirectory>
+        <directory>target/web</directory> <!-- war: artifacts target output dierctory -->
+
     </build>
 
 

@@ -7,11 +7,6 @@
     <title>Insert title here</title>
 </head>
 <body>
-<form action="${pageContext.request.contextPath }/user/login.do" method="post">
-    登录名:<input type="text" name="cLoginid" value="${user.cLoginid }"/><br/>
-    密码:<input type="password" name="cPassword" value="${user.cPassword }"><br/>
-    <input type="submit" value="login"/><font color="red">${errorMsg }</font>
-</form>
+欢迎：${currentUser.cName }
 </body>
 </html>
-

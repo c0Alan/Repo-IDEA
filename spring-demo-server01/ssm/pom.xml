@@ -1,5 +1,6 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <description>传统的ssm框架</description>
     <parent>
         <artifactId>server-01</artifactId>
         <groupId>com.spring.demo.server01</groupId>
@@ -14,7 +15,6 @@
     <name>ssm Maven Webapp</name>
     <url>http://maven.apache.org</url>
 
-
     <dependencies>
         <!-- 单元测试 -->
         <dependency>
@@ -23,22 +23,9 @@
             <version>${junit.version}</version>
         </dependency>
 
-        <!-- 1.日志 -->
-        <!-- 实现slf4j接口并整合 -->
-        <dependency>
-            <groupId>ch.qos.logback</groupId>
-            <artifactId>logback-classic</artifactId>
-            <version>${logback.version}</version>
-        </dependency>
+        <!-- 日志相关 -->
 
-        <dependency>
-            <groupId>log4j</groupId>
-            <artifactId>log4j</artifactId>
-            <version>${log4j.version}</version>
-        </dependency>
-
-        <!-- 4.Spring -->
-        <!-- 1)Spring核心 -->
+        <!-- Spring 相关 -->
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-core</artifactId>
@@ -54,7 +41,6 @@
             <artifactId>spring-context</artifactId>
             <version>${spring.version}</version>
         </dependency>
-        <!-- 2)Spring DAO层 -->
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-jdbc</artifactId>
@@ -65,7 +51,6 @@
             <artifactId>spring-tx</artifactId>
             <version>${spring.version}</version>
         </dependency>
-        <!-- 3)Spring controller -->
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-web</artifactId>
@@ -76,34 +61,35 @@
             <artifactId>spring-webmvc</artifactId>
             <version>${spring.version}</version>
         </dependency>
-        <!-- 4)Spring test -->
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-test</artifactId>
             <version>${spring.version}</version>
         </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-aop</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+        <dependency> <!-- 切面相关依赖 -->
+            <groupId>org.aspectj</groupId>
+            <artifactId>aspectjweaver</artifactId>
+            <version>1.8.5</version>
+        </dependency>
 
         <!-- 数据库相关 -->
         <dependency>
-            <groupId>mysql</groupId>
-            <artifactId>mysql-connector-java</artifactId>
-            <version>${mysql.version}</version>
-            <scope>runtime</scope>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+            <version>${postgresql.version}</version>
         </dependency>
-
         <dependency>
             <groupId>c3p0</groupId>
             <artifactId>c3p0</artifactId>
             <version>${c3p0.version}</version>
         </dependency>
 
-        <dependency>
-            <groupId>com.googlecode.log4jdbc</groupId>
-            <artifactId>log4jdbc</artifactId>
-            <version>${log4jdbc.version}</version>
-        </dependency>
-
-        <!-- MyBatis -->
+        <!-- MyBatis 相关 -->
         <dependency>
             <groupId>org.mybatis</groupId>
             <artifactId>mybatis</artifactId>
@@ -115,7 +101,7 @@
             <version>${mybatis-spring.version}</version>
         </dependency>
 
-        <!-- 3.Servlet controller -->
+        <!-- Servlet 相关 -->
         <dependency>
             <groupId>taglibs</groupId>
             <artifactId>standard</artifactId>
@@ -126,41 +112,27 @@
             <artifactId>jstl</artifactId>
             <version>1.2</version>
         </dependency>
-        <dependency>
-            <groupId>com.fasterxml.jackson.core</groupId>
-            <artifactId>jackson-databind</artifactId>
-            <version>2.5.4</version>
-        </dependency>
+
         <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>javax.servlet-api</artifactId>
             <version>${servlet-api.version}</version>
         </dependency>
 
-        <!-- redis客户端:Jedis -->
+        <!-- 数据格式相关 -->
         <dependency>
-            <groupId>redis.clients</groupId>
-            <artifactId>jedis</artifactId>
-            <version>${redis.version}</version>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>2.5.4</version>
         </dependency>
 
-        <dependency>
-            <groupId>com.dyuproject.protostuff</groupId> <!-- 这个是什么来的 ??? -->
-            <artifactId>protostuff-core</artifactId>
-            <version>${protostuff.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.dyuproject.protostuff</groupId>
-            <artifactId>protostuff-runtime</artifactId>
-            <version>${protostuff.version}</version>
-        </dependency>
-
-        <!-- Map工具类 -->
+        <!-- Apache commons 相关 -->
         <dependency>
             <groupId>commons-collections</groupId>
             <artifactId>commons-collections</artifactId>
             <version>${commons-collections.version}</version>
         </dependency>
+
     </dependencies>
     <build>
         <finalName>ssm</finalName>
