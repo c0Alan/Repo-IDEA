@@ -4,22 +4,29 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.spring.demo.server01</groupId>
-    <artifactId>server-01</artifactId>
+    <groupId>com.c0.pac</groupId>
+    <artifactId>project-above-cloud</artifactId>
     <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
-
-
     <modules>
-        <module>webservice</module>
-        <module>springmvc</module>
-        <module>hibernateGenerator</module>
-        <module>mybatisGenerator</module>
-        <module>mavenweb</module>
+        <module>discovery</module>
+        <module>config</module>
+        <module>monitor</module>
+        <module>person</module>
+        <module>some</module>
+        <module>ui</module>
     </modules>
 
+    <parent>
+        <groupId>org.springframework.cloud</groupId>
+        <artifactId>spring-cloud-starter-parent</artifactId>
+       <!-- <version>Finchley.M9/Angel.SR3/Edgware.SR3/Dalston.RELEASE</version>-->
+        <version>Dalston.RELEASE</version>
+        <relativePath/>
+    </parent>
+
     <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding> 
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <java.version>1.8</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -99,50 +106,50 @@
     </properties>
 
     <build>
-        <!--<finalName>${artifactId}-${version}</finalName>-->
-        <finalName>web</finalName>
         <plugins>
-
             <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.5.1</version>
-                <configuration>
-                    <!-- jdk 版本 -->
-                    <source>1.8</source>
-                    <target>1.8</target>
-                    <encoding>UTF-8</encoding>
-                </configuration>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
-            <!-- 修改webapp目录为web -->
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-war-plugin</artifactId>
-                <configuration>
-                    <!-- 修改webapp目录为web -->
-                    <webXml>${basedir}/src/main/web/WEB-INF/web.xml</webXml>
-                    <webappDirectory>${basedir}/target/web</webappDirectory> <!-- exploded: artifacts target output dierctory -->
-                    <warSourceDirectory>${basedir}/src/main/web</warSourceDirectory> <!-- web resource directory -->
-
-                </configuration>
-            </plugin>
-
-
         </plugins>
-
-        <sourceDirectory>src/main/java</sourceDirectory>
-        <resources>
-            <resource>
-                <directory>src/main/resources</directory>
-            </resource>
-        </resources>
-        <!--<directory>src\main\web\WEB-INF</directory>-->
-
-        <outputDirectory>target/web/WEB-INF/classes</outputDirectory>
-        <testOutputDirectory>target/web/WEB-INF/classes</testOutputDirectory>
-        <directory>target/web</directory> <!-- war: artifacts target output dierctory -->
-
     </build>
 
+    <repositories>
+        <repository>
+            <id>spring-snapshots</id>
+            <name>Spring Snapshots</name>
+            <url>https://repo.spring.io/snapshot</url>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+        </repository>
+
+        <repository>
+            <id>spring-milestones</id>
+            <name>Spring Milestones</name>
+            <url>https://repo.spring.io/libs-milestone</url>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </repository>
+    </repositories>
+    <pluginRepositories>
+        <pluginRepository>
+            <id>spring-snapshots</id>
+            <name>Spring Snapshots</name>
+            <url>https://repo.spring.io/snapshot</url>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+        </pluginRepository>
+        <pluginRepository>
+            <id>spring-milestones</id>
+            <name>Spring Milestones</name>
+            <url>https://repo.spring.io/libs-milestone</url>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </pluginRepository>
+    </pluginRepositories>
 
 </project>

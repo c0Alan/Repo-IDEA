@@ -22,7 +22,7 @@ public class TSysPermission {
     private String cPermission;
 
     /** 资源类型，[menu|button] */
-    @Column(columnDefinition="enum('menu','button')")
+    @Column(columnDefinition="enumtype('menu','button')")
     private String cResourceType;
 
     /** 资源路径 */
