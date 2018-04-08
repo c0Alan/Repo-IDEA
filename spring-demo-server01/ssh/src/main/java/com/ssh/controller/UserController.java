@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import java.util.List;
+import java.util.Map;
 
 @Controller
 @RequestMapping("/user")
@@ -24,6 +26,7 @@ public class UserController {
     @RequestMapping("/login")
     public String login(TUser user, HttpServletRequest request) {
         TUser u = userService.getUserById(2);
+        List<Map<String, Object>> resultMap = userService.getNameAndAddressByState(1);
         TSysRole role = sysRoleService.getRole(2);
 
         return "redirect:/success.jsp";
