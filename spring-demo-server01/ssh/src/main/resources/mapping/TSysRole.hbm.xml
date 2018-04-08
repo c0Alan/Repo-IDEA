@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="com.ssh.entity.TSysRole" table="t_sys_role" schema="springdemo" catalog="sd">
+        <id name="nId" column="n_id"/>
+        <property name="nValid" column="n_valid"/>
+        <property name="cDescription" column="c_description"/>
+        <property name="cRole" column="c_role"/>
+    </class>
+</hibernate-mapping>
