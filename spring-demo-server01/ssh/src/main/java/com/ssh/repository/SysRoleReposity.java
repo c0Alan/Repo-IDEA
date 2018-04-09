@@ -15,6 +15,11 @@ public class SysRoleReposity {
         return this.sessionFactory.openSession();
     }
 
+    /**
+     * session 的方式获取
+     * @param id
+     * @return
+     */
     public TSysRole get(Integer id) {
         return (TSysRole) getCurrentSession().get(TSysRole.class, id);
     }
