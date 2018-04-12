@@ -13,6 +13,8 @@
         <module>eureka-client</module>
         <module>eureka-consumer</module>
         <module>consul-client</module>
+        <module>eureka-consumer-feign</module>
+        <module>config-server-git</module>
     </modules>
 
     <properties>
