@@ -10,6 +10,7 @@ spring:
         git:
           uri: https://github.com/c0Alan/springCloudConfig
           username: c0Alan
-          password: 
+          password:
+#          search-paths:
 
 
