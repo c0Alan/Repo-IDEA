@@ -1,0 +1,22 @@
+server:
+  port: 5555
+spring:
+  application:
+    name: zuu-api-gateway
+zuul:
+  routes:
+#  通过 serviceId 的方式映射路由
+    api-a:
+      path: /api-a/**
+      serviceId: eureka-consumer-ribbon-hystrix
+    api-b:
+      path: /api-b/**
+      serviceId: eureka-consumer-ribbon-hystrix
+#  通过 url 的方式映射路由
+    api-a-url:
+      path: /api-a-url/**
+      url: http://localhost:2101/
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:1001/eureka/

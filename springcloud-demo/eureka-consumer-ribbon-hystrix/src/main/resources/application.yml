@@ -10,5 +10,9 @@ eureka:
     serviceUrl:
       defaultZone: http://localhost:1001/eureka/
 
+
 loggin:
   file: logs/${spring.application.name}.log
+#management:
+# 设置收集hystrix数据的端点
+#  context-path: /aaa

@@ -20,6 +20,8 @@
         <module>eureka-consumer-ribbon-hystrix</module>
         <module>hystrix-dashboard</module>
         <module>turbine</module>
+        <module>turbine-amqp</module>
+        <module>zuul</module>
     </modules>
 
     <properties>
