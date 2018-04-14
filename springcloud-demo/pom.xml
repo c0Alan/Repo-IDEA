@@ -18,6 +18,8 @@
         <module>config-client</module>
         <module>eureka-consumer-ribbon</module>
         <module>eureka-consumer-ribbon-hystrix</module>
+        <module>hystrix-dashboard</module>
+        <module>turbine</module>
     </modules>
 
     <properties>

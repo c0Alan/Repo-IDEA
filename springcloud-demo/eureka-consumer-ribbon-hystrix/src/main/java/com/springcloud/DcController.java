@@ -27,6 +27,11 @@ public class DcController {
             return "fallback";
         }
 
+        /**
+         * 使用@HystrixCommand来为一个依赖资源定义服务降级逻辑
+         * 依赖隔离、服务降级在使用时候都是一体化实现的
+         * @return
+         */
         @HystrixCommand(fallbackMethod = "fallback")
         public String consumer(){
             return restTemplate.getForObject("http://eureka-client/dc", String.class);
