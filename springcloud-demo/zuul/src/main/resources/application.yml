@@ -2,7 +2,7 @@ server:
   port: 5555
 spring:
   application:
-    name: zuu-api-gateway
+    name: zuul-api-gateway
 zuul:
   routes:
 #  通过 serviceId 的方式映射路由

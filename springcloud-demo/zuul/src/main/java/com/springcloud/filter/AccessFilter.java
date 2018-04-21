@@ -7,6 +7,12 @@ import org.slf4j.LoggerFactory;
 
 import javax.servlet.http.HttpServletRequest;
 
+/**
+ *
+ * 
+ * @author liuxl
+ * @date 2018/4/15 12:12
+ */
 public class AccessFilter extends ZuulFilter {
 
     private static Logger log = LoggerFactory.getLogger(AccessFilter.class);

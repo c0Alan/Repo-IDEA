@@ -22,6 +22,9 @@
         <module>turbine</module>
         <module>turbine-amqp</module>
         <module>zuul</module>
+        <module>eureka-feign-api</module>
+        <module>eureka-feign-client</module>
+        <module>eureka-feign-consumer</module>
     </modules>
 
     <properties>
@@ -35,7 +38,7 @@
         <junit.version>4.11</junit.version>
 
         <!-- spring -->
-        <spring.version>4.3.9.RELEASE</spring.version>
+        <!--<spring.version>4.3.9.RELEASE</spring.version>-->
 
         <!-- 日志 相关 -->
         <logback.version>1.1.1</logback.version>
