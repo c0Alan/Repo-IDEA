@@ -8,10 +8,12 @@
     <artifactId>java-demo</artifactId>
     <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
-
     <modules>
+        <module>java</module>
         <module>apache-commons</module>
-        <module>java-jvm</module>
+        <module>java-tools</module>
+        <module>java-juc</module>
+        <module>java-algorithm</module>
     </modules>
 
     <properties>
@@ -141,6 +143,5 @@
         <directory>target/web</directory> <!-- war: artifacts target output dierctory -->
 
     </build>
-
 
 </project>
