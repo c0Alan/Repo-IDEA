@@ -14,6 +14,7 @@
         <module>java-tools</module>
         <module>java-juc</module>
         <module>java-algorithm</module>
+        <module>java-jvm</module>
     </modules>
 
     <properties>
