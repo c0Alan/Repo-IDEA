@@ -9,7 +9,9 @@
     <version>1.0-SNAPSHOT</version>
     <modules>
         <module>rabbitmq</module>
-        <module>turbine-amqp</module>
+        <module>mybatis</module>
+        <module>hibernate</module>
+        <module>shiro</module>
     </modules>
     <packaging>pom</packaging>
 
