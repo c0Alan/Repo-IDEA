@@ -35,7 +35,7 @@ public class RdUserController {
     public Map<String, Object> getUserRedisByLoginName(@PathVariable String loginName) {
         Map<String, Object> result = new HashMap<String, Object>();
         User user = userRedisService.getUserRedis(loginName);
-        Assert.notNull(user);
+        Assert.notNull(user, "用户不能为空!");
         result.put("name", user.getName());
         result.put("loginName", user.getLoginName());
         result.put("departmentName", user.getDepartment().getName());

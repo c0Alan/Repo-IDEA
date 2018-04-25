@@ -22,6 +22,9 @@ public class UserRedisService {
     @Autowired
     private UserRedis userRedis;
 
+    @Autowired
+
+
     public void redisInitData(){
         Department department = new Department();
         department.setName("科技部REDIS");
