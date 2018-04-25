@@ -26,13 +26,16 @@ import java.util.concurrent.CountDownLatch;
 @EnableCaching
 public class RedisConfig extends CachingConfigurerSupport {
 
-    @Value("${spring.redis.jedis.host}")
+    @Value("${spring.redis.host}")
     private String host;
 
-    @Value("${spring.redis.jedis.port}")
+    @Value("${spring.redis.port}")
     private int port;
 
-    @Value("${spring.redis.jedis.timeout}")
+    @Value("${spring.redis.password}")
+    private String password;
+
+    @Value("${spring.redis.jedis.pool.timout}")
     private int timeout;
 
     @Value("${spring.redis.jedis.pool.max-idle}")
@@ -40,9 +43,6 @@ public class RedisConfig extends CachingConfigurerSupport {
 
     @Value("${spring.redis.jedis.pool.max-wait}")
     private long maxWaitMillis;
-
-    @Value("${spring.redis.jedis.password}")
-    private String password;
 
     @Bean
     RedisMessageListenerContainer container(RedisConnectionFactory connectionFactory,
@@ -94,7 +94,7 @@ public class RedisConfig extends CachingConfigurerSupport {
         jedisPoolConfig.setMaxIdle(maxIdle);
         jedisPoolConfig.setMaxWaitMillis(maxWaitMillis);
 
-        JedisPool jedisPool = new JedisPool(jedisPoolConfig, host, port, timeout, password);
+        JedisPool jedisPool = new JedisPool(jedisPoolConfig, host, port, timeout);
 
         return jedisPool;
     }

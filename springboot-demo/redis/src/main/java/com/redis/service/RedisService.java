@@ -1,11 +1,14 @@
 package com.redis.service;
 
+import com.redis.util.RedisTool;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisPool;
+
+import javax.servlet.http.HttpServletRequest;
 
 /**
  * 获取 Jedis 实体的工厂类
@@ -31,38 +34,34 @@ public class RedisService {
     }
 
     /**
-     * 插入字符串
-     * @param key
-     * @param value
+     * 根据 sessionid 加锁
+     * @param SessionId
      */
-    public void set(String key, String value) {
-        Jedis jedis=null;
-        try{
-            jedis = getResource();
-            jedis.set(key, value);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }finally{
-            closeResource(jedis);
+    public void getDistributeLock(String SessionId){
+        System.out.println("Session id: " + SessionId);
+        Jedis jedis = getResource();
+        boolean result = RedisTool.tryGetDistributedLock(jedis, "lockKey", SessionId, 120000);
+        if (result){
+            System.out.println("you have get the lock!");
+        } else {
+            System.out.println("you can't get the lock!");
         }
+        jedis.close();
     }
 
     /**
-     * 获取字符串
-     * @param key
-     * @return
+     * 根据 sessionid 解锁
+     * @param SessionId
      */
-    public String get(String key) {
-        String result = null;
-        Jedis jedis=null;
-        try{
-            jedis = getResource();
-            result = jedis.get(key);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }finally{
-            closeResource(jedis);
+    public void releaseDistributeLock(String SessionId){
+        System.out.println("Session id: " + SessionId);
+        Jedis jedis = getResource();
+        boolean result = RedisTool.releaseDistributedLock(jedis, "lockKey", SessionId);
+        if (result){
+            System.out.println("you have release the lock!");
+        } else {
+            System.out.println("you can't release the lock!");
         }
-        return result;
+        jedis.close();
     }
 }
