@@ -81,7 +81,7 @@ public class DynamicProxy implements InvocationHandler {
     @Test
     public void test() {
         IMath math = (IMath) new DynamicProxy().getProxyObject(new Math2());
-//        IMath math = (Math) new DynamicProxy().getProxyObject(new Math()); // 报错, 这时应该使用Cglib的方式实现代理
+//        IMath math = (Math) new DynamicProxyFactory().getProxyObject(new Math()); // 报错, 这时应该使用Cglib的方式实现代理
         int n1 = 100, n2 = 5;
         math.add(n1, n2);
         math.sub(n1, n2);
