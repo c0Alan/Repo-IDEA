@@ -15,6 +15,7 @@
         <module>java-juc</module>
         <module>java-algorithm</module>
         <module>java-jvm</module>
+        <module>design-model</module>
     </modules>
 
     <properties>
@@ -99,6 +100,8 @@
 
         <!-- 其他工具包 -->
         <joda-time.version>2.3</joda-time.version>
+        <cglib.version>3.2.4</cglib.version>
+        <aspectjweaver.version>1.8.9</aspectjweaver.version>
 
     </properties>
 
