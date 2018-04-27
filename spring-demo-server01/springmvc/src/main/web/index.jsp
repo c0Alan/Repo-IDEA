@@ -37,15 +37,194 @@
             <td><a href="mvc/testRequestMapping">testRequestMapping</a></td>
         </tr>
         <tr>
-            <td>测试 GET 方法</td>
+            <td>测试 GET 方法 (method = RequestMethod.POST, 所以报错)</td>
             <td><a href="mvc/testMethod">testMethod</a></td>
         </tr>
         <tr>
             <td>测试 POST 方法</td>
-            <td><form action="mvc/testMethod" method="POST">
-                <input type="submit" value="submit"/>
-            </form></td>
+            <td>
+                <form action="mvc/testMethod" method="POST">
+                    <input class="btn btn-primary" type="submit" value="submit"/>
+                </form>
+            </td>
         </tr>
+        <tr>
+            <td>设置请求参数及请求头(修改年龄不等于10, 及请求头就不会报错了)</td>
+            <td><a href="mvc/testParamsAndHeaders?username=atguigu&age=10">testParamsAndHeaders</a></td>
+        </tr>
+        <tr>
+            <td>测试 Ant 风格路劲</td>
+            <td><a href="mvc/testAntPath/mnxyz/abc">testAntPath</a></td>
+        </tr>
+        <tr>
+            <td>测试 路径参数</td>
+            <td><a href="mvc/testPathVariable/1">testPathVariable</a></td>
+        </tr>
+        <tr>
+            <td>Restful 风格的get 查</td>
+            <td><a href="mvc/testRest/1">Test Rest Get</a></td>
+        </tr>
+        <tr>
+            <td>Restful 风格的 post 增</td>
+            <td>
+                <form action="mvc/testRest" method="post">
+                    <input type="submit" class="btn btn-primary" value="TestRest POST"/>
+                </form>
+            </td>
+        </tr>
+        <tr>
+            <td>Restful 风格的 delete 删</td>
+            <td>
+                <form action="mvc/testRest/1" method="post">
+                    <input type="hidden" name="_method" value="DELETE"/>
+                    <input type="submit" class="btn btn-primary" value="TestRest DELETE"/>
+                </form>
+            </td>
+        </tr>
+        <tr>
+            <td>Restful 风格的 put 改</td>
+            <td>
+                <form action="mvc/testRest/1" method="post">
+                    <input type="hidden" name="_method" value="PUT"/>
+                    <input type="submit" class="btn btn-primary" value="TestRest PUT"/>
+                </form>
+            </td>
+        </tr>
+        <tr>
+            <td>@RequestParam</td>
+            <td><a href="mvc/testRequestParam?username=atguigu&age=11">Test RequestParam</a>
+            </td>
+        </tr>
+        <tr>
+            <td>@RequestHeader</td>
+            <td><a href="mvc/testRequestHeader">Test RequestHeader</a>
+            </td>
+        </tr>
+        <tr>
+            <td>@CookieValue</td>
+            <td><a href="mvc/testCookieValue">Test CookieValue</a>
+            </td>
+        </tr>
+        <tr>
+            <td>构造 pojo</td>
+            <td>
+                <form action="mvc/testPojo" method="post" >
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">
+                            username:
+                        </label>
+                        <div class="col-sm-10">
+                            <input class="form-control" type="text" name="username"/>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">
+                            password:
+                        </label>
+                        <div class="col-sm-10">
+                            <input class="form-control" type="password" name="password"/>
+                        </div>
+
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">
+                            email:
+                        </label>
+                        <div class="col-sm-10">
+                            <input class="form-control" type="text" name="email"/>
+                        </div>
+
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">
+                            age:
+                        </label>
+                        <div class="col-sm-10">
+                            <input class="form-control" type="text" name="age"/>
+                        </div>
+
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">
+                            city:
+                        </label>
+                        <div class="col-sm-10">
+                            <input class="form-control" type="text" name="address.city"/>
+                        </div>
+
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">
+                            province:
+                        </label>
+                        <div class="col-sm-10">
+                            <input class="form-control" type="text" name="address.province"/>
+                        </div>
+
+                    </div>
+                    <input type="submit" value="Submit"/>
+                </form>
+            </td>
+        </tr>
+
+        <tr>
+            <td>Servlet Api, HttpServletRequest, HttpServletResponse, Writer 等</td>
+            <td><a href="mvc/testServletAPI">Test ServletAPI</a>
+            </td>
+        </tr>
+
+        <tr>
+            <td>构造 ModelAndView</td>
+            <td><a href="mvc/testModelAndView">Test ModelAndView</a>
+            </td>
+        </tr>
+
+        <tr>
+            <td>构造 Map</td>
+            <td><a href="mvc/testMap">Test Map</a>
+            </td>
+        </tr>
+
+        <tr>
+            <td>测试 @SessionAttributes</td>
+            <td><a href="mvc/testSessionAttributes">Test SessionAttributes</a>
+            </td>
+        </tr>
+
+        <tr>
+            <td>测试 @ModelAttribute</td>
+            <td>
+                <form action="mvc/testModelAttribute" method="Post">
+                    <input type="hidden" name="id" value="1"/>
+                    username: <input type="text" name="username" value="Tom"/>
+                    <br>
+                    email: <input type="text" name="email" value="tom@atguigu.com"/>
+                    <br>
+                    age: <input type="text" name="age" value="12"/>
+                    <br>
+                    <input type="submit" value="Submit"/>
+                </form>
+            </td>
+        </tr>
+
+        <tr>
+            <td>测试 视图和视图解析器</td>
+            <td><a href="mvc/testViewAndViewResolver">Test ViewAndViewResolver</a>
+            </td>
+        </tr>
+
+        <tr>
+            <td>测试 视图</td>
+            <td><a href="mvc/testView">Test View</a>
+            </td>
+        </tr>
+
+        <tr>
+            <td>测试 重定向</td>
+            <td><a href="mvc/testRedirect">Test Redirect</a>
+            </td>
+        </tr>
+
         </tbody>
     </table>
 
