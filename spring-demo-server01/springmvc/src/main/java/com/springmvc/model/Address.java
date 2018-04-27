@@ -1,8 +1,15 @@
 package com.springmvc.model;
 
+/***
+ * Address 实体测试类
+ *
+ * @author liuxl
+ * @date 2018/4/27 13:05
+ */
 public class Address {
 
     private String province;
+
     private String city;
 
     public String getProvince() {
@@ -25,5 +32,5 @@ public class Address {
     public String toString() {
         return "Address [province=" + province + ", city=" + city + "]";
     }
-    
+
 }

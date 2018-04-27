@@ -1,15 +1,23 @@
 package com.springmvc.model;
 
+/***
+ * User 实体测试类
+ *
+ * @author liuxl
+ * @date 2018/4/27 13:05
+ */
 public class User {
-    
+
     private Integer id;
-    
+
     private String username;
+
     private String password;
 
     private String email;
+
     private int age;
-    
+
     private Address address;
 
     public Integer getId() {
@@ -60,19 +68,12 @@ public class User {
         this.address = address;
     }
 
-//    @Override
-//    public String toString() {
-//        return "User [username=" + username + ", password=" + password
-//                + ", email=" + email + ", age=" + age + ", address=" + address
-//                + "]";
-//    }
-    
     @Override
     public String toString() {
         return "User [id=" + id + ", username=" + username + ", password="
                 + password + ", email=" + email + ", age=" + age + "]";
     }
-    
+
     public User(String username, String password, String email, int age) {
         super();
         this.username = username;
@@ -82,7 +83,7 @@ public class User {
     }
 
     public User(Integer id, String username, String password, String email,
-            int age) {
+                int age) {
         super();
         this.id = id;
         this.username = username;
@@ -91,5 +92,6 @@ public class User {
         this.age = age;
     }
 
-    public User() {}
+    public User() {
+    }
 }
