@@ -16,6 +16,7 @@
         <module>mybatisGenerator</module>
         <module>mavenweb</module>
         <module>ssh</module>
+        <module>ss</module>
     </modules>
 
     <properties>
