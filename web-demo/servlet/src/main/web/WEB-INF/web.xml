@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
+         version="3.1">
+
+    <!--基础部分-->
+    <!-- 配置WEB应用的初始化参数 -->
+    <context-param>
+        <param-name>url</param-name>
+        <param-value>jdbc:mysql://localhost:3306/test</param-value>
+    </context-param>
+
+    <welcome-file-list>
+        <welcome-file>index.jsp</welcome-file>
+    </welcome-file-list>
+
+    <servlet>
+        <servlet-name>ServletDemo1</servlet-name>
+        <servlet-class>com.servlet.basic.ServletDemo1</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>ServletDemo1</servlet-name>
+        <url-pattern>/servlet/ServletDemo1</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServletDemo1</servlet-name>
+        <url-pattern>/1.htm</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>ServletDemo5</servlet-name>
+        <servlet-class>com.servlet.basic.ServletDemo5</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>ServletDemo5</servlet-name>
+        <url-pattern>/servlet/ServletDemo5</url-pattern>
+    </servlet-mapping>
+
+
+    <servlet>
+        <servlet-name>ServletConfigDemo1</servlet-name>
+        <servlet-class>com.servlet.basic.ServletConfigDemo1</servlet-class>
+        <!--配置ServletConfigDemo1的初始化参数 -->
+        <init-param>
+            <param-name>name</param-name>
+            <param-value>gacl</param-value>
+        </init-param>
+        <init-param>
+            <param-name>password</param-name>
+            <param-value>123</param-value>
+        </init-param>
+        <init-param>
+            <param-name>charset</param-name>
+            <param-value>UTF-8</param-value>
+        </init-param>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>ServletConfigDemo1</servlet-name>
+        <url-pattern>/servlet/ServletConfigDemo1</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>ServletContextDemo1</servlet-name>
+        <servlet-class>com.servlet.basic.ServletContextDemo1</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ServletContextDemo1</servlet-name>
+        <url-pattern>/servlet/ServletContextDemo1</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>ServletContextDemo2</servlet-name>
+        <servlet-class>com.servlet.basic.ServletContextDemo2</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ServletContextDemo2</servlet-name>
+        <url-pattern>/servlet/ServletContextDemo2</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>ServletContextDemo3</servlet-name>
+        <servlet-class>com.servlet.basic.ServletContextDemo3</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ServletContextDemo3</servlet-name>
+        <url-pattern>/servlet/ServletContextDemo3</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>ServletContextDemo4</servlet-name>
+        <servlet-class>com.servlet.basic.ServletContextDemo4</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ServletContextDemo4</servlet-name>
+        <url-pattern>/servlet/ServletContextDemo4</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>ServletContextDemo5</servlet-name>
+        <servlet-class>com.servlet.basic.ServletContextDemo5</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ServletContextDemo5</servlet-name>
+        <url-pattern>/servlet/ServletContextDemo5</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>ServletContextDemo6</servlet-name>
+        <servlet-class>com.servlet.basic.ServletContextDemo6</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ServletContextDemo6</servlet-name>
+        <url-pattern>/servlet/ServletContextDemo6</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>ServletContextDemo7</servlet-name>
+        <servlet-class>com.servlet.basic.ServletContextDemo7</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ServletContextDemo7</servlet-name>
+        <url-pattern>/servlet/ServletContextDemo7</url-pattern>
+    </servlet-mapping>
+
+    <!--response 部分-->
+    <servlet>
+        <servlet-name>ResponseDemo01</servlet-name>
+        <servlet-class>com.servlet.response.ResponseDemo01</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ResponseDemo01</servlet-name>
+        <url-pattern>/servlet/ResponseDemo01</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>ResponseDemo02</servlet-name>
+        <servlet-class>com.servlet.response.ResponseDemo02</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ResponseDemo02</servlet-name>
+        <url-pattern>/servlet/ResponseDemo02</url-pattern>
+    </servlet-mapping>
+
+
+
+
+</web-app>

@@ -12,4 +12,41 @@
         <servlet-name>ServletDemo1</servlet-name>
         <url-pattern>/http/ServletDemo1</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <servlet-name>ServletDemo02</servlet-name>
+        <servlet-class>com.http.servlet.ServletDemo02</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>ServletDemo02</servlet-name>
+        <url-pattern>/http/ServletDemo02</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>ServletDemo03</servlet-name>
+        <servlet-class>com.http.servlet.ServletDemo03</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>ServletDemo03</servlet-name>
+        <url-pattern>/http/ServletDemo03</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>ServletDemo04</servlet-name>
+        <servlet-class>com.http.servlet.ServletDemo04</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>ServletDemo04</servlet-name>
+        <url-pattern>/http/ServletDemo04</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>ServletDemo05</servlet-name>
+        <servlet-class>com.http.servlet.ServletDemo05</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>ServletDemo05</servlet-name>
+        <url-pattern>/http/ServletDemo05</url-pattern>
+    </servlet-mapping>
+
 </web-app>

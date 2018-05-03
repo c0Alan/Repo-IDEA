@@ -30,7 +30,7 @@ public class ServletDemo03 extends HttpServlet {
          */
         response.setHeader("content-type", "image/jpeg");//使用content-type响应头指定发送给浏览器的数据类型为"image/jpeg"
         //读取位于项目根目录下的img文件夹里面的WP_20131005_002.jpg这张图片，返回一个输入流
-        InputStream in = this.getServletContext().getResourceAsStream("/img/WP_20131005_002.jpg");
+        InputStream in = this.getServletContext().getResourceAsStream("/img/img1.png");
         byte buffer[] = new byte[1024];
         int len = 0;
         OutputStream out = response.getOutputStream();//得到输出流

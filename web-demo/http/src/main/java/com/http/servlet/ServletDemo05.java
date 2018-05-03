@@ -22,7 +22,7 @@ public class ServletDemo05 extends HttpServlet {
          * 设置content-disposition响应头，让浏览器下载文件
          */
         response.setHeader("content-disposition", "attachment;filename=xxx.jpg");
-        InputStream in = this.getServletContext().getResourceAsStream("/img/1.jpg");
+        InputStream in = this.getServletContext().getResourceAsStream("/img/img1.png");
         byte buffer[] = new byte[1024];
         int len = 0;
         OutputStream out = response.getOutputStream();
