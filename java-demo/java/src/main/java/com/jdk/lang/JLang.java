@@ -1,6 +1,6 @@
 package com.jdk.lang;
 
-import org.apache.log4j.Logger;
+//import org.apache.log4j.Logger;
 
 /**
  * jdk lang 包测试
@@ -9,7 +9,7 @@ import org.apache.log4j.Logger;
  * 2017-9-27 下午2:34:19
  */
 public class JLang {
-    private static Logger logger = Logger.getLogger(JLang.class);
+//    private static Logger logger = Logger.getLogger(JLang.class);
 
     /**
      * 测试 String 类
@@ -23,9 +23,9 @@ public class JLang {
         String str1 = "aaa.bbb_dd_gg";
         String str2 = "aaa.bbb_dd_kk";
         boolean result = str1.matches("aaa\\.bbb_.*_gg");
-        logger.info("" + result);
+//        logger.info("" + result);
         result = str2.matches("aaa\\.bbb_.*_gg");
-        logger.info("" + result);
+//        logger.info("" + result);
 
     }
 }

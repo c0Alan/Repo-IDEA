@@ -1,10 +1,14 @@
 package com.jdk.basetype;
 
-public class TestInteger {
+import org.junit.Test;
 
-    public static void main(String[] args) {
-        equalsInt();
-    }
+/**
+ * 整型类型测试
+ *
+ * @author liuxl
+ * @date 2018/5/2 15:55
+ */
+public class TestInteger {
 
     /**
      * 跟int比较相等
@@ -24,5 +28,16 @@ public class TestInteger {
         Integer num1 = -1;
         int num2 = -1;
         System.out.println(Integer.valueOf(num2).equals(num1));
+    }
+
+    /**
+     * 带空格字符串转换
+     */
+    @Test
+    public void blankString(){
+//        Integer i = Integer.valueOf("123   "); // 这里加空格报错
+        Integer i = Integer.valueOf("123"); // 这里加空格报错
+
+        System.out.println(i);
     }
 }
