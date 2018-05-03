@@ -1,0 +1,33 @@
+HTTP请求的细节——请求行
+　　请求行中的GET称之为请求方式，请求方式有：POST、GET、HEAD、OPTIONS、DELETE、TRACE、PUT，常用的有： GET、 POST
+　　用户如果没有设置，默认情况下浏览器向服务器发送的都是get请求，例如在浏览器直接输地址访问，点超链接访问等都是get，用户如想把请求方式改为post，可通过更改表单的提交方式实现。
+　　不管POST或GET，都用于向服务器请求某个WEB资源，这两种方式的区别主要表现在数据传递上：如果请求方式为GET方式，则可以在请求的URL地址后以?的形式带上交给服务器的数据，多个数据之间以&进行分隔，例如：GET /mail/1.html?name=abc&password=xyz HTTP/1.1
+　　GET方式的特点：在URL地址后附带的参数是有限制的，其数据容量通常不能超过1K。
+　　如果请求方式为POST方式，则可以在请求的实体内容中向服务器发送数据，Post方式的特点：传送的数据量无限制。
+
+HTTP请求的细节——消息头
+　　HTTP请求中的常用消息头
+
+　　accept:浏览器通过这个头告诉服务器，它所支持的数据类型
+　　Accept-Charset: 浏览器通过这个头告诉服务器，它支持哪种字符集
+　　Accept-Encoding：浏览器通过这个头告诉服务器，支持的压缩格式
+　　Accept-Language：浏览器通过这个头告诉服务器，它的语言环境
+　　Host：浏览器通过这个头告诉服务器，想访问哪台主机
+　　If-Modified-Since: 浏览器通过这个头告诉服务器，缓存数据的时间
+　　Referer：浏览器通过这个头告诉服务器，客户机是哪个页面来的  防盗链
+　　Connection：浏览器通过这个头告诉服务器，请求完后是断开链接还是何持链接
+
+HTTP响应细节——常用响应头
+　　HTTP响应中的常用响应头(消息头)
+　　Location: 服务器通过这个头，来告诉浏览器跳到哪里
+　　Server：服务器通过这个头，告诉浏览器服务器的型号
+　　Content-Encoding：服务器通过这个头，告诉浏览器，数据的压缩格式
+　　Content-Length: 服务器通过这个头，告诉浏览器回送数据的长度
+　　Content-Language: 服务器通过这个头，告诉浏览器语言环境
+　　Content-Type：服务器通过这个头，告诉浏览器回送数据的类型
+　　Refresh：服务器通过这个头，告诉浏览器定时刷新
+　　Content-Disposition: 服务器通过这个头，告诉浏览器以下载方式打数据
+　　Transfer-Encoding：服务器通过这个头，告诉浏览器数据是以分块方式回送的
+　　Expires: -1  控制浏览器不要缓存
+　　Cache-Control: no-cache
+　　Pragma: no-cache
