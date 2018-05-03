@@ -19,7 +19,9 @@
 <body>
 
 <div class="container" style="margin-top: 10px; margin-left: 10px;">
-    Hello world!
+    Hello world! <br/>
+    <a href="${pageContext.request.contextPath}/drawimage/changeImg.jsp">随机验证码</a><br/>
+    <a href="${pageContext.request.contextPath}/drawimage/changeImg2.jsp">随机验证码2</a>
 
 </div>
 

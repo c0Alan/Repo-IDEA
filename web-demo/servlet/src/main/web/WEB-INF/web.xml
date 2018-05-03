@@ -145,6 +145,40 @@
         <url-pattern>/servlet/ResponseDemo02</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>ResponseDemo03</servlet-name>
+        <servlet-class>com.servlet.response.ResponseDemo03</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ResponseDemo03</servlet-name>
+        <url-pattern>/servlet/ResponseDemo03</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>ResponseDemo04</servlet-name>
+        <servlet-class>com.servlet.response.ResponseDemo04</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ResponseDemo04</servlet-name>
+        <url-pattern>/servlet/ResponseDemo04</url-pattern>
+    </servlet-mapping>
+
+    <!--验证码-->
+    <servlet>
+        <servlet-name>CheckServlet</servlet-name>
+        <servlet-class>com.servlet.drawimage.CheckServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>CheckServlet</servlet-name>
+        <url-pattern>/servlet/CheckServlet</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>DrawImage</servlet-name>
+        <servlet-class>com.servlet.drawimage.DrawImage</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>DrawImage</servlet-name>
+        <url-pattern>/servlet/DrawImage</url-pattern>
+    </servlet-mapping>
 
 
 
