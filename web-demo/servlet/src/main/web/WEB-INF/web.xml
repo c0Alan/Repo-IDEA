@@ -213,4 +213,23 @@
         <servlet-name>RequestDemo06</servlet-name>
         <url-pattern>/servlet/RequestDemo06</url-pattern>
     </servlet-mapping>
+
+    <!--cookie-->
+    <servlet>
+        <servlet-name>CookieDemo01</servlet-name>
+        <servlet-class>com.servlet.cookie.CookieDemo01</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>CookieDemo01</servlet-name>
+        <url-pattern>/servlet/CookieDemo01</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>CookieDemo02</servlet-name>
+        <servlet-class>com.servlet.cookie.CookieDemo02</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>CookieDemo02</servlet-name>
+        <url-pattern>/servlet/CookieDemo02</url-pattern>
+    </servlet-mapping>
+
 </web-app>
