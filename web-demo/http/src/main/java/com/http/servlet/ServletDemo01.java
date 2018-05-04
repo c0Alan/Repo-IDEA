@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletResponse;
  * 设置Location响应头，实现请求重定向
  * 
  * @author liuxl
- * @date 2018/5/3 12:47
+ * @date 2018/5/3 12:52
  */
 public class ServletDemo01 extends HttpServlet {
     public void doGet(HttpServletRequest request, HttpServletResponse response)

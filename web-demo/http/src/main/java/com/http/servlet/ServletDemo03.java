@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
  * 设置content-type响应头，指定回送数据类型
  * 
  * @author liuxl
- * @date 2018/5/3 12:50
+ * @date 2018/5/3 12:52
  */
 public class ServletDemo03 extends HttpServlet {
     public void doGet(HttpServletRequest request, HttpServletResponse response)

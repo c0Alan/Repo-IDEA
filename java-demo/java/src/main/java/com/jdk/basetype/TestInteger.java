@@ -40,4 +40,13 @@ public class TestInteger {
 
         System.out.println(i);
     }
+
+    /**
+     * 测试拆箱
+     */
+    @Test
+    public void equals(){
+        Integer i = null;
+        System.out.println(i == 1); // 这里拆箱时报空指针错误
+    }
 }

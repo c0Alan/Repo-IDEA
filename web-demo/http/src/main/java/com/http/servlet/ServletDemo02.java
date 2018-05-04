@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
  * 2、设置响应头Content-Encoding来告诉浏览器，服务器发送回来的数据压缩后的格式
  *
  * @author liuxl
- * @date 2018/5/3 12:50
+ * @date 2018/5/3 12:52
  */
 public class ServletDemo02 extends HttpServlet {
 
