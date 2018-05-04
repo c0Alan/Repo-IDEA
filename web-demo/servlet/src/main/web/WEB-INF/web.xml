@@ -180,6 +180,37 @@
         <url-pattern>/servlet/DrawImage</url-pattern>
     </servlet-mapping>
 
-
-
+    <!--request 部分-->
+    <servlet>
+        <servlet-name>RequestDemo01</servlet-name>
+        <servlet-class>com.servlet.request.RequestDemo01</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>RequestDemo01</servlet-name>
+        <url-pattern>/servlet/RequestDemo01</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>RequestDemo02</servlet-name>
+        <servlet-class>com.servlet.request.RequestDemo02</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>RequestDemo02</servlet-name>
+        <url-pattern>/servlet/RequestDemo02</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>RequestDemo03</servlet-name>
+        <servlet-class>com.servlet.request.RequestDemo03</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>RequestDemo03</servlet-name>
+        <url-pattern>/servlet/RequestDemo03</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>RequestDemo06</servlet-name>
+        <servlet-class>com.servlet.request.RequestDemo06</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>RequestDemo06</servlet-name>
+        <url-pattern>/servlet/RequestDemo06</url-pattern>
+    </servlet-mapping>
 </web-app>
