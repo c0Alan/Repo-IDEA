@@ -232,4 +232,38 @@
         <url-pattern>/servlet/CookieDemo02</url-pattern>
     </servlet-mapping>
 
+    <!--session-->
+    <servlet>
+        <servlet-name>SessionDemo1</servlet-name>
+        <servlet-class>com.servlet.session.SessionDemo1</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>SessionDemo1</servlet-name>
+        <url-pattern>/servlet/SessionDemo1</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>DoFormServlet</servlet-name>
+        <servlet-class>com.servlet.session.DoFormServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>DoFormServlet</servlet-name>
+        <url-pattern>/servlet/DoFormServlet</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>FormServlet</servlet-name>
+        <servlet-class>com.servlet.session.dulsubmit.FormServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>FormServlet</servlet-name>
+        <url-pattern>/servlet/dulsubmit/FormServlet</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>DoFormServlet2</servlet-name>
+        <servlet-class>com.servlet.session.dulsubmit.DoFormServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>DoFormServlet2</servlet-name>
+        <url-pattern>/servlet/dulsubmit/DoFormServlet2</url-pattern>
+    </servlet-mapping>
+
 </web-app>

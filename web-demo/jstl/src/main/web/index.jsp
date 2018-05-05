@@ -20,10 +20,17 @@
 
 <div class="container" style="margin-top: 10px; margin-left: 10px;">
     Hello world! <br/>
-    <a href="${pageContext.request.contextPath}/drawimage/changeImg.jsp">随机验证码</a><br/>
-    <a href="${pageContext.request.contextPath}/drawimage/changeImg2.jsp">随机验证码2</a><br/>
-    <a href="${pageContext.request.contextPath}/request/request.jsp">request</a><br/>
-    <a href="${pageContext.request.contextPath}/session/form.jsp">session form</a><br/>
+    <a href="${pageContext.request.contextPath}/tag/catch.jsp">catch</a><br/>
+    <a href="${pageContext.request.contextPath}/tag/choose.jsp">choose</a><br/>
+    <a href="${pageContext.request.contextPath}/tag/forEach.jsp">forEach</a><br/>
+    <a href="${pageContext.request.contextPath}/tag/forTokens.jsp">forTokens</a><br/>
+    <a href="${pageContext.request.contextPath}/tag/if.jsp">if</a><br/>
+    <a href="${pageContext.request.contextPath}/tag/import.jsp">import</a><br/>
+    <a href="${pageContext.request.contextPath}/tag/out.jsp">out</a><br/>
+    <a href="${pageContext.request.contextPath}/tag/redirect.jsp">redirect</a><br/>
+    <a href="${pageContext.request.contextPath}/tag/remove.jsp">remove</a><br/>
+    <a href="${pageContext.request.contextPath}/tag/set.jsp">set</a><br/>
+    <a href="${pageContext.request.contextPath}/tag/url.jsp">url</a><br/>
 
 </div>
 

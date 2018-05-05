@@ -20,10 +20,11 @@
 
 <div class="container" style="margin-top: 10px; margin-left: 10px;">
     Hello world! <br/>
-    <a href="${pageContext.request.contextPath}/drawimage/changeImg.jsp">随机验证码</a><br/>
-    <a href="${pageContext.request.contextPath}/drawimage/changeImg2.jsp">随机验证码2</a><br/>
-    <a href="${pageContext.request.contextPath}/request/request.jsp">request</a><br/>
-    <a href="${pageContext.request.contextPath}/session/form.jsp">session form</a><br/>
+    <a href="${pageContext.request.contextPath}/tag/calculate.jsp">calculate</a><br/>
+    <a href="${pageContext.request.contextPath}/tag/getData.jsp">getData</a><br/>
+    <a href="${pageContext.request.contextPath}/tag/innerrObject.jsp">innerrObject</a><br/>
+    <a href="${pageContext.request.contextPath}/customLib/CustomLib.jsp">CustomLib</a><br/>
+    <a href="${pageContext.request.contextPath}/function/ELFunction.jsp">ELFunction</a><br/>
 
 </div>
 

@@ -11,6 +11,11 @@
     <modules>
         <module>http</module>
         <module>servlet</module>
+        <module>jsp</module>
+        <module>jstl</module>
+        <module>el</module>
+        <module>web</module>
+        <module>front-end</module>
     </modules>
 
     <properties>
