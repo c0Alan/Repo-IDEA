@@ -232,3 +232,37 @@ Read uncommitted(读未提交)：最低级别，以上情况均无法保证。
 　　　　start transaction;
 　　　　insert into account(name,money) values('ggg',1000);--发现不能插入，只能等待a结束事务才能插入
 
+## 元数据介绍
+
+　　元数据指的是"数据库"、"表"、"列"的定义信息。
+
+### 1、DataBaseMetaData元数据
+
+　　Connection.getDatabaseMetaData()获得代表DatabaseMetaData元数据的DatabaseMetaData对象。
+　　DataBaseMetaData对象的常用方法：
+
+getURL()：返回一个String类对象，代表数据库的URL。
+getUserName()：返回连接当前数据库管理系统的用户名。
+getDatabaseProductName()：返回数据库的产品名称。
+getDatabaseProductVersion()：返回数据库的版本号。
+getDriverName()：返回驱动驱动程序的名称。
+getDriverVersion()：返回驱动程序的版本号。
+isReadOnly()：返回一个boolean值，指示数据库是否只允许读操作。
+
+### 2、ParameterMetaData元数据
+
+　　PreparedStatement.getParameterMetaData() 获得代表PreparedStatement元数据的ParameterMetaData对象。 
+　　Select * from user where name=? And password=?
+　　ParameterMetaData对象的常用方法：
+
+getParameterCount()： 获得指定参数的个数
+getParameterType(int param)：获得指定参数的sql类型，MySQL数据库驱动不支持
+
+### 3、ResultSetMetaData元数据
+
+　　ResultSet. getMetaData() 获得代表ResultSet对象元数据的ResultSetMetaData对象。 
+　　ResultSetMetaData对象的常用方法：
+
+getColumnCount() 返回resultset对象的列数
+getColumnName(int column) 获得指定列的名称
+getColumnTypeName(int column)获得指定列的类型
