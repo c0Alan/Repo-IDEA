@@ -18,6 +18,7 @@
         <module>design-model</module>
         <module>log-log4j</module>
         <module>log-logback</module>
+        <module>java-net</module>
     </modules>
 
     <properties>
