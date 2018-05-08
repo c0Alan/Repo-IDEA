@@ -19,7 +19,7 @@ public class ReturnDigestUserInterface {
             // Now print the result
             StringBuilder result = new StringBuilder(filename);
             result.append(": ");
-            byte[] digest = dr.getDigest();
+            byte[] digest = dr.getDigest(); // 由于是异步的, 所以这里为空
             result.append(DatatypeConverter.printHexBinary(digest));
             System.out.println(result);
         }
