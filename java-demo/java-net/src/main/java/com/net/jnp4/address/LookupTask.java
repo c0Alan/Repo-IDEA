@@ -1,4 +1,4 @@
-package com.net.jnp4.internet;
+package com.net.jnp4.address;
 
 import java.net.*;
 import java.util.concurrent.Callable;

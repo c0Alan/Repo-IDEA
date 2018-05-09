@@ -1,4 +1,4 @@
-package com.net.jnp4.internet;
+package com.net.jnp4.address;
 
 import java.io.*;
 import java.util.*;
