@@ -29,4 +29,13 @@ public class Log4jDemo {
         params.add(123);
         logger.error(params); // [aaa, 123]
     }
+
+    /**
+     * 数组不能打印元素
+     */
+    @Test
+    public void arrayLog(){
+        int[] arr = {1, 2, 3};
+        logger.info(arr); // [I@762efe5d
+    }
 }

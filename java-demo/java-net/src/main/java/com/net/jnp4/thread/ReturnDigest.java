@@ -7,7 +7,7 @@ import java.security.*;
  * 使用存取方法返回结果的线程
  * 
  * @author liuxilin
- * @date 2018/5/8 8:02
+ * @date 2018/5/8 8:05
  */
 public class ReturnDigest extends Thread {
 

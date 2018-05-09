@@ -20,6 +20,7 @@
             <version>${junit.version}</version>
         </dependency>
 
+        <!--日志相关-->
         <dependency>
             <groupId>log4j</groupId>
             <artifactId>log4j</artifactId>
