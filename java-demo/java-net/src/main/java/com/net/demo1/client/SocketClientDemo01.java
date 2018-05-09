@@ -1,4 +1,4 @@
-package com.net.client;
+package com.net.demo1.client;
 
 
 import java.io.*;
