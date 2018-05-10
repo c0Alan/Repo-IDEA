@@ -9,7 +9,7 @@ import java.net.UnknownHostException;
 import java.util.Arrays;
 
 /**
- * ip 地址测试类
+ * ip 地址测试类, 四个静态方法
  *
  * @author liuxilin
  * @date 2018/5/9 21:28
