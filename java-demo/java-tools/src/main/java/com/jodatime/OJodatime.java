@@ -1,4 +1,4 @@
-package com.demo.tools.jodatime;
+package com.jodatime;
 
 import org.apache.log4j.Logger;
 import org.joda.time.DateTime;
