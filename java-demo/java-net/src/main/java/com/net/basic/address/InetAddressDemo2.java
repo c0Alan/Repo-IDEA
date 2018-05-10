@@ -1,8 +1,11 @@
 package com.net.basic.address;
 
+import org.apache.log4j.Logger;
 import org.junit.Test;
 
+import java.io.IOException;
 import java.net.InetAddress;
+import java.net.NetworkInterface;
 import java.net.UnknownHostException;
 
 /**
@@ -12,6 +15,7 @@ import java.net.UnknownHostException;
  * @date 2018/5/10 12:53
  */
 public class InetAddressDemo2 {
+    private static final Logger logger = Logger.getLogger(InetAddressDemo2.class);
 
     /**
      * 创建InetAddress对象的三种方式
@@ -40,7 +44,7 @@ public class InetAddressDemo2 {
         System.out.println("address3:  " + address3);  // 同时输出域名和IP地址
     }
 
-    public void outHostName(InetAddress address, String s){
+    public void outHostName(InetAddress address, String s) {
         System.out.println("通过" + s + "创建InetAddress对象");
         System.out.println("主 机 名:" + address.getCanonicalHostName());
         System.out.println("主机别名:" + address.getHostName());
@@ -55,4 +59,65 @@ public class InetAddressDemo2 {
         outHostName(InetAddress.getByName("202.108.9.77"), "202.108.9.77");
         outHostName(InetAddress.getByName("211.100.26.121"), "211.100.26.121");
     }
+
+    /**
+     * getHostAddress方法, 得到主机的IP地址，这个IP地址可能是IPv4的地址，也可能是IPv6的地址
+     * 无论InetAddress对象是使用哪种方式创建的，getHostAddress方法都不会访问DNS服务器
+     */
+    @Test
+    public void getHostAddress() throws UnknownHostException {
+        // 输出IPv4地址
+        InetAddress ipv4Address1 = InetAddress.getByName("1.2.3.4");
+        System.out.println("ipv4Address1: " + ipv4Address1.getHostAddress());
+        InetAddress ipv4Address2 = InetAddress.getByName("www.ibm.com");
+        System.out.println("ipv4Address2: " + ipv4Address2.getHostAddress());
+        InetAddress ipv4Address3 = InetAddress.getByName("USERZGC-5N981IT");
+        System.out.println("ipv4Address3: " + ipv4Address3.getHostAddress());
+        // 输出IPv6地址
+        InetAddress ipv6Address1 = InetAddress.getByName("abcd:123::22ff");
+        System.out.println("ipv6Address1: " + ipv6Address1.getHostAddress());
+        InetAddress ipv6Address2 = InetAddress.getByName("www.gdut.edu.cn");
+        System.out.println("ipv6Address2: " + ipv6Address2.getHostAddress());
+        // 输出本机全部的IP地址
+        InetAddress Addresses[] = InetAddress.getAllByName("USERZGC-5N981IT");
+        for (InetAddress address : Addresses)
+            System.out.println("本机地址：" + address.getHostAddress());
+    }
+
+    /**
+     * 获取ip地址
+     * @throws UnknownHostException
+     */
+    @Test
+    public void getAddress() throws UnknownHostException {
+        InetAddress address = InetAddress.getByName("www.csdn.net");
+        byte ip[] = address.getAddress();
+        // 第一行输出了未转换的IP地址，由于www.csdn.net的IP地址的第一个字节大于127，因此，输出了一个负数
+        for (byte ipSegment : ip){
+            System.out.print(ipSegment + " "); // 47 95 -92 112
+        }
+        System.out.println("");
+        // 将IP地址的每一个字节转换成了int类型
+        for (byte ipSegment : ip) {
+            int newIPSegment = (ipSegment < 0) ? 256 + ipSegment : ipSegment;
+            System.out.print(newIPSegment + " "); // 47 95 164 112
+        }
+    }
+
+    /**
+     * 判断网络地址是否可达
+     */
+    @Test
+    public void isReachable() throws IOException {
+        InetAddress ia = InetAddress.getByName("www.baidu.com");
+        logger.info(ia.isReachable(1000)); // true
+
+        NetworkInterface eth0 = NetworkInterface.getByName("eth0");
+        logger.info(ia.isReachable(eth0, 100, 1000)); // false
+
+        NetworkInterface ppp0 = NetworkInterface.getByName("ppp0");
+        logger.info(ia.isReachable(ppp0, 100, 1000)); // false, 本地的网络接口全部不可达
+    }
+
+
 }

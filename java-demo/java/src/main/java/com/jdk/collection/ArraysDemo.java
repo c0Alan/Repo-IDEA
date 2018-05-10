@@ -5,16 +5,15 @@ import org.junit.Test;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 
 /**
- * 数组测试
+ * 数组工具类
  * 
  * @author liuxilin
  * @date 2018/5/9 8:05
  */
-public class ArrayDemo {
-    private static Logger logger = Logger.getLogger(ArrayDemo.class);
+public class ArraysDemo {
+    private static Logger logger = Logger.getLogger(ArraysDemo.class);
 
     /**
      * 数组转列表
