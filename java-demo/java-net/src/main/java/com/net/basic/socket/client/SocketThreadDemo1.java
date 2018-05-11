@@ -22,10 +22,26 @@ public class SocketThreadDemo1 extends Thread {
                 logger.info(String.valueOf(i) + ":ok");
                 socket.close();
             } catch (Exception e) {
-                logger.error(e);
+//                logger.error(e);
             }
         }
     }
 
-
+    /**
+     * 判断一台主机有哪些端口被打开
+     */
+    public static void main(String[] args)
+    {
+        int minPort = 8000, maxPort = 8100;
+        int threadCount = 10;
+        int portIncrement = ((maxPort - minPort + 1) / threadCount)
+                + (((maxPort - minPort + 1) % threadCount) == 0 ? 0 : 1);
+        SocketThreadDemo1[] instances = new SocketThreadDemo1[threadCount];
+        for (int i = 0; i < threadCount; i++)
+        {
+            instances[i] = new SocketThreadDemo1(minPort + portIncrement * i, minPort
+                    + portIncrement - 1 + portIncrement * i);
+            instances[i].start();
+        }
+    }
 }
