@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <!--加载数据库属性-->
+     <properties resource="jdbc.properties"/>
+<!--    <properties>
+        <property name="jdbc.driverClassName" value="org.postgresql.Driver"/>
+        <property name="jdbc.url" value="jdbc:postgresql://192.168.80.80:5432/sd"/>
+        <property name="jdbc.username" value="postgres"/>
+        <property name="jdbc.password" value="123abe"/>
+    </properties>-->
+
+    <!--加载类型-->
+    <!-- <typeAliases>
+        <typeAlias alias="Student" type="com.mybatis.model.Student"/>
+    </typeAliases> -->
+    <typeAliases>
+        <package name="com.mybatis.model"/>
+    </typeAliases>
+
+    <!--配置环境-->
+    <environments default="development">
+        <environment id="development">
+            <transactionManager type="JDBC" />
+            <dataSource type="POOLED">
+                <property name="driver" value="${jdbc.driverClassName}" />
+                <property name="url" value="${jdbc.url}" />
+                <property name="username" value="${jdbc.username}" />
+                <property name="password" value="${jdbc.password}" />
+            </dataSource>
+        </environment>
+        <environment id="test">
+            <transactionManager type="JDBC" />
+            <dataSource type="POOLED">
+                <property name="driver" value="${jdbc.driverClassName}" />
+                <property name="url" value="${jdbc.url}" />
+                <property name="username" value="${jdbc.username}" />
+                <property name="password" value="${jdbc.password}" />
+            </dataSource>
+        </environment>
+    </environments>
+
+    <!--配置 mapper-->
+    <mappers>
+        <!-- <mapper resource="com/java1234/mapper/StudentMapper.xml" /> -->
+        <!-- <mapper class="com.java1234.mapper.StudentMapper"/> -->
+
+        <mapper resource="classpath:mapper/*.xml" />
+        <package name="com.mybatis.mapper"/>
+    </mappers>
+</configuration>
