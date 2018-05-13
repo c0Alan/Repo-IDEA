@@ -11,7 +11,7 @@ import org.junit.Test;
 
 public class GradeTest {
 
-    private static Logger logger = Logger.getLogger(StudentTest.class);
+    private static Logger logger = Logger.getLogger(GradeTest.class);
     private SqlSession sqlSession = null;
     private GradeMapper gradeMapper = null;
 
@@ -40,6 +40,7 @@ public class GradeTest {
     public void testFindGradeWithStudents() {
         logger.info("查询年级(带学生)");
         Grade grade = gradeMapper.findById(1);
+//        logger.info(grade);
         System.out.println(grade);
     }
 

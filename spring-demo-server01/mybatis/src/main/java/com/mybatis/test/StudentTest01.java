@@ -11,9 +11,15 @@ import org.junit.Test;
 
 import java.util.List;
 
-public class StudentTest2 {
+/**
+ * 增删改查
+ * 
+ * @author liuxilin
+ * @date 2018/5/13 20:53
+ */
+public class StudentTest01 {
 
-    private static Logger logger = Logger.getLogger(StudentTest.class);
+    private static Logger logger = Logger.getLogger(StudentTest01.class);
     private SqlSession sqlSession = null;
     private StudentMapper studentMapper = null;
 
@@ -49,7 +55,7 @@ public class StudentTest2 {
     @Test
     public void testUpdate() {
         logger.info("修改学生");
-        Student student = new Student(8, "王五2", 13);
+        Student student = new Student(2, "王五2", 13);
         studentMapper.update(student);
         sqlSession.commit();
     }
@@ -57,7 +63,7 @@ public class StudentTest2 {
     @Test
     public void testDelete() {
         logger.info("删除学生");
-        studentMapper.delete(8);
+        studentMapper.delete(5);
         sqlSession.commit();
     }
 
@@ -72,8 +78,20 @@ public class StudentTest2 {
     public void testFind() {
         logger.info("查找所有学生");
         List<Student> studentList = studentMapper.find();
-        for (Student s : studentList) {
-            System.out.println(s);
-        }
+        logger.info(studentList);
+    }
+
+    @Test
+    public void findStudentWithAddressAndGrade() {
+        logger.info("查询学生(带地址和年级)");
+        Student student = studentMapper.findStudentWithAddress(2);
+        logger.info(student);
+    }
+
+    @Test
+    public void findByGradeId() {
+        logger.info("查询学生(带地址和年级)");
+        Student student = studentMapper.findByGradeId(2);
+        logger.info(student);
     }
 }

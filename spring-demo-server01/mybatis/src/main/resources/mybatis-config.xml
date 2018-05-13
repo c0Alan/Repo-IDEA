@@ -48,6 +48,5 @@
         <!-- <mapper class="com.mybatis.mapper.StudentMapper"/> -->
 
         <package name="com.mybatis.mapper"/>
-        <!--<package name="mapper" />-->
     </mappers>
 </configuration>

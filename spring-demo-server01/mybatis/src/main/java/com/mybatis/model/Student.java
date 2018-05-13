@@ -8,6 +8,10 @@ public class Student {
     private Address address;
     private Grade grade;
 
+    private byte[] pic; // picture 大对象
+    private String remark;
+
+
     public Student() {
         super();
         // TODO Auto-generated constructor stub
@@ -58,7 +62,6 @@ public class Student {
         this.address = address;
     }
 
-
     public Grade getGrade() {
         return grade;
     }
@@ -67,10 +70,29 @@ public class Student {
         this.grade = grade;
     }
 
+    public byte[] getPic() {
+        return pic;
+    }
+
+    public void setPic(byte[] pic) {
+        this.pic = pic;
+    }
+
+    public String getRemark() {
+        return remark;
+    }
+
+    public void setRemark(String remark) {
+        this.remark = remark;
+    }
+
+
     @Override
     public String toString() {
         return "Student [id=" + id + ", name=" + name + ", age=" + age
-                + ", address=" + address + ", grade=" + grade + "]";
+//                + ", address=" + address + ", grade=" + grade + "]";  // 这里会导致打印 grade 的时候死循环
+//                + ", address=" + address + ", grade=" + grade.getGradeName() + "]"; // 容易空指针
+                + "]";
     }
 
 }
