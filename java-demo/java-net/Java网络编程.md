@@ -591,7 +591,7 @@ CharBuffer charBuffer3 = CharBuffer.wrap(stringBuilder);
 CharBuffer charBuffer4 = CharBuffer.wrap(charBuffer1, 1, 3);
 ```
 
-
+## 读写缓冲区中的数据
 
 # UDP
 
