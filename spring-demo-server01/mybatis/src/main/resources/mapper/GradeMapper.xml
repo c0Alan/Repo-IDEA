@@ -2,12 +2,12 @@
 <!DOCTYPE com.mybatis.mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-com.mybatis.mapper.dtd">
-<com.mybatis.mapper namespace="com.java1234.mapper.GradeMapper">
+<com.mybatis.mapper namespace="com.mybatis.mapper.GradeMapper">
 
     <resultMap type="Grade" id="GradeResult">
         <result property="id" column="id"/>
         <result property="gradeName" column="gradeName"/>
-        <collection property="students" column="id" select="com.java1234.mapper.StudentMapper.findByGradeId"></collection>
+        <collection property="students" column="id" select="com.mybatis.mapper.StudentMapper.findByGradeId"></collection>
     </resultMap>
 
     <select id="findById" parameterType="Integer" resultMap="GradeResult">

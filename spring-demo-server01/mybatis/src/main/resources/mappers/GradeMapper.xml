@@ -2,12 +2,12 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.java1234.mappers.GradeMapper">
+<mapper namespace="com.mybatis.mappers.GradeMapper">
 
     <resultMap type="Grade" id="GradeResult">
         <result property="id" column="id"/>
         <result property="gradeName" column="gradeName"/>
-        <collection property="students" column="id" select="com.java1234.mappers.StudentMapper.findByGradeId"></collection>
+        <collection property="students" column="id" select="com.mybatis.mappers.StudentMapper.findByGradeId"></collection>
     </resultMap>
 
     <select id="findById" parameterType="Integer" resultMap="GradeResult">
@@ -21,7 +21,7 @@
         <!DOCTYPE mapper
                 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
                 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.java1234.mappers.StudentMapper">
+<mapper namespace="com.mybatis.mappers.StudentMapper">
 
 <!-- <resultMap type="Student" id="StudentResult">
     <id property="id" column="id"/>
@@ -64,8 +64,8 @@
     <id property="id" column="id"/>
     <result property="name" column="name"/>
     <result property="age" column="age"/>
-    <association property="address" column="addressId" select="com.java1234.mappers.AddressMapper.findById"></association>
-    <association property="grade" column="gradeId" select="com.java1234.mappers.GradeMapper.findById"></association>
+    <association property="address" column="addressId" select="com.mybatis.mappers.AddressMapper.findById"></association>
+    <association property="grade" column="gradeId" select="com.mybatis.mappers.GradeMapper.findById"></association>
 </resultMap>
 
 <select id="findStudentWithAddress" resultMap="StudentResult" parameterType="Integer">

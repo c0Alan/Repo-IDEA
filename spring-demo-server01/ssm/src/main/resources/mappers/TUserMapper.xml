@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.mybatis.mapper.TUserMapper">
-    <resultMap id="BaseResultMap" type="com.mybatis.model.TUser">
+<mapper namespace="com.ssm.dao.TUserMapper">
+    <resultMap id="BaseResultMap" type="com.ssm.entity.TUser">
         <id column="n_id" jdbcType="NUMERIC" property="nId"/>
         <result column="c_name" jdbcType="VARCHAR" property="cName"/>
         <result column="n_sex" jdbcType="NUMERIC" property="nSex"/>
@@ -18,14 +18,19 @@
     <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
         select
         <include refid="Base_Column_List"/>
-        from t_user
+        from springdemo.t_user
         where n_id = #{nId,jdbcType=NUMERIC}
+    </select>
+    <select id="selectAll" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List"/>
+        from springdemo.t_user
     </select>
     <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from t_user
     where n_id = #{nId,jdbcType=NUMERIC}
   </delete>
-    <insert id="insert" parameterType="com.mybatis.model.TUser">
+    <insert id="insert" parameterType="com.ssm.entity.TUser">
     insert into t_user (n_id, c_name, n_sex, 
       n_age, c_address, c_loginid, 
       c_password, c_salt, n_state
@@ -35,7 +40,7 @@
       #{cPassword,jdbcType=VARCHAR}, #{cSalt,jdbcType=VARCHAR}, #{nState,jdbcType=NUMERIC}
       )
   </insert>
-    <insert id="insertSelective" parameterType="com.mybatis.model.TUser">
+    <insert id="insertSelective" parameterType="com.ssm.entity.TUser">
         insert into t_user
         <trim prefix="(" suffix=")" suffixOverrides=",">
             <if test="nId != null">
@@ -96,7 +101,7 @@
             </if>
         </trim>
     </insert>
-    <update id="updateByPrimaryKeySelective" parameterType="com.mybatis.model.TUser">
+    <update id="updateByPrimaryKeySelective" parameterType="com.ssm.entity.TUser">
         update t_user
         <set>
             <if test="cName != null">
@@ -126,7 +131,7 @@
         </set>
         where n_id = #{nId,jdbcType=NUMERIC}
     </update>
-    <update id="updateByPrimaryKey" parameterType="com.mybatis.model.TUser">
+    <update id="updateByPrimaryKey" parameterType="com.ssm.entity.TUser">
     update t_user
     set c_name = #{cName,jdbcType=VARCHAR},
       n_sex = #{nSex,jdbcType=NUMERIC},
@@ -138,4 +143,12 @@
       n_state = #{nState,jdbcType=NUMERIC}
     where n_id = #{nId,jdbcType=NUMERIC}
   </update>
+
+    <select id="selectUser" parameterType="com.ssm.entity.TUser" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from springdemo.t_user
+        where c_loginid = #{cLoginid} and c_password = #{cPassword}
+    </select>
+
 </mapper>

@@ -2,7 +2,7 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.java1234.mapper.StudentMapper">
+<mapper namespace="com.mybatis.mapper.StudentMapper">
 
     <!-- <resultMap type="Student" id="StudentResult">
         <id property="id" column="id"/>
@@ -45,35 +45,35 @@
         <id property="id" column="id"/>
         <result property="name" column="name"/>
         <result property="age" column="age"/>
-        <association property="address" column="addressId" select="com.java1234.mapper.AddressMapper.findById"></association>
-        <association property="grade" column="gradeId" select="com.java1234.mapper.GradeMapper.findById"></association>
+        <association property="address" column="addressId" select="com.mybatis.mapper.AddressMapper.findById"></association>
+        <association property="grade" column="gradeId" select="com.mybatis.mapper.GradeMapper.findById"></association>
     </resultMap>
 
     <select id="findStudentWithAddress" resultMap="StudentResult" parameterType="Integer">
-        select * from t_student t1,t_address t2 where t1.addressId=t2.id and t1.id=#{id}
+        select * from springdemo.student t1,t_address t2 where t1.addressId=t2.id and t1.id=#{id}
     </select>
 
     <select id="findByGradeId" resultMap="StudentResult" parameterType="Integer">
-        select * from t_student where gradeId=#{gradeId}
+        select * from springdemo.student where gradeId=#{gradeId}
     </select>
 
     <insert id="add" parameterType="Student"  >
-        insert into t_student values(null,#{name},#{age})
+        insert into springdemo.student values(null,#{name},#{age})
     </insert>
 
     <update id="update" parameterType="Student">
-        update t_student set name=#{name},age=#{age} where id=#{id}
+        update springdemo.student set name=#{name},age=#{age} where id=#{id}
     </update>
 
     <delete id="delete" parameterType="Integer">
-        delete from t_student where id=#{id}
+        delete from springdemo.student where id=#{id}
     </delete>
 
     <select id="findById" parameterType="Integer" resultType="Student">
-        select * from t_student where id=#{id}
+        select * from springdemo.student where id=#{id}
     </select>
 
     <select id="find" resultMap="StudentResult">
-        select * from t_student
+        select * from springdemo.student
     </select>
 </mapper>

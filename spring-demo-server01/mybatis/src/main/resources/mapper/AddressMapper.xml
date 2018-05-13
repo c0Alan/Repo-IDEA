@@ -2,7 +2,7 @@
 <!DOCTYPE com.mybatis.mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-com.mybatis.mapper.dtd">
-<com.mybatis.mapper namespace="com.java1234.mapper.AddressMapper">
+<com.mybatis.mapper namespace="com.mybatis.mapper.AddressMapper">
 
     <resultMap type="Address" id="AddressResult">
         <result property="id" column="id"/>
