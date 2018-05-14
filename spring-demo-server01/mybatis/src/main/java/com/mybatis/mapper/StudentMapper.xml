@@ -78,12 +78,12 @@
     <select id="findStudents2" parameterType="Map" resultMap="BaseResult">
         select * from springdemo.student
         <if test="start!=null and size!=null">
-            limit #{start},#{size}
+            limit #{start} offset #{size}
         </if>
     </select>
 
     <insert id="insertStudent" parameterType="Student" flushCache="true">
-        insert into springdemo.student values(null,#{name},#{age},#{pic},#{remark});
+        insert into springdemo.student(name, age, pic, remark) values(#{name},#{age},#{pic},#{remark});
     </insert>
 
     <select id="getStudentById" parameterType="Integer" resultType="Student">

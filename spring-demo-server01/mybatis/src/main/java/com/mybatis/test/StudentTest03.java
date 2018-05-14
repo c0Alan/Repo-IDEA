@@ -9,8 +9,10 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.io.*;
-import java.util.List;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.InputStream;
+import java.io.OutputStream;
 
 /**
  * 大对象测试
@@ -46,6 +48,9 @@ public class StudentTest03 {
     }
 
 
+    /**
+     * 测试写入 postgresql text 和 bytea 对象
+     */
     @Test
     public void testInsertStudent() {
         logger.info("添加学生");
@@ -55,8 +60,7 @@ public class StudentTest03 {
         student.setRemark("很长的本文...");
         byte[] pic = null;
         try {
-            File file = new File("c://boy.jpg");
-            InputStream inputStream = new FileInputStream(file);
+            InputStream inputStream =  ClassLoader.getSystemResourceAsStream("picture" + File.separator + "pic.jpeg");
             pic = new byte[inputStream.available()];
             inputStream.read(pic);
             inputStream.close();
@@ -68,28 +72,22 @@ public class StudentTest03 {
         sqlSession.commit();
     }
 
+    /**
+     * 读取 postgresql bytea 对象
+     */
     @Test
     public void testGetStudentById() {
         logger.info("通过ID查找学生");
-        Student student = studentMapper.getStudentById(4);
+        Student student = studentMapper.getStudentById(9);
         System.out.println(student);
         byte[] pic = student.getPic();
         try {
-            File file = new File("d://boy2.jpg");
+            File file = new File("d://pic.jpg");
             OutputStream outputStream = new FileOutputStream(file);
             outputStream.write(pic);
             outputStream.close();
         } catch (Exception e) {
             e.printStackTrace();
-        }
-    }
-
-    @Test
-    public void testSearchStudents6() {
-        logger.info("添加学生(带条件)");
-        List<Student> studentList = studentMapper.searchStudents6("%3%", 12);
-        for (Student student : studentList) {
-            System.out.println(student);
         }
     }
 }

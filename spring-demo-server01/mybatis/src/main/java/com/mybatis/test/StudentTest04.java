@@ -14,6 +14,12 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * 分页测试
+ * 
+ * @author liuxilin
+ * @date 2018/5/14 23:22
+ */
 public class StudentTest04 {
 
     private static Logger logger = Logger.getLogger(StudentTest04.class);
@@ -42,17 +48,21 @@ public class StudentTest04 {
     }
 
 
+    /**
+     * 分页测试 方式1
+     */
     @Test
     public void testFindStudent() {
         logger.info("查询学生");
         int offset = 0, limit = 3;
         RowBounds rowBounds = new RowBounds(offset, limit);
         List<Student> studentList = studentMapper.findStudents(rowBounds);
-        for (Student student : studentList) {
-            System.out.println(student);
-        }
+        logger.info(studentList);
     }
 
+    /**
+     * 分页测试 方式2
+     */
     @Test
     public void testFindStudent2() {
         logger.info("查询学生");
@@ -60,9 +70,7 @@ public class StudentTest04 {
         map.put("start", 3);
         map.put("size", 3);
         List<Student> studentList = studentMapper.findStudents2(map);
-        for (Student student : studentList) {
-            System.out.println(student);
-        }
+        logger.info(studentList);
     }
 
 

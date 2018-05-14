@@ -120,6 +120,16 @@ public class StudentTest02 {
     }
 
     /**
+     * like 查询
+     */
+    @Test
+    public void testSearchStudents6() {
+        logger.info("添加学生(带条件)");
+        List<Student> studentList = studentMapper.searchStudents6("%3%", 12);
+        logger.info(studentList);
+    }
+
+    /**
      * 测试 set 标签
      */
     @Test
@@ -132,4 +142,5 @@ public class StudentTest02 {
         studentMapper.updateStudent(student);
         sqlSession.commit();
     }
+
 }
