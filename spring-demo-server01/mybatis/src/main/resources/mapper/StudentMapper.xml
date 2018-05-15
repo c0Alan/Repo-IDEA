@@ -4,30 +4,14 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.mybatis.mapper.StudentMapper">
 
-    <!-- <resultMap type="Student" id="StudentResult">
-        <id property="id" column="id"/>
-        <result property="name" column="name"/>
-        <result property="age" column="age"/>
+    <!--
+        1，size:表示缓存cache中能容纳的最大元素数。默认是1024；
+        2，flushInterval:定义缓存刷新周期，以毫秒计；
+        3，eviction:定义缓存的移除机制；默认是LRU(least recently userd，最近最少使用),还有FIFO(first in first out，先进先出)
+        4，readOnly:默认值是false，假如是true的话，缓存只能读。
+     -->
+    <!--<cache size="1024" flushInterval="60000" eviction="LRU" readOnly="false"/>-->
 
-        <result property="address.id" column="addressId"/>
-        <result property="address.sheng" column="sheng"/>
-        <result property="address.shi" column="shi"/>
-        <result property="address.qu" column="qu"/>
-    </resultMap> -->
-
-    <!-- <resultMap type="Address" id="AddressResult">
-        <result property="id" column="id"/>
-        <result property="sheng" column="sheng"/>
-        <result property="shi" column="shi"/>
-        <result property="qu" column="qu"/>
-    </resultMap>
-
-    <resultMap type="Student" id="StudentResult">
-        <id property="id" column="id"/>
-        <result property="name" column="name"/>
-        <result property="age" column="age"/>
-        <association property="address" resultMap="AddressResult"/>
-    </resultMap> -->
 
     <!-- <resultMap type="Student" id="StudentResult">
         <id property="id" column="id"/>
@@ -41,24 +25,33 @@
         </association>
     </resultMap> -->
 
+    <resultMap type="Student" id="BaseResult">
+        <id property="id" column="id"/>
+        <result property="name" column="name"/>
+        <result property="age" column="age"/>
+    </resultMap>
+
+
     <resultMap type="Student" id="StudentResult">
         <id property="id" column="id"/>
         <result property="name" column="name"/>
         <result property="age" column="age"/>
-        <association property="address" column="addressId" select="com.mybatis.mapper.AddressMapper.findById"></association>
-        <association property="grade" column="gradeId" select="com.mybatis.mapper.GradeMapper.findById"></association>
+        <association property="address" column="address_id"
+                     select="com.mybatis.mapper.AddressMapper.findById"></association>
+        <association property="grade" column="grade_id" select="com.mybatis.mapper.GradeMapper.findById"></association>
     </resultMap>
 
+    <!--第一部分-->
     <select id="findStudentWithAddress" resultMap="StudentResult" parameterType="Integer">
-        select * from springdemo.student t1,t_address t2 where t1.addressId=t2.id and t1.id=#{id}
+        select * from springdemo.student t1, springdemo.address t2 where t1.address_id=t2.id and t1.id=#{id}
     </select>
 
     <select id="findByGradeId" resultMap="StudentResult" parameterType="Integer">
-        select * from springdemo.student where gradeId=#{gradeId}
+        select * from springdemo.student where grade_id=#{gradeId}
     </select>
 
-    <insert id="add" parameterType="Student"  >
-        insert into springdemo.student values(null,#{name},#{age})
+    <insert id="add" parameterType="Student">
+        insert into springdemo.student(name, age) values(#{name},#{age})
     </insert>
 
     <update id="update" parameterType="Student">
@@ -76,4 +69,114 @@
     <select id="find" resultMap="StudentResult">
         select * from springdemo.student
     </select>
+
+    <!--第二部分-->
+    <select id="findStudents" resultMap="BaseResult" flushCache="false" useCache="true">
+        select * from springdemo.student
+    </select>
+
+    <select id="findStudents2" parameterType="Map" resultMap="BaseResult">
+        select * from springdemo.student
+        <if test="start!=null and size!=null">
+            limit #{start} offset #{size}
+        </if>
+    </select>
+
+    <insert id="insertStudent" parameterType="Student" flushCache="true">
+        insert into springdemo.student(name, age, pic, remark) values(#{name},#{age},#{pic},#{remark});
+    </insert>
+
+    <select id="getStudentById" parameterType="Integer" resultType="Student">
+        select * from springdemo.student where id=#{id}
+    </select>
+
+    <select id="searchStudents6" resultMap="BaseResult">
+        select * from springdemo.student where name like #{param1} and age=#{param2}
+    </select>
+
+    <select id="searchStudents" parameterType="Map" resultMap="BaseResult">
+        select * from springdemo.student
+        where grade_id=#{gradeId}
+        <if test="name!=null">
+            and name like #{name}
+        </if>
+        <if test="age!=nulll">
+            and age=#{age}
+        </if>
+    </select>
+
+    <select id="searchStudents2" parameterType="Map" resultMap="BaseResult">
+        select * from springdemo.student
+        <choose>
+            <when test="searchBy=='gradeId'">
+                where grade_id=#{gradeId}
+            </when>
+            <when test="searchBy=='name'">
+                where name like #{name}
+            </when>
+            <otherwise>
+                where age=#{age}
+            </otherwise>
+        </choose>
+
+    </select>
+
+    <select id="searchStudents3" parameterType="Map" resultMap="BaseResult">
+        select * from springdemo.student
+        <where>
+            <if test="gradeId!=null">
+                grade_id=#{gradeId}
+            </if>
+            <if test="name!=null">
+                and name like #{name}
+            </if>
+            <if test="age!=nulll">
+                and age=#{age}
+            </if>
+        </where>
+    </select>
+
+
+    <select id="searchStudents4" parameterType="Map" resultMap="BaseResult">
+        select * from springdemo.student
+        <!-- 代替where的就是添加 prefix="where" prefixOverrides="and|or"
+    trim就会自动的添加前缀where和自动识别和去掉不用的and或or -->
+        <trim prefix="where" prefixOverrides="and|or">
+            <if test="gradeId!=null">
+               grade_id=#{gradeId}
+            </if>
+            <if test="name!=null">
+                and name like #{name}
+            </if>
+            <if test="age!=nulll">
+                and age=#{age}
+            </if>
+        </trim>
+    </select>
+
+    <select id="searchStudents5" parameterType="Map" resultMap="BaseResult">
+        select * from springdemo.student
+        <if test="gradeIds!=null">
+            <where>
+                grade_id in
+                <foreach item="gradeId" collection="gradeIds" open="(" separator="," close=")">
+                    #{gradeId}
+                </foreach>
+            </where>
+        </if>
+    </select>
+
+    <update id="updateStudent" parameterType="Student">
+        update springdemo.student
+        <set>
+            <if test="name!=null">
+                name=#{name},
+            </if>
+            <if test="age!=null">
+                age=#{age},
+            </if>
+        </set>
+        where id=#{id}
+    </update>
+
 </mapper>

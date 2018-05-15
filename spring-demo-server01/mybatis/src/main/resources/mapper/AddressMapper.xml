@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<!DOCTYPE com.mybatis.mapper
+<!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
-        "http://mybatis.org/dtd/mybatis-3-com.mybatis.mapper.dtd">
-<com.mybatis.mapper namespace="com.mybatis.mapper.AddressMapper">
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mybatis.mapper.AddressMapper">
 
     <resultMap type="Address" id="AddressResult">
         <result property="id" column="id"/>
@@ -12,7 +12,7 @@
     </resultMap>
 
     <select id="findById" parameterType="Integer" resultType="Address">
-        select * from t_address where id=#{id}
+        select * from springdemo.address where id=#{id}
     </select>
 
-</com.mybatis.mapper>
+</mapper>

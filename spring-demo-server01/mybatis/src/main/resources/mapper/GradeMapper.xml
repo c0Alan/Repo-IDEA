@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<!DOCTYPE com.mybatis.mapper
+<!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
-        "http://mybatis.org/dtd/mybatis-3-com.mybatis.mapper.dtd">
-<com.mybatis.mapper namespace="com.mybatis.mapper.GradeMapper">
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mybatis.mapper.GradeMapper">
 
     <resultMap type="Grade" id="GradeResult">
         <result property="id" column="id"/>
-        <result property="gradeName" column="gradeName"/>
+        <result property="gradeName" column="grade_name"/>
         <collection property="students" column="id" select="com.mybatis.mapper.StudentMapper.findByGradeId"></collection>
     </resultMap>
 
     <select id="findById" parameterType="Integer" resultMap="GradeResult">
-        select * from t_grade where id=#{id}
+        select * from springdemo.grade where id=#{id}
     </select>
 
-</com.mybatis.mapper>
+</mapper>

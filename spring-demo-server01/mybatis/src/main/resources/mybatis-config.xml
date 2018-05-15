@@ -9,7 +9,7 @@
         <property name="jdbc.driverClassName" value="org.postgresql.Driver"/>
         <property name="jdbc.url" value="jdbc:postgresql://192.168.80.80:5432/sd"/>
         <property name="jdbc.username" value="postgres"/>
-        <property name="jdbc.password" value="123abe"/>
+        <property name="jdbc.password" value="***"/>
     </properties>-->
 
     <!--加载类型-->
