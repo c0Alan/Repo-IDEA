@@ -46,6 +46,6 @@ public class BatchHandleByPrepareStatement {
             JdbcUtils.release(conn, st, rs);
         }
         long endtime = System.currentTimeMillis();
-        System.out.println("程序花费时间：" + (endtime - starttime) / 1000 + "秒！！");
+        System.out.println("程序花费时间：" + (endtime - starttime) / 1000 + "秒！！"); // 4s
     }
 }

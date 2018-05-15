@@ -140,21 +140,97 @@ Servlet程序是由WEB服务器调用，web服务器收到客户端的Servlet访
 
 # i18n
 
-# jdbc
+# JDBC
+
+## 基本概念
+
+### 2.2、DriverManager类讲解
+
+　　Jdbc程序中的DriverManager用于加载驱动，并创建与数据库的链接，这个API的常用方法：
+
+DriverManager.registerDriver(new Driver())
+DriverManager.getConnection(url, user, password)，
+　　注意：在实际开发中并不推荐采用registerDriver方法注册驱动。原因有二：
+　　　　1、查看Driver的源代码可以看到，如果采用此种方式，会导致驱动程序注册两次，也就是在内存中会有两个Driver对象。
+　　　　2、程序依赖mysql的api，脱离mysql的jar包，程序将无法编译，将来程序切换底层数据库将会非常麻烦。
+
+　　推荐方式：Class.forName("com.mysql.jdbc.Driver");
+　　采用此种方式不会导致驱动对象在内存中重复出现，并且采用此种方式，程序仅仅只需要一个字符串，不需要依赖具体的驱动，使程序的灵活性更高。
+
+### 2.3、数据库URL讲解
+
+　　URL用于标识数据库的位置，通过URL地址告诉JDBC程序连接哪个数据库，URL的写法为：
+协议:子协议:[]//主机:端口/数据库 ? 参数名:参数值
+
+常用数据库URL地址的写法：
+
+Oracle写法：jdbc:oracle:thin:@localhost:1521:sid
+SqlServer写法：jdbc:microsoft:sqlserver://localhost:1433; DatabaseName=sid
+MySql写法：jdbc:mysql://localhost:3306/sid
+　　如果连接的是本地的Mysql数据库，并且连接使用的端口是3306，那么的url地址可以简写为： jdbc:mysql:///数据库
+
+### 2.4、Connection类讲解
+
+　　Jdbc程序中的Connection，它用于代表数据库的链接，Collection是数据库编程中最重要的一个对象，客户端与数据库所有交互都是通过connection对象完成的，这个对象的常用方法：
+
+createStatement()：创建向数据库发送sql的statement对象。
+prepareStatement(sql) ：创建向数据库发送预编译sql的PrepareSatement对象。
+prepareCall(sql)：创建执行存储过程的callableStatement对象。
+setAutoCommit(boolean autoCommit)：设置事务是否自动提交。
+commit() ：在链接上提交事务。
+rollback() ：在此链接上回滚事务。
+
+### 2.5、Statement类讲解
+
+　　Jdbc程序中的Statement对象用于向数据库发送SQL语句， Statement对象常用方法：
+
+executeQuery(String sql) ：用于向数据发送查询语句。
+executeUpdate(String sql)：用于向数据库发送insert、update或delete语句
+execute(String sql)：用于向数据库发送任意sql语句
+addBatch(String sql) ：把多条sql语句放到一个批处理中。
+executeBatch()：向数据库发送一批sql语句执行。
+
+### 2.6、ResultSet类讲解
+
+　　Jdbc程序中的ResultSet用于代表Sql语句的执行结果。Resultset封装执行结果时，采用的类似于表格的方式。ResultSet 对象维护了一个指向表格数据行的游标，初始的时候，游标在第一行之前，调用ResultSet.next() 方法，可以使游标指向具体的数据行，进行调用方法获取该行的数据。
+　　ResultSet既然用于封装执行结果的，所以该对象提供的都是用于获取数据的get方法：
+　　获取任意类型的数据
+　　　　getObject(int index)
+　　　　getObject(string columnName)
+　　获取指定类型的数据，例如：
+　　　　getString(int index)
+　　　　getString(String columnName)
+
+　　ResultSet还提供了对结果集进行滚动的方法：
+
+next()：移动到下一行
+Previous()：移动到前一行
+absolute(int row)：移动到指定行
+beforeFirst()：移动resultSet的最前面。
+afterLast() ：移动到resultSet的最后面。
+
+### 2.7、释放资源
+
+　　Jdbc程序运行完后，切记要释放程序在运行过程中，创建的那些与数据库进行交互的对象，这些对象通常是ResultSet, Statement和Connection对象，特别是Connection对象，它是非常稀有的资源，用完后必须马上释放，如果Connection不能及时、正确的关闭，极易导致系统宕机。Connection的使用原则是尽量晚创建，尽量早的释放。
+　　为确保资源释放代码能运行，资源释放代码也一定要放在finally语句中。
 
 ## 事务的四大特性(ACID)
 
-1、原子性（Atomicity）
+### 1、原子性（Atomicity）
+
 原子性是指事务是一个不可分割的工作单位，事务中的操作要么全部成功，要么全部失败。比如在同一个事务中的SQL语句，要么全部执行成功，要么全部执行失败
 
-2、一致性（Consistency）
+### 2、一致性（Consistency）
+
 官网上事务一致性的概念是：事务必须使数据库从一个一致性状态变换到另外一个一致性状态。以转账为例子，A向B转账，假设转账之前这两个用户的钱加起来总共是2000，那么A向B转账之后，不管这两个账户怎么转，A用户的钱和B用户的钱加起来的总额还是2000，这个就是事务的一致性。
 
-3、隔离性（Isolation）
+### 3、隔离性（Isolation）
+
 事务的隔离性是多个用户并发访问数据库时，数据库为每一个用户开启的事务，不能被其他事务的操作数据所干扰，多个并发事务之间要相互隔离。
 
-4、持久性（Durability）
-	持久性是指一个事务一旦被提交，它对数据库中数据的改变就是永久性的，接下来即使数据库发生故障也不应该对其有任何影响
+### 4、持久性（Durability）
+
+​	持久性是指一个事务一旦被提交，它对数据库中数据的改变就是永久性的，接下来即使数据库发生故障也不应该对其有任何影响
 　　事务的四大特性中最麻烦的是隔离性，下面重点介绍一下事务的隔离级别
 
 ## 事务的隔离级别

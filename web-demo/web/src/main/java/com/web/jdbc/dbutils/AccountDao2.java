@@ -1,12 +1,11 @@
 package com.web.jdbc.dbutils;
 
-import java.sql.Connection;
 import java.sql.SQLException;
+
+import com.web.domain.Account;
+import com.web.jdbc.util.JdbcUtils3;
 import org.apache.commons.dbutils.QueryRunner;
 import org.apache.commons.dbutils.handlers.BeanHandler;
-import me.gacl.domain.Account;
-import me.gacl.util.JdbcUtils;
-import me.gacl.util.JdbcUtils2;
 
 /*
 create table account(
@@ -35,15 +34,15 @@ public class AccountDao2 {
         QueryRunner qr = new QueryRunner();
         String sql = "update account set name=?,money=? where id=?";
         Object params[] = {account.getName(),account.getMoney(),account.getId()};
-        //JdbcUtils2.getConnection()获取当前线程中的Connection对象
-        qr.update(JdbcUtils2.getConnection(),sql, params);
+        //JdbcUtils3.getConnection()获取当前线程中的Connection对象
+        qr.update(JdbcUtils3.getConnection(),sql, params);
         
     }
     
     public Account find(int id) throws SQLException{
         QueryRunner qr = new QueryRunner();
         String sql = "select * from account where id=?";
-        //JdbcUtils2.getConnection()获取当前线程中的Connection对象
-        return (Account) qr.query(JdbcUtils2.getConnection(),sql, id, new BeanHandler(Account.class));
+        //JdbcUtils3.getConnection()获取当前线程中的Connection对象
+        return (Account) qr.query(JdbcUtils3.getConnection(),sql, id, new BeanHandler(Account.class));
     }
 }

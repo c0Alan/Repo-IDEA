@@ -9,24 +9,24 @@ import org.junit.Test;
 
 /**
  * 使用Statement实现JDBC批处理操作
- * 
+ *
  * @author liuxilin
  * @date 2018/5/5 14:51
  */
 public class BatchHandleByStatement {
 
     @Test
-    public void testJdbcBatchHandleByStatement(){
+    public void testJdbcBatchHandleByStatement() {
         Connection conn = null;
         Statement st = null;
         ResultSet rs = null;
-        try{
+        try {
             conn = JdbcUtils.getConnection();
             String sql1 = "insert into springdemo.testbatch(id,name) values(1,'aaa')";
             String sql2 = "insert into springdemo.testbatch(id,name) values(2,'bbb')";
             String sql3 = "insert into springdemo.testbatch(id,name) values(3,'CCC')";
             String sql4 = "insert into springdemo.testbatch(id,name) values(4,'DDD')";
-            String sql5 = "update springdemo.testbatch set name='gacl' where id=1";
+            String sql5 = "update springdemo.testbatch set name='abc' where id=1";
             String sql6 = "insert into springdemo.testbatch(id,name) values(5,'FFF')";
             String sql7 = "delete from springdemo.testbatch where id=2";
             st = conn.createStatement();
@@ -42,9 +42,9 @@ public class BatchHandleByStatement {
             st.executeBatch();
             //清除批处理命令
             st.clearBatch();
-        }catch (Exception e) {
+        } catch (Exception e) {
             e.printStackTrace();
-        }finally{
+        } finally {
             JdbcUtils.release(conn, st, rs);
         }
     }

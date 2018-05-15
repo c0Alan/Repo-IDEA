@@ -1,9 +1,9 @@
 package com.web.jdbc.dbutils;
 
 import java.sql.SQLException;
-import me.gacl.dao.AccountDao2;
-import me.gacl.domain.Account;
-import me.gacl.util.JdbcUtils2;
+
+import com.web.domain.Account;
+import com.web.jdbc.util.JdbcUtils3;
 
 public class AccountService2 {
     
@@ -20,7 +20,7 @@ public class AccountService2 {
     public void transfer(int sourceid,int tartgetid,float money) throws SQLException{
         try{
             //开启事务，在业务层处理事务，保证dao层的多个操作在同一个事务中进行
-            JdbcUtils2.startTransaction();
+            JdbcUtils3.startTransaction();
             AccountDao2 dao = new AccountDao2();
             
             Account source = dao.find(sourceid);
@@ -34,14 +34,14 @@ public class AccountService2 {
             dao.update(target);
             
             //SQL正常执行之后提交事务
-            JdbcUtils2.commit();
+            JdbcUtils3.commit();
         }catch (Exception e) {
             e.printStackTrace();
             //出现异常之后就回滚事务
-            JdbcUtils2.rollback();
+            JdbcUtils3.rollback();
         }finally{
             //关闭数据库连接
-            JdbcUtils2.close();
+            JdbcUtils3.close();
         }
     }
 }

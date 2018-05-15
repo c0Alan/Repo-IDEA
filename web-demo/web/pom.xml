@@ -21,6 +21,18 @@
             <version>${junit.version}</version>
         </dependency>
 
+        <!--日志相关-->
+        <dependency>
+            <groupId>log4j</groupId>
+            <artifactId>log4j</artifactId>
+            <version>${log4j.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>commons-logging</groupId>
+            <artifactId>commons-logging</artifactId>
+            <version>${commons-logging.version}</version>
+        </dependency>
+
         <!--jstl 相关-->
         <dependency>
             <groupId>jstl</groupId>

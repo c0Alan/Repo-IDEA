@@ -1,4 +1,4 @@
-package com.web.jdbc.dbutils;
+package com.web.jdbc.util;
 
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -6,13 +6,13 @@ import javax.sql.DataSource;
 import com.mchange.v2.c3p0.ComboPooledDataSource;
 
 /**
-* @ClassName: JdbcUtils2
+* @ClassName: JdbcUtils3
 * @Description: 数据库连接工具类
 * @author: 孤傲苍狼
 * @date: 2014-10-4 下午6:04:36
 *
 */ 
-public class JdbcUtils2 {
+public class JdbcUtils3 {
     
     private static ComboPooledDataSource ds = null;
     //使用ThreadLocal存储当前线程中的Connection对象

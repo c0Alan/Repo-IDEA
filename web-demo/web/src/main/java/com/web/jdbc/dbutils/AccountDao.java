@@ -1,13 +1,12 @@
 package com.web.jdbc.dbutils;
 
-import com.web.jdbc.myframework.Account;
-import com.web.jdbc.myframework.BeanHandler;
-import com.web.jdbc.myframework.BeanListHandler;
-import com.web.jdbc.myframework.JdbcUtils;
+import com.web.domain.Account;
+import com.web.jdbc.util.JdbcUtils3;
 import org.apache.commons.dbutils.QueryRunner;
+import org.apache.commons.dbutils.handlers.BeanHandler;
 
+import java.sql.Connection;
 import java.sql.SQLException;
-import java.util.List;
 
 
 public class AccountDao {
@@ -15,46 +14,44 @@ public class AccountDao {
     //接收service层传递过来的Connection对象
     private Connection conn = null;
 
-    public AccountDao(Connection conn){
+    public AccountDao(Connection conn) {
         this.conn = conn;
     }
 
-    public AccountDao(){
+    public AccountDao() {
 
     }
 
     /**
+     * @param account
+     * @throws SQLException
      * @Method: update
      * @Description:更新
      * @Anthor:孤傲苍狼
-     *
-     * @param account
-     * @throws SQLException
      */
-    public void update(Account account) throws SQLException{
+    public void update(Account account) throws SQLException {
 
         QueryRunner qr = new QueryRunner();
         String sql = "update account set name=?,money=? where id=?";
-        Object params[] = {account.getName(),account.getMoney(),account.getId()};
+        Object params[] = {account.getName(), account.getMoney(), account.getId()};
         //使用service层传递过来的Connection对象操作数据库
-        qr.update(conn,sql, params);
+        qr.update(conn, sql, params);
 
     }
 
     /**
-     * @Method: find
-     * @Description:查找
-     * @Anthor:孤傲苍狼
-     *
      * @param id
      * @return
      * @throws SQLException
+     * @Method: find
+     * @Description:查找
+     * @Anthor:孤傲苍狼
      */
-    public Account find(int id) throws SQLException{
+    public Account find(int id) throws SQLException {
         QueryRunner qr = new QueryRunner();
         String sql = "select * from account where id=?";
         //使用service层传递过来的Connection对象操作数据库
-        return (Account) qr.query(conn,sql, id, new BeanHandler(Account.class));
+        return (Account) qr.query(conn, sql, new BeanHandler(Account.class), Integer.valueOf(id));
     }
 
     /**
@@ -71,7 +68,7 @@ public class AccountDao {
     public void transfer(String sourceName, String targetName, float money) throws SQLException {
         Connection conn = null;
         try {
-            conn = JdbcUtils.getConnection();
+            conn = JdbcUtils3.getConnection();
             //开启事务
             conn.setAutoCommit(false);
             /**

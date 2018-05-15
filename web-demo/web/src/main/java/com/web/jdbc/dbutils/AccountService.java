@@ -2,9 +2,9 @@ package com.web.jdbc.dbutils;
 
 import java.sql.Connection;
 import java.sql.SQLException;
-import me.gacl.dao.AccountDao;
-import me.gacl.domain.Account;
-import me.gacl.util.JdbcUtils;
+
+import com.web.domain.Account;
+import com.web.jdbc.util.JdbcUtils;
 
 /**
 * @ClassName: AccountService

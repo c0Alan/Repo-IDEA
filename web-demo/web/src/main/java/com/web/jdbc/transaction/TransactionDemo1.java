@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import com.web.jdbc.util.JdbcUtils;
+import org.apache.log4j.Logger;
 import org.junit.Test;
 
 /**
@@ -15,6 +16,7 @@ import org.junit.Test;
  * @date 2018/5/7 7:04
  */
 public class TransactionDemo1 {
+    private static final Logger logger = Logger.getLogger(TransactionDemo1.class);
 
     /**
      * 模拟转账成功时的业务场景
@@ -35,7 +37,7 @@ public class TransactionDemo1 {
             st = conn.prepareStatement(sql2);
             st.executeUpdate();
             conn.commit();//上面的两条SQL执行Update语句成功之后就通知数据库提交事务(commit)
-            System.out.println("成功！！！");  //log4j
+            System.out.println("成功1！");  //log4j
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
@@ -63,8 +65,8 @@ public class TransactionDemo1 {
             String sql2 = "update springdemo.account set money=money+100 where name='B'";
             st = conn.prepareStatement(sql2);
             st.executeUpdate();
-            conn.commit();//上面的两条SQL执行Update语句成功之后就通知数据库提交事务(commit)
-            System.out.println("成功！！！");
+            conn.commit(); //上面的两条SQL执行Update语句成功之后就通知数据库提交事务(commit)
+            logger.info("成功2！");
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
@@ -93,7 +95,7 @@ public class TransactionDemo1 {
             st = conn.prepareStatement(sql2);
             st.executeUpdate();
             conn.commit();//上面的两条SQL执行Update语句成功之后就通知数据库提交事务(commit)
-            System.out.println("成功！！！");
+            logger.info("成功3！");
         } catch (Exception e) {
             try {
                 //捕获到异常之后手动通知数据库执行回滚事务的操作

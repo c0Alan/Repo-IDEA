@@ -1,5 +1,7 @@
 package com.web.jdbc.dbutils;
 
+import com.web.jdbc.util.JdbcUtils3;
+
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -11,7 +13,6 @@ import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import me.gacl.util.JdbcUtils;
 
 /**
 * @ClassName: TransactionFilter
@@ -34,7 +35,7 @@ public class TransactionFilter implements Filter {
         Connection connection = null;
         try {
             //1、获取数据库连接对象Connection
-            connection = JdbcUtils.getConnection();
+            connection = JdbcUtils3.getConnection();
             //2、开启事务
             connection.setAutoCommit(false);
             //3、利用ThreadLocal把获取数据库连接对象Connection和当前线程绑定

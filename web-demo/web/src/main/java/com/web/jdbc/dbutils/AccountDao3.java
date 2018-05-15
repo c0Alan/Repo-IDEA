@@ -1,11 +1,11 @@
 package com.web.jdbc.dbutils;
 
 import java.sql.SQLException;
+
+import com.web.domain.Account;
 import org.apache.commons.dbutils.QueryRunner;
 import org.apache.commons.dbutils.handlers.BeanHandler;
 
-import me.gac.web.filter.ConnectionContext;
-import me.gacl.domain.Account;
 
 /*
 create table account(

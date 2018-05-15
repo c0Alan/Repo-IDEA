@@ -1,8 +1,8 @@
 package com.web.jdbc.dbutils;
 
+import com.web.domain.Account;
+
 import java.sql.SQLException;
-import me.gacl.dao.AccountDao3;
-import me.gacl.domain.Account;
 
 public class AccountService3 {
     

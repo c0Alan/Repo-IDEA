@@ -1,4 +1,4 @@
-package com.web.jdbc.myframework;
+package com.web.domain;
 
 public class Account {
     private Integer id;

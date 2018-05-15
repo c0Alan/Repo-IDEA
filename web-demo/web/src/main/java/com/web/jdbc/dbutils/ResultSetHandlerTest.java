@@ -4,7 +4,8 @@ import java.sql.SQLException;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
-import me.gacl.util.JdbcUtils;
+
+import com.web.jdbc.util.JdbcUtils3;
 import org.apache.commons.dbutils.QueryRunner;
 import org.apache.commons.dbutils.handlers.ArrayHandler;
 import org.apache.commons.dbutils.handlers.ArrayListHandler;
@@ -26,7 +27,7 @@ public class ResultSetHandlerTest {
 
     @Test
     public void testArrayHandler() throws SQLException{
-        QueryRunner qr = new QueryRunner(JdbcUtils.getDataSource());
+        QueryRunner qr = new QueryRunner(JdbcUtils3.getDataSource());
         String sql = "select * from users";
         Object result[] = (Object[]) qr.query(sql, new ArrayHandler());
         System.out.println(Arrays.asList(result));  //list  toString()
@@ -35,7 +36,7 @@ public class ResultSetHandlerTest {
     @Test
     public void testArrayListHandler() throws SQLException{
         
-        QueryRunner qr = new QueryRunner(JdbcUtils.getDataSource());
+        QueryRunner qr = new QueryRunner(JdbcUtils3.getDataSource());
         String sql = "select * from users";
         List<Object[]> list = (List) qr.query(sql, new ArrayListHandler());
         for(Object[] o : list){
@@ -45,7 +46,7 @@ public class ResultSetHandlerTest {
     
     @Test
     public void testColumnListHandler() throws SQLException{
-        QueryRunner qr = new QueryRunner(JdbcUtils.getDataSource());
+        QueryRunner qr = new QueryRunner(JdbcUtils3.getDataSource());
         String sql = "select * from users";
         List list = (List) qr.query(sql, new ColumnListHandler("id"));
         System.out.println(list);
@@ -53,7 +54,7 @@ public class ResultSetHandlerTest {
     
     @Test
     public void testKeyedHandler() throws Exception{
-        QueryRunner qr = new QueryRunner(JdbcUtils.getDataSource());
+        QueryRunner qr = new QueryRunner(JdbcUtils3.getDataSource());
         String sql = "select * from users";
         
         Map<Integer,Map> map = (Map) qr.query(sql, new KeyedHandler("id"));
@@ -72,7 +73,7 @@ public class ResultSetHandlerTest {
     @Test
     public void testMapHandler() throws SQLException{
         
-        QueryRunner qr = new QueryRunner(JdbcUtils.getDataSource());
+        QueryRunner qr = new QueryRunner(JdbcUtils3.getDataSource());
         String sql = "select * from users";
         
         Map<String,Object> map = (Map) qr.query(sql, new MapHandler());
@@ -85,7 +86,7 @@ public class ResultSetHandlerTest {
     
     @Test
     public void testMapListHandler() throws SQLException{
-        QueryRunner qr = new QueryRunner(JdbcUtils.getDataSource());
+        QueryRunner qr = new QueryRunner(JdbcUtils3.getDataSource());
         String sql = "select * from users";
         List<Map> list = (List) qr.query(sql, new MapListHandler());
         for(Map<String,Object> map :list){
@@ -98,7 +99,7 @@ public class ResultSetHandlerTest {
     
     @Test
     public void testScalarHandler() throws SQLException{
-        QueryRunner qr = new QueryRunner(JdbcUtils.getDataSource());
+        QueryRunner qr = new QueryRunner(JdbcUtils3.getDataSource());
         String sql = "select count(*) from users";  //[13]  list[13]
         int count = ((Long)qr.query(sql, new ScalarHandler(1))).intValue();
         System.out.println(count);

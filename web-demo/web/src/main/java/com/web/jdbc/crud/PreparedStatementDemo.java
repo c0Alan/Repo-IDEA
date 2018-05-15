@@ -9,10 +9,10 @@ import com.web.jdbc.util.JdbcUtils;
 import org.junit.Test;
 
 /**
- * @ClassName: PreparedStatementDemo
- * @Description: 通过PreparedStatement对象完成对数据库的CRUD操作
- * @author: 孤傲苍狼
- * @date: 2014-9-15 下午11:21:42
+ * 通过PreparedStatement对象完成对数据库的CRUD操作
+ *
+ * @author liuxilin
+ * @date 2018/5/15 23:57
  */
 public class PreparedStatementDemo {
 
@@ -25,27 +25,17 @@ public class PreparedStatementDemo {
             //获取一个数据库连接
             conn = JdbcUtils.getConnection();
             //要执行的SQL命令，SQL中的参数使用?作为占位符
-            String sql = "insert into springdemo.users(id,name,password,email,birthday) values(?,?,?,?,?)";
+            String sql = "insert into springdemo.users(id,name,password,email,birthday)" +
+                    " values(?,?,?,?,?)";
             //通过conn对象获取负责执行SQL命令的prepareStatement对象
             st = conn.prepareStatement(sql);
             //为SQL语句中的参数赋值，注意，索引是从1开始的
-            /**
-             * SQL语句中各个字段的类型如下：
-             *  +----------+-------------+
-             | Field    | Type        |
-             +----------+-------------+
-             | id       | int(11)     |
-             | name     | varchar(40) |
-             | password | varchar(40) |
-             | email    | varchar(60) |
-             | birthday | date        |
-             +----------+-------------+
-             */
-            st.setInt(1, 1);//id是int类型的
-            st.setString(2, "白虎神皇");//name是varchar(字符串类型)
-            st.setString(3, "123");//password是varchar(字符串类型)
-            st.setString(4, "bhsh@sina.com");//email是varchar(字符串类型)
-            st.setDate(5, new java.sql.Date(new Date().getTime()));//birthday是date类型
+
+            st.setInt(1, 3); //id是int类型的
+            st.setString(2, "吴承恩"); //name是varchar(字符串类型)
+            st.setString(3, "123"); //password是varchar(字符串类型)
+            st.setString(4, "wce@sina.com"); //email是varchar(字符串类型)
+            st.setDate(5, new java.sql.Date(new Date().getTime())); //birthday是date类型
             //执行插入操作，executeUpdate方法返回成功的条数
             int num = st.executeUpdate();
             if (num > 0) {
@@ -69,7 +59,7 @@ public class PreparedStatementDemo {
             conn = JdbcUtils.getConnection();
             String sql = "delete from springdemo.users where id=?";
             st = conn.prepareStatement(sql);
-            st.setInt(1, 1);
+            st.setInt(1, 3);
             int num = st.executeUpdate();
             if (num > 0) {
                 System.out.println("删除成功！！");
@@ -90,9 +80,9 @@ public class PreparedStatementDemo {
             conn = JdbcUtils.getConnection();
             String sql = "update springdemo.users set name=?,email=? where id=?";
             st = conn.prepareStatement(sql);
-            st.setString(1, "gacl");
-            st.setString(2, "gacl@sina.com");
-            st.setInt(3, 2);
+            st.setString(1, "辛弃疾");
+            st.setString(2, "xqj@sina.com");
+            st.setInt(3, 1);
             int num = st.executeUpdate();
             if (num > 0) {
                 System.out.println("更新成功！！");
