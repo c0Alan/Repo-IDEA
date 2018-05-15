@@ -47,6 +47,7 @@
         <!-- <mapper resource="com/java1234/mapper/StudentMapper.xml" /> -->
         <!-- <mapper class="com.mybatis.mapper.StudentMapper"/> -->
 
-        <package name="com.mybatis.mapper"/>
+        <!--<package name="com.mybatis.mapper"/>-->
+        <package name="com.mybatis.mapper2"/>
     </mappers>
 </configuration>

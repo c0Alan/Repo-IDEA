@@ -91,8 +91,9 @@ public class Student {
     public String toString() {
         return "Student [id=" + id + ", name=" + name + ", age=" + age
 //                + ", address=" + address + ", grade=" + grade + "]";  // 这里会导致打印 grade 的时候死循环
-//                + ", address=" + address + ", grade=" + grade.getGradeName() + "]"; // 容易空指针
-                + "]";
+//                + ", address=" + address + "]"; // 容易空指针
+                + ", address=" + address + ", grade=" + grade.getGradeName() + "]"; // 容易空指针
+//                + "]";
     }
 
 }
