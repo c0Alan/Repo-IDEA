@@ -14,7 +14,7 @@ import org.junit.Test;
 import java.util.List;
 
 /**
- * 表关联
+ * 使用注解的方式实现关系映射
  * 
  * @author liuxl
  * @date 2018/5/15 13:14

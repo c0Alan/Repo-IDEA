@@ -12,10 +12,10 @@ import org.junit.Test;
 import java.util.List;
 
 /**
- * 增删改查
+ * 使用注解的方式实现增删改查
  * 
  * @author liuxl
- * @date 2018/5/15 13:14
+ * @date 2018/5/15 13:27
  */
 public class StudentTest {
 
