@@ -15,12 +15,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
-* @ClassName: TransactionFilter
-* @Description:ThreadLocal + Filter 统一处理数据库事务
-* @author: 孤傲苍狼
-* @date: 2014-10-6 下午11:36:58
-*
-*/ 
+ * ThreadLocal + Filter 统一处理数据库事务
+ *
+ * @author liuxilin
+ * @date 2018/5/16 22:24
+ */
 public class TransactionFilter implements Filter {
 
     @Override
@@ -30,7 +29,7 @@ public class TransactionFilter implements Filter {
 
     @Override
     public void doFilter(ServletRequest request, ServletResponse response,
-            FilterChain chain) throws IOException, ServletException {
+                         FilterChain chain) throws IOException, ServletException {
 
         Connection connection = null;
         try {
@@ -57,8 +56,8 @@ public class TransactionFilter implements Filter {
             //req.setAttribute("errMsg", e.getMessage());
             //req.getRequestDispatcher("/error.jsp").forward(req, res);
             //出现异常之后跳转到错误页面
-            res.sendRedirect(req.getContextPath()+"/error.jsp");
-        }finally{
+            res.sendRedirect(req.getContextPath() + "/error.jsp");
+        } finally {
             //7、解除绑定
             ConnectionContext.getInstance().remove();
             //8、关闭数据库连接

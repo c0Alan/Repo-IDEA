@@ -23,11 +23,10 @@ public class AccountDao {
     }
 
     /**
+     * 更新
+     *
      * @param account
      * @throws SQLException
-     * @Method: update
-     * @Description:更新
-     * @Anthor:孤傲苍狼
      */
     public void update(Account account) throws SQLException {
 
@@ -40,12 +39,11 @@ public class AccountDao {
     }
 
     /**
+     * 查找
+     *
      * @param id
      * @return
      * @throws SQLException
-     * @Method: find
-     * @Description:查找
-     * @Anthor:孤傲苍狼
      */
     public Account find(int id) throws SQLException {
         QueryRunner qr = new QueryRunner();
@@ -55,15 +53,14 @@ public class AccountDao {
     }
 
     /**
+     * 这个方法是用来处理两个用户之间的转账业务 在开发中，DAO层的职责应该只涉及到CRUD，
+     * 而这个transfer方法是处理两个用户之间的转账业务的，已经涉及到具体的业务操作，应该在业务层中做，不应该出现在DAO层的
+     * 所以在开发中DAO层出现这样的业务处理方法是完全错误的
+     *
      * @param sourceName
      * @param targetName
      * @param money
      * @throws SQLException
-     * @Method: transfer
-     * @Description:这个方法是用来处理两个用户之间的转账业务 在开发中，DAO层的职责应该只涉及到CRUD，
-     * 而这个transfer方法是处理两个用户之间的转账业务的，已经涉及到具体的业务操作，应该在业务层中做，不应该出现在DAO层的
-     * 所以在开发中DAO层出现这样的业务处理方法是完全错误的
-     * @Anthor:孤傲苍狼
      */
     public void transfer(String sourceName, String targetName, float money) throws SQLException {
         Connection conn = null;

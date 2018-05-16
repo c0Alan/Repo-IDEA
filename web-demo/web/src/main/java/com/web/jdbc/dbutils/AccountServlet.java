@@ -7,6 +7,12 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+/**
+ * Web层的Servlet调用businessService层的业务方法处理用户请求
+ * 
+ * @author liuxilin
+ * @date 2018/5/16 22:30
+ */
 public class AccountServlet extends HttpServlet {
 
     public void doGet(HttpServletRequest request, HttpServletResponse response)

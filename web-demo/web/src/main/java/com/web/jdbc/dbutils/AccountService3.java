@@ -5,17 +5,15 @@ import com.web.domain.Account;
 import java.sql.SQLException;
 
 public class AccountService3 {
-    
+
     /**
-    * @Method: transfer
-    * @Description:在业务层处理两个账户之间的转账问题
-    * @Anthor:孤傲苍狼
-    *
-    * @param sourceid
-    * @param tartgetid
-    * @param money
-    * @throws SQLException
-    */ 
+     * 在业务层处理两个账户之间的转账问题
+     *
+     * @param sourceid
+     * @param tartgetid
+     * @param money
+     * @throws SQLException
+     */
     public void transfer(int sourceid, int tartgetid, float money)
             throws SQLException {
         AccountDao3 dao = new AccountDao3();

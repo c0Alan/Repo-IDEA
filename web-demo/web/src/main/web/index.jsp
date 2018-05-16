@@ -19,10 +19,25 @@
 <body>
 
 <div class="container" style="margin-top: 10px; margin-left: 10px;">
-    Hello world! <br/>
-    <a href="${pageContext.request.contextPath}/i18n/i18n01.jsp">i18n01</a><br/>
-    <a href="${pageContext.request.contextPath}/i18n/i18n02.jsp">i18n02</a><br/>
-
+    <h2>测试列表</h2>
+    <table class="table table-bordered">
+        <thead>
+        <tr>
+            <th>测试内容</th>
+            <th>测试链接</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>i18n01</td>
+            <td><a href="${pageContext.request.contextPath}/i18n/i18n01.jsp">i18n01</a></td>
+        </tr>
+        <tr>
+            <td>i18n02</td>
+            <td><a href="${pageContext.request.contextPath}/i18n/i18n02.jsp">i18n02</a></td>
+        </tr>
+        </tbody>
+    </table>
 </div>
 
 </body>

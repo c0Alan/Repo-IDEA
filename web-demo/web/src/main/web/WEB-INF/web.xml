@@ -3,4 +3,67 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
          version="3.1">
+
+    <display-name>web test</display-name>
+    <welcome-file-list>
+        <welcome-file>index.jsp</welcome-file>
+    </welcome-file-list>
+
+    <!--配置过滤器-->
+    <filter>
+        <filter-name>FilterDemo01</filter-name>
+        <filter-class>com.web.filter.FilterDemo01</filter-class>
+    </filter>
+
+    <!--映射过滤器-->
+    <filter-mapping>
+        <filter-name>FilterDemo01</filter-name>
+        <!--“/*”表示拦截所有的请求 -->
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+
+    <filter>
+        <description>FilterDemo02过滤器</description>
+        <filter-name>FilterDemo02</filter-name>
+        <filter-class>com.web.filter.FilterDemo02</filter-class>
+        <!--配置FilterDemo02过滤器的初始化参数-->
+        <init-param>
+            <description>配置FilterDemo02过滤器的初始化参数</description>
+            <param-name>name</param-name>
+            <param-value>filter02</param-value>
+        </init-param>
+        <init-param>
+            <description>配置FilterDemo02过滤器的初始化参数</description>
+            <param-name>like</param-name>
+            <param-value>java</param-value>
+        </init-param>
+    </filter>
+
+    <!--映射过滤器-->
+    <filter-mapping>
+        <filter-name>FilterDemo02</filter-name>
+        <!--“/*”表示拦截所有的请求 -->
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+
+<!--    <filter-mapping>
+        <filter-name>testFilter</filter-name>
+        <url-pattern>/index.jsp</url-pattern>
+        <dispatcher>REQUEST</dispatcher>
+        <dispatcher>FORWARD</dispatcher>
+    </filter-mapping>-->
+
+    <!--
+    REQUEST：当用户直接访问页面时，Web容器将会调用过滤器。
+    如果目标资源是通过RequestDispatcher的include()或forward()方法访问时，那么该过滤器就不会被调用。
+
+    INCLUDE：如果目标资源是通过RequestDispatcher的include()方法访问时，那么该过滤器将被调用。
+    除此之外，该过滤器不会被调用。
+
+    FORWARD：如果目标资源是通过RequestDispatcher的forward()方法访问时，那么该过滤器将被调用，
+    除此之外，该过滤器不会被调用。
+
+    ERROR：如果目标资源是通过声明式异常处理机制调用时，那么该过滤器将被调用。
+    除此之外，过滤器不会被调用。
+    -->
 </web-app>

@@ -21,28 +21,27 @@ insert into account(name,money) values('C',1000);
 */
 
 /**
-* @ClassName: AccountDao
-* @Description: 针对Account对象的CRUD
-* @author: 孤傲苍狼
-* @date: 2014-10-6 下午4:00:42
-*
-*/ 
+ * 针对Account对象的CRUD
+ *
+ * @author liuxilin
+ * @date 2018/5/16 22:30
+ */
 public class AccountDao2 {
 
-    public void update(Account account) throws SQLException{
-        
+    public void update(Account account) throws SQLException {
+
         QueryRunner qr = new QueryRunner();
         String sql = "update account set name=?,money=? where id=?";
-        Object params[] = {account.getName(),account.getMoney(),account.getId()};
+        Object params[] = {account.getName(), account.getMoney(), account.getId()};
         //JdbcUtils3.getConnection()获取当前线程中的Connection对象
-        qr.update(JdbcUtils3.getConnection(),sql, params);
-        
+        qr.update(JdbcUtils3.getConnection(), sql, params);
+
     }
-    
-    public Account find(int id) throws SQLException{
+
+    public Account find(int id) throws SQLException {
         QueryRunner qr = new QueryRunner();
         String sql = "select * from account where id=?";
         //JdbcUtils3.getConnection()获取当前线程中的Connection对象
-        return (Account) qr.query(JdbcUtils3.getConnection(),sql, id, new BeanHandler(Account.class));
+        return (Account) qr.query(JdbcUtils3.getConnection(), sql, id, new BeanHandler(Account.class));
     }
 }

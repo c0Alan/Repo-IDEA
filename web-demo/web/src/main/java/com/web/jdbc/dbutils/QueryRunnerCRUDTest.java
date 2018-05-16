@@ -67,7 +67,7 @@ public class QueryRunnerCRUDTest {
         QueryRunner qr = new QueryRunner(JdbcUtils3.getDataSource());
         String sql = "select * from springdemo.users";
         List list = (List) qr.query(sql, new BeanListHandler(Users.class));
-        System.out.println(list.size());
+        System.err.println(list.size());
     }
 
     /**
