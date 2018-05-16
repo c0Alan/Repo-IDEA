@@ -14,7 +14,7 @@
         <module>springmvc</module>
         <module>hibernateGenerator</module>
         <module>mybatisGenerator</module>
-        <module>mavenweb</module>
+        <!--?<module>mavenweb</module>-->
         <module>ssh</module>
         <module>ss</module>
         <module>mybatis</module>

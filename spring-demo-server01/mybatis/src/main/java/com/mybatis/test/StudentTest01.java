@@ -13,7 +13,10 @@ import java.util.List;
 
 /**
  * 增删改查
- * 
+ * mybatis中"#"和"$"的区别
+ * # : select * from user where name = ?;
+ * $ : select * from user where name = 'zhangsan'; 有 SQL 注入风险
+ *
  * @author liuxilin
  * @date 2018/5/13 20:53
  */
