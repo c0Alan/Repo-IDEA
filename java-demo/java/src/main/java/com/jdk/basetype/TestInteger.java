@@ -1,5 +1,6 @@
 package com.jdk.basetype;
 
+import org.apache.log4j.Logger;
 import org.junit.Test;
 
 /**
@@ -9,6 +10,7 @@ import org.junit.Test;
  * @date 2018/5/2 15:55
  */
 public class TestInteger {
+    private static final Logger logger = Logger.getLogger(TestInteger.class);
 
     /**
      * 跟int比较相等
@@ -48,5 +50,26 @@ public class TestInteger {
     public void equals(){
         Integer i = null;
         System.out.println(i == 1); // 这里拆箱时报空指针错误
+    }
+
+    @Test
+    public void incr(){
+        Integer i = 0;
+        logger.info(i.hashCode());
+
+        incr(i);
+        logger.info(i); // 0
+
+        incr(i);
+        logger.info(i); // 0
+
+        incr(i);
+        logger.info(i); // 0
+    }
+
+    public void incr(Integer n){
+        logger.info("before: " + n.hashCode());
+        n = n + 1;
+        logger.info("after: " + n.hashCode());
     }
 }
