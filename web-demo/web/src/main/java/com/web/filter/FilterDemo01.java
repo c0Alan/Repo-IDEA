@@ -22,7 +22,7 @@ public class FilterDemo01 implements Filter {
      */
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
-        System.out.println("----过滤器初始化----");
+        System.out.println("----FilterDemo01 过滤器初始化----");
     }
 
     @Override
@@ -41,6 +41,6 @@ public class FilterDemo01 implements Filter {
 
     @Override
     public void destroy() {
-        System.out.println("----过滤器销毁----");
+        System.out.println("----FilterDemo01过滤器销毁----");
     }
 }

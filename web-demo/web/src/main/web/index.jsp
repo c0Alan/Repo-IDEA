@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8" %>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -35,6 +36,41 @@
         <tr>
             <td>i18n02</td>
             <td><a href="${pageContext.request.contextPath}/i18n/i18n02.jsp">i18n02</a></td>
+        </tr>
+        <tr>
+            <td>中文乱码-超链接(get方式请求)</td>
+            <td><c:url value="/servlet/ServletDemo1" scope="page" var="servletDemo1">
+                <%--构建的url的附带的中文参数 ，参数名是：username，值是：王安石--%>
+                <c:param name="username" value="王安石"></c:param>
+            </c:url>
+                <%--使用get的方式访问 --%>
+                <a href="${servletDemo1}">超链接(get方式请求)</a></td>
+        </tr>
+        <tr>
+            <td>中文乱码-post方式提交</td>
+            <td><%--使用post方式提交表单 --%>
+                <form action="${pageContext.request.contextPath}/servlet/ServletDemo1" method="post">
+                    用户名：<input type="text" name="username" value="柳宗元"/>
+                    <input type="submit" value="post方式提交">
+                </form>
+            </td>
+        </tr>
+        <tr>
+            <td>html标签转义</td>
+            <td>
+                <form action="${pageContext.request.contextPath}/servlet/ServletDemo2" method="post">
+                    留言:
+                    <textarea rows="8" cols="70" name="message">
+           <script type="text/javascript">
+           while (true) {
+               alert("死循环了，我会不停地弹出了");
+           }
+           </script>
+        <a href="http://www.cnblogs.com">访问博客园</a>
+           </textarea>
+                    <input type="submit" value="发表">
+                </form>
+            </td>
         </tr>
         </tbody>
     </table>

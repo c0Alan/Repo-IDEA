@@ -17,30 +17,8 @@ public class FilterDemo02 implements Filter {
      */
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
-        System.out.println("----过滤器初始化----");
-        /**
-         *  <filter>
-         <filter-name>FilterDemo02</filter-name>
-         <filter-class>me.gacl.web.filter.FilterDemo02</filter-class>
-         <!--配置FilterDemo02过滤器的初始化参数-->
-         <init-param>
-         <description>配置FilterDemo02过滤器的初始化参数</description>
-         <param-name>name</param-name>
-         <param-value>gacl</param-value>
-         </init-param>
-         <init-param>
-         <description>配置FilterDemo02过滤器的初始化参数</description>
-         <param-name>like</param-name>
-         <param-value>java</param-value>
-         </init-param>
-         </filter>
+        System.out.println("----FilterDemo02 过滤器初始化----");
 
-         <filter-mapping>
-         <filter-name>FilterDemo02</filter-name>
-         <!--“/*”表示拦截所有的请求 -->
-         <url-pattern>/*</url-pattern>
-         </filter-mapping>
-         */
         //得到过滤器的名字
         String filterName = filterConfig.getFilterName();
         //得到在web.xml文件中配置的初始化参数
@@ -68,6 +46,6 @@ public class FilterDemo02 implements Filter {
 
     @Override
     public void destroy() {
-        System.out.println("----过滤器销毁----");
+        System.out.println("----FilterDemo02 过滤器销毁----");
     }
 }

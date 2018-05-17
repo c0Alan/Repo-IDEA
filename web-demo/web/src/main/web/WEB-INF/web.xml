@@ -46,12 +46,12 @@
         <url-pattern>/*</url-pattern>
     </filter-mapping>
 
-<!--    <filter-mapping>
-        <filter-name>testFilter</filter-name>
-        <url-pattern>/index.jsp</url-pattern>
-        <dispatcher>REQUEST</dispatcher>
-        <dispatcher>FORWARD</dispatcher>
-    </filter-mapping>-->
+    <!--    <filter-mapping>
+            <filter-name>testFilter</filter-name>
+            <url-pattern>/index.jsp</url-pattern>
+            <dispatcher>REQUEST</dispatcher>
+            <dispatcher>FORWARD</dispatcher>
+        </filter-mapping>-->
 
     <!--
     REQUEST：当用户直接访问页面时，Web容器将会调用过滤器。
@@ -66,4 +66,129 @@
     ERROR：如果目标资源是通过声明式异常处理机制调用时，那么该过滤器将被调用。
     除此之外，过滤器不会被调用。
     -->
+
+    <!--配置字符过滤器，解决get、post请求方式下的中文乱码问题-->
+    <filter>
+        <filter-name>CharacterEncodingFilter</filter-name>
+        <filter-class>com.web.filter.CharacterEncodingFilter</filter-class>
+    </filter>
+
+    <filter-mapping>
+        <filter-name>CharacterEncodingFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+
+    <servlet>
+        <servlet-name>ServletDemo1</servlet-name>
+        <servlet-class>com.web.servlet.ServletDemo1</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>ServletDemo1</servlet-name>
+        <url-pattern>/servlet/ServletDemo1</url-pattern>
+    </servlet-mapping>
+
+    <!--配置Html过滤器，转义内容中的html标签-->
+    <filter>
+        <filter-name>HtmlFilter</filter-name>
+        <filter-class>com.web.filter.HtmlFilter</filter-class>
+    </filter>
+
+    <filter-mapping>
+        <filter-name>HtmlFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+
+    <servlet>
+        <servlet-name>ServletDemo2</servlet-name>
+        <servlet-class>com.web.servlet.ServletDemo2</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>ServletDemo2</servlet-name>
+        <url-pattern>/servlet/ServletDemo2</url-pattern>
+    </servlet-mapping>
+
+    <!--配置敏感字符过滤器-->
+    <filter>
+        <filter-name>DirtyFilter</filter-name>
+        <filter-class>com.web.filter.DirtyFilter</filter-class>
+        <!-- 配置要过滤的敏感字符文件 -->
+        <init-param>
+            <param-name>dirtyWord</param-name>
+            <param-value>/WEB-INF/DirtyWord.txt</param-value>
+        </init-param>
+    </filter>
+
+    <filter-mapping>
+        <filter-name>DirtyFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+
+    <filter>
+        <filter-name>AdvancedFilter</filter-name>
+        <filter-class>com.web.filter.AdvancedFilter</filter-class>
+        <init-param>
+            <param-name>charset</param-name>
+            <param-value>UTF-8</param-value>
+        </init-param>
+        <init-param>
+            <param-name>dirtyWord</param-name>
+            <param-value>/WEB-INF/DirtyWord.txt</param-value>
+        </init-param>
+    </filter>
+
+    <filter-mapping>
+        <filter-name>AdvancedFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+
+    <!--response 过滤器部分-->
+    <filter>
+        <description>配置压缩过滤器</description>
+        <filter-name>GzipFilter</filter-name>
+        <filter-class>com.web.filter.GzipFilter</filter-class>
+    </filter>
+
+    <!--jsp文件的输出的内容都经过压缩过滤器压缩后才输出 -->
+    <filter-mapping>
+        <filter-name>GzipFilter</filter-name>
+        <url-pattern>*.jsp</url-pattern>
+        <!-- 配置过滤器的拦截方式-->
+        <!-- 对于在Servlet中通过
+            request.getRequestDispatcher("jsp页面路径").forward(request, response)
+        方式访问的Jsp页面的要进行拦截 -->
+        <dispatcher>FORWARD</dispatcher>
+        <!--对于直接以URL方式访问的jsp页面进行拦截，过滤器的拦截方式默认就是 REQUEST-->
+        <dispatcher>REQUEST</dispatcher>
+    </filter-mapping>
+    <!--js文件的输出的内容都经过压缩过滤器压缩后才输出 -->
+    <filter-mapping>
+        <filter-name>GzipFilter</filter-name>
+        <url-pattern>*.js</url-pattern>
+    </filter-mapping>
+    <!--css文件的输出的内容都经过压缩过滤器压缩后才输出 -->
+    <filter-mapping>
+        <filter-name>GzipFilter</filter-name>
+        <url-pattern>*.css</url-pattern>
+    </filter-mapping>
+    <!--html文件的输出的内容都经过压缩过滤器压缩后才输出 -->
+    <filter-mapping>
+        <filter-name>GzipFilter</filter-name>
+        <url-pattern>*.html</url-pattern>
+    </filter-mapping>
+
+    <filter>
+        <description>Web资源缓存过滤器</description>
+        <filter-name>WebResourceCachedFilter</filter-name>
+        <filter-class>com.web.filter.WebResourceCachedFilter</filter-class>
+    </filter>
+
+    <filter-mapping>
+        <filter-name>WebResourceCachedFilter</filter-name>
+        <!-- 映射需要缓存输出的JSP页面，这几个页面都只是单纯作为输入UI，不会有太多的变化，因此可以缓存输出 -->
+        <url-pattern>/login.jsp</url-pattern>
+        <url-pattern>/test.jsp</url-pattern>
+        <url-pattern>/test2.jsp</url-pattern>
+    </filter-mapping>
 </web-app>
