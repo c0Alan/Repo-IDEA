@@ -9,6 +9,41 @@
         <welcome-file>index.jsp</welcome-file>
     </welcome-file-list>
 
+    <!-- 注册针对ServletContext对象进行监听的监听器 -->
+    <listener>
+        <description>ServletContextListener监听器</description>
+        <!--实现了ServletContextListener接口的监听器类 -->
+        <listener-class>com.web.listener.MyServletContextListener</listener-class>
+    </listener>
+
+    <!--注册针对HttpSession对象进行监听的监听器-->
+    <listener>
+        <description>HttpSessionListener监听器</description>
+        <listener-class>com.web.listener.MyHttpSessionListener</listener-class>
+    </listener>
+
+    <!-- 配置HttpSession对象的销毁时机 -->
+    <session-config>
+        <!--配置HttpSession对象的1分钟之后销毁 -->
+        <session-timeout>1</session-timeout>
+    </session-config>
+
+    <!--注册针对ServletRequest对象进行监听的监听器-->
+    <listener>
+        <description>ServletRequestListener监听器</description>
+        <listener-class>com.web.listener.MyServletRequestListener</listener-class>
+    </listener>
+
+    <listener>
+        <description>MyServletContextAttributeListener监听器</description>
+        <listener-class>com.web.listener.MyServletContextAttributeListener</listener-class>
+    </listener>
+
+    <listener>
+        <description>MyRequestAndSessionAttributeListener监听器</description>
+        <listener-class>com.web.listener.MyRequestAndSessionAttributeListener</listener-class>
+    </listener>
+
     <!--配置过滤器-->
     <filter>
         <filter-name>FilterDemo01</filter-name>

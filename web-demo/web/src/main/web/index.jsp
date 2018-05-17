@@ -1,6 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8" %>
+<%@page import="com.web.listener.JavaBeanDemo1"%>
+<%@page import="com.web.listener.JavaBeanDemo2"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -18,8 +21,50 @@
     <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 <body>
+一访问JSP页面，HttpSession就创建了，创建好的Session的Id是：${pageContext.session.id}
+
+<%--编写ServletContextAttributeListenerTest.jsp测试页面--%>
+<%
+    //往application域对象中添加属性
+    application.setAttribute("name", "孤傲苍狼");
+    //替换application域对象中name属性的值
+    application.setAttribute("name", "gacl");
+    //移除application域对象中name属性
+    application.removeAttribute("name");
+%>
+
+<%--编写RequestAndSessionAttributeListenerTest.jsp测试页面--%>
+<%
+    //往session域对象中添加属性
+    session.setAttribute("aa", "bb");
+    //替换session域对象中aa属性的值
+    session.setAttribute("aa", "xx");
+    //移除session域对象中aa属性
+    session.removeAttribute("aa");
+
+    //往request域对象中添加属性
+    request.setAttribute("aa", "bb");
+    //替换request域对象中aa属性的值
+    request.setAttribute("aa", "xx");
+    //移除request域对象中aa属性
+    request.removeAttribute("aa");
+%>
+
+<%--JavaBeanDemo1 测试--%>
+<%
+    //将javabean对象绑定到Session中
+    session.setAttribute("bean",new JavaBeanDemo1("孤傲苍狼"));
+    //从Session中删除javabean对象
+    session.removeAttribute("bean");
+%>
+
+<%--jsp 测试 HttpSessionActivationListener接口 代码如下--%>
+<%
+    session.setAttribute("bean",new JavaBeanDemo2("孤傲苍狼"));
+%>
 
 <div class="container" style="margin-top: 10px; margin-left: 10px;">
+
     <h2>测试列表</h2>
     <table class="table table-bordered">
         <thead>
