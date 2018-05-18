@@ -9,7 +9,7 @@ import javax.servlet.http.HttpSessionBindingListener;
  * 当对象从 HttpSession 对象中解除绑定时，web 服务器调用该对象的 void valueUnbound(HttpSessionBindingEvent event)方法
  *
  * @author liuxilin
- * @date 2018/5/17 22:48
+ * @date 2018/5/17 23:01
  */
 public class JavaBeanDemo1 implements HttpSessionBindingListener {
 

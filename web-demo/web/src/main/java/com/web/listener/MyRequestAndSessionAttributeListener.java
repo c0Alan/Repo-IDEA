@@ -10,7 +10,7 @@ import java.text.MessageFormat;
  * 编写监听器监听HttpSession和HttpServletRequest域对象的属性值变化情况
  * 
  * @author liuxilin
- * @date 2018/5/17 22:46
+ * @date 2018/5/17 23:01
  */
 public class MyRequestAndSessionAttributeListener implements
         HttpSessionAttributeListener, ServletRequestAttributeListener {
