@@ -1,4 +1,4 @@
-package com.web.filter;
+package com.web.filter.demo;
 
 import com.web.wrapper.MyCharacterEncodingRequest;
 
@@ -8,10 +8,11 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 /**
- * 统一全站字符编码
- * 
- * @author liuxl
- * @date 2018/5/18 13:12
+ * 此过滤器用来解决解决get、post请求方式下的中文乱码问题
+ * 然而并没用, 待排查
+ *
+ * @author liuxilin
+ * @date 2018/5/17 21:28
  */
 public class CharacterEncodingFilter implements Filter {
 
@@ -21,17 +22,18 @@ public class CharacterEncodingFilter implements Filter {
 
     public void doFilter(ServletRequest req, ServletResponse resp,
                          FilterChain chain) throws IOException, ServletException {
-        
+
         HttpServletRequest request = (HttpServletRequest) req;
         HttpServletResponse response = (HttpServletResponse) resp;
+        //得到在web.xml中配置的字符编码
         String charset = filterConfig.getInitParameter("charset");
-        if(charset==null){
+        if (charset == null) {
             charset = defaultCharset;
         }
         request.setCharacterEncoding(charset);
         response.setCharacterEncoding(charset);
-        response.setContentType("text/html;charset="+charset);
-        
+        response.setContentType("text/html;charset=" + charset);
+
         MyCharacterEncodingRequest requestWrapper = new MyCharacterEncodingRequest(request);
         chain.doFilter(requestWrapper, response);
     }
@@ -40,7 +42,7 @@ public class CharacterEncodingFilter implements Filter {
         //得到过滤器的初始化配置信息
         this.filterConfig = filterConfig;
     }
-    
+
     public void destroy() {
 
     }

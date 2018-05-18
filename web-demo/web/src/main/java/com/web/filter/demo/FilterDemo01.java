@@ -1,4 +1,4 @@
-package com.web.filter;
+package com.web.filter.demo;
 
 import javax.servlet.*;
 import java.io.IOException;
