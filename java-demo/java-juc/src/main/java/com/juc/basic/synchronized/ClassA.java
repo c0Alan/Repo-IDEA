@@ -1,4 +1,4 @@
-package com.demo.juc.synchoronize;
+package com.juc.synchoronize;
 
 public class ClassA {
     public ClassB classb;

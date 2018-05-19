@@ -1,8 +1,8 @@
-package com.demo.juc.atomic;
+package com.juc.atomic.basic;
 
 import java.util.concurrent.atomic.AtomicLong;
 
-public class ALong {
+public class AtomicLongDemo {
     public static void main(String[] args) {
         AtomicLong mAtoLong = new AtomicLong();
 
