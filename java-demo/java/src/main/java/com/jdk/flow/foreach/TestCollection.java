@@ -1,4 +1,4 @@
-package com.jdk.foreach;
+package com.jdk.flow.foreach;
 
 import java.util.ArrayList;
 import java.util.List;

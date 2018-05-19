@@ -1,4 +1,4 @@
-package com.jdk.lang;
+package com.jdk.type.lang;
 
 //import org.apache.log4j.Logger;
 

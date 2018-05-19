@@ -1,4 +1,4 @@
-package com.jdk.path;
+package com.exercise.path;
 
 
 import org.apache.log4j.Logger;

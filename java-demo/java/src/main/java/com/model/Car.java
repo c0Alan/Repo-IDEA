@@ -12,7 +12,6 @@ public class Car implements IVehical {
      * @description 跑动属性
      * 
      * @date 2018/3/27 12:34
-     * @param void
      * @return void
      */
     public void run() {

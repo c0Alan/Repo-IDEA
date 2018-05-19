@@ -1,4 +1,6 @@
-package com.jdk.enumtype;
+package com.jdk.clazz.enumtype;
+
+import org.junit.Test;
 
 /**
  * 用法三：向枚举中添加新方法
@@ -43,5 +45,14 @@ public enum Color2 {
 
     public void setIndex(int index) {
         this.index = index;
+    }
+
+    /**
+     * 报错
+     * java.lang.Exception: Test class should have exactly one public constructor
+     */
+    @Test
+    public void test(){
+        System.out.println("test");
     }
 }

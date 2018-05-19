@@ -1,4 +1,4 @@
-package com.jdk.basic;
+package com.jdk.io;
 
 import org.junit.Test;
 

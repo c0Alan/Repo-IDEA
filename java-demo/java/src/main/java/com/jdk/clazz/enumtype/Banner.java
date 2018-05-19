@@ -1,4 +1,4 @@
-package com.jdk.enumtype;
+package com.jdk.clazz.enumtype;
 
 /**
  * spring 中 enum 的用法

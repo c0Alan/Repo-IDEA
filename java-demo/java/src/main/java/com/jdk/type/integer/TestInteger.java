@@ -1,4 +1,4 @@
-package com.jdk.basetype;
+package com.jdk.type.integer;
 
 import org.apache.log4j.Logger;
 import org.junit.Test;
@@ -15,12 +15,13 @@ public class TestInteger {
     /**
      * 跟int比较相等
      */
-    public static void equalsInt(){
+    @Test
+    public void equalsInt(){
         Integer num1 = -1;
         int num2 = -1;
         int num3 = 2;
-        System.out.println(num1 == num2);
-        System.out.println(num1 == num3);
+        System.out.println(num1 == num2); // true
+        System.out.println(num1 == num3); // false
     }
 
     /**

@@ -1,4 +1,4 @@
-package com.jdk.enumtype;
+package com.jdk.clazz.enumtype;
 
 public interface Behaviour {
     void print();

@@ -1,4 +1,4 @@
-package com.jdk.foreach;
+package com.jdk.flow.foreach;
 
 import org.apache.log4j.Logger;
 import org.junit.Test;

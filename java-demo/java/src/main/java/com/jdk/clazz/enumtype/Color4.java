@@ -1,4 +1,4 @@
-package com.jdk.enumtype;
+package com.jdk.clazz.enumtype;
 
 /**
  * 用法五：实现接口
