@@ -1,7 +1,10 @@
-package com.juc.synchoronize;
+package com.juc.basic.synchronize;
 
 /**
  * 死锁测试
+ * 
+ * @author liuxilin
+ * @date 2018/5/20 9:30
  */
 public class ClassB {
     public ClassA classA;
