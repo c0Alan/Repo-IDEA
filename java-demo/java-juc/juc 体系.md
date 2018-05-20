@@ -31,6 +31,13 @@ interrupted() 和 isInterrupted()都能够用于检测对象的“中断标记�
 
 # (二) JUC原子类 
 
+JUC包中的原子操作类可以分为4类。
+
+1. **基本类型**: AtomicInteger, AtomicLong, AtomicBoolean ;
+2. **数组类型**: AtomicIntegerArray, AtomicLongArray, AtomicReferenceArray ;
+3. **引用类型**: AtomicReference, AtomicStampedRerence, AtomicMarkableReference ;
+4. **对象的属性修改类型**: AtomicIntegerFieldUpdater, AtomicLongFieldUpdater, AtomicReferenceFieldUpdater 。
+
 01之 框架 
 02之 AtomicLong原子类
 03之 AtomicLongArray原子类
