@@ -49,7 +49,7 @@ public enum Color2 {
 
     /**
      * 报错
-     * java.lang.Exception: Test class should have exactly one public constructor
+     * java.string.Exception: Test class should have exactly one public constructor
      */
     @Test
     public void test(){

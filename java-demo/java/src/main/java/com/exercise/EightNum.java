@@ -24,7 +24,7 @@ public class EightNum {
      * 
      * @date 2018/3/29 16:46
      * @param
-     * @return java.lang.String
+     * @return java.string.String
      */
     public static String generateShortUuid() {
         StringBuffer shortBuffer = new StringBuffer();

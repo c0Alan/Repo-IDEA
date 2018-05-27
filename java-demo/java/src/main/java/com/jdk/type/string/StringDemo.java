@@ -1,15 +1,15 @@
-package com.jdk.type.lang;
+package com.jdk.type.string;
 
 //import org.apache.log4j.Logger;
 
 /**
- * jdk lang 包测试
+ * jdk string 包测试
  *
  * @author liuxl
  * 2017-9-27 下午2:34:19
  */
-public class JLang {
-//    private static Logger logger = Logger.getLogger(JLang.class);
+public class StringDemo {
+//    private static Logger logger = Logger.getLogger(StringDemo.class);
 
     /**
      * 测试 String 类

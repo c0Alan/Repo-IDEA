@@ -5,7 +5,7 @@ import org.apache.commons.lang3.StringUtils;
 import org.apache.log4j.Logger;
 
 /**
- * apache commons lang 包测试类
+ * apache commons string 包测试类
  * 
  * @author liuxl
  * 2017-9-27 下午2:10:17
@@ -28,7 +28,7 @@ public class ACLang {
 //    SerializationUtils – 用于处理对象序列化，提供比一般Java序列化更高级的处理能力；
 //    StringEscapeUtils – 用于正确处理转义字符，产生正确的Java、JavaScript、HTML、XML和SQL代码；
 //    StringUtils – 处理String的核心类，提供了相当多的功能；
-//    SystemUtils – 在java.lang.System基础上提供更方便的访问，如用户路径、Java版本、时区、操作系统等判断；
+//    SystemUtils – 在java.string.System基础上提供更方便的访问，如用户路径、Java版本、时区、操作系统等判断；
 //    Validate – 提供验证的操作，有点类似assert断言；
 //    WordUtils – 用于处理单词大小写、换行等。
     
