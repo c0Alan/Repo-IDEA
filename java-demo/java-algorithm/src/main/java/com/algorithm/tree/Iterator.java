@@ -1,13 +1,12 @@
 package com.algorithm.tree;
 
-
 public interface Iterator {
-	//�ƶ�����һ��Ԫ��
+	//移动到第一个元素
 	public void first();
-	//�ƶ�����һ��Ԫ��
+	//移动到下一个元素
 	public void next();
-	//�����������Ƿ���ʣ���Ԫ��
+	//检查迭代器中是否还有剩余的元素
 	public boolean isDone();
-	//���ص�ǰԪ��
+	//返回当前元素
 	public Object currentItem();
 }

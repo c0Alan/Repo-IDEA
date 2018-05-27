@@ -1,5 +1,7 @@
-package com.algorithm.tree;
+package com.algorithm.graph;
 
+
+import com.algorithm.tree.Node;
 
 public class Edge {
 	public static final int NORMAL = 0;
@@ -26,7 +28,7 @@ public class Edge {
 		secondVexPosition = v.getVexPosition();
 		type = Edge.NORMAL;
 		graphType = g.getType();
-		if (graphType== dsa.adt.Graph.UndirectedGraph){
+		if (graphType== Graph.UndirectedGraph){
 			//如果是无向图,边应当加入其两个顶点的邻接边表
 			edgeFirstPosition = u.getAdjacentEdges().insertLast(this);
 			egdeSecondPosition = v.getAdjacentEdges().insertLast(this);

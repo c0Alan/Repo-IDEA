@@ -1,11 +1,14 @@
 package com.algorithm.tree;
 
+import com.algorithm.linearlist.LinkedList;
+import com.algorithm.linearlist.LinkedListDLNode;
 import com.algorithm.search.SearchTable;
-import dsa.strategy.Strategy;
-import dsa.strategy.DefaultStrategy;
+import com.algorithm.strategy.DefaultStrategy;
+import com.algorithm.strategy.Strategy;
+
 
 public class BSTree extends BinaryTreeLinked implements SearchTable{
-	protected dsa.adt.BinTreeNode startBN;			//在AVL树中重新平衡的起始结点
+	protected BinTreeNode startBN;			//在AVL树中重新平衡的起始结点
 	//构造方法
 	public BSTree() { this(new DefaultStrategy());}
 	public BSTree(Strategy strategy){
@@ -28,7 +31,7 @@ public class BSTree extends BinaryTreeLinked implements SearchTable{
 	public Node search(Object ele){
 		return binTSearch(root, ele);
 	}
-	private Node binTSearchRe(dsa.adt.BinTreeNode rt, Object ele){
+	private Node binTSearchRe(BinTreeNode rt, Object ele){
 		if (rt==null) return null;
 		switch(strategy.compare(ele,rt.getData()))
 		{
@@ -37,7 +40,7 @@ public class BSTree extends BinaryTreeLinked implements SearchTable{
 			default: return binTSearchRe(rt.getRChild(),ele);//大于
 		}
 	}
-	private Node binTSearch(dsa.adt.BinTreeNode rt, Object ele){
+	private Node binTSearch(BinTreeNode rt, Object ele){
 		while(rt!=null){
 			switch(strategy.compare(ele,rt.getData()))
 			{
@@ -51,11 +54,11 @@ public class BSTree extends BinaryTreeLinked implements SearchTable{
 	
 	//返回所有关键字与元素ele相同的元素位置
 	public Iterator searchAll(Object ele){
-		LinkedList list = new dsa.adt.LinkedListDLNode();
+		LinkedList list = new LinkedListDLNode();
 		binTSearchAll(root, ele, list);
 		return list.elements();
 	}
-	public void binTSearchAll(dsa.adt.BinTreeNode rt, Object ele, LinkedList list){
+	public void binTSearchAll(BinTreeNode rt, Object ele, LinkedList list){
 		if (rt==null) return;
 		int comp = strategy.compare(ele,rt.getData());
 		if (comp<=0) binTSearchAll(rt.getLChild(),ele,list);
@@ -65,8 +68,8 @@ public class BSTree extends BinaryTreeLinked implements SearchTable{
 	
 	//按关键字插入元素ele
 	public void insert(Object ele){
-		dsa.adt.BinTreeNode p = null;
-		dsa.adt.BinTreeNode current = root;
+		BinTreeNode p = null;
+		BinTreeNode current = root;
 		while (current!=null){				//找到待插入位置
 			p = current;
 			if (strategy.compare(ele,current.getData())<0)
@@ -76,19 +79,19 @@ public class BSTree extends BinaryTreeLinked implements SearchTable{
 		}
 		startBN = p;						//待平衡出发点
 		if (p==null)
-			root = new dsa.adt.BinTreeNode(ele);	//树为空
+			root = new BinTreeNode(ele);	//树为空
 		else if (strategy.compare(ele,p.getData())<0)
-			p.setLChild(new dsa.adt.BinTreeNode(ele));
+			p.setLChild(new BinTreeNode(ele));
 		else
-			p.setRChild(new dsa.adt.BinTreeNode(ele));
+			p.setRChild(new BinTreeNode(ele));
 	}
 	
 	//若查找表中存在与元素ele关键字相同元素，则删除一个并返回；否则，返回null
 	public Object remove(Object ele){
-		dsa.adt.BinTreeNode v = (dsa.adt.BinTreeNode)binTSearch(root,ele);
+		BinTreeNode v = (BinTreeNode)binTSearch(root,ele);
 		if (v==null) return null;			//查找失败
-		dsa.adt.BinTreeNode del = null;				//待删结点
-		dsa.adt.BinTreeNode subT = null;			//del的子树
+		BinTreeNode del = null;				//待删结点
+		BinTreeNode subT = null;			//del的子树
 		if (!v.hasLChild()||!v.hasRChild())	//确定待删结点
 			del = v;
 		else{
@@ -118,28 +121,28 @@ public class BSTree extends BinaryTreeLinked implements SearchTable{
 	}
 	
 	//返回以v为根的二叉查找树中最小(大)元素的位置
-	public Node min(dsa.adt.BinTreeNode v){
+	public Node min(BinTreeNode v){
 		if (v!=null)
 			while (v.hasLChild()) v = v.getLChild();
 		return v;
 	}
-	public Node max(dsa.adt.BinTreeNode v){
+	public Node max(BinTreeNode v){
 		if (v!=null)
 			while (v.hasRChild()) v = v.getRChild();
 		return v;
 	}
 	
 	//返回结点v在中序遍历序列中的前驱结点
-	private dsa.adt.BinTreeNode getPredecessor(dsa.adt.BinTreeNode v){
+	private BinTreeNode getPredecessor(BinTreeNode v){
 		if (v==null) return null;
-		if (v.hasLChild()) return (dsa.adt.BinTreeNode)max(v.getLChild());
+		if (v.hasLChild()) return (BinTreeNode)max(v.getLChild());
 		while (v.isLChild()) v = v.getParent();
 		return v.getParent();
 	}
 	//返回结点v在中序遍历序列中的后续结点
-	private dsa.adt.BinTreeNode getSuccessor (dsa.adt.BinTreeNode v){
+	private BinTreeNode getSuccessor (BinTreeNode v){
 		if (v==null) return null;
-		if (v.hasRChild()) return (dsa.adt.BinTreeNode)min(v.getRChild());
+		if (v.hasRChild()) return (BinTreeNode)min(v.getRChild());
 		while (v.isRChild()) v = v.getParent();
 		return v.getParent();
 	}

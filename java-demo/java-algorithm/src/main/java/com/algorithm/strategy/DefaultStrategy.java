@@ -1,6 +1,7 @@
-package dsa.strategy;
+package com.algorithm.strategy;
 
-public final class DefaultStrategy implements Strategy 
+
+public final class DefaultStrategy implements Strategy
 {
 	
 	public boolean equal(Object obj1, Object obj2) 

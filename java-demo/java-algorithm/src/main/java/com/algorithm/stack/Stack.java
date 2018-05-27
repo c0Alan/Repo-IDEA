@@ -1,20 +1,20 @@
 package com.algorithm.stack;
 
-import dsa.exception.StackEmptyException;
+import com.algorithm.exception.StackEmptyException;
 
 public interface Stack {
-	//���ض�ջ�Ĵ�С
+	//返回堆栈的大小
 	public int getSize();
-	
-	//�ж϶�ջ�Ƿ�Ϊ��
+
+	//判断堆栈是否为空
 	public boolean isEmpty();
-	
-	//����Ԫ��e��ջ
+
+	//数据元素e入栈
 	public void push(Object e);
-	
-	//ջ��Ԫ�س�ջ
+
+	//栈顶元素出栈
 	public Object pop() throws StackEmptyException;
-	
-	//ȡջ��Ԫ��
+
+	//取栈顶元素
 	public Object peek() throws StackEmptyException;
 }

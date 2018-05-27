@@ -1,4 +1,4 @@
-package dsa.exception;
+package com.algorithm.exception;
 
 
 public class UnsupportedOperation extends RuntimeException {

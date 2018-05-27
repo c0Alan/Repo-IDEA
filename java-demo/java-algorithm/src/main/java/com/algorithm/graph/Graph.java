@@ -1,45 +1,48 @@
 package com.algorithm.graph;
 
-import dsa.exception.UnsupportedOperation;
+
+import com.algorithm.exception.UnsupportedOperation;
+import com.algorithm.tree.Iterator;
+import com.algorithm.tree.Node;
 
 public interface Graph {
-	public static final int UndirectedGraph = 0;//����ͼ
-	public static final int DirectedGraph   = 1;//����ͼ
-	
-	//����ͼ������
+	public static final int UndirectedGraph = 0;//无向图
+	public static final int DirectedGraph   = 1;//有向图
+
+	//返回图的类型
 	public int getType();
-	//����ͼ�Ķ�����
+	//返回图的顶点数
 	public int getVexNum();
-	//����ͼ�ı���
+	//返回图的边数
 	public int getEdgeNum();
-	//����ͼ�����ж���
+	//返回图的所有顶点
 	public Iterator getVertex();
-	//����ͼ�����б�
+	//返回图的所有边
 	public Iterator getEdge();
-	//ɾ��һ������v
+	//删除一个顶点v
 	public void remove(Vertex v);
-	//ɾ��һ����e
+	//删除一条边e
 	public void remove(Edge e);
-	//���һ������v
+	//添加一个顶点v
 	public Node insert(Vertex v);
-	//���һ����e
+	//添加一条边e
 	public Node insert(Edge e);
-	//�ж϶���u��v�Ƿ��ڽӣ����Ƿ��бߴ�u��v
+	//判断顶点u、v是否邻接，即是否有边从u到v
 	public boolean areAdjacent(Vertex u, Vertex v);
-	//���ش�uָ��v�ıߣ��������򷵻�null
+	//返回从u指向v的边，不存在则返回null
 	public Edge edgeFromTo(Vertex u, Vertex v);
-	//���ش�u��������ֱ�ӵ�����ڽӶ���
+	//返回从u出发可以直接到达的邻接顶点
 	public Iterator adjVertexs(Vertex u);
-	//��ͼ����������ȱ���
+	//对图进行深度优先遍历
 	public Iterator DFSTraverse(Vertex v);
-	//��ͼ���й�����ȱ���
+	//对图进行广度优先遍历
 	public Iterator BFSTraverse(Vertex v);
-	//�󶥵�v��������������·��
+	//求顶点v到其他顶点的最短路径
 	public Iterator shortestPath(Vertex v);
-	//������ͼ����С������,���������ͼ��֧�ִ˲���
+	//求无向图的最小生成树,如果是有向图不支持此操作
 	public void generateMST() throws UnsupportedOperation;
-	//������ͼ����������,����ͼ��֧�ִ˲���
+	//求有向图的拓扑序列,无向图不支持此操作
 	public Iterator toplogicalSort() throws UnsupportedOperation;
-	//�������޻�ͼ�Ĺؼ�·��,����ͼ��֧�ִ˲���
+	//求有向无环图的关键路径,无向图不支持此操作
 	public void criticalPath() throws UnsupportedOperation;
 }

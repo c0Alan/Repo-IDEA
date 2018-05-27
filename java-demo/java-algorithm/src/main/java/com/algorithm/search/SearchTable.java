@@ -1,17 +1,21 @@
 package com.algorithm.search;
 
 
+import com.algorithm.tree.Iterator;
+import com.algorithm.tree.Node;
+
 public interface SearchTable {
-	//��ѯ���ұ�ǰ�Ĺ�ģ
+	//查询查找表当前的规模
 	public int getSize();
-	//�жϲ��ұ��Ƿ�Ϊ��
+	//判断查找表是否为空
 	public boolean isEmpty();
-	//���ز��ұ�����Ԫ��ele�ؼ�����ͬ��Ԫ��λ�ã����򣬷���null
+	//返回查找表中与元素ele关键字相同的元素位置；否则，返回null
 	public Node search(Object ele);
-	//�������йؼ�����Ԫ��ele��ͬ��Ԫ��λ��
+	//返回所有关键字与元素ele相同的元素位置
 	public Iterator searchAll(Object ele);
-	//���ؼ��ֲ���Ԫ��ele
+	//按关键字插入元素ele
 	public void insert(Object ele);
-	//�����ұ��д�����Ԫ��ele�ؼ�����ͬԪ�أ���ɾ��һ�������أ����򣬷���null
+	//若查找表中存在与元素ele关键字相同元素，则删除一个并返回；否则，返回null
 	public Object remove(Object ele);
 }
+

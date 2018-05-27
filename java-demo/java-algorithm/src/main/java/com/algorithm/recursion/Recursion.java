@@ -83,7 +83,7 @@ public class Recursion
     
     public int selectK(int[] a, int n, int k){
     	if (n<10) {
-    		mergeSort (a, 0, a.length-1);	//使用归并排序直接对数组a排序
+    		mergeSort (a, 0, a.length-1);	//浣跨敤褰掑苟鎺掑簭鐩存帴瀵规暟缁刟鎺掑簭
     		return a[k-1];
     	}
     	int[] m = new int[n/5];

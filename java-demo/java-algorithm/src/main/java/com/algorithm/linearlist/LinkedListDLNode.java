@@ -1,76 +1,78 @@
 package com.algorithm.linearlist;
 
+import com.algorithm.exception.InvalidNodeException;
+import com.algorithm.exception.OutOfBoundaryException;
 import com.algorithm.tree.DLNode;
-import dsa.exception.InvalidNodeException;
-import dsa.exception.OutOfBoundaryException;
+
 import com.algorithm.tree.Iterator;
+import com.algorithm.tree.Node;
 
 public class LinkedListDLNode implements LinkedList {
-	private int size;	//��ģ
-	private DLNode head;//ͷ���,��Ԫ���
-	private DLNode tail;//β���,��Ԫ���
+	private int size;	//规模
+	private DLNode head;//头结点,哑元结点
+	private DLNode tail;//尾结点,哑元结点
 	public LinkedListDLNode() {
 		size = 0;
-		head = new DLNode();//����ֻ��ͷβ��������
+		head = new DLNode();//构建只有头尾结点的链表
 		tail = new DLNode();
 		head.setNext(tail);
 		tail.setPre(head);
 	}
-	//�����������жϽ��p�Ƿ�Ϸ�����Ϸ�ת��ΪDLNode
+	//辅助方法，判断结点p是否合法，如合法转换为DLNode
 	private DLNode checkPosition(Node p) throws InvalidNodeException {
 		if (p==null)
-			throw new InvalidNodeException("����pΪ�ա�");
+			throw new InvalidNodeException("错误：p为空。");
 		if (p==head)
-			throw new InvalidNodeException("����pָ��ͷ�ڵ㣬�Ƿ���");
+			throw new InvalidNodeException("错误：p指向头节点，非法。");
 		if (p==tail)
-			throw new InvalidNodeException("����pָ��β��㣬�Ƿ���");
+			throw new InvalidNodeException("错误：p指向尾结点，非法。");
 		DLNode node = (DLNode)p;
 		return node;
 	}
-	
-	//��ѯ���ӱ�ǰ�Ĺ�ģ
+
+	//查询链接表当前的规模
 	public int getSize() {
 		return size;
 	}
 
-	//�ж����ӱ��Ƿ�Ϊ��
+	//判断链接表是否为空
 	public boolean isEmpty() {
 		return size==0;
 	}
 
-	//���ص�һ�����
+	//返回第一个结点
 	public Node first() throws OutOfBoundaryException{
 		if (isEmpty())
-			throw new OutOfBoundaryException("�������ӱ�Ϊ�ա�");
+			throw new OutOfBoundaryException("错误：链接表为空。");
 		return head.getNext();
 	}
 
-	//�������һ���
+	//返回最后一结点
 	public Node last() throws OutOfBoundaryException{
 		if (isEmpty())
-			throw new OutOfBoundaryException("�������ӱ�Ϊ�ա�");
+			throw new OutOfBoundaryException("错误：链接表为空。");
 		return tail.getPre();
 	}
 
-	//����p֮��Ľ��
+	//返回p之后的结点
 	public Node getNext(Node p) throws InvalidNodeException, OutOfBoundaryException {
 		DLNode node = checkPosition(p);
 		node = node.getNext();
 		if (node==tail)
-			throw new OutOfBoundaryException("�����Ѿ������ӱ�β�ˡ�");
+			throw new OutOfBoundaryException("错误：已经是链接表尾端。");
 		return node;
 	}
 
-	//����p֮ǰ�Ľ��
+	//返回p之前的结点
 	public Node getPre(Node p) throws InvalidNodeException, OutOfBoundaryException {
 		DLNode node = checkPosition(p);
 		node = node.getPre();
 		if (node==head)
-			throw new OutOfBoundaryException("�����Ѿ������ӱ�ǰ�ˡ�");
+			throw new OutOfBoundaryException("错误：已经是链接表前端。");
 		return node;
 	}
 
-	//��e��Ϊ��һ��Ԫ�ز������ӱ�
+	//将e作为第一个元素插入链接表
 	public Node insertFirst(Object e) {
 		DLNode node = new DLNode(e,head,head.getNext());
 		head.getNext().setPre(node);
@@ -79,7 +81,7 @@ public class LinkedListDLNode implements LinkedList {
 		return node;
 	}
 
-	//��e��Ϊ���һ��Ԫ�ز����б�,������e���ڽ��
+	//将e作为最后一个元素插入列表,并返回e所在结点
 	public Node insertLast(Object e) {
 		DLNode node = new DLNode(e,tail.getPre(),tail);
 		tail.getPre().setNext(node);
@@ -88,7 +90,7 @@ public class LinkedListDLNode implements LinkedList {
 		return node;
 	}
 
-	//��e������p֮���λ��,������e���ڽ��
+	//将e插入至p之后的位置,并返回e所在结点
 	public Node insertAfter(Node p, Object e) throws InvalidNodeException {
 		DLNode node = checkPosition(p);
 		DLNode newNode = new DLNode(e,node,node.getNext());
@@ -98,7 +100,7 @@ public class LinkedListDLNode implements LinkedList {
 		return newNode;
 	}
 
-	//��e������p֮ǰ��λ��,������e���ڽ��
+	//将e插入至p之前的位置,并返回e所在结点
 	public Node insertBefore(Node p, Object e) throws InvalidNodeException {
 		DLNode node = checkPosition(p);
 		DLNode newNode = new DLNode(e,node.getPre(),node);
@@ -108,7 +110,7 @@ public class LinkedListDLNode implements LinkedList {
 		return newNode;
 	}
 
-	//ɾ������λ�ô���Ԫ�أ�������֮
+	//删除给定位置处的元素，并返回之
 	public Object remove(Node p) throws InvalidNodeException {
 		DLNode node = checkPosition(p);
 		Object obj = node.getData();
@@ -118,17 +120,17 @@ public class LinkedListDLNode implements LinkedList {
 		return obj;
 	}
 
-	//ɾ����Ԫ�أ�������֮
+	//删除首元素，并返回之
 	public Object removeFirst() throws OutOfBoundaryException{
 		return remove(head.getNext());
 	}
 
-	//ɾ��ĩԪ�أ�������֮
+	//删除末元素，并返回之
 	public Object removeLast() throws OutOfBoundaryException{
 		return remove(tail.getPre());
 	}
 
-	//�����ڸ���λ�õ�Ԫ���滻Ϊ��Ԫ�أ������ر��滻��Ԫ��
+	//将处于给定位置的元素替换为新元素，并返回被替换的元素
 	public Object replace(Node p, Object e) throws InvalidNodeException {
 		DLNode node = checkPosition(p);
 		Object obj = node.getData();
@@ -136,8 +138,8 @@ public class LinkedListDLNode implements LinkedList {
 		return obj;
 	}
 
-	//Ԫ�ص�����
+	//元素迭代器
 	public Iterator elements() {
 		return new LinkedListIterator(this);
-	}	
+	}
 }

@@ -1,44 +1,46 @@
 package com.algorithm.linearlist;
 
+import com.algorithm.exception.OutOfBoundaryException;
 import com.algorithm.tree.Iterator;
-import dsa.exception.OutOfBoundaryException;
+import com.algorithm.tree.Node;
+
 
 public class LinkedListIterator implements Iterator {
-	private LinkedList list;//���ӱ�
-	private Node current;//��ǰ���
+	private LinkedList list;//链接表
+	private Node current;//当前结点
 
-	//���췽��
+	//构造方法
 	public LinkedListIterator(LinkedList list) {
 		this.list = list;
-		if (list.isEmpty())		//���б�Ϊ��
-			current = null;		//��ǰԪ���ÿ�
+		if (list.isEmpty())		//若列表为空
+			current = null;		//则当前元素置空
 		else
-			current = list.first();//����ӵ�һ��Ԫ�ؿ�ʼ
+			current = list.first();//否则从第一个元素开始
 	}
-	
-	//�ƶ�����һ��Ԫ��
+
+	//移动到第一个元素
 	public void first(){
-		if (list.isEmpty())		//���б�Ϊ��
-			current = null;		//��ǰԪ���ÿ�
+		if (list.isEmpty())		//若列表为空
+			current = null;		//则当前元素置空
 		else
-			current = list.first();//����ӵ�һ��Ԫ�ؿ�ʼ		
+			current = list.first();//否则从第一个元素开始
 	}
-	
-	//�ƶ�����һ��Ԫ��
+
+	//移动到下一个元素
 	public void next() throws OutOfBoundaryException{
-		if (isDone()) 
-			throw new OutOfBoundaryException("�����Ѿ�û��Ԫ�ء�");
+		if (isDone())
+			throw new OutOfBoundaryException("错误：已经没有元素。");
 		if (current==list.last()) current = null;
 		else current = list.getNext(current);
 	}
-	
-	//�����������Ƿ���ʣ���Ԫ��
+
+	//检查迭代器中是否还有剩余的元素
 	public boolean isDone() { return current==null; }
-	
-	//���ص�ǰԪ��
+
+	//返回当前元素
 	public Object currentItem() throws OutOfBoundaryException{
-		if (isDone()) 
-			throw new OutOfBoundaryException("�����Ѿ�û��Ԫ�ء�");
+		if (isDone())
+			throw new OutOfBoundaryException("错误：已经没有元素。");
 		return current.getData();
 	}
 }

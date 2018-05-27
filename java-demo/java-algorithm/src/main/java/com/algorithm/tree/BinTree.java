@@ -1,22 +1,22 @@
 package com.algorithm.tree;
 
 public interface BinTree {
-	//�������Ĺ�ģ
+	//返回树的规模
 	public int getSize();
-	//�ж����Ƿ�Ϊ��
+	//判断树是否为空
 	public boolean isEmpty();
-	//���ظ��������
+	//返回根结点引用
 	public BinTreeNode getRoot();
-	//��ȡ���ĸ߶�
+	//获取树的高度
 	public int getHeight();
-	//�����в���Ԫ��e�����������ڽ��
+	//在树中查找元素e，返回其所在结点
 	public BinTreeNode find(Object e);
-	//�������������
+	//先序遍历二叉树
 	public Iterator preOrder();
-	//�������������
+	//中序遍历二叉树
 	public Iterator inOrder();
-	//�������������
+	//后序遍历二叉树
 	public Iterator postOrder();
-	//�������������
+	//按层遍历二叉树
 	public Iterator levelOrder();
 }

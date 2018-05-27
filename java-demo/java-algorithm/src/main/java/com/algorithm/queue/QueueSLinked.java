@@ -1,50 +1,52 @@
 package com.algorithm.queue;
 
-import dsa.exception.QueueEmptyException;
+
+import com.algorithm.exception.QueueEmptyException;
+import com.algorithm.tree.SLNode;
 
 public class QueueSLinked implements Queue {
-	private dsa.adt.SLNode front;
-	private dsa.adt.SLNode rear;
+	private SLNode front;
+	private SLNode rear;
 	private int size;
 	public QueueSLinked() {
-		front = new dsa.adt.SLNode();
+		front = new SLNode();
 		rear = front;
 		size = 0;
 	}
 
-	//���ض��еĴ�С
+	//返回队列的大小
 	public int getSize() {
 		return size;
 	}
 
-	//�ж϶����Ƿ�Ϊ��
+	//判断队列是否为空
 	public boolean isEmpty() {
 		return size==0;
 	}
 
-	//����Ԫ��e���
+	//数据元素e入队
 	public void enqueue(Object e) {
-		dsa.adt.SLNode p = new dsa.adt.SLNode(e,null);
+		SLNode p = new SLNode(e,null);
 		rear.setNext(p);
 		rear = p;
 		size++;
 	}
 
-	//����Ԫ�س���
+	//队首元素出队
 	public Object dequeue() throws QueueEmptyException {
 		if (size<1)
-			throw new QueueEmptyException("���󣺶���Ϊ��");
-		dsa.adt.SLNode p = front.getNext();
+			throw new QueueEmptyException("错误：队列为空");
+		SLNode p = front.getNext();
 		front.setNext(p.getNext());
 		size--;
-		if (size<1) rear = front;	//�������Ϊ��,rearָ��ͷ���
+		if (size<1) rear = front;	//如果队列为空,rear指向头结点
 		return p.getData();
 	}
 
-	//ȡ����Ԫ��
+	//取队首元素
 	public Object peek() throws QueueEmptyException {
 		if (size<1)
-			throw new QueueEmptyException("���󣺶���Ϊ��");
+			throw new QueueEmptyException("错误：队列为空");
 		return front.getNext().getData();
-	}	
+	}
 }

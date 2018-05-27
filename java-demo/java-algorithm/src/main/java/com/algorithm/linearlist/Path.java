@@ -1,7 +1,8 @@
 package com.algorithm.linearlist;
 
 
-import com.algorithm.linearlist.LinkedListDLNode;
+import com.algorithm.graph.Vertex;
+import com.algorithm.tree.Iterator;
 
 public class Path {
 	private int distance;	//起点与终点的距离
@@ -36,7 +37,7 @@ public class Path {
 	public int getDistance(){ return distance;}
 	public Vertex getStart(){ return start;}
 	public Vertex getEnd(){ return end;}
-	public Iterator getPathInfo(){ 
+	public Iterator getPathInfo(){
 		return pathInfo.elements();
 	}
 	//清空路经信息

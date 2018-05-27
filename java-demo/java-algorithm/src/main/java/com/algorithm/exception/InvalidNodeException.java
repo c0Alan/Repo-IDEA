@@ -1,5 +1,4 @@
-package dsa.exception;
-
+package com.algorithm.exception;
 
 public class InvalidNodeException extends RuntimeException {
 	public InvalidNodeException(String err) {

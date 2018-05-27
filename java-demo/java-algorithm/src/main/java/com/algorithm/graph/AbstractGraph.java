@@ -1,83 +1,89 @@
 package com.algorithm.graph;
 
-import com.algorithm.linearlist.Vertex;
-import com.algorithm.tree.Edge;
-import dsa.exception.UnsupportedOperation;
+import com.algorithm.exception.UnsupportedOperation;
+import com.algorithm.linearlist.LinkedList;
+import com.algorithm.linearlist.LinkedListDLNode;
+import com.algorithm.queue.Queue;
+import com.algorithm.queue.QueueSLinked;
+import com.algorithm.stack.Stack;
+import com.algorithm.stack.StackSLinked;
 import com.algorithm.linearlist.Path;
+import com.algorithm.tree.Iterator;
+import com.algorithm.tree.Node;
 
 public abstract class AbstractGraph implements Graph {
-	protected LinkedList vertexs;//ï¿½ï¿½ï¿½ï¿½ï¿½
-	protected LinkedList edges;	//ï¿½ß±ï¿½
-	protected int type;			//Í¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
-	
+	protected LinkedList vertexs;//¶¥µã±í
+	protected LinkedList edges;	//±ß±í
+	protected int type;			//Í¼µÄÀàÐÍ
+
 	public AbstractGraph(int type){
 		this.type = type;
-		vertexs = new dsa.adt.LinkedListDLNode();
-		edges = new dsa.adt.LinkedListDLNode();
+		vertexs = new LinkedListDLNode();
+		edges = new LinkedListDLNode();
 	}
-	
-	//ï¿½ï¿½ï¿½ï¿½Í¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+
+	//·µ»ØÍ¼µÄÀàÐÍ
 	public int getType(){
 		return type;
 	}
-	//ï¿½ï¿½ï¿½ï¿½Í¼ï¿½Ä¶ï¿½ï¿½ï¿½ï¿½ï¿½
+	//·µ»ØÍ¼µÄ¶¥µãÊý
 	public int getVexNum() {
 		return vertexs.getSize();
 	}
-	
-	//ï¿½ï¿½ï¿½ï¿½Í¼ï¿½Ä±ï¿½ï¿½ï¿½
+
+	//·µ»ØÍ¼µÄ±ßÊý
 	public int getEdgeNum() {
 		return edges.getSize();
 	}
-	
-	//ï¿½ï¿½ï¿½ï¿½Í¼ï¿½ï¿½ï¿½ï¿½ï¿½Ð¶ï¿½ï¿½ï¿½
+
+	//·µ»ØÍ¼µÄËùÓÐ¶¥µã
 	public Iterator getVertex() {
 		return vertexs.elements();
 	}
 
-	//ï¿½ï¿½ï¿½ï¿½Í¼ï¿½ï¿½ï¿½ï¿½ï¿½Ð±ï¿½
+	//·µ»ØÍ¼µÄËùÓÐ±ß
 	public Iterator getEdge() {
 		return edges.elements();
 	}
-	
-	//ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½v
+
+	//Ìí¼ÓÒ»¸ö¶¥µãv
 	public Node insert(Vertex v) {
 		return vertexs.insertLast(v);
 	}
 
-	//ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½e
+	//Ìí¼ÓÒ»Ìõ±ße
 	public Node insert(Edge e) {
 		return edges.insertLast(e);
 	}
 
-	//ï¿½Ð¶Ï¶ï¿½ï¿½ï¿½uï¿½ï¿½vï¿½Ç·ï¿½ï¿½Ú½Ó£ï¿½ï¿½ï¿½ï¿½Ç·ï¿½ï¿½Ð±ß´ï¿½uï¿½ï¿½v
+	//ÅÐ¶Ï¶¥µãu¡¢vÊÇ·ñÁÚ½Ó£¬¼´ÊÇ·ñÓÐ±ß´Óuµ½v
 	public boolean areAdjacent(Vertex u, Vertex v) {
 		return edgeFromTo(u,v)!=null;
 	}
-	
-	//ï¿½ï¿½Í¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È±ï¿½ï¿½ï¿½
+
+	//¶ÔÍ¼½øÐÐÉî¶ÈÓÅÏÈ±éÀú
 	public Iterator DFSTraverse(Vertex v) {
-		LinkedList traverseSeq = new dsa.adt.LinkedListDLNode();//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
-		resetVexStatus();			//ï¿½ï¿½ï¿½Ã¶ï¿½ï¿½ï¿½×´Ì¬
-		DFS(v, traverseSeq);		//ï¿½ï¿½vï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
-		Iterator it = getVertex();	//ï¿½ï¿½Í¼ï¿½ï¿½Î´ï¿½ï¿½ï¿½ï¿½ï¿½Êµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+		LinkedList traverseSeq = new LinkedListDLNode();//±éÀú½á¹û
+		resetVexStatus();			//ÖØÖÃ¶¥µã×´Ì¬
+		DFS(v, traverseSeq);		//´Óvµã³ö·¢Éî¶ÈÓÅÏÈËÑË÷
+		Iterator it = getVertex();	//´ÓÍ¼ÖÐÎ´Ôø·ÃÎÊµÄÆäËû¶¥µã³ö·¢ÖØÐÂËÑË÷
 		for(it.first(); !it.isDone(); it.next()){
 			Vertex u = (Vertex)it.currentItem();
 			if (!u.isVisited()) DFS(u, traverseSeq);
 		}
 		return traverseSeq.elements();
 	}
-	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ÈµÄµÝ¹ï¿½ï¿½ã·¨
+	//Éî¶ÈÓÅÏÈµÄµÝ¹éËã·¨
 	private void DFSRecursion(Vertex v, LinkedList list){
 		v.setToVisited();
 		list.insertLast(v);
-		Iterator it = adjVertexs(v);//È¡ï¿½Ã¶ï¿½ï¿½ï¿½vï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ú½Óµï¿½
+		Iterator it = adjVertexs(v);//È¡µÃ¶¥µãvµÄËùÓÐÁÚ½Óµã
 		for(it.first(); !it.isDone(); it.next()){
 			Vertex u = (Vertex)it.currentItem();
 			if (!u.isVisited()) DFSRecursion(u,list);
 		}
 	}
-	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ÈµÄ·ÇµÝ¹ï¿½ï¿½ã·¨
+	//Éî¶ÈÓÅÏÈµÄ·ÇµÝ¹éËã·¨
 	private void DFS(Vertex v, LinkedList list){
 		Stack s = new StackSLinked();
 		s.push(v);
@@ -95,12 +101,12 @@ public abstract class AbstractGraph implements Graph {
 		}//while
 	}
 
-	//ï¿½ï¿½Í¼ï¿½ï¿½ï¿½Ð¹ï¿½ï¿½ï¿½ï¿½ï¿½È±ï¿½ï¿½ï¿½
+	//¶ÔÍ¼½øÐÐ¹ã¶ÈÓÅÏÈ±éÀú
 	public Iterator BFSTraverse(Vertex v) {
-		LinkedList traverseSeq = new LinkedListDLNode();//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
-		resetVexStatus();			//ï¿½ï¿½ï¿½Ã¶ï¿½ï¿½ï¿½×´Ì¬
-		BFS(v, traverseSeq);		//ï¿½ï¿½vï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
-		Iterator it = getVertex();	//ï¿½ï¿½Í¼ï¿½ï¿½Î´ï¿½ï¿½ï¿½ï¿½ï¿½Êµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+		LinkedList traverseSeq = new LinkedListDLNode();//±éÀú½á¹û
+		resetVexStatus();			//ÖØÖÃ¶¥µã×´Ì¬
+		BFS(v, traverseSeq);		//´Óvµã³ö·¢¹ã¶ÈÓÅÏÈËÑË÷
+		Iterator it = getVertex();	//´ÓÍ¼ÖÐÎ´Ôø·ÃÎÊµÄÆäËû¶¥µã³ö·¢ÖØÐÂËÑË÷
 		for(it.first(); !it.isDone(); it.next()){
 			Vertex u = (Vertex)it.currentItem();
 			if (!u.isVisited()) BFS(u, traverseSeq);
@@ -126,11 +132,11 @@ public abstract class AbstractGraph implements Graph {
 		}//while
 	}
 
-	//ï¿½ó¶¥µï¿½vï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Â·ï¿½ï¿½
+	//Çó¶¥µãvµ½ÆäËû¶¥µãµÄ×î¶ÌÂ·¾¶
 	public Iterator shortestPath(Vertex v) {
 		LinkedList sPath = new LinkedListDLNode();
-		resetVexStatus();//ï¿½ï¿½ï¿½ï¿½Í¼ï¿½Ð¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½×´Ì¬ï¿½ï¿½Ï¢
-		Iterator it = getVertex();//ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½vï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ì¾ï¿½ï¿½ï¿½ï¿½Ê¼ï¿½ï¿½Îªï¿½ï¿½vÖ±ï¿½Ó¿É´ï¿½Ä¾ï¿½ï¿½ï¿½
+		resetVexStatus();//ÖØÖÃÍ¼ÖÐ¸÷¶¥µãµÄ×´Ì¬ÐÅÏ¢
+		Iterator it = getVertex();//³õÊ¼»¯£¬½«vµ½¸÷¶¥µãµÄ×î¶Ì¾àÀë³õÊ¼»¯ÎªÓÉvÖ±½Ó¿É´ïµÄ¾àÀë
 		for(it.first(); !it.isDone(); it.next()){
 			Vertex u = (Vertex)it.currentItem();
 			int weight = Integer.MAX_VALUE;
@@ -141,26 +147,26 @@ public abstract class AbstractGraph implements Graph {
 			Path p = new Path(weight,v,u);
 			setPath(u, p);
 		}
-		v.setToVisited();//ï¿½ï¿½ï¿½ï¿½vï¿½ï¿½ï¿½ë¼¯ï¿½ï¿½S,ï¿½ï¿½visited=trueï¿½ï¿½Ê¾ï¿½ï¿½ï¿½ï¿½Sï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½S
-		sPath.insertLast(getPath(v));//ï¿½ï¿½Ãµï¿½ï¿½ï¿½ï¿½Â·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ó±ï¿½
-		for (int t=1;t<getVexNum();t++){//ï¿½ï¿½ï¿½ï¿½n-1ï¿½ï¿½Ñ­ï¿½ï¿½ï¿½Òµï¿½n-1ï¿½ï¿½ï¿½ï¿½ï¿½Â·ï¿½ï¿½
-			Vertex k = selectMin(it);//ï¿½Ð¼ä¶¥ï¿½ï¿½kï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ñ¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Äµã£¬ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Îªï¿½ï¿½
-			k.setToVisited();				//ï¿½ï¿½ï¿½ï¿½kï¿½ï¿½ï¿½ï¿½S
-			sPath.insertLast(getPath(k));	//ï¿½ï¿½Ãµï¿½ï¿½ï¿½ï¿½Â·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ó±ï¿½
-			int distK = getDistance(k);		//ï¿½ï¿½kÎªï¿½Ð¼ä¶¥ï¿½ï¿½ï¿½Þ¸ï¿½vï¿½ï¿½V-Sï¿½Ð¶ï¿½ï¿½ï¿½Äµï¿½Ç°ï¿½ï¿½ï¿½Â·ï¿½ï¿½
-			Iterator adjIt = adjVertexs(k);	//È¡ï¿½ï¿½kï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ú½Óµï¿½
+		v.setToVisited();//¶¥µãv½øÈë¼¯ºÏS,ÒÔvisited=true±íÊ¾ÊôÓÚS£¬·ñÔò²»ÊôÓÚS
+		sPath.insertLast(getPath(v));//ÇóµÃµÄ×î¶ÌÂ·¾¶½øÈëÁ´½Ó±í
+		for (int t=1;t<getVexNum();t++){//½øÐÐn-1´ÎÑ­»·ÕÒµ½n-1Ìõ×î¶ÌÂ·¾¶
+			Vertex k = selectMin(it);//ÖÐ¼ä¶¥µãk¡£¿ÉÄÜÑ¡³öÎÞÇî´ó¾àÀëµÄµã£¬µ«²»»áÎª¿Õ
+			k.setToVisited();				//¶¥µãk¼ÓÈëS
+			sPath.insertLast(getPath(k));	//ÇóµÃµÄ×î¶ÌÂ·¾¶½øÈëÁ´½Ó±í
+			int distK = getDistance(k);		//ÒÔkÎªÖÐ¼ä¶¥µãÐÞ¸Ävµ½V-SÖÐ¶¥µãµÄµ±Ç°×î¶ÌÂ·¾¶
+			Iterator adjIt = adjVertexs(k);	//È¡³ökµÄËùÓÐÁÚ½Óµã
 			for(adjIt.first(); !adjIt.isDone(); adjIt.next()){
 				Vertex adjV = (Vertex)adjIt.currentItem();
 				Edge e = edgeFromTo(k,adjV);
-				if ((long)distK+(long)e.getWeight()<(long)getDistance(adjV)){//ï¿½ï¿½ï¿½Ö¸ï¿½ï¿½Ìµï¿½Â·ï¿½ï¿½
+				if ((long)distK+(long)e.getWeight()<(long)getDistance(adjV)){//·¢ÏÖ¸ü¶ÌµÄÂ·¾¶
 					setDistance(adjV, distK+e.getWeight());
-					amendPathInfo(k,adjV);	//ï¿½ï¿½kï¿½ï¿½Â·ï¿½ï¿½ï¿½ï¿½Ï¢ï¿½Þ¸ï¿½adjVï¿½ï¿½Â·ï¿½ï¿½ï¿½ï¿½Ï¢
+					amendPathInfo(k,adjV);	//ÒÔkµÄÂ·¾¶ÐÅÏ¢ÐÞ¸ÄadjVµÄÂ·¾¶ÐÅÏ¢
 				}
 			}//for
 		}//for(int t=1...
 		return sPath.elements();
 	}
-	//ï¿½Ú¶ï¿½ï¿½ã¼¯ï¿½ï¿½ï¿½ï¿½Ñ¡ï¿½ï¿½Â·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð¡ï¿½ï¿½
+	//ÔÚ¶¥µã¼¯ºÏÖÐÑ¡ÔñÂ·¾¶¾àÀë×îÐ¡µÄ
 	protected Vertex selectMin(Iterator it){
 		Vertex min = null;
 		for(it.first(); !it.isDone(); it.next()){
@@ -174,7 +180,7 @@ public abstract class AbstractGraph implements Graph {
 		}
 		return min;
 	}
-	//ï¿½Þ¸Äµï¿½ï¿½Õµï¿½ï¿½Â·ï¿½ï¿½ï¿½ï¿½Ï¢
+	//ÐÞ¸Äµ½ÖÕµãµÄÂ·¾¶ÐÅÏ¢
 	protected void amendPathInfo(Vertex mid, Vertex end){
 		Iterator it = getPath(mid).getPathInfo();
 		getPath(end).clearPathInfo();
@@ -184,44 +190,44 @@ public abstract class AbstractGraph implements Graph {
 		getPath(end).addPathInfo(mid.getInfo());
 	}
 
-	//É¾ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½v
+	//É¾³ýÒ»¸ö¶¥µãv
 	public abstract void remove(Vertex v);
 
-	//É¾ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½e
+	//É¾³ýÒ»Ìõ±ße
 	public abstract void remove(Edge e);
-	
-	//ï¿½ï¿½ï¿½Ø´ï¿½uÖ¸ï¿½ï¿½vï¿½Ä±ß£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ò·µ»ï¿½null
+
+	//·µ»Ø´ÓuÖ¸ÏòvµÄ±ß£¬²»´æÔÚÔò·µ»Ønull
 	public abstract Edge edgeFromTo(Vertex u, Vertex v);
-	
-	//ï¿½ï¿½ï¿½Ø´ï¿½uï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö±ï¿½Óµï¿½ï¿½ï¿½ï¿½ï¿½Ú½Ó¶ï¿½ï¿½ï¿½
+
+	//·µ»Ø´Óu³ö·¢¿ÉÒÔÖ±½Óµ½´ïµÄÁÚ½Ó¶¥µã
 	public abstract Iterator adjVertexs(Vertex u);
-	
-	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í¼ï¿½ï¿½ï¿½ï¿½Ð¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½,ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í¼ï¿½ï¿½Ö§ï¿½Ö´Ë²ï¿½ï¿½ï¿½
+
+	//ÇóÎÞÏòÍ¼µÄ×îÐ¡Éú³ÉÊ÷,Èç¹ûÊÇÓÐÏòÍ¼²»Ö§³Ö´Ë²Ù×÷
 	public abstract void generateMST() throws UnsupportedOperation;
 
-	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½,ï¿½ï¿½ï¿½ï¿½Í¼ï¿½ï¿½Ö§ï¿½Ö´Ë²ï¿½ï¿½ï¿½
+	//ÇóÓÐÏòÍ¼µÄÍØÆËÐòÁÐ,ÎÞÏòÍ¼²»Ö§³Ö´Ë²Ù×÷
 	public abstract Iterator toplogicalSort() throws UnsupportedOperation;
 
-	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Þ»ï¿½Í¼ï¿½Ä¹Ø¼ï¿½Â·ï¿½ï¿½,ï¿½ï¿½ï¿½ï¿½Í¼ï¿½ï¿½Ö§ï¿½Ö´Ë²ï¿½ï¿½ï¿½
+	//ÇóÓÐÏòÎÞ»·Í¼µÄ¹Ø¼üÂ·¾¶,ÎÞÏòÍ¼²»Ö§³Ö´Ë²Ù×÷
 	public abstract void criticalPath() throws UnsupportedOperation;
 
-	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í¼ï¿½Ð¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½×´Ì¬ï¿½ï¿½Ï¢
+	//¸¨Öú·½·¨£¬ÖØÖÃÍ¼ÖÐ¸÷¶¥µãµÄ×´Ì¬ÐÅÏ¢
 	protected void resetVexStatus(){
 		Iterator it = getVertex();
 		for(it.first(); !it.isDone(); it.next()){
 			Vertex u = (Vertex)it.currentItem();
 			u.resetStatus();
-		}		
+		}
 	}
-	//ï¿½ï¿½ï¿½ï¿½Í¼ï¿½Ð¸ï¿½ï¿½ßµï¿½×´Ì¬ï¿½ï¿½Ï¢
+	//ÖØÖÃÍ¼ÖÐ¸÷±ßµÄ×´Ì¬ÐÅÏ¢
 	protected void resetEdgeType(){
 		Iterator it = getEdge();
 		for(it.first(); !it.isDone(); it.next()){
 			Edge e = (Edge)it.currentItem();
 			e.resetType();
-		}		
+		}
 	}
-	//ï¿½ï¿½ï¿½ï¿½ï¿½Â·ï¿½ï¿½Ê±ï¿½ï¿½ï¿½ï¿½v.applicationï¿½Ä²ï¿½ï¿½ï¿½
+	//Çó×î¶ÌÂ·¾¶Ê±£¬¶Ôv.applicationµÄ²Ù×÷
 	protected int getDistance(Vertex v){ return ((Path)v.getAppObj()).getDistance();}
 	protected void setDistance(Vertex v, int dis){ ((Path)v.getAppObj()).setDistance(dis);}
 	protected Path getPath(Vertex v){ return (Path)v.getAppObj();}

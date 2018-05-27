@@ -2,8 +2,9 @@ package com.algorithm.tree;
 
 
 public interface Node {
-	//��ȡ���������
+	//获取结点数据域
 	public Object getData();
-	//���ý��������
+	//设置结点数据域
 	public void setData(Object obj);
 }
+

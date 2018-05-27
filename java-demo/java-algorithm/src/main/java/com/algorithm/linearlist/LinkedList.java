@@ -1,37 +1,40 @@
 package com.algorithm.linearlist;
 
-import dsa.exception.InvalidNodeException;
-import dsa.exception.OutOfBoundaryException;
+
+import com.algorithm.exception.InvalidNodeException;
+import com.algorithm.exception.OutOfBoundaryException;
+import com.algorithm.tree.Iterator;
+import com.algorithm.tree.Node;
 
 public interface LinkedList {
-	//��ѯ���ӱ�ǰ�Ĺ�ģ
+	//查询链接表当前的规模
 	public int getSize();
-	//�ж����ӱ��Ƿ�Ϊ��
+	//判断链接表是否为空
 	public boolean isEmpty();
-	//���ص�һ�����
+	//返回第一个结点
 	public Node first() throws OutOfBoundaryException;
-	//�������һ���
+	//返回最后一结点
 	public Node last() throws OutOfBoundaryException;
-	//����p֮��Ľ��
+	//返回p之后的结点
 	public Node getNext(Node p) throws InvalidNodeException, OutOfBoundaryException;
-	//����p֮ǰ�Ľ��
+	//返回p之前的结点
 	public Node getPre(Node p) throws InvalidNodeException, OutOfBoundaryException;
-	//��e��Ϊ��һ��Ԫ�ز������ӱ�,������e���ڽ��
+	//将e作为第一个元素插入链接表,并返回e所在结点
 	public Node insertFirst(Object e);
-	//��e��Ϊ���һ��Ԫ�ز����б�,������e���ڽ��
+	//将e作为最后一个元素插入列表,并返回e所在结点
 	public Node insertLast(Object e);
-	//��e������p֮���λ��,������e���ڽ��
+	//将e插入至p之后的位置,并返回e所在结点
 	public Node insertAfter(Node p, Object e) throws InvalidNodeException;
-	//��e������p֮ǰ��λ��,������e���ڽ��
+	//将e插入至p之前的位置,并返回e所在结点
 	public Node insertBefore(Node p, Object e) throws InvalidNodeException;
-	//ɾ������λ�ô���Ԫ�أ�������֮
+	//删除给定位置处的元素，并返回之
 	public Object remove(Node p) throws InvalidNodeException;
-	//ɾ����Ԫ�أ�������֮
+	//删除首元素，并返回之
 	public Object removeFirst() throws OutOfBoundaryException;
-	//ɾ��ĩԪ�أ�������֮
+	//删除末元素，并返回之
 	public Object removeLast() throws OutOfBoundaryException;
-	//�����ڸ���λ�õ�Ԫ���滻Ϊ��Ԫ�أ������ر��滻��Ԫ��
+	//将处于给定位置的元素替换为新元素，并返回被替换的元素
 	public Object replace(Node p, Object e) throws InvalidNodeException;
-	//Ԫ�ص�����
+	//元素迭代器
 	public Iterator elements();
 }

@@ -1,43 +1,45 @@
 package com.algorithm.sort;
 
-import dsa.strategy.Strategy;
+
+import com.algorithm.strategy.DefaultStrategy;
+import com.algorithm.strategy.Strategy;
 
 public class Sorter {
 	private Strategy strategy;
 	public Sorter(Strategy strategy) {
 		this.strategy = strategy;
 	}
-	
-	//�򵥲�������
+
+	//简单插入排序
 	public void insertSort(Object[] r, int low, int high){
 		for (int i=low+1; i<=high; i++)
-			if (strategy.compare(r[i],r[i-1])<0){	//С��ʱ���轫r[i]���������
+			if (strategy.compare(r[i],r[i-1])<0){	//小于时，需将r[i]插入有序表
 				Object temp = r[i];
 				r[i] = r[i-1];
 				int j=i-2;
 				for (; j>=low&&strategy.compare(temp,r[j])<0; j--)
-					r[j+1] = r[j];					//��¼����
-				r[j+1] = temp;						//���뵽��ȷλ��
+					r[j+1] = r[j];					//记录后移
+				r[j+1] = temp;						//插入到正确位置
 			}
 	}
-	
-	//�۰��������
+
+	//折半插入排序
 	public void binInsertSort(Object[] r, int low, int high){
 		for (int i=low+1; i<=high; i++){
-				Object temp = r[i];					//���������Ԫ�� 
-				int hi = i-1;  int lo = low;		//���ó�ʼ����
-				while (lo<=hi){						//�۰�ȷ������λ��
+			Object temp = r[i];					//保存待插入元素
+			int hi = i-1;  int lo = low;		//设置初始区间
+			while (lo<=hi){						//折半确定插入位置
 				int mid = (lo+hi)/2;
 				if(strategy.compare(temp,r[mid])<0)
 					hi = mid - 1;
 				else lo = mid + 1;
 			}
-			for (int j=i-1;j>hi;j--) r[j+1] = r[j];	//�ƶ�Ԫ��
-			r[hi+1] = temp;							//����Ԫ��
+			for (int j=i-1;j>hi;j--) r[j+1] = r[j];	//移动元素
+			r[hi+1] = temp;							//插入元素
 		}//for
 	}
-	
-	//ϣ������
+
+	//希尔排序
 	public void shellSort(Object[] r, int low, int high, int[] delta){
 		for (int k=0;k<delta.length;k++)
 			shellInsert(r, low, high, delta[k]);
@@ -52,8 +54,8 @@ public class Sorter {
 				r[j+deltaK] = temp;
 			}
 	}
-	
-	//��������
+
+	//起泡排序
 	public void bubbleSort(Object[] r, int low, int high){
 		int n = high - low + 1;
 		for (int i=1;i<n;i++)
@@ -65,8 +67,8 @@ public class Sorter {
 					r[j+1] = temp;
 				}
 	}
-	
-	//��������
+
+	//快速排序
 	public void quickSort(Object[] r, int low, int high){
 		if (low<high){
 			int pa = partition(r,low,high);
@@ -85,8 +87,8 @@ public class Sorter {
 		r[low] = pivot;
 		return low;
 	}
-	
-	//ѡ������
+
+	//选择排序
 	public void selectSort(Object[] r, int low, int high){
 		for (int k=low; k<high-1; k++){
 			int min = k;
@@ -99,8 +101,8 @@ public class Sorter {
 			}
 		}
 	}
-	
-	//������
+
+	//堆排序
 	public void heapSort(Object[] r){
 		int n = r.length - 1;
 		for (int i=n/2; i>=1; i--)
@@ -121,47 +123,47 @@ public class Sorter {
 		}
 		r[low] = temp;
 	}
-	
-	//�鲢����
+
+	//归并排序
 	public void mergeSort(Object[] r, int low, int high){
-    	if (low<high){
-    		mergeSort(r,low,(high+low)/2);
-    		mergeSort(r,(high+low)/2+1,high);
-    		merge(r,low,(high+low)/2,high);
-    	}
-    	
-    }
-    private void merge(Object[] a, int p, int q, int r){
-    	Object[] b = new Object[r-p+1];
-    	int s = p;
-    	int t = q+1;
-    	int k = 0;
-    	while (s<=q&&t<=r)
-    		if (strategy.compare(a[s],a[t])<0)
-    			b[k++] = a[s++];
-    		else
-    			b[k++] = a[t++];
-    	while (s<=q) b[k++] = a[s++];
-    	while (t<=r) b[k++] = a[t++];
-    	for (int i=0; i<b.length; i++)
-    		a[p+i] = b[i];
-    }
-    public void bottomUpSort(Object[] r, int low, int high){
-    	int t= 1;
-    	while (t<high-low+1){
-    		int s = t;
-    		t = 2 * s;
-    		int i = low-1;
-    		while (i+t<=high){
-    			merge(r,i+1,i+s,i+t);
-    			i = i + t;
-    		}
-    		if (i+s<high) merge(r,i+1,i+s,high);	
-    	}
-    }
-    
+		if (low<high){
+			mergeSort(r,low,(high+low)/2);
+			mergeSort(r,(high+low)/2+1,high);
+			merge(r,low,(high+low)/2,high);
+		}
+
+	}
+	private void merge(Object[] a, int p, int q, int r){
+		Object[] b = new Object[r-p+1];
+		int s = p;
+		int t = q+1;
+		int k = 0;
+		while (s<=q&&t<=r)
+			if (strategy.compare(a[s],a[t])<0)
+				b[k++] = a[s++];
+			else
+				b[k++] = a[t++];
+		while (s<=q) b[k++] = a[s++];
+		while (t<=r) b[k++] = a[t++];
+		for (int i=0; i<b.length; i++)
+			a[p+i] = b[i];
+	}
+	public void bottomUpSort(Object[] r, int low, int high){
+		int t= 1;
+		while (t<high-low+1){
+			int s = t;
+			t = 2 * s;
+			int i = low-1;
+			while (i+t<=high){
+				merge(r,i+1,i+s,i+t);
+				i = i + t;
+			}
+			if (i+s<high) merge(r,i+1,i+s,high);
+		}
+	}
+
 	public static void main(String[] args){
-		Sorter sorter = new Sorter(new dsa.strategy.DefaultStrategy());
+		Sorter sorter = new Sorter(new DefaultStrategy());
 		String[] r = {"26","53","48","01","03","38","32","15","09"};
 		String[] s = {"12"};
 		int[] del = {5,3,1};

@@ -1,20 +1,21 @@
 package com.algorithm.queue;
 
-import dsa.exception.QueueEmptyException;
+
+import com.algorithm.exception.QueueEmptyException;
 
 public interface Queue {
-	//���ض��еĴ�С
+	//返回队列的大小
 	public int getSize();
-	
-	//�ж϶����Ƿ�Ϊ��
+
+	//判断队列是否为空
 	public boolean isEmpty();
-	
-	//����Ԫ��e���
+
+	//数据元素e入队
 	public void enqueue(Object e);
-	
-	//����Ԫ�س���
+
+	//队首元素出队
 	public Object dequeue() throws QueueEmptyException;
-	
-	//ȡ����Ԫ��
+
+	//取队首元素
 	public Object peek() throws QueueEmptyException;
 }

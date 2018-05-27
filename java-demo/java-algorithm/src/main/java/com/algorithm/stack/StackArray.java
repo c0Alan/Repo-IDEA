@@ -1,35 +1,35 @@
 package com.algorithm.stack;
 
-import com.algorithm.stack.Stack;
-import dsa.exception.StackEmptyException;
+
+import com.algorithm.exception.StackEmptyException;
 
 public class StackArray implements Stack {
-	
-	private final int LEN = 4;	//�����Ĭ�ϴ�С
-	private Object[] elements;	//����Ԫ������
-	private int top;			//ջ��ָ��
-	
+
+	private final int LEN = 4;	//数组的默认大小
+	private Object[] elements;	//数据元素数组
+	private int top;			//栈顶指针
+
 	public StackArray() {
 		top = -1;
 		elements = new Object[LEN];
 	}
 
-	//���ض�ջ�Ĵ�С
+	//返回堆栈的大小
 	public int getSize() {
 		return top+1;
 	}
 
-	//�ж϶�ջ�Ƿ�Ϊ��
+	//判断堆栈是否为空
 	public boolean isEmpty() {
 		return top<0;
 	}
 
-	//����Ԫ��e��ջ
+	//数据元素e入栈
 	public void push(Object e) {
 		if (getSize()>=elements.length) expandSpace();
 		elements[++top] = e;
 	}
-	
+
 	private void expandSpace(){
 		Object[] a = new Object[elements.length*2];
 		for (int i=0; i<elements.length; i++)
@@ -37,19 +37,19 @@ public class StackArray implements Stack {
 		elements = a;
 	}
 
-	//ջ��Ԫ�س�ջ
+	//栈顶元素出栈
 	public Object pop() throws StackEmptyException {
 		if (getSize()<1)
-			throw new StackEmptyException("���󣬶�ջΪ�ա�");
+			throw new StackEmptyException("错误，堆栈为空。");
 		Object obj = elements[top];
 		elements[top--] = null;
 		return obj;
 	}
 
-	//ȡջ��Ԫ��
+	//取栈顶元素
 	public Object peek() throws StackEmptyException {
 		if (getSize()<1)
-			throw new StackEmptyException("���󣬶�ջΪ�ա�");
+			throw new StackEmptyException("错误，堆栈为空。");
 		return elements[top];
-	}	
+	}
 }

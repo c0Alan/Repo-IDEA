@@ -1,6 +1,7 @@
-package dsa.strategy;
+package com.algorithm.strategy;
 
-import dsa.element.Student;
+
+import com.algorithm.element.Student;
 
 public class StudentStrategy implements Strategy {
 	
