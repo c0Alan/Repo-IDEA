@@ -1,5 +1,7 @@
 package com.algorithm.tree;
 
+import com.algorithm.linearlist.Node;
+
 public class BinTreeNode implements Node {
 
 	private Object data;		//数据域

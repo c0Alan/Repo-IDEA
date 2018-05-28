@@ -1,8 +1,8 @@
 package com.algorithm.search;
 
 
-import com.algorithm.tree.Iterator;
-import com.algorithm.tree.Node;
+import com.algorithm.linearlist.Iterator;
+import com.algorithm.linearlist.Node;
 
 public interface SearchTable {
 	//查询查找表当前的规模

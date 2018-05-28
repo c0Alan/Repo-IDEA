@@ -2,8 +2,8 @@ package com.algorithm.graph;
 
 
 import com.algorithm.exception.UnsupportedOperation;
-import com.algorithm.tree.Iterator;
-import com.algorithm.tree.Node;
+import com.algorithm.linearlist.Iterator;
+import com.algorithm.linearlist.Node;
 
 public interface Graph {
 	public static final int UndirectedGraph = 0;//无向图

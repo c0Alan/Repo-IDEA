@@ -7,7 +7,7 @@ import com.algorithm.linearlist.LinkedListDLNode;
 import com.algorithm.queue.Vtime;
 import com.algorithm.stack.Stack;
 import com.algorithm.stack.StackSLinked;
-import com.algorithm.tree.Iterator;
+import com.algorithm.linearlist.Iterator;
 
 public class DirectGraph extends AbstractGraph {
 

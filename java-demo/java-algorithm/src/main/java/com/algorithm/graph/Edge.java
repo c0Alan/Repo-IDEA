@@ -1,7 +1,7 @@
 package com.algorithm.graph;
 
 
-import com.algorithm.tree.Node;
+import com.algorithm.linearlist.Node;
 
 public class Edge {
 	public static final int NORMAL = 0;

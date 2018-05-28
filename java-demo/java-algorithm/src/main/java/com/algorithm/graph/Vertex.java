@@ -2,7 +2,7 @@ package com.algorithm.graph;
 
 import com.algorithm.linearlist.LinkedList;
 import com.algorithm.linearlist.LinkedListDLNode;
-import com.algorithm.tree.Node;
+import com.algorithm.linearlist.Node;
 
 public class Vertex {
 	private Object info;		//∂•µ„–≈œ¢

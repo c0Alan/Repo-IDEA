@@ -7,9 +7,8 @@ import com.algorithm.queue.Queue;
 import com.algorithm.queue.QueueSLinked;
 import com.algorithm.stack.Stack;
 import com.algorithm.stack.StackSLinked;
-import com.algorithm.linearlist.Path;
-import com.algorithm.tree.Iterator;
-import com.algorithm.tree.Node;
+import com.algorithm.linearlist.Iterator;
+import com.algorithm.linearlist.Node;
 
 public abstract class AbstractGraph implements Graph {
 	protected LinkedList vertexs;//¶¥µã±í

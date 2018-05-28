@@ -3,7 +3,7 @@ package com.algorithm.graph;
 import com.algorithm.exception.UnsupportedOperation;
 import com.algorithm.linearlist.LinkedList;
 import com.algorithm.linearlist.LinkedListDLNode;
-import com.algorithm.tree.Iterator;
+import com.algorithm.linearlist.Iterator;
 
 
 public class UndirectedGraph extends AbstractGraph {

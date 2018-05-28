@@ -1,10 +1,7 @@
 package com.algorithm.tree;
 
 
-import com.algorithm.linearlist.LinkedList;
-import com.algorithm.linearlist.LinkedListDLNode;
-import com.algorithm.linearlist.List;
-import com.algorithm.linearlist.ListArray;
+import com.algorithm.linearlist.*;
 import com.algorithm.strategy.DefaultStrategy;
 import com.algorithm.strategy.Strategy;
 

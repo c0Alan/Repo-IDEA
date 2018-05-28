@@ -2,7 +2,7 @@ package com.algorithm.stack;
 
 import com.algorithm.exception.StackEmptyException;
 
-import com.algorithm.tree.SLNode;
+import com.algorithm.linearlist.SLNode;
 
 
 public class StackSLinked implements Stack {
