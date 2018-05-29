@@ -4,7 +4,9 @@ import org.apache.log4j.Logger;
 import org.junit.Test;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class Log4jDemo {
     private static Logger logger = Logger.getLogger(Log4jDemo.class);
@@ -37,5 +39,12 @@ public class Log4jDemo {
     public void arrayLog(){
         int[] arr = {1, 2, 3};
         logger.info(arr); // [I@762efe5d
+    }
+
+    @Test
+    public void mapLog(){
+        Map map = new HashMap();
+        map.put("aa", "aa");
+        logger.info(map); // {aa=aa}
     }
 }
