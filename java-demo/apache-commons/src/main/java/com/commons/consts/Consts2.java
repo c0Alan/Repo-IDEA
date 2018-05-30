@@ -3,9 +3,10 @@ package com.commons.consts;
 public class Consts2 {
     
     public static Consts2 consts = new Consts2();
-    
+
+    private String content = "aaa";
     /** 用于测试 Base64 的字符串内容 */
-    private String content = "JVBERi0xLjUNCiW1tbW1DQoxIDAgb2JqDQo8PC9UeXBlL0NhdGFsb2cvUGFnZXMgMiAwIFIvTGFu;"
+    /*private String content = "JVBERi0xLjUNCiW1tbW1DQoxIDAgb2JqDQo8PC9UeXBlL0NhdGFsb2cvUGFnZXMgMiAwIFIvTGFu;"
             + "Zyh6aC1DTikgL1N0cnVjdFRyZWVSb290IDIyIDAgUi9NYXJrSW5mbzw8L01hcmtlZCB0cnVlPj4+;"
             + "Pg0KZW5kb2JqDQoyIDAgb2JqDQo8PC9UeXBlL1BhZ2VzL0NvdW50IDEvS2lkc1sgMyAwIFJdID4+;"
             + "DQplbmRvYmoNCjMgMCBvYmoNCjw8L1R5cGUvUGFnZS9QYXJlbnQgMiAwIFIvUmVzb3VyY2VzPDwv;"
@@ -1474,7 +1475,7 @@ public class Consts2 {
             + "OEZBOUY+XSA+Pg0Kc3RhcnR4cmVmDQo4MjIyMg0KJSVFT0YNCnhyZWYNCjAgMA0KdHJhaWxlcg0K;"
             + "PDwvU2l6ZSA2MS9Sb290IDEgMCBSL0luZm8gNTEgMCBSL0lEWzw1RTM5MkZFNTQ2RDVFNjQ1QjZE;"
             + "NDFBNTI2NDU4RkE5Rj48NUUzOTJGRTU0NkQ1RTY0NUI2RDQxQTUyNjQ1OEZBOUY+XSAvUHJldiA4;"
-            + "MjIyMi9YUmVmU3RtIDgxODQyPj4NCnN0YXJ0eHJlZg0KODM1OTkNCiUlRU9G;";
+            + "MjIyMi9YUmVmU3RtIDgxODQyPj4NCnN0YXJ0eHJlZg0KODM1OTkNCiUlRU9G;";*/
 
     public String getContent() {
         return content;
