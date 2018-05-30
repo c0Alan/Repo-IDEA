@@ -9,8 +9,8 @@ import org.junit.Test;
  * @author liuxl
  * @date 2018/5/2 15:55
  */
-public class TestInteger {
-    private static final Logger logger = Logger.getLogger(TestInteger.class);
+public class IntegerDemo {
+    private static final Logger logger = Logger.getLogger(IntegerDemo.class);
 
     /**
      * 跟int比较相等
