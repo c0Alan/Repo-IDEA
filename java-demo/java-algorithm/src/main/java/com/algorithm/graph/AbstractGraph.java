@@ -11,225 +11,248 @@ import com.algorithm.linearlist.Iterator;
 import com.algorithm.linearlist.Node;
 
 public abstract class AbstractGraph implements Graph {
-	protected LinkedList vertexs;//¶¥µã±í
-	protected LinkedList edges;	//±ß±í
-	protected int type;			//Í¼µÄÀàĞÍ
+    protected LinkedList vertexs;//é¡¶ç‚¹è¡¨
+    protected LinkedList edges;    //è¾¹è¡¨
+    protected int type;            //å›¾çš„ç±»å‹
 
-	public AbstractGraph(int type){
-		this.type = type;
-		vertexs = new LinkedListDLNode();
-		edges = new LinkedListDLNode();
-	}
+    public AbstractGraph(int type) {
+        this.type = type;
+        vertexs = new LinkedListDLNode();
+        edges = new LinkedListDLNode();
+    }
 
-	//·µ»ØÍ¼µÄÀàĞÍ
-	public int getType(){
-		return type;
-	}
-	//·µ»ØÍ¼µÄ¶¥µãÊı
-	public int getVexNum() {
-		return vertexs.getSize();
-	}
+    //è¿”å›å›¾çš„ç±»å‹
+    public int getType() {
+        return type;
+    }
 
-	//·µ»ØÍ¼µÄ±ßÊı
-	public int getEdgeNum() {
-		return edges.getSize();
-	}
+    //è¿”å›å›¾çš„é¡¶ç‚¹æ•°
+    public int getVexNum() {
+        return vertexs.getSize();
+    }
 
-	//·µ»ØÍ¼µÄËùÓĞ¶¥µã
-	public Iterator getVertex() {
-		return vertexs.elements();
-	}
+    //è¿”å›å›¾çš„è¾¹æ•°
+    public int getEdgeNum() {
+        return edges.getSize();
+    }
 
-	//·µ»ØÍ¼µÄËùÓĞ±ß
-	public Iterator getEdge() {
-		return edges.elements();
-	}
+    //è¿”å›å›¾çš„æ‰€æœ‰é¡¶ç‚¹
+    public Iterator getVertex() {
+        return vertexs.elements();
+    }
 
-	//Ìí¼ÓÒ»¸ö¶¥µãv
-	public Node insert(Vertex v) {
-		return vertexs.insertLast(v);
-	}
+    //è¿”å›å›¾çš„æ‰€æœ‰è¾¹
+    public Iterator getEdge() {
+        return edges.elements();
+    }
 
-	//Ìí¼ÓÒ»Ìõ±ße
-	public Node insert(Edge e) {
-		return edges.insertLast(e);
-	}
+    //æ·»åŠ ä¸€ä¸ªé¡¶ç‚¹v
+    public Node insert(Vertex v) {
+        return vertexs.insertLast(v);
+    }
 
-	//ÅĞ¶Ï¶¥µãu¡¢vÊÇ·ñÁÚ½Ó£¬¼´ÊÇ·ñÓĞ±ß´Óuµ½v
-	public boolean areAdjacent(Vertex u, Vertex v) {
-		return edgeFromTo(u,v)!=null;
-	}
+    //æ·»åŠ ä¸€æ¡è¾¹e
+    public Node insert(Edge e) {
+        return edges.insertLast(e);
+    }
 
-	//¶ÔÍ¼½øĞĞÉî¶ÈÓÅÏÈ±éÀú
-	public Iterator DFSTraverse(Vertex v) {
-		LinkedList traverseSeq = new LinkedListDLNode();//±éÀú½á¹û
-		resetVexStatus();			//ÖØÖÃ¶¥µã×´Ì¬
-		DFS(v, traverseSeq);		//´Óvµã³ö·¢Éî¶ÈÓÅÏÈËÑË÷
-		Iterator it = getVertex();	//´ÓÍ¼ÖĞÎ´Ôø·ÃÎÊµÄÆäËû¶¥µã³ö·¢ÖØĞÂËÑË÷
-		for(it.first(); !it.isDone(); it.next()){
-			Vertex u = (Vertex)it.currentItem();
-			if (!u.isVisited()) DFS(u, traverseSeq);
-		}
-		return traverseSeq.elements();
-	}
-	//Éî¶ÈÓÅÏÈµÄµİ¹éËã·¨
-	private void DFSRecursion(Vertex v, LinkedList list){
-		v.setToVisited();
-		list.insertLast(v);
-		Iterator it = adjVertexs(v);//È¡µÃ¶¥µãvµÄËùÓĞÁÚ½Óµã
-		for(it.first(); !it.isDone(); it.next()){
-			Vertex u = (Vertex)it.currentItem();
-			if (!u.isVisited()) DFSRecursion(u,list);
-		}
-	}
-	//Éî¶ÈÓÅÏÈµÄ·Çµİ¹éËã·¨
-	private void DFS(Vertex v, LinkedList list){
-		Stack s = new StackSLinked();
-		s.push(v);
-		while (!s.isEmpty()){
-			Vertex u = (Vertex)s.pop();
-			if (!u.isVisited()){
-				u.setToVisited();
-				list.insertLast(u);
-				Iterator it = adjVertexs(u);
-				for(it.first(); !it.isDone(); it.next()){
-					Vertex adj = (Vertex)it.currentItem();
-					if (!adj.isVisited()) s.push(adj);
-				}
-			}//if
-		}//while
-	}
+    //åˆ¤æ–­é¡¶ç‚¹uã€væ˜¯å¦é‚»æ¥ï¼Œå³æ˜¯å¦æœ‰è¾¹ä»uåˆ°v
+    public boolean areAdjacent(Vertex u, Vertex v) {
+        return edgeFromTo(u, v) != null;
+    }
 
-	//¶ÔÍ¼½øĞĞ¹ã¶ÈÓÅÏÈ±éÀú
-	public Iterator BFSTraverse(Vertex v) {
-		LinkedList traverseSeq = new LinkedListDLNode();//±éÀú½á¹û
-		resetVexStatus();			//ÖØÖÃ¶¥µã×´Ì¬
-		BFS(v, traverseSeq);		//´Óvµã³ö·¢¹ã¶ÈÓÅÏÈËÑË÷
-		Iterator it = getVertex();	//´ÓÍ¼ÖĞÎ´Ôø·ÃÎÊµÄÆäËû¶¥µã³ö·¢ÖØĞÂËÑË÷
-		for(it.first(); !it.isDone(); it.next()){
-			Vertex u = (Vertex)it.currentItem();
-			if (!u.isVisited()) BFS(u, traverseSeq);
-		}
-		return traverseSeq.elements();
-	}
-	private void BFS(Vertex v, LinkedList list){
-		Queue q = new QueueSLinked();
-		v.setToVisited();
-		list.insertLast(v);
-		q.enqueue(v);
-		while (!q.isEmpty()){
-			Vertex u = (Vertex)q.dequeue();
-			Iterator it = adjVertexs(u);
-			for(it.first(); !it.isDone(); it.next()){
-				Vertex adj = (Vertex)it.currentItem();
-				if (!adj.isVisited()){
-					adj.setToVisited();
-					list.insertLast(adj);
-					q.enqueue(adj);
-				}//if
-			}//for
-		}//while
-	}
+    //å¯¹å›¾è¿›è¡Œæ·±åº¦ä¼˜å…ˆéå†
+    public Iterator DFSTraverse(Vertex v) {
+        LinkedList traverseSeq = new LinkedListDLNode();//éå†ç»“æœ
+        resetVexStatus();            //é‡ç½®é¡¶ç‚¹çŠ¶æ€
+        DFS(v, traverseSeq);        //ä»vç‚¹å‡ºå‘æ·±åº¦ä¼˜å…ˆæœç´¢
+        Iterator it = getVertex();    //ä»å›¾ä¸­æœªæ›¾è®¿é—®çš„å…¶ä»–é¡¶ç‚¹å‡ºå‘é‡æ–°æœç´¢
+        for (it.first(); !it.isDone(); it.next()) {
+            Vertex u = (Vertex) it.currentItem();
+            if (!u.isVisited()) DFS(u, traverseSeq);
+        }
+        return traverseSeq.elements();
+    }
 
-	//Çó¶¥µãvµ½ÆäËû¶¥µãµÄ×î¶ÌÂ·¾¶
-	public Iterator shortestPath(Vertex v) {
-		LinkedList sPath = new LinkedListDLNode();
-		resetVexStatus();//ÖØÖÃÍ¼ÖĞ¸÷¶¥µãµÄ×´Ì¬ĞÅÏ¢
-		Iterator it = getVertex();//³õÊ¼»¯£¬½«vµ½¸÷¶¥µãµÄ×î¶Ì¾àÀë³õÊ¼»¯ÎªÓÉvÖ±½Ó¿É´ïµÄ¾àÀë
-		for(it.first(); !it.isDone(); it.next()){
-			Vertex u = (Vertex)it.currentItem();
-			int weight = Integer.MAX_VALUE;
-			Edge e = edgeFromTo(v,u);
-			if (e!=null)
-				weight = e.getWeight();
-			if(u==v) weight = 0;
-			Path p = new Path(weight,v,u);
-			setPath(u, p);
-		}
-		v.setToVisited();//¶¥µãv½øÈë¼¯ºÏS,ÒÔvisited=true±íÊ¾ÊôÓÚS£¬·ñÔò²»ÊôÓÚS
-		sPath.insertLast(getPath(v));//ÇóµÃµÄ×î¶ÌÂ·¾¶½øÈëÁ´½Ó±í
-		for (int t=1;t<getVexNum();t++){//½øĞĞn-1´ÎÑ­»·ÕÒµ½n-1Ìõ×î¶ÌÂ·¾¶
-			Vertex k = selectMin(it);//ÖĞ¼ä¶¥µãk¡£¿ÉÄÜÑ¡³öÎŞÇî´ó¾àÀëµÄµã£¬µ«²»»áÎª¿Õ
-			k.setToVisited();				//¶¥µãk¼ÓÈëS
-			sPath.insertLast(getPath(k));	//ÇóµÃµÄ×î¶ÌÂ·¾¶½øÈëÁ´½Ó±í
-			int distK = getDistance(k);		//ÒÔkÎªÖĞ¼ä¶¥µãĞŞ¸Ävµ½V-SÖĞ¶¥µãµÄµ±Ç°×î¶ÌÂ·¾¶
-			Iterator adjIt = adjVertexs(k);	//È¡³ökµÄËùÓĞÁÚ½Óµã
-			for(adjIt.first(); !adjIt.isDone(); adjIt.next()){
-				Vertex adjV = (Vertex)adjIt.currentItem();
-				Edge e = edgeFromTo(k,adjV);
-				if ((long)distK+(long)e.getWeight()<(long)getDistance(adjV)){//·¢ÏÖ¸ü¶ÌµÄÂ·¾¶
-					setDistance(adjV, distK+e.getWeight());
-					amendPathInfo(k,adjV);	//ÒÔkµÄÂ·¾¶ĞÅÏ¢ĞŞ¸ÄadjVµÄÂ·¾¶ĞÅÏ¢
-				}
-			}//for
-		}//for(int t=1...
-		return sPath.elements();
-	}
-	//ÔÚ¶¥µã¼¯ºÏÖĞÑ¡ÔñÂ·¾¶¾àÀë×îĞ¡µÄ
-	protected Vertex selectMin(Iterator it){
-		Vertex min = null;
-		for(it.first(); !it.isDone(); it.next()){
-			Vertex v = (Vertex)it.currentItem();
-			if(!v.isVisited()){ min = v; break;}
-		}
-		for(; !it.isDone(); it.next()){
-			Vertex v = (Vertex)it.currentItem();
-			if(!v.isVisited()&&getDistance(v)<getDistance(min))
-				min = v;
-		}
-		return min;
-	}
-	//ĞŞ¸Äµ½ÖÕµãµÄÂ·¾¶ĞÅÏ¢
-	protected void amendPathInfo(Vertex mid, Vertex end){
-		Iterator it = getPath(mid).getPathInfo();
-		getPath(end).clearPathInfo();
-		for(it.first(); !it.isDone(); it.next()){
-			getPath(end).addPathInfo(it.currentItem());
-		}
-		getPath(end).addPathInfo(mid.getInfo());
-	}
+    //æ·±åº¦ä¼˜å…ˆçš„é€’å½’ç®—æ³•
+    private void DFSRecursion(Vertex v, LinkedList list) {
+        v.setToVisited();
+        list.insertLast(v);
+        Iterator it = adjVertexs(v);//å–å¾—é¡¶ç‚¹vçš„æ‰€æœ‰é‚»æ¥ç‚¹
+        for (it.first(); !it.isDone(); it.next()) {
+            Vertex u = (Vertex) it.currentItem();
+            if (!u.isVisited()) DFSRecursion(u, list);
+        }
+    }
 
-	//É¾³ıÒ»¸ö¶¥µãv
-	public abstract void remove(Vertex v);
+    //æ·±åº¦ä¼˜å…ˆçš„éé€’å½’ç®—æ³•
+    private void DFS(Vertex v, LinkedList list) {
+        Stack s = new StackSLinked();
+        s.push(v);
+        while (!s.isEmpty()) {
+            Vertex u = (Vertex) s.pop();
+            if (!u.isVisited()) {
+                u.setToVisited();
+                list.insertLast(u);
+                Iterator it = adjVertexs(u);
+                for (it.first(); !it.isDone(); it.next()) {
+                    Vertex adj = (Vertex) it.currentItem();
+                    if (!adj.isVisited()) s.push(adj);
+                }
+            }//if
+        }//while
+    }
 
-	//É¾³ıÒ»Ìõ±ße
-	public abstract void remove(Edge e);
+    //å¯¹å›¾è¿›è¡Œå¹¿åº¦ä¼˜å…ˆéå†
+    public Iterator BFSTraverse(Vertex v) {
+        LinkedList traverseSeq = new LinkedListDLNode();//éå†ç»“æœ
+        resetVexStatus();            //é‡ç½®é¡¶ç‚¹çŠ¶æ€
+        BFS(v, traverseSeq);        //ä»vç‚¹å‡ºå‘å¹¿åº¦ä¼˜å…ˆæœç´¢
+        Iterator it = getVertex();    //ä»å›¾ä¸­æœªæ›¾è®¿é—®çš„å…¶ä»–é¡¶ç‚¹å‡ºå‘é‡æ–°æœç´¢
+        for (it.first(); !it.isDone(); it.next()) {
+            Vertex u = (Vertex) it.currentItem();
+            if (!u.isVisited()) BFS(u, traverseSeq);
+        }
+        return traverseSeq.elements();
+    }
 
-	//·µ»Ø´ÓuÖ¸ÏòvµÄ±ß£¬²»´æÔÚÔò·µ»Ønull
-	public abstract Edge edgeFromTo(Vertex u, Vertex v);
+    private void BFS(Vertex v, LinkedList list) {
+        Queue q = new QueueSLinked();
+        v.setToVisited();
+        list.insertLast(v);
+        q.enqueue(v);
+        while (!q.isEmpty()) {
+            Vertex u = (Vertex) q.dequeue();
+            Iterator it = adjVertexs(u);
+            for (it.first(); !it.isDone(); it.next()) {
+                Vertex adj = (Vertex) it.currentItem();
+                if (!adj.isVisited()) {
+                    adj.setToVisited();
+                    list.insertLast(adj);
+                    q.enqueue(adj);
+                }//if
+            }//for
+        }//while
+    }
 
-	//·µ»Ø´Óu³ö·¢¿ÉÒÔÖ±½Óµ½´ïµÄÁÚ½Ó¶¥µã
-	public abstract Iterator adjVertexs(Vertex u);
+    //æ±‚é¡¶ç‚¹våˆ°å…¶ä»–é¡¶ç‚¹çš„æœ€çŸ­è·¯å¾„
+    public Iterator shortestPath(Vertex v) {
+        LinkedList sPath = new LinkedListDLNode();
+        resetVexStatus();//é‡ç½®å›¾ä¸­å„é¡¶ç‚¹çš„çŠ¶æ€ä¿¡æ¯
+        Iterator it = getVertex();//åˆå§‹åŒ–ï¼Œå°†våˆ°å„é¡¶ç‚¹çš„æœ€çŸ­è·ç¦»åˆå§‹åŒ–ä¸ºç”±vç›´æ¥å¯è¾¾çš„è·ç¦»
+        for (it.first(); !it.isDone(); it.next()) {
+            Vertex u = (Vertex) it.currentItem();
+            int weight = Integer.MAX_VALUE;
+            Edge e = edgeFromTo(v, u);
+            if (e != null)
+                weight = e.getWeight();
+            if (u == v) weight = 0;
+            Path p = new Path(weight, v, u);
+            setPath(u, p);
+        }
+        v.setToVisited();//é¡¶ç‚¹vè¿›å…¥é›†åˆS,ä»¥visited=trueè¡¨ç¤ºå±äºSï¼Œå¦åˆ™ä¸å±äºS
+        sPath.insertLast(getPath(v));//æ±‚å¾—çš„æœ€çŸ­è·¯å¾„è¿›å…¥é“¾æ¥è¡¨
+        for (int t = 1; t < getVexNum(); t++) {//è¿›è¡Œn-1æ¬¡å¾ªç¯æ‰¾åˆ°n-1æ¡æœ€çŸ­è·¯å¾„
+            Vertex k = selectMin(it);//ä¸­é—´é¡¶ç‚¹kã€‚å¯èƒ½é€‰å‡ºæ— ç©·å¤§è·ç¦»çš„ç‚¹ï¼Œä½†ä¸ä¼šä¸ºç©º
+            k.setToVisited();                //é¡¶ç‚¹kåŠ å…¥S
+            sPath.insertLast(getPath(k));    //æ±‚å¾—çš„æœ€çŸ­è·¯å¾„è¿›å…¥é“¾æ¥è¡¨
+            int distK = getDistance(k);        //ä»¥kä¸ºä¸­é—´é¡¶ç‚¹ä¿®æ”¹våˆ°V-Sä¸­é¡¶ç‚¹çš„å½“å‰æœ€çŸ­è·¯å¾„
+            Iterator adjIt = adjVertexs(k);    //å–å‡ºkçš„æ‰€æœ‰é‚»æ¥ç‚¹
+            for (adjIt.first(); !adjIt.isDone(); adjIt.next()) {
+                Vertex adjV = (Vertex) adjIt.currentItem();
+                Edge e = edgeFromTo(k, adjV);
+                if ((long) distK + (long) e.getWeight() < (long) getDistance(adjV)) {//å‘ç°æ›´çŸ­çš„è·¯å¾„
+                    setDistance(adjV, distK + e.getWeight());
+                    amendPathInfo(k, adjV);    //ä»¥kçš„è·¯å¾„ä¿¡æ¯ä¿®æ”¹adjVçš„è·¯å¾„ä¿¡æ¯
+                }
+            }//for
+        }//for(int t=1...
+        return sPath.elements();
+    }
 
-	//ÇóÎŞÏòÍ¼µÄ×îĞ¡Éú³ÉÊ÷,Èç¹ûÊÇÓĞÏòÍ¼²»Ö§³Ö´Ë²Ù×÷
-	public abstract void generateMST() throws UnsupportedOperation;
+    //åœ¨é¡¶ç‚¹é›†åˆä¸­é€‰æ‹©è·¯å¾„è·ç¦»æœ€å°çš„
+    protected Vertex selectMin(Iterator it) {
+        Vertex min = null;
+        for (it.first(); !it.isDone(); it.next()) {
+            Vertex v = (Vertex) it.currentItem();
+            if (!v.isVisited()) {
+                min = v;
+                break;
+            }
+        }
+        for (; !it.isDone(); it.next()) {
+            Vertex v = (Vertex) it.currentItem();
+            if (!v.isVisited() && getDistance(v) < getDistance(min))
+                min = v;
+        }
+        return min;
+    }
 
-	//ÇóÓĞÏòÍ¼µÄÍØÆËĞòÁĞ,ÎŞÏòÍ¼²»Ö§³Ö´Ë²Ù×÷
-	public abstract Iterator toplogicalSort() throws UnsupportedOperation;
+    //ä¿®æ”¹åˆ°ç»ˆç‚¹çš„è·¯å¾„ä¿¡æ¯
+    protected void amendPathInfo(Vertex mid, Vertex end) {
+        Iterator it = getPath(mid).getPathInfo();
+        getPath(end).clearPathInfo();
+        for (it.first(); !it.isDone(); it.next()) {
+            getPath(end).addPathInfo(it.currentItem());
+        }
+        getPath(end).addPathInfo(mid.getInfo());
+    }
 
-	//ÇóÓĞÏòÎŞ»·Í¼µÄ¹Ø¼üÂ·¾¶,ÎŞÏòÍ¼²»Ö§³Ö´Ë²Ù×÷
-	public abstract void criticalPath() throws UnsupportedOperation;
+    //åˆ é™¤ä¸€ä¸ªé¡¶ç‚¹v
+    public abstract void remove(Vertex v);
 
-	//¸¨Öú·½·¨£¬ÖØÖÃÍ¼ÖĞ¸÷¶¥µãµÄ×´Ì¬ĞÅÏ¢
-	protected void resetVexStatus(){
-		Iterator it = getVertex();
-		for(it.first(); !it.isDone(); it.next()){
-			Vertex u = (Vertex)it.currentItem();
-			u.resetStatus();
-		}
-	}
-	//ÖØÖÃÍ¼ÖĞ¸÷±ßµÄ×´Ì¬ĞÅÏ¢
-	protected void resetEdgeType(){
-		Iterator it = getEdge();
-		for(it.first(); !it.isDone(); it.next()){
-			Edge e = (Edge)it.currentItem();
-			e.resetType();
-		}
-	}
-	//Çó×î¶ÌÂ·¾¶Ê±£¬¶Ôv.applicationµÄ²Ù×÷
-	protected int getDistance(Vertex v){ return ((Path)v.getAppObj()).getDistance();}
-	protected void setDistance(Vertex v, int dis){ ((Path)v.getAppObj()).setDistance(dis);}
-	protected Path getPath(Vertex v){ return (Path)v.getAppObj();}
-	protected void setPath(Vertex v, Path p){ v.setAppObj(p);}
+    //åˆ é™¤ä¸€æ¡è¾¹e
+    public abstract void remove(Edge e);
+
+    //è¿”å›ä»uæŒ‡å‘vçš„è¾¹ï¼Œä¸å­˜åœ¨åˆ™è¿”å›null
+    public abstract Edge edgeFromTo(Vertex u, Vertex v);
+
+    //è¿”å›ä»uå‡ºå‘å¯ä»¥ç›´æ¥åˆ°è¾¾çš„é‚»æ¥é¡¶ç‚¹
+    public abstract Iterator adjVertexs(Vertex u);
+
+    //æ±‚æ— å‘å›¾çš„æœ€å°ç”Ÿæˆæ ‘,å¦‚æœæ˜¯æœ‰å‘å›¾ä¸æ”¯æŒæ­¤æ“ä½œ
+    public abstract void generateMST() throws UnsupportedOperation;
+
+    //æ±‚æœ‰å‘å›¾çš„æ‹“æ‰‘åºåˆ—,æ— å‘å›¾ä¸æ”¯æŒæ­¤æ“ä½œ
+    public abstract Iterator toplogicalSort() throws UnsupportedOperation;
+
+    //æ±‚æœ‰å‘æ— ç¯å›¾çš„å…³é”®è·¯å¾„,æ— å‘å›¾ä¸æ”¯æŒæ­¤æ“ä½œ
+    public abstract void criticalPath() throws UnsupportedOperation;
+
+    //è¾…åŠ©æ–¹æ³•ï¼Œé‡ç½®å›¾ä¸­å„é¡¶ç‚¹çš„çŠ¶æ€ä¿¡æ¯
+    protected void resetVexStatus() {
+        Iterator it = getVertex();
+        for (it.first(); !it.isDone(); it.next()) {
+            Vertex u = (Vertex) it.currentItem();
+            u.resetStatus();
+        }
+    }
+
+    //é‡ç½®å›¾ä¸­å„è¾¹çš„çŠ¶æ€ä¿¡æ¯
+    protected void resetEdgeType() {
+        Iterator it = getEdge();
+        for (it.first(); !it.isDone(); it.next()) {
+            Edge e = (Edge) it.currentItem();
+            e.resetType();
+        }
+    }
+
+    //æ±‚æœ€çŸ­è·¯å¾„æ—¶ï¼Œå¯¹v.applicationçš„æ“ä½œ
+    protected int getDistance(Vertex v) {
+        return ((Path) v.getAppObj()).getDistance();
+    }
+
+    protected void setDistance(Vertex v, int dis) {
+        ((Path) v.getAppObj()).setDistance(dis);
+    }
+
+    protected Path getPath(Vertex v) {
+        return (Path) v.getAppObj();
+    }
+
+    protected void setPath(Vertex v, Path p) {
+        v.setAppObj(p);
+    }
 
 }
+

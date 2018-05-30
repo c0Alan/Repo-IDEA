@@ -5,7 +5,12 @@ import com.algorithm.linearlist.LinkedList;
 import com.algorithm.linearlist.LinkedListDLNode;
 import com.algorithm.linearlist.Iterator;
 
-
+/**
+ * 无向图的实现
+ * 
+ * @author liuxilin
+ * @date 2018/5/30 22:21
+ */
 public class UndirectedGraph extends AbstractGraph {
 
     public UndirectedGraph() {

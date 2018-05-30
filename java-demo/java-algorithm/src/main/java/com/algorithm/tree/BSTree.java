@@ -7,6 +7,8 @@ import com.algorithm.linearlist.Node;
 import com.algorithm.search.SearchTable;
 import com.algorithm.strategy.DefaultStrategy;
 import com.algorithm.strategy.Strategy;
+import com.algorithm.tree.BinTreeNode;
+import com.algorithm.tree.BinaryTreeLinked;
 
 
 public class BSTree extends BinaryTreeLinked implements SearchTable {

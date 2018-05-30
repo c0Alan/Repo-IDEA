@@ -1,11 +1,16 @@
 package com.algorithm.graph;
 
 
-import com.algorithm.graph.Vertex;
 import com.algorithm.linearlist.Iterator;
 import com.algorithm.linearlist.LinkedList;
 import com.algorithm.linearlist.LinkedListDLNode;
 
+/**
+ * Path 类定义
+ * 
+ * @author liuxilin
+ * @date 2018/5/30 22:24
+ */
 public class Path {
     private int distance;    //起点与终点的距离
     private Vertex start;    //起点信息

@@ -2,7 +2,15 @@ package com.algorithm.tree;
 
 
 import com.algorithm.strategy.Strategy;
+import com.algorithm.tree.BSTree;
+import com.algorithm.tree.BinTreeNode;
 
+/**
+ * 平衡树
+ * 
+ * @author liuxilin
+ * @date 2018/5/30 23:05
+ */
 public class AVLTree extends BSTree {
 
     public AVLTree() {
