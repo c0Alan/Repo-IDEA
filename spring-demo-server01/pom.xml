@@ -18,6 +18,7 @@
         <module>ssh</module>
         <module>ss</module>
         <module>mybatis</module>
+        <module>spring</module>
     </modules>
 
     <properties>
