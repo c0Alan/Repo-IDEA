@@ -1,4 +1,4 @@
-package com.jdk.operation;
+package com.jdk.operator;
 
 import org.junit.Test;
 
