@@ -1,7 +1,7 @@
 package com.juc.lock.reentrantlock.demo02;
 
 /**
- * demo01 去掉锁
+ * Subject 去掉锁
  * 将造成仓库数据的错误
  *
  * @author liuxilin
