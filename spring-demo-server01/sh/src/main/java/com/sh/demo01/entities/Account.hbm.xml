@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="com.sh.demo01.entities.Account" table="account" schema="springdemo" catalog="sd">
+
+        <id name="id" type="java.lang.Integer">
+            <column name="id"/>
+        </id>
+
+        <property name="username" type="java.lang.String">
+            <column name="username"/>
+        </property>
+
+        <property name="balance" type="int">
+            <column name="balance"/>
+        </property>
+
+    </class>
+</hibernate-mapping>

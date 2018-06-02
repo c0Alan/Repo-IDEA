@@ -1,15 +1,15 @@
-package com.atguigu.spring.helloworld;
+package com.spring.demo02.helloworld;
 
 public class HelloWorld {
 	
-	//×Ö¶Î
+	//ï¿½Ö¶ï¿½
 	private String user;
 	
 	public HelloWorld() {
 		System.out.println("HelloWorld's constructor...");
 	}
 	
-	//JavaBean Ê¹ÓÃ setter ºÍ getter À´¶¨ÒåÊôÐÔ
+	//JavaBean Ê¹ï¿½ï¿½ setter ï¿½ï¿½ getter ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	public void setUserName(String user) {
 		System.out.println("setUserName:" + user);
 		this.user = user;

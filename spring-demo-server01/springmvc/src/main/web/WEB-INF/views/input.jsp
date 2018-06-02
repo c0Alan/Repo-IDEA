@@ -71,7 +71,7 @@
     3. 数据校验.
     1). 如何校验 ? 注解 ?
     ①. 使用 JSR 303 验证标准
-    ②. 加入 hibernate validator 验证框架的 jar 包
+    ②. 加入 demo01 validator 验证框架的 jar 包
     ③. 在 SpringMVC 配置文件中添加 <mvc:annotation-driven/>
     ④. 需要在 bean 的属性上添加对应的注解
     ⑤. 在目标方法 bean 类型的前面添加 @Valid 注解

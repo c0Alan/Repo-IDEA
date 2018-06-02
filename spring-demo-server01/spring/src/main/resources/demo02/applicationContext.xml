@@ -16,7 +16,7 @@
 		bean 必须有无参的构造函数
 	-->
 	<bean id="helloWorld" 
-		class="com.atguigu.spring.helloworld.HelloWorld" 
+		class="com.spring.demo02.helloworld.HelloWorld" 
 		scope="singleton"
 		init-method="init"
 		destroy-method="destroy">
@@ -27,15 +27,15 @@
 		1. 在 IOC 容器中配置 bean 之间的关联关系
 	-->
 	<bean id="userDao"
-		class="com.atguigu.spring.ref.UserDao"></bean>
+		class="com.spring.demo02.dao.UserDao"></bean>
 
 	<bean id="userService"
-		class="com.atguigu.spring.ref.UserService">
+		class="com.spring.demo02.service.UserService">
 		<property name="userDao" ref="userDao"></property>	
 	</bean>
 	
 	<bean id="userAction" 
-		class="com.atguigu.spring.ref.UserAction">
+		class="com.spring.demo02.action.UserAction">
 		<property name="userService" ref="userService"></property>
 	</bean>
 

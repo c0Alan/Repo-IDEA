@@ -1,4 +1,4 @@
-package com.atguigu.spring.aop;
+package com.spring.demo02.aop;
 
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
@@ -6,62 +6,62 @@ import java.lang.reflect.Proxy;
 import java.util.Arrays;
 
 public class ArithmeticCalculatorLoggingProxy {
-	
-	//Òª´úÀíµÄ¶ÔÏó
+
+	//è¦ä»£ç†çš„å¯¹è±¡
 	private ArithmeticCalculator target;
-	
+
 	public ArithmeticCalculatorLoggingProxy(ArithmeticCalculator target) {
 		super();
 		this.target = target;
 	}
 
-	//·µ»Ø´úÀí¶ÔÏó
+	//è¿”å›ä»£ç†å¯¹è±¡
 	public ArithmeticCalculator getLoggingProxy(){
 		ArithmeticCalculator proxy = null;
-		
+
 		ClassLoader loader = target.getClass().getClassLoader();
 		Class [] interfaces = new Class[]{ArithmeticCalculator.class};
 		InvocationHandler h = new InvocationHandler() {
 			/**
-			 * proxy: ´úÀí¶ÔÏó¡£ Ò»°ã²»Ê¹ÓÃ¸Ã¶ÔÏó
-			 * method: ÕıÔÚ±»µ÷ÓÃµÄ·½·¨
-			 * args: µ÷ÓÃ·½·¨´«ÈëµÄ²ÎÊı
+			 * proxy: ä»£ç†å¯¹è±¡ã€‚ ä¸€èˆ¬ä¸ä½¿ç”¨è¯¥å¯¹è±¡
+			 * method: æ­£åœ¨è¢«è°ƒç”¨çš„æ–¹æ³•
+			 * args: è°ƒç”¨æ–¹æ³•ä¼ å…¥çš„å‚æ•°
 			 */
 			@Override
 			public Object invoke(Object proxy, Method method, Object[] args)
 					throws Throwable {
 				String methodName = method.getName();
-				//´òÓ¡ÈÕÖ¾
+				//æ‰“å°æ—¥å¿—
 				System.out.println("[before] The method " + methodName + " begins with " + Arrays.asList(args));
-				
-				//µ÷ÓÃÄ¿±ê·½·¨
+
+				//è°ƒç”¨ç›®æ ‡æ–¹æ³•
 				Object result = null;
-				
+
 				try {
-					//Ç°ÖÃÍ¨Öª
+					//å‰ç½®é€šçŸ¥
 					result = method.invoke(target, args);
-					//·µ»ØÍ¨Öª, ¿ÉÒÔ·ÃÎÊµ½·½·¨µÄ·µ»ØÖµ
+					//è¿”å›é€šçŸ¥, å¯ä»¥è®¿é—®åˆ°æ–¹æ³•çš„è¿”å›å€¼
 				} catch (NullPointerException e) {
 					e.printStackTrace();
-					//Òì³£Í¨Öª, ¿ÉÒÔ·ÃÎÊµ½·½·¨³öÏÖµÄÒì³£
+					//å¼‚å¸¸é€šçŸ¥, å¯ä»¥è®¿é—®åˆ°æ–¹æ³•å‡ºç°çš„å¼‚å¸¸
 				}
-				
-				//ºóÖÃÍ¨Öª. ÒòÎª·½·¨¿ÉÒÔÄÜ»á³öÒì³£, ËùÒÔ·ÃÎÊ²»µ½·½·¨µÄ·µ»ØÖµ
-				
-				//´òÓ¡ÈÕÖ¾
+
+				//åç½®é€šçŸ¥. å› ä¸ºæ–¹æ³•å¯ä»¥èƒ½ä¼šå‡ºå¼‚å¸¸, æ‰€ä»¥è®¿é—®ä¸åˆ°æ–¹æ³•çš„è¿”å›å€¼
+
+				//æ‰“å°æ—¥å¿—
 				System.out.println("[after] The method ends with " + result);
-				
+
 				return result;
 			}
 		};
-		
+
 		/**
-		 * loader: ´úÀí¶ÔÏóÊ¹ÓÃµÄÀà¼ÓÔØÆ÷¡£ 
-		 * interfaces: Ö¸¶¨´úÀí¶ÔÏóµÄÀàĞÍ. ¼´´úÀí´úÀí¶ÔÏóÖĞ¿ÉÒÔÓĞÄÄĞ©·½·¨. 
-		 * h: µ±¾ßÌåµ÷ÓÃ´úÀí¶ÔÏóµÄ·½·¨Ê±, Ó¦¸ÃÈçºÎ½øĞĞÏìÓ¦, Êµ¼ÊÉÏ¾ÍÊÇµ÷ÓÃ InvocationHandler µÄ invoke ·½·¨
+		 * loader: ä»£ç†å¯¹è±¡ä½¿ç”¨çš„ç±»åŠ è½½å™¨ã€‚
+		 * interfaces: æŒ‡å®šä»£ç†å¯¹è±¡çš„ç±»å‹. å³ä»£ç†ä»£ç†å¯¹è±¡ä¸­å¯ä»¥æœ‰å“ªäº›æ–¹æ³•.
+		 * h: å½“å…·ä½“è°ƒç”¨ä»£ç†å¯¹è±¡çš„æ–¹æ³•æ—¶, åº”è¯¥å¦‚ä½•è¿›è¡Œå“åº”, å®é™…ä¸Šå°±æ˜¯è°ƒç”¨ InvocationHandler çš„ invoke æ–¹æ³•
 		 */
 		proxy = (ArithmeticCalculator) Proxy.newProxyInstance(loader, interfaces, h);
-		
+
 		return proxy;
 	}
 }

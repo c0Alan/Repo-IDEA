@@ -1,4 +1,4 @@
-package com.atguigu.spring.aop;
+package com.spring.demo02.aop;
 
 import org.springframework.stereotype.Component;
 

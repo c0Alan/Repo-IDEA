@@ -1,100 +1,96 @@
-package com.atguigu.spring.aop;
-
-import java.util.Arrays;
+package com.spring.demo03.aop;
 
 import org.aspectj.lang.JoinPoint;
-import org.aspectj.lang.annotation.After;
-import org.aspectj.lang.annotation.AfterReturning;
-import org.aspectj.lang.annotation.AfterThrowing;
-import org.aspectj.lang.annotation.Aspect;
-import org.aspectj.lang.annotation.Before;
-import org.aspectj.lang.annotation.Pointcut;
+import org.aspectj.lang.annotation.*;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
+import java.util.Arrays;
+
 /**
- * ¿ÉÒÔÊ¹ÓÃ @Order ×¢½âÖ¸¶¨ÇĞÃæµÄÓÅÏÈ¼¶, ÖµÔ½Ğ¡ÓÅÏÈ¼¶Ô½¸ß
+ * å¯ä»¥ä½¿ç”¨ @Order æ³¨è§£æŒ‡å®šåˆ‡é¢çš„ä¼˜å…ˆçº§, å€¼è¶Šå°ä¼˜å…ˆçº§è¶Šé«˜
  */
 @Order(2)
 @Aspect
 @Component
 public class LoggingAspect {
-	
-	/**
-	 * ¶¨ÒåÒ»¸ö·½·¨, ÓÃÓÚÉùÃ÷ÇĞÈëµã±í´ïÊ½. Ò»°ãµØ, ¸Ã·½·¨ÖĞÔÙ²»ĞèÒªÌíÈëÆäËûµÄ´úÂë. 
-	 * Ê¹ÓÃ @Pointcut À´ÉùÃ÷ÇĞÈëµã±í´ïÊ½. 
-	 * ºóÃæµÄÆäËûÍ¨ÖªÖ±½ÓÊ¹ÓÃ·½·¨ÃûÀ´ÒıÓÃµ±Ç°µÄÇĞÈëµã±í´ïÊ½. 
-	 */
-	@Pointcut("execution(public int com.atguigu.spring.aop.ArithmeticCalculator.*(..))")
-	public void declareJointPointExpression(){}
-	
-	/**
-	 * ÔÚ com.atguigu.spring.aop.ArithmeticCalculator ½Ó¿ÚµÄÃ¿Ò»¸öÊµÏÖÀàµÄÃ¿Ò»¸ö·½·¨¿ªÊ¼Ö®Ç°Ö´ĞĞÒ»¶Î´úÂë
-	 */
-	@Before("declareJointPointExpression()")
-	public void beforeMethod(JoinPoint joinPoint){
-		String methodName = joinPoint.getSignature().getName();
-		Object [] args = joinPoint.getArgs();
-		
-		System.out.println("The method " + methodName + " begins with " + Arrays.asList(args));
-	}
-	
-	/**
-	 * ÔÚ·½·¨Ö´ĞĞÖ®ºóÖ´ĞĞµÄ´úÂë. ÎŞÂÛ¸Ã·½·¨ÊÇ·ñ³öÏÖÒì³£
-	 */
-	@After("declareJointPointExpression()")
-	public void afterMethod(JoinPoint joinPoint){
-		String methodName = joinPoint.getSignature().getName();
-		System.out.println("The method " + methodName + " ends");
-	}
-	
-	/**
-	 * ÔÚ·½·¨·¨Õı³£½áÊøÊÜÖ´ĞĞµÄ´úÂë
-	 * ·µ»ØÍ¨ÖªÊÇ¿ÉÒÔ·ÃÎÊµ½·½·¨µÄ·µ»ØÖµµÄ!
-	 */
-	@AfterReturning(value="declareJointPointExpression()",
-			returning="result")
-	public void afterReturning(JoinPoint joinPoint, Object result){
-		String methodName = joinPoint.getSignature().getName();
-		System.out.println("The method " + methodName + " ends with " + result);
-	}
-	
-	/**
-	 * ÔÚÄ¿±ê·½·¨³öÏÖÒì³£Ê±»áÖ´ĞĞµÄ´úÂë.
-	 * ¿ÉÒÔ·ÃÎÊµ½Òì³£¶ÔÏó; ÇÒ¿ÉÒÔÖ¸¶¨ÔÚ³öÏÖÌØ¶¨Òì³£Ê±ÔÚÖ´ĞĞÍ¨Öª´úÂë
-	 */
-	@AfterThrowing(value="declareJointPointExpression()",
-			throwing="e")
-	public void afterThrowing(JoinPoint joinPoint, Exception e){
-		String methodName = joinPoint.getSignature().getName();
-		System.out.println("The method " + methodName + " occurs excetion:" + e);
-	}
-	
-	/**
-	 * »·ÈÆÍ¨ÖªĞèÒªĞ¯´ø ProceedingJoinPoint ÀàĞÍµÄ²ÎÊı. 
-	 * »·ÈÆÍ¨ÖªÀàËÆÓÚ¶¯Ì¬´úÀíµÄÈ«¹ı³Ì: ProceedingJoinPoint ÀàĞÍµÄ²ÎÊı¿ÉÒÔ¾ö¶¨ÊÇ·ñÖ´ĞĞÄ¿±ê·½·¨.
-	 * ÇÒ»·ÈÆÍ¨Öª±ØĞëÓĞ·µ»ØÖµ, ·µ»ØÖµ¼´ÎªÄ¿±ê·½·¨µÄ·µ»ØÖµ
-	 */
-	/*
+
+    /**
+     * å®šä¹‰ä¸€ä¸ªæ–¹æ³•, ç”¨äºå£°æ˜åˆ‡å…¥ç‚¹è¡¨è¾¾å¼. ä¸€èˆ¬åœ°, è¯¥æ–¹æ³•ä¸­å†ä¸éœ€è¦æ·»å…¥å…¶ä»–çš„ä»£ç .
+     * ä½¿ç”¨ @Pointcut æ¥å£°æ˜åˆ‡å…¥ç‚¹è¡¨è¾¾å¼.
+     * åé¢çš„å…¶ä»–é€šçŸ¥ç›´æ¥ä½¿ç”¨æ–¹æ³•åæ¥å¼•ç”¨å½“å‰çš„åˆ‡å…¥ç‚¹è¡¨è¾¾å¼.
+     */
+    @Pointcut("execution(public int com.spring.demo03.aop.ArithmeticCalculator.*(..))")
+    public void declareJointPointExpression() {
+    }
+
+    /**
+     * åœ¨ com.atguigu.spring.aop.ArithmeticCalculator æ¥å£çš„æ¯ä¸€ä¸ªå®ç°ç±»çš„æ¯ä¸€ä¸ªæ–¹æ³•å¼€å§‹ä¹‹å‰æ‰§è¡Œä¸€æ®µä»£ç 
+     */
+    @Before("declareJointPointExpression()")
+    public void beforeMethod(JoinPoint joinPoint) {
+        String methodName = joinPoint.getSignature().getName();
+        Object[] args = joinPoint.getArgs();
+
+        System.out.println("The method " + methodName + " begins with " + Arrays.asList(args));
+    }
+
+    /**
+     * åœ¨æ–¹æ³•æ‰§è¡Œä¹‹åæ‰§è¡Œçš„ä»£ç . æ— è®ºè¯¥æ–¹æ³•æ˜¯å¦å‡ºç°å¼‚å¸¸
+     */
+    @After("declareJointPointExpression()")
+    public void afterMethod(JoinPoint joinPoint) {
+        String methodName = joinPoint.getSignature().getName();
+        System.out.println("The method " + methodName + " ends");
+    }
+
+    /**
+     * åœ¨æ–¹æ³•æ³•æ­£å¸¸ç»“æŸå—æ‰§è¡Œçš„ä»£ç 
+     * è¿”å›é€šçŸ¥æ˜¯å¯ä»¥è®¿é—®åˆ°æ–¹æ³•çš„è¿”å›å€¼çš„!
+     */
+    @AfterReturning(value = "declareJointPointExpression()",
+            returning = "result")
+    public void afterReturning(JoinPoint joinPoint, Object result) {
+        String methodName = joinPoint.getSignature().getName();
+        System.out.println("The method " + methodName + " ends with " + result);
+    }
+
+    /**
+     * åœ¨ç›®æ ‡æ–¹æ³•å‡ºç°å¼‚å¸¸æ—¶ä¼šæ‰§è¡Œçš„ä»£ç .
+     * å¯ä»¥è®¿é—®åˆ°å¼‚å¸¸å¯¹è±¡; ä¸”å¯ä»¥æŒ‡å®šåœ¨å‡ºç°ç‰¹å®šå¼‚å¸¸æ—¶åœ¨æ‰§è¡Œé€šçŸ¥ä»£ç 
+     */
+    @AfterThrowing(value = "declareJointPointExpression()",
+            throwing = "e")
+    public void afterThrowing(JoinPoint joinPoint, Exception e) {
+        String methodName = joinPoint.getSignature().getName();
+        System.out.println("The method " + methodName + " occurs excetion:" + e);
+    }
+
+    /**
+     * ç¯ç»•é€šçŸ¥éœ€è¦æºå¸¦ ProceedingJoinPoint ç±»å‹çš„å‚æ•°.
+     * ç¯ç»•é€šçŸ¥ç±»ä¼¼äºåŠ¨æ€ä»£ç†çš„å…¨è¿‡ç¨‹: ProceedingJoinPoint ç±»å‹çš„å‚æ•°å¯ä»¥å†³å®šæ˜¯å¦æ‰§è¡Œç›®æ ‡æ–¹æ³•.
+     * ä¸”ç¯ç»•é€šçŸ¥å¿…é¡»æœ‰è¿”å›å€¼, è¿”å›å€¼å³ä¸ºç›®æ ‡æ–¹æ³•çš„è¿”å›å€¼
+     */
+    /*
 	@Around("execution(public int com.atguigu.spring.aop.ArithmeticCalculator.*(..))")
 	public Object aroundMethod(ProceedingJoinPoint pjd){
-		
+
 		Object result = null;
 		String methodName = pjd.getSignature().getName();
-		
+
 		try {
-			//Ç°ÖÃÍ¨Öª
+			//å‰ç½®é€šçŸ¥
 			System.out.println("The method " + methodName + " begins with " + Arrays.asList(pjd.getArgs()));
-			//Ö´ĞĞÄ¿±ê·½·¨
+			//æ‰§è¡Œç›®æ ‡æ–¹æ³•
 			result = pjd.proceed();
-			//·µ»ØÍ¨Öª
+			//è¿”å›é€šçŸ¥
 			System.out.println("The method " + methodName + " ends with " + result);
 		} catch (Throwable e) {
-			//Òì³£Í¨Öª
+			//å¼‚å¸¸é€šçŸ¥
 			System.out.println("The method " + methodName + " occurs exception:" + e);
 			throw new RuntimeException(e);
 		}
-		//ºóÖÃÍ¨Öª
+		//åç½®é€šçŸ¥
 		System.out.println("The method " + methodName + " ends");
 		
 		return result;

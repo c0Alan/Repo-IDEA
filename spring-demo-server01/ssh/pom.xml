@@ -60,7 +60,7 @@
             <version>${hibernate.version}</version>
         </dependency>
 
-        <!-- hibernate 缓存, 视情况添加-->
+        <!-- demo01 缓存, 视情况添加-->
         <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-ehcache</artifactId>

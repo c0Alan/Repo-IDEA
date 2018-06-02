@@ -5,11 +5,11 @@
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd">
 
 	<!-- 配置自动扫描的包: 需要加入 aop 对应的 jar 包 -->
-	<context:component-scan base-package="com.atguigu.spring.annotation.generic"></context:component-scan>
+	<context:component-scan base-package="com.spring.demo01"></context:component-scan>
 	
 	<!-- resource-pattern, 过滤扫描的资源 -->
 	<!-- 
-	<context:component-scan base-package="com.atguigu.spring.annotation.generic"
+	<context:component-scan base-package="com.spring.demo01.annotation.generic"
 		resource-pattern="Role*.class"</context:component-scan>
 	-->
 	<!-- 

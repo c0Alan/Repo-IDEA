@@ -1,6 +1,4 @@
-package com.atguigu.spring.aop;
-
-import java.util.Arrays;
+package com.spring.demo02.aop;
 
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.After;
@@ -8,55 +6,57 @@ import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.springframework.stereotype.Component;
 
+import java.util.Arrays;
+
 /**
- * AOP µÄ helloWorld
- * 1. ¼ÓÈë jar °ü
+ * AOP çš„ helloWorld
+ * 1. åŠ å…¥ jar åŒ…
  * com.springsource.net.sf.cglib-2.2.0.jar
  * com.springsource.org.aopalliance-1.0.0.jar
  * com.springsource.org.aspectj.weaver-1.6.8.RELEASE.jar
  * spring-aspects-4.0.0.RELEASE.jar
- * 
- * 2. ÔÚ Spring µÄÅäÖÃÎÄ¼şÖĞ¼ÓÈë aop µÄÃüÃû¿Õ¼ä¡£ 
- * 
- * 3. »ùÓÚ×¢½âµÄ·½Ê½À´Ê¹ÓÃ AOP
- * 3.1 ÔÚÅäÖÃÎÄ¼şÖĞÅäÖÃ×Ô¶¯É¨ÃèµÄ°ü: <context:component-scan base-package="com.atguigu.spring.aop"></context:component-scan>
- * 3.2 ¼ÓÈëÊ¹ AspjectJ ×¢½âÆğ×÷ÓÃµÄÅäÖÃ: <aop:aspectj-autoproxy></aop:aspectj-autoproxy>
- * ÎªÆ¥ÅäµÄÀà×Ô¶¯Éú³É¶¯Ì¬´úÀí¶ÔÏó. 
- * 
- * 4. ±àĞ´ÇĞÃæÀà: 
- * 4.1 Ò»¸öÒ»°ãµÄ Java Àà
- * 4.2 ÔÚÆäÖĞÌí¼ÓÒª¶îÍâÊµÏÖµÄ¹¦ÄÜ. 
  *
- * 5. ÅäÖÃÇĞÃæ
- * 5.1 ÇĞÃæ±ØĞëÊÇ IOC ÖĞµÄ bean: Êµ¼ÊÌí¼ÓÁË @Component ×¢½â
- * 5.2 ÉùÃ÷ÊÇÒ»¸öÇĞÃæ: Ìí¼Ó @Aspect
- * 5.3 ÉùÃ÷Í¨Öª: ¼´¶îÍâ¼ÓÈë¹¦ÄÜ¶ÔÓ¦µÄ·½·¨. 
- * 5.3.1 Ç°ÖÃÍ¨Öª: @Before("execution(public int com.atguigu.spring.aop.ArithmeticCalculator.*(int, int))")
- * @Before ±íÊ¾ÔÚÄ¿±ê·½·¨Ö´ĞĞÖ®Ç°Ö´ĞĞ @Before ±ê¼ÇµÄ·½·¨µÄ·½·¨Ìå. 
- * @Before ÀïÃæµÄÊÇÇĞÈëµã±í´ïÊ½: 
- * 
- * 6. ÔÚÍ¨ÖªÖĞ·ÃÎÊÁ¬½ÓÏ¸½Ú: ¿ÉÒÔÔÚÍ¨Öª·½·¨ÖĞÌí¼Ó JoinPoint ÀàĞÍµÄ²ÎÊı, ´ÓÖĞ¿ÉÒÔ·ÃÎÊµ½·½·¨µÄÇ©ÃûºÍ·½·¨µÄ²ÎÊı. 
- * 
- * 7. @After ±íÊ¾ºóÖÃÍ¨Öª: ÔÚ·½·¨Ö´ĞĞÖ®ºóÖ´ĞĞµÄ´úÂë. 
+ * 2. åœ¨ Spring çš„é…ç½®æ–‡ä»¶ä¸­åŠ å…¥ aop çš„å‘½åç©ºé—´ã€‚
+ *
+ * 3. åŸºäºæ³¨è§£çš„æ–¹å¼æ¥ä½¿ç”¨ AOP
+ * 3.1 åœ¨é…ç½®æ–‡ä»¶ä¸­é…ç½®è‡ªåŠ¨æ‰«æçš„åŒ…: <context:component-scan base-package="com.atguigu.spring.aop"></context:component-scan>
+ * 3.2 åŠ å…¥ä½¿ AspjectJ æ³¨è§£èµ·ä½œç”¨çš„é…ç½®: <aop:aspectj-autoproxy></aop:aspectj-autoproxy>
+ * ä¸ºåŒ¹é…çš„ç±»è‡ªåŠ¨ç”ŸæˆåŠ¨æ€ä»£ç†å¯¹è±¡.
+ *
+ * 4. ç¼–å†™åˆ‡é¢ç±»:
+ * 4.1 ä¸€ä¸ªä¸€èˆ¬çš„ Java ç±»
+ * 4.2 åœ¨å…¶ä¸­æ·»åŠ è¦é¢å¤–å®ç°çš„åŠŸèƒ½.
+ *
+ * 5. é…ç½®åˆ‡é¢
+ * 5.1 åˆ‡é¢å¿…é¡»æ˜¯ IOC ä¸­çš„ bean: å®é™…æ·»åŠ äº† @Component æ³¨è§£
+ * 5.2 å£°æ˜æ˜¯ä¸€ä¸ªåˆ‡é¢: æ·»åŠ  @Aspect
+ * 5.3 å£°æ˜é€šçŸ¥: å³é¢å¤–åŠ å…¥åŠŸèƒ½å¯¹åº”çš„æ–¹æ³•.
+ * 5.3.1 å‰ç½®é€šçŸ¥: @Before("execution(public int com.spring.demo02.aop.ArithmeticCalculator.*(int, int))")
+ * @Before è¡¨ç¤ºåœ¨ç›®æ ‡æ–¹æ³•æ‰§è¡Œä¹‹å‰æ‰§è¡Œ @Before æ ‡è®°çš„æ–¹æ³•çš„æ–¹æ³•ä½“.
+ * @Before é‡Œé¢çš„æ˜¯åˆ‡å…¥ç‚¹è¡¨è¾¾å¼:
+ *
+ * 6. åœ¨é€šçŸ¥ä¸­è®¿é—®è¿æ¥ç»†èŠ‚: å¯ä»¥åœ¨é€šçŸ¥æ–¹æ³•ä¸­æ·»åŠ  JoinPoint ç±»å‹çš„å‚æ•°, ä»ä¸­å¯ä»¥è®¿é—®åˆ°æ–¹æ³•çš„ç­¾åå’Œæ–¹æ³•çš„å‚æ•°.
+ *
+ * 7. @After è¡¨ç¤ºåç½®é€šçŸ¥: åœ¨æ–¹æ³•æ‰§è¡Œä¹‹åæ‰§è¡Œçš„ä»£ç .
  */
 
-//Í¨¹ıÌí¼Ó @Aspect ×¢½âÉùÃ÷Ò»¸ö bean ÊÇÒ»¸öÇĞÃæ!
+//é€šè¿‡æ·»åŠ  @Aspect æ³¨è§£å£°æ˜ä¸€ä¸ª bean æ˜¯ä¸€ä¸ªåˆ‡é¢!
 @Aspect
 @Component
 public class LoggingAspect {
 
-	@Before("execution(public int com.atguigu.spring.aop.ArithmeticCalculator.*(int, int))")
+	@Before("execution(public int com.spring.demo02.aop.ArithmeticCalculator.*(int, int))")
 	public void beforeMethod(JoinPoint joinPoint){
 		String methodName = joinPoint.getSignature().getName();
 		Object [] args = joinPoint.getArgs();
-		
+
 		System.out.println("The method " + methodName + " begins with " + Arrays.asList(args));
 	}
-	
-	@After("execution(* com.atguigu.spring.aop.*.*(..))")
+
+	@After("execution(* com.spring.demo02.aop.*.*(..))")
 	public void afterMethod(JoinPoint joinPoint){
 		String methodName = joinPoint.getSignature().getName();
 		System.out.println("The method " + methodName + " ends");
 	}
-	
+
 }

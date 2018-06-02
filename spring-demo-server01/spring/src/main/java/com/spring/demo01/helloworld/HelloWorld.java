@@ -1,11 +1,11 @@
-package com.atguigu.spring.helloworld;
+package com.spring.demo01.helloworld;
 
 public class HelloWorld {
 
 	private String user;
 	
 	public HelloWorld() {
-		System.out.println("HelloWorld's constructor...");
+//		System.out.println("HelloWorld's constructor...");
 	}
 	
 	public void setUser(String user) {
