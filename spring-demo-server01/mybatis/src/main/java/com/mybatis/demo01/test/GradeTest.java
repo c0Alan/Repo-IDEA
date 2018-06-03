@@ -22,7 +22,7 @@ public class GradeTest {
      */
     @Before
     public void setUp() throws Exception {
-        sqlSession = SqlSessionFactoryUtil.openSession();
+        sqlSession = SqlSessionFactoryUtil.openSession("demo01");
         gradeMapper = sqlSession.getMapper(GradeMapper.class);
     }
 

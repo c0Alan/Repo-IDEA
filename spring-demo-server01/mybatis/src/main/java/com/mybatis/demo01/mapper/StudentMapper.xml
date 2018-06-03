@@ -38,7 +38,7 @@
         <result property="age" column="age"/>
         <association property="address" column="address_id"
                      select="com.mybatis.demo01.mapper.AddressMapper.findById"></association>
-        <association property="grade" column="grade_id" select="com.mybatis.demo01.mapper.GradeMapper.findById"></association>
+        <!--<association property="grade" column="grade_id" select="com.mybatis.demo01.mapper.GradeMapper.findById"></association>-->
     </resultMap>
 
     <!--第一部分-->

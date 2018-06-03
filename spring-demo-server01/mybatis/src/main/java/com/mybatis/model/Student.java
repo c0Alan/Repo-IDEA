@@ -1,6 +1,8 @@
 package com.mybatis.model;
 
-public class Student {
+import java.io.Serializable;
+
+public class Student implements Serializable {
 
     private Integer id;
     private String name;
@@ -87,13 +89,13 @@ public class Student {
     }
 
 
-    @Override
+/*    @Override
     public String toString() {
-        return "Student [id=" + id + ", name=" + name + ", age=" + age
-//                + ", address=" + address + ", grade=" + grade + "]";  // 这里会导致打印 grade 的时候死循环
-//                + ", address=" + address + "]"; // 容易空指针
-//                + ", address=" + address + ", grade=" + grade.getGradeName() + "]"; // 容易空指针
-                + "]";
-    }
+        String student = "Student [id=" + id + ", name=" + name + ", age=" + age + "]";
+        if(address != null){
+            student += address;
+        }
+        return student;
+    }*/
 
 }

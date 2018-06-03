@@ -32,7 +32,7 @@ public class StudentTest {
      */
     @Before
     public void setUp() throws Exception {
-        sqlSession = SqlSessionFactoryUtil.openSession();
+        sqlSession = SqlSessionFactoryUtil.openSession("demo03");
         studentMapper = sqlSession.getMapper(StudentMapper.class);
     }
 

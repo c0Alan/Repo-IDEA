@@ -23,7 +23,7 @@ public class SpringMVCDemo1 {
     @RequestMapping("/testRedirect")
     public String testRedirect(){
         System.out.println("testRedirect");
-        return "redirect:/test.jsp";
+        return "redirect:/custom.jsp";
     }
     
     @RequestMapping("/testView")
