@@ -145,7 +145,7 @@ JVM加载类过程：
 
 ## abstract class 和 interface
 
-含有abstract 修饰符的class 即为抽象类, abstract 类不能创建的实例对象。含有abstract方法的类必须定义为abstract class, abstract class 类中的方法不必是抽象的。abstract class类中定义抽象方法必须在具体(Concrete)子类中实现, 所以, 不能有抽象构造方法或抽象静态方法。如果的子类没有实现抽象父类中的所有抽象方法, 那么子类也必须定义为abstract类型。接口(interface)可以说成是抽象类的一种特例, 接口中的所有方法都必须是抽象的。接口中的方法定义默认为public abstract 类型, 接口中的成员变量类型默认为public static final。
+含有abstract 修饰符的class 即为抽象类, abstract 类不能创建的实例对象。含有abstract方法的类必须定义为abstract class, abstract class 类中的方法不必是抽象的。abstract class类中定义抽象方法必须在具体(Concrete)子类中实现, 所以, 不能有抽象构造方法或抽象静态方法(因为抽象的方法是要被子类实现的, 而static 与子类扯不上关系!)。如果的子类没有实现抽象父类中的所有抽象方法, 那么子类也必须定义为abstract类型。接口(interface)可以说成是抽象类的一种特例, 接口中的所有方法都必须是抽象的。接口中的方法定义默认为public abstract 类型, 接口中的成员变量类型默认为public static final。
 下面比较一下两者的语法区别：
 
 1. 抽象类可以有构造方法, 接口中不能有构造方法。
@@ -199,6 +199,8 @@ public class MyServlet1 extends BaseServlet {
 父类方法中间的某段代码不确定, 留给子类干, 就用模板方法设计模式。
 备注：这道题的思路是先从总体解释抽象类和接口的基本概念, 然后再比较两者的语法细节, 最后再说两者的应用区别。比较两者语法细节区别的条理是：先从一个类中的构造方法、普通成员变量和方法(包括抽象方法), 静态变量和方法, 继承性等6个方面逐一去比较回答, 接着从第三者继承的角度的回答, 特别是最后用了一个典型的例子来展现自己深厚的技术功底。
 
+
+
 ## 重载和覆盖
 
 Overload 是重载的意思, Override 是覆盖的意思, 也就是重写。
@@ -220,6 +222,253 @@ overload 对我们来说可能比较熟悉, 可以翻译为重载, 它是指我�
 3、方法的异常类型和数目不会对重载造成影响；
 4、对于继承来说, 如果某一方法在父类中是访问权限是priavte, 那么就不能在子类对其进行重载, 
 如果定义的话, 也只是定义了一个新方法, 而不会达到重载的效果。
+
+## 内部类
+
+　　在Java中，可以将一个类定义在另一个类里面或者一个方法里面，这样的类称为内部类。广泛意义上的内部类一般来说包括这四种：成员内部类、局部内部类、匿名内部类和静态内部类。下面就先来了解一下这四种内部类的用法。
+
+### 1.成员内部类
+
+　　成员内部类是最普通的内部类，它的定义为位于另一个类的内部，形如下面的形式：
+
+```java
+class Circle {
+    double radius = 0;
+     
+    public Circle(double radius) {
+        this.radius = radius;
+    }
+     
+    class Draw {     //内部类
+        public void drawSahpe() {
+            System.out.println("drawshape");
+        }
+    }
+}
+```
+
+
+
+　　这样看起来，类Draw像是类Circle的一个成员，Circle称为外部类。成员内部类可以无条件访问外部类的所有成员属性和成员方法（包括private成员和静态成员）。
+
+```java
+class Circle {
+    private double radius = 0;
+    public static int count =1;
+    public Circle(double radius) {
+        this.radius = radius;
+    }
+     
+    class Draw {     //内部类
+        public void drawSahpe() {
+            System.out.println(radius);  //外部类的private成员
+            System.out.println(count);   //外部类的静态成员
+        }
+    }
+}
+```
+
+
+
+　　不过要注意的是，当成员内部类拥有和外部类同名的成员变量或者方法时，会发生隐藏现象，即默认情况下访问的是成员内部类的成员。如果要访问外部类的同名成员，需要以下面的形式进行访问：
+
+```java
+外部类.this.成员变量
+外部类.this.成员方法
+```
+
+
+
+　　虽然成员内部类可以无条件地访问外部类的成员，而外部类想访问成员内部类的成员却不是这么随心所欲了。在外部类中如果要访问成员内部类的成员，必须先创建一个成员内部类的对象，再通过指向这个对象的引用来访问：
+
+```java
+class Circle {
+    private double radius = 0;
+ 
+    public Circle(double radius) {
+        this.radius = radius;
+        getDrawInstance().drawSahpe();   //必须先创建成员内部类的对象，再进行访问
+    }
+     
+    private Draw getDrawInstance() {
+        return new Draw();
+    }
+     
+    class Draw {     //内部类
+        public void drawSahpe() {
+            System.out.println(radius);  //外部类的private成员
+        }
+    }
+}
+```
+
+
+
+　　成员内部类是依附外部类而存在的，也就是说，如果要创建成员内部类的对象，前提是必须存在一个外部类的对象。创建成员内部类对象的一般方式如下：
+
+```java
+public class Test {
+    public static void main(String[] args)  {
+        //第一种方式：
+        Outter outter = new Outter();
+        Outter.Inner inner = outter.new Inner();  //必须通过Outter对象来创建
+         
+        //第二种方式：
+        Outter.Inner inner1 = outter.getInnerInstance();
+    }
+}
+ 
+class Outter {
+    private Inner inner = null;
+    public Outter() {
+         
+    }
+     
+    public Inner getInnerInstance() {
+        if(inner == null)
+            inner = new Inner();
+        return inner;
+    }
+      
+    class Inner {
+        public Inner() {
+             
+        }
+    }
+}
+```
+
+
+
+　　内部类可以拥有private访问权限、protected访问权限、public访问权限及包访问权限。比如上面的例子，如果成员内部类Inner用private修饰，则只能在外部类的内部访问，如果用public修饰，则任何地方都能访问；如果用protected修饰，则只能在同一个包下或者继承外部类的情况下访问；如果是默认访问权限，则只能在同一个包下访问。这一点和外部类有一点不一样，外部类只能被public和包访问两种权限修饰。我个人是这么理解的，由于成员内部类看起来像是外部类的一个成员，所以可以像类的成员一样拥有多种权限修饰。
+
+### 2.局部内部类
+
+　　局部内部类是定义在一个方法或者一个作用域里面的类，它和成员内部类的区别在于局部内部类的访问仅限于方法内或者该作用域内。
+
+```java
+class People{
+    public People() {
+         
+    }
+}
+ 
+class Man{
+    public Man(){
+         
+    }
+     
+    public People getWoman(){
+        class Woman extends People{   //局部内部类
+            int age =0;
+        }
+        return new Woman();
+    }
+}
+```
+
+
+
+　　注意，局部内部类就像是方法里面的一个局部变量一样，是不能有public、protected、private以及static修饰符的。
+
+### 3.匿名内部类
+
+　　匿名内部类应该是平时我们编写代码时用得最多的，在编写事件监听的代码时使用匿名内部类不但方便，而且使代码更加容易维护。下面这段代码是一段Android事件监听代码：
+
+```java
+scan_bt.setOnClickListener(new OnClickListener() {
+	 
+	@Override
+	public void onClick(View v) {
+		// TODO Auto-generated method stub
+		 
+	}
+});
+ 
+history_bt.setOnClickListener(new OnClickListener() {
+	 
+	@Override
+	public void onClick(View v) {
+		// TODO Auto-generated method stub
+		 
+	}
+});
+```
+
+
+
+　　这段代码为两个按钮设置监听器，这里面就使用了匿名内部类。这段代码中的：
+
+```java
+new OnClickListener() {
+	 
+	@Override
+	public void onClick(View v) {
+		// TODO Auto-generated method stub
+		 
+	}
+}
+```
+
+
+
+　　就是匿名内部类的使用。代码中需要给按钮设置监听器对象，使用匿名内部类能够在实现父类或者接口中的方法情况下同时产生一个相应的对象，但是前提是这个父类或者接口必须先存在才能这样使用。当然像下面这种写法也是可以的，跟上面使用匿名内部类达到效果相同。
+
+```java
+private void setListener()
+{
+    scan_bt.setOnClickListener(new Listener1());       
+    history_bt.setOnClickListener(new Listener2());
+}
+ 
+class Listener1 implements View.OnClickListener{
+    @Override
+    public void onClick(View v) {
+    // TODO Auto-generated method stub
+             
+    }
+}
+ 
+class Listener2 implements View.OnClickListener{
+    @Override
+    public void onClick(View v) {
+    // TODO Auto-generated method stub
+             
+    }
+}
+```
+
+
+
+　　这种写法虽然能达到一样的效果，但是既冗长又难以维护，所以一般使用匿名内部类的方法来编写事件监听代码。同样的，匿名内部类也是不能有访问修饰符和static修饰符的。
+
+　　匿名内部类是唯一一种没有构造器的类。正因为其没有构造器，所以匿名内部类的使用范围非常有限，大部分匿名内部类用于接口回调。匿名内部类在编译的时候由系统自动起名为Outter$1.class。一般来说，匿名内部类用于继承其他类或是实现接口，并不需要增加额外的方法，只是对继承方法的实现或是重写。
+
+```java
+public class Test {
+    public static void main(String[] args)  {
+        Outter.Inner inner = new Outter.Inner();
+    }
+}
+ 
+class Outter {
+    public Outter() {
+         
+    }
+     
+    static class Inner {
+        public Inner() {
+             
+        }
+    }
+}
+```
+
+
+
+### 4.静态内部类
+
+　　静态内部类也是定义在另一个类里面的类，只不过在类的前面多了一个关键字static。静态内部类是不需要依赖于外部类的，这点和类的静态成员属性有点类似，并且它不能使用外部类的非static成员变量或者方法，这点很好理解，因为在没有外部类的对象的情况下，可以创建静态内部类的对象，如果允许访问外部类的非static成员就会产生矛盾，因为外部类的非static成员必须依附于具体的对象。
 
 # Java基础类库
 
