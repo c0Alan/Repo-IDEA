@@ -13,8 +13,15 @@ public class PartOutter {
 
     public static void main(String[] args) {
         PartOutter outter = new PartOutter();
-        outter.getDog().sound();
+        outter.getDog().sound(); // wang wang
 
+        // 这里会报错, 静态方法中不能new内部类的实例对象 : 无法从静态上下文中引用非静态 变量 this
+        // 原因: 内部类的最重要的一个特点就是它可以直接访问它外部类的成员变量。成员变量是对象身上的。
+        // 结论: 静态方法中使用内部类不能通过 new
+//        getStaticCat().sound();
+
+        PartOutter.Coal coal = new PartOutter.Coal();
+        coal.sound(); // mao mao
     }
 
     public Animal getDog(){
@@ -27,16 +34,27 @@ public class PartOutter {
     }
 
     /**
-     * 这里会报错 : 无法从静态上下文中引用非静态 变量 this
+     * 静态方法内部类
+     * 在静态方法中定义的内部类, 静态方法中使用内部类不能通过new
+     * 不能在类前面加static 关键字
+     * 除了可以直接访问外部类中的 static 的成员变量, 还可以访问静态方法中的局部变量, 但是该局部变量前必须加final 修饰符
+     * 可以访问外部类的成员变量, 不能定义静态成员
      */
-/*    public static Animal getStaticDog(){
-        class Dog extends Animal{
+/*    public static Animal getStaticCat(){
+        class Cat extends Animal{
             public void sound(){
-                System.out.println("wang wang");
+                System.out.println("miao miao");
             }
         }
-        return new Dog();
+        return new Cat();
     }*/
+
+    static class Coal{
+
+        public void sound() {
+            System.out.println("mao mao");
+        }
+    }
 
     abstract class Animal{
         public abstract void sound();
