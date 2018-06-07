@@ -1,5 +1,11 @@
 package com.juc.exercise.demo02;
 
+/**
+ * 三条线程轮流打印 ABCABCABC...
+ *
+ * @author liuxilin
+ * @date 2018/6/1 22:27
+ */
 public class T implements  Runnable{
 
     protected State state;
