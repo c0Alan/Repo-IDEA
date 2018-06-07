@@ -474,11 +474,102 @@ class Outter {
 
 # Java集合
 
+## List
+
+继承自Collection 接口, 元素是有序的、可重复, 有序的 collection, 可以对列表中每个元素的插入位置进行精确地控制。可以根据元素的整数索引(在列表中的位置)访问元素, 并搜索列表中的元素。 可存放重复元素, 元素存取是有序的。
+
+List接口中常用类
+
+1. Vector： 线程安全, 但速度慢, 已被ArrayList替代。底层数据结构是数组结构
+
+2. ArrayList ：线程不安全, 查询速度快。底层数据结构是数组结构
+
+3. LinkedList：线程不安全。增删速度快。底层数据结构是列表结构
+
+## Set
+
+继承自Collection 接口, 元素无序的、不可重复。取出元素的方法只有迭代器。不可以存放重复元素, 元素存取是无序的。
+Set接口中常用的类
+
+1. HashSet：线程不安全, 存取速度快。
+
+​          它是如何保证元素唯一性的呢？依赖的是元素的hashCode方法和euqals方法。
+
+2. TreeSet：线程不安全, 可以对Set集合中的元素进行排序。
+
+​          它的排序是如何进行的呢？通过compareTo或者compare方法中的来保证元素的唯一性。元素是以二叉树的形式存放的。
+
+## Map
+
+不继承Collection 接口
+
+1. Hashtable:线程安全, 速度快。底层是哈希表数据结构。是同步的。不允许null作为键, null作为值。
+
+2. Properties:用于配置文件的定义和操作, 使用频率非常高, 同时键和值都是字符串。是集合中可以和IO技术相结合的对象。(到了IO在学习它的特有和io相关的功能。)
+
+3. HashMap:线程不安全, 速度慢。底层也是哈希表数据结构。是不同步的。允许null作为键, null作为值。替代了Hashtable.
+
+4. LinkedHashMap: 可以保证HashMap集合有序。存入的顺序和取出的顺序一致。
+5. TreeMap：可以用来对Map集合中的键进行排序.
+
+## 集合工具类
+
+1. Collections: 一系列静态方法实现对各种集合的搜索、排序、线程安全化等操作。
+2. Arrays
+
+
+
 # 泛型
 
 # 异常处理
 
-# 
+![异常体系](image\异常体系.png)
+
+
+
+Throwable类
+
+是整个Java异常体系的超类，都有的异常类都是派生自这个类。包含Error和Exception两个直接子类。
+
+Error
+
+表示程序在运行期间出现了十分严重、不可恢复的错误，在这种情况下应用程序只能中止运行，例如JAVA虚拟机出现错误。在程序中不用捕获Error类型的异常。一般情况下，在程序中也不应该抛出Error类型的异常。
+
+Exception
+
+是应用层面上最顶层的异常类，包含RuntimeException（运行时异常）和 Checked Exception（受检异常）。 
+
+1. RuntimeException是一种Unchecked Exception，即表示编译器不会检查程序是否对RuntimeException作了处理，在程序中不必捕获RuntimException类型的异常，也不必在方法体声明抛出RuntimeException类。一般来说，RuntimeException发生的时候，表示程序中出现了编程错误，所以应该找出错误修改程序，而不是去捕获RuntimeException。常见的RuntimeException有NullPointException、ClassCastException、IllegalArgumentException、IndexOutOfBoundException等。
+2. Checked Exception是相对于Unchecked Exception而言的，Java中并没有一个名为Checked Exception的类。它是在编程中使用最多的Exception，所有继承自Exception并且不是RuntimeException的异常都是Checked Exception。JAVA 语言规定必须对checked Exception作处理，编译器会对此作检查，要么在方法体中声明抛出checked Exception，要么使用catch语句捕获checked Exception进行处理，不然不能通过编译。常用的Checked Exception有IOException、ClassNotFoundException等。
+
+
+
+将异常类分为2类。
+
+非检查异常（unckecked exception）：
+
+​	Error 和 RuntimeException 以及他们的子类。javac在编译时，不会提示和发现这样的异常，不要求在程序处理这些异常。所以如果愿意，我们可以编写代码处理（使用try…catch…finally）这样的异常，也可以不处理。对于这些异常，我们应该修正代码，而不是去通过异常处理器处理 。这样的异常发生的原因多半是代码写的有问题。如除0错误ArithmeticException，错误的强制类型转换错误ClassCastException，数组索引越界ArrayIndexOutOfBoundsException，使用了空对象NullPointerException等等。
+
+检查异常（checked exception）：
+
+​	除了Error 和 RuntimeException的其它异常。javac强制要求程序员为这样的异常做预备处理工作（使用try…catch…finally或者throws）。在方法中要么用try-catch语句捕获它并处理，要么用throws子句声明抛出它，否则编译不会通过。这样的异常一般是由程序的运行环境导致的。因为程序可能被运行在各种未知的环境下，而程序员无法干预用户如何使用他编写的程序，于是程序员就应该为这样的异常时刻准备着。如SQLException , IOException,ClassNotFoundException 等。
+
+```java
+// Error
+Error 表示应用程序本身无法克服和恢复的一种严重问题, 程序只有死的份了, 例如, 说内存溢出和线程死锁等系统问题。
+// Exception 表示程序还能够克服和恢复的问题, 其中又分为系统异常和普通异常, 
+// 系统异常
+系统异常是软件本身缺陷所导致的问题, 也就是软件开发人员考虑不周所导致的问题, 软件使用者无法克服和恢复这种问题, 
+但在这种问题下还可以让软件系统继续运行或者让软件死掉, 
+例如, 数组脚本越界(ArrayIndexOutOfBoundsException), 空指针异常(NullPointerException),类转换异常(ClassCastException)；
+// 普通异常
+普通异常是运行环境的变化或异常所导致的问题, 是用户能够克服的问题, 
+// 例如, 网络断线, 硬盘空间不够, 发生这样的异常后, 程序不应该死掉。
+```
+
+
+
+
 
 # JDBC编程
 

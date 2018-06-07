@@ -1,4 +1,4 @@
-package com.jdk.collection;
+package com.jdk.collection.util;
 
 import org.apache.log4j.Logger;
 import org.junit.Test;

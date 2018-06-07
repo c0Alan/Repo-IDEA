@@ -18,21 +18,21 @@ public class StringDemo03 {
 
         Long time0 = System.currentTimeMillis();
         StringBuilder sbd = new StringBuilder();
-        for (int i = 0; i < 10000; i++) {
+        for (int i = 0; i < 1000000; i++) {
             sbd.append(i);
         }
 
         Long time1 = System.currentTimeMillis();
-        System.out.println(time1 - time0); // 2
+        System.out.println(time1 - time0); // 59
         time1 = System.currentTimeMillis();
 
         StringBuffer sbf = new StringBuffer();
-        for (int i = 0; i < 10000; i++) {
+        for (int i = 0; i < 1000000; i++) {
             sbf.append(i);
         }
 
         Long time2 = System.currentTimeMillis();
-        System.out.println(time2 - time1); // 1
+        System.out.println(time2 - time1); // 58
         time2 = System.currentTimeMillis();
 
         String str = new String();

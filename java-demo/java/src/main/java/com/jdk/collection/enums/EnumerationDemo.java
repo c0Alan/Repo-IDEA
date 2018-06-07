@@ -1,4 +1,4 @@
-package com.jdk.collection;
+package com.jdk.collection.enums;
 
 import org.junit.Test;
 
