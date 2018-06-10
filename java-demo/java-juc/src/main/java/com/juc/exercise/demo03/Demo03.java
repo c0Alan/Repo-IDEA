@@ -1,5 +1,7 @@
 package com.juc.exercise.demo03;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
@@ -16,11 +18,15 @@ public class Demo03 {
     public static void main(String[] args) {
         int num = 10;
         ExecutorService pool = Executors.newFixedThreadPool(num - 1);
+        List<Chopsticks> chopsticksArr = new ArrayList();
+        for(int i=0; i<num; i++){
+            chopsticksArr.add(new Chopsticks(i));
+        }
         for(int i=0; i<num-1; i++){
-            Thread t = new Thread(new Person("person" + i, new Chopsticks(i), new Chopsticks(i+1)));
+            Thread t = new Thread(new Person("person" + i, chopsticksArr.get(i), chopsticksArr.get(i + 1)));
             pool.execute(t);
         }
-        Thread t = new Thread(new Person("person" + (num - 1), new Chopsticks(0), new Chopsticks(num-1)));
+        Thread t = new Thread(new Person("person" + (num - 1), chopsticksArr.get(0), chopsticksArr.get(num-1)));
         pool.execute(t);
         pool.shutdown();
     }
