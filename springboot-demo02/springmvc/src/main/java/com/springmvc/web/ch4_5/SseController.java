@@ -6,6 +6,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+/**
+ * 服务器踹推送技术
+ * SSE ( Server Send Event 服务端发送事件)
+ * 
+ * @author liuxilin
+ * @date 2018/6/11 21:35
+ */
 @Controller
 public class SseController {
 

@@ -5,6 +5,15 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.springmvc.domain.DemoObj;
 
+/**
+ * 使用@RestController ，声明是控制器，并且返回数据时不需要 @ResponseBody.
+ * 返回数据的媒体类型为json , 直接返回对象，对象会自动转换成json
+ * 返回数据的媒体类型为xml, 直接返回对象，对象会自动转换为xml
+ * 注意: 用@RestController注解的类, 无法返回视图, 即无法重定向, 或转发
+ *
+ * @author liuxilin
+ * @date 2018/6/11 20:10
+ */
 @RestController //1
 @RequestMapping("/rest")
 public class DemoRestController {

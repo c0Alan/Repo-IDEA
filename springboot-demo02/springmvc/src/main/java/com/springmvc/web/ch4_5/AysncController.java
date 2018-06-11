@@ -8,6 +8,14 @@ import org.springframework.web.context.request.async.DeferredResult;
 
 import com.springmvc.service.PushService;
 
+/**
+ * 服务器踹推送技术
+ * 基于Servlet 3.0+ 的异步方法特性
+ * 需要在MyMvcConfig 上开始计划任务的支持，使用@EnableScheduling:
+ *
+ * @author liuxilin
+ * @date 2018/6/11 22:37
+ */
 @Controller
 public class AysncController {
     @Autowired

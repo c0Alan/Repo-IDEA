@@ -10,7 +10,8 @@ import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.ModelAndView;
 
 /**
- * 自定义建言
+ * 自定义控制器建言
+ * 通过@ControllerAdvice ，我们可以将对于控制器的全局配置放置在同一个位置
  * 
  * @author liuxilin
  * @date 2018/6/10 23:22
@@ -20,6 +21,7 @@ public class ExceptionHandlerAdvice {
 
     /**
      * 配置异常处理器, 返回异常视图
+     * @ExceptionHandler: 用于全局处理控制器里的异常。
      * @param exception
      * @param request
      * @return
@@ -33,6 +35,8 @@ public class ExceptionHandlerAdvice {
 
     /**
      * 配置 ModelAttribute, 给 Model 添加额外消息
+     * 使用@ModelAttribute 注解将键值对添加到全局，
+     * 所有注解的@RequestMapping的方法可获得此键值对。
      * @param model
      */
     @ModelAttribute
@@ -41,11 +45,13 @@ public class ExceptionHandlerAdvice {
     }
 
     /**
-     * 配置WebDataBinder, 屏蔽 id 字段
+     * 配置WebDataBinder, 忽略 request 参数的id
+     * @InitBinder: 用来设置 WebDataBinder ,
+     * WebDataBinder 用来自动绑定前台请求参数到Model 中。
      * @param webDataBinder
      */
     @InitBinder
     public void initBinder(WebDataBinder webDataBinder) {
-        webDataBinder.setDisallowedFields("id");
+//        webDataBinder.setDisallowedFields("id");
     }
 }

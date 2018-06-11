@@ -15,7 +15,7 @@
             url: "convert",
             data: "1-wangyunfei", //1
             type:"POST",
-            contentType:"application/x-wisely", //2
+            contentType:"application/x-wisely", // 自定义 contentType
             success: function(data){
                 $("#resp").html(data);
             }
