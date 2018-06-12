@@ -1,4 +1,4 @@
-package com.wisely.ch9_1.domain;
+package com.springboot.ch9_1.domain;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;

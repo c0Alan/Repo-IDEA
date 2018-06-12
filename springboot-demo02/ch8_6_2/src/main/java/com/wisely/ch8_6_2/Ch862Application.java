@@ -1,4 +1,4 @@
-package com.wisely.ch8_6_2;
+package com.springboot.ch8_6_2;
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.PropertyAccessor;

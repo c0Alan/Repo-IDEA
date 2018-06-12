@@ -1,10 +1,10 @@
-package com.wisely.ch9_1.web;
+package com.springboot.ch9_1.web;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.wisely.ch9_1.domain.Msg;
+import com.springboot.ch9_1.domain.Msg;
 
 @Controller
 public class HomeController {

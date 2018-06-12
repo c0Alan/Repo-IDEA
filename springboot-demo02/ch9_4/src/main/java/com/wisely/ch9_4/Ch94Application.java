@@ -1,4 +1,4 @@
-package com.wisely.ch9_4;
+package com.springboot.ch9_4;
 
 import com.rometools.rome.feed.synd.SyndEntry;
 import org.springframework.beans.factory.annotation.Value;

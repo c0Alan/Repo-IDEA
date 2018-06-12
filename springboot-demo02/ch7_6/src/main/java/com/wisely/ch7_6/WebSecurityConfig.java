@@ -1,4 +1,4 @@
-package com.wisely.ch7_6;
+package com.springboot.ch7_6;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -33,7 +33,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .inMemoryAuthentication()
                 .withUser("wyf").password("wyf").roles("USER")
                 .and()
-                .withUser("wisely").password("wisely").roles("USER");
+                .withUser("springboot").password("springboot").roles("USER");
     }
 
     //5忽略静态资源的拦截

@@ -2,6 +2,13 @@ package com.springboot.config;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;
+
+/**
+ * 通过 @ConfigurationProperties 加载properties 文件内的配置，
+ * 
+ * @author liuxl
+ * @date 2018/6/12 12:27
+ */
 @Component
 @ConfigurationProperties(prefix = "author") //1 
 public class AuthorSettings {

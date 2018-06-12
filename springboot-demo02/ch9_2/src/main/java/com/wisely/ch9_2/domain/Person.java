@@ -1,4 +1,4 @@
-package com.wisely.ch9_2.domain;
+package com.springboot.ch9_2.domain;
 
 import javax.validation.constraints.Size;
 

@@ -1,4 +1,4 @@
-package com.wisely.ui.service;
+package com.springboot.ui.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

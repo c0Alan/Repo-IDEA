@@ -1,6 +1,6 @@
-package com.wisely.ch9_2.batch;
+package com.springboot.ch9_2.batch;
 
-import com.wisely.ch9_2.domain.Person;
+import com.springboot.ch9_2.domain.Person;
 import org.springframework.batch.core.Job;
 import org.springframework.batch.core.Step;
 import org.springframework.batch.core.configuration.annotation.EnableBatchProcessing;

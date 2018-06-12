@@ -1,4 +1,4 @@
-package com.wisely.ch9_1;
+package com.springboot.ch9_1;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

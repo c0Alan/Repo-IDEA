@@ -1,4 +1,4 @@
-package com.wisely.ch10_4;
+package com.springboot.ch10_4;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

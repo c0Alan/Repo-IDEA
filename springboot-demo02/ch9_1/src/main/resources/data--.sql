@@ -1,5 +1,5 @@
 insert into SYS_USER (id,username, password) values (1,'wyf', 'wyf');
-insert into SYS_USER (id,username, password) values (2,'wisely', 'wisely');
+insert into SYS_USER (id,username, password) values (2,'springboot', 'springboot');
 
 insert into SYS_ROLE(id,name) values(1,'ROLE_ADMIN');
 insert into SYS_ROLE(id,name) values(2,'ROLE_USER');

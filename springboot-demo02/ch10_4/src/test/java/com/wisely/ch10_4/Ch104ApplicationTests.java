@@ -1,4 +1,4 @@
-package com.wisely.ch10_4;
+package com.springboot.ch10_4;
 
 import org.junit.Assert;
 import org.junit.Before;
@@ -18,8 +18,8 @@ import org.springframework.web.context.WebApplicationContext;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.wisely.ch10_4.dao.PersonRepository;
-import com.wisely.ch10_4.domain.Person;
+import com.springboot.ch10_4.dao.PersonRepository;
+import com.springboot.ch10_4.domain.Person;
 
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -40,7 +40,7 @@ public class Ch104ApplicationTests {
 	@Before //3
 	public void setUp() throws JsonProcessingException{ 
 		Person p1 = new Person("wyf");
-		Person p2 = new Person("wisely");
+		Person p2 = new Person("springboot");
 		personRepository.save(p1);
 		personRepository.save(p2);
 		

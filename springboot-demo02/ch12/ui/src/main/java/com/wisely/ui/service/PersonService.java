@@ -1,4 +1,4 @@
-package com.wisely.ui.service;
+package com.springboot.ui.service;
 
 import java.util.List;
 
@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.wisely.ui.domain.Person;
+import com.springboot.ui.domain.Person;
 
 @FeignClient("person")
 public interface PersonService {

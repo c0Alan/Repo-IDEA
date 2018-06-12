@@ -1,4 +1,4 @@
-package com.wisely.person.controller;
+package com.springboot.person.controller;
 
 
 import java.util.List;
@@ -10,8 +10,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.wisely.person.dao.PersonRepository;
-import com.wisely.person.domain.Person;
+import com.springboot.person.dao.PersonRepository;
+import com.springboot.person.domain.Person;
 
 @RestController
 public class PersonController {

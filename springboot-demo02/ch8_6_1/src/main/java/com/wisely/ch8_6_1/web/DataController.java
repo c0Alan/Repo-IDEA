@@ -1,8 +1,8 @@
-package com.wisely.ch8_6_1.web;
+package com.springboot.ch8_6_1.web;
 
-import com.wisely.ch8_6_1.dao.PersonRepository;
-import com.wisely.ch8_6_1.domain.Location;
-import com.wisely.ch8_6_1.domain.Person;
+import com.springboot.ch8_6_1.dao.PersonRepository;
+import com.springboot.ch8_6_1.domain.Location;
+import com.springboot.ch8_6_1.domain.Person;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;

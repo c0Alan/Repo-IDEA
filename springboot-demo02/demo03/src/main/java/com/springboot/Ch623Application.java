@@ -10,14 +10,14 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @SpringBootApplication
 public class Ch623Application {
-	
-	@Autowired
-	private AuthorSettings authorSettings; //1
-	
-	@RequestMapping("/")
-	public String index(){
-		return "author name is "+ authorSettings.getName()+" and author age is "+authorSettings.getAge();
-	}
+
+    @Autowired
+    private AuthorSettings authorSettings; //1
+
+    @RequestMapping("/")
+    public String index() {
+        return "author name is " + authorSettings.getName() + " and author age is " + authorSettings.getAge();
+    }
 
     public static void main(String[] args) {
         SpringApplication.run(Ch623Application.class, args);

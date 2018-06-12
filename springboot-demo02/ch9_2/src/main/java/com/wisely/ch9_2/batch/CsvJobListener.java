@@ -1,4 +1,4 @@
-package com.wisely.ch9_2.batch;
+package com.springboot.ch9_2.batch;
 
 import org.springframework.batch.core.JobExecution;
 import org.springframework.batch.core.JobExecutionListener;

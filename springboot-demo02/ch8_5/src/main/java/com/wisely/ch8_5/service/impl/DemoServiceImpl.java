@@ -1,4 +1,4 @@
-package com.wisely.ch8_5.service.impl;
+package com.springboot.ch8_5.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheEvict;
@@ -6,9 +6,9 @@ import org.springframework.cache.annotation.CachePut;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
-import com.wisely.ch8_5.dao.PersonRepository;
-import com.wisely.ch8_5.domain.Person;
-import com.wisely.ch8_5.service.DemoService;
+import com.springboot.ch8_5.dao.PersonRepository;
+import com.springboot.ch8_5.domain.Person;
+import com.springboot.ch8_5.service.DemoService;
 
 
 @Service

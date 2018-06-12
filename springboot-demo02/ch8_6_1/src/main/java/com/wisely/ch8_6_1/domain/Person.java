@@ -1,4 +1,4 @@
-package com.wisely.ch8_6_1.domain;
+package com.springboot.ch8_6_1.domain;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;

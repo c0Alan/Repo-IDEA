@@ -1,4 +1,4 @@
-package com.wisely.ch8_6_1;
+package com.springboot.ch8_6_1;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

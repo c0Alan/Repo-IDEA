@@ -1,4 +1,4 @@
-package com.wisely.ch9_3_4;
+package com.springboot.ch9_3_4;
 
 import org.springframework.jms.annotation.JmsListener;
 import org.springframework.stereotype.Component;

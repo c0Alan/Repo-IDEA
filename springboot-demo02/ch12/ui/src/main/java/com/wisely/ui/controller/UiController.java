@@ -1,8 +1,8 @@
-package com.wisely.ui.controller;
+package com.springboot.ui.controller;
 
-import com.wisely.ui.domain.Person;
-import com.wisely.ui.service.PersonHystrixService;
-import com.wisely.ui.service.SomeHystrixService;
+import com.springboot.ui.domain.Person;
+import com.springboot.ui.service.PersonHystrixService;
+import com.springboot.ui.service.SomeHystrixService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.RequestBody;

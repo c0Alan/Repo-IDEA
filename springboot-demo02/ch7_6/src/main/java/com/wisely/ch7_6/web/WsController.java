@@ -1,4 +1,4 @@
-package com.wisely.ch7_6.web;
+package com.springboot.ch7_6.web;
 
 import java.security.Principal;
 
@@ -8,8 +8,8 @@ import org.springframework.messaging.handler.annotation.SendTo;
 import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.stereotype.Controller;
 
-import com.wisely.ch7_6.domain.WiselyMessage;
-import com.wisely.ch7_6.domain.WiselyResponse;
+import com.springboot.ch7_6.domain.WiselyMessage;
+import com.springboot.ch7_6.domain.WiselyResponse;
 
 @Controller
 public class WsController {
@@ -27,7 +27,7 @@ public class WsController {
 	@MessageMapping("/chat")
 	public void handleChat(Principal principal, String msg) { //2
 		if (principal.getName().equals("wyf")) {//3
-			messagingTemplate.convertAndSendToUser("wisely",
+			messagingTemplate.convertAndSendToUser("springboot",
 					"/queue/notifications", principal.getName() + "-send:"
 							+ msg);
 		} else {

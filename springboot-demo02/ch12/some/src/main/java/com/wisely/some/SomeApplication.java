@@ -1,4 +1,4 @@
-package com.wisely.some;
+package com.springboot.some;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;

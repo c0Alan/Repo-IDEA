@@ -1,4 +1,4 @@
-package com.wisely.support;
+package com.springboot.support;
 
 import java.io.Serializable;
 
@@ -8,8 +8,8 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.support.SimpleJpaRepository;
 
-import static com.wisely.specs.CustomerSpecs.*; // import 类之后就可以直接使用类的静态方法
-//import static com.wisely.specs.TestStatic.*;
+import static com.springboot.specs.CustomerSpecs.*; // import 类之后就可以直接使用类的静态方法
+//import static com.springboot.specs.TestStatic.*;
 
 public class CustomRepositoryImpl <T, ID extends Serializable> 
 					extends SimpleJpaRepository<T, ID>  implements CustomRepository<T,ID> {

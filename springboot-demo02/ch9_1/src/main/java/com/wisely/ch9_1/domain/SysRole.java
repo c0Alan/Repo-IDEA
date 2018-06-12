@@ -1,4 +1,4 @@
-package com.wisely.ch9_1.domain;
+package com.springboot.ch9_1.domain;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

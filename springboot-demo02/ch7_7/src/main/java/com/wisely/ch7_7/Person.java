@@ -1,4 +1,4 @@
-package com.wisely.ch7_7;
+package com.springboot.ch7_7;
 
 public class Person {
 	private String name;

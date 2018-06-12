@@ -17,7 +17,7 @@
     </parent>
 
     <properties>
-        <start-class>com.wisely.discovery.DiscoveryApplication</start-class>
+        <start-class>com.springboot.discovery.DiscoveryApplication</start-class>
     </properties>
 
     <dependencies>

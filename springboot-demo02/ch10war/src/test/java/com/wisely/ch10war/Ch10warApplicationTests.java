@@ -1,4 +1,4 @@
-package com.wisely.ch10war;
+package com.springboot.ch10war;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

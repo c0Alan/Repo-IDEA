@@ -1,6 +1,6 @@
-package com.wisely.ch8_6_1.dao;
+package com.springboot.ch8_6_1.dao;
 
-import com.wisely.ch8_6_1.domain.Person;
+import com.springboot.ch8_6_1.domain.Person;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.data.mongodb.repository.Query;
 

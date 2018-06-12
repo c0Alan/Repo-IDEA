@@ -1,4 +1,4 @@
-package com.wisely.ch9_3_4;
+package com.springboot.ch9_3_4;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;

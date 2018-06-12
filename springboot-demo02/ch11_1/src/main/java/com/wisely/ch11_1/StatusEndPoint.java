@@ -1,4 +1,4 @@
-package com.wisely.ch11_1;
+package com.springboot.ch11_1;
 
 import org.springframework.beans.BeansException;
 import org.springframework.boot.actuate.endpoint.AbstractEndpoint;

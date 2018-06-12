@@ -22,10 +22,10 @@ import com.springmvc.domain.DemoObj;
 public class MyMessageConverter extends AbstractHttpMessageConverter<DemoObj> {//1
 
     /**
-     * 新建一个我们自定义的媒体类型application/x-wisely
+     * 新建一个我们自定义的媒体类型application/x-springboot
      */
     public MyMessageConverter() {
-        super(new MediaType("application", "x-wisely", Charset.forName("UTF-8")));//2
+        super(new MediaType("application", "x-springboot", Charset.forName("UTF-8")));//2
     }
 
     /**

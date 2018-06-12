@@ -1,4 +1,4 @@
-package com.wisely.ch8_6_2.dao;
+package com.springboot.ch8_6_2.dao;
 
 import java.io.Serializable;
 

@@ -1,4 +1,4 @@
-package com.wisely.person.domain;
+package com.springboot.person.domain;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

@@ -1,12 +1,12 @@
-package com.wisely;
+package com.springboot;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
-import com.wisely.dao.PersonRepository;
-import com.wisely.support.CustomRepositoryFactoryBean;
+import com.springboot.dao.PersonRepository;
+import com.springboot.support.CustomRepositoryFactoryBean;
 
 @SpringBootApplication
 @EnableJpaRepositories(repositoryFactoryBeanClass = CustomRepositoryFactoryBean.class)

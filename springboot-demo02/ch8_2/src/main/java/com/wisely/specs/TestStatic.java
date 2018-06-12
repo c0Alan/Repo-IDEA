@@ -1,4 +1,4 @@
-package com.wisely.specs;
+package com.springboot.specs;
 
 public class TestStatic {
     public static void testStatic(){

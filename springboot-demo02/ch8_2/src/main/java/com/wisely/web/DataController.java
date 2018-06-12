@@ -1,7 +1,7 @@
-package com.wisely.web;
+package com.springboot.web;
 
-import com.wisely.dao.PersonRepository;
-import com.wisely.domain.Person;
+import com.springboot.dao.PersonRepository;
+import com.springboot.domain.Person;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;

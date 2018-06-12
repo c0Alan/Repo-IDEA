@@ -1,4 +1,4 @@
-package com.wisely.ch7_6;
+package com.springboot.ch7_6;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.messaging.simp.config.MessageBrokerRegistry;

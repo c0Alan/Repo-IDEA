@@ -1,13 +1,13 @@
-package com.wisely.ch8_4.service.impl;
+package com.springboot.ch8_4.service.impl;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.wisely.ch8_4.dao.PersonRepository;
-import com.wisely.ch8_4.domain.Person;
-import com.wisely.ch8_4.service.DemoService;
+import com.springboot.ch8_4.dao.PersonRepository;
+import com.springboot.ch8_4.domain.Person;
+import com.springboot.ch8_4.service.DemoService;
 
 @Service
 public class DemoServiceImpl implements DemoService {

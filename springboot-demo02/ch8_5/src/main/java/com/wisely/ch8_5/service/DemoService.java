@@ -1,6 +1,6 @@
-package com.wisely.ch8_5.service;
+package com.springboot.ch8_5.service;
 
-import com.wisely.ch8_5.domain.Person;
+import com.springboot.ch8_5.domain.Person;
 
 public interface DemoService {
 	public Person save(Person person);

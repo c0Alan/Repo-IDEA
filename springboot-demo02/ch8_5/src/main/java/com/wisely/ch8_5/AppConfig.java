@@ -1,4 +1,4 @@
-package com.wisely.ch8_5;
+package com.springboot.ch8_5;
 
 import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.context.annotation.Configuration;

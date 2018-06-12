@@ -1,11 +1,11 @@
-package com.wisely.ch8_6_2.web;
+package com.springboot.ch8_6_2.web;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.wisely.ch8_6_2.dao.Person;
-import com.wisely.ch8_6_2.domain.PersonDao;
+import com.springboot.ch8_6_2.dao.Person;
+import com.springboot.ch8_6_2.domain.PersonDao;
 
 @RestController
 public class DataController {

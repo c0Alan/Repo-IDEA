@@ -1,9 +1,9 @@
-package com.wisely.ch9_2.batch;
+package com.springboot.ch9_2.batch;
 
 import org.springframework.batch.item.validator.ValidatingItemProcessor;
 import org.springframework.batch.item.validator.ValidationException;
 
-import com.wisely.ch9_2.domain.Person;
+import com.springboot.ch9_2.domain.Person;
 
 /**
  * 数据处理和校验都要通过ItemProcessor 接口实现来完成。

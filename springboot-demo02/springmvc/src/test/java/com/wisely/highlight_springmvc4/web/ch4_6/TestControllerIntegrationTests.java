@@ -1,4 +1,4 @@
-package com.wisely.highlight_springmvc4.web.ch4_6;
+package com.springboot.highlight_springmvc4.web.ch4_6;
 
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;

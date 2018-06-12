@@ -1,7 +1,7 @@
-package com.wisely.ui.service;
+package com.springboot.ui.service;
 
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
-import com.wisely.ui.domain.Person;
+import com.springboot.ui.domain.Person;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -38,7 +38,7 @@ public class PersonHystrixService {
      * @author liuxl
      * @date 2018/3/26 23:29
      * @param [name]
-     * @return java.util.List<com.wisely.ui.domain.Person>
+     * @return java.util.List<com.springboot.ui.domain.Person>
      */
     public List<Person> fallbackSave(String name) {
         List<Person> list = new ArrayList<>();

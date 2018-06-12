@@ -1,4 +1,4 @@
-package com.wisely.ui.domain;
+package com.springboot.ui.domain;
 
 
 public class Person {

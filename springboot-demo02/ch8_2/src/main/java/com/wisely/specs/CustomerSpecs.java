@@ -1,4 +1,4 @@
-package com.wisely.specs;
+package com.springboot.specs;
 
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.util.ReflectionUtils;

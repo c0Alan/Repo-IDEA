@@ -1,4 +1,4 @@
-package com.wisely.ch7_6;
+package com.springboot.ch7_6;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

@@ -1,4 +1,4 @@
-package com.wisely.ch8_6_2.domain;
+package com.springboot.ch8_6_2.domain;
 
 import javax.annotation.Resource;
 
@@ -8,7 +8,7 @@ import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.data.redis.core.ValueOperations;
 import org.springframework.stereotype.Repository;
 
-import com.wisely.ch8_6_2.dao.Person;
+import com.springboot.ch8_6_2.dao.Person;
 
 @Repository
 public class PersonDao {

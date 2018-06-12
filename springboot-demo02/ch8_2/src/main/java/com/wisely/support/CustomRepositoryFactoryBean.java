@@ -1,4 +1,4 @@
-package com.wisely.support;
+package com.springboot.support;
 
 import java.io.Serializable;
 

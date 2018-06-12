@@ -1,4 +1,4 @@
-package com.wisely.support;
+package com.springboot.support;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;

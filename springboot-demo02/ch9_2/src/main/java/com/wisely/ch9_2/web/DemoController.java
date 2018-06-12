@@ -1,4 +1,4 @@
-package com.wisely.ch9_2.web;
+package com.springboot.ch9_2.web;
 
 import org.springframework.batch.core.Job;
 import org.springframework.batch.core.JobParameters;
