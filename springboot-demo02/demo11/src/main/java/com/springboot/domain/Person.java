@@ -3,14 +3,11 @@ package com.springboot.domain;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.NamedQuery;
 
-@Entity //1
-@NamedQuery(name = "Person.withNameAndAddressNamedQuery",
-        query = "select p from Person p where p.name=?1 and address=?2")
+@Entity
 public class Person {
-    @Id //2
-    @GeneratedValue //3
+    @Id
+    @GeneratedValue
     private Long id;
 
     private String name;
@@ -18,7 +15,6 @@ public class Person {
     private Integer age;
 
     private String address;
-
 
     public Person() {
         super();
@@ -63,6 +59,4 @@ public class Person {
     public void setAddress(String address) {
         this.address = address;
     }
-
-
 }

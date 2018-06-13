@@ -1,4 +1,4 @@
-package com.springboot.ch8_3;
+package com.springboot;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
