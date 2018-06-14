@@ -45,6 +45,7 @@
 
         <!-- 数据库操作相关 -->
         <!--<postgresql.version>9.4.1209</postgresql.version>-->
+        <redis.version>2.9.0</redis.version>
         <postgresql.version>42.2.2</postgresql.version>
         <mysql.version>5.1.35</mysql.version>
         <c3p0.version>0.9.1.2</c3p0.version>
@@ -89,7 +90,7 @@
         <shiro-spring.version>1.3.2</shiro-spring.version>
 
         <!-- redis 相关 -->
-        <redis.version>2.7.3</redis.version>
+
         <protostuff.version>1.0.8</protostuff.version>
 
         <!-- quartz 定时器 -->
