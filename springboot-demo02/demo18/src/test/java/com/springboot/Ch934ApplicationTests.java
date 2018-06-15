@@ -1,15 +1,13 @@
-package com.springboot.ch12_3;
+package com.springboot;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.SpringApplicationConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import com.springboot.Ch123Application;
-
 @RunWith(SpringJUnit4ClassRunner.class)
-@SpringApplicationConfiguration(classes = Ch123Application.class)
-public class Ch123ApplicationTests {
+@SpringApplicationConfiguration(classes = Ch934Application.class)
+public class Ch934ApplicationTests {
 
 	@Test
 	public void contextLoads() {
