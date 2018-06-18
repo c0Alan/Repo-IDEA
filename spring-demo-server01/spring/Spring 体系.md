@@ -41,3 +41,23 @@
 </bean>
 ```
 
+# 依赖注入
+# Java 配置
+# AOP
+# Bean 的Scope
+# Spring EL 和资源调用
+# Bean 的初始化和销毁
+# Profile
+# 事件（Application Event）
+# Spring Aware
+# 多线程
+# 计划任务
+# 条件注解@Conditional
+# 组合注解与元注解
+# @Enable*注解的工作原理
+ 第一类：直接导入配置类
+ 第二类：依据条件选择配置类
+ 第三类：动态注册Bean
+# 测试
+
+# 常用注解
