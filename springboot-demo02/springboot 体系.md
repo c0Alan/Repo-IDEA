@@ -1,59 +1,7 @@
-# Spring 
-## 1.3.1 依赖注入
-## 1.3.2 Java 配置
-## 1.3.3 AOP
-## 2.1 Bean 的Scope
-## 2.2 Spring EL 和资源调用.
-## 2.3 Bean 的初始化和销毁
-## 2.4 Profile
-## 2.5 事件（Application Event）
-## 3.1 Spring Aware
-## 3.2 多线程
-## 3.3 计划任务
-## 3.4 条件注解@Conditional
-## 3.5 组合注解与元注解
-## 3.6 @Enable*注解的工作原理
-### 3.6.1 第一类：直接导入配置类
-### 3.6.2 第二类：依据条件选择配置类
-### 3.6.3 第三类：动态注册Bean
-## 3.7 测试
-# Spring MVC
+# 简单实例
 
-## 无 web.xml 启动
+# 基本配置
 
-在Spring-web项目中有类SpringServletContainerInitializer，它实现了Servlet3.0的ServletContainerInitializer接口，且优先级会高于xml中配置的listener。在SpringServletContainerInitializer中有注解@HandlesTypes(WebApplicationInitializer.class)，具体如下：
-
-因为这个类声明了HandlesTypes，并指定了类型为WebApplicationInitializer.class，在Servlet3.0+中web容器启动时，会扫描类路径下所有的WebApplicationInitializer接口实现类，并提供一个set集合给onStartup方法执行。
-onStartup方法执行时，会遍历该set，并使用newInstance()方式进行实例化，实例化后依据@Order注解进行排序，最后在依次调用onStartup(ServletContext)方法，完成初始化。
-
-## 4.1 Spring MVC 概述
-## 4.2 Spring MVC 项目快速搭建
-## 4.3 Spring MVC 的常用注解
-## 4.4 Spring MVC 基本配置
-### 4.4.1 静态资源映射
-### 4.4.2 拦截器配置
-### 4.4.3 @ControllerAdvice
-### 4.4.4 其他配置
-## 4.5 Spring MVC 的高级配置
-### 4.5.1 文件上传配置
-### 4.5.2 自定义HttpMessageConverter
-### 4.5.3 服务器端推送技术
-## 4.6 Spring MVC 的测试
-第三部分 实战Spring Boot
-# 第5章 Spring Boot 基础
-## 5.1 Spring Boot 概述
-### 5.1.1 什么是Spring Boot
-### 5.1.2 Spring Boot 核心功能
-### 5.1.3 Spring Boot 的优缺点
-### 5.1.4 关于本书的Spring Boot 版本
-## 5.2 Spring Boot 快速搭建
-### 5.2.1 http://start.spring.io
-### 5.2.2 Spring Tool Suite
-### 5.2.3 IntelliJ IDEA
-### 5.2.4 Spring Boot CLI
-### 5.2.5 Maven 手工构建
-# 第6章 Spring Boot 核心
-## 6.1 基本配置
 ### 6.1.1 入口类和@SpringBootApplication
 ### 6.1.2 关闭特定的自动配置
 ### 6.1.3 定制Banner
@@ -66,13 +14,12 @@ onStartup方法执行时，会遍历该set，并使用newInstance()方式进行�
 ### 6.2.3 类型安全的配置（基于properties）
 ## 6.3 日志配置
 ## 6.4 Profile 配置
-实战
 ## 6.5 Spring Boot 运行原理
 ### 6.5.1 运作原理
 ### 6.5.2 核心注解
 ### 6.5.3 实例分析
 ### 6.5.4 实战
-# 第7章 Spring Boot 的Web 开发
+# Web 开发
 ## 7.1 Spring Boot 的Web 开发支持
 ## 7.2 Thymeleaf 模板引擎
 ### 7.2.1 Thymeleaf 基础知识
@@ -100,7 +47,10 @@ onStartup方法执行时，会遍历该set，并使用newInstance()方式进行�
 ### 7.7.1 Bootstrap
 ### 7.7.2 AngularJS
 ### 7.7.3 实战
-# 第8章 Spring Boot 的数据访问
+# 数据访问
+
+Spring Data 系列
+
 ## 8.1 引入Docker
 ### 8.1.1 Docker 的安装
 ### 8.1.2 Docker 常用命令及参数
@@ -211,3 +161,85 @@ onStartup方法执行时，会遍历该set，并使用newInstance()方式进行�
 附录A
 A.1 基于JHipster 的代码生成
 A.2 常用应用属性配置列表[1] 
+
+
+
+# Spring
+
+## 1.3.1 依赖注入
+
+## 1.3.2 Java 配置
+
+## 1.3.3 AOP
+
+## 2.1 Bean 的Scope
+
+## 2.2 Spring EL 和资源调用.
+
+## 2.3 Bean 的初始化和销毁
+
+## 2.4 Profile
+
+## 2.5 事件（Application Event）
+
+## 3.1 Spring Aware
+
+## 3.2 多线程
+
+## 3.3 计划任务
+
+## 3.4 条件注解@Conditional
+
+## 3.5 组合注解与元注解
+
+## 3.6 @Enable*注解的工作原理
+
+### 3.6.1 第一类：直接导入配置类
+
+### 3.6.2 第二类：依据条件选择配置类
+
+### 3.6.3 第三类：动态注册Bean
+
+## 3.7 测试
+
+# Spring MVC
+
+## 无 web.xml 启动
+
+在Spring-web项目中有类SpringServletContainerInitializer，它实现了Servlet3.0的ServletContainerInitializer接口，且优先级会高于xml中配置的listener。在SpringServletContainerInitializer中有注解@HandlesTypes(WebApplicationInitializer.class)，具体如下：
+
+因为这个类声明了HandlesTypes，并指定了类型为WebApplicationInitializer.class，在Servlet3.0+中web容器启动时，会扫描类路径下所有的WebApplicationInitializer接口实现类，并提供一个set集合给onStartup方法执行。
+onStartup方法执行时，会遍历该set，并使用newInstance()方式进行实例化，实例化后依据@Order注解进行排序，最后在依次调用onStartup(ServletContext)方法，完成初始化。
+
+## 4.1 Spring MVC 概述
+
+## 4.2 Spring MVC 项目快速搭建
+
+## 4.3 Spring MVC 的常用注解
+
+## 4.4 Spring MVC 基本配置
+
+### 4.4.1 静态资源映射
+
+### 4.4.2 拦截器配置
+
+### 4.4.3 @ControllerAdvice
+
+### 4.4.4 其他配置
+
+## 4.5 Spring MVC 的高级配置
+
+### 4.5.1 文件上传配置
+
+### 4.5.2 自定义HttpMessageConverter
+
+### 4.5.3 服务器端推送技术
+
+## 4.6 Spring MVC 的测试
+
+# 常用注解
+
+## 基本注解
+
+## @Conditional 系列
+
