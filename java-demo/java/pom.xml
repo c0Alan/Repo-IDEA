@@ -20,6 +20,12 @@
             <version>${junit.version}</version>
         </dependency>
 
+        <dependency>
+            <groupId>joda-time</groupId>
+            <artifactId>joda-time</artifactId>
+            <version>${joda-time.version}</version>
+        </dependency>
+
         <!--日志相关-->
         <dependency>
             <groupId>log4j</groupId>
@@ -36,6 +42,7 @@
             <artifactId>commons-lang3</artifactId>
             <version>${commons-lang3.version}</version>
         </dependency>
+
     </dependencies>
 
 
