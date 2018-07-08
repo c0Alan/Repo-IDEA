@@ -3,6 +3,9 @@ package com.jdk.type.integer;
 import org.apache.log4j.Logger;
 import org.junit.Test;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * 整型类型测试
  *
@@ -49,8 +52,13 @@ public class IntegerDemo {
      */
     @Test
     public void equals() {
+        Integer ii = 126;
+        Integer iii = 126;
+        System.out.println(1000 == ii);
+        System.out.println(1000 == ii.intValue());
+        System.out.println(iii == ii);
         Integer i = null;
-        System.out.println(i == 1); // 这里拆箱时报空指针错误
+//        System.out.println(i == 1); // 这里拆箱时报空指针错误
     }
 
     @Test
@@ -106,6 +114,13 @@ public class IntegerDemo {
         Integer i7 = new Integer(128);
         Integer i8 = new Integer(128);
         System.out.println(i7 == i8); // false
+    }
+
+    @Test
+    public void nullTrans(){
+        Map m = new HashMap();
+        Integer i = (Integer)m.get("a");
+        System.out.println(i);
     }
 }
 
