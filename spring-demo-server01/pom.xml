@@ -48,7 +48,8 @@
         <redis.version>2.9.0</redis.version>
         <postgresql.version>42.2.2</postgresql.version>
         <mysql.version>5.1.35</mysql.version>
-        <c3p0.version>0.9.1.2</c3p0.version>
+        <!--<c3p0.version>0.9.1.2</c3p0.version>-->
+        <c3p0.version>0.9.0.4</c3p0.version>
         <mybatis.version>3.3.0</mybatis.version>
         <mybatis-spring.version>1.2.3</mybatis-spring.version>
         <hibernate.version>4.3.5.Final</hibernate.version>

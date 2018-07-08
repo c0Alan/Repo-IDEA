@@ -20,6 +20,8 @@ public class IntegerDemo {
      */
     @Test
     public void equalsInt() {
+        Map m = new HashMap();
+        System.out.println((Integer)m.get("aa"));
         Integer num1 = -1;
         int num2 = -1;
         int num3 = 2;

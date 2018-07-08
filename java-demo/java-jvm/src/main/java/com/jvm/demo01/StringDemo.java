@@ -17,6 +17,8 @@ public class StringDemo {
         String str3 = new String("aaa"); // new 的对象不会放在常量池中
         System.out.println(str1 == str2); // true 说明 str2只用了常量池中的字符串
         System.out.println(str1 == str3); // false // 说明 str3 新建了一个对象
+        str2 = null;
+        System.out.println(str1);
 
         String str4 = "aaa" + "aaa";
         String str5 = str1 + str2;

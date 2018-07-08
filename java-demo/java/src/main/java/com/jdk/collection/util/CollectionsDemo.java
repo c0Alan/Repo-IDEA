@@ -1,7 +1,6 @@
 package com.jdk.collection.util;
 
 import com.model.Person;
-import com.sun.javafx.scene.control.skin.VirtualFlow.ArrayLinkedList;
 import org.apache.log4j.Logger;
 import org.joda.time.DateTime;
 import org.junit.Test;
