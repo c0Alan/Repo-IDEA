@@ -8,9 +8,9 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.web.client.RestTemplate;
 
 /**
- * 创建“服务提供方”
- * @EnableDiscoveryClient 注解，该注解能激活Eureka中的DiscoveryClient实现，
- * 这样才能实现Controller中对服务信息的输出。
+ * 创建“服务消费者 ”
+ * 初始化RestTemplate，用来真正发起REST请求。
+ * @EnableDiscoveryClient 注解用来将当前应用加入到服务治理体系中。
  *
  * @author liuxl
  * @date 2018/4/9 21:59

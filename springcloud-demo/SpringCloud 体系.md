@@ -250,7 +250,9 @@ Kafka实现消息总线
 
 在应用主类中通过加上`@EnableDiscoveryClient`注解，该注解能激活Eureka中的DiscoveryClient实现，这样才能实现Controller中对服务信息的输出。
 
-## Spring Cloud Consul
+## consul-client
+
+(Spring Cloud Consul) 另一种服务提供方
 
 Spring Cloud Consul项目是针对Consul的服务治理实现。Consul是一个分布式高可用的系统，它包含多个组件，但是作为一个整体，在微服务架构中为我们的基础设施提供服务发现和服务配置的工具。它包含了下面几个特性：
 
@@ -260,4 +262,28 @@ Spring Cloud Consul项目是针对Consul的服务治理实现。Consul是一个�
 - 多数据中心
 
 由于Spring Cloud Consul项目的实现，我们可以轻松的将基于Spring Boot的微服务应用注册到Consul上，并通过此实现微服务架构中的服务治理。 
+
+# Spring Cloud构建微服务架构：服务消费（基础）
+
+```
+通过上一篇《Spring Cloud构建微服务架构：服务注册与发现》，我们已经成功地将服务提供者：eureka-client或consul-client注册到了Eureka服务注册中心或Consul服务端上了，同时我们也通过DiscoveryClient接口的getServices获取了当前客户端缓存的所有服务清单，那么接下来我们要学习的就是：如何去消费服务提供者的接口？
+```
+
+如何去消费服务提供者的接口？
+
+## 使用LoadBalancerClient
+
+## eureka-server 
+
+服务注册中心 
+
+## eureka-client 
+
+服务提供者 
+
+## eureka-consumer 
+
+服务消费者 
+
+
 

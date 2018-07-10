@@ -20,4 +20,19 @@ public class ArrayListDemo {
         System.out.println(p);
         System.out.println(list);
     }
+
+    @Test
+    public void sublist(){
+        List<String> list = new ArrayList<>();
+        list.add("aa");
+        list.add("bb");
+        list.add("cc");
+        list.add("dd");
+        list.add("ee");
+        List<String> subList = list.subList(0, 3);
+        System.out.println(subList); // [aa, bb, cc]
+        subList.clear();
+        System.out.println(list.size()); // 2
+        System.out.println(list); // [dd, ee]
+    }
 }
