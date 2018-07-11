@@ -273,6 +273,8 @@ Spring Cloud Consul项目是针对Consul的服务治理实现。Consul是一个�
 
 ## 使用LoadBalancerClient
 
+从LoadBalancerClient接口的命名中，我们就知道这是一个负载均衡客户端的抽象定义
+
 ## eureka-server 
 
 服务注册中心 
@@ -284,6 +286,114 @@ Spring Cloud Consul项目是针对Consul的服务治理实现。Consul是一个�
 ## eureka-consumer 
 
 服务消费者 
+
+# Spring Cloud构建微服务架构：服务消费（Ribbon）
+
+```
+通过上一篇《Spring Cloud构建微服务架构：服务消费（基础）》，我们已经学会如何通过LoadBalancerClient接口来获取某个服务的具体实例，并根据实例信息来发起服务接口消费请求。但是这样的做法需要我们手工的去编写服务选取、链接拼接等繁琐的工作，对于开发人员来说非常的不友好。所以，下来我们看看Spring Cloud中针对客户端负载均衡的工具包：Spring Cloud Ribbon。
+```
+
+## Spring Cloud Ribbon
+
+服务消费者 
+
+```
+Spring Cloud Ribbon是基于Netflix Ribbon实现的一套客户端负载均衡的工具。它是一个基于HTTP和TCP的客户端负载均衡器。它可以通过在客户端中配置ribbonServerList来设置服务端列表去轮询访问以达到均衡负载的作用。
+
+当Ribbon与Eureka联合使用时，ribbonServerList会被DiscoveryEnabledNIWSServerList重写，扩展成从Eureka注册中心中获取服务实例列表。同时它也会用NIWSDiscoveryPing来取代IPing，它将职责委托给Eureka来确定服务端是否已经启动。
+
+而当Ribbon与Consul联合使用时，ribbonServerList会被ConsulServerList来扩展成从Consul获取服务实例列表。同时由ConsulPing来作为IPing接口的实现。
+
+我们在使用Spring Cloud Ribbon的时候，不论是与Eureka还是Consul结合，都会在引入Spring Cloud Eureka或Spring Cloud Consul依赖的时候通过自动化配置来加载上述所说的配置内容，所以我们可以快速在Spring Cloud中实现服务间调用的负载均衡。
+```
+
+```xml
+<dependency>
+	<groupId>org.springframework.cloud</groupId>
+	<artifactId>spring-cloud-starter-ribbon</artifactId>
+</dependency>
+```
+
+
+
+## eureka-server
+
+## eureka-client
+
+## eureka-consumer-ribbon
+
+# Spring Cloud构建微服务架构：服务消费（Feign）
+
+## Spring Cloud Feign
+
+服务消费者 
+
+```
+Spring Cloud Feign是一套基于Netflix Feign实现的声明式服务调用客户端。它使得编写Web服务客户端变得更加简单。我们只需要通过创建接口并用注解来配置它既可完成对Web服务接口的绑定。它具备可插拔的注解支持，包括Feign注解、JAX-RS注解。它也支持可插拔的编码器和解码器。Spring Cloud Feign还扩展了对Spring MVC注解的支持，同时还整合了Ribbon和Eureka来提供均衡负载的HTTP客户端实现。
+```
+
+
+
+## eureka-server
+
+## eureka-client
+
+## eureka-consumer-feign
+
+# Spring Cloud构建微服务架构：分布式配置中心
+
+```
+	Spring Cloud Config是Spring Cloud团队创建的一个全新项目，用来为分布式系统中的基础设施和微服务应用提供集中化的外部配置支持，它分为服务端与客户端两个部分。其中服务端也称为分布式配置中心，它是一个独立的微服务应用，用来连接配置仓库并为客户端提供获取配置信息、加密/解密信息等访问接口；而客户端则是微服务架构中的各个微服务应用或基础设施，它们通过指定的配置中心来管理应用资源与业务相关的配置内容，并在启动的时候从配置中心获取和加载配置信息。Spring Cloud Config实现了对服务端和客户端中环境变量和属性配置的抽象映射，所以它除了适用于Spring构建的应用程序之外，也可以在任何其他语言运行的应用程序中使用。由于Spring Cloud Config实现的配置中心默认采用Git来存储配置信息，所以使用Spring Cloud Config构建的配置服务器，天然就支持对微服务应用配置信息的版本管理，并且可以通过Git客户端工具来方便的管理和访问配置内容。当然它也提供了对其他存储方式的支持，比如：SVN仓库、本地化文件系统。
+```
+
+## config-server-git 
+
+```xml
+<dependencies>
+	<dependency>
+		<groupId>org.springframework.cloud</groupId>
+		<artifactId>spring-cloud-config-server</artifactId>
+	</dependency>
+</dependencies>
+```
+
+@EnableConfigServer 
+
+```
+访问配置信息的URL与配置文件的映射关系如下：
+
+/{application}/{profile}[/{label}]
+/{application}-{profile}.yml
+/{label}/{application}-{profile}.yml
+/{application}-{profile}.properties
+/{label}/{application}-{profile}.properties
+```
+
+## config-client
+
+```xml
+<dependencies>
+	<dependency>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-web</artifactId>
+	</dependency>
+	<dependency>
+		<groupId>org.springframework.cloud</groupId>
+		<artifactId>spring-cloud-starter-config</artifactId>
+	</dependency>
+</dependencies>
+```
+
+```xml
+上述配置参数与Git中存储的配置文件中各个部分的对应关系如下：
+
+spring.application.name：对应配置文件规则中的{application}部分
+spring.cloud.config.profile：对应配置文件规则中的{profile}部分
+spring.cloud.config.label：对应配置文件规则中的{label}部分
+spring.cloud.config.uri：配置中心config-server的地址
+```
+
+**注意：上面这些属性必须配置在bootstrap.properties中，这样config-server中的配置信息才能被正确加载。** 
 
 
 
