@@ -133,5 +133,11 @@
             <scope>test</scope>
         </dependency>
 
+        <dependency>
+            <groupId>org.apache.flume</groupId>
+            <artifactId>flume-ng-channels</artifactId>
+            <version>${flume.version}</version>
+        </dependency>
+
     </dependencies>
 </project>
