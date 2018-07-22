@@ -485,3 +485,141 @@ Hystrix中除了使用线程池之外，还可以使用信号量来控制单个�
 ​	在上一篇的示例中，我们使用了@HystrixCommand来将某个函数包装成了Hystrix命令，这里除了定义服务降级之外，Hystrix框架就会自动的为这个函数实现调用的隔离。所以，依赖隔离、服务降级在使用时候都是一体化实现的，这样利用Hystrix来实现服务容错保护在编程模型上就非常方便的，并且考虑更为全面。
 
 ​	除了依赖隔离、服务降级之外，还有一个重要元素：断路器。我们将在下一篇做详细的介绍，这三个重要利器构成了Hystrix实现服务容错保护的强力组合拳。
+
+# 服务容错保护（Hystrix断路器）
+
+## 断路器
+
+断路器模式源于Martin Fowler的Circuit Breaker一文。“断路器”本身是一种开关装置，用于在电路上保护线路过载，当线路中有电器发生短路时，“断路器”能够及时的切断故障电路，防止发生过载、发热、甚至起火等严重后果。
+
+在分布式架构中，断路器模式的作用也是类似的，当某个服务单元发生故障（类似用电器发生短路）之后，通过断路器的故障监控（类似熔断保险丝），直接切断原来的主逻辑调用。但是，在Hystrix中的断路器除了切断主逻辑的功能之外，还有更复杂的逻辑，下面我们来看看它更为深层次的处理逻辑。
+
+以在[《Spring Cloud构建微服务架构：服务容错保护（Hystrix服务降级）》](http://blog.didispace.com/spring-cloud-starter-dalston-4-1)一文中实现的服务降级例子为示例，我们来说说断路器的工作原理。当我们把服务提供者`eureka-client`中加入了模拟的时间延迟之后，在服务消费端的服务降级逻辑因为hystrix命令调用依赖服务超时，触发了降级逻辑，但是即使这样，受限于Hystrix超时时间的问题，我们的调用依然很有可能产生堆积。
+
+这个时候断路器就会发挥作用，那么断路器是在什么情况下开始起作用呢？这里涉及到断路器的三个重要参数：快照时间窗、请求总数下限、错误百分比下限。这个参数的作用分别是：
+
+- 快照时间窗：断路器确定是否打开需要统计一些请求和错误数据，而统计的时间范围就是快照时间窗，默认为最近的10秒。
+- 请求总数下限：在快照时间窗内，必须满足请求总数下限才有资格根据熔断。默认为20，意味着在10秒内，如果该hystrix命令的调用此时不足20次，即时所有的请求都超时或其他原因失败，断路器都不会打开。
+- 错误百分比下限：当请求总数在快照时间窗内超过了下限，比如发生了30次调用，如果在这30次调用中，有16次发生了超时异常，也就是超过50%的错误百分比，在默认设定50%下限情况下，这时候就会将断路器打开。
+
+那么当断路器打开之后会发生什么呢？我们先来说说断路器未打开之前，对于之前那个示例的情况就是每个请求都会在当hystrix超时之后返回`fallback`，每个请求时间延迟就是近似hystrix的超时时间，如果设置为5秒，那么每个请求就都要延迟5秒才会返回。当熔断器在10秒内发现请求总数超过20，并且错误百分比超过50%，这个时候熔断器打开。打开之后，再有请求调用的时候，将不会调用主逻辑，而是直接调用降级逻辑，这个时候就不会等待5秒之后才返回fallback。通过断路器，实现了自动地发现错误并将降级逻辑切换为主逻辑，减少响应延迟的效果。
+
+在断路器打开之后，处理逻辑并没有结束，我们的降级逻辑已经被成了主逻辑，那么原来的主逻辑要如何恢复呢？对于这一问题，hystrix也为我们实现了自动恢复功能。当断路器打开，对主逻辑进行熔断之后，hystrix会启动一个休眠时间窗，在这个时间窗内，降级逻辑是临时的成为主逻辑，当休眠时间窗到期，断路器将进入半开状态，释放一次请求到原来的主逻辑上，如果此次请求正常返回，那么断路器将继续闭合，主逻辑恢复，如果这次请求依然有问题，断路器继续进入打开状态，休眠时间窗重新计时。
+
+通过上面的一系列机制，hystrix的断路器实现了对依赖资源故障的端口、对降级策略的自动切换以及对主逻辑的自动恢复机制。这使得我们的微服务在依赖外部服务或资源的时候得到了非常好的保护，同时对于一些具备降级逻辑的业务需求可以实现自动化的切换与恢复，相比于设置开关由监控和运维来进行切换的传统实现方式显得更为智能和高效。
+
+# Hystrix监控面板
+
+在上一篇[《服务容错保护（hystrix断路器）》](http://blog.didispace.com/spring-cloud-starter-dalston-4-3)的介绍中，我们提到断路器是根据一段时间窗内的请求情况来判断并操作断路器的打开和关闭状态的。而这些请求情况的指标信息都是HystrixCommand和HystrixObservableCommand实例在执行过程中记录的重要度量信息，它们除了Hystrix断路器实现中使用之外，对于系统运维也有非常大的帮助。这些指标信息会以“滚动时间窗”与“桶”结合的方式进行汇总，并在内存中驻留一段时间，以供内部或外部进行查询使用，Hystrix Dashboard就是这些指标内容的消费者之一。 
+
+## eureka-server
+
+服务注册中心
+
+## eureka-client
+
+服务提供者
+
+## eureka-consumer-ribbon-hystrix
+
+使用ribbon和hystrix实现的服务消费者
+
+## hystrix-dashboard 
+
+Hystrix监控面板
+
+```xml
+<dependency>
+	<groupId>org.springframework.cloud</groupId>
+	<artifactId>spring-cloud-starter-hystrix-dashboard</artifactId>
+</dependency>
+```
+
+访问：`http://localhost:1301/hystrix` 
+
+Hystrix Dashboard的监控首页，该页面中并没有具体的监控信息。从页面的文字内容中我们可以知道，Hystrix Dashboard共支持三种不同的监控方式，依次为：
+
+- 默认的集群监控：通过URL`http://turbine-hostname:port/turbine.stream`开启，实现对默认集群的监控。
+- 指定的集群监控：通过URL`http://turbine-hostname:port/turbine.stream?cluster=[clusterName]`开启，实现对clusterName集群的监控。
+- 单体应用的监控：通过URL`http://hystrix-app:port/hystrix.stream`开启，实现对具体某个服务实例的监控。
+
+前两者都对集群的监控，需要整合Turbine才能实现，这部分内容我们将在下一篇中做详细介绍。在本节中，我们主要实现对单个服务实例的监控，所以这里我们先来实现单个服务实例的监控。
+
+既然Hystrix Dashboard监控单实例节点需要通过访问实例的`/hystrix.stream`接口来实现，自然我们需要为服务实例添加这个端点，而添加该功能的步骤也同样简单，只需要下面两步：
+
+- 在服务实例`pom.xml`中的`dependencies`节点中新增`spring-boot-starter-actuator`监控模块以开启监控相关的端点，并确保已经引入断路器的依赖`spring-cloud-starter-hystrix`
+
+```xml
+<dependency>
+	<groupId>org.springframework.cloud</groupId>
+	<artifactId>spring-cloud-starter-hystrix</artifactId>
+</dependency>
+<dependency>
+	<groupId>org.springframework.boot</groupId>
+	<artifactId>spring-boot-starter-actuator</artifactId>
+</dependency>
+```
+
+- 确保在服务实例的主类中已经使用`@EnableCircuitBreaker`或`@EnableHystrix`注解，开启了断路器功能。
+
+到这里已经完成了所有的配置，我们可以在Hystrix Dashboard的首页输入`http://localhost:2101/hystrix.stream`，已启动对“eureka-consumer-ribbon-hystrix”的监控，点击“Monitor Stream”按钮，此时我们可以看到如下页面
+
+在对该页面介绍前，我们先看看在首页中我们还没有介绍的两外两个参数：
+
+- Delay：该参数用来控制服务器上轮询监控信息的延迟时间，默认为2000毫秒，我们可以通过配置该属性来降低客户端的网络和CPU消耗。
+- Title：该参数对应了上图头部标题Hystrix Stream之后的内容，默认会使用具体监控实例的URL，我们可以通过配置该信息来展示更合适的标题。
+
+回到监控页面，我们来详细说说其中各元素的具体含义：
+
+我们可以在监控信息的左上部分找到两个重要的图形信息：一个实心圆和一条曲线。
+
+- 实心圆：共有两种含义。它通过颜色的变化代表了实例的健康程度，如下图所示，它的健康度从绿色、黄色、橙色、红色递减。该实心圆除了颜色的变化之外，它的大小也会根据实例的请求流量发生变化，流量越大该实心圆就越大。所以通过该实心圆的展示，我们就可以在大量的实例中快速的发现故障实例和高压力实例。
+- 曲线：用来记录2分钟内流量的相对变化，我们可以通过它来观察到流量的上升和下降趋势。
+
+# Hystrix监控数据聚合
+
+## eureka-server
+
+服务注册中心
+
+## eureka-client
+
+服务提供者
+
+## eureka-consumer-ribbon-hystrix
+
+使用ribbon和hystrix实现的服务消费者
+
+## hystrix-dashboard
+
+用于展示eureka-consumer-ribbon-hystrix服务的Hystrix数据
+
+## Turbine 
+
+## turbine-amqp 
+
+```xml
+<dependency>
+	<groupId>org.springframework.cloud</groupId>
+	<artifactId>spring-cloud-starter-turbine-amqp</artifactId>
+</dependency>
+<dependency>
+	<groupId>org.springframework.boot</groupId>
+	<artifactId>spring-boot-starter-actuator</artifactId>
+</dependency>
+```
+
+# Feign的继承特性(伪RPC模式)
+
+​	很多的方式来产生Feign的客户端程序，依然有很多开发者热衷于利用公共的依赖接口来连接服务提供者和服务消费者的方式。由此，Feign的继承特性就能很好的派上用处。 
+
+接下来的示例将分为三个模块：
+
+- 服务接口定义模块：通过Spring MVC注解定义抽象的interface服务接口
+- 服务接口实现模块：实现服务接口定义模块的interface，该模块作为服务提供者注册到eureka
+- 服务接口消费模块：服务接口定义模块的客户端实现，该模块通过注册到eureka来消费服务接口
+
+## eureka-feign-api 
+
+服务接口的定义
+
