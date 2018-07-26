@@ -1,0 +1,344 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Info>
+    <SenderID>9299ED15-91F3-4B0F-BD88-8089D760DF5D</SenderID>
+    <datasource_url>http://68.32.65.11/EZSPservice/GetDataResourceInfo</datasource_url>
+    <sfzh>360121198809253578</sfzh>
+
+    <Services>
+        <Service>
+            <id>1</id>
+            <name>Query_G_JDCL</name>
+            <datasourceId>0101032200001</datasourceId>
+            <namech>交警-全市机动车信息</namech>
+            <data_url>http://68.32.65.11/EZSPservice/Query_G_JDCL</data_url>
+            <query_col>
+                <col type="string" CHNAME="机动车序号">XH</col>
+                <col type="string" CHNAME="号牌种类">HPZL</col>
+                <col type="string" CHNAME="号牌号码">HPHM</col>
+                <col type="string" CHNAME="车辆品牌">CLPP1</col>
+                <col type="string" CHNAME="车辆型号">CLXH</col>
+                <col type="string" CHNAME="车辆类型">CLLX</col>
+                <col type="string" CHNAME="车身颜色">CSYS</col>
+                <col type="string" CHNAME="使用性质">SYXZ</col>
+                <col type="string" CHNAME="英文品牌">CLPP2</col>
+                <col type="string" CHNAME="国产进口">GCJK</col>
+                <col type="string" CHNAME="制造国">ZZG</col>
+                <col type="string" CHNAME="制造厂名称">ZZCMC</col>
+                <col type="string" CHNAME="车辆识别代号（车架号）">CLSBDH</col>
+                
+                <col type="string" CHNAME="发动机号">FDJH</col>
+                <col type="string" CHNAME="发动机型号">FDJXH</col>
+                <col type="string" CHNAME="燃料种类">RLZL</col>
+                
+                <col type="string" CHNAME="排量">PL</col>
+                <col type="string" CHNAME="功率">GL</col>
+                <col type="string" CHNAME="机动车状态">ZT</col>
+                <col type="string" CHNAME="出厂日期">CCRQ</col>
+                
+                <col type="string" CHNAME="车辆来源">CLLY</col>
+                <col type="string" CHNAME="初次登记日期">CCDJRQ</col>
+                <col type="string" CHNAME="最近定检日期">DJRQ</col>
+                <col type="string" CHNAME="检验有效期止">YXQZ</col>
+                <col type="string" CHNAME="强制报废期止">QZBFQZ</col>
+                <col type="string" CHNAME="发证机关">FZJG</col>
+                <col type="string" CHNAME="管理部门">GLBM</col>
+                <col type="string" CHNAME="发牌日期">FPRQ</col>
+                <col type="string" CHNAME="发行驶证日期">FZRQ</col>
+                <col type="string" CHNAME="发登记证书日期">FDJRQ</col>
+                <col type="string" CHNAME="发合格证日期">FHGZRQ</col>
+                <col type="string" CHNAME="所有人">SYR</col>
+                <col type="string" CHNAME="所有权">SYQ</col>
+                <col type="string" CHNAME="身份证明名称">SFZMMC</col>
+                <col type="string" CHNAME="身份证明号码">SFZMHM</col>
+                <col type="string" CHNAME="住所行政区划">ZSXZQH</col>
+                <col type="string" CHNAME="住所详细地址">ZSXXDZ</col>
+                <col type="string" CHNAME="住所邮政编码">YZBM1</col>
+                <col type="string" CHNAME="联系电话">LXDH</col>
+                <col type="string" CHNAME="暂住/居留证号">ZZZ</col>
+                <col type="string" CHNAME="暂住地址区划">ZZXZQH</col>
+                <col type="string" CHNAME="暂住详细地址">ZZXXDZ</col>
+                <col type="string" CHNAME="暂住邮政编码">YZBM2</col>
+                <col type="string" CHNAME="手机号码">SJHM</col>
+                <col type="string" CHNAME="使用起始日期">SYQSRQ</col>
+                <col type="string" CHNAME="逾期检验强制报废期止">YQJYQZBFQZ</col>
+                <col type="string" CHNAME="逾期检验期止2">YQJYQZ2</col>
+                <col type="string" CHNAME="发动机缸数">FDJGS</col>
+                <col type="string" CHNAME="是否有载货功能">SFYZHGN</col>
+                <col type="string" CHNAME="备注">BZ</col>
+                <col type="string" CHNAME="资源库入库时间">ZYKRKSJ</col>
+                <col type="string" CHNAME="更新日期">GXRQ</col>
+                <col type="string" CHNAME="基础库入库时间">GZDB_ADDTIME</col>
+                
+                <col type="string" CHNAME="保险终止日期">BXZZRQ</col>
+                <col type="string" CHNAME="补／换领号牌次数">BPCS</col>
+                <col type="string" CHNAME="补／换领行驶证次数">BZCS</col>
+                <col type="string" CHNAME="补／换领证书次数">BDJCS</col>
+                <col type="string" CHNAME="登记证书编号">DJZSBH</col>
+                <col type="string" CHNAME="">ZDJZSHS</col>
+                <col type="string" CHNAME="档案编号?">DABH</col>
+                <col type="string" CHNAME="行政区划">XZQH</col>
+                <col type="string" CHNAME="抵押标记">DYBJ</col>
+                <col type="string" CHNAME="">JBR</col>
+                <col type="string" CHNAME="">LSH</col>
+                <col type="string" CHNAME="转向形式">ZXXS</col>
+                <col type="string" CHNAME="长">CWKC</col>
+                <col type="string" CHNAME="宽">CWKK</col>
+                <col type="string" CHNAME="高">CWKG</col>
+                <col type="string" CHNAME="货箱内部长度">HXNBCD</col>
+                <col type="string" CHNAME="货箱内部宽度">HXNBKD</col>
+                <col type="string" CHNAME="货箱内部高度">HXNBGD</col>
+                <col type="string" CHNAME="钢板弹簧片数">GBTHPS</col>
+                <col type="string" CHNAME="轴数">ZS</col>
+                <col type="string" CHNAME="轴距">ZJ</col>
+                <col type="string" CHNAME="前轮距">QLJ</col>
+                <col type="string" CHNAME="后轮距">HLJ</col>
+                <col type="string" CHNAME="轮胎规格">LTGG</col>
+                <col type="string" CHNAME="轮胎数">LTS</col>
+                <col type="string" CHNAME="总质量(kg)">ZZL</col>
+                <col type="string" CHNAME="整备质量">ZBZL</col>
+                <col type="string" CHNAME="核定载质量">HDZZL</col>
+                <col type="string" CHNAME="核定载客">HDZK</col>
+                <col type="string" CHNAME="准牵引总质量">ZQYZL</col>
+                <col type="string" CHNAME="前排载客数">QPZK</col>
+                <col type="string" CHNAME="后排载客数">HPZK</col>
+                <col type="string" CHNAME="环保达标情况">HBDBQK</col>
+                <col type="string" CHNAME="获得方式">HDFS</col>
+                <col type="string" CHNAME="来历凭证1">LLPZ1</col>
+                <col type="string" CHNAME="凭证编号1">PZBH1</col>
+                <col type="string" CHNAME="历凭证2">LLPZ2</col>
+                <col type="string" CHNAME="凭证编号2">PZBH2</col>
+                <col type="string" CHNAME="">XSDW</col>
+                <col type="string" CHNAME="">XSJG</col>
+                <col type="string" CHNAME="">XSRQ</col>
+                <col type="string" CHNAME="进口凭证">JKPZ</col>
+                <col type="string" CHNAME="进口凭证号码">JKPZHM</col>
+                <col type="string" CHNAME="整车出厂合格证号">HGZBH</col>
+                <col type="string" CHNAME="纳税证明">NSZM</col>
+                <col type="string" CHNAME="纳税证明编号">NSZMBH</col>
+                <col type="string" CHNAME="">XGZL</col>
+                <col type="string" CHNAME="前膜编号">QMBH</col>
+                <col type="string" CHNAME="后膜编号">HMBH</col>
+                <col type="string" CHNAME="">JYW</col>
+                <col type="string" CHNAME="">ZDYZT</col>
+                <col type="string" CHNAME="">YXH</col>
+                <col type="string" CHNAME="">CYRY</col>
+                <col type="string" CHNAME="">DPHGZBH</col>
+                <col type="string" CHNAME="">SQDM</col>
+                <col type="string" CHNAME="车辆用途代码">CLYT</col>
+                <col type="string" CHNAME="">YTSX</col>
+                <col type="string" CHNAME="">DZYX</col>
+                <col type="string" CHNAME="行驶证编号">XSZBH</col>
+                <col type="string" CHNAME="">JYHGBZBH</col>
+                <col type="string" CHNAME="">DWBH</col>
+                
+            </query_col>
+            <condition_col>
+                <col type="string" CHNAME="号牌号码">HPHM</col>
+            </condition_col>
+
+        </Service>
+
+
+        <Service>
+            <id>2</id>
+            <name>Query_S_GZHK_DZLK2007</name>
+            <datasourceId>01022300001</datasourceId>
+            <namech>民航-广州航空订座旅客信息</namech>
+            <data_url>http://68.32.65.11/EZSPservice/Query_S_GZHK_DZLK2007</data_url>
+            <query_col>
+                <col type="string" CHNAME="证件号码">ID</col>
+                <col type="string" CHNAME="订座时间（即入库时间）">INTIME</col>
+                <col type="string" CHNAME="航班日期">HBRQ</col>
+                <col type="string" CHNAME="航班号">HBH</col>
+                <col type="string" CHNAME="目的地1">JC1</col>
+                <col type="string" CHNAME="目的地2">JC2</col>
+            </query_col>
+            <condition_col>
+                <col type="string" CHNAME="证件号码">ID</col>
+            </condition_col>
+
+
+        </Service>
+
+        <Service>
+            <id>3</id>
+            <name>Query_S_GZHK_LGLK_NEW</name>
+            <datasourceId>0102012300002</datasourceId>
+            <namech>民航-广州航空离港旅客信息</namech>
+            <data_url>http://68.32.65.11/EZSPservice/Query_S_GZHK_LGLK_NEW</data_url>
+            <query_col>
+                <col type="string" CHNAME="证件号码">ID</col>
+                <col type="string" CHNAME="航班日期">HBRQ</col>
+                <col type="string" CHNAME="航班号">HBH</col>
+                <col type="string" CHNAME="出发地">CFD</col>
+                <col type="string" CHNAME="目的地">MDD</col>
+                <col type="string" CHNAME="航班目的地">HBMDD</col>
+                <col type="string" CHNAME="计划离港时间">LG</col>
+                <col type="string" CHNAME="到达时间">DD</col>
+            </query_col>
+            <condition_col>
+                <col type="string" CHNAME="证件号码">ID</col>
+            </condition_col>
+
+        </Service>
+
+
+        <Service>
+            <id>4</id>
+            <name>Query_S_CGLKXX_ST</name>
+            <datasourceId>0102012300013</datasourceId>
+            <namech>省信通-出港旅客信息</namech>
+            <data_url>http://68.32.65.11/EZSPservice/Query_S_CGLKXX_ST</data_url>
+            <query_col>
+                <col type="string" CHNAME="证件号码">FOID</col>
+                <col type="string" CHNAME="航班日期">OFFDAY</col>
+                <col type="string" CHNAME="航班号">FLIGHT</col>
+                <col type="string" CHNAME="始发港">STRT</col>
+                <col type="string" CHNAME="到达港">DEST</col>
+                <col type="string" CHNAME="始发时间">DEPTTM</col>
+                <col type="string" CHNAME="到达时间">ARVETM</col>
+            </query_col>
+            <condition_col>
+                <col type="string" CHNAME="证件号码">FOID</col>
+            </condition_col>
+
+
+        </Service>
+
+
+        <Service>
+            <id>5</id>
+            <name>Query_G_JDCL_JBXX</name>
+            <datasourceId>01010200020</datasourceId>
+            <namech>省信通-全省机动车辆基本信息</namech>
+            <data_url>http://68.32.65.11/EZSPservice/Query_G_JDCL_JBXX</data_url>
+            <query_col>
+                <col type="string" CHNAME="身份证号">SFZH</col>
+                <col type="string" CHNAME="号牌号码">HPHM</col>
+                <col type="string" CHNAME="车辆品牌">CLPP1</col>
+                <col type="string" CHNAME="车辆型号">CLXH</col>
+                <col type="string" CHNAME="车辆类型">CLLX</col>
+                <col type="string" CHNAME="车身颜色">CSYS</col>
+                <col type="string" CHNAME="发动机号">FDJH</col>
+                <col type="string" CHNAME="机动车状态">JDCZT</col>
+                <col type="string" CHNAME="所有人">JDCSYR</col>
+                <col type="string" CHNAME="所住详细地址">ZZXZ</col>
+                <col type="string" CHNAME="暂住详细地址">ZZDZXZ</col>
+            </query_col>
+            <condition_col>
+                <col type="string" CHNAME="号牌号码">HPHM</col>
+            </condition_col>
+
+        </Service>
+
+
+        <Service>
+            <id>6</id>
+            <name>Query_V_S_TLSMZSPXX</name>
+            <datasourceId>01022600001</datasourceId>
+            <namech>铁路公安-广铁实名制售票信息</namech>
+            <data_url>http://68.32.65.11/EZSPservice/Query_V_S_TLSMZSPXX</data_url>
+            <query_col>
+                <col type="string" CHNAME="身份证号">SFZH</col>
+                <col type="date" CHNAME="号牌号码">SPSJ</col>
+                <col type="string" CHNAME="车票号码">CPHM</col>
+                <col type="string" CHNAME="车次代码">CCDM</col>
+                <col type="date" CHNAME="发车时间">FCSJ</col>
+                <col type="string" CHNAME="出发地">CFD</col>
+                <col type="string" CHNAME="目的地">MDD</col>
+            </query_col>
+            <condition_col>
+                <col type="string" CHNAME="身份证号">SFZH</col>
+            </condition_col>
+
+
+        </Service>
+
+
+        <Service>
+            <id>7</id>
+            <name>Query_S_WBSJRY_NEW</name>
+            <datasourceId>0101031300001</datasourceId>
+            <namech>网监-网吧上机人员信息</namech>
+            <data_url>http://68.32.65.11/EZSPservice/Query_S_WBSJRY_NEW</data_url>
+
+            <rely_service>10</rely_service>
+            <!-- PUBCODE1=PUBCODE 表示 =左边一定要写当前接口字段， =右边写rely_service中关联字段名 -->
+            <rely_col>PUBCODE1=PUBCODE</rely_col>
+
+            <query_col>
+                <col type="string" CHNAME="证件号码">SFZH</col>
+                <col type="date" CHNAME="上机日期">BEGINDATE</col>
+                <col type="string" CHNAME="网吧名称">BARNAME</col>
+                <col type="string" CHNAME="网吧编号">PUBCODE1</col>
+                <col type="date" CHNAME="上机IP地址">IPADDR</col>
+            </query_col>
+            <condition_col>
+                <col type="string" CHNAME="证件号码">SFZH</col>
+            </condition_col>
+        </Service>
+
+
+        <Service>
+            <id>10</id>
+            <name>Query_S_SWCS</name>
+            <datasourceId>0101031300002</datasourceId>
+            <namech>网监-网吧上机人员信息</namech>
+            <data_url>http://68.32.65.11/EZSPservice/Query_S_SWCS</data_url>
+
+            <query_col>
+                <col type="string" CHNAME="网吧地址">BARADDR</col>
+                <col type="string" CHNAME="辖区">AREA</col>
+                <col type="string" CHNAME="网吧编号">PUBCODE</col>
+            </query_col>
+            <condition_col>
+                <col type="string" CHNAME="网吧编号">PUBCODE</col>
+            </condition_col>
+        </Service>
+
+
+
+
+        <Service>
+            <id>8</id>
+            <name>Query_S_XGNLK_NEW</name>
+            <datasourceId>010201320004</datasourceId>
+            <namech>治安-新国内旅客信息</namech>
+            <data_url>http://68.32.65.11/EZSPservice/Query_S_XGNLK_NEW</data_url>
+            <rely_service>9</rely_service>
+            <!-- NOHOTEL=HNOHOTEL 表示 =左边一定要写当前接口字段， =右边写rely_service中关联字段名 -->
+            <rely_col>NOHOTEL=HNOHOTEL</rely_col>
+
+            <query_col>
+                <col type="string" CHNAME="证件号码">IDCODE</col>
+                <col type="date" CHNAME="入住日期">LDATE</col>
+                <col type="string" CHNAME="入住旅馆">NOHOTEL</col>
+                <col type="string" CHNAME="旅馆辖区">XQ</col>
+                <col type="date" CHNAME="入住时间">LTIME</col>
+                <col type="date" CHNAME="旅客退房时间">ETIME</col>
+            </query_col>
+
+            <condition_col>
+                <col type="string" CHNAME="证件号码">IDCODE</col>
+            </condition_col>
+        </Service>
+
+
+        <Service>
+            <id>9</id>
+            <name>Query_S_XLG_NEW</name>
+            <datasourceId>010201320011</datasourceId>
+            <namech>治安-新酒店信息</namech>
+            <data_url>http://68.32.65.11/EZSPservice/Query_S_XLG_NEW</data_url>
+
+            <query_col>
+                <col type="string" CHNAME="旅馆名称">HNAME</col>
+                <col type="string" CHNAME="旅馆地址">HADDRESS</col>
+                <col type="string" CHNAME="入住旅馆编号">HNOHOTEL</col>
+            </query_col>
+            <condition_col>
+                <col type="string" CHNAME="入住旅馆编号">HNOHOTEL</col>
+            </condition_col>
+        </Service>
+    </Services>
+</Info>

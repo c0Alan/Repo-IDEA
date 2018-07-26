@@ -80,7 +80,20 @@ Spring Data 系列
 ## 8.6 非关系型数据库NoSQL
 ### 8.6.1 MongoDB
 ### 8.6.2 Redis
-# 第9章 Spring Boot 企业级开发
+# Quartz
+
+## JobDetail
+
+defines a particular Job. JobDetail instances can be built with the JobBuilder API.
+
+## Calendar
+
+## Trigger
+
+defines when a particular job is triggered.
+
+# Spring Boot 企业级开发
+
 ## 9.1 安全控制Spring Security
 ### 9.1.1 Spring Security 快速入门
 ### 9.1.2 Spring Boot 的支持
