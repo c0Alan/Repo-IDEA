@@ -57,7 +57,7 @@ public class VehicleFileKafkaService implements IVehicleFileService {
      * 消费 kafka 消息服务
      */
     public void process() {
-        logger.info("一车一档 - kafka 消息处理");
+        logger.info("一车一档 - kafka - 开始处理kafka消息...");
         start();
         // 记录待入库数量大小, 每天上限10000条
         Long drkIndex = hashOperations.size(VehicleFileConsts.REDIS_HASH_DRK);
@@ -65,7 +65,7 @@ public class VehicleFileKafkaService implements IVehicleFileService {
         try {
             consumer = consumerFactory.consumer();
         } catch (Exception e) {
-            logger.error("一车一档-创建kafka消费者失败: ", e);
+            logger.error("一车一档 - kafka - 创建kafka消费者失败: ", e);
             return;
         }
         for (; ; ) {
@@ -80,15 +80,12 @@ public class VehicleFileKafkaService implements IVehicleFileService {
                     if (hphmList == null) {
                         return;
                     }
-                    for(String key : hphmList){
+                    for (String key : hphmList) {
                         if (isCdxxExisted(key)) {
                             continue;
                         }
-                        logger.info("一车一档-待入库, key= " + key);
-                        logger.info("Received message: (" + record.key() + ", "
-                                + record.value() + ") at partition "
-                                + record.partition() + " offset "
-                                + record.offset());
+                        logger.info("一车一档 - kafka - 新增待入库, value= " + key
+                                + ", partition= " + record.partition() + ", offset=" + record.offset());
                         addToDrkCdxx(key, key);
                     }
 
@@ -99,22 +96,28 @@ public class VehicleFileKafkaService implements IVehicleFileService {
         if (consumer != null) {
             consumer.close();
         }
-        logger.info("一车一档 - kafka 消息处理结束!");
+        logger.info("一车一档 - kafka - 消息处理结束!");
     }
 
     private List<String> getHphmList(String kafkaMsg) {
+//        JSONObject msg = JSONObject.parseObject(kafkaMsg); // 先注释掉用测试数据
         JSONObject msg = JSONObject.parseObject(VehicleFileConsts.KAFKA_MSG);
         JSONArray jArr = (JSONArray) msg.get("BODY");
-        if (jArr == null){
+        if (jArr == null) {
             return null;
         }
 
         List<String> hphmList = new ArrayList<>();
-        for(Object o : jArr){
+        for (Object o : jArr) {
             JSONObject jo = (JSONObject) o;
             hphmList.add((String) jo.get("HPHM"));
         }
-        return hphmList;
+//        return hphmList;
+
+        // 以下是测试数据
+        List<String> tmpList = new ArrayList<>();
+        tmpList.add(kafkaMsg);
+        return tmpList;
     }
 
     /**
@@ -140,6 +143,7 @@ public class VehicleFileKafkaService implements IVehicleFileService {
         }
 
         if (drkIndex.compareTo(maxRecords) > 0) {
+            logger.info("一车一档 - kafka - 今天的待入库数量已经达到上限, 等待明天继续处理! 上限值: " + maxRecords);
             return false;
         }
 

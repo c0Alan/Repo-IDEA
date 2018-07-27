@@ -39,7 +39,7 @@ public class VehicleFileZyfwService implements IVehicleFileService {
      * @param key
      */
     public void delFromDrkCdxx(String key) {
-        Long result = hashOperations.delete(VehicleFileConsts.REDIS_HASH_DRK, key);
+        hashOperations.delete(VehicleFileConsts.REDIS_HASH_DRK, key);
     }
 
     /**
@@ -69,13 +69,17 @@ public class VehicleFileZyfwService implements IVehicleFileService {
                 try {
                     BeanUtils.populate(information, VehicleFileUtils.keyToLowerCase(record));
 //                    vehicleArchivesInformationMapper.insert(information); // 入库, 暂时注释掉
-                    addToYrkCdxx(hphm, hphm);
-                    delFromDrkCdxx(hphm);
-                    logger.info("一车一档-已入库, key= " + hphm);
                 } catch (Exception e) {
-                    logger.error("一车一档-record 转 VehicleArchivesInformation 失败, " + hphm);
+                    logger.error("一车一档 - zyfw - record 转 VehicleArchivesInformation 失败, " + hphm);
                 }
             }
+            addToYrkCdxx(hphm, hphm);
+            logger.info("一车一档 - zyfw - 新增入库, key= " + hphm);
+        } else {
+            logger.info("一车一档 - zyfw - 资源服务无数据, key= " + hphm);
+        }
+        if (hphm != null) {
+            delFromDrkCdxx(hphm);
         }
     }
 
@@ -83,22 +87,29 @@ public class VehicleFileZyfwService implements IVehicleFileService {
      * 处理资源服务接口调用逻辑
      */
     public void process() {
-        logger.info("一车一档 - 资源服务接口调用.");
+        logger.info("一车一档 - zyfw - 开始获取资源服务数据...");
         if (zyfwProcessStatus == ProcessStatus.ZYFW_RUNNING) {
             return;
         }
         start();
 
-        String drkCdxx = getOneDrkCdxx();
-        logger.info("一车一档-正在入库, key= " + drkCdxx);
-        if (StringUtils.isBlank(drkCdxx)) {
+        String drkCdxxKey = getOneDrkCdxxKey();
+//        logger.info("一车一档 - zyfw - 正在入库, key= " + drkCdxx);
+        if (StringUtils.isBlank(drkCdxxKey)) {
+            if (drkCdxxKey != null) {
+                logger.info("一车一档 - zyfw - Redis key 为空.");
+                delFromDrkCdxx(drkCdxxKey);
+            } else {
+                logger.info("一车一档 - zyfw - Redis 中无待入库数据.");
+            }
             zyfwProcessStatus = ProcessStatus.ZYFW_STOP;
             return;
         }
 
-        saveCdxx(drkCdxx);
+        saveCdxx(drkCdxxKey);
 
         zyfwProcessStatus = ProcessStatus.ZYFW_STOP;
+        logger.info("一车一档 - zyfw - 结束获取资源服务数据.");
     }
 
     public void start() {
@@ -114,7 +125,7 @@ public class VehicleFileZyfwService implements IVehicleFileService {
      *
      * @return
      */
-    public String getOneDrkCdxx() {
+    public String getOneDrkCdxxKey() {
         Set keySet = hashOperations.keys(VehicleFileConsts.REDIS_HASH_DRK);
         if (CollectionUtils.isEmpty(keySet)) {
             return null;

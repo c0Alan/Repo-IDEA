@@ -27,7 +27,6 @@ public class MyBatisConfig {
 
         PathMatchingResourcePatternResolver resolver = new PathMatchingResourcePatternResolver();
         sqlSessionFactoryBean.setTypeAliasesPackage("com.suntek.vehicle.file.entity");
-
         sqlSessionFactoryBean.setMapperLocations(resolver.getResources("classpath:/mapper/*.xml"));
 
         return sqlSessionFactoryBean.getObject();
