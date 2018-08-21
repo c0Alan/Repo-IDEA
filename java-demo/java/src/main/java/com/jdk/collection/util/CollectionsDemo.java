@@ -42,7 +42,7 @@ public class CollectionsDemo {
      */
     @Test
     public void max(){
-        Person p1 = (new Person(null));
+        /*Person p1 = (new Person(null));
         Person p2 = (new Person(new DateTime("2018-06-20").toDate()));
         Person p3 = (new Person(new DateTime("2018-07-21").toDate()));
         List<Person> persons = new ArrayList<>();
@@ -62,6 +62,6 @@ public class CollectionsDemo {
             }
         });
 
-        System.out.println(p);
+        System.out.println(p);*/
     }
 }

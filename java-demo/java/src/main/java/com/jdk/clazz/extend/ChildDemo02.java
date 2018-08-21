@@ -7,6 +7,9 @@ package com.jdk.clazz.extend;
  * @since
  */
 public class ChildDemo02 extends ParentDemo01 {
+    {
+        list.add("ChildDemo02");
+    }
     public static void main(String[] args) {
         ChildDemo02 demo02 = new ChildDemo02();
         ChildDemo01 demo01 = new ChildDemo01();
