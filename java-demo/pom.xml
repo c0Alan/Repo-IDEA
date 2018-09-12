@@ -111,7 +111,7 @@
 
     <build>
         <!--<finalName>${artifactId}-${version}</finalName>-->
-        <finalName>web</finalName>
+        <finalName>my-demo</finalName>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
