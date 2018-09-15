@@ -12,6 +12,8 @@
         <module>mybatis</module>
         <module>hibernate</module>
         <module>shiro</module>
+        <module>mybatis2</module>
+        <module>profile</module>
     </modules>
     <packaging>pom</packaging>
 

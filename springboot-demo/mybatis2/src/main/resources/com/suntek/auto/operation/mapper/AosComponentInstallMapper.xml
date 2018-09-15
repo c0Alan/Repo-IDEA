@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.suntek.auto.operation.mapper.AosComponentInstallMapper">
+  <resultMap id="BaseResultMap" type="com.suntek.auto.operation.entity.AosComponentInstall">
+    <id column="ID" jdbcType="INTEGER" property="id" />
+    <result column="PLAN_ID" jdbcType="VARCHAR" property="planId" />
+    <result column="COMPONENT_ID" jdbcType="VARCHAR" property="componentId" />
+    <result column="HOST_INFO_ID" jdbcType="VARCHAR" property="hostInfoId" />
+    <result column="PORT" jdbcType="INTEGER" property="port" />
+    <result column="NODE_ATTRIBUTE" jdbcType="TINYINT" property="nodeAttribute" />
+    <result column="CPU_NUM" jdbcType="INTEGER" property="cpuNum" />
+    <result column="MEMORY" jdbcType="INTEGER" property="memory" />
+    <result column="PACKAGE_UPLOAD_STATE" jdbcType="TINYINT" property="packageUploadState" />
+    <result column="INSTALL_STATE" jdbcType="TINYINT" property="installState" />
+    <result column="CHECK_STATE" jdbcType="TINYINT" property="checkState" />
+    <result column="UPDAETTIME" jdbcType="TIMESTAMP" property="updaettime" />
+    <result column="CREATETIME" jdbcType="TIMESTAMP" property="createtime" />
+    <result column="REMARK" jdbcType="VARCHAR" property="remark" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    ID, PLAN_ID, COMPONENT_ID, HOST_INFO_ID, PORT, NODE_ATTRIBUTE, CPU_NUM, MEMORY, PACKAGE_UPLOAD_STATE, 
+    INSTALL_STATE, CHECK_STATE, UPDAETTIME, CREATETIME, REMARK
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from AOS_COMPONENT_INSTALL
+    where ID = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from AOS_COMPONENT_INSTALL
+    where ID = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.suntek.auto.operation.entity.AosComponentInstall">
+    insert into AOS_COMPONENT_INSTALL (ID, PLAN_ID, COMPONENT_ID, 
+      HOST_INFO_ID, PORT, NODE_ATTRIBUTE, 
+      CPU_NUM, MEMORY, PACKAGE_UPLOAD_STATE, 
+      INSTALL_STATE, CHECK_STATE, UPDAETTIME, 
+      CREATETIME, REMARK)
+    values (#{id,jdbcType=INTEGER}, #{planId,jdbcType=VARCHAR}, #{componentId,jdbcType=VARCHAR}, 
+      #{hostInfoId,jdbcType=VARCHAR}, #{port,jdbcType=INTEGER}, #{nodeAttribute,jdbcType=TINYINT}, 
+      #{cpuNum,jdbcType=INTEGER}, #{memory,jdbcType=INTEGER}, #{packageUploadState,jdbcType=TINYINT}, 
+      #{installState,jdbcType=TINYINT}, #{checkState,jdbcType=TINYINT}, #{updaettime,jdbcType=TIMESTAMP}, 
+      #{createtime,jdbcType=TIMESTAMP}, #{remark,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.suntek.auto.operation.entity.AosComponentInstall">
+    insert into AOS_COMPONENT_INSTALL
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        ID,
+      </if>
+      <if test="planId != null">
+        PLAN_ID,
+      </if>
+      <if test="componentId != null">
+        COMPONENT_ID,
+      </if>
+      <if test="hostInfoId != null">
+        HOST_INFO_ID,
+      </if>
+      <if test="port != null">
+        PORT,
+      </if>
+      <if test="nodeAttribute != null">
+        NODE_ATTRIBUTE,
+      </if>
+      <if test="cpuNum != null">
+        CPU_NUM,
+      </if>
+      <if test="memory != null">
+        MEMORY,
+      </if>
+      <if test="packageUploadState != null">
+        PACKAGE_UPLOAD_STATE,
+      </if>
+      <if test="installState != null">
+        INSTALL_STATE,
+      </if>
+      <if test="checkState != null">
+        CHECK_STATE,
+      </if>
+      <if test="updaettime != null">
+        UPDAETTIME,
+      </if>
+      <if test="createtime != null">
+        CREATETIME,
+      </if>
+      <if test="remark != null">
+        REMARK,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="planId != null">
+        #{planId,jdbcType=VARCHAR},
+      </if>
+      <if test="componentId != null">
+        #{componentId,jdbcType=VARCHAR},
+      </if>
+      <if test="hostInfoId != null">
+        #{hostInfoId,jdbcType=VARCHAR},
+      </if>
+      <if test="port != null">
+        #{port,jdbcType=INTEGER},
+      </if>
+      <if test="nodeAttribute != null">
+        #{nodeAttribute,jdbcType=TINYINT},
+      </if>
+      <if test="cpuNum != null">
+        #{cpuNum,jdbcType=INTEGER},
+      </if>
+      <if test="memory != null">
+        #{memory,jdbcType=INTEGER},
+      </if>
+      <if test="packageUploadState != null">
+        #{packageUploadState,jdbcType=TINYINT},
+      </if>
+      <if test="installState != null">
+        #{installState,jdbcType=TINYINT},
+      </if>
+      <if test="checkState != null">
+        #{checkState,jdbcType=TINYINT},
+      </if>
+      <if test="updaettime != null">
+        #{updaettime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createtime != null">
+        #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="remark != null">
+        #{remark,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.suntek.auto.operation.entity.AosComponentInstall">
+    update AOS_COMPONENT_INSTALL
+    <set>
+      <if test="planId != null">
+        PLAN_ID = #{planId,jdbcType=VARCHAR},
+      </if>
+      <if test="componentId != null">
+        COMPONENT_ID = #{componentId,jdbcType=VARCHAR},
+      </if>
+      <if test="hostInfoId != null">
+        HOST_INFO_ID = #{hostInfoId,jdbcType=VARCHAR},
+      </if>
+      <if test="port != null">
+        PORT = #{port,jdbcType=INTEGER},
+      </if>
+      <if test="nodeAttribute != null">
+        NODE_ATTRIBUTE = #{nodeAttribute,jdbcType=TINYINT},
+      </if>
+      <if test="cpuNum != null">
+        CPU_NUM = #{cpuNum,jdbcType=INTEGER},
+      </if>
+      <if test="memory != null">
+        MEMORY = #{memory,jdbcType=INTEGER},
+      </if>
+      <if test="packageUploadState != null">
+        PACKAGE_UPLOAD_STATE = #{packageUploadState,jdbcType=TINYINT},
+      </if>
+      <if test="installState != null">
+        INSTALL_STATE = #{installState,jdbcType=TINYINT},
+      </if>
+      <if test="checkState != null">
+        CHECK_STATE = #{checkState,jdbcType=TINYINT},
+      </if>
+      <if test="updaettime != null">
+        UPDAETTIME = #{updaettime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createtime != null">
+        CREATETIME = #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="remark != null">
+        REMARK = #{remark,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.suntek.auto.operation.entity.AosComponentInstall">
+    update AOS_COMPONENT_INSTALL
+    set PLAN_ID = #{planId,jdbcType=VARCHAR},
+      COMPONENT_ID = #{componentId,jdbcType=VARCHAR},
+      HOST_INFO_ID = #{hostInfoId,jdbcType=VARCHAR},
+      PORT = #{port,jdbcType=INTEGER},
+      NODE_ATTRIBUTE = #{nodeAttribute,jdbcType=TINYINT},
+      CPU_NUM = #{cpuNum,jdbcType=INTEGER},
+      MEMORY = #{memory,jdbcType=INTEGER},
+      PACKAGE_UPLOAD_STATE = #{packageUploadState,jdbcType=TINYINT},
+      INSTALL_STATE = #{installState,jdbcType=TINYINT},
+      CHECK_STATE = #{checkState,jdbcType=TINYINT},
+      UPDAETTIME = #{updaettime,jdbcType=TIMESTAMP},
+      CREATETIME = #{createtime,jdbcType=TIMESTAMP},
+      REMARK = #{remark,jdbcType=VARCHAR}
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

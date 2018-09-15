@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.suntek.auto.operation.mapper.AosComponentMapper">
+  <resultMap id="BaseResultMap" type="com.suntek.auto.operation.entity.AosComponent">
+    <id column="ID" jdbcType="INTEGER" property="id" />
+    <result column="NAME" jdbcType="VARCHAR" property="name" />
+    <result column="ATTRIBUTE" jdbcType="TINYINT" property="attribute" />
+    <result column="INIT_NUM" jdbcType="TINYINT" property="initNum" />
+    <result column="TYPE" jdbcType="TINYINT" property="type" />
+    <result column="VERSION" jdbcType="VARCHAR" property="version" />
+    <result column="USAGES" jdbcType="VARCHAR" property="usages" />
+    <result column="UPDAETTIME" jdbcType="TIMESTAMP" property="updaettime" />
+    <result column="CREATETIME" jdbcType="TIMESTAMP" property="createtime" />
+    <result column="REMARK" jdbcType="VARCHAR" property="remark" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    ID, NAME, ATTRIBUTE, INIT_NUM, TYPE, VERSION, USAGES, UPDAETTIME, CREATETIME, REMARK
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from AOS_COMPONENT
+    where ID = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from AOS_COMPONENT
+    where ID = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.suntek.auto.operation.entity.AosComponent">
+    insert into AOS_COMPONENT (ID, NAME, ATTRIBUTE, 
+      INIT_NUM, TYPE, VERSION, 
+      USAGES, UPDAETTIME, CREATETIME, 
+      REMARK)
+    values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{attribute,jdbcType=TINYINT}, 
+      #{initNum,jdbcType=TINYINT}, #{type,jdbcType=TINYINT}, #{version,jdbcType=VARCHAR}, 
+      #{usages,jdbcType=VARCHAR}, #{updaettime,jdbcType=TIMESTAMP}, #{createtime,jdbcType=TIMESTAMP}, 
+      #{remark,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.suntek.auto.operation.entity.AosComponent">
+    insert into AOS_COMPONENT
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        ID,
+      </if>
+      <if test="name != null">
+        NAME,
+      </if>
+      <if test="attribute != null">
+        ATTRIBUTE,
+      </if>
+      <if test="initNum != null">
+        INIT_NUM,
+      </if>
+      <if test="type != null">
+        TYPE,
+      </if>
+      <if test="version != null">
+        VERSION,
+      </if>
+      <if test="usages != null">
+        USAGES,
+      </if>
+      <if test="updaettime != null">
+        UPDAETTIME,
+      </if>
+      <if test="createtime != null">
+        CREATETIME,
+      </if>
+      <if test="remark != null">
+        REMARK,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="attribute != null">
+        #{attribute,jdbcType=TINYINT},
+      </if>
+      <if test="initNum != null">
+        #{initNum,jdbcType=TINYINT},
+      </if>
+      <if test="type != null">
+        #{type,jdbcType=TINYINT},
+      </if>
+      <if test="version != null">
+        #{version,jdbcType=VARCHAR},
+      </if>
+      <if test="usages != null">
+        #{usages,jdbcType=VARCHAR},
+      </if>
+      <if test="updaettime != null">
+        #{updaettime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createtime != null">
+        #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="remark != null">
+        #{remark,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.suntek.auto.operation.entity.AosComponent">
+    update AOS_COMPONENT
+    <set>
+      <if test="name != null">
+        NAME = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="attribute != null">
+        ATTRIBUTE = #{attribute,jdbcType=TINYINT},
+      </if>
+      <if test="initNum != null">
+        INIT_NUM = #{initNum,jdbcType=TINYINT},
+      </if>
+      <if test="type != null">
+        TYPE = #{type,jdbcType=TINYINT},
+      </if>
+      <if test="version != null">
+        VERSION = #{version,jdbcType=VARCHAR},
+      </if>
+      <if test="usages != null">
+        USAGES = #{usages,jdbcType=VARCHAR},
+      </if>
+      <if test="updaettime != null">
+        UPDAETTIME = #{updaettime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createtime != null">
+        CREATETIME = #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="remark != null">
+        REMARK = #{remark,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.suntek.auto.operation.entity.AosComponent">
+    update AOS_COMPONENT
+    set NAME = #{name,jdbcType=VARCHAR},
+      ATTRIBUTE = #{attribute,jdbcType=TINYINT},
+      INIT_NUM = #{initNum,jdbcType=TINYINT},
+      TYPE = #{type,jdbcType=TINYINT},
+      VERSION = #{version,jdbcType=VARCHAR},
+      USAGES = #{usages,jdbcType=VARCHAR},
+      UPDAETTIME = #{updaettime,jdbcType=TIMESTAMP},
+      CREATETIME = #{createtime,jdbcType=TIMESTAMP},
+      REMARK = #{remark,jdbcType=VARCHAR}
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

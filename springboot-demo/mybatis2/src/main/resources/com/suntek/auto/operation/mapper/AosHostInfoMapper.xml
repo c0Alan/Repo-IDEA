@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.suntek.auto.operation.mapper.AosHostInfoMapper">
+  <resultMap id="BaseResultMap" type="com.suntek.auto.operation.entity.AosHostInfo">
+    <id column="ID" jdbcType="INTEGER" property="id" />
+    <result column="HOSTNAME" jdbcType="VARCHAR" property="hostname" />
+    <result column="OPERATION_SYSTEM" jdbcType="VARCHAR" property="operationSystem" />
+    <result column="IP_ADDRESS" jdbcType="VARCHAR" property="ipAddress" />
+    <result column="CPU_NUM" jdbcType="INTEGER" property="cpuNum" />
+    <result column="MEMORY" jdbcType="INTEGER" property="memory" />
+    <result column="DISK" jdbcType="INTEGER" property="disk" />
+    <result column="INIT_STATE" jdbcType="TINYINT" property="initState" />
+    <result column="RUNNING_STATE" jdbcType="TINYINT" property="runningState" />
+    <result column="RUNNING_INFO" jdbcType="VARCHAR" property="runningInfo" />
+    <result column="UPDAETTIME" jdbcType="TIMESTAMP" property="updaettime" />
+    <result column="CREATETIME" jdbcType="TIMESTAMP" property="createtime" />
+    <result column="REMARK" jdbcType="VARCHAR" property="remark" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    ID, HOSTNAME, OPERATION_SYSTEM, IP_ADDRESS, CPU_NUM, MEMORY, DISK, INIT_STATE, RUNNING_STATE, 
+    RUNNING_INFO, UPDAETTIME, CREATETIME, REMARK
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from AOS_HOST_INFO
+    where ID = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from AOS_HOST_INFO
+    where ID = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.suntek.auto.operation.entity.AosHostInfo">
+    insert into AOS_HOST_INFO (ID, HOSTNAME, OPERATION_SYSTEM, 
+      IP_ADDRESS, CPU_NUM, MEMORY, 
+      DISK, INIT_STATE, RUNNING_STATE, 
+      RUNNING_INFO, UPDAETTIME, CREATETIME, 
+      REMARK)
+    values (#{id,jdbcType=INTEGER}, #{hostname,jdbcType=VARCHAR}, #{operationSystem,jdbcType=VARCHAR}, 
+      #{ipAddress,jdbcType=VARCHAR}, #{cpuNum,jdbcType=INTEGER}, #{memory,jdbcType=INTEGER}, 
+      #{disk,jdbcType=INTEGER}, #{initState,jdbcType=TINYINT}, #{runningState,jdbcType=TINYINT}, 
+      #{runningInfo,jdbcType=VARCHAR}, #{updaettime,jdbcType=TIMESTAMP}, #{createtime,jdbcType=TIMESTAMP}, 
+      #{remark,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.suntek.auto.operation.entity.AosHostInfo">
+    insert into AOS_HOST_INFO
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        ID,
+      </if>
+      <if test="hostname != null">
+        HOSTNAME,
+      </if>
+      <if test="operationSystem != null">
+        OPERATION_SYSTEM,
+      </if>
+      <if test="ipAddress != null">
+        IP_ADDRESS,
+      </if>
+      <if test="cpuNum != null">
+        CPU_NUM,
+      </if>
+      <if test="memory != null">
+        MEMORY,
+      </if>
+      <if test="disk != null">
+        DISK,
+      </if>
+      <if test="initState != null">
+        INIT_STATE,
+      </if>
+      <if test="runningState != null">
+        RUNNING_STATE,
+      </if>
+      <if test="runningInfo != null">
+        RUNNING_INFO,
+      </if>
+      <if test="updaettime != null">
+        UPDAETTIME,
+      </if>
+      <if test="createtime != null">
+        CREATETIME,
+      </if>
+      <if test="remark != null">
+        REMARK,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="hostname != null">
+        #{hostname,jdbcType=VARCHAR},
+      </if>
+      <if test="operationSystem != null">
+        #{operationSystem,jdbcType=VARCHAR},
+      </if>
+      <if test="ipAddress != null">
+        #{ipAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="cpuNum != null">
+        #{cpuNum,jdbcType=INTEGER},
+      </if>
+      <if test="memory != null">
+        #{memory,jdbcType=INTEGER},
+      </if>
+      <if test="disk != null">
+        #{disk,jdbcType=INTEGER},
+      </if>
+      <if test="initState != null">
+        #{initState,jdbcType=TINYINT},
+      </if>
+      <if test="runningState != null">
+        #{runningState,jdbcType=TINYINT},
+      </if>
+      <if test="runningInfo != null">
+        #{runningInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="updaettime != null">
+        #{updaettime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createtime != null">
+        #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="remark != null">
+        #{remark,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.suntek.auto.operation.entity.AosHostInfo">
+    update AOS_HOST_INFO
+    <set>
+      <if test="hostname != null">
+        HOSTNAME = #{hostname,jdbcType=VARCHAR},
+      </if>
+      <if test="operationSystem != null">
+        OPERATION_SYSTEM = #{operationSystem,jdbcType=VARCHAR},
+      </if>
+      <if test="ipAddress != null">
+        IP_ADDRESS = #{ipAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="cpuNum != null">
+        CPU_NUM = #{cpuNum,jdbcType=INTEGER},
+      </if>
+      <if test="memory != null">
+        MEMORY = #{memory,jdbcType=INTEGER},
+      </if>
+      <if test="disk != null">
+        DISK = #{disk,jdbcType=INTEGER},
+      </if>
+      <if test="initState != null">
+        INIT_STATE = #{initState,jdbcType=TINYINT},
+      </if>
+      <if test="runningState != null">
+        RUNNING_STATE = #{runningState,jdbcType=TINYINT},
+      </if>
+      <if test="runningInfo != null">
+        RUNNING_INFO = #{runningInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="updaettime != null">
+        UPDAETTIME = #{updaettime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createtime != null">
+        CREATETIME = #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="remark != null">
+        REMARK = #{remark,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.suntek.auto.operation.entity.AosHostInfo">
+    update AOS_HOST_INFO
+    set HOSTNAME = #{hostname,jdbcType=VARCHAR},
+      OPERATION_SYSTEM = #{operationSystem,jdbcType=VARCHAR},
+      IP_ADDRESS = #{ipAddress,jdbcType=VARCHAR},
+      CPU_NUM = #{cpuNum,jdbcType=INTEGER},
+      MEMORY = #{memory,jdbcType=INTEGER},
+      DISK = #{disk,jdbcType=INTEGER},
+      INIT_STATE = #{initState,jdbcType=TINYINT},
+      RUNNING_STATE = #{runningState,jdbcType=TINYINT},
+      RUNNING_INFO = #{runningInfo,jdbcType=VARCHAR},
+      UPDAETTIME = #{updaettime,jdbcType=TIMESTAMP},
+      CREATETIME = #{createtime,jdbcType=TIMESTAMP},
+      REMARK = #{remark,jdbcType=VARCHAR}
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.suntek.auto.operation.mapper.AosHostConfigMapper">
+  <resultMap id="BaseResultMap" type="com.suntek.auto.operation.entity.AosHostConfig">
+    <id column="ID" jdbcType="INTEGER" property="id" />
+    <result column="USERNAME" jdbcType="VARCHAR" property="username" />
+    <result column="PASSWORD" jdbcType="VARCHAR" property="password" />
+    <result column="HTTP_YUM" jdbcType="VARCHAR" property="httpYum" />
+    <result column="NTP_SERVER" jdbcType="VARCHAR" property="ntpServer" />
+    <result column="NTP_MASK" jdbcType="VARCHAR" property="ntpMask" />
+    <result column="UPDAETTIME" jdbcType="TIMESTAMP" property="updaettime" />
+    <result column="CREATETIME" jdbcType="TIMESTAMP" property="createtime" />
+    <result column="REMARK" jdbcType="VARCHAR" property="remark" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    ID, USERNAME, PASSWORD, HTTP_YUM, NTP_SERVER, NTP_MASK, UPDAETTIME, CREATETIME, REMARK
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from AOS_HOST_CONFIG
+    where ID = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from AOS_HOST_CONFIG
+    where ID = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.suntek.auto.operation.entity.AosHostConfig">
+    insert into AOS_HOST_CONFIG (ID, USERNAME, PASSWORD, 
+      HTTP_YUM, NTP_SERVER, NTP_MASK, 
+      UPDAETTIME, CREATETIME, REMARK
+      )
+    values (#{id,jdbcType=INTEGER}, #{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, 
+      #{httpYum,jdbcType=VARCHAR}, #{ntpServer,jdbcType=VARCHAR}, #{ntpMask,jdbcType=VARCHAR}, 
+      #{updaettime,jdbcType=TIMESTAMP}, #{createtime,jdbcType=TIMESTAMP}, #{remark,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.suntek.auto.operation.entity.AosHostConfig">
+    insert into AOS_HOST_CONFIG
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        ID,
+      </if>
+      <if test="username != null">
+        USERNAME,
+      </if>
+      <if test="password != null">
+        PASSWORD,
+      </if>
+      <if test="httpYum != null">
+        HTTP_YUM,
+      </if>
+      <if test="ntpServer != null">
+        NTP_SERVER,
+      </if>
+      <if test="ntpMask != null">
+        NTP_MASK,
+      </if>
+      <if test="updaettime != null">
+        UPDAETTIME,
+      </if>
+      <if test="createtime != null">
+        CREATETIME,
+      </if>
+      <if test="remark != null">
+        REMARK,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="username != null">
+        #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null">
+        #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="httpYum != null">
+        #{httpYum,jdbcType=VARCHAR},
+      </if>
+      <if test="ntpServer != null">
+        #{ntpServer,jdbcType=VARCHAR},
+      </if>
+      <if test="ntpMask != null">
+        #{ntpMask,jdbcType=VARCHAR},
+      </if>
+      <if test="updaettime != null">
+        #{updaettime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createtime != null">
+        #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="remark != null">
+        #{remark,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.suntek.auto.operation.entity.AosHostConfig">
+    update AOS_HOST_CONFIG
+    <set>
+      <if test="username != null">
+        USERNAME = #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null">
+        PASSWORD = #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="httpYum != null">
+        HTTP_YUM = #{httpYum,jdbcType=VARCHAR},
+      </if>
+      <if test="ntpServer != null">
+        NTP_SERVER = #{ntpServer,jdbcType=VARCHAR},
+      </if>
+      <if test="ntpMask != null">
+        NTP_MASK = #{ntpMask,jdbcType=VARCHAR},
+      </if>
+      <if test="updaettime != null">
+        UPDAETTIME = #{updaettime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createtime != null">
+        CREATETIME = #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="remark != null">
+        REMARK = #{remark,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.suntek.auto.operation.entity.AosHostConfig">
+    update AOS_HOST_CONFIG
+    set USERNAME = #{username,jdbcType=VARCHAR},
+      PASSWORD = #{password,jdbcType=VARCHAR},
+      HTTP_YUM = #{httpYum,jdbcType=VARCHAR},
+      NTP_SERVER = #{ntpServer,jdbcType=VARCHAR},
+      NTP_MASK = #{ntpMask,jdbcType=VARCHAR},
+      UPDAETTIME = #{updaettime,jdbcType=TIMESTAMP},
+      CREATETIME = #{createtime,jdbcType=TIMESTAMP},
+      REMARK = #{remark,jdbcType=VARCHAR}
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

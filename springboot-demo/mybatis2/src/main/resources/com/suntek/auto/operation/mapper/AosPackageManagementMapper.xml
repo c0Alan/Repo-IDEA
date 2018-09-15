@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.suntek.auto.operation.mapper.AosPackageManagementMapper">
+  <resultMap id="BaseResultMap" type="com.suntek.auto.operation.entity.AosPackageManagement">
+    <id column="ID" jdbcType="INTEGER" property="id" />
+    <result column="NUM" jdbcType="INTEGER" property="num" />
+    <result column="NAME" jdbcType="VARCHAR" property="name" />
+    <result column="DESCRIPTION" jdbcType="VARCHAR" property="description" />
+    <result column="VERSION_TYPE" jdbcType="TINYINT" property="versionType" />
+    <result column="RELEASE_STATE" jdbcType="TINYINT" property="releaseState" />
+    <result column="USED" jdbcType="TINYINT" property="used" />
+    <result column="UPLOADER" jdbcType="VARCHAR" property="uploader" />
+    <result column="UPLOADE_TIME" jdbcType="TIMESTAMP" property="uploadeTime" />
+    <result column="STORE_PATH" jdbcType="VARCHAR" property="storePath" />
+    <result column="UPDAETTIME" jdbcType="TIMESTAMP" property="updaettime" />
+    <result column="CREATETIME" jdbcType="TIMESTAMP" property="createtime" />
+    <result column="REMARK" jdbcType="VARCHAR" property="remark" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    ID, NUM, NAME, DESCRIPTION, VERSION_TYPE, RELEASE_STATE, USED, UPLOADER, UPLOADE_TIME, 
+    STORE_PATH, UPDAETTIME, CREATETIME, REMARK
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from AOS_PACKAGE_MANAGEMENT
+    where ID = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from AOS_PACKAGE_MANAGEMENT
+    where ID = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.suntek.auto.operation.entity.AosPackageManagement">
+    insert into AOS_PACKAGE_MANAGEMENT (ID, NUM, NAME, 
+      DESCRIPTION, VERSION_TYPE, RELEASE_STATE, 
+      USED, UPLOADER, UPLOADE_TIME, 
+      STORE_PATH, UPDAETTIME, CREATETIME, 
+      REMARK)
+    values (#{id,jdbcType=INTEGER}, #{num,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, 
+      #{description,jdbcType=VARCHAR}, #{versionType,jdbcType=TINYINT}, #{releaseState,jdbcType=TINYINT}, 
+      #{used,jdbcType=TINYINT}, #{uploader,jdbcType=VARCHAR}, #{uploadeTime,jdbcType=TIMESTAMP}, 
+      #{storePath,jdbcType=VARCHAR}, #{updaettime,jdbcType=TIMESTAMP}, #{createtime,jdbcType=TIMESTAMP}, 
+      #{remark,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.suntek.auto.operation.entity.AosPackageManagement">
+    insert into AOS_PACKAGE_MANAGEMENT
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        ID,
+      </if>
+      <if test="num != null">
+        NUM,
+      </if>
+      <if test="name != null">
+        NAME,
+      </if>
+      <if test="description != null">
+        DESCRIPTION,
+      </if>
+      <if test="versionType != null">
+        VERSION_TYPE,
+      </if>
+      <if test="releaseState != null">
+        RELEASE_STATE,
+      </if>
+      <if test="used != null">
+        USED,
+      </if>
+      <if test="uploader != null">
+        UPLOADER,
+      </if>
+      <if test="uploadeTime != null">
+        UPLOADE_TIME,
+      </if>
+      <if test="storePath != null">
+        STORE_PATH,
+      </if>
+      <if test="updaettime != null">
+        UPDAETTIME,
+      </if>
+      <if test="createtime != null">
+        CREATETIME,
+      </if>
+      <if test="remark != null">
+        REMARK,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="num != null">
+        #{num,jdbcType=INTEGER},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null">
+        #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="versionType != null">
+        #{versionType,jdbcType=TINYINT},
+      </if>
+      <if test="releaseState != null">
+        #{releaseState,jdbcType=TINYINT},
+      </if>
+      <if test="used != null">
+        #{used,jdbcType=TINYINT},
+      </if>
+      <if test="uploader != null">
+        #{uploader,jdbcType=VARCHAR},
+      </if>
+      <if test="uploadeTime != null">
+        #{uploadeTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="storePath != null">
+        #{storePath,jdbcType=VARCHAR},
+      </if>
+      <if test="updaettime != null">
+        #{updaettime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createtime != null">
+        #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="remark != null">
+        #{remark,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.suntek.auto.operation.entity.AosPackageManagement">
+    update AOS_PACKAGE_MANAGEMENT
+    <set>
+      <if test="num != null">
+        NUM = #{num,jdbcType=INTEGER},
+      </if>
+      <if test="name != null">
+        NAME = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null">
+        DESCRIPTION = #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="versionType != null">
+        VERSION_TYPE = #{versionType,jdbcType=TINYINT},
+      </if>
+      <if test="releaseState != null">
+        RELEASE_STATE = #{releaseState,jdbcType=TINYINT},
+      </if>
+      <if test="used != null">
+        USED = #{used,jdbcType=TINYINT},
+      </if>
+      <if test="uploader != null">
+        UPLOADER = #{uploader,jdbcType=VARCHAR},
+      </if>
+      <if test="uploadeTime != null">
+        UPLOADE_TIME = #{uploadeTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="storePath != null">
+        STORE_PATH = #{storePath,jdbcType=VARCHAR},
+      </if>
+      <if test="updaettime != null">
+        UPDAETTIME = #{updaettime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createtime != null">
+        CREATETIME = #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="remark != null">
+        REMARK = #{remark,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.suntek.auto.operation.entity.AosPackageManagement">
+    update AOS_PACKAGE_MANAGEMENT
+    set NUM = #{num,jdbcType=INTEGER},
+      NAME = #{name,jdbcType=VARCHAR},
+      DESCRIPTION = #{description,jdbcType=VARCHAR},
+      VERSION_TYPE = #{versionType,jdbcType=TINYINT},
+      RELEASE_STATE = #{releaseState,jdbcType=TINYINT},
+      USED = #{used,jdbcType=TINYINT},
+      UPLOADER = #{uploader,jdbcType=VARCHAR},
+      UPLOADE_TIME = #{uploadeTime,jdbcType=TIMESTAMP},
+      STORE_PATH = #{storePath,jdbcType=VARCHAR},
+      UPDAETTIME = #{updaettime,jdbcType=TIMESTAMP},
+      CREATETIME = #{createtime,jdbcType=TIMESTAMP},
+      REMARK = #{remark,jdbcType=VARCHAR}
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

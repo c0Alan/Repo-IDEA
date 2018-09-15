@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.suntek.auto.operation.mapper.AosFunctionCheckMapper">
+  <resultMap id="BaseResultMap" type="com.suntek.auto.operation.entity.AosFunctionCheck">
+    <id column="ID" jdbcType="INTEGER" property="id" />
+    <result column="NUM" jdbcType="INTEGER" property="num" />
+    <result column="STEP" jdbcType="TINYINT" property="step" />
+    <result column="COMPONENT_ID" jdbcType="VARCHAR" property="componentId" />
+    <result column="ACTION" jdbcType="VARCHAR" property="action" />
+    <result column="UPDAETTIME" jdbcType="TIMESTAMP" property="updaettime" />
+    <result column="CREATETIME" jdbcType="TIMESTAMP" property="createtime" />
+    <result column="REMARK" jdbcType="VARCHAR" property="remark" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    ID, NUM, STEP, COMPONENT_ID, ACTION, UPDAETTIME, CREATETIME, REMARK
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from AOS_FUNCTION_CHECK
+    where ID = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from AOS_FUNCTION_CHECK
+    where ID = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.suntek.auto.operation.entity.AosFunctionCheck">
+    insert into AOS_FUNCTION_CHECK (ID, NUM, STEP, 
+      COMPONENT_ID, ACTION, UPDAETTIME, 
+      CREATETIME, REMARK)
+    values (#{id,jdbcType=INTEGER}, #{num,jdbcType=INTEGER}, #{step,jdbcType=TINYINT}, 
+      #{componentId,jdbcType=VARCHAR}, #{action,jdbcType=VARCHAR}, #{updaettime,jdbcType=TIMESTAMP}, 
+      #{createtime,jdbcType=TIMESTAMP}, #{remark,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.suntek.auto.operation.entity.AosFunctionCheck">
+    insert into AOS_FUNCTION_CHECK
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        ID,
+      </if>
+      <if test="num != null">
+        NUM,
+      </if>
+      <if test="step != null">
+        STEP,
+      </if>
+      <if test="componentId != null">
+        COMPONENT_ID,
+      </if>
+      <if test="action != null">
+        ACTION,
+      </if>
+      <if test="updaettime != null">
+        UPDAETTIME,
+      </if>
+      <if test="createtime != null">
+        CREATETIME,
+      </if>
+      <if test="remark != null">
+        REMARK,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="num != null">
+        #{num,jdbcType=INTEGER},
+      </if>
+      <if test="step != null">
+        #{step,jdbcType=TINYINT},
+      </if>
+      <if test="componentId != null">
+        #{componentId,jdbcType=VARCHAR},
+      </if>
+      <if test="action != null">
+        #{action,jdbcType=VARCHAR},
+      </if>
+      <if test="updaettime != null">
+        #{updaettime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createtime != null">
+        #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="remark != null">
+        #{remark,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.suntek.auto.operation.entity.AosFunctionCheck">
+    update AOS_FUNCTION_CHECK
+    <set>
+      <if test="num != null">
+        NUM = #{num,jdbcType=INTEGER},
+      </if>
+      <if test="step != null">
+        STEP = #{step,jdbcType=TINYINT},
+      </if>
+      <if test="componentId != null">
+        COMPONENT_ID = #{componentId,jdbcType=VARCHAR},
+      </if>
+      <if test="action != null">
+        ACTION = #{action,jdbcType=VARCHAR},
+      </if>
+      <if test="updaettime != null">
+        UPDAETTIME = #{updaettime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createtime != null">
+        CREATETIME = #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="remark != null">
+        REMARK = #{remark,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.suntek.auto.operation.entity.AosFunctionCheck">
+    update AOS_FUNCTION_CHECK
+    set NUM = #{num,jdbcType=INTEGER},
+      STEP = #{step,jdbcType=TINYINT},
+      COMPONENT_ID = #{componentId,jdbcType=VARCHAR},
+      ACTION = #{action,jdbcType=VARCHAR},
+      UPDAETTIME = #{updaettime,jdbcType=TIMESTAMP},
+      CREATETIME = #{createtime,jdbcType=TIMESTAMP},
+      REMARK = #{remark,jdbcType=VARCHAR}
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

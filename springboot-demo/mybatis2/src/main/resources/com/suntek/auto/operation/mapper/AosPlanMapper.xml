@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.suntek.auto.operation.mapper.AosPlanMapper">
+  <resultMap id="BaseResultMap" type="com.suntek.auto.operation.entity.AosPlan">
+    <id column="ID" jdbcType="INTEGER" property="id" />
+    <result column="PROJECT_NAME" jdbcType="VARCHAR" property="projectName" />
+    <result column="CREATOR" jdbcType="VARCHAR" property="creator" />
+    <result column="PLATFORM_ID" jdbcType="VARCHAR" property="platformId" />
+    <result column="NETWORK" jdbcType="VARCHAR" property="network" />
+    <result column="PRODUCT" jdbcType="VARCHAR" property="product" />
+    <result column="INSTALL_VERSION" jdbcType="VARCHAR" property="installVersion" />
+    <result column="INSTALL_TYPE" jdbcType="VARCHAR" property="installType" />
+    <result column="UPDAETTIME" jdbcType="TIMESTAMP" property="updaettime" />
+    <result column="CREATETIME" jdbcType="TIMESTAMP" property="createtime" />
+    <result column="REMARK" jdbcType="VARCHAR" property="remark" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    ID, PROJECT_NAME, CREATOR, PLATFORM_ID, NETWORK, PRODUCT, INSTALL_VERSION, INSTALL_TYPE, 
+    UPDAETTIME, CREATETIME, REMARK
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from AOS_PLAN
+    where ID = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from AOS_PLAN
+    where ID = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.suntek.auto.operation.entity.AosPlan">
+    insert into AOS_PLAN (ID, PROJECT_NAME, CREATOR, 
+      PLATFORM_ID, NETWORK, PRODUCT, 
+      INSTALL_VERSION, INSTALL_TYPE, UPDAETTIME, 
+      CREATETIME, REMARK)
+    values (#{id,jdbcType=INTEGER}, #{projectName,jdbcType=VARCHAR}, #{creator,jdbcType=VARCHAR}, 
+      #{platformId,jdbcType=VARCHAR}, #{network,jdbcType=VARCHAR}, #{product,jdbcType=VARCHAR}, 
+      #{installVersion,jdbcType=VARCHAR}, #{installType,jdbcType=VARCHAR}, #{updaettime,jdbcType=TIMESTAMP}, 
+      #{createtime,jdbcType=TIMESTAMP}, #{remark,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.suntek.auto.operation.entity.AosPlan">
+    insert into AOS_PLAN
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        ID,
+      </if>
+      <if test="projectName != null">
+        PROJECT_NAME,
+      </if>
+      <if test="creator != null">
+        CREATOR,
+      </if>
+      <if test="platformId != null">
+        PLATFORM_ID,
+      </if>
+      <if test="network != null">
+        NETWORK,
+      </if>
+      <if test="product != null">
+        PRODUCT,
+      </if>
+      <if test="installVersion != null">
+        INSTALL_VERSION,
+      </if>
+      <if test="installType != null">
+        INSTALL_TYPE,
+      </if>
+      <if test="updaettime != null">
+        UPDAETTIME,
+      </if>
+      <if test="createtime != null">
+        CREATETIME,
+      </if>
+      <if test="remark != null">
+        REMARK,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="projectName != null">
+        #{projectName,jdbcType=VARCHAR},
+      </if>
+      <if test="creator != null">
+        #{creator,jdbcType=VARCHAR},
+      </if>
+      <if test="platformId != null">
+        #{platformId,jdbcType=VARCHAR},
+      </if>
+      <if test="network != null">
+        #{network,jdbcType=VARCHAR},
+      </if>
+      <if test="product != null">
+        #{product,jdbcType=VARCHAR},
+      </if>
+      <if test="installVersion != null">
+        #{installVersion,jdbcType=VARCHAR},
+      </if>
+      <if test="installType != null">
+        #{installType,jdbcType=VARCHAR},
+      </if>
+      <if test="updaettime != null">
+        #{updaettime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createtime != null">
+        #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="remark != null">
+        #{remark,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.suntek.auto.operation.entity.AosPlan">
+    update AOS_PLAN
+    <set>
+      <if test="projectName != null">
+        PROJECT_NAME = #{projectName,jdbcType=VARCHAR},
+      </if>
+      <if test="creator != null">
+        CREATOR = #{creator,jdbcType=VARCHAR},
+      </if>
+      <if test="platformId != null">
+        PLATFORM_ID = #{platformId,jdbcType=VARCHAR},
+      </if>
+      <if test="network != null">
+        NETWORK = #{network,jdbcType=VARCHAR},
+      </if>
+      <if test="product != null">
+        PRODUCT = #{product,jdbcType=VARCHAR},
+      </if>
+      <if test="installVersion != null">
+        INSTALL_VERSION = #{installVersion,jdbcType=VARCHAR},
+      </if>
+      <if test="installType != null">
+        INSTALL_TYPE = #{installType,jdbcType=VARCHAR},
+      </if>
+      <if test="updaettime != null">
+        UPDAETTIME = #{updaettime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createtime != null">
+        CREATETIME = #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="remark != null">
+        REMARK = #{remark,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.suntek.auto.operation.entity.AosPlan">
+    update AOS_PLAN
+    set PROJECT_NAME = #{projectName,jdbcType=VARCHAR},
+      CREATOR = #{creator,jdbcType=VARCHAR},
+      PLATFORM_ID = #{platformId,jdbcType=VARCHAR},
+      NETWORK = #{network,jdbcType=VARCHAR},
+      PRODUCT = #{product,jdbcType=VARCHAR},
+      INSTALL_VERSION = #{installVersion,jdbcType=VARCHAR},
+      INSTALL_TYPE = #{installType,jdbcType=VARCHAR},
+      UPDAETTIME = #{updaettime,jdbcType=TIMESTAMP},
+      CREATETIME = #{createtime,jdbcType=TIMESTAMP},
+      REMARK = #{remark,jdbcType=VARCHAR}
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

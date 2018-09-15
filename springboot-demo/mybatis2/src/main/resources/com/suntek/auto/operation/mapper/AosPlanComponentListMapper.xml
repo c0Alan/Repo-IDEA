@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.suntek.auto.operation.mapper.AosPlanComponentListMapper">
+  <resultMap id="BaseResultMap" type="com.suntek.auto.operation.entity.AosPlanComponentList">
+    <id column="ID" jdbcType="INTEGER" property="id" />
+    <result column="PLAN_KEY" jdbcType="VARCHAR" property="planKey" />
+    <result column="COMPONENT_ID" jdbcType="VARCHAR" property="componentId" />
+    <result column="INSTALL_STATE" jdbcType="TINYINT" property="installState" />
+    <result column="REQUIRED" jdbcType="TINYINT" property="required" />
+    <result column="UPDAETTIME" jdbcType="TIMESTAMP" property="updaettime" />
+    <result column="CREATETIME" jdbcType="TIMESTAMP" property="createtime" />
+    <result column="REMARK" jdbcType="VARCHAR" property="remark" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    ID, PLAN_KEY, COMPONENT_ID, INSTALL_STATE, REQUIRED, UPDAETTIME, CREATETIME, REMARK
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from AOS_PLAN_COMPONENT_LIST
+    where ID = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from AOS_PLAN_COMPONENT_LIST
+    where ID = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.suntek.auto.operation.entity.AosPlanComponentList">
+    insert into AOS_PLAN_COMPONENT_LIST (ID, PLAN_KEY, COMPONENT_ID, 
+      INSTALL_STATE, REQUIRED, UPDAETTIME, 
+      CREATETIME, REMARK)
+    values (#{id,jdbcType=INTEGER}, #{planKey,jdbcType=VARCHAR}, #{componentId,jdbcType=VARCHAR}, 
+      #{installState,jdbcType=TINYINT}, #{required,jdbcType=TINYINT}, #{updaettime,jdbcType=TIMESTAMP}, 
+      #{createtime,jdbcType=TIMESTAMP}, #{remark,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.suntek.auto.operation.entity.AosPlanComponentList">
+    insert into AOS_PLAN_COMPONENT_LIST
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        ID,
+      </if>
+      <if test="planKey != null">
+        PLAN_KEY,
+      </if>
+      <if test="componentId != null">
+        COMPONENT_ID,
+      </if>
+      <if test="installState != null">
+        INSTALL_STATE,
+      </if>
+      <if test="required != null">
+        REQUIRED,
+      </if>
+      <if test="updaettime != null">
+        UPDAETTIME,
+      </if>
+      <if test="createtime != null">
+        CREATETIME,
+      </if>
+      <if test="remark != null">
+        REMARK,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="planKey != null">
+        #{planKey,jdbcType=VARCHAR},
+      </if>
+      <if test="componentId != null">
+        #{componentId,jdbcType=VARCHAR},
+      </if>
+      <if test="installState != null">
+        #{installState,jdbcType=TINYINT},
+      </if>
+      <if test="required != null">
+        #{required,jdbcType=TINYINT},
+      </if>
+      <if test="updaettime != null">
+        #{updaettime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createtime != null">
+        #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="remark != null">
+        #{remark,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.suntek.auto.operation.entity.AosPlanComponentList">
+    update AOS_PLAN_COMPONENT_LIST
+    <set>
+      <if test="planKey != null">
+        PLAN_KEY = #{planKey,jdbcType=VARCHAR},
+      </if>
+      <if test="componentId != null">
+        COMPONENT_ID = #{componentId,jdbcType=VARCHAR},
+      </if>
+      <if test="installState != null">
+        INSTALL_STATE = #{installState,jdbcType=TINYINT},
+      </if>
+      <if test="required != null">
+        REQUIRED = #{required,jdbcType=TINYINT},
+      </if>
+      <if test="updaettime != null">
+        UPDAETTIME = #{updaettime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createtime != null">
+        CREATETIME = #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="remark != null">
+        REMARK = #{remark,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.suntek.auto.operation.entity.AosPlanComponentList">
+    update AOS_PLAN_COMPONENT_LIST
+    set PLAN_KEY = #{planKey,jdbcType=VARCHAR},
+      COMPONENT_ID = #{componentId,jdbcType=VARCHAR},
+      INSTALL_STATE = #{installState,jdbcType=TINYINT},
+      REQUIRED = #{required,jdbcType=TINYINT},
+      UPDAETTIME = #{updaettime,jdbcType=TIMESTAMP},
+      CREATETIME = #{createtime,jdbcType=TIMESTAMP},
+      REMARK = #{remark,jdbcType=VARCHAR}
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
