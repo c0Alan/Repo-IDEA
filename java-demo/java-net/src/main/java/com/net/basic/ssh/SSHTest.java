@@ -48,7 +48,7 @@ public class SSHTest {
         String ipAddr = "172.25.20.133";
         String userName = "root";
         String password = "Suntek123";
-        String cmd = "cd /opt && ll";
+        String cmd = "cd /opt/aos && ./startup.sh";
 
 //        a) 连接：
         Connection conn = new Connection(ipAddr);
