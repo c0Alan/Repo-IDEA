@@ -48,7 +48,7 @@ public class SSHTest {
         String ipAddr = "172.25.20.133";
         String userName = "root";
         String password = "Suntek123";
-        String cmd = "cd /opt/aos && ./startup.sh";
+        String cmd = "ansible 127.0.0.1 -a 'date' -vvv";
 
 //        a) 连接：
         Connection conn = new Connection(ipAddr);
@@ -82,5 +82,13 @@ public class SSHTest {
         // 7. 等待，除非1.连接关闭；2.输出数据传送完毕；3.进程状态为退出；4.超时
         session.waitForCondition(ChannelCondition.CLOSED | ChannelCondition.EOF | ChannelCondition.EXIT_STATUS, 30000);
         System.out.println(IOUtils.toString(session.getStdout(), "utf-8"));
+
+        /*//从远程获取文件
+        SCPClient scpClient = conn.createSCPClient();
+        scpClient.get("remoteFiles","localDirectory");
+
+        //e) 获取Shell命令执行结果：
+        InputStream stderr = new StreamGobbler(session.getStderr());
+        InputStream in = new StreamGobbler(session.getStdout());*/
     }
 }
