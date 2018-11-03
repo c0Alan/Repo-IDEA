@@ -32,6 +32,7 @@ public class CountDownLatchTest1 {
                 Thread.sleep(1000);
                 System.out.println(Thread.currentThread().getName() + " sleep 1000ms.");
                 // 将CountDownLatch的数值减1
+                System.out.println(doneSignal.getCount());
                 doneSignal.countDown();
             } catch (InterruptedException e) {
                 e.printStackTrace();

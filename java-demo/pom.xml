@@ -109,6 +109,14 @@
 
     </properties>
 
+    <dependencies>
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>fastjson</artifactId>
+            <version>${fastjson.version}</version>
+        </dependency>
+    </dependencies>
+
     <build>
         <!--<finalName>${artifactId}-${version}</finalName>-->
         <finalName>my-demo</finalName>

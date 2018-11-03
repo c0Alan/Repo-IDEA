@@ -108,6 +108,12 @@
             <version>${joda-time.version}</version>
         </dependency>
 
+        <dependency>
+            <groupId>org.ini4j</groupId>
+            <artifactId>ini4j</artifactId>
+            <version>0.5.4</version>
+        </dependency>
+
         <!--jmeter 相关-->
         <dependency>
             <groupId>org.apache.jmeter</groupId>
