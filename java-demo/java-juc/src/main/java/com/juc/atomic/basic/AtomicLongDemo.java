@@ -1,9 +1,32 @@
 package com.juc.atomic.basic;
 
+import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.atomic.AtomicLong;
 
 public class AtomicLongDemo {
     public static void main(String[] args) {
+        test();
+    }
+
+    public static void test() {
+
+        AtomicInteger aci = new AtomicInteger(0);
+        for(int i=0; i<100; i++) {
+            new Thread(new Runnable() {
+                @Override
+                public void run() {
+//                    System.out.println(aci.get());
+                    if (aci.addAndGet(1) < 10) {
+
+                        System.out.println(Thread.currentThread().getName());
+                    }
+//                    System.out.println(aci.get());
+                }
+            }, "thread-" + i).start();
+        }
+    }
+
+    public static void test2() {
         AtomicLong mAtoLong = new AtomicLong();
 
         mAtoLong.set(0x0123456789ABCDEFL);

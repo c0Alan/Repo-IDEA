@@ -27,7 +27,8 @@ public class Test {
         Byte.valueOf("1");
 
 
-        Date date = (new SimpleDateFormat("yy-MM-dd HH:mm:ss")).parse("181031201329");
-        System.out.println(date);
+//        Date date = (new SimpleDateFormat("yy-MM-dd HH:mm:ss")).parse("1542806146");
+        Date d = new Date(1542806146916L);
+        System.out.println(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(d));
     }
 }
