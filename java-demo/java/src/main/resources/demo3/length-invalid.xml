@@ -1,0 +1,16 @@
+<configuration>
+	<interfaces>
+		<interface>
+			<name>fe-0/0/0</name>
+			<description>foo</description>
+		</interface>
+		<interface>
+			<name>fe-0/0/1</name>
+			<description>bar</description>
+		</interface>
+		<interface>
+			<name>fe-0/0/2</name>
+			<description>foobarfoobar</description>
+		</interface>
+	</interfaces>
+</configuration>

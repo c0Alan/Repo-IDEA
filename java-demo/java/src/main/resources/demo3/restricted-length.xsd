@@ -1,0 +1,30 @@
+<xs:schema attributeFormDefault="unqualified"
+	elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+	<xs:element name="configuration">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="interfaces">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="interface" maxOccurs="10" minOccurs="0">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element type="xs:string" name="name" />
+										<xs:element name="description">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:minLength value="1" />
+													<xs:maxLength value="8" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>	
