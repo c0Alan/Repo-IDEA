@@ -1,13 +1,15 @@
 package com.jodatime;
 
+import com.alibaba.fastjson.JSONObject;
 import org.apache.log4j.Logger;
 import org.joda.time.DateTime;
 import org.joda.time.Days;
-import org.joda.time.LocalDate;
+import org.joda.time.Seconds;
 import org.joda.time.format.DateTimeFormat;
 import org.joda.time.format.DateTimeFormatter;
 
-import java.util.*;
+import java.util.HashMap;
+import java.util.Map;
 
 public class OJodatime {
 
@@ -16,25 +18,25 @@ public class OJodatime {
     @SuppressWarnings("unused")
     public void test() {
 
-        /** 创建任意时间对象 */
+        /** 创建任意时间对象 *//*
         DateTime dateTime = new DateTime(2012, 12, 15, 18, 23, 55);
 
-        /** 计算两日期相差的天数 */
+        *//** 计算两日期相差的天数 *//*
         LocalDate start = new LocalDate(2012, 12, 14);
         LocalDate end = new LocalDate(2012, 12, 15);
         int days = Days.daysBetween(start, end).getDays();
 
-        /** 获取18天之后的某天在下个月的当前周的第一天日期 */
+        *//** 获取18天之后的某天在下个月的当前周的第一天日期 *//*
         String dateStr = new DateTime().plusDays(18).plusMonths(1).dayOfWeek().withMinimumValue()
                 .toString("yyyy-MM-dd HH:mm:ss");
 
-        /** 时间格式化 */
+        *//** 时间格式化 *//*
         DateTimeFormatter format = DateTimeFormat.forPattern("yyyy-MM-dd HH:mm:ss");
         DateTime dateTime2 = DateTime.parse("2012-12-21 23:22:45", format); //时间解析    
         String string_u = dateTime2.toString("yyyy/MM/dd HH:mm:ss EE"); //时间格式化，输出==> 2012/12/21 23:22:45 Fri  
         String string_c = dateTime2.toString("yyyy年MM月dd日 HH:mm:ss EE", Locale.ENGLISH); //格式化带Locale，输出==> 2012年12月21日 23:22:45 星期五 
 
-        /** 与JDK互操作 */
+        *//** 与JDK互操作 *//*
         Date date = new Date(); //通过jdk时间对象构造  
         DateTime dateTime3 = new DateTime(date);
         Calendar calendar = Calendar.getInstance();
@@ -54,15 +56,49 @@ public class OJodatime {
         
         logger.info(calendar2);
         
-        logger.info("finished...");
+        logger.info("finished...");*/
     }
 
     public static void main(String[] args) {
-        DateTime dtKssj = new DateTime("2018-02-05");
+        /*DateTime dtKssj = new DateTime("2018-02-05");
         String kssj = dtKssj.toString("yyyy-MM-dd");
         Double a = Math.pow(Double.valueOf(10), Double.valueOf(-6));
         System.out.println(a);
-        System.out.println(getWorkDays2("2018-02-05", "2018-03-05"));
+        System.out.println(getWorkDays2("2018-02-05", "2018-03-05"));*/
+//        DateTime dateTime = new DateTime("190116185355095");
+        /*DateTime dateTime = DateTime.parse("190116185355095", DateTimeFormat.forPattern("yyMMddHHmmssSSS"));
+        DateTime dateTime2 = DateTime.parse("190116185356095", DateTimeFormat.forPattern("yyMMddHHmmssSSS"));*/
+
+        DateTimeFormatter df = DateTimeFormat.forPattern("yyMMddHHmmssSSS");
+        df.parseDateTime("190116185355095");
+        DateTime dateTime = df.parseDateTime("190116185355095");
+        DateTime dateTime2 =df.parseDateTime("190116185356095");
+        System.out.println(dateTime);
+        System.out.println(dateTime2);
+        System.out.println(Seconds.secondsBetween(dateTime, dateTime2).getSeconds());
+
+/*        Map hourStatisticMap = new HashMap();
+        Integer max_delay_second = (Integer) hourStatisticMap.get("max_delay_second");
+        System.out.println(Integer.valueOf(2).compareTo(Integer.valueOf(3)));*/
+        String recvCaptureTime = "19011815057369";
+        String newRecvCaptureTime = recvCaptureTime.substring(0, 10) + "0" + recvCaptureTime.substring(10);
+        System.out.println(newRecvCaptureTime);
+        System.out.println(new DateTime().toString("yyMMdd-HHmmss-SSS"));
+
+        Integer i = 0;
+
+        try {
+            i = i + 2;
+            i = 1 / 0;
+            i++;
+        } catch (Exception e) {
+
+        }
+        System.out.println(i);
+
+        Map dataStatisticData = new HashMap();
+        dataStatisticData.put("class", "com.suntek.flume.translate.impl.analysis.FaceFeatureExtractTranReqDataImpl");
+        System.out.println(JSONObject.toJSON(dataStatisticData).toString());
     }
 
     /**

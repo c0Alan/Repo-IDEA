@@ -14,6 +14,7 @@
         <module>shiro</module>
         <module>mybatis2</module>
         <module>profile</module>
+        <module>http</module>
     </modules>
     <packaging>pom</packaging>
 
@@ -44,6 +45,7 @@
         <fastjson.version>1.2.46</fastjson.version>
         <goson.verson>2.8.2</goson.verson>
         <jackson-databind.verson>2.9.5</jackson-databind.verson>
+        <lombok.version>1.18.0</lombok.version>
 
         <!-- rocketmq -->
         <rocketmq.version>4.2.0</rocketmq.version>
@@ -92,6 +94,7 @@
         <commons-collections.version>3.2.1</commons-collections.version>
         <commons-chain.version>1.2</commons-chain.version>
         <commons-codec.version>1.9</commons-codec.version>
+        <httpclient.version>4.5.6</httpclient.version>
 
         <!-- 其他工具包 -->
         <joda-time.version>2.3</joda-time.version>

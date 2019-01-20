@@ -103,9 +103,17 @@
         <commons-logging.version>1.2</commons-logging.version>
 
         <!-- 其他工具包 -->
-        <joda-time.version>2.3</joda-time.version>
+        <joda-time.version>1.6</joda-time.version>
         <cglib.version>3.2.4</cglib.version>
         <aspectjweaver.version>1.8.9</aspectjweaver.version>
+        <!--
+            1. 最后更新时间是 2010年12月14日, 已经很多年不维护了
+            2. Json-lib 在通过字符串解析每一个 Json 对象时，会对当前解析位置到字符串末尾进行 substring 操作，
+            由于 JDK7 及以上的 substring 会完整拷贝截取后的内容，所以当遇到较大的 Json 数据并且含有较多对象时，
+            会进行大量的字符数组复制操作，导致了大量的 CPU 和内存消耗，甚至严重的 Full GC 问题
+            3. 要加 <classifier>jdk15</classifier> , 不然找不到jar包
+        <json-lib.version>2.4</json-lib.version>
+        -->
 
     </properties>
 
