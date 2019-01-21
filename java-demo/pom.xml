@@ -19,6 +19,7 @@
         <module>log-log4j</module>
         <module>log-logback</module>
         <module>java-net</module>
+        <module>java-jar</module>
     </modules>
 
     <properties>
