@@ -1,10 +1,8 @@
 package com.jodatime;
 
-import com.alibaba.fastjson.JSONObject;
 import org.apache.log4j.Logger;
 import org.joda.time.DateTime;
 import org.joda.time.Days;
-import org.joda.time.Seconds;
 import org.joda.time.format.DateTimeFormat;
 import org.joda.time.format.DateTimeFormatter;
 
@@ -69,7 +67,7 @@ public class OJodatime {
         /*DateTime dateTime = DateTime.parse("190116185355095", DateTimeFormat.forPattern("yyMMddHHmmssSSS"));
         DateTime dateTime2 = DateTime.parse("190116185356095", DateTimeFormat.forPattern("yyMMddHHmmssSSS"));*/
 
-        DateTimeFormatter df = DateTimeFormat.forPattern("yyMMddHHmmssSSS");
+        /*DateTimeFormatter df = DateTimeFormat.forPattern("yyMMddHHmmssSSS");
         df.parseDateTime("190116185355095");
         DateTime dateTime = df.parseDateTime("190116185355095");
         DateTime dateTime2 =df.parseDateTime("190116185356095");
@@ -77,9 +75,9 @@ public class OJodatime {
         System.out.println(dateTime2);
         System.out.println(Seconds.secondsBetween(dateTime, dateTime2).getSeconds());
 
-/*        Map hourStatisticMap = new HashMap();
+*//*        Map hourStatisticMap = new HashMap();
         Integer max_delay_second = (Integer) hourStatisticMap.get("max_delay_second");
-        System.out.println(Integer.valueOf(2).compareTo(Integer.valueOf(3)));*/
+        System.out.println(Integer.valueOf(2).compareTo(Integer.valueOf(3)));*//*
         String recvCaptureTime = "19011815057369";
         String newRecvCaptureTime = recvCaptureTime.substring(0, 10) + "0" + recvCaptureTime.substring(10);
         System.out.println(newRecvCaptureTime);
@@ -98,7 +96,24 @@ public class OJodatime {
 
         Map dataStatisticData = new HashMap();
         dataStatisticData.put("class", "com.suntek.flume.translate.impl.analysis.FaceFeatureExtractTranReqDataImpl");
-        System.out.println(JSONObject.toJSON(dataStatisticData).toString());
+        System.out.println(JSONObject.toJSON(dataStatisticData).toString());*/
+
+        /*String str = "{\"aa\":\"bb\"}";
+        Map m = JSONObject.parseObject(str);
+        System.out.println(m.get("aa"));*/
+
+        DateTime curDateTime = new DateTime();
+
+        String threeOClock = curDateTime.toString("yyMMdd") + "03";
+        DateTimeFormatter df = DateTimeFormat.forPattern("yyMMddHH");
+        DateTime dateTime = df.parseDateTime("19012702");
+        DateTime threeOClockDateTime = df.parseDateTime(threeOClock);
+        System.out.println(threeOClockDateTime);
+        System.out.println(curDateTime);
+        System.out.println(dateTime);
+        System.out.println(threeOClockDateTime.compareTo(dateTime));
+        System.out.println(threeOClockDateTime.compareTo(curDateTime));
+
     }
 
     /**
