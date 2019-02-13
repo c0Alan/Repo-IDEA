@@ -43,8 +43,13 @@ public class CreateExcel {
                     }
                 });
                 for (File log : logs) {
-                    String key = dir.getName() + "-" + log.getName().split("-")[1];
+                    String key = log.getName().split("-")[1];
+                    String key2 = dir.getName() + "-" + log.getName().split("-")[1];
                     try (FileInputStream fis = new FileInputStream(log)) {
+                        Map reportMap2 = (Map) reportMap.get(key);
+                        if (reportMap2 == null) {
+                            reportMap2 = new HashMap<>();
+                        }
                         List<String> lines = IOUtils.readLines(fis, "UTF-8");
                         if (CollectionUtils.isNotEmpty(lines)) {
                             String lastLine = lines.get(lines.size() - 1);
@@ -53,7 +58,8 @@ public class CreateExcel {
                                     ((Map) latestStatisticMap.get("statistic")).entrySet());
                             Collections.sort(entryList, Comparator.comparing(Map.Entry::getKey));
                             Collections.reverse(entryList);
-                            reportMap.put(key, entryList);
+                            reportMap2.put(key2, entryList);
+                            reportMap.put(key, reportMap2);
                         }
                     }
                 }
@@ -69,49 +75,60 @@ public class CreateExcel {
             reportFile.delete();
         }
         reportFile.createNewFile();
-        try (FileOutputStream fos = new FileOutputStream(reportFile)) {
-            HSSFWorkbook workbook = new HSSFWorkbook();
-            HSSFSheet sheet = workbook.createSheet("report");
-            int cellOffet = 0;
-            int rowOffet = 0;
-            for (Object obj : data.entrySet()) {
-                Map.Entry entry = (Map.Entry) obj;
-                String key = (String) entry.getKey();
-                List<Map.Entry> statisticMapList = (List<Map.Entry>) entry.getValue();
 
-                // 创建表头
-                HSSFRow headerRow = sheet.getRow(rowOffet);
-                if (headerRow == null) {
-                    headerRow = sheet.createRow(rowOffet);
-                }
-                rowOffet++;
-                HSSFCell header1 = headerRow.createCell(cellOffet);
-                header1.setCellValue("时间");
-                HSSFCell header2 = headerRow.createCell(cellOffet + 1);
-                header2.setCellValue(key);
+        HSSFWorkbook workbook = new HSSFWorkbook();
 
-                for (Map.Entry statisticMapEntry : statisticMapList) {
-                    String time = (String) statisticMapEntry.getKey();
-                    Integer count = (Integer) ((Map) statisticMapEntry.getValue()).get("count");
-                    Integer maxDelaySecond = (Integer) ((Map) statisticMapEntry.getValue()).get("max_delay_second");
-
-                    // 创建表头
-                    HSSFRow row = sheet.getRow(rowOffet);
-                    if (row == null) {
-                        row = sheet.createRow(rowOffet);
-                    }
-                    rowOffet++;
-                    HSSFCell cell1 = row.createCell(cellOffet);
-                    cell1.setCellValue(time);
-                    HSSFCell cell2 = row.createCell(cellOffet + 1);
-                    cell2.setCellValue(count);
-                }
-                rowOffet = 0;
-                cellOffet = cellOffet + 3;
-            }
-            workbook.write(fos);
+        for (Object obj : data.entrySet()) {
+            Map.Entry entry = (Map.Entry) obj;
+            String sheetName = (String) entry.getKey();
+            Map sheetData = (Map) entry.getValue();
+            createSheet(workbook, sheetData, sheetName);
         }
 
+        try (FileOutputStream fos = new FileOutputStream(reportFile)) {
+            workbook.write(fos);
+        }
+    }
+
+    public static void createSheet(HSSFWorkbook workbook, Map data, String sheetName) {
+        HSSFSheet sheet = workbook.createSheet(sheetName);
+        int cellOffet = 0;
+        int rowOffet = 0;
+        for (Object obj : data.entrySet()) {
+            Map.Entry entry = (Map.Entry) obj;
+            String key = (String) entry.getKey();
+            List<Map.Entry> statisticMapList = (List<Map.Entry>) entry.getValue();
+
+            // 创建表头
+            HSSFRow headerRow = sheet.getRow(rowOffet);
+            if (headerRow == null) {
+                headerRow = sheet.createRow(rowOffet);
+            }
+            rowOffet++;
+            HSSFCell header1 = headerRow.createCell(cellOffet);
+            header1.setCellValue("时间");
+            HSSFCell header2 = headerRow.createCell(cellOffet + 1);
+            header2.setCellValue(key);
+
+            for (Map.Entry statisticMapEntry : statisticMapList) {
+                String time = (String) statisticMapEntry.getKey();
+                Integer count = (Integer) ((Map) statisticMapEntry.getValue()).get("count");
+                Integer maxDelaySecond = (Integer) ((Map) statisticMapEntry.getValue()).get("max_delay_second");
+
+                // 创建表头
+                HSSFRow row = sheet.getRow(rowOffet);
+                if (row == null) {
+                    row = sheet.createRow(rowOffet);
+                }
+                rowOffet++;
+                HSSFCell cell1 = row.createCell(cellOffet);
+                cell1.setCellValue(time);
+                HSSFCell cell2 = row.createCell(cellOffet + 1);
+                cell2.setCellValue(count);
+            }
+            rowOffet = 0;
+            cellOffet = cellOffet + 3;
+        }
     }
 
     public static void createWorkbook() throws IOException {
