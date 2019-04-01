@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.multiple.datasource.dao2.mapper.ConsumerauditMapper">
+  <resultMap id="BaseResultMap" type="com.multiple.datasource.dao2.entity.Consumeraudit">
+    <id column="Id" jdbcType="INTEGER" property="id" />
+    <result column="ConsumerId" jdbcType="INTEGER" property="consumerid" />
+    <result column="Uri" jdbcType="VARCHAR" property="uri" />
+    <result column="Method" jdbcType="VARCHAR" property="method" />
+    <result column="DataChange_CreatedTime" jdbcType="TIMESTAMP" property="datachangeCreatedtime" />
+    <result column="DataChange_LastTime" jdbcType="TIMESTAMP" property="datachangeLasttime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    Id, ConsumerId, Uri, Method, DataChange_CreatedTime, DataChange_LastTime
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from ConsumerAudit
+    where Id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from ConsumerAudit
+    where Id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.multiple.datasource.dao2.entity.Consumeraudit">
+    insert into ConsumerAudit (Id, ConsumerId, Uri, 
+      Method, DataChange_CreatedTime, DataChange_LastTime
+      )
+    values (#{id,jdbcType=INTEGER}, #{consumerid,jdbcType=INTEGER}, #{uri,jdbcType=VARCHAR}, 
+      #{method,jdbcType=VARCHAR}, #{datachangeCreatedtime,jdbcType=TIMESTAMP}, #{datachangeLasttime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.multiple.datasource.dao2.entity.Consumeraudit">
+    insert into ConsumerAudit
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        Id,
+      </if>
+      <if test="consumerid != null">
+        ConsumerId,
+      </if>
+      <if test="uri != null">
+        Uri,
+      </if>
+      <if test="method != null">
+        Method,
+      </if>
+      <if test="datachangeCreatedtime != null">
+        DataChange_CreatedTime,
+      </if>
+      <if test="datachangeLasttime != null">
+        DataChange_LastTime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="consumerid != null">
+        #{consumerid,jdbcType=INTEGER},
+      </if>
+      <if test="uri != null">
+        #{uri,jdbcType=VARCHAR},
+      </if>
+      <if test="method != null">
+        #{method,jdbcType=VARCHAR},
+      </if>
+      <if test="datachangeCreatedtime != null">
+        #{datachangeCreatedtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="datachangeLasttime != null">
+        #{datachangeLasttime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.multiple.datasource.dao2.entity.Consumeraudit">
+    update ConsumerAudit
+    <set>
+      <if test="consumerid != null">
+        ConsumerId = #{consumerid,jdbcType=INTEGER},
+      </if>
+      <if test="uri != null">
+        Uri = #{uri,jdbcType=VARCHAR},
+      </if>
+      <if test="method != null">
+        Method = #{method,jdbcType=VARCHAR},
+      </if>
+      <if test="datachangeCreatedtime != null">
+        DataChange_CreatedTime = #{datachangeCreatedtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="datachangeLasttime != null">
+        DataChange_LastTime = #{datachangeLasttime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where Id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.multiple.datasource.dao2.entity.Consumeraudit">
+    update ConsumerAudit
+    set ConsumerId = #{consumerid,jdbcType=INTEGER},
+      Uri = #{uri,jdbcType=VARCHAR},
+      Method = #{method,jdbcType=VARCHAR},
+      DataChange_CreatedTime = #{datachangeCreatedtime,jdbcType=TIMESTAMP},
+      DataChange_LastTime = #{datachangeLasttime,jdbcType=TIMESTAMP}
+    where Id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

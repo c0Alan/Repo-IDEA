@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.multiple.datasource.dao2.mapper.PermissionMapper">
+  <resultMap id="BaseResultMap" type="com.multiple.datasource.dao2.entity.Permission">
+    <id column="Id" jdbcType="INTEGER" property="id" />
+    <result column="PermissionType" jdbcType="VARCHAR" property="permissiontype" />
+    <result column="TargetId" jdbcType="VARCHAR" property="targetid" />
+    <result column="IsDeleted" jdbcType="BIT" property="isdeleted" />
+    <result column="DataChange_CreatedBy" jdbcType="VARCHAR" property="datachangeCreatedby" />
+    <result column="DataChange_CreatedTime" jdbcType="TIMESTAMP" property="datachangeCreatedtime" />
+    <result column="DataChange_LastModifiedBy" jdbcType="VARCHAR" property="datachangeLastmodifiedby" />
+    <result column="DataChange_LastTime" jdbcType="TIMESTAMP" property="datachangeLasttime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    Id, PermissionType, TargetId, IsDeleted, DataChange_CreatedBy, DataChange_CreatedTime, 
+    DataChange_LastModifiedBy, DataChange_LastTime
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from Permission
+    where Id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from Permission
+    where Id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.multiple.datasource.dao2.entity.Permission">
+    insert into Permission (Id, PermissionType, TargetId, 
+      IsDeleted, DataChange_CreatedBy, DataChange_CreatedTime, 
+      DataChange_LastModifiedBy, DataChange_LastTime
+      )
+    values (#{id,jdbcType=INTEGER}, #{permissiontype,jdbcType=VARCHAR}, #{targetid,jdbcType=VARCHAR}, 
+      #{isdeleted,jdbcType=BIT}, #{datachangeCreatedby,jdbcType=VARCHAR}, #{datachangeCreatedtime,jdbcType=TIMESTAMP}, 
+      #{datachangeLastmodifiedby,jdbcType=VARCHAR}, #{datachangeLasttime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.multiple.datasource.dao2.entity.Permission">
+    insert into Permission
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        Id,
+      </if>
+      <if test="permissiontype != null">
+        PermissionType,
+      </if>
+      <if test="targetid != null">
+        TargetId,
+      </if>
+      <if test="isdeleted != null">
+        IsDeleted,
+      </if>
+      <if test="datachangeCreatedby != null">
+        DataChange_CreatedBy,
+      </if>
+      <if test="datachangeCreatedtime != null">
+        DataChange_CreatedTime,
+      </if>
+      <if test="datachangeLastmodifiedby != null">
+        DataChange_LastModifiedBy,
+      </if>
+      <if test="datachangeLasttime != null">
+        DataChange_LastTime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="permissiontype != null">
+        #{permissiontype,jdbcType=VARCHAR},
+      </if>
+      <if test="targetid != null">
+        #{targetid,jdbcType=VARCHAR},
+      </if>
+      <if test="isdeleted != null">
+        #{isdeleted,jdbcType=BIT},
+      </if>
+      <if test="datachangeCreatedby != null">
+        #{datachangeCreatedby,jdbcType=VARCHAR},
+      </if>
+      <if test="datachangeCreatedtime != null">
+        #{datachangeCreatedtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="datachangeLastmodifiedby != null">
+        #{datachangeLastmodifiedby,jdbcType=VARCHAR},
+      </if>
+      <if test="datachangeLasttime != null">
+        #{datachangeLasttime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.multiple.datasource.dao2.entity.Permission">
+    update Permission
+    <set>
+      <if test="permissiontype != null">
+        PermissionType = #{permissiontype,jdbcType=VARCHAR},
+      </if>
+      <if test="targetid != null">
+        TargetId = #{targetid,jdbcType=VARCHAR},
+      </if>
+      <if test="isdeleted != null">
+        IsDeleted = #{isdeleted,jdbcType=BIT},
+      </if>
+      <if test="datachangeCreatedby != null">
+        DataChange_CreatedBy = #{datachangeCreatedby,jdbcType=VARCHAR},
+      </if>
+      <if test="datachangeCreatedtime != null">
+        DataChange_CreatedTime = #{datachangeCreatedtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="datachangeLastmodifiedby != null">
+        DataChange_LastModifiedBy = #{datachangeLastmodifiedby,jdbcType=VARCHAR},
+      </if>
+      <if test="datachangeLasttime != null">
+        DataChange_LastTime = #{datachangeLasttime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where Id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.multiple.datasource.dao2.entity.Permission">
+    update Permission
+    set PermissionType = #{permissiontype,jdbcType=VARCHAR},
+      TargetId = #{targetid,jdbcType=VARCHAR},
+      IsDeleted = #{isdeleted,jdbcType=BIT},
+      DataChange_CreatedBy = #{datachangeCreatedby,jdbcType=VARCHAR},
+      DataChange_CreatedTime = #{datachangeCreatedtime,jdbcType=TIMESTAMP},
+      DataChange_LastModifiedBy = #{datachangeLastmodifiedby,jdbcType=VARCHAR},
+      DataChange_LastTime = #{datachangeLasttime,jdbcType=TIMESTAMP}
+    where Id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
