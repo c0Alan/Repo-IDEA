@@ -102,33 +102,60 @@ public class OJodatime {
         Map m = JSONObject.parseObject(str);
         System.out.println(m.get("aa"));*/
 
-        DateTime curDateTime = new DateTime();
 
-        String threeOClock = curDateTime.toString("yyMMdd") + "03";
-        DateTimeFormatter df = DateTimeFormat.forPattern("yyMMddHH");
+//        DateTimeFormatter df = DateTimeFormat.forPattern("yyyy-MM-dd HH:mm");
+        DateTime curDateTime = new DateTime();
+        DateTime curDateTime2 = new DateTime();
+        System.out.println(curDateTime.toString("yyyy-MM-dd HH:mm"));
+        System.out.println(curDateTime2.toString("yyyy-MM-dd HH:mm:ss.SSS"));
+        String str1 = curDateTime.toString("yyyy-MM-dd HH:mm");
+        String str2 = curDateTime2.toString("yyyy-MM-dd HH:mm:ss.SSS");
+        System.out.println(str2.compareTo(str1));
+/*        DateTimeFormatter df = DateTimeFormat.forPattern("yyMMddHH");
+        DateTime dateTime = df.parseDateTime("19012702");*/
+
+        /*String threeOClock = curDateTime.toString("yyMMdd") + "03";
+        DateTimeFormatter df = DateTimeFormat.forPattern("yyMMddHHmm");
         DateTime dateTime = df.parseDateTime("19012702");
         DateTime threeOClockDateTime = df.parseDateTime(threeOClock);
         System.out.println(threeOClockDateTime);
         System.out.println(curDateTime);
         System.out.println(dateTime);
         System.out.println(threeOClockDateTime.compareTo(dateTime));
-        System.out.println(threeOClockDateTime.compareTo(curDateTime));
+        System.out.println(threeOClockDateTime.compareTo(curDateTime));*/
 
+//        testClock("10");
+    }
+
+    public static void testClock(String hour) {
+        DateTime dateTime = new DateTime().minusMinutes(51);
+        DateTime curDateTime = new DateTime();
+        String threeOClock = curDateTime.toString("yyMMdd") + hour;
+        DateTimeFormatter df = DateTimeFormat.forPattern("yyMMddHH");
+        DateTime threeOClockDateTime = df.parseDateTime(threeOClock);
+        System.out.println(threeOClockDateTime);
+        System.out.println(threeOClockDateTime.compareTo(dateTime) > 0);
+        System.out.println(threeOClockDateTime.compareTo(curDateTime) <= 0);
+        if (threeOClockDateTime.compareTo(dateTime) > 0 &&
+                threeOClockDateTime.compareTo(curDateTime) <= 0) {
+            System.out.println("hello");
+        }
     }
 
     /**
      * key: 工作日 "2018-04-07", value: 工时
+     *
      * @return
      * @date 2018-3-7 @time 下午2:52:07
      */
-    public Map<String, String> getGzrGsMap(String kssj, String jssj){
+    public Map<String, String> getGzrGsMap(String kssj, String jssj) {
         Map<String, String> gzrGsMap = new HashMap<String, String>();
         int weekdays = 0;
         DateTime dtKssj = new DateTime(kssj);
         DateTime dtJssj = new DateTime(jssj);
         int days = Days.daysBetween(dtKssj, dtJssj).getDays();
-        for(int i=0; i<=days; i++){
-            if(dtKssj.plusDays(i).getDayOfWeek() < 6){
+        for (int i = 0; i <= days; i++) {
+            if (dtKssj.plusDays(i).getDayOfWeek() < 6) {
                 weekdays++;
             }
         }
@@ -137,24 +164,25 @@ public class OJodatime {
 
     /**
      * 获取工作日
+     *
      * @param kssj
      * @param jssj
      * @return
      */
-    public static int getWorkDays2(String kssj, String jssj){
+    public static int getWorkDays2(String kssj, String jssj) {
         int weekdays = 0;
         DateTime dtKssj = new DateTime(kssj);
         DateTime dtJssj = new DateTime(jssj);
         int days = Days.daysBetween(dtKssj, dtJssj).getDays();
-        for(int i=0; i<=days; i++){
-            if(dtKssj.plusDays(i).getDayOfWeek() < 6){
+        for (int i = 0; i <= days; i++) {
+            if (dtKssj.plusDays(i).getDayOfWeek() < 6) {
                 weekdays++;
             }
         }
         return weekdays;
     }
 
-    public static int getWorkDays(String kssj, String jssj){
+    public static int getWorkDays(String kssj, String jssj) {
         DateTime dtKssj = new DateTime(kssj);
         DateTime dtJssj = new DateTime(jssj);
         int days = Days.daysBetween(dtKssj, dtJssj).getDays() + 1;
@@ -167,11 +195,12 @@ public class OJodatime {
 
     /**
      * 输入 1-7 的两个数, 判断多少个 6 和 7, 这里有问题
+     *
      * @param weekDay1
      * @param weekDay2
      * @return
      */
-    public static int getWeekenDays(int weekDay1, int weekDay2){
+    public static int getWeekenDays(int weekDay1, int weekDay2) {
         int smallDay = weekDay1 < weekDay2 ? weekDay1 : weekDay2;
         int bigDay = weekDay1 > weekDay2 ? weekDay1 : weekDay2;
         int[] weekens = {6, 7};
@@ -180,15 +209,16 @@ public class OJodatime {
 
     /**
      * 计算包含的数字数量
+     *
      * @param smallNum
      * @param bigNum
      * @param numArr
      * @return
      */
-    public static int containsNum(int smallNum, int bigNum, int[] numArr){
+    public static int containsNum(int smallNum, int bigNum, int[] numArr) {
         int cnt = 0;
-        for(int num : numArr){
-            if(num >= smallNum && num <= bigNum){
+        for (int num : numArr) {
+            if (num >= smallNum && num <= bigNum) {
                 cnt++;
             }
         }
