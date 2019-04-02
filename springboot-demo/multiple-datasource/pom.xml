@@ -16,6 +16,7 @@
         <module>multiple-datasouce-dao1</module>
         <module>multiple-datasouce-dao2</module>
         <module>multiple-datasource-controller</module>
+        <module>multiple-datasource-controller2</module>
     </modules>
 
 
