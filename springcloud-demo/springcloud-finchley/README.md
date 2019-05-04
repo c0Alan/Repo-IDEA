@@ -1,7 +1,6 @@
 >转载请标明出处： 
 > http://blog.csdn.net/forezp/article/details/70148833
 > 本文出自[方志朋的博客](http://blog.csdn.net/forezp)
-> 
 
 #### 获取SpringCloud 、Spring Boot视频：https://www.fangzhipeng.com/share/2017/10/01/resource-sharing.html
 
@@ -56,6 +55,11 @@ github下载：[https://github.com/forezp/SpringCloudLearning](https://github.co
 Spring Cloud Finchley; Spring Boot 2.0.3
 
 * [史上最简单的 SpringCloud 教程 | 第一篇: 服务的注册与发现（Eureka）(Finchley版本)](http://blog.csdn.net/forezp/article/details/81040925)
+
+eureka-server-s1
+
+service-hi-s1
+
 * [史上最简单的SpringCloud教程 | 第二篇: 服务消费者（rest+ribbon）(Finchley版本)](http://blog.csdn.net/forezp/article/details/81040946)
 * [史上最简单的SpringCloud教程 | 第三篇: 服务消费者（Feign）(Finchley版本)](http://blog.csdn.net/forezp/article/details/81040965)
 * [史上最简单的SpringCloud教程 | 第四篇:断路器（Hystrix）(Finchley版本)](http://blog.csdn.net/forezp/article/details/81040990)
@@ -65,7 +69,6 @@ Spring Cloud Finchley; Spring Boot 2.0.3
 * [史上最简单的SpringCloud教程 | 第八篇: 消息总线(Spring Cloud Bus)(Finchley版本)](http://blog.csdn.net/forezp/article/details/81041062)
 * [史上最简单的SpringCloud教程 | 第九篇: 服务链路追踪(Spring Cloud Sleuth)(Finchley版本)](http://blog.csdn.net/forezp/article/details/81041078)
 * [史上最简单的SpringCloud教程 | 第十篇: 高可用的服务注册中心(Finchley版本)](http://blog.csdn.net/forezp/article/details/81041101)
-
 * [史上最简单的SpringCloud教程 | 第十二篇: 断路器监控(Hystrix Dashboard)(Finchley版本)](http://blog.csdn.net/forezp/article/details/81041113)
 * [史上最简单的SpringCloud教程 | 第十三篇: 断路器聚合监控(Hystrix Turbine)(Finchley版本)](http://blog.csdn.net/forezp/article/details/81041125)
 * [史上最简单的SpringCloud教程 | 第十四篇: Spring Cloud Gateway初体验](https://blog.csdn.net/forezp/article/details/83792388)
@@ -108,7 +111,7 @@ Spring Cloud Finchley; Spring Boot 2.0.3
 * [ 史上最简单的 SpringCloud 教程 | 第十四篇: 服务注册(consul)](http://blog.csdn.net/forezp/article/details/70245644)
 *  未完。。。
 *  还有很多篇。。。
- 
+
 ### 番外篇：
 
 * [如何使用MongoDB+Springboot实现分布式ID?](http://blog.csdn.net/forezp/article/details/69056017)
