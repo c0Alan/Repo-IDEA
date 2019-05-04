@@ -1,0 +1,8 @@
+---
+spring:
+  zipkin:
+    base-url: http://192.168.80.130:9411
+  application:
+    name: service-miya
+server:
+  port: 8989

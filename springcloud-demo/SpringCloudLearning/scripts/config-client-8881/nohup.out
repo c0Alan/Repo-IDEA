@@ -1,0 +1,421 @@
+2019-04-22 07:48:28.487  INFO 20338 --- [           main] s.c.a.AnnotationConfigApplicationContext : Refreshing org.springframework.context.annotation.AnnotationConfigApplicationContext@4411d970: startup date [Mon Apr 22 07:48:28 CST 2019]; root of context hierarchy
+2019-04-22 07:48:31.263  INFO 20338 --- [           main] f.a.AutowiredAnnotationBeanPostProcessor : JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+2019-04-22 07:48:31.539  INFO 20338 --- [           main] trationDelegate$BeanPostProcessorChecker : Bean 'configurationPropertiesRebinderAutoConfiguration' of type [org.springframework.cloud.autoconfigure.ConfigurationPropertiesRebinderAutoConfiguration$$EnhancerBySpringCGLIB$$18dc8d9e] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-04-22 07:48:33.477  INFO 20338 --- [           main] o.s.cloud.commons.util.InetUtils         : Cannot determine local hostname
+2019-04-22 07:48:33.746  INFO 20338 --- [           main] o.s.c.n.eureka.InstanceInfoFactory       : Setting initial instance status as: STARTING
+2019-04-22 07:48:34.329  INFO 20338 --- [           main] com.netflix.discovery.DiscoveryClient    : Initializing Eureka in region us-east-1
+2019-04-22 07:48:35.552  INFO 20338 --- [           main] c.n.d.provider.DiscoveryJerseyProvider   : Using JSON encoding codec LegacyJacksonJson
+2019-04-22 07:48:35.552  INFO 20338 --- [           main] c.n.d.provider.DiscoveryJerseyProvider   : Using JSON decoding codec LegacyJacksonJson
+2019-04-22 07:48:36.533  INFO 20338 --- [           main] c.n.d.provider.DiscoveryJerseyProvider   : Using XML encoding codec XStreamXml
+2019-04-22 07:48:36.533  INFO 20338 --- [           main] c.n.d.provider.DiscoveryJerseyProvider   : Using XML decoding codec XStreamXml
+2019-04-22 07:48:38.131  INFO 20338 --- [           main] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2019-04-22 07:48:38.280  INFO 20338 --- [           main] com.netflix.discovery.DiscoveryClient    : Disable delta property : false
+2019-04-22 07:48:38.280  INFO 20338 --- [           main] com.netflix.discovery.DiscoveryClient    : Single vip registry refresh property : null
+2019-04-22 07:48:38.280  INFO 20338 --- [           main] com.netflix.discovery.DiscoveryClient    : Force full registry fetch : false
+2019-04-22 07:48:38.280  INFO 20338 --- [           main] com.netflix.discovery.DiscoveryClient    : Application is null : false
+2019-04-22 07:48:38.280  INFO 20338 --- [           main] com.netflix.discovery.DiscoveryClient    : Registered Applications size is zero : true
+2019-04-22 07:48:38.280  INFO 20338 --- [           main] com.netflix.discovery.DiscoveryClient    : Application version is -1: true
+2019-04-22 07:48:38.281  INFO 20338 --- [           main] com.netflix.discovery.DiscoveryClient    : Getting all instance registry info from the eureka server
+2019-04-22 07:48:39.508  INFO 20338 --- [           main] com.netflix.discovery.DiscoveryClient    : The response status is 200
+2019-04-22 07:48:39.597  INFO 20338 --- [           main] com.netflix.discovery.DiscoveryClient    : Not registering with Eureka server per configuration
+2019-04-22 07:48:39.604  INFO 20338 --- [           main] com.netflix.discovery.DiscoveryClient    : Discovery Client initialized at timestamp 1555890519602 with initial instances count: 1
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::        (v2.0.3.RELEASE)
+
+2019-04-22 07:48:40.747  INFO 20338 --- [           main] c.c.c.ConfigServicePropertySourceLocator : Fetching config from server at : http://192.168.80.130:8888/
+2019-04-22 07:48:43.709  INFO 20338 --- [           main] c.c.c.ConfigServicePropertySourceLocator : Located environment: name=config-client, profiles=[dev], label=master, version=747b61ff2a465d179cec66802406ddaa683c502e, state=null
+2019-04-22 07:48:43.709  INFO 20338 --- [           main] b.c.PropertySourceBootstrapConfiguration : Located property source: CompositePropertySource {name='configService', propertySources=[MapPropertySource {name='configClient'}, MapPropertySource {name='https://github.com/c0Alan/Repo-Config/respo/config-client-dev.properties'}]}
+2019-04-22 07:48:43.750  INFO 20338 --- [           main] com.forezp.ConfigClientApplication       : No active profile set, falling back to default profiles: default
+2019-04-22 07:48:43.850  INFO 20338 --- [           main] ConfigServletWebServerApplicationContext : Refreshing org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@544fa968: startup date [Mon Apr 22 07:48:43 CST 2019]; parent: org.springframework.context.annotation.AnnotationConfigApplicationContext@4411d970
+2019-04-22 07:48:47.761  INFO 20338 --- [           main] o.s.i.config.IntegrationRegistrar        : No bean named 'integrationHeaderChannelRegistry' has been explicitly defined. Therefore, a default DefaultHeaderChannelRegistry will be created.
+2019-04-22 07:48:47.834  INFO 20338 --- [           main] a.ConfigurationClassBeanDefinitionReader : Skipping bean definition for [BeanMethod:name=configurableCompositeMessageConverter,declaringClass=org.springframework.cloud.stream.config.ContentTypeConfiguration]: a definition for bean 'integrationArgumentResolverMessageConverter' already exists. This top-level bean definition is considered as an override.
+2019-04-22 07:48:49.045  INFO 20338 --- [           main] o.s.cloud.context.scope.GenericScope     : BeanFactory id=11f9ca22-c6c6-33bc-bdc6-ad3adf4ec8f0
+2019-04-22 07:48:49.085  INFO 20338 --- [           main] faultConfiguringBeanFactoryPostProcessor : No bean named 'errorChannel' has been explicitly defined. Therefore, a default PublishSubscribeChannel will be created.
+2019-04-22 07:48:49.087  INFO 20338 --- [           main] faultConfiguringBeanFactoryPostProcessor : No bean named 'taskScheduler' has been explicitly defined. Therefore, a default ThreadPoolTaskScheduler will be created.
+2019-04-22 07:48:49.115  INFO 20338 --- [           main] f.a.AutowiredAnnotationBeanPostProcessor : JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+2019-04-22 07:48:49.282  INFO 20338 --- [           main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.amqp.rabbit.annotation.RabbitBootstrapConfiguration' of type [org.springframework.amqp.rabbit.annotation.RabbitBootstrapConfiguration$$EnhancerBySpringCGLIB$$c32e48cf] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-04-22 07:48:49.647  INFO 20338 --- [           main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.integration.config.IntegrationManagementConfiguration' of type [org.springframework.integration.config.IntegrationManagementConfiguration$$EnhancerBySpringCGLIB$$67b445d0] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-04-22 07:48:49.989  INFO 20338 --- [           main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.cloud.autoconfigure.ConfigurationPropertiesRebinderAutoConfiguration' of type [org.springframework.cloud.autoconfigure.ConfigurationPropertiesRebinderAutoConfiguration$$EnhancerBySpringCGLIB$$18dc8d9e] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-04-22 07:48:50.097  INFO 20338 --- [           main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.integration.dsl.context.IntegrationFlowContext' of type [org.springframework.integration.dsl.context.IntegrationFlowContext] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-04-22 07:48:52.104  INFO 20338 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8881 (http)
+2019-04-22 07:48:52.219  INFO 20338 --- [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2019-04-22 07:48:52.219  INFO 20338 --- [           main] org.apache.catalina.core.StandardEngine  : Starting Servlet Engine: Apache Tomcat/8.5.31
+2019-04-22 07:48:52.356  INFO 20338 --- [ost-startStop-1] o.a.catalina.core.AprLifecycleListener   : The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [/usr/java/packages/lib/amd64:/usr/lib64:/lib64:/lib:/usr/lib]
+2019-04-22 07:48:52.725  INFO 20338 --- [ost-startStop-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2019-04-22 07:48:52.725  INFO 20338 --- [ost-startStop-1] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 8875 ms
+2019-04-22 07:48:54.244  WARN 20338 --- [ost-startStop-1] c.n.c.sources.URLConfigurationSource     : No URLs will be polled as dynamic configuration sources.
+2019-04-22 07:48:54.244  INFO 20338 --- [ost-startStop-1] c.n.c.sources.URLConfigurationSource     : To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+2019-04-22 07:48:54.310  INFO 20338 --- [ost-startStop-1] c.netflix.config.DynamicPropertyFactory  : DynamicPropertyFactory is initialized with configuration sources: com.netflix.config.ConcurrentCompositeConfiguration@2bbfa886
+2019-04-22 07:48:57.753  INFO 20338 --- [ost-startStop-1] o.s.s.c.ThreadPoolTaskScheduler          : Initializing ExecutorService  'taskScheduler'
+2019-04-22 07:48:58.858  INFO 20338 --- [ost-startStop-1] o.s.b.w.servlet.ServletRegistrationBean  : Servlet dispatcherServlet mapped to [/]
+2019-04-22 07:48:58.876  INFO 20338 --- [ost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'characterEncodingFilter' to: [/*]
+2019-04-22 07:48:58.876  INFO 20338 --- [ost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+2019-04-22 07:48:58.876  INFO 20338 --- [ost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'httpPutFormContentFilter' to: [/*]
+2019-04-22 07:48:58.877  INFO 20338 --- [ost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'requestContextFilter' to: [/*]
+2019-04-22 07:48:58.877  INFO 20338 --- [ost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'httpTraceFilter' to: [/*]
+2019-04-22 07:48:58.877  INFO 20338 --- [ost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'webMvcMetricsFilter' to: [/*]
+2019-04-22 07:48:59.086  WARN 20338 --- [           main] c.n.c.sources.URLConfigurationSource     : No URLs will be polled as dynamic configuration sources.
+2019-04-22 07:48:59.086  INFO 20338 --- [           main] c.n.c.sources.URLConfigurationSource     : To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+2019-04-22 07:48:59.388  INFO 20338 --- [           main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/**/favicon.ico] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2019-04-22 07:48:59.782  INFO 20338 --- [           main] s.w.s.m.m.a.RequestMappingHandlerAdapter : Looking for @ControllerAdvice: org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@544fa968: startup date [Mon Apr 22 07:48:43 CST 2019]; parent: org.springframework.context.annotation.AnnotationConfigApplicationContext@4411d970
+2019-04-22 07:48:59.989  INFO 20338 --- [           main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/hi]}" onto public java.lang.String com.forezp.ConfigClientApplication.hi()
+2019-04-22 07:49:00.010  INFO 20338 --- [           main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/error],produces=[text/html]}" onto public org.springframework.web.servlet.ModelAndView org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController.errorHtml(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2019-04-22 07:49:00.010  INFO 20338 --- [           main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/error]}" onto public org.springframework.http.ResponseEntity<java.util.Map<java.lang.String, java.lang.Object>> org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController.error(javax.servlet.http.HttpServletRequest)
+2019-04-22 07:49:00.152  INFO 20338 --- [           main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/webjars/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2019-04-22 07:49:00.152  INFO 20338 --- [           main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2019-04-22 07:49:03.413  INFO 20338 --- [           main] com.netflix.discovery.DiscoveryClient    : Shutting down DiscoveryClient ...
+2019-04-22 07:49:03.424  INFO 20338 --- [           main] com.netflix.discovery.DiscoveryClient    : Completed shut down of DiscoveryClient
+2019-04-22 07:49:03.526  INFO 20338 --- [           main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint(s) beneath base path '/actuator'
+2019-04-22 07:49:03.580  INFO 20338 --- [           main] s.b.a.e.w.s.WebMvcEndpointHandlerMapping : Mapped "{[/actuator/bus-refresh/{destination}],methods=[POST]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.web.servlet.AbstractWebMvcEndpointHandlerMapping$OperationHandler.handle(javax.servlet.http.HttpServletRequest,java.util.Map<java.lang.String, java.lang.String>)
+2019-04-22 07:49:03.581  INFO 20338 --- [           main] s.b.a.e.w.s.WebMvcEndpointHandlerMapping : Mapped "{[/actuator/bus-refresh],methods=[POST]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.web.servlet.AbstractWebMvcEndpointHandlerMapping$OperationHandler.handle(javax.servlet.http.HttpServletRequest,java.util.Map<java.lang.String, java.lang.String>)
+2019-04-22 07:49:03.582  INFO 20338 --- [           main] s.b.a.e.w.s.WebMvcEndpointHandlerMapping : Mapped "{[/actuator],methods=[GET],produces=[application/vnd.spring-boot.actuator.v2+json || application/json]}" onto protected java.util.Map<java.lang.String, java.util.Map<java.lang.String, org.springframework.boot.actuate.endpoint.web.Link>> org.springframework.boot.actuate.endpoint.web.servlet.WebMvcEndpointHandlerMapping.links(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2019-04-22 07:49:03.945  INFO 20338 --- [           main] o.s.j.e.a.AnnotationMBeanExporter        : Registering beans for JMX exposure on startup
+2019-04-22 07:49:03.977  INFO 20338 --- [           main] o.s.j.e.a.AnnotationMBeanExporter        : Bean with name 'rabbitConnectionFactory' has been autodetected for JMX exposure
+2019-04-22 07:49:03.978  INFO 20338 --- [           main] o.s.j.e.a.AnnotationMBeanExporter        : Bean with name 'environmentManager' has been autodetected for JMX exposure
+2019-04-22 07:49:03.980  INFO 20338 --- [           main] o.s.j.e.a.AnnotationMBeanExporter        : Bean with name 'integrationMbeanExporter' has been autodetected for JMX exposure
+2019-04-22 07:49:03.981  INFO 20338 --- [           main] o.s.j.e.a.AnnotationMBeanExporter        : Bean with name 'refreshScope' has been autodetected for JMX exposure
+2019-04-22 07:49:03.982  INFO 20338 --- [           main] o.s.j.e.a.AnnotationMBeanExporter        : Bean with name 'configurationPropertiesRebinder' has been autodetected for JMX exposure
+2019-04-22 07:49:03.987  INFO 20338 --- [           main] o.s.j.e.a.AnnotationMBeanExporter        : Located managed bean 'environmentManager': registering with JMX server as MBean [org.springframework.cloud.context.environment:name=environmentManager,type=EnvironmentManager]
+2019-04-22 07:49:04.012  INFO 20338 --- [           main] o.s.j.e.a.AnnotationMBeanExporter        : Located managed bean 'refreshScope': registering with JMX server as MBean [org.springframework.cloud.context.scope.refresh:name=refreshScope,type=RefreshScope]
+2019-04-22 07:49:04.062  INFO 20338 --- [           main] o.s.j.e.a.AnnotationMBeanExporter        : Located managed bean 'integrationMbeanExporter': registering with JMX server as MBean [org.springframework.integration.monitor:name=integrationMbeanExporter,type=IntegrationMBeanExporter]
+2019-04-22 07:49:04.154  INFO 20338 --- [           main] o.s.j.e.a.AnnotationMBeanExporter        : Located managed bean 'configurationPropertiesRebinder': registering with JMX server as MBean [org.springframework.cloud.context.properties:name=configurationPropertiesRebinder,context=544fa968,type=ConfigurationPropertiesRebinder]
+2019-04-22 07:49:04.180  INFO 20338 --- [           main] o.s.j.e.a.AnnotationMBeanExporter        : Located managed bean 'rabbitConnectionFactory': registering with JMX server as MBean [org.springframework.amqp.rabbit.connection:name=rabbitConnectionFactory,type=CachingConnectionFactory]
+2019-04-22 07:49:04.253  INFO 20338 --- [           main] o.s.i.monitor.IntegrationMBeanExporter   : Registering beans for JMX exposure on startup
+2019-04-22 07:49:04.254  INFO 20338 --- [           main] o.s.i.monitor.IntegrationMBeanExporter   : Registering MessageChannel springCloudBusOutput
+2019-04-22 07:49:04.259  INFO 20338 --- [           main] o.s.i.monitor.IntegrationMBeanExporter   : Located managed bean 'org.springframework.integration:type=MessageChannel,name=springCloudBusOutput': registering with JMX server as MBean [org.springframework.integration:type=MessageChannel,name=springCloudBusOutput]
+2019-04-22 07:49:04.354  INFO 20338 --- [           main] o.s.i.monitor.IntegrationMBeanExporter   : Registering MessageChannel nullChannel
+2019-04-22 07:49:04.372  INFO 20338 --- [           main] o.s.i.monitor.IntegrationMBeanExporter   : Located managed bean 'org.springframework.integration:type=MessageChannel,name=nullChannel': registering with JMX server as MBean [org.springframework.integration:type=MessageChannel,name=nullChannel]
+2019-04-22 07:49:04.428  INFO 20338 --- [           main] o.s.i.monitor.IntegrationMBeanExporter   : Registering MessageChannel errorChannel
+2019-04-22 07:49:04.430  INFO 20338 --- [           main] o.s.i.monitor.IntegrationMBeanExporter   : Located managed bean 'org.springframework.integration:type=MessageChannel,name=errorChannel': registering with JMX server as MBean [org.springframework.integration:type=MessageChannel,name=errorChannel]
+2019-04-22 07:49:04.483  INFO 20338 --- [           main] o.s.i.monitor.IntegrationMBeanExporter   : Registering MessageChannel springCloudBusInput
+2019-04-22 07:49:04.485  INFO 20338 --- [           main] o.s.i.monitor.IntegrationMBeanExporter   : Located managed bean 'org.springframework.integration:type=MessageChannel,name=springCloudBusInput': registering with JMX server as MBean [org.springframework.integration:type=MessageChannel,name=springCloudBusInput]
+2019-04-22 07:49:04.510  INFO 20338 --- [           main] o.s.i.monitor.IntegrationMBeanExporter   : Registering MessageHandler errorLogger
+2019-04-22 07:49:04.512  INFO 20338 --- [           main] o.s.i.monitor.IntegrationMBeanExporter   : Located managed bean 'org.springframework.integration:type=MessageHandler,name=errorLogger,bean=internal': registering with JMX server as MBean [org.springframework.integration:type=MessageHandler,name=errorLogger,bean=internal]
+2019-04-22 07:49:04.667  INFO 20338 --- [           main] o.s.integration.channel.DirectChannel    : Channel 'config-client-1.springCloudBusInput' has 1 subscriber(s).
+2019-04-22 07:49:04.708  INFO 20338 --- [           main] o.s.c.support.DefaultLifecycleProcessor  : Starting beans in phase -2147482648
+2019-04-22 07:49:04.820  INFO 20338 --- [           main] c.c.c.ConfigServicePropertySourceLocator : Fetching config from server at : http://192.168.80.130:8888/
+2019-04-22 07:49:08.986  INFO 20338 --- [           main] c.c.c.ConfigServicePropertySourceLocator : Located environment: name=config-client, profiles=[dev], label=master, version=747b61ff2a465d179cec66802406ddaa683c502e, state=null
+2019-04-22 07:49:08.987  INFO 20338 --- [           main] b.c.PropertySourceBootstrapConfiguration : Located property source: CompositePropertySource {name='configService', propertySources=[MapPropertySource {name='configClient'}, MapPropertySource {name='https://github.com/c0Alan/Repo-Config/respo/config-client-dev.properties'}]}
+2019-04-22 07:49:08.995  INFO 20338 --- [           main] s.c.a.AnnotationConfigApplicationContext : Refreshing org.springframework.context.annotation.AnnotationConfigApplicationContext@5241cf67: startup date [Mon Apr 22 07:49:08 CST 2019]; parent: org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@544fa968
+2019-04-22 07:49:09.149  INFO 20338 --- [           main] f.a.AutowiredAnnotationBeanPostProcessor : JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+2019-04-22 07:49:09.263  INFO 20338 --- [           main] o.s.c.support.GenericApplicationContext  : Refreshing org.springframework.context.support.GenericApplicationContext@5f59185e: startup date [Mon Apr 22 07:49:09 CST 2019]; root of context hierarchy
+2019-04-22 07:49:09.690  INFO 20338 --- [           main] o.s.a.r.c.CachingConnectionFactory       : Attempting to connect to: [192.168.80.130:5672]
+2019-04-22 07:49:09.897  INFO 20338 --- [           main] o.s.a.r.c.CachingConnectionFactory       : Created new connection: rabbitConnectionFactory#52ae4aec:0/SimpleConnection@15a902e7 [delegate=amqp://liuxl@192.168.80.130:5672/, localPort= 53850]
+2019-04-22 07:49:10.016  INFO 20338 --- [           main] o.s.integration.channel.DirectChannel    : Channel 'config-client-1.springCloudBusOutput' has 1 subscriber(s).
+2019-04-22 07:49:10.019  INFO 20338 --- [           main] o.s.c.support.DefaultLifecycleProcessor  : Starting beans in phase 0
+2019-04-22 07:49:10.039  INFO 20338 --- [           main] o.s.c.n.eureka.InstanceInfoFactory       : Setting initial instance status as: STARTING
+2019-04-22 07:49:10.047  INFO 20338 --- [           main] com.netflix.discovery.DiscoveryClient    : Initializing Eureka in region us-east-1
+2019-04-22 07:49:10.069  INFO 20338 --- [           main] c.n.d.provider.DiscoveryJerseyProvider   : Using JSON encoding codec LegacyJacksonJson
+2019-04-22 07:49:10.069  INFO 20338 --- [           main] c.n.d.provider.DiscoveryJerseyProvider   : Using JSON decoding codec LegacyJacksonJson
+2019-04-22 07:49:10.069  INFO 20338 --- [           main] c.n.d.provider.DiscoveryJerseyProvider   : Using XML encoding codec XStreamXml
+2019-04-22 07:49:10.069  INFO 20338 --- [           main] c.n.d.provider.DiscoveryJerseyProvider   : Using XML decoding codec XStreamXml
+2019-04-22 07:49:10.248  INFO 20338 --- [           main] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2019-04-22 07:49:10.249  INFO 20338 --- [           main] com.netflix.discovery.DiscoveryClient    : Disable delta property : false
+2019-04-22 07:49:10.249  INFO 20338 --- [           main] com.netflix.discovery.DiscoveryClient    : Single vip registry refresh property : null
+2019-04-22 07:49:10.249  INFO 20338 --- [           main] com.netflix.discovery.DiscoveryClient    : Force full registry fetch : false
+2019-04-22 07:49:10.249  INFO 20338 --- [           main] com.netflix.discovery.DiscoveryClient    : Application is null : false
+2019-04-22 07:49:10.249  INFO 20338 --- [           main] com.netflix.discovery.DiscoveryClient    : Registered Applications size is zero : true
+2019-04-22 07:49:10.249  INFO 20338 --- [           main] com.netflix.discovery.DiscoveryClient    : Application version is -1: true
+2019-04-22 07:49:10.249  INFO 20338 --- [           main] com.netflix.discovery.DiscoveryClient    : Getting all instance registry info from the eureka server
+2019-04-22 07:49:10.275  INFO 20338 --- [           main] com.netflix.discovery.DiscoveryClient    : The response status is 200
+2019-04-22 07:49:10.288  INFO 20338 --- [           main] com.netflix.discovery.DiscoveryClient    : Starting heartbeat executor: renew interval is: 30
+2019-04-22 07:49:10.303  INFO 20338 --- [           main] c.n.discovery.InstanceInfoReplicator     : InstanceInfoReplicator onDemand update allowed rate per min is 4
+2019-04-22 07:49:10.316  INFO 20338 --- [           main] com.netflix.discovery.DiscoveryClient    : Discovery Client initialized at timestamp 1555890550316 with initial instances count: 2
+2019-04-22 07:49:10.321  INFO 20338 --- [           main] o.s.c.n.e.s.EurekaServiceRegistry        : Registering application config-client with eureka with status UP
+2019-04-22 07:49:10.322  INFO 20338 --- [           main] com.netflix.discovery.DiscoveryClient    : Saw local status change event StatusChangeEvent [timestamp=1555890550322, current=UP, previous=STARTING]
+2019-04-22 07:49:10.330  INFO 20338 --- [nfoReplicator-0] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_CONFIG-CLIENT/192.168.80.130:config-client:8881: registering service...
+2019-04-22 07:49:10.346  INFO 20338 --- [           main] o.s.i.endpoint.EventDrivenConsumer       : Adding {logging-channel-adapter:_org.springframework.integration.errorLogger} as a subscriber to the 'errorChannel' channel
+2019-04-22 07:49:10.346  INFO 20338 --- [           main] o.s.i.channel.PublishSubscribeChannel    : Channel 'config-client-1.errorChannel' has 1 subscriber(s).
+2019-04-22 07:49:10.346  INFO 20338 --- [           main] o.s.i.endpoint.EventDrivenConsumer       : started _org.springframework.integration.errorLogger
+2019-04-22 07:49:10.346  INFO 20338 --- [           main] o.s.c.support.DefaultLifecycleProcessor  : Starting beans in phase 2147482647
+2019-04-22 07:49:10.432  INFO 20338 --- [           main] c.s.b.r.p.RabbitExchangeQueueProvisioner : declaring queue for inbound: springCloudBus.anonymous.nq_FjUNISHKsod3ak8DK6A, bound to: springCloudBus
+2019-04-22 07:49:10.473  INFO 20338 --- [nfoReplicator-0] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_CONFIG-CLIENT/192.168.80.130:config-client:8881 - registration status: 204
+2019-04-22 07:49:10.518  INFO 20338 --- [           main] o.s.c.stream.binder.BinderErrorChannel   : Channel 'config-client-1-1.springCloudBus.anonymous.nq_FjUNISHKsod3ak8DK6A.errors' has 1 subscriber(s).
+2019-04-22 07:49:10.519  INFO 20338 --- [           main] o.s.c.stream.binder.BinderErrorChannel   : Channel 'config-client-1-1.springCloudBus.anonymous.nq_FjUNISHKsod3ak8DK6A.errors' has 2 subscriber(s).
+2019-04-22 07:49:10.604  INFO 20338 --- [           main] o.s.i.a.i.AmqpInboundChannelAdapter      : started inbound.springCloudBus.anonymous.nq_FjUNISHKsod3ak8DK6A
+2019-04-22 07:49:10.606  INFO 20338 --- [           main] o.s.c.support.DefaultLifecycleProcessor  : Starting beans in phase 2147483647
+2019-04-22 07:49:10.821  INFO 20338 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8881 (http) with context path ''
+2019-04-22 07:49:10.824  INFO 20338 --- [           main] .s.c.n.e.s.EurekaAutoServiceRegistration : Updating port to 8881
+2019-04-22 07:49:10.826  INFO 20338 --- [           main] com.forezp.ConfigClientApplication       : Started ConfigClientApplication in 47.863 seconds (JVM running for 51.131)
+2019-04-22 07:51:36.370  INFO 20338 --- [nio-8881-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring FrameworkServlet 'dispatcherServlet'
+2019-04-22 07:51:36.371  INFO 20338 --- [nio-8881-exec-1] o.s.web.servlet.DispatcherServlet        : FrameworkServlet 'dispatcherServlet': initialization started
+2019-04-22 07:51:36.424  INFO 20338 --- [nio-8881-exec-1] o.s.web.servlet.DispatcherServlet        : FrameworkServlet 'dispatcherServlet': initialization completed in 53 ms
+2019-04-22 07:53:07.189  WARN 20338 --- [nio-8881-exec-3] o.s.web.servlet.PageNotFound             : Request method 'GET' not supported
+2019-04-22 07:54:10.252  INFO 20338 --- [trap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2019-04-22 07:55:16.042  WARN 20338 --- [nio-8881-exec-5] o.s.web.servlet.PageNotFound             : Request method 'GET' not supported
+2019-04-22 07:57:23.304  INFO 20338 --- [nio-8881-exec-8] o.s.a.r.c.CachingConnectionFactory       : Attempting to connect to: [192.168.80.130:5672]
+2019-04-22 07:57:23.332  INFO 20338 --- [nio-8881-exec-8] o.s.a.r.c.CachingConnectionFactory       : Created new connection: rabbitConnectionFactory.publisher#32adc214:0/SimpleConnection@6937406e [delegate=amqp://liuxl@192.168.80.130:5672/, localPort= 53868]
+2019-04-22 07:57:23.334  INFO 20338 --- [nio-8881-exec-8] o.s.amqp.rabbit.core.RabbitAdmin         : Auto-declaring a non-durable, auto-delete, or exclusive Queue (springCloudBus.anonymous.nq_FjUNISHKsod3ak8DK6A) durable:false, auto-delete:true, exclusive:true. It will be redeclared if the broker stops and is restarted while the connection factory is alive, but all messages will be lost.
+2019-04-22 07:57:23.743  INFO 20338 --- [nio-8881-exec-8] s.c.a.AnnotationConfigApplicationContext : Refreshing org.springframework.context.annotation.AnnotationConfigApplicationContext@3dd44824: startup date [Mon Apr 22 07:57:23 CST 2019]; root of context hierarchy
+2019-04-22 07:57:24.273  INFO 20338 --- [nio-8881-exec-8] f.a.AutowiredAnnotationBeanPostProcessor : JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+2019-04-22 07:57:24.718  INFO 20338 --- [nio-8881-exec-8] trationDelegate$BeanPostProcessorChecker : Bean 'configurationPropertiesRebinderAutoConfiguration' of type [org.springframework.cloud.autoconfigure.ConfigurationPropertiesRebinderAutoConfiguration$$EnhancerBySpringCGLIB$$18dc8d9e] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-04-22 07:57:25.620  INFO 20338 --- [nio-8881-exec-8] o.s.c.n.eureka.InstanceInfoFactory       : Setting initial instance status as: STARTING
+2019-04-22 07:57:26.172  INFO 20338 --- [nio-8881-exec-8] com.netflix.discovery.DiscoveryClient    : Initializing Eureka in region us-east-1
+2019-04-22 07:57:26.294  INFO 20338 --- [nio-8881-exec-8] c.n.d.provider.DiscoveryJerseyProvider   : Using JSON encoding codec LegacyJacksonJson
+2019-04-22 07:57:26.294  INFO 20338 --- [nio-8881-exec-8] c.n.d.provider.DiscoveryJerseyProvider   : Using JSON decoding codec LegacyJacksonJson
+2019-04-22 07:57:26.294  INFO 20338 --- [nio-8881-exec-8] c.n.d.provider.DiscoveryJerseyProvider   : Using XML encoding codec XStreamXml
+2019-04-22 07:57:26.294  INFO 20338 --- [nio-8881-exec-8] c.n.d.provider.DiscoveryJerseyProvider   : Using XML decoding codec XStreamXml
+2019-04-22 07:57:27.340  INFO 20338 --- [nio-8881-exec-8] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2019-04-22 07:57:27.392  INFO 20338 --- [nio-8881-exec-8] com.netflix.discovery.DiscoveryClient    : Disable delta property : false
+2019-04-22 07:57:27.392  INFO 20338 --- [nio-8881-exec-8] com.netflix.discovery.DiscoveryClient    : Single vip registry refresh property : null
+2019-04-22 07:57:27.392  INFO 20338 --- [nio-8881-exec-8] com.netflix.discovery.DiscoveryClient    : Force full registry fetch : false
+2019-04-22 07:57:27.392  INFO 20338 --- [nio-8881-exec-8] com.netflix.discovery.DiscoveryClient    : Application is null : false
+2019-04-22 07:57:27.392  INFO 20338 --- [nio-8881-exec-8] com.netflix.discovery.DiscoveryClient    : Registered Applications size is zero : true
+2019-04-22 07:57:27.392  INFO 20338 --- [nio-8881-exec-8] com.netflix.discovery.DiscoveryClient    : Application version is -1: true
+2019-04-22 07:57:27.392  INFO 20338 --- [nio-8881-exec-8] com.netflix.discovery.DiscoveryClient    : Getting all instance registry info from the eureka server
+2019-04-22 07:57:27.438  INFO 20338 --- [nio-8881-exec-8] com.netflix.discovery.DiscoveryClient    : The response status is 200
+2019-04-22 07:57:27.463  INFO 20338 --- [nio-8881-exec-8] com.netflix.discovery.DiscoveryClient    : Not registering with Eureka server per configuration
+2019-04-22 07:57:27.464  INFO 20338 --- [nio-8881-exec-8] com.netflix.discovery.DiscoveryClient    : Discovery Client initialized at timestamp 1555891047464 with initial instances count: 3
+2019-04-22 07:57:27.909  INFO 20338 --- [nio-8881-exec-8] c.c.c.ConfigServicePropertySourceLocator : Fetching config from server at : http://192.168.80.130:8888/
+2019-04-22 07:57:31.989  INFO 20338 --- [nio-8881-exec-8] c.c.c.ConfigServicePropertySourceLocator : Located environment: name=config-client, profiles=[dev], label=master, version=a5c0631017c5d689f86e454314ca05fb3007af8f, state=null
+2019-04-22 07:57:31.989  INFO 20338 --- [nio-8881-exec-8] b.c.PropertySourceBootstrapConfiguration : Located property source: CompositePropertySource {name='configService', propertySources=[MapPropertySource {name='configClient'}, MapPropertySource {name='https://github.com/c0Alan/Repo-Config/respo/config-client-dev.properties'}]}
+2019-04-22 07:57:31.992  INFO 20338 --- [nio-8881-exec-8] o.s.boot.SpringApplication               : No active profile set, falling back to default profiles: default
+2019-04-22 07:57:31.996  INFO 20338 --- [nio-8881-exec-8] s.c.a.AnnotationConfigApplicationContext : Refreshing org.springframework.context.annotation.AnnotationConfigApplicationContext@d9688f2: startup date [Mon Apr 22 07:57:31 CST 2019]; parent: org.springframework.context.annotation.AnnotationConfigApplicationContext@3dd44824
+2019-04-22 07:57:32.028  INFO 20338 --- [nio-8881-exec-8] f.a.AutowiredAnnotationBeanPostProcessor : JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+2019-04-22 07:57:32.037  INFO 20338 --- [nio-8881-exec-8] o.s.boot.SpringApplication               : Started application in 8.637 seconds (JVM running for 552.343)
+2019-04-22 07:57:32.038  INFO 20338 --- [nio-8881-exec-8] s.c.a.AnnotationConfigApplicationContext : Closing org.springframework.context.annotation.AnnotationConfigApplicationContext@d9688f2: startup date [Mon Apr 22 07:57:31 CST 2019]; parent: org.springframework.context.annotation.AnnotationConfigApplicationContext@3dd44824
+2019-04-22 07:57:32.072  INFO 20338 --- [nio-8881-exec-8] s.c.a.AnnotationConfigApplicationContext : Closing org.springframework.context.annotation.AnnotationConfigApplicationContext@3dd44824: startup date [Mon Apr 22 07:57:23 CST 2019]; root of context hierarchy
+2019-04-22 07:57:32.072  INFO 20338 --- [nio-8881-exec-8] com.netflix.discovery.DiscoveryClient    : Shutting down DiscoveryClient ...
+2019-04-22 07:57:32.078  INFO 20338 --- [nio-8881-exec-8] com.netflix.discovery.DiscoveryClient    : Completed shut down of DiscoveryClient
+2019-04-22 07:57:32.634  INFO 20338 --- [nio-8881-exec-8] com.netflix.discovery.DiscoveryClient    : Shutting down DiscoveryClient ...
+2019-04-22 07:57:32.637  INFO 20338 --- [nio-8881-exec-8] o.s.c.n.eureka.InstanceInfoFactory       : Setting initial instance status as: STARTING
+2019-04-22 07:57:35.639  INFO 20338 --- [nio-8881-exec-8] com.netflix.discovery.DiscoveryClient    : Unregistering ...
+2019-04-22 07:57:35.693  INFO 20338 --- [nio-8881-exec-8] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_CONFIG-CLIENT/192.168.80.130:config-client:8881 - deregister  status: 200
+2019-04-22 07:57:35.714  INFO 20338 --- [nio-8881-exec-8] com.netflix.discovery.DiscoveryClient    : Completed shut down of DiscoveryClient
+2019-04-22 07:57:35.717  INFO 20338 --- [nio-8881-exec-8] com.netflix.discovery.DiscoveryClient    : Initializing Eureka in region us-east-1
+2019-04-22 07:57:35.722  INFO 20338 --- [nio-8881-exec-8] c.n.d.provider.DiscoveryJerseyProvider   : Using JSON encoding codec LegacyJacksonJson
+2019-04-22 07:57:35.722  INFO 20338 --- [nio-8881-exec-8] c.n.d.provider.DiscoveryJerseyProvider   : Using JSON decoding codec LegacyJacksonJson
+2019-04-22 07:57:35.722  INFO 20338 --- [nio-8881-exec-8] c.n.d.provider.DiscoveryJerseyProvider   : Using XML encoding codec XStreamXml
+2019-04-22 07:57:35.722  INFO 20338 --- [nio-8881-exec-8] c.n.d.provider.DiscoveryJerseyProvider   : Using XML decoding codec XStreamXml
+2019-04-22 07:57:35.945  INFO 20338 --- [nio-8881-exec-8] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2019-04-22 07:57:35.946  INFO 20338 --- [nio-8881-exec-8] com.netflix.discovery.DiscoveryClient    : Disable delta property : false
+2019-04-22 07:57:35.946  INFO 20338 --- [nio-8881-exec-8] com.netflix.discovery.DiscoveryClient    : Single vip registry refresh property : null
+2019-04-22 07:57:35.946  INFO 20338 --- [nio-8881-exec-8] com.netflix.discovery.DiscoveryClient    : Force full registry fetch : false
+2019-04-22 07:57:35.946  INFO 20338 --- [nio-8881-exec-8] com.netflix.discovery.DiscoveryClient    : Application is null : false
+2019-04-22 07:57:35.946  INFO 20338 --- [nio-8881-exec-8] com.netflix.discovery.DiscoveryClient    : Registered Applications size is zero : true
+2019-04-22 07:57:35.947  INFO 20338 --- [nio-8881-exec-8] com.netflix.discovery.DiscoveryClient    : Application version is -1: true
+2019-04-22 07:57:35.947  INFO 20338 --- [nio-8881-exec-8] com.netflix.discovery.DiscoveryClient    : Getting all instance registry info from the eureka server
+2019-04-22 07:57:35.983  INFO 20338 --- [nio-8881-exec-8] com.netflix.discovery.DiscoveryClient    : The response status is 200
+2019-04-22 07:57:35.998  INFO 20338 --- [nio-8881-exec-8] com.netflix.discovery.DiscoveryClient    : Starting heartbeat executor: renew interval is: 30
+2019-04-22 07:57:36.000  INFO 20338 --- [nio-8881-exec-8] c.n.discovery.InstanceInfoReplicator     : InstanceInfoReplicator onDemand update allowed rate per min is 4
+2019-04-22 07:57:36.012  INFO 20338 --- [nio-8881-exec-8] com.netflix.discovery.DiscoveryClient    : Discovery Client initialized at timestamp 1555891056012 with initial instances count: 4
+2019-04-22 07:57:36.013  INFO 20338 --- [nio-8881-exec-8] o.s.c.n.e.s.EurekaServiceRegistry        : Unregistering application config-client with eureka with status DOWN
+2019-04-22 07:57:36.013  INFO 20338 --- [nio-8881-exec-8] o.s.c.n.e.s.EurekaServiceRegistry        : Registering application config-client with eureka with status UP
+2019-04-22 07:57:36.013  WARN 20338 --- [nio-8881-exec-8] com.netflix.discovery.DiscoveryClient    : Saw local status change event StatusChangeEvent [timestamp=1555891056013, current=UP, previous=DOWN]
+2019-04-22 07:57:36.014  INFO 20338 --- [nio-8881-exec-8] o.s.cloud.bus.event.RefreshListener      : Received remote refresh request. Keys refreshed [config.client.version, foo]
+2019-04-22 07:57:36.024  INFO 20338 --- [nfoReplicator-0] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_CONFIG-CLIENT/192.168.80.130:config-client:8881: registering service...
+2019-04-22 07:57:36.058  INFO 20338 --- [nfoReplicator-0] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_CONFIG-CLIENT/192.168.80.130:config-client:8881 - registration status: 204
+2019-04-22 08:01:13.164  INFO 20338 --- [       Thread-9] ConfigServletWebServerApplicationContext : Closing org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@544fa968: startup date [Mon Apr 22 07:48:43 CST 2019]; parent: org.springframework.context.annotation.AnnotationConfigApplicationContext@4411d970
+2019-04-22 08:01:13.204  INFO 20338 --- [       Thread-9] o.s.c.n.e.s.EurekaServiceRegistry        : Unregistering application config-client with eureka with status DOWN
+2019-04-22 08:01:13.204  WARN 20338 --- [       Thread-9] com.netflix.discovery.DiscoveryClient    : Saw local status change event StatusChangeEvent [timestamp=1555891273204, current=DOWN, previous=UP]
+2019-04-22 08:01:13.204  WARN 20338 --- [168.80.130:5672] c.r.c.impl.ForgivingExceptionHandler     : An unexpected connection driver error occured (Exception message: Connection reset)
+2019-04-22 08:01:13.207  WARN 20338 --- [168.80.130:5672] c.r.c.impl.ForgivingExceptionHandler     : An unexpected connection driver error occured (Exception message: Connection reset)
+2019-04-22 08:01:13.208  INFO 20338 --- [       Thread-9] s.c.a.AnnotationConfigApplicationContext : Closing org.springframework.context.annotation.AnnotationConfigApplicationContext@5241cf67: startup date [Mon Apr 22 07:49:08 CST 2019]; parent: org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@544fa968
+2019-04-22 08:01:13.210  INFO 20338 --- [nfoReplicator-0] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_CONFIG-CLIENT/192.168.80.130:config-client:8881: registering service...
+2019-04-22 08:01:13.228  INFO 20338 --- [nfoReplicator-0] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_CONFIG-CLIENT/192.168.80.130:config-client:8881 - registration status: 204
+2019-04-22 08:01:13.237 ERROR 20338 --- [168.80.130:5672] o.s.a.r.c.CachingConnectionFactory       : Channel shutdown: connection error
+2019-04-22 08:01:13.242 ERROR 20338 --- [168.80.130:5672] o.s.a.r.c.CachingConnectionFactory       : Channel shutdown: connection error
+2019-04-22 08:01:13.242 ERROR 20338 --- [168.80.130:5672] o.s.a.r.c.CachingConnectionFactory       : Channel shutdown: connection error
+2019-04-22 08:01:13.287  INFO 20338 --- [       Thread-9] o.s.c.support.DefaultLifecycleProcessor  : Stopping beans in phase 2147483647
+2019-04-22 08:01:13.287  INFO 20338 --- [       Thread-9] o.s.c.support.DefaultLifecycleProcessor  : Stopping beans in phase 2147482647
+2019-04-22 08:01:13.288  INFO 20338 --- [       Thread-9] o.s.a.r.l.SimpleMessageListenerContainer : Waiting for workers to finish.
+2019-04-22 08:01:13.289  INFO 20338 --- [       Thread-9] o.s.a.r.l.SimpleMessageListenerContainer : Successfully waited for workers to finish.
+2019-04-22 08:01:13.289  INFO 20338 --- [       Thread-9] o.s.i.a.i.AmqpInboundChannelAdapter      : stopped inbound.springCloudBus.anonymous.nq_FjUNISHKsod3ak8DK6A
+2019-04-22 08:01:13.491  INFO 20338 --- [       Thread-9] o.s.c.support.DefaultLifecycleProcessor  : Stopping beans in phase 0
+2019-04-22 08:01:13.494  INFO 20338 --- [       Thread-9] o.s.i.endpoint.EventDrivenConsumer       : Removing {logging-channel-adapter:_org.springframework.integration.errorLogger} as a subscriber to the 'errorChannel' channel
+2019-04-22 08:01:13.516  INFO 20338 --- [       Thread-9] o.s.i.channel.PublishSubscribeChannel    : Channel 'config-client-1.errorChannel' has 0 subscriber(s).
+2019-04-22 08:01:13.517  INFO 20338 --- [       Thread-9] o.s.i.endpoint.EventDrivenConsumer       : stopped _org.springframework.integration.errorLogger
+2019-04-22 08:01:13.517  INFO 20338 --- [       Thread-9] o.s.c.support.DefaultLifecycleProcessor  : Stopping beans in phase -2147482648
+2019-04-22 08:01:13.526  INFO 20338 --- [       Thread-9] o.s.i.monitor.IntegrationMBeanExporter   : Unregistering JMX-exposed beans on shutdown
+2019-04-22 08:01:13.551  INFO 20338 --- [       Thread-9] o.s.i.monitor.IntegrationMBeanExporter   : Unregistering JMX-exposed beans
+2019-04-22 08:01:13.552  INFO 20338 --- [       Thread-9] o.s.i.monitor.IntegrationMBeanExporter   : Summary on shutdown: springCloudBusOutput
+2019-04-22 08:01:13.552  INFO 20338 --- [       Thread-9] o.s.i.monitor.IntegrationMBeanExporter   : Summary on shutdown: nullChannel
+2019-04-22 08:01:13.552  INFO 20338 --- [       Thread-9] o.s.i.monitor.IntegrationMBeanExporter   : Summary on shutdown: errorChannel
+2019-04-22 08:01:13.552  INFO 20338 --- [       Thread-9] o.s.i.monitor.IntegrationMBeanExporter   : Summary on shutdown: springCloudBusInput
+2019-04-22 08:01:13.552  INFO 20338 --- [       Thread-9] o.s.i.monitor.IntegrationMBeanExporter   : Summary on shutdown: _org.springframework.integration.errorLogger.handler
+2019-04-22 08:01:13.553  INFO 20338 --- [       Thread-9] o.s.j.e.a.AnnotationMBeanExporter        : Unregistering JMX-exposed beans on shutdown
+2019-04-22 08:01:13.617  INFO 20338 --- [       Thread-9] o.s.j.e.a.AnnotationMBeanExporter        : Unregistering JMX-exposed beans
+2019-04-22 08:01:13.675  INFO 20338 --- [       Thread-9] o.s.s.c.ThreadPoolTaskScheduler          : Shutting down ExecutorService 'taskScheduler'
+2019-04-22 08:01:13.679  INFO 20338 --- [       Thread-9] com.netflix.discovery.DiscoveryClient    : Shutting down DiscoveryClient ...
+2019-04-22 08:01:16.716  INFO 20338 --- [       Thread-9] com.netflix.discovery.DiscoveryClient    : Unregistering ...
+2019-04-22 08:01:16.741 ERROR 20338 --- [       Thread-9] c.n.d.s.t.d.RedirectingEurekaHttpClient  : Request execution error
+
+com.sun.jersey.api.client.ClientHandlerException: java.net.ConnectException: Connection refused (Connection refused)
+	at com.sun.jersey.client.apache4.ApacheHttpClient4Handler.handle(ApacheHttpClient4Handler.java:187) ~[jersey-apache-client4-1.19.1.jar!/:1.19.1]
+	at com.sun.jersey.api.client.filter.GZIPContentEncodingFilter.handle(GZIPContentEncodingFilter.java:123) ~[jersey-client-1.19.1.jar!/:1.19.1]
+	at com.netflix.discovery.EurekaIdentityHeaderFilter.handle(EurekaIdentityHeaderFilter.java:27) ~[eureka-client-1.9.2.jar!/:1.9.2]
+	at com.sun.jersey.api.client.Client.handle(Client.java:652) ~[jersey-client-1.19.1.jar!/:1.19.1]
+	at com.sun.jersey.api.client.WebResource.handle(WebResource.java:682) ~[jersey-client-1.19.1.jar!/:1.19.1]
+	at com.sun.jersey.api.client.WebResource.access$200(WebResource.java:74) ~[jersey-client-1.19.1.jar!/:1.19.1]
+	at com.sun.jersey.api.client.WebResource$Builder.delete(WebResource.java:591) ~[jersey-client-1.19.1.jar!/:1.19.1]
+	at com.netflix.discovery.shared.transport.jersey.AbstractJerseyEurekaHttpClient.cancel(AbstractJerseyEurekaHttpClient.java:76) ~[eureka-client-1.9.2.jar!/:1.9.2]
+	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator$2.execute(EurekaHttpClientDecorator.java:74) [eureka-client-1.9.2.jar!/:1.9.2]
+	at com.netflix.discovery.shared.transport.decorator.MetricsCollectingEurekaHttpClient.execute(MetricsCollectingEurekaHttpClient.java:73) ~[eureka-client-1.9.2.jar!/:1.9.2]
+	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator.cancel(EurekaHttpClientDecorator.java:71) [eureka-client-1.9.2.jar!/:1.9.2]
+	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator$2.execute(EurekaHttpClientDecorator.java:74) [eureka-client-1.9.2.jar!/:1.9.2]
+	at com.netflix.discovery.shared.transport.decorator.RedirectingEurekaHttpClient.execute(RedirectingEurekaHttpClient.java:89) ~[eureka-client-1.9.2.jar!/:1.9.2]
+	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator.cancel(EurekaHttpClientDecorator.java:71) [eureka-client-1.9.2.jar!/:1.9.2]
+	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator$2.execute(EurekaHttpClientDecorator.java:74) [eureka-client-1.9.2.jar!/:1.9.2]
+	at com.netflix.discovery.shared.transport.decorator.RetryableEurekaHttpClient.execute(RetryableEurekaHttpClient.java:120) [eureka-client-1.9.2.jar!/:1.9.2]
+	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator.cancel(EurekaHttpClientDecorator.java:71) [eureka-client-1.9.2.jar!/:1.9.2]
+	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator$2.execute(EurekaHttpClientDecorator.java:74) [eureka-client-1.9.2.jar!/:1.9.2]
+	at com.netflix.discovery.shared.transport.decorator.SessionedEurekaHttpClient.execute(SessionedEurekaHttpClient.java:77) [eureka-client-1.9.2.jar!/:1.9.2]
+	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator.cancel(EurekaHttpClientDecorator.java:71) [eureka-client-1.9.2.jar!/:1.9.2]
+	at com.netflix.discovery.DiscoveryClient.unregister(DiscoveryClient.java:923) [eureka-client-1.9.2.jar!/:1.9.2]
+	at com.netflix.discovery.DiscoveryClient.shutdown(DiscoveryClient.java:901) [eureka-client-1.9.2.jar!/:1.9.2]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:1.8.0_181]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[na:1.8.0_181]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:1.8.0_181]
+	at java.lang.reflect.Method.invoke(Method.java:498) ~[na:1.8.0_181]
+	at org.springframework.util.ReflectionUtils.invokeMethod(ReflectionUtils.java:223) [spring-core-5.0.7.RELEASE.jar!/:5.0.7.RELEASE]
+	at org.springframework.cloud.context.scope.GenericScope$LockedScopedProxyFactoryBean.invoke(GenericScope.java:494) [spring-cloud-context-2.0.0.RELEASE.jar!/:2.0.0.RELEASE]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:185) [spring-aop-5.0.7.RELEASE.jar!/:5.0.7.RELEASE]
+	at org.springframework.aop.framework.JdkDynamicAopProxy.invoke(JdkDynamicAopProxy.java:212) [spring-aop-5.0.7.RELEASE.jar!/:5.0.7.RELEASE]
+	at com.sun.proxy.$Proxy140.shutdown(Unknown Source) [na:na]
+	at org.springframework.cloud.netflix.eureka.serviceregistry.EurekaRegistration.close(EurekaRegistration.java:207) [spring-cloud-netflix-eureka-client-2.0.0.RELEASE.jar!/:2.0.0.RELEASE]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:1.8.0_181]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[na:1.8.0_181]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:1.8.0_181]
+	at java.lang.reflect.Method.invoke(Method.java:498) ~[na:1.8.0_181]
+	at org.springframework.beans.factory.support.DisposableBeanAdapter.invokeCustomDestroyMethod(DisposableBeanAdapter.java:337) [spring-beans-5.0.7.RELEASE.jar!/:5.0.7.RELEASE]
+	at org.springframework.beans.factory.support.DisposableBeanAdapter.destroy(DisposableBeanAdapter.java:271) [spring-beans-5.0.7.RELEASE.jar!/:5.0.7.RELEASE]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.destroyBean(DefaultSingletonBeanRegistry.java:571) [spring-beans-5.0.7.RELEASE.jar!/:5.0.7.RELEASE]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.destroySingleton(DefaultSingletonBeanRegistry.java:543) [spring-beans-5.0.7.RELEASE.jar!/:5.0.7.RELEASE]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.destroySingleton(DefaultListableBeanFactory.java:957) [spring-beans-5.0.7.RELEASE.jar!/:5.0.7.RELEASE]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.destroySingletons(DefaultSingletonBeanRegistry.java:504) [spring-beans-5.0.7.RELEASE.jar!/:5.0.7.RELEASE]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.destroySingletons(DefaultListableBeanFactory.java:964) [spring-beans-5.0.7.RELEASE.jar!/:5.0.7.RELEASE]
+	at org.springframework.context.support.AbstractApplicationContext.destroyBeans(AbstractApplicationContext.java:1041) [spring-context-5.0.7.RELEASE.jar!/:5.0.7.RELEASE]
+	at org.springframework.context.support.AbstractApplicationContext.doClose(AbstractApplicationContext.java:1017) [spring-context-5.0.7.RELEASE.jar!/:5.0.7.RELEASE]
+	at org.springframework.context.support.AbstractApplicationContext$1.run(AbstractApplicationContext.java:937) [spring-context-5.0.7.RELEASE.jar!/:5.0.7.RELEASE]
+Caused by: java.net.ConnectException: Connection refused (Connection refused)
+	at java.net.PlainSocketImpl.socketConnect(Native Method) ~[na:1.8.0_181]
+	at java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:350) ~[na:1.8.0_181]
+	at java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:206) ~[na:1.8.0_181]
+	at java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:188) ~[na:1.8.0_181]
+	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:392) ~[na:1.8.0_181]
+	at java.net.Socket.connect(Socket.java:589) ~[na:1.8.0_181]
+	at org.apache.http.conn.scheme.PlainSocketFactory.connectSocket(PlainSocketFactory.java:121) ~[httpclient-4.5.5.jar!/:4.5.5]
+	at org.apache.http.impl.conn.DefaultClientConnectionOperator.openConnection(DefaultClientConnectionOperator.java:180) ~[httpclient-4.5.5.jar!/:4.5.5]
+	at org.apache.http.impl.conn.AbstractPoolEntry.open(AbstractPoolEntry.java:144) ~[httpclient-4.5.5.jar!/:4.5.5]
+	at org.apache.http.impl.conn.AbstractPooledConnAdapter.open(AbstractPooledConnAdapter.java:134) ~[httpclient-4.5.5.jar!/:4.5.5]
+	at org.apache.http.impl.client.DefaultRequestDirector.tryConnect(DefaultRequestDirector.java:610) ~[httpclient-4.5.5.jar!/:4.5.5]
+	at org.apache.http.impl.client.DefaultRequestDirector.execute(DefaultRequestDirector.java:445) ~[httpclient-4.5.5.jar!/:4.5.5]
+	at org.apache.http.impl.client.AbstractHttpClient.doExecute(AbstractHttpClient.java:835) ~[httpclient-4.5.5.jar!/:4.5.5]
+	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:118) ~[httpclient-4.5.5.jar!/:4.5.5]
+	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:56) ~[httpclient-4.5.5.jar!/:4.5.5]
+	at com.sun.jersey.client.apache4.ApacheHttpClient4Handler.handle(ApacheHttpClient4Handler.java:173) ~[jersey-apache-client4-1.19.1.jar!/:1.19.1]
+	... 45 common frames omitted
+
+2019-04-22 08:01:16.742  WARN 20338 --- [       Thread-9] c.n.d.s.t.d.RetryableEurekaHttpClient    : Request execution failed with message: java.net.ConnectException: Connection refused (Connection refused)
+2019-04-22 08:01:16.745 ERROR 20338 --- [       Thread-9] c.n.d.s.t.d.RedirectingEurekaHttpClient  : Request execution error
+
+com.sun.jersey.api.client.ClientHandlerException: java.net.ConnectException: Connection refused (Connection refused)
+	at com.sun.jersey.client.apache4.ApacheHttpClient4Handler.handle(ApacheHttpClient4Handler.java:187) ~[jersey-apache-client4-1.19.1.jar!/:1.19.1]
+	at com.sun.jersey.api.client.filter.GZIPContentEncodingFilter.handle(GZIPContentEncodingFilter.java:123) ~[jersey-client-1.19.1.jar!/:1.19.1]
+	at com.netflix.discovery.EurekaIdentityHeaderFilter.handle(EurekaIdentityHeaderFilter.java:27) ~[eureka-client-1.9.2.jar!/:1.9.2]
+	at com.sun.jersey.api.client.Client.handle(Client.java:652) ~[jersey-client-1.19.1.jar!/:1.19.1]
+	at com.sun.jersey.api.client.WebResource.handle(WebResource.java:682) ~[jersey-client-1.19.1.jar!/:1.19.1]
+	at com.sun.jersey.api.client.WebResource.access$200(WebResource.java:74) ~[jersey-client-1.19.1.jar!/:1.19.1]
+	at com.sun.jersey.api.client.WebResource$Builder.delete(WebResource.java:591) ~[jersey-client-1.19.1.jar!/:1.19.1]
+	at com.netflix.discovery.shared.transport.jersey.AbstractJerseyEurekaHttpClient.cancel(AbstractJerseyEurekaHttpClient.java:76) ~[eureka-client-1.9.2.jar!/:1.9.2]
+	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator$2.execute(EurekaHttpClientDecorator.java:74) [eureka-client-1.9.2.jar!/:1.9.2]
+	at com.netflix.discovery.shared.transport.decorator.MetricsCollectingEurekaHttpClient.execute(MetricsCollectingEurekaHttpClient.java:73) ~[eureka-client-1.9.2.jar!/:1.9.2]
+	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator.cancel(EurekaHttpClientDecorator.java:71) [eureka-client-1.9.2.jar!/:1.9.2]
+	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator$2.execute(EurekaHttpClientDecorator.java:74) [eureka-client-1.9.2.jar!/:1.9.2]
+	at com.netflix.discovery.shared.transport.decorator.RedirectingEurekaHttpClient.executeOnNewServer(RedirectingEurekaHttpClient.java:118) ~[eureka-client-1.9.2.jar!/:1.9.2]
+	at com.netflix.discovery.shared.transport.decorator.RedirectingEurekaHttpClient.execute(RedirectingEurekaHttpClient.java:79) ~[eureka-client-1.9.2.jar!/:1.9.2]
+	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator.cancel(EurekaHttpClientDecorator.java:71) [eureka-client-1.9.2.jar!/:1.9.2]
+	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator$2.execute(EurekaHttpClientDecorator.java:74) [eureka-client-1.9.2.jar!/:1.9.2]
+	at com.netflix.discovery.shared.transport.decorator.RetryableEurekaHttpClient.execute(RetryableEurekaHttpClient.java:120) [eureka-client-1.9.2.jar!/:1.9.2]
+	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator.cancel(EurekaHttpClientDecorator.java:71) [eureka-client-1.9.2.jar!/:1.9.2]
+	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator$2.execute(EurekaHttpClientDecorator.java:74) [eureka-client-1.9.2.jar!/:1.9.2]
+	at com.netflix.discovery.shared.transport.decorator.SessionedEurekaHttpClient.execute(SessionedEurekaHttpClient.java:77) [eureka-client-1.9.2.jar!/:1.9.2]
+	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator.cancel(EurekaHttpClientDecorator.java:71) [eureka-client-1.9.2.jar!/:1.9.2]
+	at com.netflix.discovery.DiscoveryClient.unregister(DiscoveryClient.java:923) [eureka-client-1.9.2.jar!/:1.9.2]
+	at com.netflix.discovery.DiscoveryClient.shutdown(DiscoveryClient.java:901) [eureka-client-1.9.2.jar!/:1.9.2]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:1.8.0_181]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[na:1.8.0_181]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:1.8.0_181]
+	at java.lang.reflect.Method.invoke(Method.java:498) ~[na:1.8.0_181]
+	at org.springframework.util.ReflectionUtils.invokeMethod(ReflectionUtils.java:223) [spring-core-5.0.7.RELEASE.jar!/:5.0.7.RELEASE]
+	at org.springframework.cloud.context.scope.GenericScope$LockedScopedProxyFactoryBean.invoke(GenericScope.java:494) [spring-cloud-context-2.0.0.RELEASE.jar!/:2.0.0.RELEASE]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:185) [spring-aop-5.0.7.RELEASE.jar!/:5.0.7.RELEASE]
+	at org.springframework.aop.framework.JdkDynamicAopProxy.invoke(JdkDynamicAopProxy.java:212) [spring-aop-5.0.7.RELEASE.jar!/:5.0.7.RELEASE]
+	at com.sun.proxy.$Proxy140.shutdown(Unknown Source) [na:na]
+	at org.springframework.cloud.netflix.eureka.serviceregistry.EurekaRegistration.close(EurekaRegistration.java:207) [spring-cloud-netflix-eureka-client-2.0.0.RELEASE.jar!/:2.0.0.RELEASE]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:1.8.0_181]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[na:1.8.0_181]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:1.8.0_181]
+	at java.lang.reflect.Method.invoke(Method.java:498) ~[na:1.8.0_181]
+	at org.springframework.beans.factory.support.DisposableBeanAdapter.invokeCustomDestroyMethod(DisposableBeanAdapter.java:337) [spring-beans-5.0.7.RELEASE.jar!/:5.0.7.RELEASE]
+	at org.springframework.beans.factory.support.DisposableBeanAdapter.destroy(DisposableBeanAdapter.java:271) [spring-beans-5.0.7.RELEASE.jar!/:5.0.7.RELEASE]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.destroyBean(DefaultSingletonBeanRegistry.java:571) [spring-beans-5.0.7.RELEASE.jar!/:5.0.7.RELEASE]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.destroySingleton(DefaultSingletonBeanRegistry.java:543) [spring-beans-5.0.7.RELEASE.jar!/:5.0.7.RELEASE]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.destroySingleton(DefaultListableBeanFactory.java:957) [spring-beans-5.0.7.RELEASE.jar!/:5.0.7.RELEASE]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.destroySingletons(DefaultSingletonBeanRegistry.java:504) [spring-beans-5.0.7.RELEASE.jar!/:5.0.7.RELEASE]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.destroySingletons(DefaultListableBeanFactory.java:964) [spring-beans-5.0.7.RELEASE.jar!/:5.0.7.RELEASE]
+	at org.springframework.context.support.AbstractApplicationContext.destroyBeans(AbstractApplicationContext.java:1041) [spring-context-5.0.7.RELEASE.jar!/:5.0.7.RELEASE]
+	at org.springframework.context.support.AbstractApplicationContext.doClose(AbstractApplicationContext.java:1017) [spring-context-5.0.7.RELEASE.jar!/:5.0.7.RELEASE]
+	at org.springframework.context.support.AbstractApplicationContext$1.run(AbstractApplicationContext.java:937) [spring-context-5.0.7.RELEASE.jar!/:5.0.7.RELEASE]
+Caused by: java.net.ConnectException: Connection refused (Connection refused)
+	at java.net.PlainSocketImpl.socketConnect(Native Method) ~[na:1.8.0_181]
+	at java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:350) ~[na:1.8.0_181]
+	at java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:206) ~[na:1.8.0_181]
+	at java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:188) ~[na:1.8.0_181]
+	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:392) ~[na:1.8.0_181]
+	at java.net.Socket.connect(Socket.java:589) ~[na:1.8.0_181]
+	at org.apache.http.conn.scheme.PlainSocketFactory.connectSocket(PlainSocketFactory.java:121) ~[httpclient-4.5.5.jar!/:4.5.5]
+	at org.apache.http.impl.conn.DefaultClientConnectionOperator.openConnection(DefaultClientConnectionOperator.java:180) ~[httpclient-4.5.5.jar!/:4.5.5]
+	at org.apache.http.impl.conn.AbstractPoolEntry.open(AbstractPoolEntry.java:144) ~[httpclient-4.5.5.jar!/:4.5.5]
+	at org.apache.http.impl.conn.AbstractPooledConnAdapter.open(AbstractPooledConnAdapter.java:134) ~[httpclient-4.5.5.jar!/:4.5.5]
+	at org.apache.http.impl.client.DefaultRequestDirector.tryConnect(DefaultRequestDirector.java:610) ~[httpclient-4.5.5.jar!/:4.5.5]
+	at org.apache.http.impl.client.DefaultRequestDirector.execute(DefaultRequestDirector.java:445) ~[httpclient-4.5.5.jar!/:4.5.5]
+	at org.apache.http.impl.client.AbstractHttpClient.doExecute(AbstractHttpClient.java:835) ~[httpclient-4.5.5.jar!/:4.5.5]
+	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:118) ~[httpclient-4.5.5.jar!/:4.5.5]
+	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:56) ~[httpclient-4.5.5.jar!/:4.5.5]
+	at com.sun.jersey.client.apache4.ApacheHttpClient4Handler.handle(ApacheHttpClient4Handler.java:173) ~[jersey-apache-client4-1.19.1.jar!/:1.19.1]
+	... 46 common frames omitted
+
+2019-04-22 08:01:16.748  WARN 20338 --- [       Thread-9] c.n.d.s.t.d.RetryableEurekaHttpClient    : Request execution failed with message: java.net.ConnectException: Connection refused (Connection refused)
+2019-04-22 08:01:16.750 ERROR 20338 --- [       Thread-9] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_CONFIG-CLIENT/192.168.80.130:config-client:8881 - de-registration failedCannot execute request on any known server
+
+com.netflix.discovery.shared.transport.TransportException: Cannot execute request on any known server
+	at com.netflix.discovery.shared.transport.decorator.RetryableEurekaHttpClient.execute(RetryableEurekaHttpClient.java:112) ~[eureka-client-1.9.2.jar!/:1.9.2]
+	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator.cancel(EurekaHttpClientDecorator.java:71) ~[eureka-client-1.9.2.jar!/:1.9.2]
+	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator$2.execute(EurekaHttpClientDecorator.java:74) ~[eureka-client-1.9.2.jar!/:1.9.2]
+	at com.netflix.discovery.shared.transport.decorator.SessionedEurekaHttpClient.execute(SessionedEurekaHttpClient.java:77) ~[eureka-client-1.9.2.jar!/:1.9.2]
+	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator.cancel(EurekaHttpClientDecorator.java:71) ~[eureka-client-1.9.2.jar!/:1.9.2]
+	at com.netflix.discovery.DiscoveryClient.unregister(DiscoveryClient.java:923) [eureka-client-1.9.2.jar!/:1.9.2]
+	at com.netflix.discovery.DiscoveryClient.shutdown(DiscoveryClient.java:901) [eureka-client-1.9.2.jar!/:1.9.2]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:1.8.0_181]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[na:1.8.0_181]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:1.8.0_181]
+	at java.lang.reflect.Method.invoke(Method.java:498) ~[na:1.8.0_181]
+	at org.springframework.util.ReflectionUtils.invokeMethod(ReflectionUtils.java:223) [spring-core-5.0.7.RELEASE.jar!/:5.0.7.RELEASE]
+	at org.springframework.cloud.context.scope.GenericScope$LockedScopedProxyFactoryBean.invoke(GenericScope.java:494) [spring-cloud-context-2.0.0.RELEASE.jar!/:2.0.0.RELEASE]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:185) [spring-aop-5.0.7.RELEASE.jar!/:5.0.7.RELEASE]
+	at org.springframework.aop.framework.JdkDynamicAopProxy.invoke(JdkDynamicAopProxy.java:212) [spring-aop-5.0.7.RELEASE.jar!/:5.0.7.RELEASE]
+	at com.sun.proxy.$Proxy140.shutdown(Unknown Source) [na:na]
+	at org.springframework.cloud.netflix.eureka.serviceregistry.EurekaRegistration.close(EurekaRegistration.java:207) [spring-cloud-netflix-eureka-client-2.0.0.RELEASE.jar!/:2.0.0.RELEASE]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:1.8.0_181]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[na:1.8.0_181]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:1.8.0_181]
+	at java.lang.reflect.Method.invoke(Method.java:498) ~[na:1.8.0_181]
+	at org.springframework.beans.factory.support.DisposableBeanAdapter.invokeCustomDestroyMethod(DisposableBeanAdapter.java:337) [spring-beans-5.0.7.RELEASE.jar!/:5.0.7.RELEASE]
+	at org.springframework.beans.factory.support.DisposableBeanAdapter.destroy(DisposableBeanAdapter.java:271) [spring-beans-5.0.7.RELEASE.jar!/:5.0.7.RELEASE]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.destroyBean(DefaultSingletonBeanRegistry.java:571) [spring-beans-5.0.7.RELEASE.jar!/:5.0.7.RELEASE]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.destroySingleton(DefaultSingletonBeanRegistry.java:543) [spring-beans-5.0.7.RELEASE.jar!/:5.0.7.RELEASE]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.destroySingleton(DefaultListableBeanFactory.java:957) [spring-beans-5.0.7.RELEASE.jar!/:5.0.7.RELEASE]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.destroySingletons(DefaultSingletonBeanRegistry.java:504) [spring-beans-5.0.7.RELEASE.jar!/:5.0.7.RELEASE]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.destroySingletons(DefaultListableBeanFactory.java:964) [spring-beans-5.0.7.RELEASE.jar!/:5.0.7.RELEASE]
+	at org.springframework.context.support.AbstractApplicationContext.destroyBeans(AbstractApplicationContext.java:1041) [spring-context-5.0.7.RELEASE.jar!/:5.0.7.RELEASE]
+	at org.springframework.context.support.AbstractApplicationContext.doClose(AbstractApplicationContext.java:1017) [spring-context-5.0.7.RELEASE.jar!/:5.0.7.RELEASE]
+	at org.springframework.context.support.AbstractApplicationContext$1.run(AbstractApplicationContext.java:937) [spring-context-5.0.7.RELEASE.jar!/:5.0.7.RELEASE]
+
+2019-04-22 08:01:16.812  INFO 20338 --- [       Thread-9] com.netflix.discovery.DiscoveryClient    : Completed shut down of DiscoveryClient

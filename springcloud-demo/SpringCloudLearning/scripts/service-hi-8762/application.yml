@@ -1,0 +1,28 @@
+---
+server:
+  port: 8762
+
+spring:
+  profiles: default
+  application:
+    name: service-hi
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://192.168.80.130:8761/eureka/
+      
+      
+---
+server:
+  port: 8762
+
+spring:
+  profiles: peer1
+  application:
+    name: service-hi
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://peer1:8761/eureka/

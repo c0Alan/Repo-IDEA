@@ -1,0 +1,56 @@
+2019-04-24 07:16:44.432  INFO [service-miya,,,] 20406 --- [           main] s.c.a.AnnotationConfigApplicationContext : Refreshing org.springframework.context.annotation.AnnotationConfigApplicationContext@28f67ac7: startup date [Wed Apr 24 07:16:44 CST 2019]; root of context hierarchy
+2019-04-24 07:16:46.365  INFO [service-miya,,,] 20406 --- [           main] trationDelegate$BeanPostProcessorChecker : Bean 'configurationPropertiesRebinderAutoConfiguration' of type [org.springframework.cloud.autoconfigure.ConfigurationPropertiesRebinderAutoConfiguration$$EnhancerBySpringCGLIB$$f260d5d9] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::        (v2.0.3.RELEASE)
+
+2019-04-24 07:16:47.249  INFO [service-miya,,,] 20406 --- [           main] com.forezp.ServiceMiyaApplication        : No active profile set, falling back to default profiles: default
+2019-04-24 07:16:47.376  INFO [service-miya,,,] 20406 --- [           main] ConfigServletWebServerApplicationContext : Refreshing org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@271053e1: startup date [Wed Apr 24 07:16:47 CST 2019]; parent: org.springframework.context.annotation.AnnotationConfigApplicationContext@28f67ac7
+2019-04-24 07:16:50.775  INFO [service-miya,,,] 20406 --- [           main] o.s.cloud.context.scope.GenericScope     : BeanFactory id=9e53a34f-50d6-3d63-9d14-619f41bb5e43
+2019-04-24 07:16:51.863  INFO [service-miya,,,] 20406 --- [           main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.cloud.autoconfigure.ConfigurationPropertiesRebinderAutoConfiguration' of type [org.springframework.cloud.autoconfigure.ConfigurationPropertiesRebinderAutoConfiguration$$EnhancerBySpringCGLIB$$f260d5d9] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-04-24 07:16:52.932  INFO [service-miya,,,] 20406 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8989 (http)
+2019-04-24 07:16:52.977  INFO [service-miya,,,] 20406 --- [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2019-04-24 07:16:52.977  INFO [service-miya,,,] 20406 --- [           main] org.apache.catalina.core.StandardEngine  : Starting Servlet Engine: Apache Tomcat/8.5.31
+2019-04-24 07:16:52.994  INFO [service-miya,,,] 20406 --- [ost-startStop-1] o.a.catalina.core.AprLifecycleListener   : The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [/usr/java/packages/lib/amd64:/usr/lib64:/lib64:/lib:/usr/lib]
+2019-04-24 07:16:53.246  INFO [service-miya,,,] 20406 --- [ost-startStop-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2019-04-24 07:16:53.247  INFO [service-miya,,,] 20406 --- [ost-startStop-1] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 5871 ms
+2019-04-24 07:16:55.083  INFO [service-miya,,,] 20406 --- [ost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'characterEncodingFilter' to: [/*]
+2019-04-24 07:16:55.084  INFO [service-miya,,,] 20406 --- [ost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'tracingFilter' to: [/*]
+2019-04-24 07:16:55.084  INFO [service-miya,,,] 20406 --- [ost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'exceptionLoggingFilter' to: [/*]
+2019-04-24 07:16:55.084  INFO [service-miya,,,] 20406 --- [ost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+2019-04-24 07:16:55.084  INFO [service-miya,,,] 20406 --- [ost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'httpPutFormContentFilter' to: [/*]
+2019-04-24 07:16:55.084  INFO [service-miya,,,] 20406 --- [ost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'requestContextFilter' to: [/*]
+2019-04-24 07:16:55.085  INFO [service-miya,,,] 20406 --- [ost-startStop-1] o.s.b.w.servlet.ServletRegistrationBean  : Servlet dispatcherServlet mapped to [/]
+2019-04-24 07:16:55.621  INFO [service-miya,,,] 20406 --- [           main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/**/favicon.ico] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2019-04-24 07:16:56.551  INFO [service-miya,,,] 20406 --- [           main] s.w.s.m.m.a.RequestMappingHandlerAdapter : Looking for @ControllerAdvice: org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@271053e1: startup date [Wed Apr 24 07:16:47 CST 2019]; parent: org.springframework.context.annotation.AnnotationConfigApplicationContext@28f67ac7
+2019-04-24 07:16:56.779  INFO [service-miya,,,] 20406 --- [           main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/miya]}" onto public java.lang.String com.forezp.ServiceMiyaApplication.info()
+2019-04-24 07:16:56.820  INFO [service-miya,,,] 20406 --- [           main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/hi]}" onto public java.lang.String com.forezp.ServiceMiyaApplication.home()
+2019-04-24 07:16:56.826  INFO [service-miya,,,] 20406 --- [           main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/error],produces=[text/html]}" onto public org.springframework.web.servlet.ModelAndView org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController.errorHtml(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2019-04-24 07:16:56.826  INFO [service-miya,,,] 20406 --- [           main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/error]}" onto public org.springframework.http.ResponseEntity<java.util.Map<java.lang.String, java.lang.Object>> org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController.error(javax.servlet.http.HttpServletRequest)
+2019-04-24 07:16:56.975  INFO [service-miya,,,] 20406 --- [           main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/webjars/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2019-04-24 07:16:56.975  INFO [service-miya,,,] 20406 --- [           main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2019-04-24 07:16:58.265  INFO [service-miya,,,] 20406 --- [           main] o.s.j.e.a.AnnotationMBeanExporter        : Registering beans for JMX exposure on startup
+2019-04-24 07:16:58.279  INFO [service-miya,,,] 20406 --- [           main] o.s.j.e.a.AnnotationMBeanExporter        : Bean with name 'configurationPropertiesRebinder' has been autodetected for JMX exposure
+2019-04-24 07:16:58.280  INFO [service-miya,,,] 20406 --- [           main] o.s.j.e.a.AnnotationMBeanExporter        : Bean with name 'environmentManager' has been autodetected for JMX exposure
+2019-04-24 07:16:58.280  INFO [service-miya,,,] 20406 --- [           main] o.s.j.e.a.AnnotationMBeanExporter        : Bean with name 'refreshScope' has been autodetected for JMX exposure
+2019-04-24 07:16:58.304  INFO [service-miya,,,] 20406 --- [           main] o.s.j.e.a.AnnotationMBeanExporter        : Located managed bean 'environmentManager': registering with JMX server as MBean [org.springframework.cloud.context.environment:name=environmentManager,type=EnvironmentManager]
+2019-04-24 07:16:58.330  INFO [service-miya,,,] 20406 --- [           main] o.s.j.e.a.AnnotationMBeanExporter        : Located managed bean 'refreshScope': registering with JMX server as MBean [org.springframework.cloud.context.scope.refresh:name=refreshScope,type=RefreshScope]
+2019-04-24 07:16:58.359  INFO [service-miya,,,] 20406 --- [           main] o.s.j.e.a.AnnotationMBeanExporter        : Located managed bean 'configurationPropertiesRebinder': registering with JMX server as MBean [org.springframework.cloud.context.properties:name=configurationPropertiesRebinder,context=271053e1,type=ConfigurationPropertiesRebinder]
+2019-04-24 07:16:58.627  INFO [service-miya,,,] 20406 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8989 (http) with context path ''
+2019-04-24 07:16:58.643  INFO [service-miya,,,] 20406 --- [           main] com.forezp.ServiceMiyaApplication        : Started ServiceMiyaApplication in 18.385 seconds (JVM running for 21.089)
+2019-04-24 07:17:22.601  INFO [service-miya,,,] 20406 --- [nio-8989-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring FrameworkServlet 'dispatcherServlet'
+2019-04-24 07:17:22.602  INFO [service-miya,,,] 20406 --- [nio-8989-exec-1] o.s.web.servlet.DispatcherServlet        : FrameworkServlet 'dispatcherServlet': initialization started
+2019-04-24 07:17:22.710  INFO [service-miya,,,] 20406 --- [nio-8989-exec-1] o.s.web.servlet.DispatcherServlet        : FrameworkServlet 'dispatcherServlet': initialization completed in 108 ms
+2019-04-24 07:17:22.835  INFO [service-miya,8a16fd643c2621c2,294bb8d565c0486a,true] 20406 --- [nio-8989-exec-1] com.forezp.ServiceMiyaApplication        : info is being called
+2019-04-24 07:24:07.749  INFO [service-miya,a137b35e3302695e,538a4c3bef90184e,true] 20406 --- [nio-8989-exec-3] com.forezp.ServiceMiyaApplication        : info is being called
+2019-04-24 07:24:08.607  INFO [service-miya,dcf195ade80a4f0b,3c0c5b797f21cc9c,true] 20406 --- [nio-8989-exec-4] com.forezp.ServiceMiyaApplication        : info is being called
+2019-04-24 07:24:10.099  INFO [service-miya,6e5fef2dd7f94f5a,5d6f2f8728588dfa,true] 20406 --- [nio-8989-exec-5] com.forezp.ServiceMiyaApplication        : info is being called
+2019-04-24 07:24:11.578  INFO [service-miya,8ec89d56a543084b,b6ae9eb00680d2e8,true] 20406 --- [nio-8989-exec-6] com.forezp.ServiceMiyaApplication        : info is being called
+2019-04-24 07:28:33.485  INFO [service-miya,,,] 20406 --- [       Thread-6] ConfigServletWebServerApplicationContext : Closing org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@271053e1: startup date [Wed Apr 24 07:16:47 CST 2019]; parent: org.springframework.context.annotation.AnnotationConfigApplicationContext@28f67ac7
+2019-04-24 07:28:33.490  INFO [service-miya,,,] 20406 --- [       Thread-6] o.s.j.e.a.AnnotationMBeanExporter        : Unregistering JMX-exposed beans on shutdown
+2019-04-24 07:28:33.516  INFO [service-miya,,,] 20406 --- [       Thread-6] o.s.j.e.a.AnnotationMBeanExporter        : Unregistering JMX-exposed beans

@@ -1,0 +1,6 @@
+netty:
+   https:
+     enabled: true
+     port: 3443
+     certFile: F:\cert\test\ssl.crt
+     keyFile: F:\cert\test\t.pem
