@@ -4,13 +4,13 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.forezp</groupId>
-    <artifactId>sc-f-gateway-predicate</artifactId>
-    <version>0.1.0</version>
+    <artifactId>gateway-filter-s1</artifactId>
+    <version>0.0.1</version>
 
     <parent>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.0.5.RELEASE</version>
+        <groupId>com.c0</groupId>
+        <artifactId>springcloud-finchley</artifactId>
+        <version>1.0</version>
     </parent>
 
     <dependencyManagement>

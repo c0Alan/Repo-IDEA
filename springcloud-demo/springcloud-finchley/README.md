@@ -153,9 +153,21 @@ service-lucy-s1:8763
 service-turbine-s1:8764
 
 * [史上最简单的SpringCloud教程 | 第十四篇: Spring Cloud Gateway初体验](https://blog.csdn.net/forezp/article/details/83792388)
+
+gateway-filter-s1:8080
+
 * [史上最简单的SpringCloud教程 | 第十五篇: Spring Cloud Gateway 之Predict篇](https://blog.csdn.net/forezp/article/details/84926662)
+
+gateway-predicate-s1
+
 * [史上最简单的SpringCloud教程 | 第十六篇: Spring Cloud Gateway 之filter篇](https://blog.csdn.net/forezp/article/details/85057268)
+
+gateway-filter-s1
+
 *  [史上最简单的SpringCloud教程 | 第十七篇: Spring Cloud Gateway 之限流篇](https://blog.csdn.net/forezp/article/details/85081162)
+
+gateway-limiter-s1
+
 *  [史上最简单的SpringCloud教程 | 第十八篇: spring cloud gateway之服务注册与发现](https://blog.csdn.net/forezp/article/details/85210153)
 
 ### 源码篇：
