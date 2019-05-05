@@ -170,6 +170,12 @@ gateway-limiter-s1
 
 *  [史上最简单的SpringCloud教程 | 第十八篇: spring cloud gateway之服务注册与发现](https://blog.csdn.net/forezp/article/details/85210153)
 
+eureka-server-s1:8761
+
+service-hi-s1:8762
+
+service-gateway-s1:8081
+
 ### 源码篇：
 
 * [深入理解Feign之源码解析](http://blog.csdn.net/forezp/article/details/73480304)

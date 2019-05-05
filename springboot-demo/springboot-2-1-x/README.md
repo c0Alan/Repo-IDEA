@@ -38,9 +38,18 @@
 
 ### 入门配置
 
+log-s1
+
+不添加日志配置文件的情况
+
+[Springboot2(1)日志配置和动态日志等级设置](https://blog.csdn.net/cowbin2012/article/details/85235931)
+
+open-base-log
+
+
+
 | 项目                         | 说明                                                         | 备注                                                         |
 | ---------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| open-base-log（已完成）      | [Springboot2日志配置和动态日志等级设置](https://blog.csdn.net/cowbin2012/article/details/85235931) | 支持两种方法动态修改日志等级                                 |
 | open-base-config（已完成）   | [Springboot2属性配置讲解和自定义属性配置](https://blog.csdn.net/cowbin2012/article/details/85237502) | 多环境的配置方法<br>@value支持的7种内容注入，还List，Map类型的注入,设置默认值的方法<br>@ConfigurationProperties，@Profile的使用 |
 | open-base-static（已完成）   | [Springboot2静态资源处理](https://blog.csdn.net/cowbin2012/article/details/85237760) | 讲解了静态的配置                                             |
 | open-base-controller(已完成) | [Springboot2Controller控制层讲解](https://blog.csdn.net/cowbin2012/article/details/85237857) | 讲解@Controller&@RestController&@RequestMapping<br>@PathVaribale & @RequestParam & @RequestBody |
