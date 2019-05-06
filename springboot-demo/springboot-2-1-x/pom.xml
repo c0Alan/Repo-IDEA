@@ -16,6 +16,7 @@
     </parent>
 
     <modules>
+        <module>log-s1</module>
     </modules>
 
     <properties>
