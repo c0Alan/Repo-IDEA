@@ -38,7 +38,7 @@
 
 ### 入门配置
 
-[Springboot2(1)日志配置和动态日志等级设置](https://blog.csdn.net/cowbin2012/article/details/85235931)
+## [Springboot2(1)日志配置和动态日志等级设置](https://blog.csdn.net/cowbin2012/article/details/85235931)
 
 log-s1:8081
 
@@ -50,11 +50,19 @@ log-s2:8081
 
 profile3: 指定日志配置文件
 
-通过 actuator 获取日志级别
+通过 actuator 修改/获取日志级别
+
+
+
+## [Springboot2属性配置讲解和自定义属性配置](https://blog.csdn.net/cowbin2012/article/details/85237502)
+
+多环境的配置方法<br>@value支持的7种内容注入，还List，Map类型的注入,设置默认值的方法<br>@ConfigurationProperties，@Profile的使用
+
+
 
 | 项目                         | 说明                                                         | 备注                                                         |
 | ---------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| open-base-config（已完成）   | [Springboot2属性配置讲解和自定义属性配置](https://blog.csdn.net/cowbin2012/article/details/85237502) | 多环境的配置方法<br>@value支持的7种内容注入，还List，Map类型的注入,设置默认值的方法<br>@ConfigurationProperties，@Profile的使用 |
+| open-base-config（已完成）   |                                                              |                                                              |
 | open-base-static（已完成）   | [Springboot2静态资源处理](https://blog.csdn.net/cowbin2012/article/details/85237760) | 讲解了静态的配置                                             |
 | open-base-controller(已完成) | [Springboot2Controller控制层讲解](https://blog.csdn.net/cowbin2012/article/details/85237857) | 讲解@Controller&@RestController&@RequestMapping<br>@PathVaribale & @RequestParam & @RequestBody |
 | open-base-swagger            | [Springboot2集成swagger2](https://blog.csdn.net/cowbin2012/article/details/86711362) | 集成swagger2构建RESTful API文档                              |
