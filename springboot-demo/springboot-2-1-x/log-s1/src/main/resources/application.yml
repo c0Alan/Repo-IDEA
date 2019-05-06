@@ -14,7 +14,9 @@ logging.file: log/baselog.log
 
 ---
 spring:
-  profiles: profile2
+  profiles: dev
+  application:
+    name: log-s1
 logging.file: log/baselog.log
 logging.config: classpath:logback-spring.xml
 
