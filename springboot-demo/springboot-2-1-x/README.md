@@ -56,14 +56,17 @@ profile3: 指定日志配置文件
 
 ## [Springboot2属性配置讲解和自定义属性配置](https://blog.csdn.net/cowbin2012/article/details/85237502)
 
-多环境的配置方法<br>@value支持的7种内容注入，还List，Map类型的注入,设置默认值的方法<br>@ConfigurationProperties，@Profile的使用
+config-s1:8080
+
+
+
+## [Springboot2静态资源处理](https://blog.csdn.net/cowbin2012/article/details/85237760)
 
 
 
 | 项目                         | 说明                                                         | 备注                                                         |
 | ---------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| open-base-config（已完成）   |                                                              |                                                              |
-| open-base-static（已完成）   | [Springboot2静态资源处理](https://blog.csdn.net/cowbin2012/article/details/85237760) | 讲解了静态的配置                                             |
+| open-base-static（已完成）   |                                                              | 讲解了静态的配置                                             |
 | open-base-controller(已完成) | [Springboot2Controller控制层讲解](https://blog.csdn.net/cowbin2012/article/details/85237857) | 讲解@Controller&@RestController&@RequestMapping<br>@PathVaribale & @RequestParam & @RequestBody |
 | open-base-swagger            | [Springboot2集成swagger2](https://blog.csdn.net/cowbin2012/article/details/86711362) | 集成swagger2构建RESTful API文档                              |
 
