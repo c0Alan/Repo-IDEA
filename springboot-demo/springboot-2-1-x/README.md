@@ -62,6 +62,18 @@ config-s1:8080
 
 ## [Springboot2静态资源处理](https://blog.csdn.net/cowbin2012/article/details/85237760)
 
+static-resources-s1:8080
+
+<http://ip:8080/public.html>
+
+<http://ip:8080/static.html>
+
+<http://ip:8080/resources.html>
+
+<http://ip:8080/NETA-INF.html>
+
+
+
 
 
 | 项目                         | 说明                                                         | 备注                                                         |
