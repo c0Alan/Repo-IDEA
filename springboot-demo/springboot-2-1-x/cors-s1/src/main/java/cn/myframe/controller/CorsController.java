@@ -14,7 +14,6 @@ import java.util.Map;
  * @Version 1.0
  */
 @RestController
-//@CrossOrigin(origins = "http://localhost:8080", maxAge = 3600)
 public class CorsController {
 
     @RequestMapping("/preUser")
