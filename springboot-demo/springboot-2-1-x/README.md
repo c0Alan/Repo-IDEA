@@ -74,19 +74,26 @@ static-resources-s1:8080
 
 
 
+## [Springboot2Controller控制层讲解](https://blog.csdn.net/cowbin2012/article/details/85237857)
+
+
+
 
 
 | 项目                         | 说明                                                         | 备注                                                         |
 | ---------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| open-base-static（已完成）   |                                                              | 讲解了静态的配置                                             |
-| open-base-controller(已完成) | [Springboot2Controller控制层讲解](https://blog.csdn.net/cowbin2012/article/details/85237857) | 讲解@Controller&@RestController&@RequestMapping<br>@PathVaribale & @RequestParam & @RequestBody |
+| open-base-controller(已完成) |                                                              | 讲解@Controller&@RestController&@RequestMapping<br>@PathVaribale & @RequestParam & @RequestBody |
 | open-base-swagger            | [Springboot2集成swagger2](https://blog.csdn.net/cowbin2012/article/details/86711362) | 集成swagger2构建RESTful API文档                              |
 
-###  Web开发
+
+
+## [Springboot2(5)WebMvcConfigurer讲解](https://blog.csdn.net/cowbin2012/article/details/85194353)
+
+
 
 | 项目                                | 说明                                                         | 备注                                                         |
 | :---------------------------------- | :----------------------------------------------------------- | ------------------------------------------------------------ |
-| open-web-webMvcConfigurer（已完成） | [Springboot2(5)WebMvcConfigurer讲解](https://blog.csdn.net/cowbin2012/article/details/85194353) | 通过ViewController将一个请求转到一个页面<br> 通过ResourceHandlers实现静态资源的地址映射 <br>通过MessageConverter实现fastJson消息转换器<br>通过addCorsMappings实现ajax跨域请求<br>通过addInterceptors添加拦截器 |
+| open-web-webMvcConfigurer（已完成） |                                                              | 通过ViewController将一个请求转到一个页面<br> 通过ResourceHandlers实现静态资源的地址映射 <br>通过MessageConverter实现fastJson消息转换器<br>通过addCorsMappings实现ajax跨域请求<br>通过addInterceptors添加拦截器 |
 | open-web-intercptor（已完成）       | [轻松搞定Interceptor（拦截器）](https://blog.csdn.net/cowbin2012/article/details/85194393) | 样例：实现拦截器拦截所有请求，并打印相应信息                 |
 | open-web-filter（已完成）           | [轻松搞定自定义Filter（过滤器）](https://blog.csdn.net/cowbin2012/article/details/85194431) | 两种不种的实现方式                                           |
 | open-web-listener（已完成）         | [轻松搞定Listener(监听器)](https://blog.csdn.net/cowbin2012/article/details/85194460) | 监听器的实现                                                 |

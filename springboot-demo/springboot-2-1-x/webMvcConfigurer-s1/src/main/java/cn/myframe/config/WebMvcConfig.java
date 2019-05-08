@@ -3,7 +3,6 @@ package cn.myframe.config;
 import cn.myframe.entity.PreUser;
 import cn.myframe.interceptor.CustomHandlerInterceptor;
 import com.alibaba.fastjson.serializer.SerializerFeature;
-import com.alibaba.fastjson.serializer.ValueFilter;
 import com.alibaba.fastjson.support.config.FastJsonConfig;
 import com.alibaba.fastjson.support.spring.FastJsonHttpMessageConverter;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
@@ -25,17 +24,17 @@ import java.util.Map;
 
 /**
  * MVC拦截器配置
- * 
- * @author  ynz
- * @email   ynz@myframe.cn
+ *
+ * @author ynz
  * @version 创建时间：2017年11月21日 下午12:27:49
+ * @email ynz@myframe.cn
  */
 @Configuration
 public class WebMvcConfig implements WebMvcConfigurer {
 
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
-       // registry.addInterceptor(new URLInterceptor()).addPathPatterns("/**").excludePathPatterns("/login.html","/login");
+        // registry.addInterceptor(new URLInterceptor()).addPathPatterns("/**").excludePathPatterns("/login.html","/login");
         registry.addInterceptor(new CustomHandlerInterceptor()).addPathPatterns("/**");
     }
 
@@ -46,13 +45,14 @@ public class WebMvcConfig implements WebMvcConfigurer {
     }
 
     @Override
-    public void addViewControllers(ViewControllerRegistry registry){
+    public void addViewControllers(ViewControllerRegistry registry) {
         registry.addViewController("/login").setViewName("web/login.html");
     }
 
 
     /**
      * 跨域CORS配置
+     *
      * @param registry
      */
     @Override
@@ -64,7 +64,7 @@ public class WebMvcConfig implements WebMvcConfigurer {
                 //是否发送Cookie信息
                 .allowCredentials(true)
                 //放行哪些原始域(请求方式)
-                .allowedMethods("GET","POST", "PUT", "DELETE")
+                .allowedMethods("GET", "POST", "PUT", "DELETE")
                 //放行哪些原始域(头部信息)
                 .allowedHeaders("*")
                 //暴露哪些头部信息（因为跨域访问默认不能获取全部头部信息）
@@ -75,28 +75,29 @@ public class WebMvcConfig implements WebMvcConfigurer {
     /**
      * 消息内容转换配置
      * 配置fastJson返回json转换
+     *
      * @param converters
      */
     @Override
     public void configureMessageConverters(List<HttpMessageConverter<?>> converters) {
         //创建fastJson消息转换器
-        FastJsonHttpMessageConverter fastConverter = new FastJsonHttpMessageConverter(){
-            protected void writeInternal(Object obj, HttpOutputMessage outputMessage){
+        FastJsonHttpMessageConverter fastConverter = new FastJsonHttpMessageConverter() {
+            protected void writeInternal(Object obj, HttpOutputMessage outputMessage) {
                 try {
-                    if(obj instanceof PreUser){
-                        Map<String,Object> map = new HashMap<>();
-                        map.put("preUser",obj);
-                        map.put("result","success");
-                        super.writeInternal( map, outputMessage);
-                    }else{
-                        super.writeInternal( obj, outputMessage);
+                    if (obj instanceof PreUser) {
+                        Map<String, Object> map = new HashMap<>();
+                        map.put("preUser", obj);
+                        map.put("result", "success");
+                        super.writeInternal(map, outputMessage);
+                    } else {
+                        super.writeInternal(obj, outputMessage);
                     }
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
             }
         };
-      //  FastJsonHttpMessageConverter fastConverter = new FastJsonHttpMessageConverter();
+        //  FastJsonHttpMessageConverter fastConverter = new FastJsonHttpMessageConverter();
         List<MediaType> supportedMediaTypes = new ArrayList<>();
         supportedMediaTypes.add(MediaType.APPLICATION_JSON);
         supportedMediaTypes.add(MediaType.APPLICATION_JSON_UTF8);
@@ -130,20 +131,21 @@ public class WebMvcConfig implements WebMvcConfigurer {
     protected static class FastJson2HttpMessageConverterConfiguration {
         protected FastJson2HttpMessageConverterConfiguration() {
         }
+
         @Bean
         @ConditionalOnMissingBean({FastJsonHttpMessageConverter.class})//3
         public FastJsonHttpMessageConverter fastJsonHttpMessageConverter() {
             //创建fastJson消息转换器
-            FastJsonHttpMessageConverter fastConverter = new FastJsonHttpMessageConverter(){
-                protected void writeInternal(Object obj, HttpOutputMessage outputMessage){
+            FastJsonHttpMessageConverter fastConverter = new FastJsonHttpMessageConverter() {
+                protected void writeInternal(Object obj, HttpOutputMessage outputMessage) {
                     try {
-                        if(obj instanceof PreUser){
-                            Map<String,Object> map = new HashMap<>();
-                            map.put("result","success");
-                            map.put("preUser",obj);
-                            super.writeInternal( map, outputMessage);
-                        }else{
-                            super.writeInternal( obj, outputMessage);
+                        if (obj instanceof PreUser) {
+                            Map<String, Object> map = new HashMap<>();
+                            map.put("result", "success");
+                            map.put("preUser", obj);
+                            super.writeInternal(map, outputMessage);
+                        } else {
+                            super.writeInternal(obj, outputMessage);
                         }
                     } catch (IOException e) {
                         e.printStackTrace();
@@ -170,7 +172,7 @@ public class WebMvcConfig implements WebMvcConfigurer {
             );
             fastConverter.setFastJsonConfig(fastJsonConfig);
             //将fastjson添加到视图消息转换器列表内
-           // converters.add(fastConverter);
+            // converters.add(fastConverter);
             return fastConverter;
         }
     }
