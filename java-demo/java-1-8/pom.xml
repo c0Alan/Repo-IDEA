@@ -20,6 +20,7 @@
         <module>log-logback</module>
         <module>java-net</module>
         <module>java-jar</module>
+        <module>java-tools-custom</module>
     </modules>
 
     <properties>
@@ -94,6 +95,7 @@
 
         <!-- apache-commons 相关 -->
         <commons-lang3.version>3.6</commons-lang3.version>
+        <commons-text.version>1.6</commons-text.version>
         <commons-io.version>2.5</commons-io.version>
         <commons-beanutils.version>1.9.3</commons-beanutils.version>
         <commons-collections4.version>4.1</commons-collections4.version>
@@ -128,7 +130,7 @@
 
     <build>
         <!--<finalName>${artifactId}-${version}</finalName>-->
-        <finalName>my-demo</finalName>
+        <!--<finalName>my-demo</finalName>-->
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -142,30 +144,30 @@
                 </configuration>
             </plugin>
             <!-- 修改webapp目录为web -->
-            <plugin>
+            <!--<plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-war-plugin</artifactId>
                 <configuration>
-                    <!-- 修改webapp目录为web -->
+                    &lt;!&ndash; 修改webapp目录为web &ndash;&gt;
                     <webXml>${basedir}/src/main/web/WEB-INF/web.xml</webXml>
-                    <webappDirectory>${basedir}/target/web</webappDirectory> <!-- exploded: artifacts target output dierctory -->
-                    <warSourceDirectory>${basedir}/src/main/web</warSourceDirectory> <!-- web resource directory -->
+                    <webappDirectory>${basedir}/target/web</webappDirectory> &lt;!&ndash; exploded: artifacts target output dierctory &ndash;&gt;
+                    <warSourceDirectory>${basedir}/src/main/web</warSourceDirectory> &lt;!&ndash; web resource directory &ndash;&gt;
 
                 </configuration>
-            </plugin>
+            </plugin>-->
         </plugins>
 
-        <sourceDirectory>src/main/java</sourceDirectory>
+        <!--<sourceDirectory>src/main/java</sourceDirectory>
         <resources>
             <resource>
                 <directory>src/main/resources</directory>
             </resource>
         </resources>
-        <!--<directory>src\main\web\WEB-INF</directory>-->
+        &lt;!&ndash;<directory>src\main\web\WEB-INF</directory>&ndash;&gt;
 
         <outputDirectory>target/web/WEB-INF/classes</outputDirectory>
         <testOutputDirectory>target/web/WEB-INF/classes</testOutputDirectory>
-        <directory>target/web</directory> <!-- war: artifacts target output dierctory -->
+        <directory>target/web</directory> &lt;!&ndash; war: artifacts target output dierctory &ndash;&gt;-->
 
     </build>
 
