@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.java.demo</groupId>
-    <artifactId>java-demo</artifactId>
+    <artifactId>java-1-8</artifactId>
     <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
     <modules>
@@ -15,7 +15,7 @@
         <module>java-juc</module>
         <module>java-algorithm</module>
         <module>java-jvm</module>
-        <module>design-model</module>
+        <module>design-patterns</module>
         <module>log-log4j</module>
         <module>log-logback</module>
         <module>java-net</module>
