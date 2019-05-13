@@ -18,7 +18,7 @@ import java.util.Set;
 
 @RestController
 @Validated
-public class ValidationController2 {
+public class ValidationController {
 
     /**如果只有少数对象，直接把参数写到Controller层，然后在Controller层进行验证就可以了。*/
     @RequestMapping(value = "/vaild2", method = RequestMethod.GET)

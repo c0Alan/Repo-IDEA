@@ -2,7 +2,6 @@ package cn.myframe.config;
 
 import org.hibernate.validator.HibernateValidator;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
 
 import javax.validation.Validation;
 import javax.validation.Validator;
@@ -13,7 +12,7 @@ import javax.validation.ValidatorFactory;
  * @Author liuxilin
  * @Date 2019-05-13 13:01
  */
-@Configuration
+//@Configuration
 public class ValidatorConfiguration1 {
     @Bean
     public Validator validator() {

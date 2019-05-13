@@ -20,7 +20,7 @@ import javax.validation.groups.Default;
 import java.util.Set;
 
 @RestController
-public class ValidationController1 {
+public class ValidController {
     @RequestMapping("/vaild")
     public String vaild(@RequestBody(required = false) @Valid VaildateModel model,
                         BindingResult result) {
