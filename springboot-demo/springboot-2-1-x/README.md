@@ -94,16 +94,24 @@ static-resources-s1:8080
 
 ## [轻松搞定Listener(监听器)](https://blog.csdn.net/cowbin2012/article/details/85194460)
 
+## [轻松搞定跨域访问（CORS）](https://blog.csdn.net/cowbin2012/article/details/85194492)
 
+## [轻松搞定统一异常处理](https://blog.csdn.net/cowbin2012/article/details/85194555)
+
+## [轻松搞定文件上传](https://blog.csdn.net/cowbin2012/article/details/85247053)
+
+upload-s1
+
+upload-s2
+
+## [轻松搞定数据验证](https://blog.csdn.net/cowbin2012/article/details/85247333)
+
+vaildate-s1
 
 
 
 | 项目                            | 说明                                                         | 备注                                                         |
 | :------------------------------ | :----------------------------------------------------------- | ------------------------------------------------------------ |
-| open-web-cors（已完成）         | [轻松搞定跨域访问（CORS）](https://blog.csdn.net/cowbin2012/article/details/85194492) | 4种实现方式：<br>方式1：返回新的CorsFilter<br>方式2：重写WebMvcConfigurer<br>方式3：使用注解（@CrossOrigin）<br>方式4：手工设置响应头（HttpServletResponse） |
-| open-web-exception（已完成）    | [轻松搞定统一异常处理](https://blog.csdn.net/cowbin2012/article/details/85194555) | 实现全局的异常处理                                           |
-| open-web-upload（已完成）       | [轻松搞定文件上传](https://blog.csdn.net/cowbin2012/article/details/85247053) | 实现文件上传的配置                                           |
-| open-web-vaild（已完成）        | [轻松搞定数据验证](https://blog.csdn.net/cowbin2012/article/details/85247333) | 讲解了<br>hibernate的校验实现<br>自定义验证器实现            |
 | open-web-event（已完成）        | [轻松搞定自定义事件监听](https://blog.csdn.net/cowbin2012/article/details/85247875) | 实现事件监听的功能                                           |
 | open-web-async（已完成）        | [异步调用Async](https://blog.csdn.net/cowbin2012/article/details/85248381) | 自定义的Executor<br>异步调用实现                             |
 | open-web-resttemplate（已完成） | [轻松搞定RestTemplate](https://blog.csdn.net/cowbin2012/article/details/85250855) | 包括RestTemplate的post,get请求，HTTP请求头的设置，发送文件，下载文件 |
