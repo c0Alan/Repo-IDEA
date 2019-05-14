@@ -45,7 +45,7 @@ public class Xml2MarkdownApp {
         lines = FileUtils.readLines(f, StandardCharsets.UTF_8);
         for (int i = 0; i < lines.size(); i++) {
             String line = lines.get(i);
-            String newLine;
+            String newLine = line.replaceFirst("^\\s+", "");
 
             // 转换 link
             String reg = "<link(.*?[^/])>";
@@ -53,7 +53,6 @@ public class Xml2MarkdownApp {
             Matcher matcher = pattern.matcher(line);
             if (matcher.find()) {
                 newLine = "<link" + matcher.group(1) + " />";
-                lines.set(i, newLine);
             }
 
             // 转换 代码
@@ -61,28 +60,34 @@ public class Xml2MarkdownApp {
             Pattern pattern2 = Pattern.compile(reg2);
             Matcher matcher2 = pattern2.matcher(line);
             if (matcher2.find()) {
-                newLine = "```" + matcher2.group(1)
+                newLine = "\r\n```" + matcher2.group(1)
                         .replace(" ", "")
                         .replace("hljs", "")
-                        .replace("language-", "") + "\r\n";
+                        .replace("language-", "")
+                        .replace("vbscript", "java")
+                        .replace("delphi", "yaml")+ "\r\n";
 
                 line = line.replaceAll("</span>", "");
                 line = line.replaceAll("<span.*?>", "");
-                String reg3 = ">([^<].+?)<";
+                String reg3 = ">([^<]+?)<";
                 Pattern pattern3 = Pattern.compile(reg3);
                 Matcher matcher3 = pattern3.matcher(line);
                 while (matcher3.find()) {
-                    if (matcher3.group(1).contains("<")
+                    /*if (matcher3.group(1).contains("<")
                             && matcher3.group(1).contains(">")) {
                         continue;
-                    }
+                    }*/
                     newLine = newLine + StringEscapeUtils.unescapeHtml4(matcher3.group(1)) + "\r\n";
                 }
                 newLine = newLine + "```" + "\r\n";
-                lines.set(i, newLine);
             }
+            newLine = newLine.replace("https://gitee.com/cowboy2016/springboot2-open",
+                    "https://github.com/c0Alan/Repo-IDEA/tree/master/springboot-demo/springboot-2-1-x")
+            .replace("转载请注明出处", "本文转载自");
+            lines.set(i, newLine);
         }
 
+        lines.add("\r\n<h3><a name=\"t8\"></a>项目说明</h3>");
         File newFile = new File(filePath + File.separator + newFileName);
         if (newFile.exists()) {
             newFile.delete();
