@@ -4,11 +4,11 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.c0</groupId>
-    <artifactId>service-hi-s1</artifactId>
+    <artifactId>service-hi-s4</artifactId>
     <packaging>jar</packaging>
 
-    <name>service-hi-s1</name>
-    <description>Demo project for Spring Boot</description>
+    <name>service-hi-s4</name>
+    <description>模拟阻塞10秒</description>
 
     <parent>
         <groupId>com.c0</groupId>

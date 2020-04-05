@@ -1,9 +1,10 @@
 server:
-  port: 8761
+  port: 8501
 
 eureka:
   instance:
     hostname: localhost
+    prefer-ip-address: true
   client:
     registerWithEureka: false
     fetchRegistry: false

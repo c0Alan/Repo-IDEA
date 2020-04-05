@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.concurrent.TimeUnit;
+
 @SpringBootApplication
 @EnableEurekaClient
 @RestController
@@ -21,7 +23,8 @@ public class ServiceHiApplication {
     String port;
 
     @RequestMapping("/hi")
-    public String home(@RequestParam(value = "name", defaultValue = "forezp") String name) {
+    public String home(@RequestParam(value = "name", defaultValue = "forezp") String name) throws InterruptedException {
+        TimeUnit.SECONDS.sleep(10);
         return "hi " + name + " ,i am from port:" + port;
     }
 

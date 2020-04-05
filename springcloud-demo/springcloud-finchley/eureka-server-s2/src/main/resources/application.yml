@@ -1,6 +1,6 @@
 ---
 server:
-  port: 8761
+  port: 8502
 
 spring:
   profiles: default

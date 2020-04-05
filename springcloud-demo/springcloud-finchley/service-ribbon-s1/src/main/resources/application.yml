@@ -1,9 +1,17 @@
+
+
 eureka:
+  instance:
+    prefer-ip-address: true
   client:
     serviceUrl:
-      defaultZone: http://localhost:8761/eureka/
+      defaultZone: http://localhost:8501/eureka/
 server:
-  port: 8764
+  port: 8611
 spring:
   application:
     name: service-ribbon
+
+logging:
+  cnfig: classpath:logback-spring.xml
+

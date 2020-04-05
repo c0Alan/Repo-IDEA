@@ -5,12 +5,10 @@
 
     <groupId>com.forezp</groupId>
     <artifactId>service-ribbon-s2</artifactId>
-    <version>0.0.2</version>
     <packaging>jar</packaging>
 
     <name>service-ribbon-s2</name>
-    <description>Demo project for Spring Boot</description>
-
+    <description>ribbon+hystrix</description>
 
     <parent>
         <groupId>com.c0</groupId>
