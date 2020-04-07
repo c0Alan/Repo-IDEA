@@ -5,7 +5,6 @@
 
     <groupId>com.c0</groupId>
     <artifactId>service-lucy-s1</artifactId>
-    <version>0.0.1</version>
     <packaging>jar</packaging>
 
     <name>service-lucy-s1</name>

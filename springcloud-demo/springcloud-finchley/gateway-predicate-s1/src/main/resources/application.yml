@@ -1,8 +1,8 @@
 server:
-  port: 8081
+  port: 8652
 spring:
   profiles:
-    active: query_route
+    active: mix
 
 ---
 spring:
@@ -12,7 +12,7 @@ spring:
       - id: after_route
         uri: http://httpbin.org:80/get
         predicates:
-        - After=2017-01-20T17:42:47.789-07:00[America/Denver]
+        - After=2020-04-20T17:42:47.789-07:00[America/Denver]
   profiles: after_route
 
 ---
@@ -81,3 +81,18 @@ spring:
         predicates:
         - Query=foo, ba.
   profiles: query_route
+
+---
+spring:
+  cloud:
+    gateway:
+      routes:
+      - id: query_route
+        uri: http://httpbin.org:80/get
+        predicates:
+        - Query=foo, ba.
+      - id: cookie_route
+        uri: http://httpbin.org:80/get
+        predicates:
+        - Cookie=name, forezp
+  profiles: mix

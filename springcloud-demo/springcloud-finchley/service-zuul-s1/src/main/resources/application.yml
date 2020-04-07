@@ -1,9 +1,11 @@
 eureka:
+  instance:
+    prefer-ip-address: true
   client:
     serviceUrl:
-      defaultZone: http://localhost:8761/eureka/
+      defaultZone: http://localhost:8501/eureka/
 server:
-  port: 8769
+  port: 8631
 spring:
   application:
     name: service-zuul
@@ -15,3 +17,9 @@ zuul:
     api-b:
       path: /api-b/**
       serviceId: service-feign
+
+logging:
+  config: classpath:logback-spring.xml
+ribbon:
+  SocketTimeout: 60000
+  ReadTimeout: 60000

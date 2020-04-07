@@ -5,7 +5,6 @@
 
     <groupId>com.forezp</groupId>
     <artifactId>service-zuul-s1</artifactId>
-    <version>0.0.1</version>
     <packaging>jar</packaging>
 
     <name>service-zuul-s1</name>

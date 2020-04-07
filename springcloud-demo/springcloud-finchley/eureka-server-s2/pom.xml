@@ -5,11 +5,10 @@
 
     <groupId>com.forezp</groupId>
     <artifactId>eureka-server-s2</artifactId>
-    <version>0.0.2</version>
     <packaging>jar</packaging>
 
     <name>eureka-server-s2</name>
-    <description>Demo project for Spring Boot</description>
+    <description>高可用注册中心</description>
 
     <parent>
         <groupId>com.c0</groupId>

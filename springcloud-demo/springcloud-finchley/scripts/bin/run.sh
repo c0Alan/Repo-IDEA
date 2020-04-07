@@ -26,7 +26,7 @@ JVM_VARS=$JVM_VARS_VALUE
 MODEL_DAEMON=1
 
 # 日志 '&-':表示关闭标准输出日志
-MODEL_LOG="./log.log"
+MODEL_LOG="./error.log"
 
 rm -f ${MODEL_LOG}
 
@@ -112,7 +112,7 @@ else
                 $JAVA_HOME/bin/java -${GREP_KEY} ${MODEL_OPTS} -jar ${JVM_VARS} ${MODEL_JAR} ${MODEL_VARS}
         else
                 echo "try to start ${MODEL_NAME} ... backgroud"
-                nohup $JAVA_HOME/bin/java -${GREP_KEY} ${MODEL_OPTS} -jar ${JVM_VARS} ${MODEL_JAR} ${MODEL_VARS} >>${MODEL_LOG} &
+                nohup $JAVA_HOME/bin/java -${GREP_KEY} ${MODEL_OPTS} -jar ${JVM_VARS} ${MODEL_JAR} ${MODEL_VARS} 1>&- 2>>${MODEL_LOG} &
                 sleep $SLEEP_MIN
                 modelService_is_exist
                 if [ $? -eq "0" ]

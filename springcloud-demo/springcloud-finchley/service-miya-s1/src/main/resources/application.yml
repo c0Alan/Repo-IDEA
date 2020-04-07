@@ -1,0 +1,9 @@
+server:
+  port: 8661
+spring:
+  application:
+    name: service-miya
+  zipkin:
+    base-url: http://172.25.20.143:9494
+logging:
+  cnfig: classpath:logback-spring.xml

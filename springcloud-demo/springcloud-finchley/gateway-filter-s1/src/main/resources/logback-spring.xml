@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+
+    <!--<property name="LOG_FILE" value="${LOG_FILE:-${LOG_PATH}${log.context.name}.log}"/>-->
+    <property name="LOG_FILE" value="log.log"/>
+    <!-- 彩色日志格式 -->
+    <property name="CONSOLE_LOG_PATTERN"
+              value="%green(%d{yyyy-MM-dd HH:mm:ss.SSS, Asia/Shanghai}) %boldMagenta([%t]) %highlight(%-5level) %cyan(%logger{50} [%file : %line] -) %msg%n" />
+
+    <property name="FILE_LOG_PATTERN"
+              value="%green(%d{yyyy-MM-dd HH:mm:ss.SSS, Asia/Shanghai}) %boldMagenta([%t]) %highlight(%-5level) %cyan(%logger{50} [%file : %line] -) %msg%n"/>
+    <include resource="org/springframework/boot/logging/logback/defaults.xml" />
+
+    <!-- Console 输出设置 -->
+    <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>${CONSOLE_LOG_PATTERN}</pattern>
+            <charset>utf8</charset>
+        </encoder>
+    </appender>
+
+    <appender name="RollingFile" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${LOG_FILE}</file>
+        <encoder>
+            <pattern>${FILE_LOG_PATTERN}</pattern>
+            <charset>UTF-8</charset>
+        </encoder>
+        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+            <level>ALL</level>
+        </filter>
+        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+            <fileNamePattern>${LOG_FILE}.%d{yyyy-MM-dd}.%i.gz</fileNamePattern>
+            <!-- keep 10 days' worth of history capped at 3GB total size -->
+            <maxHistory>1</maxHistory>
+            <totalSizeCap>10MB</totalSizeCap>
+            <maxFileSize>10MB</maxFileSize>
+            <cleanHistoryOnStart>true</cleanHistoryOnStart>
+        </rollingPolicy>
+    </appender>
+
+    <root level="info">
+        <appender-ref ref="CONSOLE"></appender-ref>
+        <appender-ref ref="RollingFile" />
+    </root>
+</configuration>

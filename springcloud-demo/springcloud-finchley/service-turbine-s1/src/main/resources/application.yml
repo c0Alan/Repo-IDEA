@@ -1,5 +1,5 @@
 server:
-  port: 8764
+  port: 8607
 
 spring:
   application:
@@ -8,7 +8,7 @@ spring:
 eureka:
   client:
     serviceUrl:
-      defaultZone: http://localhost:8761/eureka/
+      defaultZone: http://localhost:8501/eureka/
 management:
   endpoints:
     web:
@@ -26,3 +26,6 @@ turbine:
   combine-host: true
   instanceUrlSuffix:
     default: actuator/hystrix.stream
+
+logging:
+  config: classpath:logback-spring.xml

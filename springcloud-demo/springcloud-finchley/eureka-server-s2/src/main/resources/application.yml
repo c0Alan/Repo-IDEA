@@ -9,14 +9,18 @@ spring:
 
 eureka:
   instance:
-    hostname: 172.28.50.140
+    prefer-ip-address: true
+    hostname: 172.25.20.143
   client:
     registerWithEureka: false
     fetchRegistry: false
     serviceUrl:
-      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
+      defaultZone: http://172.28.50.140:8501/eureka/
 user:
   username: aaa
+
+logging:
+  cnfig: classpath:logback-spring.xml
 
 ---
 server:

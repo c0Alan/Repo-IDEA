@@ -5,11 +5,10 @@
 
 	<groupId>com.c0</groupId>
 	<artifactId>service-miya-s1</artifactId>
-	<version>0.0.1</version>
 	<packaging>jar</packaging>
 
 	<name>service-miya-s1</name>
-	<description>Demo project for Spring Boot</description>
+	<description>zipkin</description>
 
 	<parent>
 		<groupId>com.c0</groupId>

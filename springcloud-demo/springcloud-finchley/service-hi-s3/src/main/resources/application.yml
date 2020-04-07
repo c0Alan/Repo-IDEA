@@ -1,5 +1,5 @@
 server:
-  port: 8762
+  port: 8605
 
 spring:
   application:
@@ -8,7 +8,7 @@ spring:
 eureka:
   client:
     serviceUrl:
-      defaultZone: http://localhost:8761/eureka/
+      defaultZone: http://localhost:8501/eureka/
 management:
   endpoints:
     web:
@@ -17,3 +17,6 @@ management:
       cors:
         allowed-origins: "*"
         allowed-methods: "*"
+
+logging:
+  config: ./logback-spring.xml

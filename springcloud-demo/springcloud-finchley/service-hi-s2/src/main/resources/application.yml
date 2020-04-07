@@ -1,0 +1,10 @@
+
+server:
+  port: 8604
+spring:
+  application:
+      name: service-hi
+  zipkin:
+    base-url: http://172.25.20.143:8651
+logging:
+  cnfig: classpath:logback-spring.xml

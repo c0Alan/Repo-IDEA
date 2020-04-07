@@ -1,5 +1,5 @@
 server:
-  port: 8081
+  port: 8656
 
 spring:
   application:
@@ -22,7 +22,7 @@ spring:
 eureka:
   client:
     service-url:
-      defaultZone: http://localhost:8761/eureka/
+      defaultZone: http://172.25.20.143:8501/eureka/,http://172.25.20.143:8502/eureka/
 
 logging:
   level:

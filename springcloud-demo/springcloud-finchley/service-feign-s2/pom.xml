@@ -5,11 +5,10 @@
 
     <groupId>com.c0</groupId>
     <artifactId>service-feign-s2</artifactId>
-    <version>0.0.2</version>
     <packaging>jar</packaging>
 
     <name>service-feign-s2</name>
-    <description>Demo project for Spring Boot</description>
+    <description>feign+hystix</description>
 
 
     <parent>

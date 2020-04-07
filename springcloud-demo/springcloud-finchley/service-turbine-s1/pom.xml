@@ -5,11 +5,10 @@
 
     <groupId>com.c0</groupId>
     <artifactId>service-turbine-s1</artifactId>
-    <version>0.0.1</version>
     <packaging>jar</packaging>
 
     <name>service-turbine-s1</name>
-    <description>Demo project for Spring Boot</description>
+    <description>turbine</description>
 
     <parent>
         <groupId>com.c0</groupId>

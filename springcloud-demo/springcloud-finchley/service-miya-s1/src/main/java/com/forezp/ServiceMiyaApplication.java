@@ -32,7 +32,7 @@ public class ServiceMiyaApplication {
 	@RequestMapping("/miya")
 	public String info(){
 		LOG.log(Level.INFO, "info is being called");
-		return restTemplate.getForObject("http://localhost:8988/info",String.class);
+		return restTemplate.getForObject("http://localhost:8604/info",String.class);
 	}
 
 	@Autowired

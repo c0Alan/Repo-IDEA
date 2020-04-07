@@ -5,11 +5,10 @@
 
     <groupId>com.c0</groupId>
     <artifactId>service-hi-s3</artifactId>
-    <version>0.0.3</version>
     <packaging>jar</packaging>
 
     <name>service-hi-s3</name>
-    <description>Demo project for Spring Boot</description>
+    <description>hystrix-dashboard</description>
 
     <parent>
         <groupId>com.c0</groupId>
