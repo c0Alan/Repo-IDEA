@@ -9,7 +9,7 @@
     <packaging>pom</packaging>
     <version>1.0.0</version>
     <modules>
-        <module>helloworld</module>
+        <module>djb-helloworld</module>
     </modules>
 
     <properties>
