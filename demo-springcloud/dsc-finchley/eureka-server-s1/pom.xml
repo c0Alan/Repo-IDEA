@@ -3,7 +3,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.c0</groupId>
+    <groupId>com.demo.springcloud</groupId>
     <artifactId>eureka-server-s1</artifactId>
     <version>0.0.1</version>
     <packaging>jar</packaging>
@@ -12,8 +12,8 @@
     <description>Demo project for Spring Boot</description>
 
     <parent>
-        <groupId>com.c0</groupId>
-        <artifactId>springcloud-finchley</artifactId>
+        <groupId>com.demo.springcloud</groupId>
+        <artifactId>dsc-finchley</artifactId>
         <version>1.0</version>
     </parent>
 
