@@ -3,13 +3,13 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.c0</groupId>
-    <artifactId>springcloud-finchley</artifactId>
+    <groupId>com.demo.springcloud</groupId>
+    <artifactId>dsc-finchley</artifactId>
     <version>1.0</version>
     <packaging>pom</packaging>
 
-    <name>springcloud-finchley</name>
-    <description>Demo project for Spring Boot</description>
+    <name>dsc-finchley</name>
+    <description>demo springcloud finchley</description>
 
     <parent>
         <groupId>org.springframework.boot</groupId>
