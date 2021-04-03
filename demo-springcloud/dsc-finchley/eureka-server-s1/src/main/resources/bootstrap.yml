@@ -6,12 +6,12 @@ server:
 eureka:
   instance:
     prefer-ip-address: true
-    hostname: 172.28.50.140
+    hostname: localhost
   client:
     registerWithEureka: true
     fetchRegistry: true
     serviceUrl:
-      defaultZone: http://172.25.20.143:8502/eureka
+      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka
 
 spring:
   application:
