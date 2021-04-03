@@ -10,7 +10,7 @@ source /etc/profile
 #-------------------------------------------------------------------
 
 # 模块名
-MODEL_NAME=`echo suntek-datav-gz*.jar`
+MODEL_NAME=`echo eureka-server-s1*.jar`
 
 # 选项
 MODEL_OPTS=""
