@@ -1,6 +1,8 @@
 package com.forezp.servicefeign.web;
 
 import com.forezp.servicefeign.clients.SchedualServiceHi;
+import io.swagger.annotations.ApiImplicitParam;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -20,6 +22,8 @@ public class HiController {
     @Autowired
     SchedualServiceHi schedualServiceHi;
 
+    @ApiOperation(value="sayHi", notes="sayHi")
+    @ApiImplicitParam(name = "name", value = "name", required = true, dataType = "String", paramType = "query")
     @GetMapping(value = "/hi")
     public String sayHi(@RequestParam String name) {
         return schedualServiceHi.sayHiFromClientOne( name );

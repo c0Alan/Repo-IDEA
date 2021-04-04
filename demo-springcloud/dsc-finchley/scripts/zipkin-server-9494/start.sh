@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # --spring.profiles.active=daily
-# --spring.config.location=classpath:/application.yml
+# --spring.config.location=classpath:/bootstrap.yml
 # -Xmn250m 年轻代
 # -Xmx3550m JVM最大可用内存
 # -Xms3550m JVM初始内存

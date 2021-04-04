@@ -1,0 +1,21 @@
+eureka:
+  instance:
+    prefer-ip-address: true
+  client:
+    serviceUrl:
+      defaultZone: http://172.25.20.202:20199/eureka/
+server:
+  port: 20196
+spring:
+  application:
+    name: service-feign
+  cloud:
+    inetutils:
+      ignored-interfaces:
+        - docker.*
+        - veth.*
+        - VMware.*
+        - VMnet.*
+        - lo
+logging:
+  config: classpath:logback-spring.xml

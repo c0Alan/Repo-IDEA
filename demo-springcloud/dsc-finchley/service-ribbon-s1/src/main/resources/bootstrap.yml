@@ -1,0 +1,17 @@
+
+
+eureka:
+  instance:
+    prefer-ip-address: true
+  client:
+    serviceUrl:
+      defaultZone: http://172.25.20.202:20199/eureka/
+server:
+  port: 20197
+spring:
+  application:
+    name: service-ribbon
+
+logging:
+  config: classpath:logback-spring.xml
+
