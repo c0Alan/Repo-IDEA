@@ -21,12 +21,12 @@ public class Swagger2 {
                 .apis(RequestHandlerSelectors.basePackage("com.forezp.serviceribbon.web"))
                 .paths(PathSelectors.any())
                 .build().apiInfo(new ApiInfoBuilder()
-                        .title("SpringBoot整合Swagger")
+                        .title("Swagger")
                         .description("SpringBoot整合Swagger，详细信息......")
                         .version("9.0")
-                        .contact(new Contact("啊啊啊啊","blog.csdn.net","aaa@gmail.com"))
+                        .contact(new Contact("aa","blog.csdn.net","aaa@gmail.com"))
                         .license("The Apache License")
-                        .licenseUrl("http://www.javaboy.org")
+                        .licenseUrl("")
                         .build());
     }
 }
