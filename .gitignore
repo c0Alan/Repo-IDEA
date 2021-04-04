@@ -4,3 +4,4 @@
 *.class
 target
 application-local.properties
+*.log

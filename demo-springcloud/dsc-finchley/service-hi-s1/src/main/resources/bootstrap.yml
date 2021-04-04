@@ -1,0 +1,19 @@
+server:
+  port: 20198
+
+spring:
+  application:
+    name: service-hi
+  cloud:
+    inetutils:
+      ignored-interfaces:
+        - docker.*
+        - veth.*
+        - VMware.*
+        - VMnet.*
+        - lo
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://172.25.20.202:20199/eureka/

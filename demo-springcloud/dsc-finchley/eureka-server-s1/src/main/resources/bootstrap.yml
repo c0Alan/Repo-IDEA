@@ -16,6 +16,14 @@ eureka:
 spring:
   application:
     name: eurka-server
+  cloud:
+    inetutils:
+      ignored-interfaces:
+        - docker.*
+        - veth.*
+        - VMware.*
+        - VMnet.*
+        - lo
 
 logging:
   cnfig: classpath:logback-spring.xml

@@ -61,5 +61,6 @@
 			</includes>
 			<outputDirectory>bin</outputDirectory>
 		</dependencySet>
+
 	</dependencySets>
 </assembly>

@@ -20,6 +20,7 @@
 
     <modules>
         <module>eureka-server-s1</module>
+        <module>service-hi-s1</module>
     </modules>
 
     <properties>
