@@ -4,7 +4,10 @@
 
 方志朋的个人博客：https://www.fangzhipeng.com/
 
-### Finchley版本 
+## 源码路径
+https://gitee.com/forezp/SpringCloudLearning
+
+## Finchley版本 
 
 Spring Cloud Finchley; Spring Boot 2.0.3
 
@@ -130,7 +133,7 @@ service-hi-s1:8762
 
 service-gateway-s1:8081
 
-### 源码篇：
+## 源码篇：
 
 * [深入理解Feign之源码解析](http://blog.csdn.net/forezp/article/details/73480304)
 * [深入理解Eureka之源码解析](http://blog.csdn.net/forezp/article/details/73017664)
@@ -138,7 +141,7 @@ service-gateway-s1:8081
 *  [ 深入理解Hystrix之文档翻译](http://blog.csdn.net/forezp/article/details/75333088)
 * [深入理解Zuul之源码解析](http://blog.csdn.net/forezp/article/details/76211680)
 
-### 进阶篇
+## 进阶篇
 
 * [ Spring Cloud Sleuth超详细实战](http://blog.csdn.net/forezp/article/details/76795269)
 * [拜托！面试请不要再问我Spring Cloud底层原理](https://blog.csdn.net/forezp/article/details/83999882)

@@ -9,32 +9,26 @@
         <version>1.0</version>
     </parent>
 
-    <artifactId>service-ribbon-s1</artifactId>
+    <artifactId>service-feign-hystrix</artifactId>
     <packaging>jar</packaging>
 
-    <name>service-ribbon-s1</name>
-    <description>Demo project for Spring Boot</description>
+    <name>service-feign-hystrix</name>
+    <description>feign+hystix</description>
 
     <dependencies>
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
         </dependency>
-        <!--<dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter</artifactId>
-        </dependency>-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
         <dependency>
             <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-netflix-ribbon</artifactId>
+            <artifactId>spring-cloud-starter-openfeign</artifactId>
         </dependency>
-
     </dependencies>
-
 
 
 </project>

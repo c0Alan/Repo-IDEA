@@ -1,5 +1,3 @@
-
-
 eureka:
   instance:
     prefer-ip-address: true
@@ -7,10 +5,10 @@ eureka:
     serviceUrl:
       defaultZone: http://172.25.20.202:20199/eureka/
 server:
-  port: 20197
+  port: 20195
 spring:
   application:
-    name: service-ribbon
+    name: service-ribbon-hystrix
   cloud:
     inetutils:
       ignored-interfaces:
@@ -19,7 +17,14 @@ spring:
         - VMware.*
         - VMnet.*
         - lo
-
 logging:
   config: classpath:logback-spring.xml
 
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            # hystrix 超时时间设置，默认1s
+            timeoutInMilliseconds: 3000

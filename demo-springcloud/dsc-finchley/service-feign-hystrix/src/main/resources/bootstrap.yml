@@ -1,0 +1,40 @@
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://172.25.20.202:20199/eureka/
+server:
+  port: 20194
+spring:
+  application:
+    name: service-feign-hystrix
+  cloud:
+    inetutils:
+      ignored-interfaces:
+        - docker.*
+        - veth.*
+        - VMware.*
+        - VMnet.*
+        - lo
+
+logging:
+  config: classpath:logback-spring.xml
+
+feign:
+  hystrix:
+    enabled: true
+  client:
+    config:
+      # 全局配置
+      default:
+        connectTimeout: 3000
+        readTimeout: 3000
+
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            # hystrix 超时时间设置，默认1s
+            timeoutInMilliseconds: 3000
+
