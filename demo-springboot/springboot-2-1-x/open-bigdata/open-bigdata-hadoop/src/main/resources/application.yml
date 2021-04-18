@@ -1,2 +1,0 @@
-hadoop.name-node: hdfs://10.10.1.142:9000
-hadoop.namespace: /nias

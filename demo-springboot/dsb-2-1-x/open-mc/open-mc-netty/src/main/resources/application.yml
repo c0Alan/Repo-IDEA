@@ -1,0 +1,3 @@
+spring.profiles.active: socket
+logging:
+  config: ./logback-spring.xml

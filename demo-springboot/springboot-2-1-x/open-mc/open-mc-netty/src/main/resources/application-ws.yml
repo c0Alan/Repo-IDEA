@@ -1,5 +1,0 @@
-netty:
-   ws:
-     enabled: true
-     port: 9988
-     endPoint: /ws

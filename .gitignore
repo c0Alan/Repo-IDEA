@@ -6,3 +6,4 @@ target
 application-local.properties
 *.log
 *.out
+*.hprof

@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <artifactId>dsb-2-1-x-controller</artifactId>
+    <packaging>jar</packaging>
+    <version>1.0.0</version>
+    <description>controller-s1</description>
+
+    <parent>
+        <groupId>com.demo.springboot</groupId>
+        <artifactId>dsb-2-1-x</artifactId>
+        <version>1.0.0</version>
+    </parent>
+
+    <dependencies>
+
+
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-assembly-plugin</artifactId>
+                <version>3.3.0</version>
+                <configuration>
+                    <finalName>${project.name}</finalName>
+                    <appendAssemblyId>false</appendAssemblyId> <!-- 包名不含assemblyId -->
+                    <descriptors>
+                        <descriptor>src/main/assembly/assembly.xml</descriptor>
+                    </descriptors>
+                    <!-- 子POM的属性完全覆盖父POM的 <descriptors combine.self="override"/> -->
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>make-assembly</id><!-- ID 标识，命名随意 -->
+                        <phase>package</phase> <!--绑定到package生命周期阶段上 -->
+                        <goals>
+                            <goal>single</goal><!-- 在 PACKAGE 生命周期阶段仅执行一次 -->
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <plugin>
+                <groupId>pl.project13.maven</groupId>
+                <artifactId>git-commit-id-plugin</artifactId>
+                <version>4.0.3</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>revision</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <!--,构建过程中,是否打印详细信息;默认值:false;-->
+                    <verbose>true</verbose>
+                    <!--日期格式;默认值:dd.MM.yyyy '@' HH:mm:ss z;，用于格式化"git.build.time"和"git.commit.time"-->
+                    <dateFormat>yyyyMMddHHmmss</dateFormat>
+                    <skipPoms>true</skipPoms>
+                    <!--git版本，默认7个字符-->
+                    <abbrevLength>8</abbrevLength>
+                    <generateGitPropertiesFile>false</generateGitPropertiesFile>
+                    <!-- <generateGitPropertiesFilename>${project.build.outputDirectory}/version.txt</generateGitPropertiesFilename>-->
+                    <format>txt</format>
+                    <!--<injectAllReactorProjects>true</injectAllReactorProjects>-->
+                    <includeOnlyProperties>git.commit.id.abbrev,git.build.version,git.commit.time,git.branch
+                    </includeOnlyProperties>
+                    <!-- <injectIntoSysProperties>true </injectIntoSysProperties>-->
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>

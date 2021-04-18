@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.demo.springboot</groupId>
+    <artifactId>dsb-2-1-x</artifactId>
+    <version>1.0.0</version>
+    <name>dsb-2-1-x</name>
+    <packaging>pom</packaging>
+    <description>Demo project for Spring Boot 2.1.x</description>
+
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.1.16.RELEASE</version>
+    </parent>
+
+    <modules>
+        <module>basic/dsb-2-1-x-controller</module>
+    </modules>
+
+    <properties>
+        <java.version>1.8</java.version>
+        <commons.lang.version>2.6</commons.lang.version>
+    </properties>
+
+    <dependencyManagement>
+        <dependencies>
+
+            <dependency>
+                <groupId>io.springfox</groupId>
+                <artifactId>springfox-swagger2</artifactId>
+                <version>2.9.2</version>
+            </dependency>
+            <dependency>
+                <groupId>io.springfox</groupId>
+                <artifactId>springfox-swagger-ui</artifactId>
+                <version>2.9.2</version>
+            </dependency>
+
+        </dependencies>
+    </dependencyManagement>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger2</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger-ui</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>fastjson</artifactId>
+            <version>1.2.30</version>
+        </dependency>
+
+        <dependency>
+            <groupId>commons-lang</groupId>
+            <artifactId>commons-lang</artifactId>
+            <version>${commons.lang.version}</version>
+        </dependency>
+
+
+        <dependency>
+            <groupId>com.github.xiaoymin</groupId>
+            <artifactId>swagger-bootstrap-ui</artifactId>
+            <version>1.6</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-devtools</artifactId>
+        </dependency>
+
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <version>2.3.5.RELEASE</version>
+                <configuration>
+                    <includeSystemScope>true</includeSystemScope>
+                </configuration>
+            </plugin>
+            <!--<plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-assembly-plugin</artifactId>
+                <version>3.3.0</version>
+                <configuration>
+                    <finalName>${project.name}</finalName>
+                    <appendAssemblyId>false</appendAssemblyId> &lt;!&ndash; 包名不含assemblyId &ndash;&gt;
+                    <descriptors>
+                        <descriptor>src/main/assembly/assembly.xml</descriptor>
+                    </descriptors>
+                    &lt;!&ndash; 子POM的属性完全覆盖父POM的 <descriptors combine.self="override"/> &ndash;&gt;
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>make-assembly</id>&lt;!&ndash; ID 标识，命名随意 &ndash;&gt;
+                        <phase>package</phase> &lt;!&ndash;绑定到package生命周期阶段上 &ndash;&gt;
+                        <goals>
+                            <goal>single</goal>&lt;!&ndash; 在 PACKAGE 生命周期阶段仅执行一次 &ndash;&gt;
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <plugin>
+                <groupId>pl.project13.maven</groupId>
+                <artifactId>git-commit-id-plugin</artifactId>
+                <version>4.0.3</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>revision</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    &lt;!&ndash;,构建过程中,是否打印详细信息;默认值:false;&ndash;&gt;
+                    <verbose>true</verbose>
+                    &lt;!&ndash;日期格式;默认值:dd.MM.yyyy '@' HH:mm:ss z;，用于格式化"git.build.time"和"git.commit.time"&ndash;&gt;
+                    <dateFormat>yyyyMMddHHmmss</dateFormat>
+                    <skipPoms>true</skipPoms>
+                    &lt;!&ndash;git版本，默认7个字符&ndash;&gt;
+                    <abbrevLength>8</abbrevLength>
+                    <generateGitPropertiesFile>false</generateGitPropertiesFile>
+                    &lt;!&ndash; <generateGitPropertiesFilename>${project.build.outputDirectory}/version.txt</generateGitPropertiesFilename>&ndash;&gt;
+                    <format>txt</format>
+                    &lt;!&ndash;<injectAllReactorProjects>true</injectAllReactorProjects>&ndash;&gt;
+                    <includeOnlyProperties>git.commit.id.abbrev,git.build.version,git.commit.time,git.branch
+                    </includeOnlyProperties>
+                    &lt;!&ndash; <injectIntoSysProperties>true </injectIntoSysProperties>&ndash;&gt;
+                </configuration>
+            </plugin>-->
+        </plugins>
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>true</filtering>
+                <excludes>
+                    <exclude>**/*.xlsx</exclude>
+                    <exclude>**/*.doc</exclude>
+                </excludes>
+            </resource>
+        </resources>
+    </build>
+
+
+</project>
