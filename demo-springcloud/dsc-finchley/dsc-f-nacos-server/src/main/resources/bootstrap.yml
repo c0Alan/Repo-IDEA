@@ -1,0 +1,19 @@
+server:
+  port: 20196
+spring:
+  application:
+    name: dsc-f-nacos-server
+  cloud:
+    inetutils:
+      ignored-interfaces:
+        - docker.*
+        - veth.*
+        - VMware.*
+        - VMnet.*
+        - lo
+    nacos:
+      discovery:
+        server-addr: nacos-center.v-base:30848
+
+logging:
+  config: classpath:logback-spring.xml
