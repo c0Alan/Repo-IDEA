@@ -1,8 +1,8 @@
 server:
-  port: 20193
+  port: 20192
 spring:
   application:
-    name: dsc-f-nacos-server
+    name: dsc-f-nacos-client
   cloud:
     inetutils:
       ignored-interfaces:

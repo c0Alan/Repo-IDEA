@@ -6,9 +6,9 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 
 @EnableDiscoveryClient
 @SpringBootApplication
-public class AlibabaApplication {
+public class Application {
 
     public static void main(String[] args) {
-        SpringApplication.run(AlibabaApplication.class, args);
+        SpringApplication.run(Application.class, args);
     }
 }
