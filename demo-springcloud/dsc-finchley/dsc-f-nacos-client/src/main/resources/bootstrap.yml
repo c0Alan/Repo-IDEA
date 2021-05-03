@@ -14,6 +14,10 @@ spring:
     nacos:
       discovery:
         server-addr: nacos-center.v-base:30848
+      config:
+        server-addr: nacos-center.v-base:30848
+        prefix: dsc-f-nacos-client
+        file-extension: properties
 
 logging:
   config: classpath:logback-spring.xml
