@@ -1,0 +1,23 @@
+server:
+  port: 20193
+spring:
+  application:
+    name: dsc-f-xxl-job
+  cloud:
+    inetutils:
+      ignored-interfaces:
+        - docker.*
+        - veth.*
+        - VMware.*
+        - VMnet.*
+        - lo
+    nacos:
+      discovery:
+        server-addr: nacos-center.v-base:30848
+      config:
+        server-addr: nacos-center.v-base:30848
+        prefix: test
+        file-extension: properties
+
+logging:
+  config: classpath:logback-spring.xml
