@@ -10,7 +10,7 @@ source /etc/profile
 #-------------------------------------------------------------------
 
 # 模块名
-MODEL_NAME=`echo dsc-f-nacos-client*.jar`
+MODEL_NAME=`echo dsc-f-xxl-job*.jar`
 
 # 选项
 MODEL_OPTS=""
