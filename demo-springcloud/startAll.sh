@@ -13,7 +13,7 @@ for file in `ls .`
 do
 if [ -d $file ]
 then
-echo "stop $file"
+echo "start $file"
 cd $file
 sh bin/run.sh start
 cd ..

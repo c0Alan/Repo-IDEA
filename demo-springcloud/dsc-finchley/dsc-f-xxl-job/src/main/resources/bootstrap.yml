@@ -14,10 +14,12 @@ spring:
     nacos:
       discovery:
         server-addr: nacos-center.v-base:30848
+        namespace: 57e6ca16-0f0a-445a-b0d0-8361f298f1a5
       config:
         server-addr: nacos-center.v-base:30848
-        prefix: test
+        prefix: dsc-f-xxl-job
         file-extension: properties
+        group: dsc
 
 logging:
   config: classpath:logback-spring.xml
