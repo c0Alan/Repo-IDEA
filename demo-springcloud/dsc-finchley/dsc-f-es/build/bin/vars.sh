@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # PROFILES参数
-SPRING_PROFILES_ACTIVE="prod"
+SPRING_PROFILES_ACTIVE="base,prod"
 
 # 如果使用nacos配置中心，开启以下配置，反之注释掉以下配置
 MODEL_VARS_VALUE="--spring.config.location=../conf/ --spring.profiles.active=${SPRING_PROFILES_ACTIVE} --logging.config=../conf/logback-spring.xml"
