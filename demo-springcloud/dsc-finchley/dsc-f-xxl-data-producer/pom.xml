@@ -4,10 +4,10 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.demo.springcloud</groupId>
-    <artifactId>dsc-f-xxl-job</artifactId>
+    <artifactId>dsc-f-xxl-data-producer</artifactId>
     <packaging>jar</packaging>
 
-    <name>dsc-f-xxl-job</name>
+    <name>dsc-f-xxl-data-producer</name>
     <description>Demo project for Spring Boot</description>
 
 

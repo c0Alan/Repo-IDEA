@@ -1,8 +1,8 @@
 server:
-  port: 30001
+  port: 30003
 spring:
   application:
-    name: dsc-f-xxl-job
+    name: dsc-f-xxl-data-producer
   cloud:
     inetutils:
       ignored-interfaces:
@@ -18,7 +18,7 @@ spring:
         group: dsc
       config:
         server-addr: nacos-center.v-base:30848
-        prefix: dsc-f-xxl-job
+        prefix: dsc-f-xxl-data-producer
         file-extension: properties
         group: dsc
         namespace: 57e6ca16-0f0a-445a-b0d0-8361f298f1a5
