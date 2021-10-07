@@ -1,3 +1,14 @@
+
 spring:
-  profiles:
-    active: local
+  data:
+    elasticsearch:
+      # 集群名
+      cluster-name: bigdata
+      # 连接节点,注意在集群中通信都是9300端口，否则会报错无法连接上！
+      # cluster-nodes: 10.10.2.139:9300
+      cluster-nodes: 172.25.20.57:9501
+      # 是否本地连接
+      local: false
+      repositories:
+      # 仓库中数据存储
+      enabled: true
