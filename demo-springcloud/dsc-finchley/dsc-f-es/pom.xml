@@ -9,7 +9,6 @@
     <name>dsc-f-es</name>
     <description>Demo project for Spring Boot</description>
 
-
     <parent>
         <groupId>com.demo.springcloud</groupId>
         <artifactId>dsc-finchley</artifactId>

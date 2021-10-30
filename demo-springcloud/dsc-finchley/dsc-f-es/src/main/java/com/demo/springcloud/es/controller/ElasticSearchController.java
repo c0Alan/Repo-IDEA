@@ -3,6 +3,7 @@ package com.demo.springcloud.es.controller;
 import com.demo.springcloud.es.entity.BusReceiverEntity;
 import com.demo.springcloud.es.service.BusReceiverService;
 import com.demo.springcloud.es.utils.NameBuildUtils;
+import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.ArrayList;
 import java.util.List;
 
-
+@Api(tags={"es操作测试接口"})
 @RestController
 @RequestMapping("/es")
 public class ElasticSearchController {
