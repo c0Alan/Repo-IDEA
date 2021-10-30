@@ -7,3 +7,4 @@ application-local.properties
 *.log
 *.out
 *.hprof
+tree.txt
