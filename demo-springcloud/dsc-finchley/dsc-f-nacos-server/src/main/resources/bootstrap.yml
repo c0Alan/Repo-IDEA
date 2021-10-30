@@ -1,5 +1,5 @@
 server:
-  port: 20193
+  port: 30006
 spring:
   application:
     name: dsc-f-nacos-server
@@ -16,6 +16,12 @@ spring:
         server-addr: nacos-center.v-base:30848
         namespace: 57e6ca16-0f0a-445a-b0d0-8361f298f1a5
         group: dsc
+      config:
+        server-addr: nacos-center.v-base:30848
+        prefix: dsc-f-nacos-server
+        file-extension: properties
+        group: dsc
+        namespace: 57e6ca16-0f0a-445a-b0d0-8361f298f1a5
 
 
 logging:
