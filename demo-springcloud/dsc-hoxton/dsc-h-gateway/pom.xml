@@ -4,7 +4,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.demo.springcloud</groupId>
-    <artifactId>dsc-g-gateway</artifactId>
+    <artifactId>dsc-h-gateway</artifactId>
     <packaging>jar</packaging>
 
     <name>dsc-g-gateway</name>
@@ -13,7 +13,7 @@
 
     <parent>
         <groupId>com.demo.springcloud</groupId>
-        <artifactId>dsc-greenwich</artifactId>
+        <artifactId>dsc-hoxton</artifactId>
         <version>1.0</version>
     </parent>
 
