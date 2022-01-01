@@ -1,0 +1,6 @@
+system=dsc-hoxton
+module=dsc-h-flyway
+version = ${project.version}
+git.commit.id=${git.commit.id.abbrev}
+git.commit.time=${git.commit.time}
+git.branch=${git.branch}
