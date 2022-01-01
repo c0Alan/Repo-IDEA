@@ -23,6 +23,7 @@
 				<exclude>com/**</exclude>
 				<exclude>application.yml</exclude>
 				<exclude>application-local.properties</exclude>
+				<exclude>generatorConfig.xml</exclude>
 			</excludes>
 			<fileMode>0644</fileMode>
 		</fileSet>
