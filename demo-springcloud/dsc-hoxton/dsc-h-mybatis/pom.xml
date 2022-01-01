@@ -4,11 +4,11 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.demo.springcloud</groupId>
-    <artifactId>dsc-h-jdbc</artifactId>
+    <artifactId>dsc-h-mybatis</artifactId>
     <packaging>jar</packaging>
 
-    <name>dsc-h-jdbc</name>
-    <description>springcloud hoxton 版本整合 jdbc</description>
+    <name>dsc-h-mybatis</name>
+    <description>springcloud hoxton 版本整合 mybatis</description>
 
 
     <parent>

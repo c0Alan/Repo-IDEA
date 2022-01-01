@@ -1,5 +1,5 @@
 system=dsc-hoxton
-module=dsc-h-jdbc
+module=dsc-h-mybatis
 version = ${project.version}
 git.commit.id=${git.commit.id.abbrev}
 git.commit.time=${git.commit.time}

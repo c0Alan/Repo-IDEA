@@ -10,7 +10,7 @@ source /etc/profile
 #-------------------------------------------------------------------
 
 # 模块名
-MODEL_NAME=`echo dsc-h-jdbc*.jar`
+MODEL_NAME=`echo dsc-h-mybatis*.jar`
 
 # 选项
 MODEL_OPTS=""
