@@ -21,6 +21,7 @@
     <modules>
         <module>dsc-h-gateway</module>
         <module>dsc-h-service-server</module>
+        <module>dsc-h-flyway</module>
     </modules>
 
     <properties>
