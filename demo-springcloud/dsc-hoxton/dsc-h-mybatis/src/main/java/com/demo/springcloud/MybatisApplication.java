@@ -6,9 +6,9 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 
 @EnableDiscoveryClient
 @SpringBootApplication
-public class JdbcApplication {
+public class MybatisApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(JdbcApplication.class, args);
+        SpringApplication.run(MybatisApplication.class, args);
     }
 }

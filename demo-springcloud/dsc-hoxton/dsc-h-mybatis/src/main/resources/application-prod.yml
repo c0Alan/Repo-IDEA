@@ -1,6 +1,6 @@
 spring:
   datasource:
-    driver-class-name: com.mysql.jdbc.Driver      # 配置MySQL的驱动程序类
+    driver-class-name: com.mysql.cj.jdbc.Driver      # 配置MySQL的驱动程序类
     url: jdbc:mysql://${mysql.ipPort}/${mysql.dbName}?allowMultiQueries=true&useUnicode=true&characterEncoding=UTF-8           # 数据库连接地址
     username: ${mysql.username}
     password: ${mysql.password}
@@ -24,6 +24,8 @@ spring:
     placeholder-replacement: false
     validate-on-migrate: false
 
-
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+  type-aliases-package: com.demo.springcloud.entity
 
 

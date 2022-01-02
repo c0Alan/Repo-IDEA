@@ -8,30 +8,26 @@ import java.util.List;
  * @author liuxl
  */
 public interface UserService {
-    /**
-     * 写入数据
-     * @return
-     */
-    int saveUser();
 
     /**
-     * 查询数据
+     * 新增单个用户
+     * @param user
      * @return
      */
-    List<User> queryAllUser();
+    public int saveUser(User user);
 
     /**
-     * 更新数据
-     * @param User
-     * @return
-     */
-    int updateUser(User User);
-
-    /**
-     * 删除数据
+     * 根据id查询单个用户
      * @param id
      * @return
      */
-    int deleteUser(Integer id);
+    public User getUserById(int id);
+
+    /**
+     * 根据年龄查询用户
+     * @param age
+     * @return
+     */
+    public List<User> listUserByAge(int age);
 
 }
