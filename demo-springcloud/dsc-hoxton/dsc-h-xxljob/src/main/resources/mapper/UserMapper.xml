@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.demo.springcloud.mapper.UserMapper">
+    <resultMap id="BaseResultMap" type="com.demo.springcloud.entity.User">
+        <result column="id" jdbcType="INTEGER" property="id"/>
+        <result column="username" jdbcType="VARCHAR" property="username"/>
+        <result column="age" jdbcType="INTEGER" property="age"/>
+    </resultMap>
+    <insert id="insert" parameterType="com.demo.springcloud.entity.User">
+        insert into t_user (id, username, age)
+        values (#{id,jdbcType=INTEGER}, #{username,jdbcType=VARCHAR}, #{age,jdbcType=INTEGER})
+    </insert>
+    <insert id="insertSelective" parameterType="com.demo.springcloud.entity.User">
+        insert into t_user
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            <if test="username != null">
+                username,
+            </if>
+            <if test="age != null">
+                age,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=INTEGER},
+            </if>
+            <if test="username != null">
+                #{username,jdbcType=VARCHAR},
+            </if>
+            <if test="age != null">
+                #{age,jdbcType=INTEGER},
+            </if>
+        </trim>
+    </insert>
+
+    <select id="listUserByAge" parameterType="int" resultType="com.demo.springcloud.entity.User">
+        select *
+        from t_user
+        where age = #{age}
+    </select>
+</mapper>
