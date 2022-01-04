@@ -9,6 +9,6 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 public class XxljobApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(MybatisApplication.class, args);
+        SpringApplication.run(XxljobApplication.class, args);
     }
 }
