@@ -25,6 +25,7 @@
         <module>dsc-h-jdbc</module>
         <module>dsc-h-mybatis</module>
         <module>dsc-h-xxljob</module>
+        <module>dsc-h-feign</module>
     </modules>
 
     <properties>
@@ -196,6 +197,12 @@
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <optional>true</optional>
+        </dependency>
+
+        <dependency>
+            <groupId>cn.hutool</groupId>
+            <artifactId>hutool-all</artifactId>
+            <version>5.7.19</version>
         </dependency>
 
 
