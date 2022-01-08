@@ -20,7 +20,7 @@
 
     <modules>
         <module>dsc-h-gateway</module>
-        <module>dsc-h-service-server</module>
+        <module>dsc-h-service</module>
         <module>dsc-h-flyway</module>
         <module>dsc-h-jdbc</module>
         <module>dsc-h-mybatis</module>

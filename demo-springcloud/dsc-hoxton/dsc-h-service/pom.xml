@@ -4,10 +4,10 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.demo.springcloud</groupId>
-    <artifactId>dsc-h-service-server</artifactId>
+    <artifactId>dsc-h-service</artifactId>
     <packaging>jar</packaging>
 
-    <name>dsc-h-service-server</name>
+    <name>dsc-h-service</name>
     <description>Demo project for Spring Boot</description>
 
 

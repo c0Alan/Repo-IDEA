@@ -2,7 +2,7 @@ server:
   port: 30006
 spring:
   application:
-    name: dsc-h-service-server
+    name: dsc-h-service
   cloud:
     inetutils:
       ignored-interfaces:
@@ -18,7 +18,7 @@ spring:
         group: dsc
       config:
         server-addr: nacos-center.v-base:30848
-        prefix: dsc-h-service-server
+        prefix: dsc
         file-extension: properties
         group: dsc
         namespace: 57e6ca16-0f0a-445a-b0d0-8361f298f1a5

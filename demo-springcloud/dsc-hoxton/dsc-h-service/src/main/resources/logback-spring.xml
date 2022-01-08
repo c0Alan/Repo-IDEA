@@ -3,8 +3,8 @@
 	<include
 		resource="org/springframework/boot/logging/logback/defaults.xml" />
 
-	<property name="log.context.name" value="dsc-h-service-server" />
-	<property name="log.error" value="dsc-h-service-server-error" />
+	<property name="log.context.name" value="dsc-h-service" />
+	<property name="log.error" value="dsc-h-service-error" />
 	<property name="log.charset" value="UTF-8" />
 	<property name="log.basedir" value="../logs" />  <!-- 日志文件存储位置 -->
 	<property name="FILE_LOG_PATTERN"
