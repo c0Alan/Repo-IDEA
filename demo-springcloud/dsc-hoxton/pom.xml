@@ -26,6 +26,7 @@
         <module>dsc-h-mybatis</module>
         <module>dsc-h-xxljob</module>
         <module>dsc-h-feign</module>
+        <module>dsc-h-tool</module>
     </modules>
 
     <properties>
@@ -203,6 +204,12 @@
             <groupId>cn.hutool</groupId>
             <artifactId>hutool-all</artifactId>
             <version>5.7.19</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.demo.springcloud</groupId>
+            <artifactId>dsc-h-commons</artifactId>
+            <version>1.0</version>
         </dependency>
 
 

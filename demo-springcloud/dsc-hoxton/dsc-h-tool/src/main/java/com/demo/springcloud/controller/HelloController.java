@@ -1,6 +1,5 @@
 package com.demo.springcloud.controller;
 
-import com.demo.springcloud.utils.net.NetUtil;
 import io.swagger.annotations.Api;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,9 +14,8 @@ import org.springframework.web.bind.annotation.RestController;
 public class HelloController {
     @GetMapping("/hello")
     public String hello(@RequestParam String name) {
-        String serverIp = NetUtil.getServerIpList();
-        log.info("serverIp: " + serverIp + ",invoked hello，name = " + name);
-        return "serverIp: " + serverIp + ",hello " + name;
+        log.info("invoked hello1，name = " + name);
+        return "hello1 " + name;
     }
 
     @GetMapping("/hello2")
