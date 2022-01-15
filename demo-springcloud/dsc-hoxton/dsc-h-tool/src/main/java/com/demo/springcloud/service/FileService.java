@@ -8,6 +8,8 @@ public interface FileService {
 
     String readFileApplicationHome(String filename);
 
+    String getFilePath(String filename);
+
     String writeFileApplicationHome();
 
     public String readFileRelativePath();

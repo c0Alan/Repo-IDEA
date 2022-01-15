@@ -81,6 +81,13 @@ public class FileServiceImpl implements FileService {
     }
 
     @Override
+    public String getFilePath(String filename) {
+        String readPath = StrUtil.replace(appFileConfig.getReadPath(), "/", File.separator);
+        String fullPath = getApplicationHome() + File.separator + readPath + File.separator + filename;
+        return fullPath;
+    }
+
+    @Override
     public String writeFileApplicationHome() {
         ApplicationHome h = new ApplicationHome(getClass());
         String absolutePath = h.getSource().getParentFile().toString();

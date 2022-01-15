@@ -32,8 +32,11 @@ public class AppFileConfig {
     @Value("${app.file.read-path:file/write}")
     private String writePath;
 
-    @Value("${app.file.filename.user:user.json}")
-    private String userFilename;
+    @Value("${app.file.filename.user-json:user.json}")
+    private String userJsonFilename;
+
+    @Value("${app.file.filename.xzqh-excel:行政区划数据.xlsx}")
+    private String xzqhExcelFilename;
 
     /**
      * 由于加了@Data注解，所以该方法不生效的

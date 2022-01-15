@@ -24,7 +24,7 @@ public class FileController {
 
     @GetMapping("/readUserFile")
     public String readUserFile(){
-        String result = fileService.readFileApplicationHome(appFileConfig.getUserFilename());
+        String result = fileService.readFileApplicationHome(appFileConfig.getUserJsonFilename());
         return result;
     }
 

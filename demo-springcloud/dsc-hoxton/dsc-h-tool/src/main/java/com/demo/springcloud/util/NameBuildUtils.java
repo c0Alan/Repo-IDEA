@@ -1,10 +1,7 @@
 package com.demo.springcloud.util;
 
 import com.demo.springcloud.entity.BusReceiverEntity;
-import net.sourceforge.pinyin4j.PinyinHelper;
-import net.sourceforge.pinyin4j.format.HanyuPinyinCaseType;
-import net.sourceforge.pinyin4j.format.HanyuPinyinOutputFormat;
-import net.sourceforge.pinyin4j.format.HanyuPinyinToneType;
+
 
 import java.util.Random;
 import java.util.concurrent.atomic.AtomicLong;
@@ -139,7 +136,7 @@ public class NameBuildUtils {
      * @param chinese
      * @return
      */
-    public static String ToPinyin(String chinese){
+    /*public static String ToPinyin(String chinese){
         String pinyinStr = "";
         char[] newChar = chinese.toCharArray();
         HanyuPinyinOutputFormat defaultFormat = new HanyuPinyinOutputFormat();
@@ -158,10 +155,10 @@ public class NameBuildUtils {
             }
         }
         return pinyinStr;
-    }
+    }*/
 
     static AtomicLong atomicLong = new AtomicLong(60000000);
-    public static BusReceiverEntity buildReceiver(){
+    /*public static BusReceiverEntity buildReceiver(){
 
         String name = NameBuildUtils.buildName();
         BusReceiverEntity entity = new BusReceiverEntity(atomicLong.incrementAndGet(),
@@ -170,7 +167,7 @@ public class NameBuildUtils {
         entity.setId(SnowflakeIdWorker.buildId());
 
         return entity;
-    }
+    }*/
 
 
 
@@ -178,9 +175,9 @@ public class NameBuildUtils {
 
 
     public static void main(String[] args) {
-        for(int i = 0 ;i<10000;i++){
+        /*for(int i = 0 ;i<10000;i++){
             System.out.println(ToPinyin(NameBuildUtils.buildAddree()));
-        }
+        }*/
 
     }
 

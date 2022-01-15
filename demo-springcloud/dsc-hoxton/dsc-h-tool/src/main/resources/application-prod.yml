@@ -24,5 +24,9 @@ spring:
     placeholder-replacement: false
     validate-on-migrate: false
 
-
+app:
+  file:
+    filename:
+      user-json: user.json
+      xzqh-excel: 行政区划数据.xlsx
 
