@@ -1,5 +1,6 @@
 #!/bin/bash
 
+appHomeDir=$(cd `dirname $0` && cd .. && pwd)
 baseDir=$(cd `dirname $0` && pwd)
 cd $baseDir
 
@@ -39,6 +40,7 @@ SLEEP_MIN=5
 # model info can be define here
 MODEL_SYMBOL=${MODEL_NAME}
 GREP_KEY="Diname="${MODEL_SYMBOL}
+ENV_VARS="-DappHomeDir=${appHomeDir} -Denvtest=hahaha"
 
 
 #----------------------------------------------------------
@@ -109,10 +111,10 @@ else
         if [ $MODEL_DAEMON = 0 ]
         then
                 echo "try to start ${MODEL_NAME} ... foreground"
-                $JAVA_HOME/bin/java -${GREP_KEY} ${MODEL_OPTS} -jar ${JVM_VARS} ${MODEL_JAR} ${MODEL_VARS}
+                $JAVA_HOME/bin/java -${GREP_KEY} ${ENV_VARS} ${MODEL_OPTS} -jar ${JVM_VARS} ${MODEL_JAR} ${MODEL_VARS}
         else
                 echo "try to start ${MODEL_NAME} ... backgroud"
-                nohup $JAVA_HOME/bin/java -${GREP_KEY} ${MODEL_OPTS} -jar ${JVM_VARS} ${MODEL_JAR} ${MODEL_VARS} 1>&- 2>>${MODEL_LOG} &
+                nohup $JAVA_HOME/bin/java -${GREP_KEY} ${ENV_VARS} ${MODEL_OPTS} -jar ${JVM_VARS} ${MODEL_JAR} ${MODEL_VARS} 1>&- 2>>${MODEL_LOG} &
                 sleep $SLEEP_MIN
                 modelService_is_exist
                 if [ $? -eq "0" ]

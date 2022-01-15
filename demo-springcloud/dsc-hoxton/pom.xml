@@ -19,14 +19,14 @@
     </parent>
 
     <modules>
-        <module>dsc-h-gateway</module>
-        <module>dsc-h-service</module>
-        <module>dsc-h-flyway</module>
-        <module>dsc-h-jdbc</module>
-        <module>dsc-h-mybatis</module>
-        <module>dsc-h-xxljob</module>
+        <!--<module>dsc-h-gateway</module>-->
+        <!--<module>dsc-h-service</module>-->
+        <!--<module>dsc-h-flyway</module>-->
+        <!--<module>dsc-h-jdbc</module>-->
+        <!--<module>dsc-h-mybatis</module>-->
+        <!--<module>dsc-h-xxljob</module>-->
         <module>dsc-h-feign</module>
-        <module>dsc-h-tool</module>
+        <!--<module>dsc-h-tool</module>-->
     </modules>
 
     <properties>
@@ -153,6 +153,18 @@
                 <version>2.3.0</version>
             </dependency>
 
+            <dependency>
+                <groupId>cn.hutool</groupId>
+                <artifactId>hutool-all</artifactId>
+                <version>5.7.18</version>
+            </dependency>
+
+            <dependency>
+                <groupId>commons-io</groupId>
+                <artifactId>commons-io</artifactId>
+                <version>2.11.0</version>
+            </dependency>
+
         </dependencies>
     </dependencyManagement>
 
@@ -203,7 +215,11 @@
         <dependency>
             <groupId>cn.hutool</groupId>
             <artifactId>hutool-all</artifactId>
-            <version>5.7.19</version>
+        </dependency>
+
+        <dependency>
+            <groupId>commons-io</groupId>
+            <artifactId>commons-io</artifactId>
         </dependency>
 
         <dependency>
