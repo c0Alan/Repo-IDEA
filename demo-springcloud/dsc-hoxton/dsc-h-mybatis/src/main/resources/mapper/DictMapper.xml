@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.demo.springcloud.mapper.DictMapper">
+  <resultMap id="BaseResultMap" type="com.demo.springcloud.entity.Dict">
+    <result column="id" jdbcType="INTEGER" property="id" />
+    <result column="dict_level" jdbcType="TINYINT" property="dictLevel" />
+    <result column="dict_type_code" jdbcType="VARCHAR" property="dictTypeCode" />
+    <result column="dict_type_name" jdbcType="VARCHAR" property="dictTypeName" />
+    <result column="dict_data_code" jdbcType="VARCHAR" property="dictDataCode" />
+    <result column="dict_data_name" jdbcType="VARCHAR" property="dictDataName" />
+  </resultMap>
+  <insert id="insert" parameterType="com.demo.springcloud.entity.Dict">
+    insert into t_dict (id, dict_level, dict_type_code, 
+      dict_type_name, dict_data_code, dict_data_name
+      )
+    values (#{id,jdbcType=INTEGER}, #{dictLevel,jdbcType=TINYINT}, #{dictTypeCode,jdbcType=VARCHAR}, 
+      #{dictTypeName,jdbcType=VARCHAR}, #{dictDataCode,jdbcType=VARCHAR}, #{dictDataName,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.demo.springcloud.entity.Dict">
+    insert into t_dict
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="dictLevel != null">
+        dict_level,
+      </if>
+      <if test="dictTypeCode != null">
+        dict_type_code,
+      </if>
+      <if test="dictTypeName != null">
+        dict_type_name,
+      </if>
+      <if test="dictDataCode != null">
+        dict_data_code,
+      </if>
+      <if test="dictDataName != null">
+        dict_data_name,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="dictLevel != null">
+        #{dictLevel,jdbcType=TINYINT},
+      </if>
+      <if test="dictTypeCode != null">
+        #{dictTypeCode,jdbcType=VARCHAR},
+      </if>
+      <if test="dictTypeName != null">
+        #{dictTypeName,jdbcType=VARCHAR},
+      </if>
+      <if test="dictDataCode != null">
+        #{dictDataCode,jdbcType=VARCHAR},
+      </if>
+      <if test="dictDataName != null">
+        #{dictDataName,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+</mapper>
