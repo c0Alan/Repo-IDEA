@@ -6,6 +6,8 @@ import lombok.Data;
 public class Dict {
     private Integer id;
 
+    private Integer parentId;
+
     private Byte dictLevel;
 
     private String dictTypeCode;

@@ -3,6 +3,7 @@
 <mapper namespace="com.demo.springcloud.mapper.DictMapper">
   <resultMap id="BaseResultMap" type="com.demo.springcloud.entity.Dict">
     <result column="id" jdbcType="INTEGER" property="id" />
+    <result column="parent_id" jdbcType="INTEGER" property="parentId" />
     <result column="dict_level" jdbcType="TINYINT" property="dictLevel" />
     <result column="dict_type_code" jdbcType="VARCHAR" property="dictTypeCode" />
     <result column="dict_type_name" jdbcType="VARCHAR" property="dictTypeName" />
@@ -60,4 +61,21 @@
       </if>
     </trim>
   </insert>
+
+  <insert id="batchInsert" parameterType="com.demo.springcloud.entity.Dict" useGeneratedKeys="false">
+    INSERT INTO t_dict
+    (
+    id, parent_id, dict_level, dict_type_code, dict_type_name, dict_data_code, dict_data_name
+    )
+    VALUES
+    <foreach collection="dictList" item="dict" separator=",">
+      (
+      #{dict.id}, #{dict.parentId}, #{dict.dictLevel}, #{dict.dictTypeCode},
+      #{dict.dictTypeName}, #{dict.dictDataCode}, #{dict.dictDataName}
+      )
+    </foreach>
+  </insert>
+  <select id="getCurrentSysDictId" resultType="java.lang.Integer">
+    SELECT id from t_dict where id &lt; 10000 ORDER BY id desc LIMIT 1
+  </select>
 </mapper>

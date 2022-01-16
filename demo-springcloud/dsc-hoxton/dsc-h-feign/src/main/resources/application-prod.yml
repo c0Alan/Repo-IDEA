@@ -29,5 +29,5 @@ app:
     dsc-h-service:
       service-name: dsc-h-service
       # 指定URL访问，不走负载均衡
-#      url: http://172.25.22.99:30006
+#      url: http://ip:30006
 
