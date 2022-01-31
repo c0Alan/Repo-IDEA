@@ -9,6 +9,7 @@ import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.context.annotation.Configuration;
 
 import java.io.File;
+import java.util.List;
 
 /**
  * xxl-job config
@@ -37,6 +38,12 @@ public class AppFileConfig {
 
     @Value("${app.file.filename.xzqh-excel:行政区划数据.xlsx}")
     private String xzqhExcelFilename;
+
+    @Value("${app.file.filename.dict-excel:字典数据.xlsx}")
+    private String dictExcelFilename;
+
+    @Value("${app.file.filename.dict-excel-sheets}")
+    private List<String> dictExcelSheets;
 
     /**
      * 由于加了@Data注解，所以该方法不生效的

@@ -8,6 +8,8 @@ public class Dict {
 
     private Integer parentId;
 
+    private String srcType;
+
     private Byte dictLevel;
 
     private String dictTypeCode;

@@ -18,12 +18,26 @@ public class ExcelFileController {
     @Autowired
     ExcelService excelService;
 
+    /**
+     * 从 行政区划数据.xlsx 导入字典数据
+     * @return
+     */
+    @GetMapping("/importXzqhDictData")
+    public String importXzqhDictData(){
+        String retult = excelService.importXzqhDictData();
+        return retult;
+    }
+
     @GetMapping("/getXzqhDictData")
     public String getXzqhDictData(){
         return excelService.getXzqhDictData().toString();
     }
 
-    @GetMapping("/saveXzqhDictData")
+    /**
+     * 提取 行政区划数据-old.xlsx 中的数据
+     * @return
+     */
+    //@GetMapping("/saveXzqhDictData")
     public String saveXzqhDictData(){
         String retult = excelService.saveXzqhDictData();
         return retult;

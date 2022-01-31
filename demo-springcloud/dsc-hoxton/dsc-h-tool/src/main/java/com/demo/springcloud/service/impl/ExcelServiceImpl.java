@@ -30,6 +30,14 @@ public class ExcelServiceImpl implements ExcelService {
     MybatisDictService mybatisDictService;
 
     @Override
+    public List<Dict> getXzqhDictDataV2(){
+        String path = fileService.getFilePath(appFileConfig.getXzqhExcelFilename());
+        ExcelReader excelReader = ExcelUtil.getReader(path);
+        List<Dict> xzqhList = excelReader.readAll(Dict.class);
+        return xzqhList;
+    }
+
+    @Override
     public List<XzqhExcelEntity> getXzqhDictData(){
         String path = fileService.getFilePath(appFileConfig.getXzqhExcelFilename());
         ExcelReader excelReader = ExcelUtil.getReader(path);
@@ -37,6 +45,22 @@ public class ExcelServiceImpl implements ExcelService {
         return xzqhList;
     }
 
+    /**
+     * 从 行政区划数据.xlsx 导入数据
+     * @return
+     */
+    @Override
+    public String importXzqhDictData(){
+        List<Dict> dictList = getXzqhDictDataV2();
+        mybatisDictService.saveDictList(dictList);
+        return dictList.toString();
+    }
+
+
+    /**
+     * 提取 行政区划数据-old.xlsx 中的数据
+     * @return
+     */
     @Override
     public String saveXzqhDictData(){
         List<XzqhExcelEntity> list = getXzqhDictData();
@@ -44,6 +68,11 @@ public class ExcelServiceImpl implements ExcelService {
         return dictList.toString();
     }
 
+    /**
+     * 提取 行政区划数据-old.xlsx 中的数据
+     * @param list
+     * @return
+     */
     public List<Dict> buildDictData(List<XzqhExcelEntity> list) {
         int curId = mybatisDictService.getCurrentSysDictId() + 1;
         List<Dict> dictList = new ArrayList<>();

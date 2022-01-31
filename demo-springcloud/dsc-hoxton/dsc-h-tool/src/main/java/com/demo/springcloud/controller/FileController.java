@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 @Api(tags = "文件操作")
 @RestController
 @Slf4j
@@ -42,6 +44,7 @@ public class FileController {
 
     @GetMapping("/readFileAbsolutePath")
     public String readFileAbsolutePath(){
+        List list = appFileConfig.getDictExcelSheets();
         String result = "";
         return result;
     }
