@@ -1,0 +1,67 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver      # 配置MySQL的驱动程序类
+    url: jdbc:mysql://${mysql.ipPort}/${mysql.dbName}?allowMultiQueries=true&useUnicode=true&characterEncoding=UTF-8           # 数据库连接地址
+    username: ${mysql.username}
+    password: ${mysql.password}
+
+  kafka:
+    bootstrap-servers: ${kafka.servers}
+    producer:
+      retries: 0
+      batch-size: 16384
+      buffer-memory: 33554432
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer
+      properties:
+        security:
+          protocol: SASL_PLAINTEXT
+        sasl:
+          jaas:
+            config: org.apache.kafka.common.security.plain.PlainLoginModule required username="${kafka.jaas.username}" password="${kafka.jaas.password}";
+          mechanism: PLAIN
+    consumer:
+      group-id: dsc-h-kafka
+      # 手动提交
+      enable-auto-commit: false
+      auto-offset-reset: latest
+      max-poll-records: 20
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      properties:
+        session.timeout.ms: 60000
+        security:
+          protocol: SASL_PLAINTEXT
+        sasl:
+          jaas:
+            config: org.apache.kafka.common.security.plain.PlainLoginModule required username="${kafka.jaas.username}" password="${kafka.jaas.password}";
+          mechanism: PLAIN
+    listener:
+      log-container-config: false
+      concurrency: 5
+      # 手动提交
+      ack-mode: manual_immediate
+    admin:
+      properties:
+        security:
+          protocol: SASL_PLAINTEXT
+        sasl:
+          jaas:
+            config: org.apache.kafka.common.security.plain.PlainLoginModule required username="${kafka.jaas.username}" password="${kafka.jaas.password}";
+          mechanism: PLAIN
+
+app:
+  kafka:
+    topics:
+      - name: q_dsc_user
+        num-partitions: 3
+        replication-factor: 1
+      - name: q_dsc_topic2
+        num-partitions: 3
+        replication-factor: 1
+      - name: q_dsc_topic3
+        num-partitions: 3
+        replication-factor: 1
+
+
+

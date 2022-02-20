@@ -21,10 +21,10 @@ public class SwaggerConfig {
                 .apis(RequestHandlerSelectors.basePackage("com.demo.springcloud.controller"))
                 .paths(PathSelectors.any())
                 .build().apiInfo(new ApiInfoBuilder()
-                        .title("SpringBoot整合Swagger")
-                        .description("SpringBoot整合Swagger，详细信息......")
+                        .title("dsc-h-tool")
+                        .description("dsc-h-tool 接口文档")
                         .version("9.0")
-                        .contact(new Contact("啊啊啊啊","blog.csdn.net","aaa@gmail.com"))
+                        .contact(new Contact("dsc","blog.csdn.net","aaa@gmail.com"))
                         .license("The Apache License")
                         .licenseUrl("http://www.javaboy.org")
                         .build());

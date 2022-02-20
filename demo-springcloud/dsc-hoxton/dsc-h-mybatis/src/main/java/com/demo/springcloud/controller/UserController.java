@@ -66,4 +66,17 @@ public class UserController {
         return userService.listUserByAge(age);
     }
 
+    /**
+     *
+     * @param userList
+     * @return
+     */
+    @ApiOperation(value="批量新增用户", notes = "批量新增用户")
+    @ApiImplicitParams({
+            @ApiImplicitParam(name = "userList", value = "json对象", required = true, paramType = "body")
+    })
+    @PostMapping("/saveUserList")
+    public int saveDictList(@RequestBody List<User> userList){
+        return userService.saveUserList(userList);
+    }
 }

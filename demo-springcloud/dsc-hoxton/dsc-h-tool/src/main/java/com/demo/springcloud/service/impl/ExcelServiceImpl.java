@@ -9,7 +9,7 @@ import com.demo.springcloud.entity.Dict;
 import com.demo.springcloud.entity.excel.XzqhExcelEntity;
 import com.demo.springcloud.service.ExcelService;
 import com.demo.springcloud.service.FileService;
-import com.demo.springcloud.service.MybatisDictService;
+import com.demo.springcloud.service.MybatisService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -27,7 +27,7 @@ public class ExcelServiceImpl implements ExcelService {
     AppFileConfig appFileConfig;
 
     @Autowired
-    MybatisDictService mybatisDictService;
+    MybatisService mybatisService;
 
     @Override
     public List<Dict> getXzqhDictDataV2(){
@@ -52,7 +52,7 @@ public class ExcelServiceImpl implements ExcelService {
     @Override
     public String importXzqhDictData(){
         List<Dict> dictList = getXzqhDictDataV2();
-        mybatisDictService.saveDictList(dictList);
+        mybatisService.saveDictList(dictList);
         return dictList.toString();
     }
 
@@ -74,7 +74,7 @@ public class ExcelServiceImpl implements ExcelService {
      * @return
      */
     public List<Dict> buildDictData(List<XzqhExcelEntity> list) {
-        int curId = mybatisDictService.getCurrentSysDictId() + 1;
+        int curId = mybatisService.getCurrentSysDictId() + 1;
         List<Dict> dictList = new ArrayList<>();
         for (int i=0; i<list.size(); i++) {
             XzqhExcelEntity xzqh = list.get(i);
@@ -95,7 +95,7 @@ public class ExcelServiceImpl implements ExcelService {
             dict.setDictDataName(name);
             dictList.add(dict);
         }
-        mybatisDictService.saveDictList(dictList);
+        mybatisService.saveDictList(dictList);
         return dictList;
     }
 }

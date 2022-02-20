@@ -30,4 +30,5 @@ public interface UserService {
      */
     public List<User> listUserByAge(int age);
 
+    int saveUserList(List<User> userList);
 }

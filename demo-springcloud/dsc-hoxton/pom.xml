@@ -27,6 +27,7 @@
         <module>dsc-h-xxljob</module>
         <module>dsc-h-feign</module>
         <module>dsc-h-tool</module>
+        <module>dsc-h-kafka</module>
     </modules>
 
     <properties>
@@ -170,6 +171,26 @@
                 <artifactId>poi-ooxml</artifactId>
                 <version>4.1.2</version>
             </dependency>
+
+            <dependency>
+                <groupId>org.eweb4j</groupId>
+                <artifactId>fel</artifactId>
+                <version>0.8</version>
+            </dependency>
+
+            <!--JPA标准中，面向对象的语法检查、识别，fel 功能依赖包-->
+            <dependency>
+                <groupId>org.antlr</groupId>
+                <artifactId>antlr-runtime</artifactId>
+                <version>3.5.2</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-pool2</artifactId>
+                <version>2.11.1</version>
+            </dependency>
+
 
         </dependencies>
     </dependencyManagement>

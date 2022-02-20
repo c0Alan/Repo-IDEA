@@ -1,3 +1,10 @@
 {
-  "name": "李四"
+    "fields": {
+        "username": "xing.xing+ming.ming",
+        "deptId": "2",
+        "age": "$('java.util.Random.new').nextInt(80)"
+    },
+    "kafka": {
+        "topic": "q_dsc_user"
+    }
 }

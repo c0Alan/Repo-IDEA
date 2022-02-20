@@ -3,6 +3,7 @@
 <mapper namespace="com.demo.springcloud.mapper.UserMapper">
     <resultMap id="BaseResultMap" type="com.demo.springcloud.entity.User">
         <result column="id" jdbcType="INTEGER" property="id"/>
+        <result column="dept_id" jdbcType="INTEGER" property="deptId"/>
         <result column="username" jdbcType="VARCHAR" property="username"/>
         <result column="age" jdbcType="INTEGER" property="age"/>
     </resultMap>
@@ -36,9 +37,24 @@
         </trim>
     </insert>
 
+    <insert id="batchInsert" parameterType="com.demo.springcloud.entity.User">
+        INSERT INTO t_user
+        (
+        id, dept_id, username, age
+        )
+        VALUES
+        <foreach collection="userList" item="user" separator=",">
+        (
+        #{user.id}, #{user.deptId}, #{user.username}, #{user.age}
+        )
+        </foreach>
+    </insert>
+
     <select id="listUserByAge" parameterType="int" resultType="com.demo.springcloud.entity.User">
         select *
         from t_user
         where age = #{age}
     </select>
+
+
 </mapper>

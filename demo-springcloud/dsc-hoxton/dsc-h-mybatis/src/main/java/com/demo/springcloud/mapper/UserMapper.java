@@ -23,4 +23,6 @@ public interface UserMapper {
     @Delete("delete from t_user where id=#{id}")
     public int deleteUserById(int id);
 
+    int batchInsert(List<User> userList);
+
 }

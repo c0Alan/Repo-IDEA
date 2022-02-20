@@ -45,6 +45,15 @@ public class AppFileConfig {
     @Value("${app.file.filename.dict-excel-sheets}")
     private List<String> dictExcelSheets;
 
+    @Value("${app.file.filename.table-excel:表数据.xlsx}")
+    private String tableExcelFilename;
+
+    @Value("${app.file.filename.table-excel-sheets}")
+    private List<String> tableExcelSheets;
+
+    @Value("${app.file.filename.baseData-excel:基础数据.xlsx}")
+    private String baseDataExcelFilename;
+
     /**
      * 由于加了@Data注解，所以该方法不生效的
      * @param readPath

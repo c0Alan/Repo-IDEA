@@ -35,7 +35,7 @@
 			<fileMode>0644</fileMode>
 		</fileSet>
 		<fileSet>
-			<directory>${project.basedir}/build/file</directory>
+			<directory>${project.basedir}/file</directory>
 			<outputDirectory>file</outputDirectory>
 			<useDefaultExcludes>true</useDefaultExcludes>
 			<fileMode>0755</fileMode>

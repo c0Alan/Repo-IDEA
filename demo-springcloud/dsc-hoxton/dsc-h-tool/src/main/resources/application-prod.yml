@@ -1,15 +1,20 @@
 spring:
   datasource:
-    driver-class-name: com.mysql.jdbc.Driver      # 配置MySQL的驱动程序类
+    driver-class-name: com.mysql.cj.jdbc.Driver      # 配置MySQL的驱动程序类
     url: jdbc:mysql://${mysql.ipPort}/${mysql.dbName}?allowMultiQueries=true&useUnicode=true&characterEncoding=UTF-8           # 数据库连接地址
     username: ${mysql.username}
     password: ${mysql.password}
-
+  devtools:
+    restart:
+      additional-paths: src/main/*
 app:
   file:
     filename:
       user-json: user.json
+      table-excel: 表数据.xlsx
+      table-excel-sheets: User,Address
       xzqh-excel: 行政区划数据.xlsx
+      baseData-excel: 基础数据.xlsx
       dict-excel: 字典数据.xlsx
       dict-excel-sheets: 行政区划,姓,名
   remote-service:
@@ -17,3 +22,8 @@ app:
       service-name: dsc-h-mybatis
       # 指定URL访问，不走负载均衡
 #      url: http://ip:30006
+  pool:
+    felEngine:
+      maxTotal: 20
+      minIdle: 0
+      maxIdle: 8

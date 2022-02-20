@@ -1,8 +1,0 @@
-{
-  "classname": "com.demo.springcloud.entity.User",
-  "template": {
-    "username": "userCache:username",
-    "deptId": "userCache:deptId",
-    "age": "userCache:deptId"
-  }
-}

@@ -32,4 +32,9 @@ public class UserServiceImpl implements UserService {
         return userMapper.listUserByAge(age);
     }
 
+    @Override
+    public int saveUserList(List<User> userList) {
+        return userMapper.batchInsert(userList);
+    }
+
 }
