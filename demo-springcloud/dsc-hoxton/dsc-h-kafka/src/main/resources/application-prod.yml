@@ -62,6 +62,11 @@ app:
       - name: q_dsc_topic3
         num-partitions: 3
         replication-factor: 1
-
-
+  remote-service:
+    dsc-h-mybatis:
+      service-name: dsc-h-mybatis
+      # 指定URL访问，不走负载均衡
+    #      url: http://ip:30006
+    dsc-h-tool:
+      service-name: dsc-h-tool
 

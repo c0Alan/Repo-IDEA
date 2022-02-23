@@ -28,6 +28,7 @@
         <module>dsc-h-feign</module>
         <module>dsc-h-tool</module>
         <module>dsc-h-kafka</module>
+        <module>dsc-h-java8</module>
     </modules>
 
     <properties>

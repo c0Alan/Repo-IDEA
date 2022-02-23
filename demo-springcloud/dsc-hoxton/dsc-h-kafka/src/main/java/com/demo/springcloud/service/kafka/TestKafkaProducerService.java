@@ -23,7 +23,7 @@ import java.util.concurrent.ExecutionException;
  */
 @Slf4j
 @Service
-public class KafkaProducerTestService {
+public class TestKafkaProducerService {
 
     @Autowired
     private KafkaTemplate kafkaTemplate;

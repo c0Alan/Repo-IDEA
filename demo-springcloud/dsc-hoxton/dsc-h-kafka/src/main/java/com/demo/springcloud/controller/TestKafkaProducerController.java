@@ -1,6 +1,6 @@
 package com.demo.springcloud.controller;
 
-import com.demo.springcloud.service.kafka.KafkaProducerTestService;
+import com.demo.springcloud.service.kafka.TestKafkaProducerService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
@@ -23,10 +23,10 @@ import org.springframework.web.bind.annotation.RestController;
 @Slf4j
 @RestController
 @RequestMapping("/kafka/test")
-public class KafkaProducerTestController {
+public class TestKafkaProducerController {
 
     @Autowired
-    private KafkaProducerTestService kafkaProducerTestService;
+    private TestKafkaProducerService testKafkaProducerService;
 
     @ApiOperation(value = "三种方式发消息")
     @ApiImplicitParams({
@@ -35,7 +35,7 @@ public class KafkaProducerTestController {
     })
     @GetMapping("/send")
     public String send(@RequestParam String topic, @RequestParam String msg) {
-        return kafkaProducerTestService.send(topic, msg);
+        return testKafkaProducerService.send(topic, msg);
     }
 
     @ApiOperation(value = "批量发消息")
@@ -47,7 +47,7 @@ public class KafkaProducerTestController {
     @GetMapping(value = "/batchSendMsg")
     public String batchSendMsg(@RequestParam String topic, @RequestParam int count, @RequestParam String msg) {
 
-        return kafkaProducerTestService.batchSendMsg(topic, count, msg);
+        return testKafkaProducerService.batchSendMsg(topic, count, msg);
     }
 
     @ApiOperation(value = "消息结果回调")
@@ -57,7 +57,7 @@ public class KafkaProducerTestController {
     })
     @GetMapping("/producerListen")
     public String producerListen(@RequestParam String topic, @RequestParam String msg) throws InterruptedException {
-        return kafkaProducerTestService.producerListen(topic, msg);
+        return testKafkaProducerService.producerListen(topic, msg);
     }
 
     @ApiOperation(value = "发送同步消息")
@@ -68,7 +68,7 @@ public class KafkaProducerTestController {
     @GetMapping("/syncMsg")
     public String syncMsg(@RequestParam String topic, @RequestParam String msg) {
 
-        return kafkaProducerTestService.syncMsg(topic, msg);
+        return testKafkaProducerService.syncMsg(topic, msg);
     }
 
 
