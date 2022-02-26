@@ -29,6 +29,8 @@
         <module>dsc-h-tool</module>
         <module>dsc-h-kafka</module>
         <module>dsc-h-java8</module>
+        <module>dsc-h-redis</module>
+        <module>dsc-h-web</module>
     </modules>
 
     <properties>
@@ -192,6 +194,11 @@
                 <version>2.11.1</version>
             </dependency>
 
+            <dependency>
+                <groupId>cglib</groupId>
+                <artifactId>cglib</artifactId>
+                <version>3.3.0</version>
+            </dependency>
 
         </dependencies>
     </dependencyManagement>

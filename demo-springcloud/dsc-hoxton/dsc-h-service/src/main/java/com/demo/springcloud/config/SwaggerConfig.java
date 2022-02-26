@@ -23,10 +23,8 @@ public class SwaggerConfig {
                 .build().apiInfo(new ApiInfoBuilder()
                         .title("dsc-h-service")
                         .description("dsc-h-service 接口文档")
-                        .version("9.0")
-                        .contact(new Contact("啊啊啊啊","blog.csdn.net","aaa@gmail.com"))
-                        .license("The Apache License")
-                        .licenseUrl("http://www.javaboy.org")
+                        .version("1.0")
+                        .contact(new Contact("c0","https://blog.csdn.net/c0tianning",""))
                         .build());
     }
 }

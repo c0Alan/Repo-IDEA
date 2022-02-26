@@ -9,7 +9,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 @AutoConfigureMockRestServiceServer
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class ServiceApplicationTests {
+public class ServiceApplicationTest {
 
 	@Test
 	public void contextLoads() {
