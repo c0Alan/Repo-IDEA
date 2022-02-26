@@ -1,0 +1,25 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver      # 配置MySQL的驱动程序类
+    url: jdbc:mysql://${mysql.ipPort}/${mysql.dbName}?allowMultiQueries=true&useUnicode=true&characterEncoding=UTF-8           # 数据库连接地址
+    username: ${mysql.username}
+    password: ${mysql.password}
+
+app:
+  test:
+    users:
+      - id: 1
+        deptId: 1
+        username: aaa
+        age: 2
+      - id: 2
+        deptId: 1
+        username: bbb
+        age: 2
+
+
+
+
+
+
+
