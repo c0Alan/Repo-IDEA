@@ -4,6 +4,23 @@ spring:
     url: jdbc:mysql://${mysql.ipPort}/${mysql.dbName}?allowMultiQueries=true&useUnicode=true&characterEncoding=UTF-8           # 数据库连接地址
     username: ${mysql.username}
     password: ${mysql.password}
+  devtools:
+    restart:
+      additional-paths: src/main/*
+  redis:
+    timeout: 6000ms
+    password: ${redis.password:}
+    # 注释掉 cluster，redisProperties 中cluster属性为null，spring自动注入redis单机版
+    # 如果 cluster 不为null，spring自动注入redis集群版
+    cluster:
+      max-redirects: 5   # 获取失败 最大重定向次数
+    jedis:
+      pool:
+        max-active: 1000             #连接池最大的连接数，若使用负值表示没有限制
+        max-wait: 10s                 #连接池最大阻塞等待时间
+        max-idle: 100                 #最大空闲连接数
+        min-idle: 10
+    database: ${redis.database}
 
 app:
   test:
@@ -17,6 +34,45 @@ app:
         username: bbb
         age: 2
 
+redission:
+  config:
+    clusterServersConfig:
+      idleConnectionTimeout: 10000
+      connectTimeout: 10000
+      timeout: 3000
+      retryAttempts: 3
+      retryInterval: 1500
+      password: ${redis.password:}
+      subscriptionsPerConnection: 5
+      clientName: null
+      loadBalancer: '!<org.redisson.connection.balancer.RoundRobinLoadBalancer> {}'
+      #  slaveSubscriptionConnectionMinimumIdleSize: 1
+      #  slaveSubscriptionConnectionPoolSize: 50
+      slaveConnectionMinimumIdleSize: 32
+      slaveConnectionPoolSize: 64
+      masterConnectionMinimumIdleSize: 32
+      masterConnectionPoolSize: 64
+      readMode: "SLAVE"
+      scanInterval: 1000
+    singleServerConfig:
+      idleConnectionTimeout: 10000
+      connectTimeout: 10000
+      timeout: 3000
+      retryAttempts: 3
+      retryInterval: 1500
+      password: ${redis.password:}
+      subscriptionsPerConnection: 5
+      clientName: null
+      subscriptionConnectionMinimumIdleSize: 1
+      subscriptionConnectionPoolSize: 50
+      connectionMinimumIdleSize: 32
+      connectionPoolSize: 64
+      database: ${redis.database}
+      dnsMonitoringInterval: 5000
+    threads: 0
+    nettyThreads: 0
+    codec: '!<org.redisson.codec.JsonJacksonCodec> {}'
+    transportMode: "NIO"
 
 
 

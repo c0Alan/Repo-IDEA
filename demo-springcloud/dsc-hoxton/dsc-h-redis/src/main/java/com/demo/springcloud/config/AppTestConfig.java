@@ -24,6 +24,6 @@ public class AppTestConfig {
     @PostConstruct
     public void init() {
 
-        System.out.println(users);
+        log.debug("{}", users);
     }
 }

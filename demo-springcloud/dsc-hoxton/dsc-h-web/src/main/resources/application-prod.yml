@@ -4,7 +4,9 @@ spring:
     url: jdbc:mysql://${mysql.ipPort}/${mysql.dbName}?allowMultiQueries=true&useUnicode=true&characterEncoding=UTF-8           # 数据库连接地址
     username: ${mysql.username}
     password: ${mysql.password}
-
+  devtools:
+    restart:
+      additional-paths: src/main/*
 app:
   test:
     users:
@@ -16,7 +18,11 @@ app:
         deptId: 1
         username: bbb
         age: 2
-
+example:
+  bean-config:
+    example:
+      example01:
+        attr1: hello
 
 
 
