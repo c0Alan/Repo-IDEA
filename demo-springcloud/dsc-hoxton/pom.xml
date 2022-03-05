@@ -31,6 +31,7 @@
         <module>dsc-h-java8</module>
         <module>dsc-h-redis</module>
         <module>dsc-h-web</module>
+        <module>dsc-h-webflux</module>
     </modules>
 
     <properties>
@@ -100,7 +101,7 @@
             <dependency>
                 <groupId>io.springfox</groupId>
                 <artifactId>springfox-swagger2</artifactId>
-                <version>2.9.2</version>
+                <version>2.10.5</version>
                 <exclusions>
                     <exclusion>
                         <groupId>com.google.guava</groupId>
@@ -111,7 +112,32 @@
             <dependency>
                 <groupId>io.springfox</groupId>
                 <artifactId>springfox-swagger-ui</artifactId>
-                <version>2.9.2</version>
+                <version>2.10.5</version>
+            </dependency>
+
+            <dependency>
+                <groupId>io.springfox</groupId>
+                <artifactId>springfox-spring-webmvc</artifactId>
+                <version>2.10.5</version>
+            </dependency>
+
+            <dependency>
+                <groupId>io.springfox</groupId>
+                <artifactId>springfox-spring-webflux</artifactId>
+                <version>2.10.5</version>
+            </dependency>
+
+            <!--换成 knife4j-spring-ui-->
+            <!--<dependency>
+                <groupId>com.github.xiaoymin</groupId>
+                <artifactId>swagger-bootstrap-ui</artifactId>
+                <version>1.9.6</version>
+            </dependency>-->
+
+            <dependency>
+                <groupId>com.github.xiaoymin</groupId>
+                <artifactId>knife4j-spring-ui</artifactId>
+                <version>3.0.3</version>
             </dependency>
 
             <dependency>
@@ -125,12 +151,6 @@
                 <groupId>com.belerweb</groupId>
                 <artifactId>pinyin4j</artifactId>
                 <version>2.5.0</version>
-            </dependency>
-
-            <dependency>
-                <groupId>com.github.xiaoymin</groupId>
-                <artifactId>swagger-bootstrap-ui</artifactId>
-                <version>1.9.6</version>
             </dependency>
 
             <dependency>
@@ -238,20 +258,34 @@
             </exclusions>
         </dependency>
 
-    <!-- gateway 只支持webflux，不兼容WebMvc，Swagger 暂不支持webflux项目，导致Swagger与gateway不兼容 -->
-        <!--<dependency>
-             <groupId>io.springfox</groupId>
-             <artifactId>springfox-swagger2</artifactId>
-         </dependency>
-         <dependency>
-             <groupId>io.springfox</groupId>
-             <artifactId>springfox-swagger-ui</artifactId>
-         </dependency>
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger2</artifactId>
+        </dependency>
 
+        <!--注释掉接口文档不用swagger ui-->
+        <!--<dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger-ui</artifactId>
+        </dependency>-->
+
+        <!--webmvc 时依赖-->
+        <!--<dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-spring-webmvc</artifactId>
+        </dependency>-->
+
+        <!--webflux 时依赖-->
+        <!--<dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-spring-webflux</artifactId>
+        </dependency>-->
+
+        <!-- 接口文档使用 knife4j-spring-ui -->
         <dependency>
             <groupId>com.github.xiaoymin</groupId>
-            <artifactId>swagger-bootstrap-ui</artifactId>
-        </dependency>-->
+            <artifactId>knife4j-spring-ui</artifactId>
+        </dependency>
 
         <dependency>
             <groupId>org.projectlombok</groupId>

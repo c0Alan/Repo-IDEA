@@ -5,14 +5,18 @@ import lombok.extern.slf4j.Slf4j;
 import org.redisson.api.*;
 import org.redisson.api.listener.MessageListener;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.annotation.PostConstruct;
+import javax.annotation.Resource;
 import java.util.concurrent.TimeUnit;
 
 /**
+ * redisson 操作
+ *
  * @author liuxilin
  * @date 2022年02月28日 12:35
  */
@@ -23,6 +27,10 @@ import java.util.concurrent.TimeUnit;
 public class RedissonController {
     @Autowired
     private RedissonClient redissonClient;
+
+    @Resource
+    private RedisTemplate<String, Object> redisTemplate;
+
 
     @PostConstruct
     public void topic() {
@@ -69,8 +77,6 @@ public class RedissonController {
 
         //redissonClient.getScript().evalSha()
         return name;
-
-
     }
 
     @RequestMapping("/map/{name}")

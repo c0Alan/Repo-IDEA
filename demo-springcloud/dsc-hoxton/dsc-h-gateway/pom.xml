@@ -33,6 +33,7 @@
             <artifactId>sentinel-spring-cloud-gateway-adapter</artifactId>
         </dependency>
 
+
 		
     </dependencies>
 

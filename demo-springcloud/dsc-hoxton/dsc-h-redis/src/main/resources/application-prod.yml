@@ -22,6 +22,7 @@ spring:
         min-idle: 10
     database: ${redis.database}
 
+
 app:
   test:
     users:
