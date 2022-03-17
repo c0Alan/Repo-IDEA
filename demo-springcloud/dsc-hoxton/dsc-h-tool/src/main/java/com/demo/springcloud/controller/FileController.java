@@ -1,5 +1,6 @@
 package com.demo.springcloud.controller;
 
+import cn.hutool.json.JSONObject;
 import com.demo.springcloud.config.AppFileConfig;
 import com.demo.springcloud.service.FileService;
 import io.swagger.annotations.Api;
@@ -76,6 +77,12 @@ public class FileController {
     @GetMapping("/writeFile")
     public String writeFile(@RequestParam String name){
         String result = "";
+        return result;
+    }
+
+    @GetMapping("/getJsonFile")
+    public JSONObject getJsonFile(@RequestParam String filename){
+        JSONObject result = fileService.getJsonFile(filename);
         return result;
     }
 }

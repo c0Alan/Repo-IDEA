@@ -1,5 +1,7 @@
 package com.demo.springcloud.service;
 
+import cn.hutool.json.JSONObject;
+
 public interface FileService {
 
     String readFileFromAppHome();
@@ -21,4 +23,6 @@ public interface FileService {
     String readFileResourcePathV2();
 
     String readFileResourcePathV3();
+
+    JSONObject getJsonFile(String filename);
 }

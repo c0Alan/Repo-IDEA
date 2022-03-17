@@ -10,7 +10,7 @@ source /etc/profile
 #-------------------------------------------------------------------
 
 # 模块名
-MODEL_NAME=`echo dsc-g-gateway*.jar`
+MODEL_NAME=`echo dsc-h-gateway*.jar`
 
 # 选项
 MODEL_OPTS=""

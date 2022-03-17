@@ -2,6 +2,7 @@ package com.demo.springcloud.service.impl;
 
 import cn.hutool.core.util.StrUtil;
 import cn.hutool.json.JSON;
+import cn.hutool.json.JSONObject;
 import cn.hutool.json.JSONUtil;
 import com.demo.springcloud.config.AppFileConfig;
 import com.demo.springcloud.service.FileService;
@@ -82,9 +83,7 @@ public class FileServiceImpl implements FileService {
 
     @Override
     public String getFilePath(String filename) {
-        String readPath = StrUtil.replace(appFileConfig.getReadPath(), "/", File.separator);
-        String fullPath = getApplicationHome() + File.separator + readPath + File.separator + filename;
-        return fullPath;
+        return readFileApplicationHome(filename);
     }
 
     @Override
@@ -148,5 +147,12 @@ public class FileServiceImpl implements FileService {
         }
 
         return result;
+    }
+
+    @Override
+    public JSONObject getJsonFile(String filename) {
+        String path = getFilePath(filename);
+        File file = new File(path);
+        return JSONUtil.readJSONObject(file, Charset.defaultCharset());
     }
 }

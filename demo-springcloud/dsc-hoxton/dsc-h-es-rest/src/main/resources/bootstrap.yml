@@ -1,0 +1,31 @@
+server:
+  port: 31011
+spring:
+  application:
+    name: dsc-h-es-rest
+  cloud:
+    inetutils:
+      ignored-interfaces:
+        - docker.*
+        - veth.*
+        - VMware.*
+        - VMnet.*
+        - lo
+    nacos:
+      discovery:
+        server-addr: nacos-center.v-base:30848
+        namespace: 57e6ca16-0f0a-445a-b0d0-8361f298f1a5
+        group: dsc
+      config:
+        server-addr: nacos-center.v-base:30848
+        prefix: dsc
+        file-extension: properties
+        group: dsc
+        namespace: 57e6ca16-0f0a-445a-b0d0-8361f298f1a5
+
+
+logging:
+  config: classpath:logback-spring.xml
+  # spring data elasticsearch 打印查询语句 https://blog.csdn.net/weixin_43549350/article/details/116322865
+  level:
+    org.springframework.data.elasticsearch.client.WIRE: info

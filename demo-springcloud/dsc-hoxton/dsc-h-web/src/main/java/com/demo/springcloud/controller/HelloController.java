@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 @Api(tags = "测试微服务调用服务端")
 @RestController
 @Slf4j
-@RequestMapping("/helloService")
+@RequestMapping("/hello")
 public class HelloController {
     
     @ApiOperation(value = "hello方法", notes = "hello方法")

@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+	<include
+		resource="org/springframework/boot/logging/logback/defaults.xml" />
+
+	<property name="log.context.name" value="dsc-h-es" />
+	<property name="log.error" value="dsc-h-es-error" />
+	<property name="log.charset" value="UTF-8" />
+	<property name="log.basedir" value="../logs" />  <!-- 日志文件存储位置 -->
+	<property name="FILE_LOG_PATTERN"
+		value="%green(%d{yyyy-MM-dd HH:mm:ss.SSS, Asia/Shanghai}) %boldMagenta([%t]) %highlight(%-5level) %cyan(%logger{50} [%file : %line] -) %msg%n" />
+	<property name="LOG_PATH"
+		value="${LOG_PATH:-${LOG_TEMP:-${log.basedir:-${java.io.tmpdir:-/tmp}}}/}" />
+	<property name="LOG_FILE"
+		value="${LOG_FILE:-${LOG_PATH}${log.context.name}.log}" />
+	<property name="ERROR_LOG_FILE"
+		value="${ERROR_LOG_FILE:-${LOG_PATH}${log.error}.log}" />
+	<contextName>${log.context.name}</contextName>
+	<appender name="ErrorLog"
+		class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<file>${ERROR_LOG_FILE}</file>
+		<rollingPolicy
+			class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
+			<fileNamePattern>${ERROR_LOG_FILE}.%i.gz</fileNamePattern>
+			<minIndex>1</minIndex>
+			<maxIndex>10</maxIndex>
+		</rollingPolicy>
+		<triggeringPolicy
+			class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+			<maxFileSize>50MB</maxFileSize>
+		</triggeringPolicy>
+		<encoder>
+			<pattern>${FILE_LOG_PATTERN}</pattern>
+			<charset>UTF-8</charset>
+		</encoder>
+		<filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+			<level>ERROR</level>
+		</filter>
+	</appender>
+	<appender name="RollingFile"
+		class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<file>${LOG_FILE}</file>
+		<encoder>
+			<pattern>${FILE_LOG_PATTERN}</pattern>
+			<charset>UTF-8</charset>
+		</encoder>
+		<filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+			<level>ALL</level>
+		</filter>
+		<rollingPolicy
+			class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+			<fileNamePattern>${LOG_FILE}.%d{yyyy-MM-dd}.%i.log.gz
+			</fileNamePattern>
+			<!-- keep 10 days' worth of history capped at 3GB total size -->
+			<maxHistory>1</maxHistory>
+			<totalSizeCap>1GB</totalSizeCap>
+			<maxFileSize>50MB</maxFileSize>
+			<cleanHistoryOnStart>true</cleanHistoryOnStart>
+		</rollingPolicy>
+	</appender>
+
+	<appender name="STDOUT"
+		class="ch.qos.logback.core.ConsoleAppender">
+		<!-- encoder的默认实现类是ch.qos.logback.classic.encoder.PatternLayoutEncoder -->
+		<encoder>
+			<pattern>${FILE_LOG_PATTERN}</pattern>
+			<charset>UTF-8</charset>
+		</encoder>
+	</appender>
+	<root level="info">
+		<appender-ref ref="STDOUT" />
+		<appender-ref ref="RollingFile" />
+		<appender-ref ref="ErrorLog" />
+	</root>
+</configuration>

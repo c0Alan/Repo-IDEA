@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-@Api(tags = "测试微服务调用服务端")
+@Api(tags = "测试feign调用, 服务名方式")
 @RestController
 @Slf4j
 @RequestMapping("/helloService")

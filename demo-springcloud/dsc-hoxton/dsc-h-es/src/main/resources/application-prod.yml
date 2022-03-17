@@ -1,0 +1,30 @@
+spring:
+  devtools:
+    restart:
+      additional-paths: src/main/*
+    add-properties: false
+  # 这里待改为springdata配置
+  elasticsearch:
+    rest:
+      uris: ${elasticsearch7.uris}
+      username: ${elasticsearch7.username:}
+      password: ${elasticsearch7.password:}
+
+app:
+  test:
+    users:
+      - id: 1
+        deptId: 1
+        username: aaa
+        age: 2
+      - id: 2
+        deptId: 1
+        username: bbb
+        age: 2
+
+
+
+
+
+
+

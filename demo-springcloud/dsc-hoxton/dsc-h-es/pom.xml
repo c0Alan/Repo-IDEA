@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.demo.springcloud</groupId>
+    <artifactId>dsc-h-es</artifactId>
+    <packaging>jar</packaging>
+
+    <name>dsc-h-es</name>
+    <description>整合 elasticsearch v7.2.1 springdata</description>
+
+
+    <parent>
+        <groupId>com.demo.springcloud</groupId>
+        <artifactId>dsc-hoxton</artifactId>
+        <version>1.0</version>
+    </parent>
+
+    <dependencies>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-spring-webmvc</artifactId>
+        </dependency>
+
+        <!-- 这里直接用默认版本, 不然容易出现jar包版本冲突问题, es7以上的用resthighlevelclient, 见 dsc-h-es-rest模块 -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-elasticsearch</artifactId>
+        </dependency>
+
+    </dependencies>
+
+
+</project>

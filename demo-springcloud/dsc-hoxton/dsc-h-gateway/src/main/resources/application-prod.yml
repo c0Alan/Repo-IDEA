@@ -1,0 +1,51 @@
+spring:
+  devtools:
+    restart:
+      additional-paths: src/main/*
+  cloud:
+    gateway:
+      routes: # 路由数组[路由 就是指定当请求满足什么条件的时候转到哪个微服务]
+        - id: dsc-h-service
+          order: 1            # 路由匹配优先级，默认是0，越小优先级越高
+          uri: lb://dsc-h-service  # lb指的是从nacos中按照名称获取微服务,并遵循负载均衡策略
+          predicates:
+            - Path=/dsc-h-service/**
+          filters:
+#            - SwaggerHeaderFilter # 没必要加SwaggerHeaderFilter了
+            - StripPrefix=1
+        - id: dsc-h-redis
+          uri: lb://dsc-h-redis
+          predicates:
+            - Path=/dsc-h-redis/**
+          filters:
+            - StripPrefix=1
+#        - id: route1          # 当前路由的标识, 要求唯一
+#          uri: https://blog.csdn.net
+#          predicates: # 断言(就是路由转发要满足的条件)
+#            - Path=/csdn      # 当请求路径满足Path指定的规则时,才进行路由转发
+#        - id: route3
+#          uri: lb://dsc-h-service  # 访问hello2的时候转发到hello3，此时uri是无效的，配 filter RewritePath 才生效
+#          predicates:
+#            - Path=/dsc-h-service/helloService/hello2
+#          filters:
+#            - RewritePath=/dsc-h-service/helloService/hello2, /helloService/hello3
+
+
+app:
+  test:
+    users:
+      - id: 1
+        deptId: 1
+        username: aaa
+        age: 2
+      - id: 2
+        deptId: 1
+        username: bbb
+        age: 2
+
+
+
+
+
+
+
