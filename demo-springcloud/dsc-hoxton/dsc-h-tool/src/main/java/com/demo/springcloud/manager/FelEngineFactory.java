@@ -71,6 +71,12 @@ public class FelEngineFactory extends BasePooledObjectFactory<FelEngine> {
         return obj;
     }
 
+    /**
+     * 每个 FelEngine 对象存一份随机数据, 可通过 key.key1 方式获取
+     * 如: {"xing":{"xing":"xxx"}}
+     * 如: {"address":{"province":"xxx","city":"xxx","district":"xxx"}}
+     * @param obj
+     */
     public void resetObject(FelEngine obj) {
         FelContext felContext = obj.getContext();
         for(Map.Entry<String, Object> entry : cacheManager.getBaseDataMap().entrySet()) {

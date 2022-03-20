@@ -1,0 +1,29 @@
+{
+  "settings": {
+    "index": {
+      "number_of_shards": 1,
+      "number_of_replicas": 0
+    }
+  },
+  "mappings": {
+    "properties": {
+      "counter": {
+        "type": "integer",
+        "store": false
+      },
+      "tags": {
+        "type": "keyword",
+        "store": true
+      },
+      "message": {
+        "type": "text"
+      },
+      "field1": {
+        "type": "text"
+      },
+      "field2": {
+        "type": "text"
+      }
+    }
+  }
+}
