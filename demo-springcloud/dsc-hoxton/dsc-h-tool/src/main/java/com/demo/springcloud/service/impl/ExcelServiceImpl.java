@@ -80,7 +80,7 @@ public class ExcelServiceImpl implements ExcelService {
             XzqhExcelEntity xzqh = list.get(i);
             String code = xzqh.getCode();
             String name = xzqh.getName();
-            byte level = 3;
+            int level = 3;
             Dict dict = new Dict();
             dict.setId(curId++);
             if (StrUtil.endWith(code, "0000")) {

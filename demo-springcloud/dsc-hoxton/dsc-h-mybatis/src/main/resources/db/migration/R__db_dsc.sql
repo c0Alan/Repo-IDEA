@@ -39,10 +39,11 @@ CREATE TABLE `t_dict` (
 `parent_id` INT(11) UNSIGNED COMMENT '父节点id',
 `src_type` tinyint unsigned DEFAULT NULL COMMENT '字典来源, 0:系统内置字典, 1:外部系统字典',
 `dict_level` tinyint unsigned DEFAULT NULL COMMENT '字典层级, 0:字典类型',
+`dict_parent_code` VARCHAR(255) DEFAULT NULL COMMENT '父节点编码',
 `dict_type_code` VARCHAR(255) DEFAULT NULL COMMENT '字典类型编码',
 `dict_type_name` VARCHAR(255) DEFAULT NULL COMMENT '字典类型名称',
 `dict_data_code` VARCHAR(255) DEFAULT NULL COMMENT '字典数据编码',
 `dict_data_name` VARCHAR(255) DEFAULT NULL COMMENT '字典数据名称',
 PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 comment '字典表';
-alter table t_dict auto_increment=100000;
+-- alter table t_dict auto_increment=100000;

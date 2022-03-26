@@ -2,7 +2,7 @@ package com.demo.springcloud.controller;
 
 
 import com.demo.springcloud.entity.User;
-import com.demo.springcloud.utils.net.NetUtil;
+import com.demo.springcloud.util.NetUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;

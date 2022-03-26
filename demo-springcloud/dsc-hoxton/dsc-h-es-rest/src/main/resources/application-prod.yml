@@ -27,6 +27,7 @@ app:
     #      url: http://ip:30006
     dsc-h-tool:
       file-service: dsc-h-tool/file
+      basedata-service: dsc-h-tool/baseData
 
 
 

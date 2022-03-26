@@ -1,6 +1,8 @@
 package com.demo.springcloud;
 
+import cn.hutool.core.collection.CollectionUtil;
 import cn.hutool.core.date.DateTime;
+import cn.hutool.core.util.RandomUtil;
 import com.demo.springcloud.entity.Foo;
 import com.greenpineyu.fel.Expression;
 import com.greenpineyu.fel.FelEngine;
@@ -273,6 +275,19 @@ public class FelTests {
 
         result = FelEngine.instance.eval("$('cn.hutool.core.date.DateTime').now().toString('yyyyMMddHHmmss')");
         System.out.println(result);
+
+        result = FelEngine.instance.eval("$('cn.hutool.core.util.RandomUtil').randomDay(-10000,0).toJdkDate()");
+        System.out.println(result);
+
+        result = RandomUtil.randomEle(CollectionUtil.newArrayList(1,2,3,4,5));
+        System.out.println(result);
+        result = FelEngine.instance.eval("$('com.demo.springcloud.util.RandomDataUtil').randomEle('6,7,8,9')");
+        System.out.println(result);
+
+        result = FelEngine.instance.eval("'44'+$('cn.hutool.core.util.RandomUtil').randomNumbers(16)");
+        System.out.println(result);
+
+
     }
 
 }

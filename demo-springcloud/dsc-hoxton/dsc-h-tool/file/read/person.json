@@ -1,0 +1,24 @@
+{
+    "fields": {
+        "name": "xing.xing+ming.ming",
+        "gender": "$('cn.hutool.core.util.RandomUtil').randomInt(0, 3)",
+        "birthdate": "$('cn.hutool.core.util.RandomUtil').randomDay(-10000,0).toJdkDate()",
+        "household": "household.household",
+        "marital": "$('com.demo.springcloud.util.RandomDataUtil').randomEle('10,20')",
+        "height": "body.height",
+        "weight": "body.weight",
+        "idNumber": "household.xzqh+$('cn.hutool.core.util.RandomUtil').randomNumbers(14)",
+        "nativePlace": "nativePlace.nativePlace",
+        "nation": "nation.nation",
+        "education": "$('com.demo.springcloud.util.RandomDataUtil').randomEle('10,20,30,40,60,70,80')",
+        "school": "school.school",
+        "graduationDate": "$('cn.hutool.core.util.RandomUtil').randomDay(-10000,0).toJdkDate()",
+        "occupation": "occupation.occupation",
+        "address": "address.address",
+        "phone": "'139'+$('cn.hutool.core.util.RandomUtil').randomNumbers(8)",
+        "age": "$('cn.hutool.core.util.RandomUtil').randomInt(8,90)"
+    },
+    "kafka": {
+        "topic": "q_dsc_person"
+    }
+}

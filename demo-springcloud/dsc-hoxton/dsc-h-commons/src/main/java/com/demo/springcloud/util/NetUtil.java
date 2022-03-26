@@ -1,4 +1,4 @@
-package com.demo.springcloud.utils.net;
+package com.demo.springcloud.util;
 
 import java.net.InetAddress;
 import java.net.NetworkInterface;

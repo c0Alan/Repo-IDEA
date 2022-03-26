@@ -39,7 +39,7 @@ public class AppFileConfig {
     @Value("${app.file.filename.xzqh-excel:行政区划数据.xlsx}")
     private String xzqhExcelFilename;
 
-    @Value("${app.file.filename.dict-excel:字典数据.xlsx}")
+    @Value("${app.file.filename.dict-excel:源字典数据.xlsx}")
     private String dictExcelFilename;
 
     @Value("${app.file.filename.dict-excel-sheets}")

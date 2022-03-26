@@ -9,4 +9,5 @@ import org.springframework.web.bind.annotation.RequestParam;
 public interface ToolFileService {
     @GetMapping("/getJsonFile")
     JSONObject getJsonFile(@RequestParam String filename);
+
 }

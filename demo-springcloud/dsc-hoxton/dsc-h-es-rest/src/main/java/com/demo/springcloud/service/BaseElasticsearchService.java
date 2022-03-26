@@ -4,6 +4,8 @@ import cn.hutool.core.bean.BeanUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.elasticsearch.ElasticsearchException;
 import org.elasticsearch.action.admin.indices.delete.DeleteIndexRequest;
+import org.elasticsearch.action.bulk.BulkRequest;
+import org.elasticsearch.action.bulk.BulkResponse;
 import org.elasticsearch.action.delete.DeleteRequest;
 import org.elasticsearch.action.delete.DeleteResponse;
 import org.elasticsearch.action.index.IndexRequest;
@@ -17,18 +19,18 @@ import org.elasticsearch.client.RestHighLevelClient;
 import org.elasticsearch.client.indices.CreateIndexRequest;
 import org.elasticsearch.client.indices.CreateIndexResponse;
 import org.elasticsearch.common.settings.Settings;
-import org.elasticsearch.common.unit.TimeValue;
 import org.elasticsearch.common.xcontent.XContentType;
-import org.elasticsearch.index.query.BoolQueryBuilder;
-import org.elasticsearch.index.query.MatchQueryBuilder;
 import org.elasticsearch.index.query.QueryBuilders;
+import org.elasticsearch.rest.RestStatus;
 import org.elasticsearch.search.builder.SearchSourceBuilder;
 
 import javax.annotation.Resource;
 import java.io.IOException;
-import java.util.concurrent.TimeUnit;
+import java.util.List;
+import java.util.Map;
 
 /**
+ * ElasticsearchService 基类
  *
  * @author liuxilin
  * @date 2022/3/14 12:42
@@ -52,7 +54,7 @@ public abstract class BaseElasticsearchService {
     }
 
     /**
-     * 创建索引
+     * 根据索引名称创建索引
      *
      * @param index 索引名称
      */
@@ -89,17 +91,15 @@ public abstract class BaseElasticsearchService {
     }
 
     /**
-     * build DeleteIndexRequest
-     *
-     * @param index elasticsearch index name
-     * @author fxbin
+     * @param index 索引名称
+     * @return
      */
     private static DeleteIndexRequest buildDeleteIndexRequest(String index) {
         return new DeleteIndexRequest(index);
     }
 
     /**
-     * 插入数据
+     * 新增单条数据
      *
      * @param index  索引名称
      * @param id     数据id
@@ -111,10 +111,10 @@ public abstract class BaseElasticsearchService {
     }
 
     /**
-     * 更新数据
+     * 更新单条数据
      *
-     * @param index
-     * @param id
+     * @param index  索引名称
+     * @param id     数据id
      * @param object
      */
     protected UpdateResponse updateRequest(String index, String id, Object object) {
@@ -128,10 +128,10 @@ public abstract class BaseElasticsearchService {
     }
 
     /**
-     * 删除数据
+     * 删除单条数据
      *
      * @param index 索引名称
-     * @param id
+     * @param id    数据id
      * @return
      */
     protected DeleteResponse deleteRequest(String index, String id) {
@@ -145,7 +145,8 @@ public abstract class BaseElasticsearchService {
     }
 
     /**
-     * 查询全部数据
+     * 根据索引名称查询全部数据
+     *
      * @param index 索引名称
      * @return
      */
@@ -163,35 +164,25 @@ public abstract class BaseElasticsearchService {
         return searchResponse;
     }
 
-    public SearchResponse searchByName() throws IOException {
-        BoolQueryBuilder boolBuilder = QueryBuilders.boolQuery();
-        SearchSourceBuilder sourceBuilder = new SearchSourceBuilder();
-        //这里可以根据字段进行搜索，must表示符合条件的，相反的mustnot表示不符合条件的
-        MatchQueryBuilder matchQueryBuilder = QueryBuilders.matchQuery("name", "王安石");
-        //新建range条件
-        // RangeQueryBuilder rangeQueryBuilder = QueryBuilders.rangeQuery("fields_timestamp");
-        //开始时间
-        // rangeQueryBuilder.gte("2019-03-21T08:24:37.873Z");
-        //结束时间
-        // rangeQueryBuilder.lte("2019-03-21T08:24:37.873Z");
-        // boolBuilder.must(rangeQueryBuilder);
-        boolBuilder.must(matchQueryBuilder);
-        //设置查询，可以是任何类型的QueryBuilder。
-        sourceBuilder.query(boolBuilder);
-        //设置确定结果要从哪个索引开始搜索的from选项，默认为0
-        sourceBuilder.from(0);
-        //设置确定搜素命中返回数的size选项，默认为10
-        sourceBuilder.size(100);
-        //设置一个可选的超时，控制允许搜索的时间。
-        sourceBuilder.timeout(new TimeValue(60, TimeUnit.SECONDS));
-
-        //第一个是获取字段，第二个是过滤的字段，默认获取全部
-        // sourceBuilder.fetchSource(new String[]{"id", "name", "age"}, new String[]{});
-        //索引
-        SearchRequest searchRequest = new SearchRequest("idx_dsc_person");
-        searchRequest.source(sourceBuilder);
-        log.info("{}",searchRequest.source());
-        SearchResponse response = client.search(searchRequest, RequestOptions.DEFAULT);
-        return response;
+    protected RestStatus bulkInsert(String indexname, List<Map> datas) {
+        BulkRequest bulkRequest = new BulkRequest();
+        datas.forEach(data -> {
+            // id 设null, 采用es自动生成id
+            IndexRequest indexRequest = new IndexRequest(indexname).id(null).source(data, XContentType.JSON);
+            bulkRequest.add(indexRequest);
+        });
+        BulkResponse bulkResponse = null;
+        try {
+            bulkResponse = client.bulk(bulkRequest, COMMON_OPTIONS);
+            if(bulkResponse.hasFailures()){
+                log.error("新增数据错误: {}", bulkResponse.buildFailureMessage());
+            }
+        } catch (IOException e) {
+            log.error("批量新增失败: {}", e);
+            log.error("请求: {}", bulkRequest);
+            return RestStatus.EXPECTATION_FAILED;
+        }
+        return bulkResponse.status();
     }
+
 }

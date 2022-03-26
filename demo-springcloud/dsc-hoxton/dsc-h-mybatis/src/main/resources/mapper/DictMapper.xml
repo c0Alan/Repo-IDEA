@@ -6,6 +6,7 @@
     <result column="parent_id" jdbcType="INTEGER" property="parentId" />
     <result column="src_type" jdbcType="TINYINT" property="srcType" />
     <result column="dict_level" jdbcType="TINYINT" property="dictLevel" />
+    <result column="dict_parent_code" jdbcType="VARCHAR" property="dictParentCode" />
     <result column="dict_type_code" jdbcType="VARCHAR" property="dictTypeCode" />
     <result column="dict_type_name" jdbcType="VARCHAR" property="dictTypeName" />
     <result column="dict_data_code" jdbcType="VARCHAR" property="dictDataCode" />
@@ -66,13 +67,13 @@
   <insert id="batchInsert" parameterType="com.demo.springcloud.entity.Dict" useGeneratedKeys="false">
     INSERT INTO t_dict
     (
-    id, parent_id, src_type, dict_level, dict_type_code, dict_type_name, dict_data_code, dict_data_name
+    id, parent_id, src_type, dict_level, dict_parent_code, dict_type_code, dict_type_name, dict_data_code, dict_data_name
     )
     VALUES
     <foreach collection="dictList" item="dict" separator=",">
       (
-      #{dict.id}, #{dict.parentId}, #{dict.srcType}, #{dict.dictLevel}, #{dict.dictTypeCode},
-      #{dict.dictTypeName}, #{dict.dictDataCode}, #{dict.dictDataName}
+      #{dict.id}, #{dict.parentId}, #{dict.srcType}, #{dict.dictLevel}, #{dict.dictParentCode},
+       #{dict.dictTypeCode}, #{dict.dictTypeName}, #{dict.dictDataCode}, #{dict.dictDataName}
       )
     </foreach>
   </insert>

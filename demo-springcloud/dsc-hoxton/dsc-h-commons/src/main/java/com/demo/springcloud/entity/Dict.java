@@ -8,13 +8,15 @@ public class Dict {
 
     private Integer parentId;
 
-    private String srcType;
+    private Integer srcType;
 
-    private Byte dictLevel;
+    private Integer dictLevel;
 
     private String dictTypeCode;
 
     private String dictTypeName;
+
+    private String dictParentCode;
 
     private String dictDataCode;
 

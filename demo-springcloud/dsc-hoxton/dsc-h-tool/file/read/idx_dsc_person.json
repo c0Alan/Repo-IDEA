@@ -7,21 +7,58 @@
   },
   "mappings": {
     "properties": {
-      "counter": {
-        "type": "integer",
-        "store": false
-      },
-      "tags": {
-        "type": "keyword",
-        "store": true
-      },
-      "message": {
+      "name": {
         "type": "text"
       },
-      "field1": {
+      "gender": {
+        "type": "integer"
+      },
+      "birthdate": {
+        "type": "date"
+      },
+      "household": {
         "type": "text"
       },
-      "field2": {
+      "marital": {
+        "type": "integer"
+      },
+      "height": {
+        "type": "double"
+      },
+      "weight": {
+        "type": "double"
+      },
+      "id_number": {
+        "type": "text"
+      },
+      "native_place": {
+        "type": "text"
+      },
+      "nation": {
+        "type": "text"
+      },
+      "education": {
+        "type": "integer"
+      },
+      "school": {
+        "type": "text"
+      },
+      "graduation_date": {
+        "type": "date"
+      },
+      "occupation": {
+        "type": "text"
+      },
+      "address": {
+        "type": "text"
+      },
+      "phone": {
+        "type": "text"
+      },
+      "age": {
+        "type": "integer"
+      },
+      "remark": {
         "type": "text"
       }
     }
