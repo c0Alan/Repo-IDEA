@@ -69,9 +69,29 @@ public class BaseDataServiceImpl implements BaseDataService {
             String sheetName = sheet.getSheetName();
             ExcelReader sheetReader = excelReader.setSheet(sheet);
             List<Map<String, Object>> sheetData = sheetReader.readAll();
+            resetNull(sheetData);
             cacheManager.getBaseDataMap().put(sheetName, sheetData);
         }
         excelReader.close();
+    }
+
+    /**
+     * 将 'null' 字符串转 null 对象
+     * @param sheetData
+     */
+    private void resetNull(List<Map<String, Object>> sheetData){
+        sheetData.forEach(data -> {
+            data.entrySet().forEach(entry -> {
+                String key = entry.getKey();
+                Object value = entry.getValue();
+                if(value instanceof CharSequence){
+                    if (StrUtil.equals("null", (CharSequence) value)){
+                        data.put(key, null);
+                    }
+                }
+
+            });
+        });
     }
 
     @Override

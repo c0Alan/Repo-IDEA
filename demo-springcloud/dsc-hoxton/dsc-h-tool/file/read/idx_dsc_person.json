@@ -14,7 +14,8 @@
         "type": "integer"
       },
       "birthdate": {
-        "type": "date"
+        "type": "date",
+        "format": "yyyy-MM-dd HH:mm:ss||yyyy-MM-dd||epoch_millis"
       },
       "household": {
         "type": "text"
@@ -44,7 +45,8 @@
         "type": "text"
       },
       "graduation_date": {
-        "type": "date"
+        "type": "date",
+        "format": "yyyy-MM-dd HH:mm:ss||yyyy-MM-dd||epoch_millis"
       },
       "occupation": {
         "type": "text"
