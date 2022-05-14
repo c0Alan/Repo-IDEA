@@ -1,0 +1,22 @@
+spring:
+  devtools:
+    restart:
+      additional-paths: src/main/*
+app:
+  test:
+    users:
+      - id: 1
+        deptId: 1
+        username: aaa
+        age: 2
+      - id: 2
+        deptId: 1
+        username: bbb
+        age: 2
+
+
+
+
+
+
+

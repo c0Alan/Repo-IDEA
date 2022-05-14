@@ -34,6 +34,7 @@
         <module>dsc-h-webflux</module>
         <module>dsc-h-es</module>
         <module>dsc-h-es-rest</module>
+        <module>dsc-h-etcd</module>
     </modules>
 
     <properties>
@@ -227,6 +228,12 @@
                 <groupId>com.google.guava</groupId>
                 <artifactId>guava</artifactId>
                 <version>31.1-jre</version>
+            </dependency>
+
+            <dependency>
+                <groupId>io.etcd</groupId>
+                <artifactId>jetcd-core</artifactId>
+                <version>0.7.1</version>
             </dependency>
 
         </dependencies>
