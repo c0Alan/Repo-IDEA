@@ -67,7 +67,7 @@
 			<charset>UTF-8</charset>
 		</encoder>
 	</appender>
-	<root level="info">
+	<root level="debug">
 		<appender-ref ref="STDOUT" />
 		<appender-ref ref="RollingFile" />
 		<appender-ref ref="ErrorLog" />

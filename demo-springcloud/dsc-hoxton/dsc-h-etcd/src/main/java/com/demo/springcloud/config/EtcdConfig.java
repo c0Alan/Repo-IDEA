@@ -31,7 +31,7 @@ public class EtcdConfig {
 
     @Bean
     public Client etcdClient(){
-        Client client = Client.builder().endpoints("http://172.25.20.57:2379").build();
+        Client client = Client.builder().endpoints("http://192.168.170.128:2379").build();
         return client;
     }
 
