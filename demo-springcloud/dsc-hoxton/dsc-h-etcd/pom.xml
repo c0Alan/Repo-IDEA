@@ -10,7 +10,6 @@
     <name>dsc-h-etcd</name>
     <description>集成etcd</description>
 
-
     <parent>
         <groupId>com.demo.springcloud</groupId>
         <artifactId>dsc-hoxton</artifactId>

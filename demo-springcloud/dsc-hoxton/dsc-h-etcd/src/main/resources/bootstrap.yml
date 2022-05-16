@@ -13,13 +13,13 @@ spring:
         - lo
     nacos:
       discovery:
-#        server-addr: nacos-center.v-base:30848
-        server-addr: 192.168.170.128:8848
+        server-addr: nacos-center.v-base:30848
+#        server-addr: 192.168.170.128:8848
         namespace: 57e6ca16-0f0a-445a-b0d0-8361f298f1a5
         group: dsc
       config:
-#        server-addr: nacos-center.v-base:30848
-        server-addr: 192.168.170.128:8848
+        server-addr: nacos-center.v-base:30848
+#        server-addr: 192.168.170.128:8848
         prefix: dsc
         file-extension: properties
         group: dsc
