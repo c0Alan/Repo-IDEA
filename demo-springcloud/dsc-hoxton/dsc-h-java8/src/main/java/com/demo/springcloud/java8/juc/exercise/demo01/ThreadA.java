@@ -1,6 +1,7 @@
 package com.demo.springcloud.java8.juc.exercise.demo01;
 
-import org.apache.commons.lang3.StringUtils;
+
+import cn.hutool.core.util.StrUtil;
 
 public class ThreadA extends Thread {
     private Subject subject;
@@ -12,7 +13,7 @@ public class ThreadA extends Thread {
     @Override
     public void run() {
         for (int i = 0; i < 10; i++) {
-            while (StringUtils.isNotBlank(subject.getValue()) && !"C".equals(subject.getValue())) {
+            while (StrUtil.isNotBlank(subject.getValue()) && !"C".equals(subject.getValue())) {
 
             }
             // 这里没必要加 synchronized 的必要
