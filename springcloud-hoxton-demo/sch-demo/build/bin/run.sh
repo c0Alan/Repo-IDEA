@@ -10,7 +10,7 @@ source /etc/profile
 #-------------------------------------------------------------------
 
 # 模块名
-MODEL_NAME=`echo dsc-h-service*.jar`
+MODEL_NAME=`echo sch-demo*.jar`
 
 # 选项
 MODEL_OPTS=""
