@@ -3,7 +3,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.demo.springcloud</groupId>
+    <groupId>com.sch</groupId>
     <artifactId>springcloud-hoxton-demo</artifactId>
     <version>1.0</version>
     <packaging>pom</packaging>
@@ -133,7 +133,7 @@
             <dependency>
                 <groupId>org.projectlombok</groupId>
                 <artifactId>lombok</artifactId>
-                <version>1.18.2</version>
+                <version>1.18.22</version>
             </dependency>
 
             <!--中文转拼音-->
@@ -170,7 +170,7 @@
             <dependency>
                 <groupId>cn.hutool</groupId>
                 <artifactId>hutool-all</artifactId>
-                <version>5.7.18</version>
+                <version>5.7.19</version>
             </dependency>
 
             <dependency>
@@ -306,11 +306,10 @@
         </dependency>
 
         <dependency>
-            <groupId>com.demo.springcloud</groupId>
+            <groupId>com.sch</groupId>
             <artifactId>sch-commons</artifactId>
             <version>1.0</version>
         </dependency>
-
 
     </dependencies>
 

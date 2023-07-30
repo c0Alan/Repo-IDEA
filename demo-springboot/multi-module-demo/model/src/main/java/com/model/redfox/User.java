@@ -1,4 +1,4 @@
-package com.model.redfox;
+package com.jd.model.redfox;
 
 public class User {
     private String cId;

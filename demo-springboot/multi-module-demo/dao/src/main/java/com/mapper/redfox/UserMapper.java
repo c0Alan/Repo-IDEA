@@ -1,6 +1,6 @@
 package com.mapper.redfox;
 
-import com.model.redfox.User;
+import com.jd.model.redfox.User;
 
 import java.util.List;
 

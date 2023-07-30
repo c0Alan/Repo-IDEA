@@ -2,7 +2,7 @@ package com.service.redfox;
 
 import com.github.pagehelper.PageHelper;
 import com.mapper.redfox.UserMapper;
-import com.model.redfox.User;
+import com.jd.model.redfox.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

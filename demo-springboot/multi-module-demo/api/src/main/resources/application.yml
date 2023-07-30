@@ -25,7 +25,7 @@ spring:
         maxOpenPreparedStatements: 20
 #mybatis:
 #  mapper-locations: classpath:mapping/**/*.xml
-#  type-aliases-package: com.model.redfox
+#  type-aliases-package: com.jd.model.redfox
 
 #pagehelper分页插件
 pagehelper:

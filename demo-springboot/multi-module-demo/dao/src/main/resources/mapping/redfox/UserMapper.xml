@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.mapper.redfox.UserMapper">
-    <resultMap id="BaseResultMap" type="com.model.redfox.User">
+    <resultMap id="BaseResultMap" type="com.jd.model.redfox.User">
         <id column="C_ID" property="cId" jdbcType="VARCHAR"/>
         <result column="C_LoginID" property="cLoginid" jdbcType="VARCHAR"/>
         <result column="C_Name" property="cName" jdbcType="VARCHAR"/>
@@ -39,7 +39,7 @@
     delete from t_aty_user
     where C_ID = #{cId,jdbcType=VARCHAR}
   </delete>
-    <insert id="insert" parameterType="com.model.redfox.User">
+    <insert id="insert" parameterType="com.jd.model.redfox.User">
     insert into t_aty_user (C_ID, C_LoginID, C_Name, 
       C_Password, C_Mail, C_IP, 
       C_XMJP, C_CORP, C_DEPT, 
@@ -49,7 +49,7 @@
       #{cXmjp,jdbcType=VARCHAR}, #{cCorp,jdbcType=VARCHAR}, #{cDept,jdbcType=VARCHAR}, 
       #{nValid,jdbcType=TINYINT}, #{nOrder,jdbcType=SMALLINT})
   </insert>
-    <insert id="insertSelective" parameterType="com.model.redfox.User">
+    <insert id="insertSelective" parameterType="com.jd.model.redfox.User">
         insert into t_aty_user
         <trim prefix="(" suffix=")" suffixOverrides=",">
             <if test="cId != null">
@@ -122,7 +122,7 @@
             </if>
         </trim>
     </insert>
-    <update id="updateByPrimaryKeySelective" parameterType="com.model.redfox.User">
+    <update id="updateByPrimaryKeySelective" parameterType="com.jd.model.redfox.User">
         update t_aty_user
         <set>
             <if test="cLoginid != null">
@@ -158,7 +158,7 @@
         </set>
         where C_ID = #{cId,jdbcType=VARCHAR}
     </update>
-    <update id="updateByPrimaryKey" parameterType="com.model.redfox.User">
+    <update id="updateByPrimaryKey" parameterType="com.jd.model.redfox.User">
     update t_aty_user
     set C_LoginID = #{cLoginid,jdbcType=VARCHAR},
       C_Name = #{cName,jdbcType=VARCHAR},
