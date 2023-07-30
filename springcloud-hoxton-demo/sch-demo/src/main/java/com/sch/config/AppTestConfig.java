@@ -1,6 +1,6 @@
-package com.demo.springcloud.config;
+package com.sch.config;
 
-import com.demo.springcloud.entity.User;
+import com.sch.entity.User;
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.context.properties.ConfigurationProperties;

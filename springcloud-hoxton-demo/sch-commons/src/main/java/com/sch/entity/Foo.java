@@ -1,4 +1,4 @@
-package com.demo.springcloud.entity;
+package com.sch.entity;
 
 import cn.hutool.core.bean.BeanUtil;
 import lombok.Data;

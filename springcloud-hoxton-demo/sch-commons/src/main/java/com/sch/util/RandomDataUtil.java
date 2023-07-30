@@ -1,4 +1,4 @@
-package com.demo.springcloud.util;
+package com.sch.util;
 
 import cn.hutool.core.util.RandomUtil;
 import cn.hutool.core.util.StrUtil;

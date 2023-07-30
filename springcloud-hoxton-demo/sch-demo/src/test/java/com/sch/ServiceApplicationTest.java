@@ -1,4 +1,4 @@
-package com.demo.springcloud;
+package com.sch;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

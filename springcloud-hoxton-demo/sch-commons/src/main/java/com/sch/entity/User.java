@@ -1,4 +1,4 @@
-package com.demo.springcloud.entity;
+package com.sch.entity;
 
 import lombok.Data;
 

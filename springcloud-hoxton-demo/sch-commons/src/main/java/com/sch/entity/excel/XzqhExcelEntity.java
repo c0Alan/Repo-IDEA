@@ -1,4 +1,4 @@
-package com.demo.springcloud.entity.excel;
+package com.sch.entity.excel;
 
 import lombok.Data;
 
