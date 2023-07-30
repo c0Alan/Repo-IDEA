@@ -5,6 +5,7 @@ import org.openjdk.jmh.runner.Runner;
 import org.openjdk.jmh.runner.RunnerException;
 import org.openjdk.jmh.runner.options.Options;
 import org.openjdk.jmh.runner.options.OptionsBuilder;
+import org.openjdk.jmh.runner.options.TimeValue;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
@@ -61,7 +62,9 @@ public class JmhTestApp1 {
                 OptionsBuilder().include(JmhTestApp1.class.getSimpleName())
                 .forks(1)
                 .measurementIterations(10)
+                .measurementTime(TimeValue.microseconds(1000000L))
                 .warmupIterations(10)
+                .warmupTime(TimeValue.microseconds(1000000L))
                 .build();
         new Runner(opts).run();
     }
