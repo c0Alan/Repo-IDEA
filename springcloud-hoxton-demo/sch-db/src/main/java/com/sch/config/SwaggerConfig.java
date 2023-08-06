@@ -24,7 +24,7 @@ public class SwaggerConfig {
                         .title("sch-db")
                         .description("sch-db")
                         .version("1.0")
-                        .contact(new Contact("c0","https://blog.csdn.net/c0tianning",""))
+                        .contact(new Contact("c0", "https://blog.csdn.net/c0tianning", ""))
                         .build());
     }
 }
