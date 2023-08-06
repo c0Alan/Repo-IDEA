@@ -20,7 +20,7 @@
 
     <modules>
         <module>sch-demo</module>
-
+        <module>sch-db</module>
     </modules>
 
     <properties>

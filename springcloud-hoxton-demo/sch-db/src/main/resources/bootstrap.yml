@@ -1,0 +1,30 @@
+nacosServer: ${NACOS_SERVER:nacos-center.v-base:30848}
+
+server:
+  port: 30008
+spring:
+  application:
+    name: sch-db
+  cloud:
+    inetutils:
+      ignored-interfaces:
+        - docker.*
+        - veth.*
+        - VMware.*
+        - VMnet.*
+        - lo
+    nacos:
+      discovery:
+        server-addr: ${nacosServer}
+        namespace: 57e6ca16-0f0a-445a-b0d0-8361f298f1a5
+        group: dsc
+      config:
+        server-addr: ${nacosServer}
+        prefix: dsc
+        file-extension: properties
+        group: dsc
+        namespace: 57e6ca16-0f0a-445a-b0d0-8361f298f1a5
+
+
+logging:
+  config: classpath:logback-spring.xml
