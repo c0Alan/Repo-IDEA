@@ -10,3 +10,4 @@ CREATE TABLE `t_user` (
 INSERT INTO t_user(username) VALUES('张三');
 INSERT INTO t_user(username) VALUES('李四');
 INSERT INTO t_user(username) VALUES('王五');
+INSERT INTO t_user(username) VALUES('唐六');
