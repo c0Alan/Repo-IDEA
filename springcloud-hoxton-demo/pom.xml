@@ -20,6 +20,7 @@
 
     <modules>
         <module>sch-demo</module>
+        <module>sch-scheduler</module>
     </modules>
 
     <properties>
