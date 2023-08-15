@@ -21,8 +21,8 @@ public class HelloController {
     @GetMapping("/hello")
     public String hello(@RequestParam String name) {
         String serverIp = NetUtil.getServerIpList();
-        log.info("serverIp: " + serverIp + ",invoked hello，name = " + name);
-        return "serverIp: " + serverIp + ",hello " + name;
+        log.info("sch-demo serverIp: " + serverIp + ",invoked hello，name = " + name);
+        return " sch-demo serverIp: " + serverIp + ",hello " + name;
     }
 
     @GetMapping("/hello2")

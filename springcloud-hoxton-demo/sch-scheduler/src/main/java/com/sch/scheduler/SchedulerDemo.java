@@ -12,7 +12,7 @@ import org.springframework.scheduling.annotation.Scheduled;
  */
 @Slf4j
 @Component
-public class Scheduler {
+public class SchedulerDemo {
 
 
     /**
