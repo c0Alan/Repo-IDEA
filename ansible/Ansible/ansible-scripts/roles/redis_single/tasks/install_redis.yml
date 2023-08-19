@@ -1,0 +1,33 @@
+---
+- name: check the install directory
+  stat: path={{ install_dir }}
+  register: redis_dir
+
+- name: mkdir directory for redis installing
+  file: dest={{ install_dir }} mode=0755 state=directory owner=root group=root
+  when: not redis_dir.stat.exists
+
+- name: copy and unzip redis
+  unarchive: src={{ resources_dir }}/pci-redis-4.0.8.tar.gz dest={{ install_dir }}
+
+- name: create a redis soft link
+  file: src={{ install_dir }}/redis/redis-4.0.8 dest={{ install_dir }}/redis/redis state=link
+
+- name: make redis
+  shell: "make chdir={{ install_dir }}/redis/redis-4.0.8"
+
+- name: cp src/redis-server
+#  copy: src={{ install_dir }}/redis/redis/src/redis-server dest=/usr/local/bin/ mode=0750
+  shell: cp {{ install_dir }}/redis/redis/src/redis-server /usr/local/bin/
+  
+- name: chmod +x redis-server
+  #copy: src={{ install_dir }}/redis/redis/src/redis-server dest=/usr/local/bin/ mode=0750
+  shell: chmod +x /usr/local/bin/redis-server
+
+- name: cp src/redis-cli
+  #copy: src={{ install_dir }}/redis/redis/src/redis-cli dest=/usr/local/bin/ mode=0750
+  shell: cp {{ install_dir }}/redis/redis/src/redis-cli  /usr/local/bin/
+
+- name: cp src/redis-cli
+  #copy: src={{ install_dir }}/redis/redis/src/redis-cli dest=/usr/local/bin/ mode=0750
+  shell: chmod +x /usr/local/bin/redis-cli

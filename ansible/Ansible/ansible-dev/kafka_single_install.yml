@@ -1,0 +1,7 @@
+---
+#部署kafka集群
+- hosts: kafka_single_server
+  remote_user: root
+  gather_facts: true
+  roles:
+   - kafka_single

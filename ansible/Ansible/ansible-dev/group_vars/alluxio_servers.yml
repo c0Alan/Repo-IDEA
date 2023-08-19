@@ -1,0 +1,3 @@
+---
+logs_dir: "{{ alluxio_root_dir}}/alluxio/logs"
+ram_folder: "{{alluxio_root_dir}}/alluxio/ramdisk"

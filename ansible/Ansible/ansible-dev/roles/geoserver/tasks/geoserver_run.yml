@@ -1,0 +1,16 @@
+---
+  
+- name: start the geoserver
+#  service: name=geoserver state=started
+  shell: nohup service geoserver restart &
+  tags: start
+  
+- name: stop the geoserver
+#  service: name=geoserver state=stopped
+  shell: service geoserver stop
+  tags: stop  
+  
+#- name: restart the geoserver
+#  service: name=geoserver state=restarted
+#  shell: service geoserver restart
+#  tags: restart    

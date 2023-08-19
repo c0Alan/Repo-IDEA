@@ -1,0 +1,56 @@
+- name: check the install directory
+  stat: path={{ install_dir }}
+  register: installDir
+
+- name: mkdir directory for alluxio installing
+  file: dest={{ install_dir }} mode=0755 state=directory owner=root group=root
+  when: not installDir.stat.exists
+
+- name: copy and unzip alluxio
+  unarchive: src={{ resources_dir }}/pci-alluxio-1.2.0.tar.gz dest={{ install_dir }}
+  when: installDir.stat.exists
+
+- name: create alluxio link
+  file: src={{ install_dir }}/alluxio/alluxio-1.2.0 dest={{ install_dir }}/alluxio/alluxio state=link force=yes
+
+- name: rm -rf old logs
+  shell: rm -rf {{ item }}
+  with_items:
+   - " {{ install_dir}}/alluxio/logs"
+   - "{{ install_dir }}/alluxio/ramdisk"
+  ignore_errors: true 
+
+- name: check the logs dir
+  stat: path={{ logs_dir }}
+  register: logsDir
+
+- name: mkdir directory for alluxio logs
+  file: dest={{ logs_dir }} mode=0755 state=directory owner=root group=root
+  when: not logsDir.stat.exists
+
+- name: check the ram folder
+  stat: path={{ ram_folder }}
+  register: ramDir
+
+- name: mkdir directory for alluxio ram folder
+  file: dest={{ ram_folder }} mode=0755 state=directory owner=root group=root
+  when: not ramDir.stat.exists
+
+- name: configuration alluxio alluxio-env.sh
+  template: src=alluxio-env.sh.j2 dest={{ install_dir }}/alluxio/alluxio/conf/alluxio-env.sh owner=root group=root
+
+- name: configuration alluxio workers
+  template: src=workers.j2 dest={{ install_dir }}/alluxio/alluxio/conf/workers owner=root group=root
+
+- name: set evn
+  lineinfile: dest=/etc/profile insertafter="{{ item.position }}" line="{{ item.value }}" state=present
+  with_items:
+   - { position: EOF, value: "\n" }
+   - { position: EOF, value: "export ALLUXIO_HOME={{ install_dir }}/alluxio/alluxio-1.2.0" }
+   - { position: EOF, value: "export PATH=$ALLUXIO_HOME/bin:$PATH" }
+
+- name: set alluxio dir right
+  file: path={{ install_dir }}/alluxio owner=root group=root mode=0775 recurse=yes
+
+- name: enforce env
+  shell: source /etc/profile

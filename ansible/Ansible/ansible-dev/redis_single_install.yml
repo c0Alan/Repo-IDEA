@@ -1,0 +1,6 @@
+- hosts: redis_single_server
+  gather_facts: true
+  remote_user: root
+  roles:
+   #- firewalld
+   - redis_single

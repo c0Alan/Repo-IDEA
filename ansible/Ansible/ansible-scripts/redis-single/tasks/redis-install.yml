@@ -1,0 +1,66 @@
+---
+- name: install redis
+  gather_facts: False
+  hosts: "{{ ip }}"
+  user: root
+
+  vars:
+    - redis_port: "{{ port|default(6379) }}"
+
+  tasks:
+#    - name: remove the old file
+#      file: path={{ redis_home }} state=absent
+    - name: remove the tmp file
+      file: path=/tmp/redis* state=absent
+    - name: Create the dir
+      file: path={{ item }} state=directory
+      with_items:
+        - /etc/redis/
+        - /tmp/redis/
+        - "{{ redis_home }}"
+        - "{{ redis_home }}/data"
+        - "{{ redis_home }}/data/{{ redis_port }}"
+    - name: prepare the environment
+      yum: name={{ item }} state=latest
+      with_items:
+        - gcc
+        - gcc-*
+        - automake
+        - autoconf
+        - libtool
+        - make
+        - zlib
+        - zlib-devel
+        - glibc-*
+        - tcl
+      ignore_errors: yes
+    # - name: get libunwind-1.1_tar.gz
+      # get_url: url=http://ftp.twaren.net/Unix/NonGNU//libunwind/libunwind-1.1.tar.gz dest=/tmp/libunwind-1.1.tar.gz
+    - name: unarchive the libunwind-1.1_tar.gz                                                                    
+      unarchive: src=/tmp/libunwind-1.1.tar.gz dest=/tmp/ copy=no
+    - name: install the libunwind-1.1_tar.gz
+      shell: cd /tmp/libunwind-1.1/ && ./configure && make && make install
+    # - name: get gperftools-2.5_tar.gz
+      # get_url: url=https://github.com/gperftools/gperftools/releases/download/gperftools-2.5/gperftools-2.5.tar.gz dest=/tmp/gperftools-2.5.tar.gz
+    - name: unarchive the gperftools-2.5_tar.gz
+      unarchive: src=/tmp/gperftools-2.5.tar.gz dest=/tmp/ copy=no
+    - name: install the gperftools-2.5_tar.gz
+      shell: cd /tmp/gperftools-2.5/ && ./configure && make && make install
+    - name: ldconfig the /usr/local/lib
+      shell: echo "/usr/local/lib" > /etc/ld.so.conf.d/usr_local_lib.conf && ldconfig
+    # - name: get redis_tar_gz
+      # get_url: url={{ url }} dest=/tmp/redis.tar.gz
+    - name: unarchive the redis-3.2.0.tar.gz
+      unarchive: src=/tmp/redis-3.2.0.tar.gz dest=/tmp/redis/ copy=no
+    - name: install redis to {{ redis_home }}
+      shell: cd /tmp/redis/redis-3.2.0 && make PREFIX={{ redis_home }} USE_TCMALLOC=yes install
+    - name: init the redis_conf
+      template: src=/opt/redis/templates/redis.conf.j2 dest=/etc/redis/redis-{{ redis_port }}.conf
+    - name: init the redis maintain script
+      template: src=/opt/redis/templates/redis.sh.j2 dest=/etc/init.d/redis-{{ redis_port }} mode=0755
+    - name: Start the redis server
+      shell: /etc/init.d/redis-{{ redis_port }} start
+      ignore_errors: yes
+    - name: add redis to chkconfig 
+      shell: chkconfig --level 345 redis-{{ redis_port }} on
+      ignore_errors: yes

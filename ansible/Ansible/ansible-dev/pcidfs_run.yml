@@ -1,0 +1,58 @@
+---
+- hosts: tracker_servers
+  gather_facts: true
+  remote_user: root
+  tasks:
+  - name: start fdfs_trackerd
+    shell: nohup service fdfs_trackerd start &
+    tags: start
+
+  - name: chkconfig fdfs_trackerd on
+    shell: chkconfig fdfs_trackerd on
+    tags: start
+    
+  - name: start nginx
+    shell: nohup service nginx start &
+    tags: start
+  
+  - name: chkconfig nginx on
+    shell: chkconfig nginx on
+    tags: start 
+
+  - name: service fdfs_trackerd stop
+    shell: service fdfs_trackerd stop
+    tags: stop
+
+  - name: service nginx stop
+    shell: service nginx stop
+    tags: stop
+   
+    
+- hosts: storage_servers
+  gather_facts: true
+  remote_user: root
+  tasks:    
+  - name: start fdfs_storaged
+    shell: nohup service fdfs_storaged start &
+    tags: start
+  
+  - name: chkconfig fdfs_storaged on
+    shell: chkconfig fdfs_storaged on
+    tags: start
+  
+  - name: start nginx
+    shell: nohup service nginx start &
+    tags: start
+  
+  - name: chkconfig nginx on
+    shell: chkconfig nginx on
+    tags: start
+  
+  
+  - name: service fdfs_storaged stop
+    shell: service fdfs_storaged stop
+    tags: stop
+  
+  - name: service nginx stop
+    shell: service nginx stop
+    tags: stop

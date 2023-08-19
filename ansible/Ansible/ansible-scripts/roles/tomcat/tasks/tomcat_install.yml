@@ -1,0 +1,33 @@
+---
+
+- name: check whether the tomcat install dir exist
+  stat: path={{ install_dir }}
+  register: tomcat
+
+- name: mkdir directory for tomcat installing
+  file: dest={{ install_dir }} mode=0755 state=directory 
+  when: not tomcat.stat.exists
+  
+- name: unzip tomcat for tomcat install
+  unarchive: src={{ resources_dir }}/{{ tomcat_install_package }} dest={{ install_dir}}
+
+- name: replace console.xml
+  template: src=console.xml.j2 dest="{{ install_dir }}/tomcat/eapserver/config/application/console.xml"
+
+- name: replace gis.xml
+  template: src=gis.xml.j2 dest="{{ install_dir }}/tomcat/eapserver/config/application/gis.xml"
+
+- name: replace efacecloud.xml
+  template: src=efacecloud.xml.j2 dest="{{ install_dir }}/tomcat/eapserver/config/application/efacecloud.xml"
+
+- name: replace oss.xml
+  template: src=oss.xml.j2 dest="{{ install_dir }}/tomcat/eapserver/config/application/oss.xml"
+
+- name: replace server.xml
+  template: src=server.xml.j2 dest="{{ install_dir }}/tomcat/conf/server.xml"
+  
+#- name: start tomcat
+#  shell: chdir='{{ install_dir }}/tomcat/bin_64' nohup ./catalina.sh run
+
+- name: mkdir h
+  file: dest="/h:" mode=0777 state=directory recurse=yes

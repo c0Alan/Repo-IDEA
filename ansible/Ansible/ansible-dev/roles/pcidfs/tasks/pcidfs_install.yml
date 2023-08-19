@@ -1,0 +1,67 @@
+---
+
+#时钟同步
+- name: ntpdate
+  shell: ntpdate {{ntp_server}}
+  ignore_errors: true
+
+- name: ulimit -n 65535
+  lineinfile:
+    dest: /etc/profile
+    line: 'ulimit -n 65535'
+  tags:
+  - add_a_line
+  
+- name: modify /etc/security/limits.conf
+  lineinfile:
+    dest: /etc/security/limits.conf
+    line: '* soft nofile 65535'
+    line: '* hard nofile 65535'
+  tags:
+  - add_two_line
+
+- name: mkdir directory for pcidfs images-path
+  file: path="{{ imagePath_prefix }}{{ item }}" state=directory owner=root group=root mode=0755 
+  with_items:
+        - "{{ imagePath_suffix.split(',') }}"
+
+- name: check the install directory
+  stat: path={{ install_dir }}
+  register: pcidfs_dir
+
+- name: mkdir directory for pcidfs installing
+  file: dest={{ install_dir }} mode=0755 state=directory
+  when: not pcidfs_dir.stat.exists
+
+- name: unzip pcidfs_soft
+  unarchive: src={{ resources_dir }}/{{ pcidfs_install_package }} dest={{ install_dir }}
+  
+- name: modify tracker_list.txt
+  template: src=tracker_list.txt.j2 dest="{{ install_dir }}/{{ pcidfs_install_dir }}/pcidfs_soft/install/tracker_list.txt"
+  
+- name: storage_list.txt
+  template: src=storage_list.txt.j2 dest="{{ install_dir }}/{{ pcidfs_install_dir }}/pcidfs_soft/install/storage_list.txt"
+  
+- name: modify store_path_list.txt
+  template: src=store_path_list.txt.j2 dest="{{ install_dir }}/{{ pcidfs_install_dir }}/pcidfs_soft/install/store_path_list.txt"
+  
+- name: change the store_path_list style
+  shell: sed -i -e "s/,/\n/g" {{ install_dir }}/{{ pcidfs_install_dir }}/pcidfs_soft/install/store_path_list.txt
+  
+- name: chmod -R 777 pcidfs_soft
+  command: chmod -R 777 {{ install_dir }}/{{ pcidfs_install_dir }}
+  
+- name: yum install net-tools
+  yum: name=net-tools state=present
+  
+- name: yum install expect
+  yum: name=expect state=present
+  
+- name: execute install.sh
+  shell: "./install.sh chdir={{ install_dir }}/{{ pcidfs_install_dir }}/pcidfs_soft/install "
+  
+- name: execute config.sh
+  shell: "./config.sh chdir={{ install_dir }}/{{ pcidfs_install_dir }}/pcidfs_soft/install "
+  
+# - name: mkdir store dir
+  # shell: mkdir -p /home/data1 /data2

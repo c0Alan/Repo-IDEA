@@ -1,0 +1,1 @@
+{% for path in imagePath_suffix.split(',') %}{% if loop.index > 1 %},{% endif %}{{ imagePath_prefix }}{{ path }}{% endfor %}

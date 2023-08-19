@@ -1,0 +1,7 @@
+---
+
+# 免密配置
+- name: ssh
+  script: sshKeygen.sh {{ item }}
+  with_items: 
+   - "{{ groups['sshEstablish_servers'] }}"

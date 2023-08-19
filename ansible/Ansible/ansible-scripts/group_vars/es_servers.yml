@@ -1,0 +1,3 @@
+---
+http_port: 9200
+transport_port: 9300

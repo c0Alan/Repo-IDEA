@@ -1,0 +1,6 @@
+---
+- name: install gcc
+  yum: name=gcc state=present
+
+- name: check gcc
+  shell: gcc -v

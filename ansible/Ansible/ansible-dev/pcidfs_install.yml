@@ -1,0 +1,5 @@
+- hosts: pcidfs_servers
+  gather_facts: no
+  remote_user: root
+  roles:
+   - pcidfs

@@ -1,0 +1,7 @@
+---
+#修改storeFtpAgent.properties内容
+- hosts: flume_servers
+  remote_user: root
+  gather_facts: true
+  roles:
+   - flume_update

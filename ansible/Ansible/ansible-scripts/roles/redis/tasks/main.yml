@@ -1,0 +1,11 @@
+---
+#进行系统参数设置
+- include: root_tasks.yml
+#安装gcc
+- include: install_gcc.yml
+#安装redis
+- include: install_redis.yml
+#配置redis
+- include: redis_conf.yml
+#配置免密码登录
+- include: establishSSH.yml

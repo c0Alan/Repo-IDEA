@@ -1,0 +1,118 @@
+--- 
+
+#上传 tcl rpm包
+- name: scp tcl rpm to target host
+  copy: src={{ resources_dir }}/tcl-8.5.7-6.el6.x86_64.rpm dest=/tmp owner=root group=root
+  run_once: true
+  delegate_to: "{{ groups['es_master_candidate_nodes'][0] }}"
+
+#安装tcl软件
+- name: install tcl rpm
+  yum: name=/tmp/tcl-8.5.7-6.el6.x86_64.rpm state=present
+  become: true
+  become_method: su
+  become_user: root
+  ignore_errors: true
+  run_once: true
+  delegate_to: "{{ groups['es_master_candidate_nodes'][0] }}"
+  
+#上传expect软件
+- name: scp expect rpm to target host
+  copy: src={{ resources_dir }}/expect-5.44.1.15-4.el6.x86_64.rpm dest=/tmp owner=root group=root
+  run_once: true
+  delegate_to: "{{ groups['es_master_candidate_nodes'][0] }}"
+  
+#安装expect软件
+- name: install tcl rpm
+  yum: name=/tmp/expect-5.44.1.15-4.el6.x86_64.rpm state=present
+  become: true
+  become_method: su
+  become_user: root
+  ignore_errors: true
+  run_once: true
+  delegate_to: "{{ groups['es_master_candidate_nodes'][0] }}"
+
+#上传至远程主机
+- name: scp keyGen.sh to one remote host
+  copy: src={{ resources_dir }}/keyGen.sh dest=/tmp mode=0755 owner={{ es_user_name }} group={{ es_group_name }}
+  run_once: true
+  delegate_to: "{{ groups['es_master_candidate_nodes'][0] }}"
+
+ #上传至远程主机
+- name: scp sshIP.sh to one remotehost
+  copy: src={{ resources_dir }}/sshIP.sh dest=/tmp mode=0755 owner={{ es_user_name }} group={{ es_group_name }}
+  run_once: true
+  delegate_to: "{{ groups['es_master_candidate_nodes'][0] }}"
+
+#删除rpm
+- name: delete rpm package
+  command: rm -rf /tmp/{{ item }}
+  with_items:
+   - "tcl-8.5.7-6.el6.x86_64.rpm"
+   - "expect-5.44.1.15-4.el6.x86_64.rpm"
+  run_once: true
+  delegate_to: "{{ groups['es_master_candidate_nodes'][0] }}"
+
+#生成公钥
+- name: run keyGen.sh
+  command: /tmp/keyGen.sh {{ es_user_home }}
+  run_once: true
+  delegate_to: "{{ groups['es_master_candidate_nodes'][0] }}"
+  become: yes
+  become_method: su
+  become_user: "{{ es_user_name }}"
+  ignore_errors: true
+  
+ 
+#检测公钥是否创建成功
+- name: check whether id_rsa.pub exist
+  stat: path={{ es_user_home }}/.ssh/id_rsa.pub
+  register: rsaResult
+  run_once: true
+  delegate_to: "{{ groups['es_master_candidate_nodes'][0] }}"
+
+#从远程拉取公钥到本地
+- name: get id_rsa.pub from the remote host
+  fetch: src={{ es_user_home }}/.ssh/id_rsa.pub dest=/tmp/ flat=yes
+  when: rsaResult.stat.exists
+  run_once: true
+  delegate_to: "{{ groups['es_master_candidate_nodes'][0] }}"
+
+#创建servers.txt
+- name: touch servers.txt
+  file: dest=/tmp/servers.txt state=touch mode=755 owner={{ es_user_name }} group={{ es_group_name }}
+  run_once: true
+  delegate_to: "{{ groups['es_master_candidate_nodes'][0] }}"
+  
+#写入ip hostname
+- name: write ip hostname into servers.txt
+  lineinfile: dest=/tmp/servers.txt line="{{ item }}\r\n{{ hostvars[item]['ansible_nodename'] }}"
+  run_once: true
+  delegate_to: "{{ groups['es_master_candidate_nodes'][0] }}"
+  with_items:
+   - "{{ groups['es_servers'] }}"
+
+#拷贝公钥
+- name: ssh-copy-id  
+  authorized_key: user={{ es_user_name }} state=present key="{{ lookup('file', '/tmp/id_rsa.pub') }}"
+
+- name: ssh ip
+  command: /tmp/sshIP.sh
+  run_once: true
+  delegate_to: "{{ groups['es_master_candidate_nodes'][0] }}"
+  become: true
+  become_method: su
+  become_user: "{{ es_user_name }}"
+
+- name: rm files
+  command: "rm -rf /tmp/{{ item }}"
+  run_once: true
+  delegate_to: "{{ groups['es_master_candidate_nodes'][0] }}"
+  with_items:
+    - "servers.txt"
+    - "sshIP.sh"
+    - "keyGen.sh"
+    - "id_rsa.pub"
+  become: true
+  become_method: su
+  become_user: root

@@ -1,0 +1,4 @@
+---
+resources_dir: "{{ playbook_dir }}/resources"
+ntp_server: 172.25.20.151
+install_dir: /home/vplus

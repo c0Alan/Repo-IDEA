@@ -1,0 +1,80 @@
+---
+- name: check whether the spark install dir exist
+  stat: path={{ install_dir }}
+  register: spark
+
+- name: mkdir directory for spark installing
+  file: dest={{ install_dir }} mode=0755 state=directory 
+  when: not spark.stat.exists
+
+#创建spark用户组
+- name: create a group
+  group: name={{ spark_group_name }}
+  ignore_errors: true
+
+#创建spark用户目录
+- name: mkidr spark home dir
+  shell: "mkdir -p {{ spark_user_home }}"
+
+- name: rm -rf es home dir
+  shell: "rm -rf {{ spark_user_home }}"
+
+
+#创建spark用户
+- name: create a user belong to the group
+  user: name={{ spark_user_name }} shell=/bin/bash group={{ spark_group_name }} home={{ spark_user_home }}  password={{ spark_user_pwd|password_hash('sha512') }} update_password=always append=yes
+  ignore_errors: true
+
+- name: unzip scala install package
+  unarchive: src={{ resources_dir }}/{{ scala_install_package }} dest={{ install_dir }}
+
+- name: unzip spark install package
+  unarchive: src={{ resources_dir }}/{{ spark_install_package }} dest={{ install_dir }}
+
+- name: create a spark  link
+  file: src={{ install_dir  }}/spark/spark-2.1.0-bin-hadoop2.7 dest={{ install_dir }}/spark/spark state=link
+
+- name: set scala  env
+  lineinfile: dest=/etc/profile insertafter="{{ item.position }}" line="{{ item.value }}" state=present
+  with_items:
+   - { position: EOF, value: "\n"}
+   - { position: EOF, value: "export SCALA_HOME={{ install_dir }}/scala-2.11.8"  }
+   - { position: EOF, value: "export SPARK_HOME={{ install_dir }}/spark/spark-2.1.0-bin-hadoop2.7"  }
+   - { position: EOF, value: "export PATH=$SCALA_HOME/bin:$SPARK_HOME/bin:$PATH"  }
+
+- name: source /etc/profile
+  shell: source /etc/profile
+
+- name: check scala env
+  command: "{{install_dir}}/scala-2.11.8/bin/scala -version"
+
+
+- name: rm -rf old log dirs
+  shell: rm -rf {{ item  }}
+  with_items:
+   - "{{ install_dir  }}/spark/local"
+   - "{{ install_dir }}/spark/log"
+   - "{{ install_dir }}/spark/work"
+   - "{{ install_dir }}/spark/applicationHistory"
+  ignore_errors: true
+
+- name: mkdir log dirs
+  shell: mkdir -p {{item}}
+  with_items:
+   - "{{ spark_worker_dir  }}"
+   - "{{ spark_local_dirs  }}"
+   - "{{ spark_log_dir  }}"
+   - "{{ spark_pid_dir }}"
+   - "{{ spark_history_dir }}"
+
+- name: change owner and group
+  file: path={{ spark_root_dir }}/spark owner={{ spark_user_name }} group={{ spark_group_name }} recurse=yes
+
+- name: conf/spark-env.sh
+  template: src=spark-env.sh.j2  dest={{ install_dir }}/spark/spark/conf/spark-env.sh
+
+- name: conf/slaves
+  template: src=slaves.j2 dest={{ install_dir }}/spark/spark/conf/slaves
+
+- name: change owner and group
+  file: path={{ install_dir }}/spark owner={{ spark_user_name }} group={{ spark_group_name }} recurse=yes

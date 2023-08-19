@@ -1,0 +1,63 @@
+---
+ - name: uninstall jdk
+   shell: rpm -e `rpm -qa|grep -i jdk` --nodeps
+   ignore_errors: true
+   
+ - name: check whether the insatll directory exist
+   stat: path={{ java_install_dir }}
+   register: java_install_dir_result
+   ignore_errors: true
+
+ - name: create java install necessary directory
+   file: path={{ java_install_dir }} state=directory
+   when: not java_install_dir_result.stat.exists  
+   ignore_errors: true
+   
+ - name: copy the rpm package to remote host
+   copy: src={{ resources_dir }}/{{ rpm_package_name }} dest=/tmp owner=root group=root
+   
+ - name: install java rpm package
+   yum: name={{ rpm_package_path }} state=present
+   ignore_errors: true
+ 
+ - name: set env
+   lineinfile: dest={{ env_file }} insertafter="{{ item.position }}" line="{{ item.value }}" state=present
+   with_items:
+    - { position: EOF, value: "\n" }
+    - { position: EOF, value: "export JAVA_HOME={{ java_home }}" }
+    - { position: EOF, value: "export PATH=$JAVA_HOME/bin:$PATH" }
+    - { position: EOF, value: "export CLASSPATH=.:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar" }
+    
+ - name: delete the rpm package no the remote host
+   command: rm -rf /tmp/{{ rpm_package_name }} 
+    
+ - name: Remove alterbatives before we set them
+   command: rm -f /var/lib/alternatives/{{ item }}
+   with_items:
+    - java
+    - javac
+    - javaws
+    - javah
+    - jar
+    - jps
+    
+ - name: inform the system where jdk is located
+   alternatives: name={{ item }} link=/usr/bin/{{ item }} path={{ java_home }}/bin/{{ item }}
+   with_items:
+    - java
+    - javac
+    - javaws
+    - javah
+    - jar
+    - jps   
+ 
+ - name: enforce env
+   shell: source {{ env_file }}
+
+ - name: java version
+   command: "{{ java_home }}/bin/java -version"
+   register: result
+   changed_when: false
+   ignore_errors: True
+     
+ - debug: var=result.stderr   

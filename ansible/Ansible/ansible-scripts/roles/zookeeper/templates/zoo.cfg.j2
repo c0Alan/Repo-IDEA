@@ -1,0 +1,13 @@
+tickTime=10000
+initLimit=5
+syncLimit=2
+dataDir={{ zk_data }}
+dataLogDir={{ zk_log }}
+clientPort={{ zk_port }}
+maxClientCnxns=10000
+autopurge.snapRetainCount=3
+autopurge.purgeInterval=1
+# zookeeper cluster，2888为选举端口，3888为心跳端口
+{% for host in groups['zk_servers'] %}
+server.{{ hostvars[host]['id'] }}={{ host }}:2888:3888
+{% endfor %}

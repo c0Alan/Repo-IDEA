@@ -1,0 +1,9 @@
+- import_tasks: main2.yml
+- name: copy configfile to nodes
+  template:
+    # src: test.j2
+    # src: test_if.j2
+    # src: test_for.j2
+    src: test_default.j2
+    dest: /tmp/test.conf
+  

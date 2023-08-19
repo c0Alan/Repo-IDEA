@@ -1,0 +1,62 @@
+---
+
+- name: check whether the rest install dir exist
+  stat: path={{ install_dir }}
+  register: rest
+
+- name: mkdir directory for rest installing
+  file: dest={{ install_dir }} mode=0755 state=directory 
+  when: not rest.stat.exists
+  
+#上传 numactl-libs-2.0.9-6.el7_2.x86_64.rpm rpm包
+- name: scp numactl-libs-2.0.9-6.el7_2.x86_64.rpm rpm to target host
+  copy: src={{ resources_dir }}/{{ numactl_package_name }} dest=/tmp owner=root group=root
+  
+#安装
+- name: install numactl-libs-2.0.9-6.el7_2.x86_64.rpm rpm
+  yum: name=/tmp/{{ numactl_package_name }} state=present
+  become: true
+  become_method: su
+  become_user: root
+  ignore_errors: true
+
+- name: rm -rf numactl-libs-2.0.9-6.el7_2.x86_64.rpm 
+  shell: "rm -rf /tmp/{{ numactl_package_name }}"
+  
+- name: copy and unzip ukey.tar.gz
+  unarchive: src={{ resources_dir }}/{{ ukey_package_name }}  dest={{ install_dir }}
+
+- name: change mode
+  shell: "chmod +x {{ install_dir }}/ukey/ukey.sh"
+
+- name: ./ukey.sh
+  shell: "./ukey.sh chdir={{ install_dir }}/ukey"
+
+- name: udevadm trigger
+  shell: udevadm trigger
+
+- name: copy and unzip face.algorithm.tar.gz
+  unarchive: src={{ resources_dir }}/{{ face_package_name }} dest={{ install_dir }}
+
+- name: change owner and group
+  file: path={{ install_dir }}/face.algorithm owner=root group=root recurse=yes
+
+- name: set env
+  lineinfile: dest=/etc/profile insertafter="{{ item.position }}" line="{{ item.value }}" state=present
+  with_items:
+   - { position: EOF, value: "\n" }
+   - { position: EOF, value: "export FACE_ALGORITHM_ROOT={{ install_dir  }}/face.algorithm" }
+   - { position: EOF, value: "export LD_LIBRARY_PATH=$FACE_ALGORITHM_ROOT:$LD_LIBRARY_PATH" }
+   - { position: EOF, value: "export FACE_ALGORITHM_CPUCORE_NUM={{ coreNum }}" }
+
+- name: source /etc/profile
+  shell: source /etc/profile
+
+- name: copy and unzip face-dll-web-assembly.tar.gz
+  unarchive: src={{ resources_dir }}/{{ face_dll_web_package_name }} dest={{ install_dir }}
+
+- name: vim application.yml
+  template: src=application.yml.j2 dest={{ install_dir }}/face-dll-web/conf/application.yml owner=root group=root
+
+- name: modify the startup.sh
+  template: src=startup.sh.j2 dest={{ install_dir }}/face-dll-web/bin/startup.sh owner=root group=root

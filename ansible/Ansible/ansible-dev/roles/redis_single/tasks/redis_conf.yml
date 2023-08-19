@@ -1,0 +1,19 @@
+---
+- name: check the data directory
+  stat: path={{ data_rootDir }}/data
+  register: dataDir
+
+- name: mkdir data  directory for redis 
+  file: dest={{ data_rootDir }}/data mode=0755 state=directory owner=root group=root
+  when: not dataDir.stat.exists
+
+- name: check the conf directory
+  stat: path={{ conf_dir }}
+  register: confDir
+
+- name: create the directory for conf
+  file: dest={{ conf_dir }} state=directory
+  when: not confDir.stat.exists
+  
+- name: modify conf
+  template: src=redis.conf.j2 dest={{ conf_dir }}/redis.conf owner=root group=root

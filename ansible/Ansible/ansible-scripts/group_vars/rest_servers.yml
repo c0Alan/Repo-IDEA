@@ -1,0 +1,6 @@
+---
+ukey_package_name: ukey.tar.gz
+face_package_name: face.algorithm.tar.gz
+port: 5552
+face_dll_web_package_name: face-dll-web-assembly.tar.gz
+numactl_package_name: numactl-libs-2.0.9-6.el7_2.x86_64.rpm

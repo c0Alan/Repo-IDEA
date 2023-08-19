@@ -1,0 +1,29 @@
+---
+
+#时钟同步
+- name: ntpdate
+  shell: ntpdate {{ntp_server}}
+  ignore_errors: true
+
+- name: check whether the flume install dir exist
+  stat: path={{ install_dir }}
+  register: flume
+
+- name: mkdir directory for flume installing
+  file: dest={{ install_dir }} mode=0755 state=directory 
+  when: not flume.stat.exists
+
+- name: upzip flume install package
+  unarchive: src={{ resources_dir }}/{{ flume_install_package }} dest={{ install_dir}}
+  
+- name: chmod to start.sh 
+  shell: chmod 777 {{ install_dir}}/{{ flume_install_dir }}/start.sh
+  
+- name: chmod to flume-ng 
+  shell: chmod 777 {{ install_dir }}/{{ flume_install_dir }}/conf/flume-ng
+
+- name: config jdbcConf.xml
+  template: src=jdbcConf.xml.j2 dest="{{ install_dir }}/{{ flume_install_dir }}/conf/jdbcConf.xml"
+  
+- name: config console.xml
+  template: src=console.xml.j2 dest="{{ install_dir }}/{{ flume_install_dir }}/eapserver/config/application/console.xml"

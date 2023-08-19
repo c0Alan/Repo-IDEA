@@ -1,0 +1,7 @@
+---
+#部署解析系统tomcat
+- hosts: tomcat_jx_server
+  remote_user: root
+  gather_facts: no
+  roles:
+   - tomcat_jx

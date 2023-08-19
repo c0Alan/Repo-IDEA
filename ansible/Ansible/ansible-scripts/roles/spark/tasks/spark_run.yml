@@ -1,0 +1,37 @@
+---
+#停止spark集群
+- name: stop spark cluster
+  shell: "{{ install_dir }}/spark/spark/sbin/stop-all.sh"
+  run_once: true
+  delegate_to: "{{ groups['spark_master'][0] }}"
+  become: true
+  become_method: su
+  become_user: "{{ spark_user_name }}"
+  tags: stop_cluster
+
+#启动spark集群
+- name: start spark cluster
+  shell: "{{ install_dir }}/spark/spark/sbin/start-all.sh"
+  run_once: true
+  delegate_to: "{{ groups['spark_master'][0] }}"
+  become: true
+  become_method: su
+  become_user: "{{ spark_user_name }}"
+  tags: start_cluster
+
+#停止单个节点
+- name: stop single spark node
+  shell: "{{ install_dir }}/spark/spark/sbin/stop-slave.sh"
+  become: true
+  become_method: su
+  become_user: "{{ spark_user_name }}"
+  tags: stop_single
+
+
+#启动单个节点
+- name: start single spark node
+  shell: "{{ install_dir }}/spark/spark/sbin/start-slave.sh {{ groups['spark_master'][0] }}:7077"
+  become: true
+  become_method: su
+  become_user: "{{ spark_user_name }}"
+  tags: start_single

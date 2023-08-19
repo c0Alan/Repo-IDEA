@@ -1,0 +1,3 @@
+---
+resources_dir: "{{ playbook_dir }}/resources"
+install_dir: {install_dir}

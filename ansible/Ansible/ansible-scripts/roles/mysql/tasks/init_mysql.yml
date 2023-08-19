@@ -1,0 +1,63 @@
+---
+#启动mysql服务
+- name: start mysql
+  shell: systemctl start mysqld.service
+
+#mysql服务开机自启动
+- name: chkconfig mysqld on
+  shell: systemctl enable mysqld.service
+
+#解压mysql脚本压缩包
+- name: unzip database_script
+  unarchive: src={{ resources_dir }}/database_script.tar.gz dest={{ install_dir }}/mysql
+
+#上传 tcl rpm包
+- name: scp tcl rpm to target host
+  copy: src={{ resources_dir }}/tcl-8.5.7-6.el6.x86_64.rpm dest=/tmp owner=root group=root
+
+#安装tcl软件
+- name: install tcl rpm
+  yum: name=/tmp/tcl-8.5.7-6.el6.x86_64.rpm state=present
+  become: true
+  become_method: su
+  become_user: root
+  ignore_errors: true
+
+#上传expect软件
+- name: scp expect rpm to target host
+  copy: src={{ resources_dir }}/expect-5.44.1.15-4.el6.x86_64.rpm dest=/tmp owner=root group=root
+
+
+#安装expect软件
+- name: install tcl rpm
+  yum: name=/tmp/expect-5.44.1.15-4.el6.x86_64.rpm state=present
+  become: true
+  become_method: su
+  become_user: root
+  ignore_errors: true
+
+#删除rpm
+- name: delete rpm package
+  command: rm -rf /tmp/{{ item }}
+  with_items:
+   - "tcl-8.5.7-6.el6.x86_64.rpm"
+   - "expect-5.44.1.15-4.el6.x86_64.rpm"
+
+#拷贝alter_mysqlpwd.sh到远程主机
+#- name: scp alter_mysqlpwd.sh
+#  template: src=alter_mysqlpwd.sh.j2 dest={{ install_dir }}/mysql/alter_mysqlpwd.sh mode=0755 owner=root group=root
+
+#拷贝create_database.sh到远程主机
+- name: scp create_database.sh
+  template: src=create_database.sh.j2 dest={{ install_dir }}/mysql/create_database.sh mode=0755 owner=root group=root
+
+#执行execute_database.sh
+- name: execute create_database.sh
+  shell: "/bin/bash {{ install_dir }}/mysql/create_database.sh"
+  tags: init
+
+#执行alter_mysqlpwd.sh
+#- name: execute alter_mysqlpwd.sh
+#  shell: "/bin/bash {{ install_dir }}/mysql/alter_mysqlpwd.sh"
+#  tags: init1
+

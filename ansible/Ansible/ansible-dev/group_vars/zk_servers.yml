@@ -1,0 +1,5 @@
+---
+zk_install_package: zookeeper-3.4.10.tar.gz
+zk_port: 2181
+zk_data: "{{ zk_prefix }}{{ zk_data_suffix }}"
+zk_log: "{{ zk_prefix }}{{ zk_log_suffix }}"

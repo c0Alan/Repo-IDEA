@@ -1,0 +1,4 @@
+---
+
+- include: geoserver_install.yml
+- include: geoserver_run.yml

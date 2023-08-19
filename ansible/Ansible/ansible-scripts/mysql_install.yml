@@ -1,0 +1,8 @@
+- hosts: mysql_servers
+  gather_facts: true
+  remote_user: root
+  roles:
+   #关闭防火墙,关闭禁用selinux
+   - firewalld
+   #安装mysql
+   - mysql

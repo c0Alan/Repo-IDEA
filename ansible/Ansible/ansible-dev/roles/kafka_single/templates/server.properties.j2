@@ -1,0 +1,69 @@
+broker.id={{ broker_id  }}
+host.name={{ inventory_hostname }}
+port={{ kafka_port  }}
+log.dirs={% for path in kafka_log_suffix.split(',') %}{% if loop.index > 1 %},{% endif %}{{ kafka_log_prefix }}{{ path }}{% endfor %}
+
+zookeeper.connect={% for host in groups['kafka_single_server']-%} {% if loop.index >1 %},{% endif %}{{ host }}:{{ zk_port }}{% if loop.index==groups['kafka_single_server']|length %}/kafka{%endif%} {%- endfor%}
+
+#num.partitions= 2 * num of Nodes
+#分片数为节点数的2倍
+num.partitions={{ groups['kafka_single_server']|length * 2 }}
+#是否可以通过管理工具删除topic，默认是false
+delete.topic.enable=true
+#是否允许自动创建Topic，若是false，就需要通过命令创建Topic
+auto.create.topics.enable=false
+#消息日志备份因子，默认是1
+#集群节点数为2N+1时,副本数为N+1,如三个节点,副本数设为2
+default.replication.factor={{ (groups['kafka_single_server']|length -1)//2 + 1 }}
+#__consumer_offsets的分区数，默认50
+offsets.topic.num.partitions=50
+#__consumer_offsets副本因子，默认1
+offsets.topic.replication.factor=1
+# 连接ZooKeeper的超时时间
+zookeeper.connection.timeout.ms=45000
+#当Producer设置request.required.acks为-1时，指定需要写入成功的副本的最小数目
+min.insync.replicas=1
+#Broker允许接收单条消息的最大字节数。单位：字节
+message.max.bytes=1048576
+#如果一个副本中没有同步的消息条数超过这个数值，Leader会认为该副本已经失效，并将其从ISR中移除
+replica.lag.max.messages=204800000
+######################网络/IO相关配置##################
+#Broker用来处理网络请求的线程数目
+num.network.threads=4
+#Broker用来处理磁盘I/O的线程数目，这个线程数目建议至少等于硬盘的个数
+num.io.threads=8
+#服务端发送缓冲区大小。单位：字节
+socket.send.buffer.bytes=1048576
+#服务端接收缓冲区大小。单位：字节
+socket.receive.buffer.bytes=1048576
+#服务端接收请求的最大大小。此配置可以有效避免Server端内存溢出，并且应小于KAFKA_HEAP_OPTS设置的大小。单位：字节
+socket.request.max.bytes=104857600
+#在网络请求处理线程停止读取新请求之前，可以排队等待I/O线程处理的最大请求个数
+queued.max.requests=100
+#当日志过期时（超过了要保存的时间），采用的清除策略，删除或者压缩
+log.cleanup.policy=delete
+#指定强制进行日志数据落盘的时间间隔。单位：毫秒。
+#log.flush.interval.ms=9223372036854775807
+#log.flush.interval.messages=9223372036854775807
+#log.flush.scheduler.interval.ms=9223372036854775807
+######################数据复制/恢复##################
+# 每个数据目录用来数据恢复的线程数目
+num.recovery.threads.per.data.dir=10
+#副本向Leader请求同步数据的线程数，增大这个数值会增加副本的I/O并发度
+num.replica.fetchers=4
+######################日志相关配置##################
+#  日志数据文件保留的最长时间
+log.retention.hours=72
+#指定创建新日志数据分段文件的时间间隔，即使文件大小没有达到log.segment.bytes，也会创建。单位：小时
+log.roll.hours=72
+# 指定每个Partition上的日志数据所能达到的最大字节。默认情况下无限制
+log.retention.bytes=-1
+# 指定日志数据中分段文件的最大字节数。单位：字节. 超过这个大小创建新segment file
+log.segment.bytes=1073741824
+# 检查日志数据的分段文件的间隔时间，以确定文件属性是否达到删除要求。单位：毫秒。
+log.retention.check.interval.ms=300000
+######################请求清除间隔条数##################
+# 同步请求的清除fetch  purgatory 间隔消息条数
+fetch.purgatory.purge.interval.requests=1000
+#Producer请求清除producer purgatory 间隔消息条数
+producer.purgatory.purge.interval.requests=1000

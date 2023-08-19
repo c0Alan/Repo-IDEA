@@ -1,0 +1,3 @@
+---
+redis_package: pci-redis-4.0.8.tar.gz
+data_rootDir: "{{ data_rootDir_prefix }}{{ data_rootDir_suffix }}"

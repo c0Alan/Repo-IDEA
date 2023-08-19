@@ -1,0 +1,66 @@
+---
+#创建es用户组
+- name: create a group
+  group: name={{ es_group_name }}
+  ignore_errors: true
+
+#创建es用户目录
+- name: mkidr es home dir
+  shell: "mkdir -p {{ es_user_home }}"
+
+- name: rm -rf es home dir
+  shell: "rm -rf {{ es_user_home }}"
+
+#创建es用户
+- name: create a user belong to the group
+  user: name={{ es_user_name }} shell=/bin/bash group={{ es_group_name }} home={{ es_user_home }}  password={{ es_user_pwd|password_hash('sha512') }} update_password=always append=yes
+  ignore_errors: true
+
+- name: check the install directory
+  stat: path={{ install_dir }}
+  register: esdir
+
+- name: mkdir directory for elasticsearch installing
+  file: dest={{ install_dir }} mode=0755 state=directory owner={{ es_user_name  }} group={{ es_group_name }}
+  when: not esdir.stat.exists
+
+- name: copy and unzip es
+  unarchive: src={{ resources_dir }}/pci-elasticsearch-2.1.2.tar.gz dest={{ install_dir }}
+
+- name: check directory for es data
+  stat: path={{ es_data }}
+  register: esdata
+
+- name: mkdir directory for elasticsearch data
+  file: dest={{ es_data }} mode=0755 state=directory owner={{ es_user_name }} group={{ es_group_name }}
+  when: not esdata.stat.exists
+
+- name: rm -rf data
+  file: path={{ install_dir  }}/es/data  state=absent
+
+- name: rm -rf logs
+  file: path={{ install_dir  }}/es/logs  state=absent
+
+- name: check directory for es log
+  stat: path={{ es_log }}
+  register: eslog
+
+- name: mkdir directory for elasticsearch log
+  file: dest={{ es_log }} mode=0755 state=directory owner={{ es_user_name  }} group={{ es_group_name }}
+  when: not eslog.stat.exists
+
+
+- name: configuration elasticsearch.yml
+  template: src=elasticsearch.yml.j2 dest={{ install_dir }}/es/config/elasticsearch.yml owner={{ es_user_name }} group={{ es_group_name }}
+
+
+- name: configuration elasticsearch.in.sh
+  template: src=elasticsearch.in.sh.j2 dest={{ install_dir }}/es/bin/elasticsearch.in.sh owner={{ es_user_name }} group={{ es_group_name }}
+
+- name: change owner and group
+  file: path={{ install_dir }}/es owner={{ es_user_name }} group={{ es_group_name }} recurse=yes
+
+- name: modfiy servers.txt
+  template: src=servers.txt.j2 dest={{ install_dir }}/es/servers.txt owner={{ es_user_name }} group={{ es_group_name }} mode=0750
+  run_once: true
+  delegate_to: "{{ groups['es_master_candidate_nodes'][0] }}"

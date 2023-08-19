@@ -1,0 +1,3 @@
+---
+zk_install_package: zookeeper-3.4.10.tar.gz
+zk_port: 2181

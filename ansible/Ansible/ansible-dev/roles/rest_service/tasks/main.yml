@@ -1,0 +1,5 @@
+---
+#安装rest
+- include: rest_install.yml
+#启停rest
+- include: rest_run.yml

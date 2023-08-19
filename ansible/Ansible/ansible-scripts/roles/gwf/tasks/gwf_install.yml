@@ -1,0 +1,27 @@
+---
+
+- name: check whether the gwf install dir exist
+  stat: path={{ install_dir }}
+  register: gwf
+
+- name: mkdir directory for geoserver install
+  file: dest={{ install_dir }} mode=0755 state=directory 
+  when: not gwf.stat.exists
+
+- name: unzip gwf for gwf install
+  unarchive: src={{ resources_dir }}/{{ gwf_install_package }} dest={{ install_dir}}
+
+- name: replace config.xml
+  template: src=config.xml.j2 dest="{{ install_dir }}/gwf/conf/config.xml"
+
+- name: replace context.xml
+  template: src=context.xml.j2 dest="{{ install_dir }}/gwf/conf/context.xml"
+
+- name: replace console.xml
+  template: src=console.xml.j2 dest="{{ install_dir }}/gwf/eapserver/config/application/console.xml"
+  
+- name: chmod -R 777 gwf
+  command: chmod -R 777 {{ install_dir }}/gwf
+  
+- name: start gwf
+  shell: chdir='{{ install_dir }}/gwf' sh gwf.sh

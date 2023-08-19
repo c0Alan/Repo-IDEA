@@ -1,0 +1,61 @@
+- hosts: redis_servers
+  gather_facts: true
+  remote_user: root
+  roles:
+   #- firewalld
+   - redis
+
+- hosts: redis_ruby_node
+  gather_facts: no
+  remote_user: root
+  roles:
+   - ruby
+
+#启停redis集群
+- hosts: redis_servers
+  gather_facts: true
+  remote_user: root
+  tasks:
+   #首次启动redis集群
+   - name: first start redis cluster
+     shell: "{{ install_dir }}/redis/redis-4.0.8/redis-cluster.sh start"
+     run_once: true
+     delegate_to: "{{ groups['redis_ruby_node'][0] }}"
+
+   - name: redis-cluster.sh create
+     shell: "{{ install_dir }}/redis/redis-4.0.8/redis-cluster.sh create"
+     run_once: true
+     delegate_to: "{{ groups['redis_ruby_node'][0] }}"     
+   
+   - name: redis-cluster.sh stop
+     shell: "{{ install_dir }}/redis/redis-4.0.8/redis-cluster.sh stop"
+     run_once: true
+     delegate_to: "{{ groups['redis_ruby_node'][0] }}"     
+
+   #集群版停止
+   - name: redis-cluster.sh stop
+     shell: "{{ install_dir }}/redis/redis-4.0.8/redis-cluster.sh stop"
+     run_once: true
+     delegate_to: "{{ groups['redis_ruby_node'][0] }}"
+     tags: stop_cluster
+   
+    #集群版启动
+   - name: redis-cluster.sh start
+     shell: "{{ install_dir }}/redis/redis-4.0.8/redis-cluster.sh start"
+     run_once: true
+     delegate_to: "{{ groups['redis_ruby_node'][0] }}"
+     tags: start_cluster
+
+   #停止单个节点上所有的实例
+   - name: stop single redis node
+     shell: "{{ install_dir }}/redis/redis-4.0.8/redis-cluster.sh stop-single-node {{ inventory_hostname }}"
+     run_once: true
+     delegate_to: "{{ groups['redis_ruby_node'][0] }}"
+     tags: stop_single
+
+   #启动单个节点上所有的实例
+   - name: start single redis node
+     shell: "{{ install_dir }}/redis/redis-4.0.8/redis-cluster.sh start-single-node {{ inventory_hostname }}"
+     run_once: true
+     delegate_to: "{{ groups['redis_ruby_node'][0] }}"
+     tags: start_single

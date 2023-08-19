@@ -1,0 +1,13 @@
+---
+#复制zip到指定路径
+- name: copy and unzip es_index
+  unarchive: src={{ resources_dir }}/es_index.tar.gz dest={{ install_dir }}
+
+#es初始化并建立索引
+
+- name: es create index by month
+  shell: "java -jar {{ install_dir }}/es_index/es-create-index-tools.jar multiple monthly {{ groups['es_master_candidate_nodes'][0] }}:9200 {{ es_startDate }} {{ es_endDate }} {{ install_dir }}/es_index/mapping/monthly {{ shards }} {{ replicas }}"
+
+#es 建立单机索引
+- name: es create index singlely
+  shell: "java -jar {{ install_dir }}/es_index/es-create-index-tools.jar multiple  {{ groups['es_master_candidate_nodes'][0] }}:9200  {{ install_dir }}/es_index/mapping/single {{ shards }} {{ replicas }}"

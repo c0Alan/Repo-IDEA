@@ -1,0 +1,34 @@
+---
+#在ansible本机安装http yum源
+- hosts: localhost
+  remote_user: root
+  gather_facts: true
+    #创建一个挂载目录
+  tasks:
+    - name: mkdir /mnt/cdrom
+      file: dest=/mnt/cdrom state=directory
+
+    #拷贝7.2光盘映像文件到/home目录下
+    - name: copy ISO to home
+      copy: src={{ resources_dir }}/CentOS-7-x86_64-DVD-1511.iso dest=/home
+
+    #把映像文件挂载到对应目录(fstype:必选项，挂载文件的类型 name:必选项，挂载点 opts:传递给mount命令的参数)
+    - name: mount iso
+      mount: name=/mnt/cdrom src=/home/CentOS-7-x86_64-DVD-1511.iso fstype=iso9660 opts=loop state=mounted
+
+    #修改对应的配置文件
+    - name: copy the localyum
+      copy: src={{ resources_dir }}/httpyum/localyum.repo dest=/etc/yum.repos.d/
+
+    #创建备份文件夹
+    - name: mkdir bak
+      file: dest=/etc/yum.repos.d/bak state=directory
+      ignore_errors: true
+
+    #备份本地的yum配置文件
+    - name: bak the repo
+      shell: "mv /etc/yum.repos.d/CentOS*.repo /etc/yum.repos.d/bak/"
+      ignore_errors: true
+
+    - name: yum clean all
+      shell: yum clean all

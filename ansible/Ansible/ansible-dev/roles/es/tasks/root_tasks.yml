@@ -1,0 +1,9 @@
+#针对es部署放开最大可锁定内存限制
+- name: update /etc/security/limits.conf
+  blockinfile:
+    dest: /etc/security/limits.conf
+    insertbefore: '# End of file'
+    marker: "# {mark} ANSIBLE ES MEMLOCK NULIMITED BLOCK"
+    block: |
+      es        soft        memlock       unlimited
+      es        hard        memlock       unlimited

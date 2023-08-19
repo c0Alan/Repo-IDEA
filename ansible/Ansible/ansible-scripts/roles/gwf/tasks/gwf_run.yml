@@ -1,0 +1,22 @@
+---
+
+- name: start gwf
+  shell: "./gwf.sh run chdir={{ install_dir }}/gwf "
+  tags: start
+  
+#- name: check whether the stop_gwf.sh exist
+  #stat: path={{ install_dir }}/gwf/stop_gwf.sh
+  #register: stop
+  #tags: stop
+  
+#- name: copy sh for stop gwf
+  #copy: src={{ resources_dir }}/stop_gwf.sh mode=0755 dest={{ install_dir }}/gwf
+  #when: not stop.stat.exists
+  #tags: stop
+    
+#- name: stop gwf
+  #shell: "./stop_gwf.sh chdir={{ install_dir }}/gwf "
+  #tags: stop
+- name: stop gwf
+  shell: "kill -9 `ps -ef | grep gwf | awk 'NR==1{print $2}'`"
+  tags: stop 

@@ -1,0 +1,9 @@
+<Context swallowOutput="true">
+    <WatchedResource>WEB-INF/web.xml</WatchedResource>
+
+	<!-- 应用数据源 -->
+<Resource maxActive="10" username="videoweb" maxWait="5000" maxIdle="2" password="suntek" url="jdbc:mysql://{% for host in groups['mysql_servers'] -%}{% if loop.index < 2 %}{{host}}{% endif %}{%- endfor %}:3306/videoweb" 
+	driverClassName="com.mysql.jdbc.Driver" type="javax.sql.DataSource" name="videoweb"/>
+
+</Context>
+

@@ -1,0 +1,28 @@
+---
+  
+- name: chmod +x catalina.sh
+  shell: chmod +x {{ install_dir }}/tomcat/bin_64/catalina.sh
+  tags: start
+  
+- name: start tomcat
+  shell: "nohup ./catalina.sh run chdir={{ install_dir }}/tomcat/bin_64 "
+  tags: start
+  
+# - name: check whether the stop_tomcat.sh exist
+  # stat: path={{ install_dir }}/tomcat/bin_64/stop_tomcat.sh
+  # register: stop
+  # tags: stop
+  
+# - name: copy sh for stop tomcat
+  # copy: src={{ resources_dir }}/stop_tomcat.sh  mode=0755 dest={{ install_dir }}/tomcat/bin_64
+  # when: not stop.stat.exists
+  # tags: stop 
+  
+# - name: stop tomcat
+  # shell: "./catalina.sh stop chdir={{ install_dir }}/tomcat/bin_64 "
+  # tags: stop
+  
+- name: stop tomcat
+  shell: "kill -9 `ps -ef | grep -v grep | grep tomcat | awk 'NR==1{print $2}'`"
+  tags: stop  
+

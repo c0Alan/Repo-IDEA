@@ -1,0 +1,7 @@
+---
+#部署应用tomcat
+- hosts: tomcat_server
+  remote_user: root
+  gather_facts: no
+  roles:
+   - tomcat

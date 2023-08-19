@@ -1,0 +1,61 @@
+---
+
+#时钟同步
+- name: ntpdate
+  shell: ntpdate {{ntp_server}}
+  ignore_errors: true
+
+- name: check whether the geoserver install dir exist
+  stat: path={{ install_dir }}
+  register: geoserverdir
+  
+- name: mkdir directory for geoserver install
+  file: dest={{ install_dir }} mode=0755 state=directory 
+  when: not geoserverdir.stat.exists
+  
+- name: upzip geoserver install packag
+  unarchive: src={{ resources_dir }}/{{ geoserver_install_package }} dest={{ install_dir }}
+  ignore_errors: True
+  
+- name: upzip geoserver bigData4326.tar.gz packag
+  unarchive: src={{ resources_dir }}/bigData4326.tar.gz dest={{ install_dir }}/geoserver
+  
+- name: upzip geoserver mapall.tar.gz packag
+  unarchive: src={{ resources_dir }}/mapall.tar.gz dest={{ install_dir }}/geoserver
+  
+- name: chmod to geoserver
+  command: "chmod 755 {{ install_dir}}/geoserver"
+  
+- name: config geoserver
+  template: src=geoserver.j2 dest="{{ install_dir }}/geoserver/bin/geoserver"
+  
+- name: copy bin/geoserver to /etc/init.d
+  command: "cp {{ install_dir}}/geoserver/bin/geoserver /etc/init.d"
+
+- name: config geoserver_port
+  template: src=start.ini.j2 dest="{{ install_dir }}/geoserver/start.ini"
+  
+- name: chmod to init.d
+  command: chmod 755 /etc/init.d/geoserver
+  
+- name: Remove geowebcache.xml
+  command: "rm -f {{ install_dir }}/data/gwc/geowebcache.xml"
+    
+#- name: start firewalld.service
+#  shell: systemctl start firewalld.service
+  
+#- name: get active zones
+#  shell: firewall-cmd --get-active-zones
+  
+#- name: add port to zones
+#  shell: firewall-cmd --zone=public --add-port=6080/tcp --permanent
+  
+#- name: firewall-cmd --reload
+#  shell: firewall-cmd --reload
+  
+#- name: stop firewalld.service
+#  shell: systemctl stop firewalld.service
+  
+#- name: start the geoserver
+#  service: name=geoserver state=started
+#  shell: service geoserver start

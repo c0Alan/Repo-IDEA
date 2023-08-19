@@ -1,0 +1,10 @@
+---
+#启动kafka
+- name: start kafka
+  shell: "bin/kafka-server-start.sh -daemon ./config/server.properties chdir={{ install_dir }}/kafka"
+  tags: start_single
+
+#停止kafka  
+- name: stop kafka
+  shell: "bin/kafka-server-stop.sh config/server.properties chdir={{ install_dir }}/kafka"
+  tags: stop_single

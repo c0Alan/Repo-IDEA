@@ -1,0 +1,13 @@
+---
+- hosts: alluxio_servers
+  gather_facts: true
+  remote_user: root
+  roles:
+   #关闭防火墙，SELinux
+   #- firewalld
+   #设置系统参数
+   #- bootstrap
+   #安装jdk
+   #- jdk
+   #修改系统参数
+   - alluxio

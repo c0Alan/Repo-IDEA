@@ -1,0 +1,30 @@
+---
+
+- name: check whether the tomcat_jx install dir exist
+  stat: path={{ install_dir }}
+  register: tomcat_jx
+
+- name: mkdir directory for tomcat_jx installing
+  file: dest={{ install_dir }} mode=0755 state=directory 
+  when: not tomcat_jx.stat.exists
+  
+- name: unzip tomcat for tomcat install
+  unarchive: src={{ resources_dir }}/{{ tomcat_jx_install_package }} dest={{ install_dir}}
+
+- name: replace console.xml
+  template: src=console.xml.j2 dest="{{ install_dir }}/tomcat_jx/eapserver/config/application/console.xml"
+
+- name: replace server.xml
+  template: src=server.xml.j2 dest="{{ install_dir }}/tomcat_jx/conf/server.xml"
+
+#- name: chmod +x catalina.sh
+#  shell: chmod +x {{ install_dir }}/tomcat/bin_64/catalina.sh
+  
+#- name: start tomcat
+#  shell: chdir='{{ install_dir }}/tomcat/bin_64' nohup ./catalina.sh run
+
+- name: mkdir h
+  file: dest="/h:" mode=0777 state=directory recurse=yes
+
+- name: replace oss.xml
+  template: src=oss.xml.j2 dest="{{ install_dir }}/tomcat_jx/eapserver/config/application/oss.xml"

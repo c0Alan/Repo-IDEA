@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<configs>
+
+	<VERSION displayName="佳都布控告警业务处理网关" 
+		dataType="string" 
+		valueType="static" 
+		valueData="" 
+		index="0" 
+		needRestart="0" 
+		required="true" 
+		desc="佳都布控告警业务处理网关">
+		1.0.6640#20180421
+	</VERSION>
+	
+	<thread_num 
+		displayName="kafka线程数" 
+		dataType="string" 
+		valueType="static" 
+		valueData="" 
+		index="1" 
+		needRestart="0" 
+		required="true" 
+		desc="kafka线程数">
+		3
+	</thread_num>
+	
+	<thread_num_alarm_relsut 
+		displayName="告警结果处理线程数" 
+		dataType="string" 
+		valueType="static" 
+		valueData="" 
+		index="2" 
+		needRestart="0" 
+		required="true" 
+		desc="告警结果处理线程数">
+		3
+	</thread_num_alarm_relsut>
+	
+	<face_alarm_threshold 
+		displayName="人脸告警阈值" 
+		dataType="string" 
+		valueType="static" 
+		valueData="" 
+		index="3" 
+		needRestart="0" 
+		required="true" 
+		desc="人脸告警阈值(大于0，小于等于100)">
+		70
+	</face_alarm_threshold>
+	
+	
+	<surveil_task_type 
+		displayName="启用的布控任务类型1 人脸 2 聚类  3 车辆 4 门禁 5 WIFI 6 GPS" 
+		dataType="string" 
+		valueType="static" 
+		valueData="" 
+		index="4" 
+		needRestart="0" 
+		required="true" 
+		desc="任务类型类型:1人脸布控告警 2 人脸聚类分析 3 车辆布控告警 4 门禁布控告警 5 WIFI布控告警 6 GPS布控告警,多种类型用逗号(,)">
+		1,3,4,5,6
+	</surveil_task_type>
+	
+	<history_alarm_retention_time 
+        displayName="历史告警数据保留时间" 
+        dataType="string" 
+        valueType="static" 
+        valueData="" 
+        index="5" 
+        needRestart="0" 
+        required="true" 
+        desc="历史告警数据保留时间,单位 天">
+        180
+    </history_alarm_retention_time>
+	
+	
+	<vrs_address
+        displayName="视频解析系统IP地址及访问端口" 
+        dataType="string" 
+        valueType="static" 
+        valueData="" 
+        index="6" 
+        needRestart="0" 
+        required="true" 
+        desc="视频解析系统IP地址及访问端口">
+        {% for host in groups['tomcat_jx_server'] -%}{% if loop.index == 1 %}{{host}}{% endif %}{%- endfor %}:9080
+    </vrs_address>
+    
+    <auto_reload_cache
+        displayName="是否自动从数据库同步布控对象到缓存" 
+        dataType="string" 
+        valueType="static" 
+        valueData="" 
+        index="7" 
+        needRestart="0" 
+        required="true" 
+        desc="是否自动从数据库同步布控对象到缓存 0/1">
+        1
+    </auto_reload_cache>
+	
+   <FEISHI_FACE_SEARCH_URL 
+	    displayName="飞识人脸比对服务路径" 
+	    dataType="string" 
+		valueType="static" 
+		valueData="" 
+		index="3" 
+		needRestart="0" 
+		required="true" 
+		desc="飞识人脸比对服务路径">
+		http://172.25.20.2:8089/haiou/CompareApi/Person/_search
+	</FEISHI_FACE_SEARCH_URL>
+	
+    <FEISHI_ACCESS_KEY 
+        displayName="飞识授权码" 
+        dataType="string" 
+		valueType="static" 
+		valueData="" 
+		index="4" 
+		needRestart="0" 
+		required="true" 
+		desc="飞识授权码">
+		00000-OGW80-K47L5-P68T2-4YSVR-JGT01
+	</FEISHI_ACCESS_KEY>
+	
+    <FEISHI_THRESHOLD 
+        displayName="飞识阀值" 
+        dataType="string" 
+		valueType="static" 
+		valueData="" 
+		index="5" 
+		needRestart="0" 
+		required="true" 
+		desc="0-100范围内的整数，以百分制衡量返回图片的最低相似程度">
+		60
+	</FEISHI_THRESHOLD>
+	
+    <FEISHI_TOP_NUMBER 
+        displayName="飞识比对中每个算法返回的人员数的最大数量" 
+        dataType="string" 
+		valueType="static" 
+		valueData="" 
+		index="6" 
+		needRestart="0" 
+		required="true" 
+		desc="飞识比对中每个算法返回的人员数的最大数量">
+		10
+	</FEISHI_TOP_NUMBER>   
+	
+	 <ARCHIVE_FACE_SEARCH_URL 
+	    displayName="一人一档比对服务路径" 
+	    dataType="string" 
+		valueType="static" 
+		valueData="" 
+		index="3" 
+		needRestart="0" 
+		required="true" 
+		desc="一人一档比对服务路径">
+		http://{% for host in groups['tomcat_server'] -%}{% if loop.index == 1 %}{{host}}{% endif %}{%- endfor %}:9080/opengw/service/rest/viid/staticlibraries/query-people
+	</ARCHIVE_FACE_SEARCH_URL>
+	<ARCHIVE_APP_KEY 
+        displayName="一人一档授权码" 
+        dataType="string" 
+		valueType="static" 
+		valueData="" 
+		index="4" 
+		needRestart="0" 
+		required="true" 
+		desc="一人一档授权码">
+		4401
+	</ARCHIVE_APP_KEY>
+	<ARCHIVE_APP_ID 
+        displayName="一人一档授权ID" 
+        dataType="string" 
+		valueType="static" 
+		valueData="" 
+		index="4" 
+		needRestart="0" 
+		required="true" 
+		desc="一人一档授权ID">
+		4401
+	</ARCHIVE_APP_ID>
+	
+    <ARCHIVE_THRESHOLD 
+        displayName="一人一档阀值" 
+        dataType="string" 
+		valueType="static" 
+		valueData="" 
+		index="5" 
+		needRestart="0" 
+		required="true" 
+		desc="0-100范围内的整数，以百分制衡量返回图片的最低相似程度">
+		80
+	</ARCHIVE_THRESHOLD>
+	
+    <ARCHIVE_TOP_NUMBER 
+        displayName="一人一档比对中每个算法返回的人员数的最大数量" 
+        dataType="string" 
+		valueType="static" 
+		valueData="" 
+		index="6" 
+		needRestart="0" 
+		required="true" 
+		desc="一人一档比对中每个算法返回的人员数的最大数量">
+		10
+	</ARCHIVE_TOP_NUMBER>   
+	
+</configs>

@@ -1,0 +1,38 @@
+---
+- name: check the install directory
+  stat: path={{ install_dir }}
+  register: redis_dir
+
+- name: mkdir directory for redis installing
+  file: dest={{ install_dir }} mode=0755 state=directory owner=root group=root
+  when: not redis_dir.stat.exists
+
+- name: copy and unzip redis
+  unarchive: src={{ resources_dir }}/pci-redis-4.0.8.tar.gz dest={{ install_dir }}
+  when: redis_dir.stat.exists
+
+- name: create a link
+  file: src={{ install_dir }}/redis/redis-4.0.8 dest={{ install_dir }}/redis/redis state=link
+
+- name: make redis
+  shell: "make chdir={{ install_dir }}/redis/redis-4.0.8"
+
+- name: scp redis-cluster.sh
+  copy: src={{ resources_dir }}/redis-cluster.sh dest={{ install_dir }}/redis/redis-4.0.8/redis-cluster.sh mode=0750
+  run_once: true
+  delegate_to: "{{ groups['redis_ruby_node'][0] }}"  
+
+- name: modfiy redis-cluster.sh REDIS_HOME
+  lineinfile: dest={{ install_dir }}/redis/redis-4.0.8/redis-cluster.sh regexp='^REDIS_HOME=' line='REDIS_HOME={{install_dir }}/redis/redis-4.0.8'
+  run_once: true
+  delegate_to: "{{ groups['redis_ruby_node'][0] }}"
+
+- name: modfiy redis-cluster.sh CLUSTER_HOME
+  lineinfile: dest={{ install_dir }}/redis/redis-4.0.8/redis-cluster.sh regexp='^CLUSTER_HOME=' line='CLUSTER_HOME={{data_rootDir}}'
+  run_once: true
+  delegate_to: "{{ groups['redis_ruby_node'][0] }}"
+
+- name: touch servers.txt
+  template: src=servers.txt.j2 dest={{ install_dir }}/redis/redis-4.0.8/servers.txt owner=root group=root mode=0750
+  run_once: true
+  delegate_to: "{{ groups['redis_ruby_node'][0] }}"

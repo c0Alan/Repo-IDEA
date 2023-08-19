@@ -1,0 +1,5 @@
+master_ip: 192.168.80.79
+master_hostname: SERVER79
+node1_ip: 192.168.80.78
+node1_hostname: SERVER78
+# server_port: 80811

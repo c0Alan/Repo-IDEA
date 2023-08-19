@@ -1,0 +1,126 @@
+---
+- name: install zlib-devel
+  yum: name=zlib-devel state=present
+
+- name: install zlib
+  yum: name=zlib state=present
+
+- name: install openssl-devl
+  yum: name=openssl-devel state=present
+
+- name: rm -rf /usr/bin/pod2man
+  shell: rm -rf /usr/bin/pod2man
+
+- name: check whether the ruby install dir exist
+  stat: path={{ install_dir }}
+  register: ruby
+
+- name: mkdir directory for ruby installing
+  file: dest={{ install_dir }} mode=0755 state=directory 
+  when: not ruby.stat.exists
+  
+- name: unzip openssl-1.0.1e.tar.gz
+  unarchive: src={{ resources_dir }}/{{openssl_package}} dest={{ install_dir }}
+  
+#检查是否已经存在perl环境
+- name: check if perl exist
+  shell: perl -version
+  register: perlV
+  ignore_errors: true
+
+- name: check directory for perl 
+  stat: path=/usr/bin/perl
+  register: perlDir
+
+- name: rm -rf perl
+  shell: rm -rf /usr/bin/perl
+  when: perlDir.stat.exists and (perlV.stderr_lines[0].find("未找到命令")!=-1 or perlV.stderr_lines[0].find("command not found")!=-1)
+  ignore_errors: true
+
+#针对最小化安装centos系统，安装perl依赖
+- name: yum install perl
+  yum: name=perl state=present
+  when: perlV.stderr_lines[0].find("未找到命令")!=-1 or perlV.stderr_lines[0].find("command not found")!=-1
+  ignore_errors: true
+
+- name: echo perl version
+  shell: perl -version
+  register: info
+  ignore_errors: true
+   
+- debug: var=info
+
+- name: config -fPIC --prefix
+  shell: "./config -fPIC --prefix=/usr/local/openssl enable-shared chdir={{ install_dir  }}/openssl-1.0.1e"
+
+- name: config -t
+  shell: "./config -t chdir={{install_dir}}/openssl-1.0.1e"
+
+- name: make
+  shell: "make chdir={{install_dir}}/openssl-1.0.1e"
+
+- name: rm -rf /usr/bin/pod2man
+  shell: "rm -rf /usr/bin/pod2man"
+  
+- name: make install
+  shell: "make install chdir={{install_dir}}/openssl-1.0.1e"
+  register: makeInstallResult
+  
+
+- name: rm -rf /usr/bin/pod2man
+  shell: rm -rf /usr/bin/pod2man
+  when: makeInstallResult.stderr.find("POD document had syntax errors at /usr/bin/pod2man")!=-1
+
+- name: make install
+  shell: "make install chdir={{install_dir}}/openssl-1.0.1e"
+  when: makeInstallResult.stderr.find("POD document had syntax errors at /usr/bin/pod2man")!=-1
+
+- name: 解压 ruby-2.5.0.tar.gz
+  unarchive: src={{ resources_dir }}/{{ruby_package}} dest={{ install_dir }}
+
+- name: ./configure
+  shell: "./configure chdir={{install_dir}}/ruby-2.5.0"
+
+- name: make
+  shell: "make chdir={{install_dir}}/ruby-2.5.0"
+
+- name: make install
+  shell: "make install chdir={{install_dir}}/ruby-2.5.0"
+
+- name: ruby extconf.rb
+  shell: "ruby {{install_dir}}/ruby-2.5.0/ext/zlib/extconf.rb"
+
+- name: vi Makefile
+  lineinfile: 
+    dest: "{{install_dir}}/ruby-2.5.0/ext/zlib/Makefile"
+    regexp: '^SHELL'
+    insertbefore: '^# V=0'
+    line: "top_srcdir = ../.."
+
+- name: make
+  shell: "make chdir={{install_dir}}/ruby-2.5.0/ext/zlib"
+
+- name: make install
+  shell: "make install chdir={{install_dir}}/ruby-2.5.0/ext/zlib"
+
+- name: ruby extconf.rb
+  command: "ruby {{install_dir}}/ruby-2.5.0/ext/openssl/extconf.rb --with-openssl-include=/usr/local/openssl/include/ --with-openssl-lib=/usr/local/openssl/lib"
+
+- name: vi Makefile
+  lineinfile: 
+    dest: "{{install_dir}}/ruby-2.5.0/ext/openssl/Makefile"
+    regexp: '^SHELL'
+    insertbefore: '^# V=0'
+    line: "top_srcdir = ../.."
+
+- name: make
+  shell: "make chdir={{install_dir}}/ruby-2.5.0/ext/openssl"
+  
+- name: make install
+  shell: "make install chdir={{install_dir}}/ruby-2.5.0/ext/openssl"
+
+- name: copy redis-4.0.1.gem
+  copy: src={{ resources_dir }}/{{ redis_gem_package }} dest={{ install_dir }}
+
+- name: gem install redis-4.0.1.gem
+  command: gem install {{ install_dir }}/{{ redis_gem_package }}

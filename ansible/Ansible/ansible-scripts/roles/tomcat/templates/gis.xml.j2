@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<config>
+  <!-- 
+  <param key="属性key" name="属性名称" type="String" description="属性描述">属性缺省值</param>
+   -->
+  <param key="center" name="中心点" description="中心点">23.164,113.405</param>   
+  <param key="gb_code" name="城市编码国标号" description="城市编码国标号">440112</param>
+  <param key="gb_level" name="城市编码级别" description="城市编码级别">3</param>
+  <param key="pgisAddressServer" name="pgis地址服务" descriptio="pgis地址服务">http://10.41.1.164:8888/PGIS_InterfaceService/search</param>
+  <param key="pgisDataServer" name="pgis数据服务" description="pgis数据服务">http://68.32.65.11/PGIS_S_Map/MapService_v6/mapservice</param>
+  <param key="initLevel" name="地图初始缩放级别" description="地图初始缩放级别，如：15">15</param>
+  <param key="autoShowVideos" name="页面加载时自动显示摄像机" description="页面加载时自动显示摄像机">true</param>
+  <param key="mapEditorType" name="图层维护页面类型(0:旧版flash,1:新版html5)" description="图层维护页面类型">0</param>
+  <param key="baseMap" name="底图" description="底图服务URL"></param>
+  <param key="baseMapType" name="底图类型" description="底图服务类型,(tiled,pgis)"></param>
+  <param key="baseMapName" name="底图名称" description="底图服务名称"></param>
+  <param key="baseMapLabel" name="底图文字描述" description="底图文字描述"></param>
+  <param key="extent" name="边界范围" description="初始化边界范围(xmin,ymin,xmax,ymax)">113.284,23.082,113.406,23.173</param>
+  <param key="resourcePath" name="资源目录" description="资源目录">/suntek/gis/resource</param>
+  <param key="resourceMaxSize" name="资源大小上限" description="资源大小上限">4194304</param>
+  <param key="minLevel" name="最小缩放级别" description="地图可缩放的最小级别">0</param>
+  <param key="maxLevel" name="最大缩放级别" description="地图可缩放的最大级别">10</param>
+  <param key="geoserver" name="GeoServer服务地址" description="GeoServer服务地址">http://{% for host in groups['geoserver_server'] -%}{{host}}{%- endfor %}:6080/geoserver</param>
+  <param key="graphserver" name="路径分析服务地址" description="路径分析服务地址">http://{% for host in groups['geoserver_server'] -%}{{host}}{%- endfor %}:6080/routing</param>
+  <param key="geoserver_username" name="GeoServer用户名" description="GeoServer用户名">admin</param>
+  <param key="geoserver_password" name="GeoServer密码" description="GeoServer密码">geoserver</param>
+  <param key="geoserver_workspace" name="GeoServer工作空间" description="GeoServer工作空间">suntek</param>
+</config>

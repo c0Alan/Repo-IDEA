@@ -1,0 +1,5 @@
+---
+flume_install_package: flume1.8.0-suntek.tar.gz
+flume_install_dir: flume1.8.0-suntek
+
+

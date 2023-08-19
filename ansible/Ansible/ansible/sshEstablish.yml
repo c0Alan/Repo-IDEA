@@ -1,0 +1,13 @@
+---
+
+# 免密设置
+- name: 免密设置
+  hosts: localhost 
+  gather_facts: false
+  user: root
+  
+  tasks: 
+  - name: Command run line
+    script: /opt/liuxl/shell/sshKeygen.sh {{ item }}
+    with_items: 
+     - "{{ groups['sshEstablish_servers'] }}"

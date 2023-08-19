@@ -1,0 +1,9 @@
+- hosts: geoserver_server
+  gather_facts: no
+  remote_user: root
+  roles:
+   #关闭防火墙，关闭SELinux
+   #- firewalld
+   #安装jdk
+   #- jdk
+   - geoserver

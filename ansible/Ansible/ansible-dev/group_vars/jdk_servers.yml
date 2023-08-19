@@ -1,0 +1,8 @@
+---
+# vars file for jdk
+java_version: "1.8.0_60"
+rpm_package_name: jdk-8u60-linux-x64.rpm
+rpm_package_path: /tmp/jdk-8u60-linux-x64.rpm
+env_file: /etc/profile
+java_install_dir: /usr/java
+java_home: "/usr/java/jdk{{ java_version }}"

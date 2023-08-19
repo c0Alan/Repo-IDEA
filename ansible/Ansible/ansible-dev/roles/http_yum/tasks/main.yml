@@ -1,0 +1,64 @@
+---
+#创建一个挂载目录
+- name: mkdir /mnt/cdrom
+  file: dest=/mnt/cdrom state=directory
+
+#拷贝7.2光盘映像文件到/home目录下
+- name: copy ISO to home
+  copy: src={{ resources_dir }}/CentOS-7-x86_64-DVD-1511.iso dest=/home force=no
+
+#把映像文件挂载到对应目录(fstype:必选项，挂载文件的类型 name:必选项，挂载点 opts:传递给mount命令的参数)
+- name: mount iso
+  mount: name=/mnt/cdrom src=/home/CentOS-7-x86_64-DVD-1511.iso fstype=iso9660 opts=loop state=mounted
+
+#修改对应的配置文件
+- name: copy the localyum 
+  copy: src={{ resources_dir }}/httpyum/localyum.repo dest=/etc/yum.repos.d/
+  
+#创建备份文件夹
+- name: mkdir bak
+  file: dest=/etc/yum.repos.d/bak state=directory
+  ignore_errors: true  
+  
+#备份本地的yum配置文件
+- name: bak the repo
+  shell: "mv /etc/yum.repos.d/CentOS*.repo /etc/yum.repos.d/bak/"
+  ignore_errors: true  
+
+- name: yum clean all
+  shell: yum clean all
+
+#设置DNS
+#- name: set dns
+#  shell: echo "nameserver 8.8.8.8" > /etc/resolv.conf
+
+#- name: yum makecache
+#  shell: yum makecache
+
+#安装httpd  
+- name: install httpd
+  shell: yum install httpd* -y
+
+#备份apache配置文件
+- name: copy httpd.conf
+  copy: src=/etc/httpd/conf/httpd.conf dest=/etc/httpd/conf backup=yes
+
+#删除测试启动任务1
+- name: rm welcome.conf
+  file: path=/etc/httpd/conf.d/welcome.conf state=absent
+
+#删除测试启动任务2
+- name: rm noindex.html
+  file: path=/var/www/error/noindex.html state=absent
+
+#拷贝挂载文件到目录/var/www/html/
+- name: copy iso
+  shell: cp -rf /mnt/cdrom/* /var/www/html/
+
+#赋予权限
+- name: chmod +R /var/www/html/
+  file: dest=/var/www/html/ mode=755
+  
+#启动httpd服务并设置开机自启动
+- name: start httpd and set enabled
+  service: name=httpd state=started enabled=yes

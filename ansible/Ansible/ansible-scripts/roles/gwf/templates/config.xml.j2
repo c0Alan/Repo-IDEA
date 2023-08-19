@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<configs> 
+  <!-- 本地ip地址，注册网关时汇报的信息之一 -->  
+  <localIp>{{ansible_default_ipv4.address}}</localIp>  
+  <!-- redis配置 -->  
+  <redis_server_ip DESC="redis服务器ip"></redis_server_ip>  
+  <redis_server_port DESC="redis服务器端口">6379</redis_server_port>  
+  
+  <!-- es配置 -->  
+  <IndexServerS description="es服务器IP地址，多台服务器逗号分隔"></IndexServerS>  
+  <ElasticClusterName description="集群名称">bigdata</ElasticClusterName>  
+  <esPathHome description="es路径">/home/vplus/elasticsearch-2.1.1</esPathHome>  
+  <!-- 汇聚ftp数据交换服务器 -->  
+  <VPLUS_FTPSWAP_ACCOUNTS_IN DESC="边界ftp交换URI">admin_in/suntek@172.16.56.24:21/vplus</VPLUS_FTPSWAP_ACCOUNTS_IN>  
+  <!-- 云应用ftp数据交换服务器 -->  
+  <Vcloud_Ftp_In DESC="Vcloud_Ftp_In">admin_out/suntek@172.16.56.24:21/vcloud</Vcloud_Ftp_In>  
+  <Vcloud_Ftp_Out DESC="Vcloud_Ftp_Out">admin_in/suntek@172.16.56.24:21/vcloud</Vcloud_Ftp_Out>  
+  <!-- 网关汇报上层汇聚服务器配置 -->  
+  <msgPush> 
+    <start>true</start>  
+    <ip>{% for host in groups['tomcat_server'] -%}{{host}}{%- endfor %}</ip>  
+    <port>9080</port>  
+    <alarmUri>/connectplus/api/gw/agent/alarm</alarmUri>  
+    <alarmResultUri>/connectplus/api/gw/agent/alarmResult</alarmResultUri>  
+    <dataUri>/connectplus/api/gw/agent/data</dataUri>  
+    <registerUri>/connectplus/api/gw/agent/register</registerUri>  
+    <statusUri>/connectplus/api/gw/agent/status</statusUri>  
+    <statusMonitor> 
+      <start>true</start>  
+      <delay>10000</delay>  
+      <period>10000</period> 
+    </statusMonitor> 
+  </msgPush> 
+</configs>

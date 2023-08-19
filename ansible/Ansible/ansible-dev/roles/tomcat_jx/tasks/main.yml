@@ -1,0 +1,4 @@
+---
+
+- include: tomcat_jx_install.yml
+- include: tomcat_jx_run.yml

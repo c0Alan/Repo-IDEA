@@ -1,0 +1,4 @@
+---
+conf_dir: /etc/redis
+port: 6379
+data_rootDir: "{{ data_rootDir_prefix }}{{ data_rootDir_suffix }}"

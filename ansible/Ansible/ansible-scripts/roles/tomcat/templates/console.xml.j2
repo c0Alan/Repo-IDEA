@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<config> 
+  <!--  <param key="IndexServerS" name="elasticsearch搜索引擎服务器地址" type="String" description="服务器IP地址，多台服务器已逗号分隔"></param>  
+  <param key="esPathHome" name="elasticsearch搜索引擎服务器路径" type="String" description="elasticsearch绝对路径"></param>
+  <param key="ElasticClusterName" name="elasticsearch搜索引擎集群名称" type="String" description="集群名称要与ElasticSearch集群名称一致">elastic</param>  -->  
+  <!--   <param key="FACE_FEATURE_ES_SSD_IP" name="大数据人脸特征查询IP" type="String" description="大数据人脸特征查询IP" >10.4.100.145</param>
+  <param key="FACE_FEATURE_ES_SSD_PORT" name="大数据人脸特征查询端口" type="String" description="大数据人脸特征查询端口" >9301</param>
+  <param key="FACE_FEATURE_ES_SSD_CLUSTER" name="大数据人脸特征查询集群名" type="String" description="大数据人脸特征查询集群名" >face_search_bigdata</param>
+  <param key="HOT_DATA_ES_IP" name="内存大数据查询IP" type="String" description="内存大数据查询IP" ></param>
+  <param key="HOT_DATA_ES_PORT" name="内存大数据查询端口" type="String" description="内存大数据查询端口" ></param>
+  <param key="HOT_DATA_ES_CLUSTER" name="内存大数据查询查询集群名" type="String" description="内存大数据查询查询集群名" ></param> -->  
+  <param key="VRS_IP" name="视频解析系统ip" type="String" description="视频解析系统ip">{% for host in groups['tomcat_jx_server'] -%}{{host}}{%- endfor %}</param>  
+  <param key="VRS_PORT" name="视频解析系统端口" type="String" description="视频解析系统端口">9080</param>  
+  <param key="VRS_ACCESSKEYID" name="视频解析系统密钥id" type="String" description="视频解析系统密钥id">videoCloud</param>  
+  <param key="VRS_SECRET" name="视频解析系统密钥" type="String" description="视频解析系统密钥">suntek</param>  
+  
+  <param key="BIGDATA_SEARCH_FUN" name="大数据检索方式，0：ES，1：MPPDB" type="String" description="大数据检索方式，0：ES，1：MPPDB">0</param>  
+  <param key="N2N_ADDR" name="N:N服务集群" type="String" description="N:N服务集群">{% for host in groups['rest_servers'] -%}{% if loop.index > 1 %},{% endif %}{{host}}:5552{%- endfor %}</param>
+  <param key="ONE2N_ADDR" name="1:N服务集群" type="String" description="1:N服务集群">{% for host in groups['zk_servers'] -%}{% if loop.index > 1 %},{% endif %}{{host}}:2181{%- endfor %}</param>   
+  <param key="ActiveMQServerBrokerURL" name="amq 服务器 broker url" type="String" description="服务器IP地址，多台服务器已逗号分隔">tcp://172.16.67.167:61616</param>  
+  <param key="LICENSE_PATH" name="LICENSE_PATH" type="String" description="license file upload path">eapserver</param>  
+  <param key="LICENSE_FILE_NAME" name="LICENSE_FILE_NAME" type="String" description="license filename">openEAPLicense</param>  
+  <param key="EFFECT_TIME" name="EFFECT_TIME" type="String" description="EFFECT_TIME">2015-08-26</param>  
+  <param key="KAFKA_BROKER_LIST" name="kafka 服务器 broker url" type="String" description="服务器IP地址，多台服务器已逗号分隔">{% for host in groups['kafka_servers'] -%}{% if loop.index > 1 %},{% endif %}{{host}}:9092{%- endfor %}</param>  
+  <param key="ZK_LIST" name="zookeeper 服务器 broker url" type="String" description="服务器IP地址，多台服务器已逗号分隔">{% for host in groups['zk_servers'] -%}{% if loop.index > 1 %},{% endif %}{{host}}:2181{%- endfor %}</param>  
+  <param key="ZK_KAFKA_LIST" name="kafka配置的zk节点" type="String" description="zk节点，多个IP用逗号分隔">{% for host in groups['zk_servers'] -%}{% if loop.index > 1 %},{% endif %}{{host}}:2181{%- endfor %}/kafka</param>  
+  <param key="TRACKER_SERVER" name="fastdfs tracker服务器地址" type="String" description="fastdfs tracker服务器，多台服务器用逗号分隔">{% for host in groups['tracker_servers'] -%}{% if loop.index > 1 %},{% endif %}{{host}}:22122{%- endfor %}</param>  
+  <param key="FASTDFS_HTTP_PORT" name="fastdfs文件http访问端口" type="String" description="fastdfs文件http访问端口,一般是等于storage服务器上nginx端口">8088</param>  
+  <param key="BLOB_TYPE" name="存储方式" type="String" description="储存方式(fdfs|localfs)">fdfs</param>  
+  <param key="GWF_SERVER_IP" name="GWF网关服务器IP" type="String" description="GWF网关服务器IP,格式: 16.58.2.103">{% for host in groups['gwf_servers'] -%}{{host}}{%- endfor %}</param>  
+  <param key="GWF_SERVER_PORT" name="GWF网关服务器端口" type="String" description="GWF网关服务器端口">9082</param>  
+  <param key="NGINX_IP" name="nginx服务器" type="String" description="nginx服务器">http://172.25.20.171</param>  
+  <param key="FDFS_URL" name="fdfs图片获取前缀" type="String" description="fdfs图片获取前缀">{% for host in groups['tracker_servers'] -%}{% if loop.index > 1 %},{% endif %}http://{{host}}:8088{%- endfor %}/</param>  
+  <param key="FACE_FEATURE_ES_IP" name="大数据引擎IP" type="String" description="大数据引擎IP">{% for host in groups['es_servers'] -%}{% if loop.index > 1 %},{% endif %}{{host}}{%- endfor %}</param>  
+  <param key="FACE_FEATURE_ES_PORT" name="大数据引擎端口" type="String" description="大数据引擎端口">{{ transport_port }}</param>  
+  <param key="FACE_FEATURE_ES_CLUSTER" name="大数据引擎ES集群名" type="String" description="大数据引擎ES集群名">{{ cluster_name }}</param>  
+  <param key="DRIVE_ALLUXIO" name="alluxio配置" type="String" description="alluxio配置">alluxio://{% for host in groups['alluxio_servers'] -%}{% if loop.index == 1 %}{{ host }}{% endif %}{%- endfor %}:19998/dc</param>
+  <param key="TOMCAT_SERVER_IP" name="TOMCAT服务器IP" type="String" description="TOMCAT服务器IP,格式: 16.58.2.103">{% for host in groups['tomcat_server'] -%}{{host}}{%- endfor %}</param>  
+  <param key="TOMCAT_SERVER_PORT" name="TOMCAT服务器端口" type="String" description="TOMCAT服务器端口">9080</param>  
+  <param key="SOCKETIO_SERVERIP" name="连接socketio服务端ip" type="String" description="连接socketio服务端ip">{% for host in groups['tomcat_server'] -%}{{host}}{%- endfor %}</param>  
+  <param key="SOCKETIO_PORT" name="连接socketio服务端端口" type="String" description="连接socketio服务端端口">8060</param>  
+  <param key="REDIS_IP_PORT" name="连接redis的ip端口" type="String" description="连接redis的ip端口">{% for host in groups['redis_servers'] -%}{% if loop.index> 1 %},{% endif %}{% for port in range(hostvars[host]['begin_port'],hostvars[host]['end_port']+1) %}{% if loop.index> 1 %},{% endif %}{{host}}:{{port}}{% endfor %}{%- endfor %}</param>  
+  <param key="REDIS_MODEL" name="Redis部署模式[0:单机模式 1:哨兵模式 2:集群]" type="String" description="Redis部署模式[0:单机模式 1:哨兵模式 2:集群]">2</param> 
+</config>

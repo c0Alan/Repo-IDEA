@@ -1,0 +1,29 @@
+---
+
+- name: check whether the start_flume.sh exist
+  stat: path={{ install_dir}}/{{ flume_install_dir }}/start_flume.sh
+  register: startflume
+  tags: start
+
+- include: create_startsh.yml 
+  when: not startflume.stat.exists
+  tags: start
+  
+- name: execute the start_flume.sh
+  shell: "./start_flume.sh chdir={{ install_dir}}/{{ flume_install_dir }} "
+  when: startflume.stat.exists
+  tags: start
+  
+- name: check whether the stop_flume.sh exist
+  stat: path={{ install_dir}}/{{ flume_install_dir }}/stop_flume.sh
+  register: stop
+  tags: stop
+  
+- name: copy sh for stop flume
+  copy: src={{ resources_dir }}/stop_flume.sh  mode=777 dest={{ install_dir}}/{{ flume_install_dir }}/stop_flume.sh
+  when: not stop.stat.exists
+  tags: stop 
+  
+- name: stop flume
+  shell: "./stop_flume.sh chdir={{ install_dir}}/{{ flume_install_dir }} "
+  tags: stop

@@ -1,0 +1,17 @@
+---
+
+- name: copy the create_startflume.sh
+  copy: src={{ resources_dir }}/create_startflume.sh dest={{ install_dir}}/{{ flume_install_dir }}
+  
+- name: chmod -R 777 create_startflume.sh
+  shell: chmod -R 777 {{ install_dir }}/{{ flume_install_dir }}/create_startflume.sh
+
+- name: execute the create_startflume.sh
+  shell: "./create_startflume.sh chdir={{ install_dir}}/{{ flume_install_dir }} "
+
+- name: chmod -R 777 start_flume.sh
+  shell: chmod -R 777 {{ install_dir }}/{{ flume_install_dir }}/start_flume.sh
+  
+- name: execute the start_flume.sh
+  shell: "./start_flume.sh chdir={{ install_dir}}/{{ flume_install_dir }} "
+

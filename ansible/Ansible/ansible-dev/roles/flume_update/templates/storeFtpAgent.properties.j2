@@ -1,0 +1,204 @@
+###################################说明########################################
+#部署在每台服务器agent的名称必须保证唯一性
+#每个SOURCE、SINK都有对应的日志文件，具体查看logFileName属性，默认为agent名称_SOURCE或SINK名称
+#此agent主要功能：从不同的topic落地ftp文件到边界前置机，人脸抓拍\车辆\门禁\wifi\人员结构化（五种数据）
+##########################初始化所有SOURCE、SINK、CHANNEL############################
+storeFtpAgent.channels = faceChannel vehicleChannel doorChannel wifiChannel personChannel
+storeFtpAgent.sinks = faceSink vehicleSink doorSink wifiSink personSink 
+
+#######################################sources、channel、sink组合配置开始################################################################
+#此组合主要功能：kafkaSrc从不同的topic消费数据，ftpStoreSink落地ftp文件到边界前置机-人脸抓拍
+################################配置sources#################################
+#无
+################################配置channels################################
+storeFtpAgent.channels.faceChannel.type = com.suntek.flume.channel.KafkaChannel
+storeFtpAgent.channels.faceChannel.kafka.bootstrap.servers = suntek.console.KAFKA_BROKER_LIST
+storeFtpAgent.channels.faceChannel.kafka.topic = QUEUE_VPLUS_FACE_CAPTURE_INFO
+storeFtpAgent.channels.faceChannel.kafka.consumer.group.id = storeFtpAgent
+#读取topic最新的数据latest
+storeFtpAgent.channels.faceChannel.kafka.consumer.auto.offset.reset = latest
+storeFtpAgent.channels.faceChannel.parseAsFlumeEvent = false
+
+################################配置sinks##################################
+storeFtpAgent.sinks.faceSink.type = com.suntek.flume.sink.ftp.FtpSink
+#ftp server配置
+storeFtpAgent.sinks.faceSink.name.server = suntek.console.FTP_SERVER
+storeFtpAgent.sinks.faceSink.port = suntek.console.FTP_PORT
+storeFtpAgent.sinks.faceSink.user = suntek.console.FTP_USER
+storeFtpAgent.sinks.faceSink.password = suntek.console.FTP_PASSWORD
+#监听处理文件夹
+storeFtpAgent.sinks.faceSink.working.directory = suntek.console.FTP_WORKING_DIRECTORY
+storeFtpAgent.sinks.faceSink.batchSize = 100
+#文件名缓存目录
+storeFtpAgent.sinks.faceSink.tempPath = face_capture
+#文件名标识，打包zip文件时用，文件名格式为yyMMddHHmmss-fileFlag-hostIPAddress-EAP.redis.incr("FTP_LAST_UPLOAD_SEQUENCE")-datas.size()
+storeFtpAgent.sinks.faceSink.fileFlag = VPLUS_FACE_CAPTURE_INFO
+#图片字段，需根据URL下载图片ALARM_IMG
+storeFtpAgent.sinks.faceSink.picFields = FACE_IMG,FRAME_IMG
+#最大处理文件数
+storeFtpAgent.sinks.faceSink.uploadThreadMaxCount = 100
+#上传线程数	
+storeFtpAgent.sinks.faceSink.uploadThreadNum = 100
+#执行上传时间间隔（ms）
+storeFtpAgent.sinks.faceSink.uploadThreadInterval = 2000	
+################################配置sources,channel,sinks关联关系############
+storeFtpAgent.sinks.faceSink.channel = faceChannel
+#######################################sources、channel、sink组合配置结束################################################################
+
+
+
+#######################################sources、channel、sink组合配置开始################################################################
+#此组合主要功能：kafkaSrc从不同的topic消费数据，ftpStoreSink落地ftp文件到边界前置机-车辆
+################################配置sources#################################
+#无
+################################配置channels################################
+storeFtpAgent.channels.vehicleChannel.type = com.suntek.flume.channel.KafkaChannel
+storeFtpAgent.channels.vehicleChannel.kafka.bootstrap.servers = suntek.console.KAFKA_BROKER_LIST
+storeFtpAgent.channels.vehicleChannel.kafka.topic = QUEUE_VPLUS_VEHICLE_DETECT_INFO
+storeFtpAgent.channels.vehicleChannel.kafka.consumer.group.id = storeFtpAgent
+#读取topic最新的数据latest
+storeFtpAgent.channels.vehicleChannel.kafka.consumer.auto.offset.reset = latest
+storeFtpAgent.channels.vehicleChannel.parseAsFlumeEvent = false
+################################配置sinks##################################
+storeFtpAgent.sinks.vehicleSink.type = com.suntek.flume.sink.ftp.FtpSink
+#ftp server配置
+storeFtpAgent.sinks.vehicleSink.name.server = suntek.console.FTP_SERVER
+storeFtpAgent.sinks.vehicleSink.port = suntek.console.FTP_PORT
+storeFtpAgent.sinks.vehicleSink.user = suntek.console.FTP_USER
+storeFtpAgent.sinks.vehicleSink.password = suntek.console.FTP_PASSWORD
+#监听处理文件夹
+storeFtpAgent.sinks.vehicleSink.working.directory = suntek.console.FTP_WORKING_DIRECTORY
+storeFtpAgent.sinks.vehicleSink.batchSize = 100
+#文件名缓存目录
+storeFtpAgent.sinks.vehicleSink.tempPath = car
+#文件名标识，打包zip文件时用，文件名格式为yyMMddHHmmss-fileFlag-hostIPAddress-EAP.redis.incr("FTP_LAST_UPLOAD_SEQUENCE")-datas.size()
+storeFtpAgent.sinks.vehicleSink.fileFlag = VPLUS_VEHICLE_DETECT_INFO
+#图片字段，需根据URL下载图片ALARM_IMG
+storeFtpAgent.sinks.vehicleSink.picFields = PIC_ABBREVIATE,PIC_PLATE,PIC_VEHICLE
+#最大处理文件数
+storeFtpAgent.sinks.vehicleSink.uploadThreadMaxCount = 100
+#上传线程数	
+storeFtpAgent.sinks.vehicleSink.uploadThreadNum = 100
+#执行上传时间间隔（ms）
+storeFtpAgent.sinks.vehicleSink.uploadThreadInterval = 2000	
+################################配置sources,channel,sinks关联关系############
+storeFtpAgent.sinks.vehicleSink.channel = vehicleChannel
+#######################################sources、channel、sink组合配置结束################################################################
+
+
+
+#######################################sources、channel、sink组合配置开始################################################################
+#此组合主要功能：kafkaSrc从不同的topic消费数据，ftpStoreSink落地ftp文件到边界前置机-门禁
+################################配置sources#################################
+#无
+################################配置channels################################
+storeFtpAgent.channels.doorChannel.type = com.suntek.flume.channel.KafkaChannel
+storeFtpAgent.channels.doorChannel.kafka.bootstrap.servers = suntek.console.KAFKA_BROKER_LIST
+storeFtpAgent.channels.doorChannel.kafka.topic = QUEUE_VPLUS_AC_EVENT
+storeFtpAgent.channels.doorChannel.kafka.consumer.group.id = storeFtpAgent
+#读取topic最新的数据latest
+storeFtpAgent.channels.doorChannel.kafka.consumer.auto.offset.reset = latest
+storeFtpAgent.channels.doorChannel.parseAsFlumeEvent = false
+################################配置sinks##################################
+storeFtpAgent.sinks.doorSink.type = com.suntek.flume.sink.ftp.FtpSink
+#ftp server配置
+storeFtpAgent.sinks.doorSink.name.server = suntek.console.FTP_SERVER
+storeFtpAgent.sinks.doorSink.port = suntek.console.FTP_PORT
+storeFtpAgent.sinks.doorSink.user = suntek.console.FTP_USER
+storeFtpAgent.sinks.doorSink.password = suntek.console.FTP_PASSWORD
+#监听处理文件夹
+storeFtpAgent.sinks.doorSink.working.directory = suntek.console.FTP_WORKING_DIRECTORY
+storeFtpAgent.sinks.doorSink.batchSize = 100
+#文件名缓存目录
+storeFtpAgent.sinks.doorSink.tempPath = door
+#文件名标识，打包zip文件时用，文件名格式为yyMMddHHmmss-fileFlag-hostIPAddress-EAP.redis.incr("FTP_LAST_UPLOAD_SEQUENCE")-datas.size()
+storeFtpAgent.sinks.doorSink.fileFlag = VPLUS_AC_EVENT
+#图片字段，需根据URL下载图片ALARM_IMG
+storeFtpAgent.sinks.doorSink.picFields = PIC,TEMPLET_PIC
+#最大处理文件数
+storeFtpAgent.sinks.doorSink.uploadThreadMaxCount = 100
+#上传线程数	
+storeFtpAgent.sinks.doorSink.uploadThreadNum = 100
+#执行上传时间间隔（ms）
+storeFtpAgent.sinks.doorSink.uploadThreadInterval = 2000	
+################################配置sources,channel,sinks关联关系############
+storeFtpAgent.sinks.doorSink.channel = doorChannel
+#######################################sources、channel、sink组合配置结束################################################################
+
+
+#######################################sources、channel、sink组合配置开始################################################################
+#此组合主要功能：kafkaSrc从不同的topic消费数据，ftpStoreSink落地ftp文件到边界前置机-wifi
+################################配置sources#################################
+#无
+################################配置channels################################
+storeFtpAgent.channels.wifiChannel.type = com.suntek.flume.channel.KafkaChannel
+storeFtpAgent.channels.wifiChannel.kafka.bootstrap.servers = suntek.console.KAFKA_BROKER_LIST
+storeFtpAgent.channels.wifiChannel.kafka.topic = QUEUE_VPLUS_WIFI_DETECT_INFO
+storeFtpAgent.channels.wifiChannel.kafka.consumer.group.id = storeFtpAgent
+#读取topic最新的数据latest
+storeFtpAgent.channels.wifiChannel.kafka.consumer.auto.offset.reset = latest
+storeFtpAgent.channels.wifiChannel.parseAsFlumeEvent = false
+################################配置sinks##################################
+storeFtpAgent.sinks.wifiSink.type = com.suntek.flume.sink.ftp.FtpSink
+#ftp server配置
+storeFtpAgent.sinks.wifiSink.name.server = suntek.console.FTP_SERVER
+storeFtpAgent.sinks.wifiSink.port = suntek.console.FTP_PORT
+storeFtpAgent.sinks.wifiSink.user = suntek.console.FTP_USER
+storeFtpAgent.sinks.wifiSink.password = suntek.console.FTP_PASSWORD
+#监听处理文件夹
+storeFtpAgent.sinks.wifiSink.working.directory = suntek.console.FTP_WORKING_DIRECTORY
+storeFtpAgent.sinks.wifiSink.batchSize = 100
+#文件名缓存目录
+storeFtpAgent.sinks.wifiSink.tempPath = wifi
+#文件名标识，打包zip文件时用，文件名格式为yyMMddHHmmss-fileFlag-hostIPAddress-EAP.redis.incr("FTP_LAST_UPLOAD_SEQUENCE")-datas.size()
+storeFtpAgent.sinks.wifiSink.fileFlag = VPLUS_WIFI_DETECT_INFO
+#图片字段，需根据URL下载图片ALARM_IMG
+#storeFtpAgent.sinks.wifiSink.picFields = 无图片
+#最大处理文件数
+storeFtpAgent.sinks.wifiSink.uploadThreadMaxCount = 100
+#上传线程数	
+storeFtpAgent.sinks.wifiSink.uploadThreadNum = 100
+#执行上传时间间隔（ms）
+storeFtpAgent.sinks.wifiSink.uploadThreadInterval = 2000	
+################################配置sources,channel,sinks关联关系############
+storeFtpAgent.sinks.wifiSink.channel = wifiChannel
+#######################################sources、channel、sink组合配置结束################################################################
+
+
+#######################################sources、channel、sink组合配置开始################################################################
+#此组合主要功能：kafkaSrc从不同的topic消费数据，ftpStoreSink落地ftp文件到边界前置机-人员结构化
+################################配置sources#################################
+#无
+################################配置channels################################
+storeFtpAgent.channels.personChannel.type = com.suntek.flume.channel.KafkaChannel
+storeFtpAgent.channels.personChannel.kafka.bootstrap.servers = suntek.console.KAFKA_BROKER_LIST
+storeFtpAgent.channels.personChannel.kafka.topic = QUEUE_VPLUS_PERSON_DETECT_INFO
+storeFtpAgent.channels.personChannel.kafka.consumer.group.id = storeFtpAgent
+#读取topic最新的数据latest
+storeFtpAgent.channels.personChannel.kafka.consumer.auto.offset.reset = latest
+storeFtpAgent.channels.personChannel.parseAsFlumeEvent = false
+################################配置sinks##################################
+storeFtpAgent.sinks.personSink.type = com.suntek.flume.sink.ftp.FtpSink
+#ftp server配置
+storeFtpAgent.sinks.personSink.name.server = suntek.console.FTP_SERVER
+storeFtpAgent.sinks.personSink.port = suntek.console.FTP_PORT
+storeFtpAgent.sinks.personSink.user = suntek.console.FTP_USER
+storeFtpAgent.sinks.personSink.password = suntek.console.FTP_PASSWORD
+#监听处理文件夹
+storeFtpAgent.sinks.personSink.working.directory = suntek.console.FTP_WORKING_DIRECTORY
+storeFtpAgent.sinks.personSink.batchSize = 100
+#文件名缓存目录
+storeFtpAgent.sinks.personSink.tempPath = person
+#文件名标识，打包zip文件时用，文件名格式为yyMMddHHmmss-fileFlag-hostIPAddress-EAP.redis.incr("FTP_LAST_UPLOAD_SEQUENCE")-datas.size()
+storeFtpAgent.sinks.personSink.fileFlag = VPLUS_PERSON_DETECT_INFO
+#图片字段，需根据URL下载图片ALARM_IMG
+storeFtpAgent.sinks.personSink.picFields = OBJ_PIC,PIC
+#最大处理文件数
+storeFtpAgent.sinks.personSink.uploadThreadMaxCount = 100
+#上传线程数	
+storeFtpAgent.sinks.personSink.uploadThreadNum = 100
+#执行上传时间间隔（ms）
+storeFtpAgent.sinks.personSink.uploadThreadInterval = 2000	
+################################配置sources,channel,sinks关联关系############
+storeFtpAgent.sinks.personSink.channel = personChannel
+#######################################sources、channel、sink组合配置结束################################################################

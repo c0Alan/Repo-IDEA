@@ -1,0 +1,5 @@
+{% for host in groups['redis_ruby_node'] %}
+{% for port in range(hostvars[host]['begin_port'],hostvars[host]['end_port']+1) %}
+{{host}}:{{port}}
+{% endfor %}
+{% endfor %}

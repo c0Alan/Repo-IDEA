@@ -1,0 +1,2 @@
+---
+mysql_datadir: "{{ mysql_datadir_prefix }}{{ mysql_datadir_suffix }}"

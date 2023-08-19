@@ -1,0 +1,13 @@
+---
+- hosts: es_servers
+  gather_facts: true
+  remote_user: root
+  roles:
+   #设置系统参数
+   #- bootstrap
+   #关闭防火墙，关闭SELinux
+   #- firewalld
+   #安装jdk
+   #- jdk
+   #安装es
+   - es

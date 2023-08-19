@@ -1,0 +1,39 @@
+---
+- name: close file update time
+  shell: sed -ri "{{ item }}" /etc/fstab
+  with_items:
+   - '/swap/s/\/dev\/mapper/#\/dev\/mapper/'
+   - '/\/data/s/defaults/noatime,nodiratime/'
+   - '/\/ssddata/s/defaults/noatime,nodiratime/'
+   - '/centos-root/s/defaults/noatime,nodiratime/'
+  ignore_errors: true
+
+- name: mem config
+  lineinfile: dest=/etc/sysctl.conf line="{{ item }}"
+  with_items:
+   - "vm.swappiness=0"
+   - "vm.max_map_count=655360"
+   
+- name: update /etc/security/limits.conf
+  blockinfile:
+    dest: /etc/security/limits.conf
+    insertbefore: '# End of file'
+    block: |
+      *        soft        nofile        65535
+      *        hard        nofile        65535
+      *        soft        nproc         65535
+      *        hard        nproc         65535
+
+- name: echo "session  required  /lib64/security/pam_limits.so" >> /etc/pam.d/login
+  shell: echo "session  required  /lib64/security/pam_limits.so" >> /etc/pam.d/login
+  
+- name: ulimit -l unlimited
+  shell: ulimit -l unlimited   
+  
+- name: check the install directory
+  stat: path={{ install_dir }}
+  register: installDir
+
+- name: mkdir directory for alluxio installing
+  file: dest={{ install_dir }} mode=0755 state=directory owner=root group=root
+  when: not installDir.stat.exists

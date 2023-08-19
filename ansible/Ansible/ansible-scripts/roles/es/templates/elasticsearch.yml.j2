@@ -1,0 +1,96 @@
+{% if cluster_name %}
+cluster.name: {{ cluster_name }}
+{% else %}
+cluster.name: elasticsearch
+{% endif %}
+node.name: {{ ansible_nodename }}
+network.host: {{ansible_default_ipv4['address']}}
+http.port: {{ http_port }}
+transport.tcp.port: {{ transport_port }}
+{% if ansible_default_ipv4['address'] in groups['es_master_candidate_nodes'] %}
+node.master: true
+{% else %}
+node.master: false
+{% endif %}
+{% if ansible_default_ipv4['address'] in groups['es_data_nodes'] %}
+node.data: true
+{% else  %}
+node.data: false
+{% endif %}
+discovery.zen.ping.multicast.enabled: false             # 关闭多播
+discovery.zen.ping.unicast.hosts: [{% for host in groups['es_master_candidate_nodes'] -%}{% if loop.index > 1 %},{% endif %}"{{host}}:{{transport_port}}"{%- endfor %}]
+                                                        # 设置此节点定时ping的ip，只应该配置主节点的ip，若配了非主节点ip，
+                                                        # 该节点启动时有可能报 MasterNoDiscoveryException 错误，导致加不入集群
+node.max_local_storage_nodes: 10                        # 同一个服务器上最多启动多少个es节点
+
+discovery.zen.fd.ping_interval: 1s                      # 默认1s，节点互ping的时间间隔
+discovery.zen.fd.ping_timeout: 30s                      # 默认30s，每次ping主节点时最长等待响应时间
+discovery.zen.fd.ping_retries: 6                        # 默认3，ping失败重试次数，超过此次数则认为对方节点已停止工作
+
+path.data: {{es_data}}                                 # 数据目录
+path.logs: {{es_log}}                                 # 日志目录
+path.plugins: {{install_dir}}/es/plugins                           # 插件目录
+
+discovery.zen.minimum_master_nodes: {{ ( groups['es_servers']|length +1 ) // 2 }}    # 至少1个节点才能组成集群，
+                                                        # N个节点的情况下此值应该设为 (N + 1) / 2
+
+index.number_of_shards: 16                              # 索引默认分片数
+index.number_of_replicas: 2                             # 默认副本数
+
+http.cors.allow-origin: "*"                             # *号表示接收任意ip的http请求
+http.cors.enabled: true                                 # 默认false，允许集群外的http请求
+
+bootstrap.mlockall: true                                # 启动节点时一次性分配 ES_HEAP_SIZE 值的内存给ES，保持内存占用
+
+action.disable_delete_all_indices: false                # 禁止删除索引
+
+threadpool.bulk.queue_size: 3000                        # 在没有更多线程来处理批量请求时，ES节点队列中等待处理的请求数，
+                                                        # 注意，在ES中，一个块请求里包含N个分片的数据时，将占用队列中N个位置
+                                                        # 因此就算只发送一个块请求，queue_size都应该设置超过N，
+                                                        # 若每次都发此类的块，批量提交M个，则queue_size值应该大于 M * N
+                                                        # 若队列已满，再次请求时会报 RemoteTransportException 异常，若客户端不处理该异常，
+                                                        # 则此批数据会丢失。
+                                                        # 此队列会消耗JVM堆的空间，应视实际硬件情况设置该值
+
+index.translog.flush_threshold_size: 1g                 # 默认 512m，事务数据缓存大小，达到该值时提交并更新索引
+index.translog.interval: 10s                            # 检查写入数据是否达到提交大小的时间间隔，默认5s
+index.translog.flush_threshold_period: 60m              # 每隔多长时间执行一次flush，默认 60m
+indices.memory.index_buffer_size: 20%                   # 每个节点写入索引数据时可以使用的内存buffer缓冲
+http.max_content_length: 300M                           # 每次http请求的最大内容长度，更大值能使一次http请求包含更多数据，可以减少请求次数，提高写入吞吐量
+index.refresh_interval: 1s                              # 索引刷新时间间隔，默认1s，不关注新数据的实时查询时可以调大该参数，-1 表示不刷新
+indices.store.throttle.type: merge                      # 存储的节流阀，大量数据导入时设置为none放开此限制，尽可能利用磁盘的I/O能力
+indices.store.throttle.max_bytes_per_sec: 100M          # 每秒最大I/O流量，SSD硬盘180-200M；HDD硬盘40M（接近于两种硬盘在SATA2.0接口上的最大传输速率）
+index.store.compress.stored: true                       # 导入数据时使用压缩存储，减小索引大小，加快检索速度
+
+indices.cache.filter.size: 20%                          # 用于过滤的查询缓存的内存大小，建议不小于10G，不大于30%
+indices.cache.filter.expire: 5m                         # 用于过滤的查询缓存的失效时间
+indices.cache.qeury.size: 3%                            # 用于查询的缓存的内存大小，shard级别的缓存，不宜太大，建议 1% ~ 3%
+indices.cache.query.expire: 5m                          # 用于查询的缓存的失效时间
+indices.fielddata.cache.size: 30%                       # 用于排序和筛选的缓存大小，建议不少于10g，内存大小的 10% ~ 30%
+indices.cluster.send_refresh_mapping: false             # 当master发送一个索引请求给节点时，节点会更新自己的映射关系表，并发送新的映射表给master，
+                                                        # master根据映射表更新自己保存的映射表，以保持一致，一般情况下索引的数据格式固定，不需要
+                                                        # 不断同步映射表，因此设为false提高索引速度，当索引数据结构改变时应先开启此配置，使主从节点
+                                                        # 的映射表保持一致
+index.merge.policy.max_merge_at_once_explicit: 50       # 一次merge（段合并）操作的允许最大段（segments）数，默认30
+index.merge.scheduler.max_thread_count: 49              # merge操作最大线程数
+
+cluster.routing.allocation.disk.threshold_enabled: true # ture时，给节点分配分片时将参考磁盘大小，会检查watermark.low和watermark.high参数
+cluster.routing.allocation.disk.watermark.low: 1g       # 磁盘使用率 或 磁盘剩余大小，达到后ES不再分配新分片，1g表示磁盘剩余空间小于1g时，
+                                                        # ES将停止分配新分片。也可以设置为：.97，表示磁盘利用率大于97%时不再分配新分片
+
+cluster.routing.allocation.disk.watermark.high: 1g      # 磁盘使用率 或 磁盘剩余大小，达到后ES将开始移动分片，1g表示磁盘剩余空间小于1g时，
+                                                        # ES将开始移动分片。也可以设置为：.99，表示磁盘利用率大于99%时将开始移动分片
+cluster.routing.allocation.node_initial_primaries_recoveries: 10
+                                                        # 在任何时间，一个节点可以有多少分片被用于执行恢复，默认为4，建议为CPU核数的80%
+                                                        # 恢复分片是一个IO密集型操作，应该通过多次测试来确定该值
+cluster.routing.allocation.node_concurrent_recoveries: 16
+indices.recovery.concurrent_streams: 8                  # 恢复分片时，从节点传输到副本分片的平行流数量
+indices.recovery.max_bytes_per_sec: 100mb               # 恢复分片时，每秒磁盘最大传输字节数
+indices.recovery.translog_size: 10m                     # 恢复分片时，事务日志文件（translog）达到设置大小时，执行flush操作，默认 500m
+indices.recovery.translog_ops: 10000                    # 恢复分片时，事务操作累计达到数量时执行flush操作，默认 5000
+
+index.unassigned.node_left.delayed_timeout: 10m         # 副本重新分配的时间间隔
+index.cache.query.enable: true                          # 开启缓存
+
+script.inline: on                                       # 开启脚本
+script.engine.groovy.inline.aggs: on

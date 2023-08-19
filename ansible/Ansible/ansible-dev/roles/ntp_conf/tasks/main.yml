@@ -1,0 +1,11 @@
+#上传ntp.conf.j2到服务器上
+- name: modify ntp.conf
+  template: src=ntp.conf.j2 dest=/etc/ntp.conf
+ 
+#重新启动ntp服务 
+- name: start ntpd
+  shell: systemctl start  ntpd
+  
+#设置ntp服务开机自启动
+- name: enable  ntpd.service
+  shell: systemctl enable  ntpd.service

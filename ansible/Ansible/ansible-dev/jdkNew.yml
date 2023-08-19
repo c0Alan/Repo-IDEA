@@ -1,0 +1,8 @@
+---
+
+# 部署jdk
+- hosts: jdkNew_servers
+  remote_user: root
+  gather_facts: true
+  roles:
+   - jdkNew

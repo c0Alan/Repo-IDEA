@@ -1,0 +1,38 @@
+#!/usr/bin/env bash
+
+SPARK_LOCAL_HOSTNAME={{ ansible_nodename  }}
+
+# spark outdir
+SPARK_WORKER_DIR={{ spark_worker_dir  }}
+SPARK_LOCAL_DIRS={{ spark_local_dirs   }}
+SPARK_LOG_DIR={{ spark_log_dir }}
+SPARK_PID_DIR={{ spark_pid_dir  }}
+
+# spark master
+SPARK_MASTER_WEBUI_PORT={{ spark_master_webui_port }}
+
+# spark worker
+# default use half of the cores and memory
+
+# SPARK_WORKER_CORES=2
+{% if spark_worker_cores  %}
+SPARK_WORKER_CORES={{ spark_worker_cores }}
+{% else %}
+SPARK_WORKER_CORES={{ ansible_processor_cores // 2 }}
+{% endif %}
+
+# SPARK_WORKER_MEMORY=512M
+{% if spark_worker_memory  %}
+SPARK_WORKER_MEMORY={{ spark_worker_memory }}M
+{% else  %}
+SPARK_WORKER_MEMORY={{ ansible_memtotal_mb // 2 }}M
+{% endif  %}
+
+export SPARK_MASTER_OPTS="-Dspark.deploy.defaultCores=1"
+export SPARK_WORKER_OPTS="-Dspark.worker.cleanup.enabled=true -Dspark.worker.cleanup.appDataTtl=604800"
+
+# cluster HA by zookeeper
+# export SPARK_DAEMON_JAVA_OPTS="-Dspark.deploy.recoveryMode=ZOOKEEPER -Dspark.deploy.zookeeper.url=zk01:2181 -Dspark.deploy.zookeeper.dir=/bigdata/spark"
+
+#spark history
+export SPARK_HISTORY_OPTS="-Dspark.history.ui.port=18080 -Dspark.history.retainedApplications=3 -Dspark.history.fs.logDirectory=file:{{ spark_history_dir  }}"

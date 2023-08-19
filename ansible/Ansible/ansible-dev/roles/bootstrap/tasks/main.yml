@@ -1,0 +1,6 @@
+---
+# tasks file for firewalld
+- include: root_tasks.yml
+  become: true
+  become_method: su
+  become_user: root

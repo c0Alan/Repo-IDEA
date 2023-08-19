@@ -1,0 +1,7 @@
+---
+#初始化kafka消息队列
+- hosts: kafka_servers
+  remote_user: root
+  gather_facts: true
+  roles:
+   - kafka_init_queue

@@ -1,0 +1,3 @@
+{% for host in groups['storage_servers'] %}
+{{ host }} {{ hostvars[host]['group_name'] }}
+{% endfor %}

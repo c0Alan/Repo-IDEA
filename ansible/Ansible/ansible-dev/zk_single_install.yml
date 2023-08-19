@@ -1,0 +1,7 @@
+---
+- hosts: zk_single_server
+  gather_facts: true
+  remote_user: root
+  roles:
+   #安装单机版zookeeper
+   - zookeeper_single

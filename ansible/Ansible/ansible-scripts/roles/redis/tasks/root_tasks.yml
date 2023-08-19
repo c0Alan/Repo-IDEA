@@ -1,0 +1,20 @@
+---
+- name: close SELinux
+  lineinfile:
+    dest: /etc/selinux/config
+    regexp: '^SELINUX='
+    line: 'SELINUX=disabled'
+
+- name: vi /etc/sysctl.conf
+  lineinfile: dest=/etc/sysctl.conf line="{{ item }}"
+  with_items:
+   - "vm.swappiness=0"
+   - "vm.max_map_count=655360"
+   - "vm.overcommit_memory =1"
+   - "net.core.somaxconn = 2048"
+
+- name: sysctl -p使上述配置立马生效
+  shell: sysctl -p
+
+- name: 禁用透明大页
+  lineinfile: dest=/etc/rc.local line="always madvise [never]"

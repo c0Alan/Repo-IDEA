@@ -1,0 +1,9 @@
+---
+# 放开最大可锁定内存限制
+- include: root_tasks.yml
+# 安装es
+- include: es_install.yml 
+#配置免密钥登录，其中一台master对
+- include: establishSSH.yml
+#ES启停
+- include: es_run.yml

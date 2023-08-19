@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<config> 
+  <param key="UPLOAD_MAX_FILE_SIZE" name="上传文件最大值" type="Long" description="上传文件最大值，默认1G">407374182400</param>  
+  <param key="FILE_CONTAINER" name="GridFS存储位置" type="String" description="GridFS存储位置">localhost</param>  
+  <param key="SHARE_DRIVER" name="" type="String" description="可配置多个盘符，逗号隔开">h</param>  
+  <param key="OSS_URL" name="OSS_URL" type="String" description="OSS获取图片服务路径">http://{% for host in groups['tomcat_jx_server'] -%}{{host}}{%- endfor %}:9080/oss/v1/db/dir/</param>  
+  <param key="RESIZE_TEMP_FILE_DIR" name="缩略图软件安装路径" type="String" description="缩略图软件安装路径">/usr/local/ImageMagick</param> 
+</config>

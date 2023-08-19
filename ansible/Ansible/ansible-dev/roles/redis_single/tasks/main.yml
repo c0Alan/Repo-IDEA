@@ -1,0 +1,6 @@
+---
+- include: root_tasks.yml
+- include: install_gcc.yml
+- include: install_redis.yml
+- include: redis_conf.yml
+- include: redis_single_run.yml

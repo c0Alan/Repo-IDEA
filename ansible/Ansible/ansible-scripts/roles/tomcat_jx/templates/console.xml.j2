@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<config> 
+  <!-- <param key="IndexServerS" name="elasticsearch搜索引擎服务器地址" type="String" description="服务器IP地址，多台服务器已逗号分隔"></param>  
+  <param key="esPathHome" name="elasticsearch搜索引擎服务器路径" type="String" description="elasticsearch绝对路径"></param>
+  <param key="ElasticClusterName" name="elasticsearch搜索引擎集群名称" type="String" description="集群名称要与ElasticSearch集群名称一致">elastic</param>  -->  
+  <!-- <param key="CMS_LICENSE_URL" name="cms期限信息获取url" type="String" description="cms期限信息获取url，填写cms所在主机的IP">http://127.0.0.1:18001/licensecheck</param>  -->  
+  <param key="ActiveMQServerBrokerURL" name="amq 服务器 broker url" type="String" description="服务器IP地址，多台服务器已逗号分隔">tcp://172.16.67.167:61616</param>  
+  <param key="LICENSE_PATH" name="LICENSE_PATH" type="String" description="license file upload path">eapserver</param>  
+  <param key="LICENSE_FILE_NAME" name="LICENSE_FILE_NAME" type="String" description="license filename">openEAPLicense</param>  
+  <param key="EFFECT_TIME" name="EFFECT_TIME" type="String" description="EFFECT_TIME">2015-08-26</param>  
+  <param key="KAFKA_BROKER_LIST" name="kafka 服务器 broker url" type="String" description="服务器IP地址，多台服务器已逗号分隔">{% for host in groups['kafka_servers'] -%}{% if loop.index > 1 %},{% endif %}{{host}}:9092{%- endfor %}</param>  
+  <param key="ZK_LIST" name="zookeeper 服务器 broker url" type="String" description="服务器IP地址，多台服务器已逗号分隔">{% for host in groups['zk_servers'] -%}{% if loop.index > 1 %},{% endif %}{{host}}:2181{%- endfor %}</param>  
+  <param key="ZK_KAFKA_LIST" name="kafka配置的zk节点" type="String" description="zk节点，多个IP用逗号分隔">{% for host in groups['zk_servers'] -%}{% if loop.index > 1 %},{% endif %}{{host}}:2181{%- endfor %}/kafka</param>  
+  <param key="TRACKER_SERVER" name="fastdfs tracker服务器地址" type="String" description="fastdfs tracker服务器，多台服务器用逗号分隔">{% for host in groups['tracker_servers'] -%}{% if loop.index > 1 %},{% endif %}{{host}}:22122{%- endfor %}</param>  
+  <param key="FASTDFS_HTTP_PORT" name="fastdfs文件http访问端口" type="String" description="fastdfs文件http访问端口,一般是等于storage服务器上nginx端口">8088</param>  
+  <param key="BLOB_TYPE" name="存储方式" type="String" description="储存方式(fdfs|localfs)">fdfs</param>  
+  <param key="FDFS_URL" name="fdfs图片获取前缀" type="String" description="fdfs图片获取前缀">{% for host in groups['tracker_servers'] -%}{% if loop.index > 1 %},{% endif %}http://{{host}}:8088{%- endfor %}</param>  
+  <param key="REDIS_IP_PORT" name="REDIS_IP_PORT" type="String" description="Redis host IP">{% for host in groups['redis_servers'] -%}{% if loop.index > 1 %},{% endif %}{% for port in range(hostvars[host]['begin_port'],hostvars[host]['end_port']+1) %}{% if loop.index > 1 %},{% endif %}{{host}}:{{port}}{% endfor %}{%- endfor %}</param>
+  <param key="REDIS_MODEL" name="REDIS_MODEL" type="String" description="Redis部署模式[0:单机模式 1:哨兵模式 2:集群]">2</param>  
+  <param key="KAFKA_QUEUE_PARTITIONS" name="kafka队列分区数" type="String" description="kafka队列分区数">6</param>  
+  <param key="KAFKA_QUEUE_REPLICA" name="kafka队列副本数" type="String" description="kafka队列副本数">2</param> 
+</config>

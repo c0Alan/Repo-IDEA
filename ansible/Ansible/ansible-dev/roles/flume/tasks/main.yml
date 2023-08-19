@@ -1,0 +1,4 @@
+---
+
+- include: flume_install.yml
+- include: flume_run.yml

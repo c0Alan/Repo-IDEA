@@ -1,0 +1,105 @@
+---
+#上传 tcp rpm包
+- name: scp tcl rpm to target host
+  copy: src={{ resources_dir }}/tcl-8.5.7-6.el6.x86_64.rpm dest=/tmp mode=0755 owner=root group=root
+  run_once: true
+  delegate_to: localhost
+
+#安装tcl软件
+- name: install tcl rpm
+  yum: name=/tmp/tcl-8.5.7-6.el6.x86_64.rpm state=present
+  become: true
+  become_method: su
+  become_user: root
+  ignore_errors: true
+  run_once: true
+  delegate_to: localhost
+
+#上传expect软件
+- name: scp expect rpm to target host
+  copy: src={{ resources_dir }}/expect-5.44.1.15-4.el6.x86_64.rpm dest=/tmp mode=0755  owner=root group=root
+  run_once: true
+  delegate_to: localhost
+
+#安装expect软件
+- name: install tcl rpm
+  yum: name=/tmp/expect-5.44.1.15-4.el6.x86_64.rpm state=present
+  become: true
+  become_method: su
+  become_user: root
+  ignore_errors: true
+  run_once: true
+  delegate_to: localhost
+
+#上传生成密钥脚本至本机
+- name: scp keyGen.sh to localhost
+  copy: src={{ resources_dir }}/keyGen.sh dest=/tmp mode=0755 owner=root group=root
+  run_once: true
+  delegate_to: localhost
+
+
+#删除rpm
+- name: delete rpm package
+  command: rm -rf /tmp/{{ item }}
+  with_items:
+   - "tcl-8.5.7-6.el6.x86_64.rpm"
+   - "expect-5.44.1.15-4.el6.x86_64.rpm"
+  run_once: true
+  delegate_to: localhost
+
+#生成公钥
+- name: run keyGen.sh
+  command: /tmp/keyGen.sh /root
+  run_once: true
+  delegate_to: localhost
+  become: yes
+  become_method: su
+  become_user: root
+  ignore_errors: true
+
+
+#检测公钥是否创建成功
+- name: check whether id_rsa.pub exist
+  stat: path=/root/.ssh/id_rsa.pub
+  register: rsaResult
+  run_once: true
+  delegate_to: localhost
+
+- name: rm keyGen.sh
+  command: "rm -rf /tmp/keyGen.sh"
+  run_once: true
+  delegate_to: localhost
+  become: true
+  become_method: su
+  become_user: root
+
+#添加免密认证至远程主机
+- name: add authorized_key 
+  authorized_key: user=root key='{{ lookup('file','/root/.ssh/id_rsa.pub' )}}' path=/root/.ssh/authorized_keys manage_dir=no
+  when: rsaResult.stat.exists  
+
+#批量修改主机名称
+- name: set hostname
+  shell: hostnamectl --static set-hostname {{ hname }}
+  
+#让主机名生效
+- name: restart systemd-hostnamed
+  shell: systemctl restart systemd-hostnamed
+  
+#将IP及主机名写入/etc/hosts文件中
+- name: write the hostname to /etc/hosts
+  template: src=hosts.j2 dest=/etc/hosts   
+
+
+# #创建备份文件夹
+# - name: mkdir bak
+  # file: dest=/etc/yum.repos.d/bak state=directory
+  # ignore_errors: true  
+  
+# #备份本地的yum配置文件
+# - name: bak the repo
+  # shell: "mv /etc/yum.repos.d/CentOS*.repo /etc/yum.repos.d/bak/"
+  # ignore_errors: true
+
+
+

@@ -1,0 +1,11 @@
+---
+- hosts: rest_servers
+  gather_facts: true
+  remote_user: root
+  roles:
+   #关闭防火墙
+   #- firewalld
+   #安装jdk
+   #- jdk
+   #安装rest N:N 服务
+   - rest_service

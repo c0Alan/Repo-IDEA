@@ -1,0 +1,33 @@
+---
+#1检测防火墙状态,需要root用户操作
+- name: check the state of firewalld
+  command: bash -c 'firewall-cmd --state || exit 0'
+  register: firewall_running
+  ignore_errors: true
+  changed_when: false
+  
+- name: systemctl disable NetworkManager service
+  shell: systemctl disable NetworkManager.service
+  ignore_errors: true
+
+- name: systemctl disable firewalld service
+  shell: systemctl disable firewalld.service
+  ignore_errors: true
+
+- name: systemctl stop NetworkManager service
+  shell: systemctl stop NetworkManager.service
+  ignore_errors: true
+
+- name: systemctl stop firewalld service
+  shell: systemctl stop firewalld.service
+  ignore_errors: true
+
+- name: setenforce 0
+  shell: setenforce 0
+  ignore_errors: true
+
+- name: closed SEXLinux
+  lineinfile:
+    dest: /etc/selinux/config
+    regexp: '^SELINUX='
+    line: 'SELINUX=disabled'

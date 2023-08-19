@@ -1,0 +1,21 @@
+---
+- name: check the data directory
+  stat: path={{ data_rootDir }}/cluster
+  register: rootDir
+
+- name: mkdir data  directory for redis 
+  file: dest={{ data_rootDir }}/cluster mode=0755 state=directory owner=root group=root
+  when: not rootDir.stat.exists
+
+- name: create conf directory for redis
+  file:
+    dest={{ data_rootDir }}/cluster/{{ item }}/data state=directory
+  with_sequence:
+    start={{ begin_port }} end={{ end_port }} stride=1
+
+- name: modify conf
+  template: 
+    src=redis.conf.j2 
+    dest={{ data_rootDir }}/cluster/{{ item }}/redis.conf owner=root group=root
+  with_sequence:
+    start={{ begin_port }} end={{ end_port }} stride=1

@@ -1,0 +1,22 @@
+---
+
+#复制执行脚本至kafka主机
+- name: copy kafka_init_queue_180723.sh to kafka_server
+  template: src=kafka_init_queue_180723.sh dest={{ install_dir }}/kafka_init_queue_180723.sh
+  
+#复制执行脚本至kafka主机
+- name: copy init_queue.sh.j2 to kafka_server
+  template: src=init_queue.sh.j2 dest={{ install_dir }}/init_queue.sh  
+
+#赋予脚本执行权限
+- name: chmod sh
+  shell: chmod +x {{ install_dir }}/*.sh
+  
+#安装expect插件 
+- name: yum expect
+  shell: yum -y install expect
+  
+#执行初始化kafka消息队列脚本
+- name: excute init_queue.sh
+  shell: /bin/bash {{ install_dir }}/init_queue.sh
+  tags: init

@@ -1,0 +1,40 @@
+#在ansible本机安装http yum源
+- hosts: localhost
+  remote_user: root
+  gather_facts: true
+  roles:
+   - http_yum
+
+#初始化服务器，关闭防火墙，安装jdk,设置系统参数,设置ip与hostname映射关系
+- hosts: all_servers
+  gather_facts: true
+  remote_user: root
+  roles:
+   - firewalld
+   - jdk
+   - bootstrap
+   - serversSSH 
+
+#在没有部署ansible上的机器执行yum配置替换
+- hosts: all_servers:!ansible_server
+  gather_facts: true
+  remote_user: root
+  tasks:
+   #修改本地yum源配置
+   - name: modify localyum.repo
+     template: src={{ playbook_dir }}/roles/serversSSH/templates/localyum.repo.j2 dest=/etc/yum.repos.d/localyum.repo
+     
+   - name: yum clean all
+     shell: yum clean all
+     
+   #创建备份文件夹
+   - name: mkdir bak
+     file: dest=/etc/yum.repos.d/bak state=directory
+
+   #备份本地的yum配置文件
+   - name: bak the repo
+     shell: "mv /etc/yum.repos.d/CentOS*.repo /etc/yum.repos.d/bak/"
+     ignore_errors: true  
+  
+   - name: yum makecache
+     shell: yum makecache

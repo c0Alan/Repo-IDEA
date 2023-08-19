@@ -1,0 +1,38 @@
+---
+#停止集群版es
+- name: es-cluser.sh stop
+  shell: "{{ install_dir }}/es/es-cluster.sh stop"
+  run_once: true
+  delegate_to: "{{ groups['es_master_candidate_nodes'][0] }}"
+  tags: stop_cluster
+  become: yes
+  become_method: su
+  become_user: "{{ es_user_name }}"
+
+
+#启动集群版es
+- name: es-cluser.sh start
+  shell: "{{ install_dir }}/es/es-cluster.sh start"
+  run_once: true
+  delegate_to: "{{ groups['es_master_candidate_nodes'][0] }}"
+  tags: start_cluster
+  become: yes
+  become_method: su
+  become_user: "{{ es_user_name }}"
+
+#停止单机版es
+- name: es-stop.sh
+  shell: "{{ install_dir }}/es/bin/es-stop.sh"
+  tags: stop_single
+  become: yes
+  become_method: su
+  become_user: "{{ es_user_name }}"
+
+
+#启动单机版es
+- name: es-start.sh
+  shell: "{{ install_dir }}/es/bin/es-start.sh"
+  tags: start_single
+  become: yes
+  become_method: su
+  become_user: "{{ es_user_name }}"

@@ -1,0 +1,5 @@
+{% if ansible_hostname == master_hostname %}
+ExecStart=/usr/local/bin/etcd --name {{ master_hostname }} --initial-advertise-peer-urls http://{{ master_ip }}:2380
+{% elif ansible_hostname == node1_hostname %}
+ExecStart=/usr/local/bin/etcd --name {{ node1_hostname }} --initial-advertise-peer-urls http://{{ node1_ip }}:2380
+{% endif %}

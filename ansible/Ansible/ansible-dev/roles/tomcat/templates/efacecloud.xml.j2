@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<config>
+  <param key="FACE_QUALITY_DETECTION_ALGO_TYPES" type="String" name="人脸质量检测算法，默认为云从3.5算法" description="人脸质量检测算法">10003</param>  
+  <param key="RED_LIST_OPEN" type="String" name="是否开启涉红名单检索过滤" description="0不开启，1开启">1</param>  
+  <param key="RED_SIMILARITY" type="String" name="红名单检索阈值(0-100，建议87分以上)" description="红名单检索阈值(0-100，建议87分以上)">87</param>  
+  <param key="RED_APPROVAL_SEND_PHONE" type="String" name="红名单审批发送手机号码,逗号分隔" description="红名单审批发送手机号码,逗号分隔"></param>  
+  <param key="SEARCH_CAUSE_OPEN" type="String" name="是否开启操作事由" description="0不开启，1开启">0</param>  
+  <param key="FACE_N2N_THRESHOLD" name="N:N检索阈值" type="String" description="N:N检索阈值">80000</param> 
+  <param key="MAX_FACE_SEARCH_COUNT" name="人脸库查询最大记录条数（非内存es）" type="String" description="人脸库查询最大记录条数（非内存es）">10000000</param>
+  <param key="MAX_HOT_FACE_SEARCH_COUNT" name="基于内存ES人脸库查询最大记录条数" type="String" description="基于内存ES人脸库查询最大记录条数">10000000</param>
+  <param key="FACE_N_WIFI_INTERVAL" name="人脸wifi碰撞跟随时间，单位（分钟）" type="String" description="人脸wifi碰撞跟随时间，单位（分钟）">1</param>
+  <param key="MEM_ES_MONTH_INTERVAL" name="内存索引保存月份间隔,既保存最近几个月的数据" type="String" description="内存索引保存月份间隔,既保存最近几个月的数据">3</param>
+  <param key="ENABLE_SEND_SMS" name="是否启用发送短信功能，0禁用1启用" type="String" description="是否启用发送短信功能，0禁用1启用">1</param>
+  <param key="FACE_INFO_MEM_INDICE_PREFIX" name="内存es索引前缀" type="String" description="内存es索引前缀">face_info_mem</param>
+  <param key="BATCH_IMPORT_SIZE" name="批量导入单次数量" type="String" description="批量导入单次数量">100</param>
+  <param key="BATCH_IMPORT_SLEEP" name="批量导入单次睡眠时间(秒)" type="String" description="单位秒">30</param>
+  <param key="VRS_ALGO_TYPE" name="人脸算法类型" type="String" description="10001云从2.6人脸算法 ；10002云从3.1人脸算法，10003云从3.5人脸算法，默认算法类型；20000依图人脸算法；30000像素人脸算法">10003</param>
+  <param key="SEARCH_HOT_DATA" name="是否启用基于内存ES集群1:N检索，0禁用1启用" type="String" description="是否启用基于内存ES集群1:N检索，0禁用1启用">1</param>  
+  <param key="FACE_INDICE_BEGIN_MONTH" name="人脸抓拍索引起始月份，yyMM" type="String" description="人脸索引起始月份,yyMM">1709</param>
+  <param key="FACE_SIMILARITY" name="人脸相似度阈值" type="String" description="人脸相似度阈值:0-100">70</param>
+  <param key="APP_FACE_ADDRESS" name="人脸APP提取特征地址" type="String" description="人脸APP提取特征地址"></param>
+  <param key="FACE_COMPARE_JOB" name="是否启用人脸APP提取特征，0禁用1启用" type="String" description="是否启用人脸APP提取特征，0禁用1启用">0</param>
+  <param key="COMPARE_CRON" name="人脸APP提取特征任务周期表达式" type="String" description="人脸APP提取特征任务周期表达式">15 */1 * * * ?</param>
+</config>

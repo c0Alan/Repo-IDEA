@@ -1,0 +1,18 @@
+---
+#首次启动alluxio集群
+- name: alluxio format
+  shell: "{{ install_dir  }}/alluxio/alluxio-1.2.0/bin/alluxio format"
+  run_once: true
+  delegate_to: "{{ groups['alluxio_master'][0] }}"
+
+#首次启动alluxio集群
+- name: start alluxio
+  shell: "{{ install_dir  }}/alluxio/alluxio-1.2.0/bin/alluxio-start.sh all Mount"
+  run_once: true
+  delegate_to: "{{ groups['alluxio_master'][0] }}"
+
+# 关闭alluxio集群
+- name: stop alluxio
+  shell: "{{ install_dir }}/alluxio/alluxio-1.2.0/bin/alluxio-stop.sh all"
+  run_once: true
+  delegate_to: "{{ groups['alluxio_master'][0] }}"

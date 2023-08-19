@@ -1,0 +1,4 @@
+---
+
+- include: gwf_install.yml
+- include: gwf_run.yml

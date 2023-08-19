@@ -1,0 +1,58 @@
+#!/bin/sh
+mysqlpwd=`cat /var/log/mysqld.log|grep 'temporary password' | cut -b 92-103`
+echo "host=localhost" >> /etc/my.cnf
+echo "user='root'" >> /etc/my.cnf
+echo "password='$mysqlpwd'" >> /etc/my.cnf
+
+/usr/bin/expect << EOF
+set timeout 10
+spawn mysql
+expect "mysql>"
+send "set global validate_password_length=0;\r"
+send "set global validate_password_policy=0;\r"
+send "set password=password('suntek');\r"
+send "exit\r"
+expect eof
+EOF
+
+
+sleep 3
+sed -i -e "s/host=localhost//" /etc/my.cnf
+sed -i -e "s/user='root'//" /etc/my.cnf
+sed -i -e "s/password='$mysqlpwd'//" /etc/my.cnf
+mysql -uroot -p{{root_passwd}} << EOF
+CREATE USER '{{new_user}}'@'%' IDENTIFIED BY '{{new_user_passwd}}';
+CREATE USER '{{new_user}}'@'localhost' IDENTIFIED BY '{{new_user_passwd}}';
+grant all privileges on *.* to '{{new_user}}'@'%' identified by '{{new_user_passwd}}';
+grant all privileges on *.* to {{new_user}}@'localhost' identified by '{{new_user_passwd}}';
+create database {{new_database}} DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+use {{new_database}};
+source {{install_dir}}/mysql/database_script/00/1.sql;
+source {{install_dir}}/mysql/database_script/00/2.sql;
+source {{install_dir}}/mysql/database_script/00/3.sql;
+source {{install_dir}}/mysql/database_script/01/1.sql;
+source {{install_dir}}/mysql/database_script/01/2.sql;
+source {{install_dir}}/mysql/database_script/01/3.sql;
+source {{install_dir}}/mysql/database_script/01/4.sql;
+source {{install_dir}}/mysql/database_script/02/1.sql;
+source {{install_dir}}/mysql/database_script/02/2.sql;
+source {{install_dir}}/mysql/database_script/02/3.sql;
+source {{install_dir}}/mysql/database_script/04/1.sql;
+source {{install_dir}}/mysql/database_script/04/2.sql;
+source {{install_dir}}/mysql/database_script/06/1.sql;
+source {{install_dir}}/mysql/database_script/09/1.sql;
+source {{install_dir}}/mysql/database_script/09/2.sql;
+source {{install_dir}}/mysql/database_script/09/3.sql;
+source {{install_dir}}/mysql/database_script/09/5.sql;
+source {{install_dir}}/mysql/database_script/09/6.sql;
+source {{install_dir}}/mysql/database_script/10/1.sql;
+source {{install_dir}}/mysql/database_script/10/2.sql;
+source {{install_dir}}/mysql/database_script/10/3.sql;
+source {{install_dir}}/mysql/database_script/11/1.sql;
+source {{install_dir}}/mysql/database_script/11/2.sql;
+source {{install_dir}}/mysql/database_script/11/3.sql;
+source {{install_dir}}/mysql/database_script/12/1.sql;
+source {{install_dir}}/mysql/database_script/12/2.sql;
+source {{install_dir}}/mysql/database_script/13/1.sql;
+source {{install_dir}}/mysql/database_script/13/2.sql;
+EOF

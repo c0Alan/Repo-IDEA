@@ -1,0 +1,10 @@
+---
+#启动rest
+- name: start rest
+  shell: "./bin/startup.sh chdir={{ install_dir }}/face-dll-web"
+  tags: start_single
+  
+#停止rest  
+- name: stop rest
+  shell: "./bin/shutdown.sh chdir={{ install_dir }}/face-dll-web"
+  tags: stop_single

@@ -1,0 +1,41 @@
+# 针对FDIC: Face distributed index cluster的对应的ZK集群ZKURL，需要修改addr
+env: 
+  fidcProp: 
+    addr: {{ zkAddr }}
+  jniEngineProp: 
+    isLocal: false
+    supportFaceAlgorithIds: 10003
+    supportVehicleAlgorithIds: 50101
+    supportPersonAlgorithIds: 60401
+
+# 针对spring编码和应用名称进行配置，不需要修改    
+spring: 
+  applicatioin: 
+    name: face-dll-web
+  message: 
+    encoding: UTF-8
+  http: 
+    encoding: 
+      charset: UTF-8
+      enabled: true
+      force: true
+
+
+# 针对web server进行配置，通常不需要修改  
+server: 
+  context-path: /service
+  port: {{ port }}
+  undertow: 
+    accesslog: 
+      dir: 
+      enabled: false
+      pattern: common
+      prefix: access_log.
+      rotote: true
+      suffix: log
+    buffer-size: 1024
+    buffers-per-region: 1024
+    direct-buffers: true
+    io-threads: 8
+    max-http-post-size: 0 
+    worker-threads: 1000    

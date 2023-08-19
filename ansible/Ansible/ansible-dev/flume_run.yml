@@ -1,0 +1,447 @@
+---
+- hosts: police_collectFtpAgent
+  gather_facts: true
+  remote_user: root
+  tasks:
+    - name: check whether the start_flume.sh exist
+      stat: path={{ install_dir}}/{{ flume_install_dir }}/start.sh
+      register: startflume
+      tags: start
+
+    - include: create_startsh.yml
+      when: not startflume.stat.exists
+      tags: start
+
+    - name: execute the start_flume.sh
+      shell: "./start.sh collectFtpAgent chdir={{ install_dir}}/{{ flume_install_dir }} "
+      when: startflume.stat.exists
+      tags: start
+
+    - name: check whether the stop_flume.sh exist
+      stat: path={{ install_dir}}/{{ flume_install_dir }}/stop_flume.sh
+      register: stop
+      tags: stop
+
+    - name: copy sh for stop flume
+      copy: src={{ resources_dir }}/stop_flume.sh  mode=777 dest={{ install_dir}}/{{ flume_install_dir }}
+      when: not stop.stat.exists
+      tags: stop
+
+    - name: stop flume
+      shell: "./stop_flume.sh chdir={{ install_dir}}/{{ flume_install_dir }} "
+      tags: stop
+    
+- hosts: police_storeMppdbAgent
+  gather_facts: true
+  remote_user: root
+  tasks:
+    - name: check whether the start_flume.sh exist
+      stat: path={{ install_dir}}/{{ flume_install_dir }}/start.sh
+      register: startflume
+      tags: start
+
+    - include: create_startsh.yml
+      when: not startflume.stat.exists
+      tags: start
+
+    - name: execute the start_flume.sh
+      shell: "./start.sh storeMppdbAgent chdir={{ install_dir}}/{{ flume_install_dir }} "
+      when: startflume.stat.exists
+      tags: start
+
+    - name: check whether the stop_flume.sh exist
+      stat: path={{ install_dir}}/{{ flume_install_dir }}/stop_flume.sh
+      register: stop
+      tags: stop
+
+    - name: copy sh for stop flume
+      copy: src={{ resources_dir }}/stop_flume.sh  mode=777 dest={{ install_dir}}/{{ flume_install_dir }}
+      when: not stop.stat.exists
+      tags: stop
+
+    - name: stop flume
+      shell: "./stop_flume.sh chdir={{ install_dir}}/{{ flume_install_dir }} "
+      tags: stop
+
+- hosts: police_storeEsAgent
+  gather_facts: true
+  remote_user: root
+  tasks:
+    - name: check whether the start_flume.sh exist
+      stat: path={{ install_dir}}/{{ flume_install_dir }}/start.sh
+      register: startflume
+      tags: start
+
+    - include: create_startsh.yml
+      when: not startflume.stat.exists
+      tags: start
+
+    - name: execute the start_flume.sh
+      shell: "./start.sh storeEsAgent chdir={{ install_dir}}/{{ flume_install_dir }} "
+      when: startflume.stat.exists
+      tags: start
+
+    - name: check whether the stop_flume.sh exist
+      stat: path={{ install_dir}}/{{ flume_install_dir }}/stop_flume.sh
+      register: stop
+      tags: stop
+
+    - name: copy sh for stop flume
+      copy: src={{ resources_dir }}/stop_flume.sh  mode=777 dest={{ install_dir}}/{{ flume_install_dir }}
+      when: not stop.stat.exists
+      tags: stop
+
+    - name: stop flume
+      shell: "./stop_flume.sh chdir={{ install_dir}}/{{ flume_install_dir }} "
+      tags: stop      
+      
+- hosts: police_storeAlarmAgent
+  gather_facts: true
+  remote_user: root
+  tasks:
+    - name: check whether the start_flume.sh exist
+      stat: path={{ install_dir}}/{{ flume_install_dir }}/start.sh
+      register: startflume
+      tags: start
+
+    - include: create_startsh.yml
+      when: not startflume.stat.exists
+      tags: start
+
+    - name: execute the start_flume.sh
+      shell: "./start.sh storeAlarmAgent chdir={{ install_dir}}/{{ flume_install_dir }} "
+      when: startflume.stat.exists
+      tags: start
+
+    - name: check whether the stop_flume.sh exist
+      stat: path={{ install_dir}}/{{ flume_install_dir }}/stop_flume.sh
+      register: stop
+      tags: stop
+
+    - name: copy sh for stop flume
+      copy: src={{ resources_dir }}/stop_flume.sh  mode=777 dest={{ install_dir}}/{{ flume_install_dir }}
+      when: not stop.stat.exists
+      tags: stop
+
+    - name: stop flume
+      shell: "./stop_flume.sh chdir={{ install_dir}}/{{ flume_install_dir }} "
+      tags: stop
+      
+- hosts: police_storeDssAgent
+  gather_facts: true
+  remote_user: root
+  tasks:
+    - name: check whether the start_flume.sh exist
+      stat: path={{ install_dir}}/{{ flume_install_dir }}/start.sh
+      register: startflume
+      tags: start
+
+    - include: create_startsh.yml
+      when: not startflume.stat.exists
+      tags: start
+
+    - name: execute the start_flume.sh
+      shell: "./start.sh storeDssAgent chdir={{ install_dir}}/{{ flume_install_dir }} "
+      when: startflume.stat.exists
+      tags: start
+
+    - name: check whether the stop_flume.sh exist
+      stat: path={{ install_dir}}/{{ flume_install_dir }}/stop_flume.sh
+      register: stop
+      tags: stop
+
+    - name: copy sh for stop flume
+      copy: src={{ resources_dir }}/stop_flume.sh  mode=777 dest={{ install_dir}}/{{ flume_install_dir }}
+      when: not stop.stat.exists
+      tags: stop
+
+    - name: stop flume
+      shell: "./stop_flume.sh chdir={{ install_dir}}/{{ flume_install_dir }} "
+      tags: stop
+
+  gather_facts: true
+  remote_user: root
+  tasks:
+    - name: check whether the start_flume.sh exist
+      stat: path={{ install_dir}}/{{ flume_install_dir }}/start.sh
+      register: startflume
+      tags: start
+
+    - include: create_startsh.yml
+      when: not startflume.stat.exists
+      tags: start
+
+    - name: execute the start_flume.sh
+      shell: "./start.sh storeDssAgent chdir={{ install_dir}}/{{ flume_install_dir }} "
+      when: startflume.stat.exists
+      tags: start
+
+    - name: check whether the stop_flume.sh exist
+      stat: path={{ install_dir}}/{{ flume_install_dir }}/stop_flume.sh
+      register: stop
+      tags: stop
+
+    - name: copy sh for stop flume
+      copy: src={{ resources_dir }}/stop_flume.sh  mode=777 dest={{ install_dir}}/{{ flume_install_dir }}
+      when: not stop.stat.exists
+      tags: stop
+
+    - name: stop flume
+      shell: "./stop_flume.sh chdir={{ install_dir}}/{{ flume_install_dir }} "
+      tags: stop
+      
+- hosts: video_collectFaceAgent
+  gather_facts: true
+  remote_user: root
+  tasks:
+    - name: check whether the start_flume.sh exist
+      stat: path={{ install_dir}}/{{ flume_install_dir }}/start.sh
+      register: startflume
+      tags: start
+
+    - include: create_startsh.yml
+      when: not startflume.stat.exists
+      tags: start
+
+    - name: execute the start_flume.sh
+      shell: "./start.sh collectFaceAgent chdir={{ install_dir}}/{{ flume_install_dir }} "
+      when: startflume.stat.exists
+      tags: start
+
+    - name: check whether the stop_flume.sh exist
+      stat: path={{ install_dir}}/{{ flume_install_dir }}/stop_flume.sh
+      register: stop
+      tags: stop
+
+    - name: copy sh for stop flume
+      copy: src={{ resources_dir }}/stop_flume.sh  mode=777 dest={{ install_dir}}/{{ flume_install_dir }}
+      when: not stop.stat.exists
+      tags: stop
+
+    - name: stop flume
+      shell: "./stop_flume.sh chdir={{ install_dir}}/{{ flume_install_dir }} "
+      tags: stop
+      
+- hosts: video_analysisSystemAgent
+  gather_facts: true
+  remote_user: root
+  tasks:
+    - name: check whether the start_flume.sh exist
+      stat: path={{ install_dir}}/{{ flume_install_dir }}/start.sh
+      register: startflume
+      tags: start
+
+    - include: create_startsh.yml
+      when: not startflume.stat.exists
+      tags: start
+
+    - name: execute the start_flume.sh
+      shell: "./start.sh analysisSystemAgent chdir={{ install_dir}}/{{ flume_install_dir }} "
+      when: startflume.stat.exists
+      tags: start
+
+    - name: check whether the stop_flume.sh exist
+      stat: path={{ install_dir}}/{{ flume_install_dir }}/stop_flume.sh
+      register: stop
+      tags: stop
+
+    - name: copy sh for stop flume
+      copy: src={{ resources_dir }}/stop_flume.sh  mode=777 dest={{ install_dir}}/{{ flume_install_dir }}
+      when: not stop.stat.exists
+      tags: stop
+
+    - name: stop flume
+      shell: "./stop_flume.sh chdir={{ install_dir}}/{{ flume_install_dir }} "
+      tags: stop
+      
+- hosts: video_collectVehicleAgent
+  gather_facts: true
+  remote_user: root
+  tasks:
+    - name: check whether the start_flume.sh exist
+      stat: path={{ install_dir}}/{{ flume_install_dir }}/start.sh
+      register: startflume
+      tags: start
+
+    - include: create_startsh.yml
+      when: not startflume.stat.exists
+      tags: start
+
+    - name: execute the start_flume.sh
+      shell: "./start.sh collectVehicleAgent chdir={{ install_dir}}/{{ flume_install_dir }} "
+      when: startflume.stat.exists
+      tags: start
+
+    - name: check whether the stop_flume.sh exist
+      stat: path={{ install_dir}}/{{ flume_install_dir }}/stop_flume.sh
+      register: stop
+      tags: stop
+
+    - name: copy sh for stop flume
+      copy: src={{ resources_dir }}/stop_flume.sh  mode=777 dest={{ install_dir}}/{{ flume_install_dir }}
+      when: not stop.stat.exists
+      tags: stop
+
+    - name: stop flume
+      shell: "./stop_flume.sh chdir={{ install_dir}}/{{ flume_install_dir }} "
+      tags: stop
+
+- hosts: video_storeFtpAgent
+  gather_facts: true
+  remote_user: root
+  tasks:
+    - name: check whether the start_flume.sh exist
+      stat: path={{ install_dir}}/{{ flume_install_dir }}/start.sh
+      register: startflume
+      tags: start
+
+    - include: create_startsh.yml
+      when: not startflume.stat.exists
+      tags: start
+
+    - name: execute the start_flume.sh
+      shell: "./start.sh storeFtpAgent chdir={{ install_dir}}/{{ flume_install_dir }} "
+      when: startflume.stat.exists
+      tags: start
+
+    - name: check whether the stop_flume.sh exist
+      stat: path={{ install_dir}}/{{ flume_install_dir }}/stop_flume.sh
+      register: stop
+      tags: stop
+
+    - name: copy sh for stop flume
+      copy: src={{ resources_dir }}/stop_flume.sh  mode=777 dest={{ install_dir}}/{{ flume_install_dir }}
+      when: not stop.stat.exists
+      tags: stop
+
+    - name: stop flume
+      shell: "./stop_flume.sh chdir={{ install_dir}}/{{ flume_install_dir }} "
+      tags: stop
+      
+- hosts: video_storeMppdbAgent
+  gather_facts: true
+  remote_user: root
+  tasks:
+    - name: check whether the start_flume.sh exist
+      stat: path={{ install_dir}}/{{ flume_install_dir }}/start.sh
+      register: startflume
+      tags: start
+
+    - include: create_startsh.yml
+      when: not startflume.stat.exists
+      tags: start
+
+    - name: execute the start_flume.sh
+      shell: "./start.sh storeMppdbAgent chdir={{ install_dir}}/{{ flume_install_dir }} "
+      when: startflume.stat.exists
+      tags: start
+
+    - name: check whether the stop_flume.sh exist
+      stat: path={{ install_dir}}/{{ flume_install_dir }}/stop_flume.sh
+      register: stop
+      tags: stop
+
+    - name: copy sh for stop flume
+      copy: src={{ resources_dir }}/stop_flume.sh  mode=777 dest={{ install_dir}}/{{ flume_install_dir }}
+      when: not stop.stat.exists
+      tags: stop
+
+    - name: stop flume
+      shell: "./stop_flume.sh chdir={{ install_dir}}/{{ flume_install_dir }} "
+      tags: stop
+
+- hosts: video_storeEsAgent
+  gather_facts: true
+  remote_user: root
+  tasks:
+    - name: check whether the start_flume.sh exist
+      stat: path={{ install_dir}}/{{ flume_install_dir }}/start.sh
+      register: startflume
+      tags: start
+
+    - include: create_startsh.yml
+      when: not startflume.stat.exists
+      tags: start
+
+    - name: execute the start_flume.sh
+      shell: "./start.sh storeEsAgent chdir={{ install_dir}}/{{ flume_install_dir }} "
+      when: startflume.stat.exists
+      tags: start
+
+    - name: check whether the stop_flume.sh exist
+      stat: path={{ install_dir}}/{{ flume_install_dir }}/stop_flume.sh
+      register: stop
+      tags: stop
+
+    - name: copy sh for stop flume
+      copy: src={{ resources_dir }}/stop_flume.sh  mode=777 dest={{ install_dir}}/{{ flume_install_dir }}
+      when: not stop.stat.exists
+      tags: stop
+
+    - name: stop flume
+      shell: "./stop_flume.sh chdir={{ install_dir}}/{{ flume_install_dir }} "
+      tags: stop
+- hosts: internet_anjubaoVehAgent
+  gather_facts: true
+  remote_user: root
+  tasks:
+    - name: check whether the start_flume.sh exist
+      stat: path={{ install_dir}}/{{ flume_install_dir }}/start.sh
+      register: startflume
+      tags: start
+
+    - include: create_startsh.yml
+      when: not startflume.stat.exists
+      tags: start
+
+    - name: execute the start_flume.sh
+      shell: "./start.sh anjubaoVehAgent chdir={{ install_dir}}/{{ flume_install_dir }} "
+      when: startflume.stat.exists
+      tags: start
+
+    - name: check whether the stop_flume.sh exist
+      stat: path={{ install_dir}}/{{ flume_install_dir }}/stop_flume.sh
+      register: stop
+      tags: stop
+
+    - name: copy sh for stop flume
+      copy: src={{ resources_dir }}/stop_flume.sh  mode=777 dest={{ install_dir}}/{{ flume_install_dir }}
+      when: not stop.stat.exists
+      tags: stop
+
+    - name: stop flume
+      shell: "./stop_flume.sh chdir={{ install_dir}}/{{ flume_install_dir }} "
+      tags: stop
+
+- hosts: internet_duoduACAgent
+  gather_facts: true
+  remote_user: root
+  tasks:
+    - name: check whether the start_flume.sh exist
+      stat: path={{ install_dir}}/{{ flume_install_dir }}/start.sh
+      register: startflume
+      tags: start
+
+    - include: create_startsh.yml
+      when: not startflume.stat.exists
+      tags: start
+
+    - name: execute the start_flume.sh
+      shell: "./start.sh duoduACAgent chdir={{ install_dir}}/{{ flume_install_dir }} "
+      when: startflume.stat.exists
+      tags: start
+
+    - name: check whether the stop_flume.sh exist
+      stat: path={{ install_dir}}/{{ flume_install_dir }}/stop_flume.sh
+      register: stop
+      tags: stop
+
+    - name: copy sh for stop flume
+      copy: src={{ resources_dir }}/stop_flume.sh  mode=777 dest={{ install_dir}}/{{ flume_install_dir }}
+      when: not stop.stat.exists
+      tags: stop
+
+    - name: stop flume
+      shell: "./stop_flume.sh chdir={{ install_dir}}/{{ flume_install_dir }} "
+      tags: stop
+      

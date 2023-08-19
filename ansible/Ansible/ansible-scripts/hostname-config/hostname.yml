@@ -1,0 +1,9 @@
+---
+ 
+- hosts: all
+  remote_user: root
+  tasks:
+    - name: change hostname
+      raw: "echo {{hostname|quote}} > /etc/hostname"
+    - name:
+      shell: hostname {{hostname|quote}}

@@ -1,0 +1,7 @@
+---
+#部署应用平台gwf
+- hosts: gwf_servers
+  remote_user: root
+  gather_facts: true
+  roles:
+   - gwf

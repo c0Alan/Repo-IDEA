@@ -1,0 +1,48 @@
+---
+
+#时钟同步
+- name: ntpdate
+  shell: ntpdate {{ntp_server}}
+  ignore_errors: true
+
+- name: check whether the install dir exist
+  stat: path={{ install_dir }}
+  register: installdir
+
+- name: mkdir directory for zk installing
+  file: dest={{ install_dir }} mode=0755 state=directory
+  when: not installdir.stat.exists
+
+- name: unzip zookeeper install package
+  unarchive: src={{ resources_dir }}/{{ zk_install_package }} dest={{ install_dir }}
+
+
+- name: create zookeeper link
+  file: src={{ install_dir }}/zookeeper-3.4.10 dest={{ install_dir }}/zookeeper state=link
+
+- name: configuration file for zookeeper
+  template: src=zoo.cfg.j2 dest={{ install_dir }}/zookeeper-3.4.10/conf/zoo.cfg owner=root group=root
+
+- name: check directory for zk_log
+  stat: path={{ zk_log }}
+  register: zklog 
+  
+- name: mkdir directory for zk_log
+  file: dest={{ zk_log }} mode=0755 state=directory owner=root group=root
+  when: not zklog.stat.exists  
+  
+- name: check directory for zk_data
+  stat: path={{ zk_data }}
+  register: zkdata
+  
+- name: mkdir directory for zk_data
+  file: dest={{ zk_data }} mode=0755 state=directory owner=root group=root
+  when: not zkdata.stat.exists  
+  
+
+- name: add myid file
+  template: src=myid.j2 dest={{ zk_data }}/myid owner=root group=root
+
+- name: change owner and group
+  file: path={{ install_dir }}/zookeeper-3.4.10 owner=root group=root recurse=yes
+

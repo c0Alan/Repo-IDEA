@@ -1,0 +1,5 @@
+- hosts: jdk2_servers
+  gather_facts: true
+  remote_user: root
+  roles:
+   - jdk2

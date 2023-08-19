@@ -1,0 +1,17 @@
+---
+  
+- name: chmod +x catalina.sh
+  shell: chmod +x {{ install_dir }}/tomcat_jx/bin_64/catalina.sh
+  tags: start
+
+- name: start tomcat_jx
+  shell: "nohup ./catalina.sh run chdir={{ install_dir }}/tomcat_jx/bin_64 "
+  tags: start
+  
+#- name: stop tomcat_jx
+  #shell: "./catalina.sh stop chdir={{ install_dir }}/tomcat_jx/bin_64 "
+  #tags: stop
+  
+- name: stop tomcat_jx
+  shell: "kill -9 `ps -ef | grep tomcat_jx | awk 'NR==1{print $2}'`"
+  tags: stop 

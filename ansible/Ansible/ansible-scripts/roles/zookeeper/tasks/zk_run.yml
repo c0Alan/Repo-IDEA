@@ -1,0 +1,9 @@
+---
+
+- name: stop zookeeper
+  shell: "./bin/zkServer.sh stop ./conf/zoo.cfg chdir={{ install_dir }}/zookeeper-3.4.10"
+  tags: stop_single
+  
+- name: start zookeeper
+  shell: "./zkServer.sh start ../conf/zoo.cfg chdir={{ install_dir }}/zookeeper-3.4.10/bin"
+  tags: start_single

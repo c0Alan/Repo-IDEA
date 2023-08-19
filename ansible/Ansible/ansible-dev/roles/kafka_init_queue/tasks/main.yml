@@ -1,0 +1,2 @@
+---
+- include: kafka_init_queue.yml

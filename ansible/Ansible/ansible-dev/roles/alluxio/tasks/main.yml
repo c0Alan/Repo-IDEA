@@ -1,0 +1,11 @@
+---
+#安装alluxio
+- include: alluxio_install.yml
+#配置免密登录
+- include: establishSSH.yml
+#首次启动
+- include: alluxio_format.yml
+#启动alluxio集群
+- include: alluxio_run.yml
+
+  

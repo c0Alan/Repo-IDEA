@@ -1,0 +1,24 @@
+---
+
+- name: start redis
+  shell: "/usr/local/bin/redis-server {{ conf_dir }}/redis.conf"
+  tags: start_single
+  
+- name: check whether the stop_redis_single.sh exist
+  stat: path={{ conf_dir }}/stop_redis_single.sh
+  register: stop_single
+  tags: stop_single
+  
+- name: copy sh for stop redis_single
+  copy: src={{ resources_dir }}/stop_redis_single.sh  mode=0755 dest={{ conf_dir }}/stop_redis_single.sh
+  when: not stop_single.stat.exists
+  tags: stop_single
+  
+- name: stop redis_single
+  shell: "./stop_redis_single.sh chdir={{ conf_dir }} "
+  tags: stop_single 
+  
+#- name: stop redis
+#  shell: "/usr/local/bin/redis-cli -p {{ port }} shutdown"
+#  tags:
+#   - stop_single

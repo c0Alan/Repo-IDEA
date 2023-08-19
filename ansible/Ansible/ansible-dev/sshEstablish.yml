@@ -1,0 +1,9 @@
+---
+
+# 免密设置
+- name: 免密设置
+  hosts: localhost 
+  gather_facts: false
+  user: root
+  roles:
+   - ssh

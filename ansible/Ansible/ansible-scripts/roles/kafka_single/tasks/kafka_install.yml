@@ -1,0 +1,29 @@
+---
+
+- name: check whether the kafka install dir exist
+  stat: path={{ install_dir }}
+  register: kafkaSingleDir
+
+- name: mkdir directory for kafka installing
+  file: dest={{ install_dir }} mode=0755 state=directory 
+  when: not kafkaSingleDir.stat.exists
+
+- name: unzip kafka install package
+  unarchive: src={{ resources_dir }}/{{ kafka_install_package }} dest={{ install_dir }}
+  
+- name: configuration file for kafka
+  template: src=server.properties.j2 dest={{ install_dir }}/kafka_2.10-0.10.2.1/config/server.properties
+
+- name: create kafka link
+  file: src={{ install_dir }}/kafka_2.10-0.10.2.1 dest={{ install_dir }}/kafka state=link
+
+- name: check directory for kafka_log
+  stat: path={{ kafka_log }}
+  register: kafkaSingleLog
+  
+- name: mkdir directory for kafka_log
+  file: dest={{ kafka_log }} mode=0755 state=directory owner=root group=root
+  when: not kafkaSingleLog.stat.exists
+  
+- name: change owner and group
+  file: path={{ install_dir }}/kafka_2.10-0.10.2.1 owner=root group=root recurse=yes

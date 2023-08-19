@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<config> 
+  <param key="LOCAL_IP" name="本地ip地址" type="String" description="本地ip地址，摆渡FTP等地方使用">{{ inventory_hostname }}</param>
+  
+  <param key="KAFKA_BROKER_LIST" name="kafka 服务器 broker url" type="String" description="服务器IP地址，多台服务器已逗号分隔">{% for host in groups['kafka_servers'] -%}{% if loop.index > 1 %},{% endif %}{{host}}:9092{%- endfor %}</param>  
+  <param key="ZK_LIST" name="zookeeper 服务器 broker url" type="String" description="服务器IP地址，多台服务器已逗号分隔">{% for host in groups['zk_servers'] -%}{% if loop.index > 1 %},{% endif %}{{host}}:2181{%- endfor %}</param> 
+  <param key="REDIS_IP_PORT" name="REDIS_IP_PORT" type="String" description="Redis host IP">{% for host in groups['redis_servers'] -%}{% if loop.index > 1 %},{% endif %}{% for port in range(hostvars[host]['begin_port'],hostvars[host]['end_port']+1) %}{% if loop.index > 1 %},{% endif %}{{host}}:{{port}}{% endfor %}{%- endfor %}</param>
+  
+
+  <param key="REDIS_MODEL" name="REDIS_MODEL" type="String" description="Redis部署模式[0:单机模式 1:哨兵模式 2:集群]">{% if groups.redis_servers|length > 1 %}2{% else %}0{% endif %}</param>
+
+  <param key="FDFS_PORT" name="" type="String" description="fdfs图片获取端口">8088</param>
+  <param key="CONNECT_TIMEOUT" name="" type="String" description="连接超时时间(单位s)">5000</param>  
+  <param key="NETWORK_TIMEOUT" name="" type="String" description="网络回复超时时间(单位s)">10000</param>  
+  <param key="TRACKER_HTTP_PORT" name="" type="String" description="http访问端口">8088</param>
+  <param key="FASTDFS_HTTP_PORT" name="fastdfs文件http访问端口" type="String" description="fastdfs文件http访问端口,一般是等于storage服务器上nginx端口">8088</param>
+  <param key="TRACKER_SERVER" name="" type="String" description="服务器地址，多台服务器以逗号分隔">{% for host in groups['tracker_servers'] -%}{% if loop.index > 1 %},{% endif %}{{host}}:22122{%- endfor %}</param>  
+  <param key="BLOB_TYPE" name="" type="String" description="储存方式(fdfs|localfs)">fdfs</param>
+  <param key="FDFS_TYPE" name="" type="String" description="fastdfs服务器类型：normal|pcidfs">pcidfs</param>
+  
+  <param key="FACE_FEATURE_ES_IP" name="ES大数据引擎IP" type="String" description="ES大数据引擎IP" >{% for host in groups['es_servers'] -%}{% if loop.index > 1 %},{% endif %}{{host}}{%- endfor %}</param>
+  <param key="FACE_FEATURE_ES_PORT" name="ES大数据引擎端口" type="String" description="ES大数据引擎端口" >{% if transport_port is defined %}{{ transport_port }}{% else %}{% endif %}</param>
+  <param key="FACE_FEATURE_ES_CLUSTER" name="ES大数据引擎ES集群名" type="String" description="ES大数据引擎ES集群名">{% if cluster_name is defined %}{{ cluster_name }}{% else %}{% endif %}</param>
+  
+  <param key="ENGINE_ZK_ADDR" name="DSS大数据引擎落地地址" type="String" description="DSS大数据引擎落地地址">{% for host in groups['zk_servers'] -%}{% if loop.index > 1 %},{% endif %}{{host}}:2181{%- endfor %}</param>  
+  
+  <!-- <param key="FTP_SERVER" name="FTP服务器" type="String" description="FTP服务器" >172.28.50.38</param>
+  <param key="FTP_PORT" name="FTP端口" type="String" description="FTP端口" >21</param>
+  <param key="FTP_USER" name="FTP用户名" type="String" description="FTP用户名" >admin</param>
+  <param key="FTP_PASSWORD" name="FTP密码" type="String" description="FTP密码" >suntek</param>
+  <param key="FTP_WORKING_DIRECTORY" name="FTP监听目录" type="String" description="FTP监听目录" >/</param>
+  <param key="FTP_PASSIVE_MODE" name="FTP的passive模式" type="String" description="FTP的passive模式" >false</param> -->
+  
+  <param key="FTP_SERVER" name="FTP服务器" type="String" description="FTP服务器" >{{ ftp_ip }}</param>
+  <param key="FTP_PORT" name="FTP端口" type="String" description="FTP端口" >{{ ftp_port }}</param>
+  <param key="FTP_USER" name="FTP用户名" type="String" description="FTP用户名" >{{ ftp_username }}</param>
+  <param key="FTP_PASSWORD" name="FTP密码" type="String" description="FTP密码" >{{ ftp_password }}</param>
+  <param key="FTP_WORKING_DIRECTORY" name="FTP监听目录" type="String" description="FTP监听目录" >{{ ftp_monitor_addr }}</param>
+  <param key="FTP_PASSIVE_MODE" name="FTP的passive模式" type="String" description="FTP的passive模式" >false</param>
+  
+  <!-- 外部数据源等配置，请在下方自定义 -->
+</config>
+

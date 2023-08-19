@@ -1,0 +1,10 @@
+---
+#停止mysql
+- name: stop mysql
+  shell: service mysqld stop
+  tags: stop
+
+#启动mysql
+- name: start mysql
+  shell: systemctl start mysqld.service
+  tags: start

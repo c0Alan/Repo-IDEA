@@ -1,0 +1,24 @@
+---
+#集群版启动alluxio集群
+- name: start alluxio cluster
+  shell: "{{ install_dir  }}/alluxio/alluxio-1.2.0/bin/alluxio-start.sh all NoMount"
+  run_once: true
+  delegate_to: "{{ groups['alluxio_master'][0] }}"
+  tags: start_cluster
+
+# 关闭alluxio集群
+- name: stop alluxio cluster
+  shell: "{{ install_dir }}/alluxio/alluxio-1.2.0/bin/alluxio-stop.sh all"
+  run_once: true
+  delegate_to: "{{ groups['alluxio_master'][0] }}"
+  tags: stop_cluster
+
+#关闭单个节点
+- name: stop single node
+  shell: "{{ install_dir }}/alluxio/alluxio-1.2.0/bin/alluxio-stop.sh worker"
+  tags: stop_single
+
+#启动单个节点
+- name: start single node
+  shell: "{{ install_dir }}/alluxio/alluxio-1.2.0/bin/alluxio-start.sh worker NoMount" 
+  tags: start_single

@@ -1,0 +1,4 @@
+---
+openssl_package: openssl-1.0.1e.tar.gz
+ruby_package: ruby-2.5.0.tar.gz
+redis_gem_package: redis-4.0.1.gem

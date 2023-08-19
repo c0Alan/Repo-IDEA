@@ -1,0 +1,11 @@
+---
+
+# 设置时区, 同步时钟
+- name: 设置时区
+  hosts: timezone_servers
+  gather_facts: F
+  user: root
+  tasks: 
+  - name: Command run line 
+    script: ../shell/timezoneSelect.sh {{ ntpServer }}
+  

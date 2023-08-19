@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:tx="http://www.springframework.org/schema/tx" 
+    xsi:schemaLocation="
+          http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+          http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
+
+    <bean id="mainDataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+        <property name="driverClassName" value="com.mysql.jdbc.Driver" />
+        <property name="url" value="jdbc:mysql://{% for host in groups['mysql_servers'] -%}{% if loop.index < 2 %}{{host}}{% endif %}{%- endfor %}:3306/videoweb?useUnicode=true&amp;characterEncoding=utf8" />
+        <property name="username" value="videoweb" />
+        <property name="password" value="suntek" />
+        <property name="maxIdle" value="2" />
+        <property name="maxActive" value="10" />
+        <property name="maxWait" value="5000" />
+    </bean>
+    <bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+	       <property name="dataSource">
+	              <ref bean="mainDataSource"></ref>
+	       </property>
+	</bean>
+
+</beans>

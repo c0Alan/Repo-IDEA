@@ -1,0 +1,68 @@
+---
+- name: check whether the mysql install dir exist
+  stat: path={{ install_dir }}
+  register: mysql
+
+- name: mkdir directory for mysql installing
+  file: dest={{ install_dir }} mode=0755 state=directory 
+  when: not mysql.stat.exists
+
+#解压mysql安装包
+- name: unzip mysql package
+  unarchive: src={{ resources_dir }}/mysql.tar.gz dest={{ install_dir }}
+
+#卸载mariadb
+- name: rpm -qa | grep -i mariadb
+  shell: rpm -qa | grep -i mariadb
+  register: mariadbList
+  ignore_errors: True
+
+#- debug: var=marliadbList
+
+- name: uninstall old mariadb
+  shell: rpm -e --nodeps {{ item  }}
+  with_items:
+   - "{{ mariadbList.stdout_lines }}"
+  when: mariadbList | length > 0
+
+- name: rpm -qa|grep -i mysql
+  shell: rpm -qa|grep -i mysql
+  register: mysqlList
+  ignore_errors: True
+
+
+- name: uninstall old mysql
+  shell: rpm -e --nodeps {{ item  }}
+  with_items:
+   - "{{ mysqlList.stdout_lines }}"
+  when: mysqlList | length > 0
+
+- name: install mysql
+  shell: "rpm -Uvh *.rpm --nodeps --force chdir={{ install_dir }}/mysql"
+
+
+#修改配置
+- name: conf mysql
+  lineinfile: dest=/etc/my.cnf insertafter='[mysqld]' line="{{ item }}" state=present
+  with_items:
+   - "sql_mode='STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' "
+   - "port = {{ mysql_port  }}"
+   - "character-set-server=utf8"
+   - "max_connections = 500"
+
+- name: check the data directory
+  stat: path={{ mysql_datadir }}
+  register: dataDir
+
+- name: mkdir directory for data
+  file: dest={{ mysql_datadir }} mode=0755 state=directory owner=root group=root
+  when: not dataDir.stat.exists
+
+- name: modfiy datadir
+  lineinfile: dest=/etc/my.cnf regexp='^datadir=' line="datadir={{ mysql_datadir}}"
+
+- name: add client
+  lineinfile: dest=/etc/my.cnf regexp='[client]' line="[client]" state=present
+
+- name: set client  charset
+  lineinfile: dest=/etc/my.cnf insertafter='[client]' line="default-character-set = utf8" state=present

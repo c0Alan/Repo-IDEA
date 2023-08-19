@@ -1,0 +1,5 @@
+---
+
+#复制storeFtpAgent.properties.j2至flume主机
+- name: copy storeFtpAgent.properties.j2 to flume_servers
+  template: src=storeFtpAgent.properties.j2 dest={{ install_dir }}/flume1.8.0-suntek/agent/storeFtpAgent.properties

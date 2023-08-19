@@ -1,0 +1,3 @@
+---
+#es初始化并建立索引
+- include: es_init.yml

@@ -1,0 +1,29 @@
+---
+
+# debug 模式
+- name: Print debug infomation eg1 
+  hosts: debug_servers 
+  # hosts: all 
+  # hosts: host_server 
+  gather_facts: F 
+  user: root
+  vars: 
+    user: root
+  tasks: 
+  - name: Command run line
+    shell: date -R
+    register: result
+  # - name: Show debug info
+    # debug: var=result.stdout verbosity=0
+  - name: 测试分组, ip地址 + id
+    command: echo {{ inventory_hostname }} ":" {{ id }}
+    register: result2
+  # - name: Show debug info
+    # debug: var=result2.stdout verbosity=0
+  - name: 测试分组变量
+    command: echo {{ item }}":"{{ hostvars[item]['id'] }}
+    with_items: 
+     - "{{ groups['test_groups'] }}"
+
+  
+  
