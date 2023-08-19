@@ -14,18 +14,18 @@ install()
 {
 
 if [ ! -n "$1" ] ;then
-    echo "you have not input a word!"
+    echo "请输入模块名!"
 	return 1
 else
-    echo "star install $1 >>>>>>"
+    echo "开始部署 $1 >>>>>>"
 fi
 
-if [ -d "${MODEL_DIR}" ]                                                   
+if [ -d "${MODEL_DIR}" ]
 then
-echo "${MODEL_DIR} exists, star upgrade $1 >>>>>>"
-echo "stop"
+echo "模块：${MODEL_DIR} 已存在, 开始升级 >>>>>>"
+echo "停止模块：${MODEL_DIR}"
 model_stop
-echo "stop"
+
 #cp ${MODEL_DIR}/conf/application-prod.properties .
 tar -zxvf ${MODEL_PACKAGE}
 #mv application-prod.properties ${MODEL_DIR}/conf
@@ -35,6 +35,7 @@ tar -zxvf ${MODEL_PACKAGE}
 # rm -f ${MODEL_PACKAGE}
 fi
 
+echo "启动模块：${MODEL_DIR}"
 model_start
 
 }
@@ -59,4 +60,3 @@ cd ..
 
 install $1
 
-echo aa

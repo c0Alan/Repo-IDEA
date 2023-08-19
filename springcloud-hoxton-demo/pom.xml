@@ -19,6 +19,7 @@
     </parent>
 
     <modules>
+        <module>sch-commons</module>
         <module>sch-demo</module>
         <module>sch-scheduler</module>
     </modules>
@@ -254,12 +255,6 @@
         <dependency>
             <groupId>com.baomidou</groupId>
             <artifactId>mybatis-plus-boot-starter</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>com.sch</groupId>
-            <artifactId>sch-commons</artifactId>
-            <version>1.0</version>
         </dependency>
 
         <dependency>

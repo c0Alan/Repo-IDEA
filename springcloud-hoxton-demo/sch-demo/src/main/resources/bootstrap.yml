@@ -16,14 +16,18 @@ spring:
     nacos:
       discovery:
         server-addr: ${nacosServer}
-        namespace: 57e6ca16-0f0a-445a-b0d0-8361f298f1a5
+        namespace: aa9df720-741a-466f-9cd3-6963340616f6
         group: dsc
+        username: liuxl
+        password: liu123
       config:
         server-addr: ${nacosServer}
         prefix: dsc
         file-extension: properties
         group: dsc
-        namespace: 57e6ca16-0f0a-445a-b0d0-8361f298f1a5
+        namespace: aa9df720-741a-466f-9cd3-6963340616f6
+        username: liuxl
+        password: liu123
 
 
 logging:
