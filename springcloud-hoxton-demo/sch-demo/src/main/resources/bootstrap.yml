@@ -1,4 +1,4 @@
-nacosServer: ${NACOS_SERVER:nacos-center.v-base:30848}
+nacosServer: ${NACOS_SERVER:nacos-center.v-base:8848}
 
 server:
   port: 30006
