@@ -27,6 +27,7 @@ echo "停止模块：${MODEL_DIR}"
 model_stop
 
 #cp ${MODEL_DIR}/conf/application-prod.properties .
+rm -rf ${MODEL_DIR}
 tar -zxvf ${MODEL_PACKAGE}
 #mv application-prod.properties ${MODEL_DIR}/conf
 # rm -f ${MODEL_PACKAGE}
