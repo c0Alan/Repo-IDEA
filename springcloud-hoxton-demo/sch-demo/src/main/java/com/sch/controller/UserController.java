@@ -35,8 +35,8 @@ public class UserController {
     /**
      * 查询数据
      */
-    @GetMapping("/query")
-    public String query() {
+    @GetMapping("/queryString")
+    public String queryString() {
         //查寻数据
         List list = userService.queryAllUser();
         //组装数据
@@ -52,6 +52,18 @@ public class UserController {
         }
         //返回数据
         return newlist.toString();
+    }
+
+    /**
+     * 查询数据
+     */
+    @GetMapping("/queryList")
+    public List<User> queryList() {
+        //查寻数据
+        List list = userService.queryAllUser();
+
+        //返回数据
+        return list;
     }
 
 

@@ -34,30 +34,33 @@ public class GatewayConfig {
     @Autowired
     NacosServiceDiscovery nacosServiceDiscovery;
 
-    @Bean
-    public RouteLocator myRoutes(RouteLocatorBuilder builder) {
-        String httpUri = "http://httpbin.org:80";
+    /*@Bean
+    public RouteLocator customRouteLocator(RouteLocatorBuilder builder) {
         return builder.routes()
-                .route(p -> p
-                        .path("/get")
-                        .filters(f -> f.addRequestHeader("Hello", "World"))
-                        .uri(httpUri))
-                .route(p -> p
-                        .host("*.hystrix.com")
-                        .filters(f -> f
-                                .hystrix(config -> config
-                                        .setName("mycmd")
-                                        .setFallbackUri("forward:/fallback")))
-                        .uri(httpUri))
+                .route("path_route", r -> r.path("/sch-scheduler/hello")
+                        .uri("http://192.168.80.128:30008/hello?name=ddd"))
                 .build();
-    }
+    }*/
 
     @Bean
-    public RouteLocator nacosServiceRoutes(RouteLocatorBuilder builder) throws NacosException {
+    public RouteLocator nacosServiceRoutes(RouteLocatorBuilder locatorBuilder) throws NacosException {
         List<String> services = nacosServiceDiscovery.getServices();
 
+        RouteLocatorBuilder.Builder builder = null;
+        for (String service : services) {
+            if (builder == null) {
+                builder = locatorBuilder.routes().route(service, p -> p.path("/" + service + "/**")
+                        .filters(f -> f.stripPrefix(1))
+                        .uri("lb://" + service));
+                continue;
+            }
+            builder.route(service, p -> p.path("/" + service + "/**")
+                    .filters(f -> f.stripPrefix(1))
+                    .uri("lb://" + service));
 
-        return builder.routes().build();
+        }
+
+        return builder.build();
     }
 
 }
