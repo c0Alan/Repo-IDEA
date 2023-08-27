@@ -38,7 +38,7 @@ public class SwaggerResourceConfig implements SwaggerResourcesProvider {
     @Override
     public List<SwaggerResource> get() {
         List<SwaggerResource> resources = new ArrayList<>();
-        List<String> routes = new ArrayList<>();
+        // List<String> routes = new ArrayList<>();
        /* routeLocator.getRoutes().subscribe(route -> routes.add(route.getId()));
         gatewayProperties.getRoutes().stream().filter(routeDefinition -> routes.contains(routeDefinition.getId())).forEach(route -> {
             route.getPredicates().stream()
@@ -49,8 +49,11 @@ public class SwaggerResourceConfig implements SwaggerResourcesProvider {
         });*/
 
         routeLocator.getRoutes().subscribe(route -> {
-            resources.add(swaggerResource(route.getId(),
-                    route.getId() + "/v2/api-docs"));
+            if (route.getId().startsWith("ReactiveCompositeDiscoveryClient_")) {
+                String service = route.getId().replace("ReactiveCompositeDiscoveryClient_", "");
+                resources.add(swaggerResource(service,
+                        service + "/v2/api-docs"));
+            }
         });
 
 

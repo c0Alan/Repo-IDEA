@@ -3,15 +3,9 @@ package com.demo.springcloud.config;
 import com.alibaba.cloud.nacos.NacosDiscoveryProperties;
 import com.alibaba.cloud.nacos.NacosServiceManager;
 import com.alibaba.cloud.nacos.discovery.NacosServiceDiscovery;
-import com.alibaba.nacos.api.exception.NacosException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.gateway.config.GatewayProperties;
-import org.springframework.cloud.gateway.route.RouteLocator;
-import org.springframework.cloud.gateway.route.builder.RouteLocatorBuilder;
-import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-
-import java.util.List;
 
 @Configuration
 public class GatewayConfig {
@@ -42,7 +36,7 @@ public class GatewayConfig {
                 .build();
     }*/
 
-    @Bean
+    /*@Bean
     public RouteLocator nacosServiceRoutes(RouteLocatorBuilder locatorBuilder) throws NacosException {
         List<String> services = nacosServiceDiscovery.getServices();
 
@@ -61,6 +55,6 @@ public class GatewayConfig {
         }
 
         return builder.build();
-    }
+    }*/
 
 }
