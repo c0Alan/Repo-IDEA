@@ -1,0 +1,6 @@
+# vars file for jdk
+pkg_name: jdk-8u381-linux-x64.tar.gz
+tmp_dir: /opt/tmp
+env_file: /etc/profile
+install_dir: /usr/local/java
+java_home: /usr/local/java/jdk1.8.0_381

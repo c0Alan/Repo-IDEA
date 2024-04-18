@@ -1,0 +1,22 @@
+- name: 创建临时目录
+  file: path={{ tmp_dir }} state=directory
+- name: 安装包拷贝
+  copy: src={{ pkg_name }} dest={{ tmp_dir }}/{{ pkg_name }}
+- name: 创建安装目录
+  file: path={{ install_dir }} state=directory
+- name: 解压安装
+  unarchive: src={{ tmp_dir }}/{{ pkg_name }} dest={{ install_dir }} remote_src=yes
+- name: 清除jdk环境变量
+  shell: sed -i '/JAVA_HOME/d' {{ env_file }}
+- name: 新增jdk环境变量
+  lineinfile: dest={{ env_file }} insertafter="{{ item.position }}" line="{{ item.value }}" state=present
+  with_items:
+    - { position: EOF, value: "\n" }
+    - { position: EOF, value: "export JAVA_HOME={{ java_home }}" }
+    - { position: EOF, value: "export JRE_HOME={{ java_home }}/jre" }
+    - { position: EOF, value: "export PATH=$JAVA_HOME/bin:$JRE_HOME/bin:$PATH" }
+    - { position: EOF, value: "export CLASSPATH=.:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar" }
+- name: 刷新环境变量
+  shell: source {{ env_file }}
+- name: 删除临时目录
+  file: path={{ tmp_dir }} state=absent

@@ -1,0 +1,2 @@
+- name: new conf to reload
+  service: name=nginx state=restarted
