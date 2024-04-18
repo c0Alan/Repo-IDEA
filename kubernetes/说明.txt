@@ -1,2 +1,2 @@
-kubeadm init --apiserver-advertise-address=172.25.21.35 --image-repository registry.aliyuncs.com/google_containers --kubernetes-version v1.20.9  --service-cidr=10.96.0.0/12 --pod-network-cidr=10.244.0.0/16 --ignore-preflight-errors=Swap
+kubeadm init --apiserver-advertise-address=192.168.50.136 --image-repository registry.aliyuncs.com/google_containers --kubernetes-version v1.23.0  --service-cidr=10.96.0.0/12 --pod-network-cidr=10.244.0.0/16 --ignore-preflight-errors=Swap
 
