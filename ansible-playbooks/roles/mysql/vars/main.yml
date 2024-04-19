@@ -1,0 +1,8 @@
+# vars file for jdk
+pkg_name: mysql-5.7.37-1.el7.x86_64.rpm-bundle.tar
+tmp_dir: /opt/tmp/mysql
+data_dir: /data/mysql
+port: 3306
+root_passwd: lxl123
+new_user: liuxl
+new_user_passwd: lxl123

@@ -1,0 +1,29 @@
+#!/bin/sh
+mysqlpwd=`cat /var/log/mysqld.log|grep 'temporary password' | cut -b 92-103`
+echo "[client]" >> /etc/my.cnf
+echo "user=root" >> /etc/my.cnf
+echo "password=$mysqlpwd" >> /etc/my.cnf
+
+/usr/bin/expect << EOF
+set timeout 10
+spawn mysql
+expect "mysql>"
+send "set global validate_password_length=0;\r"
+send "set global validate_password_policy=0;\r"
+send "set password=password('{{root_passwd}}');\r"
+send "exit\r"
+expect eof
+EOF
+
+
+sleep 1
+sed -i "/\[client\]/d" /etc/my.cnf
+sed -i "/user=/d" /etc/my.cnf
+sed -i "/password=/d" /etc/my.cnf
+
+mysql -uroot -p{{root_passwd}} << EOF
+CREATE USER '{{new_user}}'@'%' IDENTIFIED BY '{{new_user_passwd}}';
+CREATE USER '{{new_user}}'@'localhost' IDENTIFIED BY '{{new_user_passwd}}';
+grant all privileges on *.* to '{{new_user}}'@'%' identified by '{{new_user_passwd}}';
+grant all privileges on *.* to {{new_user}}@'localhost' identified by '{{new_user_passwd}}';
+EOF

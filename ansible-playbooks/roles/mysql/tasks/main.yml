@@ -1,0 +1,38 @@
+- name: 创建临时目录
+  file: path={{ tmp_dir }} state=directory
+- name: 安装包拷贝
+  copy: src={{ pkg_name }} dest={{ tmp_dir }}/{{ pkg_name }}
+- name: 解压安装
+  unarchive: src={{ tmp_dir }}/{{ pkg_name }} dest={{ tmp_dir }} remote_src=yes
+- name: 卸载mysql
+  shell: yum remove -y mysql-*
+- name: 卸载mariadb
+  shell: yum remove -y mariadb-*
+- name: 删除数据目录
+  file: path={{ data_dir }} state=absent
+- name: 删除日志文件
+  file: path=/var/log/mysqld.log state=absent
+- name: 依赖安装
+  shell: yum install -y libaio && yum install -y perl && yum install -y net-tools
+- name: 创建数据目录
+  file: path={{ data_dir }} mode=0755 state=directory owner=root group=root
+- name: 开始安装
+  shell: cd {{ tmp_dir }} && rpm -ivh mysql-community-common-5.7.37-1.el7.x86_64.rpm && rpm -ivh mysql-community-libs-5.7.37-1.el7.x86_64.rpm && rpm -ivh mysql-community-client-5.7.37-1.el7.x86_64.rpm && rpm -ivh mysql-community-server-5.7.37-1.el7.x86_64.rpm
+- name: 配置数据目录
+  lineinfile: dest=/etc/my.cnf regexp='^datadir=' line="datadir={{ data_dir }}"
+- name: 配置字符集
+  lineinfile: dest=/etc/my.cnf insertafter='[mysqld]' line="{{ item }}" state=present
+  with_items:
+    - "port = {{ port }}"
+    - "character-set-server=utf8"
+- name: 启动
+  service: name=mysqld state=restarted enabled=true
+- name: 打印临时密码
+  shell: grep 'temporary password' /var/log/mysqld.log
+- name: 拷贝初始化脚本
+  template: src=init_mysql.sh.j2 dest={{ tmp_dir }}/init_mysql.sh mode=0755 owner=root group=root
+- name: 执行初始化脚本
+  shell: "/bin/bash {{ tmp_dir }}/init_mysql.sh"
+- name: 删除临时目录
+  file: path={{ tmp_dir }} state=absent
+

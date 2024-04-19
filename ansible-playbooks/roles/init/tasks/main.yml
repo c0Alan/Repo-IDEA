@@ -1,6 +1,11 @@
 - name: 禁用SELinux
-  shell: sed -i 's/SELINUX=enforcing/SELINUX=disabled/' /etc/sysconfig/selinux
+  shell: setenforce 0 && sed -i 's/SELINUX=enforcing/SELINUX=disabled/' /etc/sysconfig/selinux && sed -i 's/SELINUX=enforcing/SELINUX=disabled/' /etc/selinux/config
+  ignore_errors: true
 - name: 关闭防火墙
   shell: systemctl stop firewalld && systemctl disable firewalld
 - name: 配置时钟
   shell: timedatectl set-local-rtc 0 && timedatectl set-timezone Asia/Shanghai && hwclock --systohc
+- name: 安装expect
+  shell: yum install -y tcl && yum install -y expect
+
+
