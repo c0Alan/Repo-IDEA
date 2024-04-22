@@ -1,0 +1,17 @@
+[Unit]
+Description=indoormap
+After=network-online.target 
+Wants=network-online.target
+
+[Service]
+User=root
+Type=forking
+WorkingDirectory=/opt/video/indoormap
+ExecStart=/bin/bash -c "source /etc/profile && source /opt/video/.indoormap.env && /bin/sh /opt/video/indoormap/bin/run.sh start"
+ExecStop=/bin/bash -c "source /etc/profile && source /opt/video/.indoormap.env && /bin/sh /opt/video/indoormap/bin/run.sh stop"
+ExecStartPost=/usr/bin/sleep 5
+Restart=on-failure
+RestartSec=10s
+
+[Install]
+WantedBy=multi-user.target

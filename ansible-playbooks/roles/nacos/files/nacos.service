@@ -1,0 +1,13 @@
+[Unit]
+Description=nacos
+After=network.target
+ 
+[Service]
+User=root
+Type=forking
+ExecStart=/bin/bash -c "source /etc/profile; /opt/nacos/bin/startup.sh -m standalone"
+ExecStop=/bin/bash -c "source /etc/profile; /opt/nacos/bin/shutdown.sh"
+Restart=always
+ 
+[Install]
+WantedBy=multi-user.target

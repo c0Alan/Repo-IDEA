@@ -1,0 +1,9 @@
+# vars file for jdk
+pkg_name: nacos-server-2.2.3.zip
+tmp_dir: /opt/tmp/nacos
+install_dir: /opt/nacos
+unarchive_dir: /opt
+mysql_ip: 192.168.50.133
+mysql_port: 3306
+mysql_user: liuxl
+mysql_pwd: lxl123

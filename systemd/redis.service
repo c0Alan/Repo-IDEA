@@ -1,0 +1,12 @@
+[Unit]
+Description=redis
+After=syslog.target network.target
+
+[Service]
+User=root
+Type=forking
+ExecStart=/opt/svr/redis/redis-5.0.5/bin/redis-server /opt/svr/redis/redis-5.0.5/conf/redis.conf
+Restart=always
+
+[Install]
+WantedBy=multi-user.target

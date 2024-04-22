@@ -1,0 +1,23 @@
+- name: 创建临时目录
+  file: path={{ tmp_dir }} state=directory
+- name: 拷贝安装包
+  copy: src={{ pkg_name }} dest={{ tmp_dir }}/{{ pkg_name }}
+- name: 卸载nacos
+  file: path={{ install_dir }} state=absent
+- name: 解压安装
+  unarchive: src={{ tmp_dir }}/{{ pkg_name }} dest={{ unarchive_dir }} remote_src=yes
+- name: 拷贝脚本
+  copy: src=nacos.sql dest={{ install_dir }}/conf
+- name: 拷贝配置文件
+  template: src=application.properties.j2 dest={{ install_dir }}/conf/application.properties
+- name: 拷贝systemd文件
+  copy: src=nacos.service dest=/etc/systemd/system
+- name: 执行脚本
+  shell: mysql -u{{ mysql_user }} -p{{ mysql_pwd }} < {{ install_dir }}/conf/nacos.sql
+- name: 启动
+  service: name=nacos state=restarted enabled=true
+- name: 删除临时目录
+  file: path={{ tmp_dir }} state=absent
+
+
+

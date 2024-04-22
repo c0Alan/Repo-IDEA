@@ -1,0 +1,7 @@
+# vars file for jdk
+pkg_name: redis-6.2.9.tar.gz
+tmp_dir: /opt/tmp/redis
+install_dir: /opt/redis
+data_dir: /opt/redis/data
+unarchive_dir: /opt/tmp/redis
+env_file: /etc/profile

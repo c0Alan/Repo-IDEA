@@ -1,0 +1,17 @@
+[Unit]
+Description=device-mgr
+After=network-online.target 
+Wants=network-online.target
+
+[Service]
+User=root
+Type=forking
+WorkingDirectory=/opt/omof/device-mgr
+ExecStart=/bin/bash -c "source /etc/profile && source /opt/omof/.device-mgr.env && /bin/sh /opt/omof/device-mgr/bin/run.sh start"
+ExecStop=/bin/bash -c "source /etc/profile && source /opt/omof/.device-mgr.env && /bin/sh /opt/omof/device-mgr/bin/run.sh stop"
+ExecStartPost=/usr/bin/sleep 5
+Restart=on-failure
+RestartSec=10s
+
+[Install]
+WantedBy=multi-user.target

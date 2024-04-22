@@ -1,0 +1,24 @@
+[Unit]
+Description=zookeeper
+After=syslog.target network.target
+
+[Service]
+User=root
+Type=forking
+# load java: source /etc/profile
+#ExecStart=/bin/bash -c "source /etc/profile; /opt/svr/zookeeper/zookeeper-3.4.14/bin/zkServer.sh start"
+
+#Environment=ONE='one' "TWO='two two' too" THREE=
+#Environment="JAVA_HOME=/usr/java/jdk1.8.0_60" "JRE_HOME=/usr/java/jdk1.8.0_60/jre" THREE=
+
+#_ZOO_DAEMON_OUT="$ZOO_LOG_DIR/zookeeper.out" ###zkServer.sh里，ZOO_LOG_DIR结果为: ./zookeeper.out; 改非root， 不指定ws启动直接退出.
+#WorkingDirectory=/opt/svr/zookeeper/zookeeper-3.4.14
+WorkingDirectory=/opt/svr/zookeeper/zookeeper-3.4.14
+ExecStart=/bin/bash -c "source /etc/profile; /opt/svr/zookeeper/zookeeper-3.4.14/bin/zkServer.sh start"
+ExecStop=/bin/bash -c "source /etc/profile; /opt/svr/zookeeper/zookeeper-3.4.14/bin/zkServer.sh stop"
+ExecReload=/bin/bash -c "source /etc/profile; /opt/svr/zookeeper/zookeeper-3.4.14/bin/zkServer.sh restart"
+Restart=always
+
+
+[Install]
+WantedBy=multi-user.target

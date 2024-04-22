@@ -1,0 +1,8 @@
+# vars file for jdk
+pkg_name: apache-zookeeper-3.8.3-bin.tar.gz
+tmp_dir: /opt/tmp/zookeeper
+install_dir: /opt/apache-zookeeper-3.8.3-bin
+data_dir: /opt/apache-zookeeper-3.8.3-bin/data
+log_dir: /opt/apache-zookeeper-3.8.3-bin/logs
+unarchive_dir: /opt
+env_file: /etc/profile

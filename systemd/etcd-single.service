@@ -1,0 +1,17 @@
+[Unit]
+Description=etcd-single
+After=syslog.target network.target
+
+[Service]
+# User=pciapp
+# Type=notify
+Type=simple
+ExecStart=/bin/bash /opt/svr/etcd-single/run.sh
+#only run with root
+ExecStartPost=/bin/bash /opt/svr/etcd-single/run_optimize.sh 192.168.50.129
+Restart=always
+RestartSec=5
+LimitNOFILE=65536
+
+[Install]
+WantedBy=multi-user.target

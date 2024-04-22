@@ -10,7 +10,5 @@
   notify: new conf to reload
 - name: 启动
   service: name=nginx state=started enabled=true
-- name: Remove directory
-  file:
-    path: /opt/tmp
-    state: absent
+- name: 删除临时目录
+  file: path=/opt/tmp state=absent

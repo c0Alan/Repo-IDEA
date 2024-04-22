@@ -1,0 +1,30 @@
+#https://dev.mysql.com/doc/mysql-secure-deployment-guide/5.7/en/secure-deployment-post-install.html#secure-deployment-systemd-startup
+[Unit]
+Description=MySQL Server
+Documentation=man:mysqld(8)
+Documentation=http://dev.mysql.com/doc/refman/en/using-systemd.html
+After=network.target
+After=syslog.target
+
+[Install]
+WantedBy=multi-user.target
+
+[Service]
+User=mysql
+Group=mysql
+Type=forking
+PIDFile=/data/mysql57/mysql_3306/data/mysql_3306.pid
+
+# Disable service start and stop timeout logic of systemd for mysqld service.
+TimeoutSec=0
+PermissionsStartOnly=true
+#ExecStartPre=/usr/bin/mysqld_pre_systemd
+#ExecStart=/usr/sbin/mysqld --daemonize --pid-file=/var/run/mysqld/mysqld.pid $MYSQLD_OPTS
+ExecStart=/usr/local/mysql/bin/mysqld --defaults-file=/etc/my.cnf --daemonize --pid-file=/data/mysql57/mysql_3306/data/mysql_3306.pid
+EnvironmentFile=-/etc/sysconfig/mysql
+
+# Sets open_files_limit
+LimitNOFILE = 5000
+Restart=on-failure
+RestartPreventExitStatus=1
+PrivateTmp=false

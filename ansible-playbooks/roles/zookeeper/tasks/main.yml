@@ -1,0 +1,30 @@
+- name: 创建临时目录
+  file: path={{ tmp_dir }} state=directory
+- name: 拷贝安装包
+  copy: src={{ pkg_name }} dest={{ tmp_dir }}/{{ pkg_name }}
+- name: 卸载
+  file: path={{ install_dir }} state=absent
+- name: 解压安装
+  unarchive: src={{ tmp_dir }}/{{ pkg_name }} dest={{ unarchive_dir }} remote_src=yes
+- name: 创建数据目录
+  file: path={{ data_dir }} state=directory
+- name: 创建日志目录
+  file: path={{ log_dir }} state=directory
+- name: 拷贝配置文件
+  template: src=zoo.cfg.j2 dest={{ install_dir }}/conf/zoo.cfg
+- name: 拷贝systemd文件
+  copy: src=zookeeper.service dest=/etc/systemd/system
+- name: 清除环境变量
+  shell: sed -i '/ZOOKEEPER_HOME/d' {{ env_file }}
+- name: 配置环境变量
+  lineinfile: dest={{ env_file }} insertafter="{{ item.position }}" line="{{ item.value }}" state=present
+  with_items:
+    - { position: EOF, value: "\n" }
+    - { position: EOF, value: "export ZOOKEEPER_HOME={{ install_dir }}" }
+    - { position: EOF, value: "export PATH=ZOOKEEPER_HOME/bin:$PATH" }
+- name: 启动
+  service: name=zookeeper state=restarted enabled=true
+- name: 删除临时目录
+  file: path={{ tmp_dir }} state=absent
+
+
