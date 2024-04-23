@@ -1,0 +1,7 @@
+pkg_name: elasticsearch-7.17.20-linux-x86_64.tar.gz
+tmp_dir: /opt/tmp/elasticsearch
+install_dir: /opt/elasticsearch-7.17.20
+data_dir: /opt/elasticsearch-7.17.20/data
+log_dir: /opt/elasticsearch-7.17.20/logs
+unarchive_dir: /opt
+env_file: /etc/profile

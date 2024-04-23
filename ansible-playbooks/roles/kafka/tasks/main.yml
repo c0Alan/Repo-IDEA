@@ -2,20 +2,19 @@
   file: path={{ tmp_dir }} state=directory
 - name: 拷贝安装包
   copy: src={{ pkg_name }} dest={{ tmp_dir }}/{{ pkg_name }}
-- name: 卸载kafka
+- name: 卸载
   file: path={{ install_dir }} state=absent
 - name: 解压安装
   unarchive: src={{ tmp_dir }}/{{ pkg_name }} dest={{ unarchive_dir }} remote_src=yes
-
-#- name: 创建数据目录
-#  file: path={{ data_dir }} state=directory
-#- name: 拷贝配置文件
-#  template: src=kafka.conf.j2 dest={{ install_dir }}/redis.conf
-#- name: 拷贝systemd文件
-#  copy: src=kafka.service dest=/etc/systemd/system
-#- name: 启动
-#  service: name=redis state=restarted enabled=true
-#- name: 删除临时目录
-#  file: path={{ tmp_dir }} state=absent
+- name: 创建日志目录
+  file: path={{ log_dir }} state=directory
+- name: 拷贝配置文件
+  template: src=server.properties.j2 dest={{ install_dir }}/config/server.properties
+- name: 拷贝systemd文件
+  template: src=kafka.service.j2 dest=/etc/systemd/system/kafka.service
+- name: 启动
+  service: name=kafka state=restarted enabled=true
+- name: 删除临时目录
+  file: path={{ tmp_dir }} state=absent
 
 

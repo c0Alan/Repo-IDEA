@@ -1,0 +1,32 @@
+# 参考：https://blog.csdn.net/weixin_43982359/article/details/132300039
+- name: 创建临时目录
+  file: path={{ tmp_dir }} state=directory
+- name: 拷贝安装包
+  copy: src={{ pkg_name }} dest={{ tmp_dir }}/{{ pkg_name }}
+- name: 卸载
+  file: path={{ install_dir }} state=absent
+- name: 解压安装
+  unarchive: src={{ tmp_dir }}/{{ pkg_name }} dest={{ unarchive_dir }} remote_src=yes
+- name: 创建数据目录
+  file: path={{ data_dir }} state=directory
+- name: 创建日志目录
+  file: path={{ log_dir }} state=directory
+- name: 拷贝配置文件
+  template: src=elasticsearch.yml.j2 dest={{ install_dir }}/config/elasticsearch.yml
+- name: 拷贝配置文件
+  template: src=jvm.options.j2 dest={{ install_dir }}/config/jvm.options
+- name: 拷贝systemd文件
+  template: src=elasticsearch.service.j2 dest=/etc/systemd/system/elasticsearch.service
+- name: 创建用户
+  shell: useradd elasticsearch && chown elasticsearch:elasticsearch -R {{ install_dir }}
+  ignore_errors: true
+- name: 清除内存参数
+  shell: sed -i '/vm.max_map_count/d' /etc/sysctl.conf
+- name: 配置内存参数
+  shell: echo 'vm.max_map_count=262144' >> /etc/sysctl.conf && sysctl -p
+- name: 启动
+  service: name=elasticsearch state=restarted enabled=true
+- name: 删除临时目录
+  file: path={{ tmp_dir }} state=absent
+
+

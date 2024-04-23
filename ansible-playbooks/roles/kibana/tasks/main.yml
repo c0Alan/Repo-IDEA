@@ -1,0 +1,24 @@
+# 参考：https://blog.csdn.net/weixin_42326851/article/details/124009372
+- name: 创建临时目录
+  file: path={{ tmp_dir }} state=directory
+- name: 拷贝安装包
+  copy: src={{ pkg_name }} dest={{ tmp_dir }}/{{ pkg_name }}
+- name: 卸载
+  file: path={{ install_dir }} state=absent
+- name: 解压安装
+  unarchive: src={{ tmp_dir }}/{{ pkg_name }} dest={{ unarchive_dir }} remote_src=yes
+- name: 修改目录
+  shell: mv {{ unarchive_dir }}/kibana-* {{ install_dir }}
+- name: 拷贝配置文件
+  template: src=kibana.yml.j2 dest={{ install_dir }}/config/kibana.yml
+- name: 拷贝systemd文件
+  template: src=kibana.service.j2 dest=/etc/systemd/system/kibana.service
+- name: 创建用户
+  shell: useradd kibana ; chown kibana:kibana -R {{ install_dir }}
+  ignore_errors: true
+- name: 启动
+  service: name=kibana state=restarted enabled=true
+- name: 删除临时目录
+  file: path={{ tmp_dir }} state=absent
+
+

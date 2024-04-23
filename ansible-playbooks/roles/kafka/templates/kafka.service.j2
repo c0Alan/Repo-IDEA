@@ -1,0 +1,12 @@
+[Unit]
+Description=kafka
+After=syslog.target network.target
+
+[Service]
+User=root
+Type=forking
+ExecStart=/bin/bash -c "source /etc/profile; {{install_dir}}/bin/kafka-server-start.sh -daemon {{install_dir}}/config/server.properties"
+Restart=always
+
+[Install]
+WantedBy=multi-user.target

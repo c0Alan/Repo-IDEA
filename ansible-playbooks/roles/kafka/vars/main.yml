@@ -2,6 +2,7 @@
 pkg_name: kafka_2.13-3.7.0.tgz
 tmp_dir: /opt/tmp/kafka
 install_dir: /opt/kafka_2.13-3.7.0
-data_dir: /opt/kafka_2.13-3.7.0/data
+log_dir: /opt/kafka_2.13-3.7.0/logs
 unarchive_dir: /opt
 env_file: /etc/profile
+

@@ -1,0 +1,7 @@
+pkg_name: kibana-7.17.20-linux-x86_64.tar.gz
+tmp_dir: /opt/tmp/kibana
+unarchive_dir: /opt
+install_dir: /opt/kibana-7.17.20
+data_dir: /opt/kibana-7.17.20/data
+log_dir: /opt/kibana-7.17.20/logs
+env_file: /etc/profile
