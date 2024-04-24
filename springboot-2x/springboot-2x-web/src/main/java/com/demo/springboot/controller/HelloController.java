@@ -1,12 +1,15 @@
 package com.demo.springboot.controller;
 
-import org.springframework.web.bind.annotation.RequestMapping;
+import io.swagger.annotations.Api;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+
+@Api(tags= "helloworld")
 @RestController
 public class HelloController {
 
-    @RequestMapping("/hello")
+    @GetMapping ("/hello")
     public String index() {
         return "Hello World";
     }

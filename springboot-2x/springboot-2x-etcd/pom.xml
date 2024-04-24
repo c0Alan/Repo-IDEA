@@ -3,15 +3,15 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.demo.springboot</groupId>
-	<artifactId>dsb-26-etcd</artifactId>
+	<artifactId>springboot-2x-etcd</artifactId>
 	<packaging>jar</packaging>
 
-	<name>dsb-26-etcd</name>
-	<description>etcd</description>
+	<name>springboot-2x-etcd</name>
+	<description>etcd集成</description>
 
 	<parent>
 		<groupId>com.demo.springboot</groupId>
-		<artifactId>dsb-26</artifactId>
+		<artifactId>springboot-2x</artifactId>
 		<version>1.0</version>
 		<!--<relativePath>../pom.xml</relativePath>-->
 	</parent>
