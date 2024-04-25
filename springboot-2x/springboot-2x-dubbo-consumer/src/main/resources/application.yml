@@ -1,0 +1,32 @@
+server:
+  port: 9005
+  servlet:
+    context-path: /
+
+
+spring:
+  application:
+    name: springboot-2x-dubbo-consumer
+  dubbo:
+    server: true
+    registry: zookeeper://192.168.50.133:2181
+
+
+# knife4j
+knife4j:
+  # 是否开启
+  enable: true
+  setting:
+    language: zh-CN
+  openapi:
+    title: springboot-2x-dubbo-consumer
+    description: springboot-2x-dubbo-consumer
+    concat: liuxl
+    version: 1.0.0
+    group:
+      admin:
+        group-name: springboot-2x-dubbo-consumer
+        api-rule: package
+        api-rule-resources:
+          - com.demo.springboot
+

@@ -1,0 +1,12 @@
+server:
+  port: 9003
+
+
+spring:
+  application:
+    name: springboot-2x-dubbo-provider
+  dubbo:
+    server: true
+    registry: zookeeper://192.168.50.133:2181
+
+

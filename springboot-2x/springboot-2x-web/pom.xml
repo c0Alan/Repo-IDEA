@@ -2,7 +2,6 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>com.demo.springboot</groupId>
 	<artifactId>springboot-2x-web</artifactId>
 	<packaging>jar</packaging>
 
@@ -31,6 +30,54 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+
+		<dependency>
+			<groupId>com.demo.springboot</groupId>
+			<artifactId>springboot-2x-commons</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>com.github.xiaoymin</groupId>
+			<artifactId>knife4j-spring-boot-starter</artifactId>
+			<version>3.0.3</version>
+		</dependency>
+
 	</dependencies>
 
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+				<version>2.3.5.RELEASE</version>
+				<configuration>
+					<includeSystemScope>true</includeSystemScope>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-assembly-plugin</artifactId>
+				<version>3.3.0</version>
+				<configuration>
+					<finalName>${project.name}</finalName>
+					<appendAssemblyId>false</appendAssemblyId> <!-- 包名不含assemblyId -->
+					<descriptors>
+						<descriptor>src/main/assembly/assembly.xml</descriptor>
+					</descriptors>
+					<!-- 子POM的属性完全覆盖父POM的 <descriptors combine.self="override"/> -->
+				</configuration>
+				<executions>
+					<execution>
+						<id>make-assembly</id><!-- ID 标识，命名随意 -->
+						<phase>package</phase> <!--绑定到package生命周期阶段上 -->
+						<goals>
+							<goal>single</goal><!-- 在 PACKAGE 生命周期阶段仅执行一次 -->
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+
+		</plugins>
+
+	</build>
 </project>
