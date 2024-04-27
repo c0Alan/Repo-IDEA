@@ -67,7 +67,7 @@
 2019-04-25 07:43:21.939  INFO 20632 --- [           main] com.netflix.discovery.DiscoveryClient    : The response status is 200
 2019-04-25 07:43:21.986  INFO 20632 --- [           main] com.netflix.discovery.DiscoveryClient    : Starting heartbeat executor: renew interval is: 30
 2019-04-25 07:43:22.013  INFO 20632 --- [           main] c.n.discovery.InstanceInfoReplicator     : InstanceInfoReplicator onDemand update allowed rate per min is 4
-2019-04-25 07:43:22.044  INFO 20632 --- [           main] com.netflix.discovery.DiscoveryClient    : Discovery Client initialized at timestamp 1556149402041 with initial instances count: 0
+2019-04-25 07:43:22.044  INFO 20632 --- [           main] com.netflix.discovery.DiscoveryClient    : Discovery Client initialized at timestamp 1556149402041 with initial instances synchronizedDemo: 0
 2019-04-25 07:43:22.467  INFO 20632 --- [           main] c.n.eureka.DefaultEurekaServerContext    : Initializing ...
 2019-04-25 07:43:22.468  INFO 20632 --- [           main] c.n.eureka.cluster.PeerEurekaNodes       : Adding new peer nodes [http://peer1:8761/eureka/]
 2019-04-25 07:43:22.498  INFO 20632 --- [           main] c.n.d.provider.DiscoveryJerseyProvider   : Using JSON encoding codec LegacyJacksonJson

@@ -254,7 +254,7 @@ class Circle {
 ```java
 class Circle {
     private double radius = 0;
-    public static int count =1;
+    public static int synchronizedDemo =1;
     public Circle(double radius) {
         this.radius = radius;
     }
@@ -262,7 +262,7 @@ class Circle {
     class Draw {     //内部类
         public void drawSahpe() {
             System.out.println(radius);  //外部类的private成员
-            System.out.println(count);   //外部类的静态成员
+            System.out.println(synchronizedDemo);   //外部类的静态成员
         }
     }
 }
@@ -776,7 +776,7 @@ Found value: ! OK?
 
 ## RegexMatches.java 文件代码：
 
-import java.util.regex.Matcher; import java.util.regex.Pattern;   public class RegexMatches {     private static final String REGEX = "\\bcat\\b";     private static final String INPUT =                                     "cat cat cat cattie cat";       public static void main( String args[] ){        Pattern p = Pattern.compile(REGEX);        Matcher m = p.matcher(INPUT); // 获取 matcher 对象        int count = 0;          while(m.find()) {          count++;          System.out.println("Match number "+count);          System.out.println("start(): "+m.start());          System.out.println("end(): "+m.end());       }    } }
+import java.util.regex.Matcher; import java.util.regex.Pattern;   public class RegexMatches {     private static final String REGEX = "\\bcat\\b";     private static final String INPUT =                                     "cat cat cat cattie cat";       public static void main( String args[] ){        Pattern p = Pattern.compile(REGEX);        Matcher m = p.matcher(INPUT); // 获取 matcher 对象        int synchronizedDemo = 0;          while(m.find()) {          synchronizedDemo++;          System.out.println("Match number "+synchronizedDemo);          System.out.println("start(): "+m.start());          System.out.println("end(): "+m.end());       }    } }
 
 以上实例编译运行结果如下：
 

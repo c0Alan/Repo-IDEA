@@ -309,7 +309,7 @@ com.netflix.discovery.shared.transport.TransportException: Cannot execute reques
 2019-04-25 07:43:15.680  WARN 20618 --- [           main] com.netflix.discovery.DiscoveryClient    : Using default backup registry implementation which does not do anything.
 2019-04-25 07:43:15.746  INFO 20618 --- [           main] com.netflix.discovery.DiscoveryClient    : Starting heartbeat executor: renew interval is: 30
 2019-04-25 07:43:15.774  INFO 20618 --- [           main] c.n.discovery.InstanceInfoReplicator     : InstanceInfoReplicator onDemand update allowed rate per min is 4
-2019-04-25 07:43:15.803  INFO 20618 --- [           main] com.netflix.discovery.DiscoveryClient    : Discovery Client initialized at timestamp 1556149395801 with initial instances count: 0
+2019-04-25 07:43:15.803  INFO 20618 --- [           main] com.netflix.discovery.DiscoveryClient    : Discovery Client initialized at timestamp 1556149395801 with initial instances synchronizedDemo: 0
 2019-04-25 07:43:16.197  INFO 20618 --- [           main] c.n.eureka.DefaultEurekaServerContext    : Initializing ...
 2019-04-25 07:43:16.198  INFO 20618 --- [           main] c.n.eureka.cluster.PeerEurekaNodes       : Adding new peer nodes [http://peer2:8769/eureka/]
 2019-04-25 07:43:16.235  INFO 20618 --- [           main] c.n.d.provider.DiscoveryJerseyProvider   : Using JSON encoding codec LegacyJacksonJson

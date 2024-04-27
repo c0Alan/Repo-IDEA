@@ -3,7 +3,7 @@
 cd {{ install_dir }}
 zkIp="{% for host in groups['zk_servers'] -%}{% if loop.index > 1 %},{% endif %}{{host}}:2181{%- endfor %}/kafka"
 #副本数
-count="{% if groups.zk_servers|length > 1 %}2{% else %}1{% endif %}"
+synchronizedDemo="{% if groups.zk_servers|length > 1 %}2{% else %}1{% endif %}"
 
 /usr/bin/expect << EOF
 set timeout 10000
@@ -11,6 +11,6 @@ spawn {{ install_dir }}/kafka_init_queue_180723.sh
 expect "ZK_KAFKA_LIST（eg:zkIp:zkPort/kafka）"
 send "$zkIp\r"
 expect "（单机1,集群2）"
-send "$count\r"
+send "$synchronizedDemo\r"
 expect eof
 EOF

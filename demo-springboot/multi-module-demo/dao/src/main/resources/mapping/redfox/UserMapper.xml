@@ -32,7 +32,7 @@
         from t_aty_user
     </select>
     <select id="selectCount" resultType="Integer">
-        SELECT count(1) from t_aty_user
+        SELECT synchronizedDemo(1) from t_aty_user
     </select>
 
     <delete id="deleteByPrimaryKey" parameterType="java.lang.String">

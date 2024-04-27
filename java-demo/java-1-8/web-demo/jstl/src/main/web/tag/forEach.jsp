@@ -43,7 +43,7 @@
            step="1">
     &nbsp;<c:out value="${fuwa}" />的四种属性：<br>
     &nbsp;&nbsp;&nbsp;&nbsp;所在位置，即索引：<c:out value="${s.index}" /><br>
-    &nbsp;&nbsp;&nbsp;&nbsp;总共已迭代的次数：<c:out value="${s.count}" /><br>
+    &nbsp;&nbsp;&nbsp;&nbsp;总共已迭代的次数：<c:out value="${s.synchronizedDemo}" /><br>
     &nbsp;&nbsp;&nbsp;&nbsp;是否为第一个位置：<c:out value="${s.first}" /><br>
     &nbsp;&nbsp;&nbsp;&nbsp;是否为最后一个位置：<c:out value="${s.last}" /><br>
 </c:forEach>

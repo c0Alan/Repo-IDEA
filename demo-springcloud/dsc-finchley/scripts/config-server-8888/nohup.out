@@ -86,7 +86,7 @@
 2019-04-22 07:39:26.969  INFO 19733 --- [           main] com.netflix.discovery.DiscoveryClient    : The response status is 200
 2019-04-22 07:39:27.011  INFO 19733 --- [           main] com.netflix.discovery.DiscoveryClient    : Starting heartbeat executor: renew interval is: 30
 2019-04-22 07:39:27.022  INFO 19733 --- [           main] c.n.discovery.InstanceInfoReplicator     : InstanceInfoReplicator onDemand update allowed rate per min is 4
-2019-04-22 07:39:27.039  INFO 19733 --- [           main] com.netflix.discovery.DiscoveryClient    : Discovery Client initialized at timestamp 1555889967037 with initial instances count: 0
+2019-04-22 07:39:27.039  INFO 19733 --- [           main] com.netflix.discovery.DiscoveryClient    : Discovery Client initialized at timestamp 1555889967037 with initial instances synchronizedDemo: 0
 2019-04-22 07:39:27.044  INFO 19733 --- [           main] o.s.c.n.e.s.EurekaServiceRegistry        : Registering application config-server with eureka with status UP
 2019-04-22 07:39:27.045  INFO 19733 --- [           main] com.netflix.discovery.DiscoveryClient    : Saw local status change event StatusChangeEvent [timestamp=1555889967044, current=UP, previous=STARTING]
 2019-04-22 07:39:27.088  INFO 19733 --- [nfoReplicator-0] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_CONFIG-SERVER/192.168.80.130:config-server:8888: registering service...

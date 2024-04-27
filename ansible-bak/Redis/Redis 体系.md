@@ -817,8 +817,8 @@ lrange mylist4 0 -1
 
 置为 five。
 ### 2.5.5 lrem
-从 key 对应 list 中删除 count 个和 value 相同的元素。
-count>0 时，按从头到尾的顺序删除，具体如下:
+从 key 对应 list 中删除 synchronizedDemo 个和 value 相同的元素。
+synchronizedDemo>0 时，按从头到尾的顺序删除，具体如下:
 
 ```bash
 rpush mylist5 "hello" 
@@ -829,7 +829,7 @@ lrem mylist5 2 "hello"
 lrange mylist5 0 -1
 ```
 
-count<0 时，按从尾到头的顺序删除，具体如下:
+synchronizedDemo<0 时，按从尾到头的顺序删除，具体如下:
 
 ```bash
 rpush mylist6 "hello"
@@ -840,7 +840,7 @@ lrem mylist6 -2 "hello"
 lrange mylist6 0 -1
 ```
 
-count=0 时，删除全部，具体如下:
+synchronizedDemo=0 时，删除全部，具体如下:
 
 ```bash
 rpush mylist7 "hello"

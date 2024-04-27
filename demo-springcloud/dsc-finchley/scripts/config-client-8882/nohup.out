@@ -17,7 +17,7 @@
 2019-04-22 07:48:12.367  INFO 20300 --- [           main] com.netflix.discovery.DiscoveryClient    : Getting all instance registry info from the eureka server
 2019-04-22 07:48:12.882  INFO 20300 --- [           main] com.netflix.discovery.DiscoveryClient    : The response status is 200
 2019-04-22 07:48:12.920  INFO 20300 --- [           main] com.netflix.discovery.DiscoveryClient    : Not registering with Eureka server per configuration
-2019-04-22 07:48:12.927  INFO 20300 --- [           main] com.netflix.discovery.DiscoveryClient    : Discovery Client initialized at timestamp 1555890492925 with initial instances count: 3
+2019-04-22 07:48:12.927  INFO 20300 --- [           main] com.netflix.discovery.DiscoveryClient    : Discovery Client initialized at timestamp 1555890492925 with initial instances synchronizedDemo: 3
 
   .   ____          _            __ _ _
  /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
@@ -125,7 +125,7 @@
 2019-04-22 07:48:52.493  INFO 20300 --- [           main] com.netflix.discovery.DiscoveryClient    : The response status is 200
 2019-04-22 07:48:52.521  INFO 20300 --- [           main] com.netflix.discovery.DiscoveryClient    : Starting heartbeat executor: renew interval is: 30
 2019-04-22 07:48:52.572  INFO 20300 --- [           main] c.n.discovery.InstanceInfoReplicator     : InstanceInfoReplicator onDemand update allowed rate per min is 4
-2019-04-22 07:48:52.604  INFO 20300 --- [           main] com.netflix.discovery.DiscoveryClient    : Discovery Client initialized at timestamp 1555890532604 with initial instances count: 1
+2019-04-22 07:48:52.604  INFO 20300 --- [           main] com.netflix.discovery.DiscoveryClient    : Discovery Client initialized at timestamp 1555890532604 with initial instances synchronizedDemo: 1
 2019-04-22 07:48:52.646  INFO 20300 --- [           main] o.s.c.n.e.s.EurekaServiceRegistry        : Registering application config-client with eureka with status UP
 2019-04-22 07:48:52.647  INFO 20300 --- [           main] com.netflix.discovery.DiscoveryClient    : Saw local status change event StatusChangeEvent [timestamp=1555890532646, current=UP, previous=STARTING]
 2019-04-22 07:48:52.651  INFO 20300 --- [           main] o.s.i.endpoint.EventDrivenConsumer       : Adding {logging-channel-adapter:_org.springframework.integration.errorLogger} as a subscriber to the 'errorChannel' channel
@@ -165,7 +165,7 @@
 2019-04-22 07:57:26.848  INFO 20300 --- [Ze5qzfDsepAYg-1] com.netflix.discovery.DiscoveryClient    : Getting all instance registry info from the eureka server
 2019-04-22 07:57:26.914  INFO 20300 --- [Ze5qzfDsepAYg-1] com.netflix.discovery.DiscoveryClient    : The response status is 200
 2019-04-22 07:57:26.974  INFO 20300 --- [Ze5qzfDsepAYg-1] com.netflix.discovery.DiscoveryClient    : Not registering with Eureka server per configuration
-2019-04-22 07:57:26.976  INFO 20300 --- [Ze5qzfDsepAYg-1] com.netflix.discovery.DiscoveryClient    : Discovery Client initialized at timestamp 1555891046976 with initial instances count: 3
+2019-04-22 07:57:26.976  INFO 20300 --- [Ze5qzfDsepAYg-1] com.netflix.discovery.DiscoveryClient    : Discovery Client initialized at timestamp 1555891046976 with initial instances synchronizedDemo: 3
 2019-04-22 07:57:27.778  INFO 20300 --- [Ze5qzfDsepAYg-1] c.c.c.ConfigServicePropertySourceLocator : Fetching config from server at : http://192.168.80.130:8888/
 2019-04-22 07:57:34.616  INFO 20300 --- [Ze5qzfDsepAYg-1] c.c.c.ConfigServicePropertySourceLocator : Located environment: name=config-client, profiles=[dev], label=master, version=a5c0631017c5d689f86e454314ca05fb3007af8f, state=null
 2019-04-22 07:57:34.616  INFO 20300 --- [Ze5qzfDsepAYg-1] b.c.PropertySourceBootstrapConfiguration : Located property source: CompositePropertySource {name='configService', propertySources=[MapPropertySource {name='configClient'}, MapPropertySource {name='https://github.com/c0Alan/Repo-Config/respo/config-client-dev.properties'}]}
@@ -198,7 +198,7 @@
 2019-04-22 07:57:38.495  INFO 20300 --- [Ze5qzfDsepAYg-1] com.netflix.discovery.DiscoveryClient    : The response status is 200
 2019-04-22 07:57:38.509  INFO 20300 --- [Ze5qzfDsepAYg-1] com.netflix.discovery.DiscoveryClient    : Starting heartbeat executor: renew interval is: 30
 2019-04-22 07:57:38.522  INFO 20300 --- [Ze5qzfDsepAYg-1] c.n.discovery.InstanceInfoReplicator     : InstanceInfoReplicator onDemand update allowed rate per min is 4
-2019-04-22 07:57:38.533  INFO 20300 --- [Ze5qzfDsepAYg-1] com.netflix.discovery.DiscoveryClient    : Discovery Client initialized at timestamp 1555891058533 with initial instances count: 4
+2019-04-22 07:57:38.533  INFO 20300 --- [Ze5qzfDsepAYg-1] com.netflix.discovery.DiscoveryClient    : Discovery Client initialized at timestamp 1555891058533 with initial instances synchronizedDemo: 4
 2019-04-22 07:57:38.534  INFO 20300 --- [Ze5qzfDsepAYg-1] o.s.c.n.e.s.EurekaServiceRegistry        : Unregistering application config-client with eureka with status DOWN
 2019-04-22 07:57:38.534  INFO 20300 --- [Ze5qzfDsepAYg-1] o.s.c.n.e.s.EurekaServiceRegistry        : Registering application config-client with eureka with status UP
 2019-04-22 07:57:38.534  WARN 20300 --- [Ze5qzfDsepAYg-1] com.netflix.discovery.DiscoveryClient    : Saw local status change event StatusChangeEvent [timestamp=1555891058534, current=UP, previous=DOWN]
