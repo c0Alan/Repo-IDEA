@@ -11,7 +11,6 @@
     <modules>
         <module>java-8x-commons</module>
         <module>java-8x-demo</module>
-        <module>java-8x-design-patterns</module>
     </modules>
 
     <properties>
@@ -128,6 +127,13 @@
                 <groupId>cglib</groupId>
                 <artifactId>cglib</artifactId>
                 <version>3.3.0</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-context</artifactId>
+                <version>5.3.31</version>
+                <scope>compile</scope>
             </dependency>
         </dependencies>
     </dependencyManagement>
