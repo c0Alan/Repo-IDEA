@@ -31,4 +31,16 @@ public class Test {
         Date d = new Date(1542806146916L);
         System.out.println(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(d));
     }
+
+    @org.junit.Test
+    public void test01()
+    {
+        String str = "abc";
+        String str2 = "abc";
+        String str3 = new String("abc");
+        String str4 = new String("abc");
+        System.out.println(str == str2);
+        System.out.println(str == str3);
+        System.out.println(str3 == str4);
+    }
 }
