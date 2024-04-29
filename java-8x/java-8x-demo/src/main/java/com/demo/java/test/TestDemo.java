@@ -1,5 +1,7 @@
 package com.demo.java.test;
 
+import org.junit.Test;
+
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -11,9 +13,9 @@ import java.util.Map;
  * @Author liuxilin
  * @Date 2018/8/4 10:54
  */
-public class Test {
+public class TestDemo {
     public static void main(String[] args) throws ParseException {
-        String path = Test.class.getResource("/").getPath();
+        String path = TestDemo.class.getResource("/").getPath();
         System.out.println(path);
         System.out.println("hello world!");
         System.out.println(Integer.valueOf("1008").equals(1008));
@@ -32,7 +34,7 @@ public class Test {
         System.out.println(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(d));
     }
 
-    @org.junit.Test
+    @Test
     public void test01()
     {
         String str = "abc";
