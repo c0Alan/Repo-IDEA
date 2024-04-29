@@ -1,0 +1,40 @@
+package com.demo.java.net.jnp4.thread;
+
+import java.io.*;
+import java.security.*;
+
+/**
+ * 使用存取方法返回结果的线程
+ * 
+ * @author liuxilin
+ * @date 2018/5/8 8:05
+ */
+public class ReturnDigest extends Thread {
+
+    private String filename;
+    private byte[] digest;
+
+    public ReturnDigest(String filename) {
+        this.filename = filename;
+    }
+
+    @Override
+    public void run() {
+        try {
+            FileInputStream in = new FileInputStream(filename);
+            MessageDigest sha = MessageDigest.getInstance("SHA-256");
+            DigestInputStream din = new DigestInputStream(in, sha);
+            while (din.read() != -1) ; // read entire file
+            din.close();
+            digest = sha.digest();
+        } catch (IOException ex) {
+            System.err.println(ex);
+        } catch (NoSuchAlgorithmException ex) {
+            System.err.println(ex);
+        }
+    }
+
+    public byte[] getDigest() {
+        return digest;
+    }
+}
