@@ -1,2 +1,0 @@
-http://files.cnblogs.com/nokiaguy/HttpSimulator.rar HttpSimulator.rar 8192
-http://files.cnblogs.com/nokiaguy/designpatterns.rar designpatterns.rar 4096
