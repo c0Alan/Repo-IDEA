@@ -34,8 +34,7 @@ public class JHTTP {
       while (true) {
         try {
           Socket request = server.accept();
-          Runnable r = new RequestProcessor(
-              rootDirectory, INDEX_FILE, request);
+          Runnable r = new RequestProcessor(rootDirectory, INDEX_FILE, request);
           pool.submit(r);
         } catch (IOException ex) {
           logger.log(Level.WARNING, "Error accepting connection", ex);

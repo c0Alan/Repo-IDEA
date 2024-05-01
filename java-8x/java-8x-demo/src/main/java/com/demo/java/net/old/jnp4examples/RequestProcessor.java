@@ -15,8 +15,7 @@ public class RequestProcessor implements Runnable {
   private String indexFileName = "index.html";
   private Socket connection;
   
-  public RequestProcessor(File rootDirectory, 
-      String indexFileName, Socket connection) {
+  public RequestProcessor(File rootDirectory, String indexFileName, Socket connection) {
         
     if (rootDirectory.isFile()) {
       throw new IllegalArgumentException(
@@ -37,19 +36,15 @@ public class RequestProcessor implements Runnable {
     // for security checks
     String root = rootDirectory.getPath();
     try {              
-      OutputStream raw = new BufferedOutputStream(
-                          connection.getOutputStream()
-                         );         
+      OutputStream raw = new BufferedOutputStream(connection.getOutputStream());
       Writer out = new OutputStreamWriter(raw);
-      Reader in = new InputStreamReader(
-                   new BufferedInputStream(
-                    connection.getInputStream()
-                   ),"US-ASCII"
-                  );
+      Reader in = new InputStreamReader(new BufferedInputStream(connection.getInputStream()),"US-ASCII");
       StringBuilder requestLine = new StringBuilder();
       while (true) {
         int c = in.read();
-        if (c == '\r' || c == '\n') break;
+        if (c == '\r' || c == '\n') {
+            break;
+        }
         requestLine.append((char) c);
       }
       
@@ -63,14 +58,12 @@ public class RequestProcessor implements Runnable {
       if (method.equals("GET")) {
         String fileName = tokens[1];
         if (fileName.endsWith("/")) fileName += indexFileName;
-        String contentType = 
-            URLConnection.getFileNameMap().getContentTypeFor(fileName);
+        String contentType = URLConnection.getFileNameMap().getContentTypeFor(fileName);
         if (tokens.length > 2) {
           version = tokens[2];
         }
 
-        File theFile = new File(rootDirectory, 
-            fileName.substring(1, fileName.length()));
+        File theFile = new File(rootDirectory, fileName.substring(1, fileName.length()));
         
         if (theFile.canRead() 
             // Don't let clients outside the document root

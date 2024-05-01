@@ -1,7 +1,8 @@
 package com.demo.java.net.old.jnp4examples;
 
+import javax.net.ssl.SSLSocket;
+import javax.net.ssl.SSLSocketFactory;
 import java.io.*;
-import javax.net.ssl.*;
 
 public class HTTPSClient {
     
@@ -15,8 +16,7 @@ public class HTTPSClient {
     int port = 443; // default https port
     String host = args[0];
     
-    SSLSocketFactory factory 
-        = (SSLSocketFactory) SSLSocketFactory.getDefault();
+    SSLSocketFactory factory = (SSLSocketFactory) SSLSocketFactory.getDefault();
     SSLSocket socket = null;
     try {         
       socket = (SSLSocket) factory.createSocket(host, port);
@@ -33,8 +33,7 @@ public class HTTPSClient {
       out.flush(); 
       
       // read response
-      BufferedReader in = new BufferedReader(
-          new InputStreamReader(socket.getInputStream()));
+      BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
       
       // read the header
       String s;
