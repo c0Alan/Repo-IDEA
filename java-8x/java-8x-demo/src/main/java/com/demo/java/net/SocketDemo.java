@@ -4,12 +4,29 @@ import org.junit.Test;
 
 import java.net.*;
 import java.io.*;
+import java.util.Scanner;
 
 public class SocketDemo {
     public static void main(String[] args) {
         SocketDemo demo = new SocketDemo();
         demo.test02();
 
+    }
+
+    /**
+     * InetSocketAddress 方式创建 ServerSocket
+     * InetSocketAddress 是 Java 网络编程中表示 IP 套接字地址的类，它包含了 IP 地址和端口号两个元素
+     */
+    @Test
+    public void test04() throws IOException {
+        InetSocketAddress socketAddress = new InetSocketAddress("localhost", 8080);
+        Socket socket = new Socket();
+        socket.connect(socketAddress);
+        Scanner in = new Scanner(socket.getInputStream(), "UTF-8");
+        while (in.hasNextLine()) {
+            String line = in.nextLine();
+            System.out.println(line);
+        }
     }
 
 

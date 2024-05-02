@@ -6,6 +6,7 @@ import java.io.File;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.io.Writer;
+import java.net.InetSocketAddress;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.Date;
@@ -21,6 +22,29 @@ public class ServerSocketDemo {
     public static void main(String[] args) {
         ServerSocketDemo demo = new ServerSocketDemo();
         demo.test03();
+    }
+
+    /**
+     * InetSocketAddress 方式创建ServerSocket
+     * InetSocketAddress 是 Java 网络编程中表示 IP 套接字地址的类，它包含了 IP 地址和端口号两个元素
+     */
+    @Test
+    public void test04() throws IOException {
+        InetSocketAddress socketAddress = new InetSocketAddress("localhost", 8080);
+        ServerSocket serverSocket = new ServerSocket();
+        serverSocket.bind(socketAddress);
+        while (true) {
+            try (Socket connection = serverSocket.accept()) {
+                System.out.println(connection.getRemoteSocketAddress() + "已连接...");
+                Writer out = new OutputStreamWriter(connection.getOutputStream());
+                Date now = new Date();
+                out.write(now.toString() + "\r\n");
+                out.flush();
+                connection.close();
+            } catch (IOException ex) {
+                System.err.println(ex);
+            }
+        }
     }
 
     /**

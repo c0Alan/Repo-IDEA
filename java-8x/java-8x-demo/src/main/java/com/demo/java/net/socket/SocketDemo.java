@@ -19,6 +19,7 @@ public class SocketDemo {
 
     /**
      * serverSocket.setSoTimeout 服务器连接等待超时时间设置,0则永久等待
+     *
      * @throws Exception
      */
     @Test
@@ -34,6 +35,7 @@ public class SocketDemo {
 
     /**
      * 获取当前时间
+     *
      * @throws Exception
      */
     @Test

@@ -16,10 +16,8 @@ public class Server02Client01 {
         // 创建一个套接字并将其连接到指定端口号
         Socket socket = new Socket(host, port);
 
-        DataInputStream dis = new DataInputStream(
-                new BufferedInputStream(socket.getInputStream()));
-        DataOutputStream dos = new DataOutputStream(
-                new BufferedOutputStream(socket.getOutputStream()));
+        DataInputStream dis = new DataInputStream(new BufferedInputStream(socket.getInputStream()));
+        DataOutputStream dos = new DataOutputStream(new BufferedOutputStream(socket.getOutputStream()));
         Scanner sc = new Scanner(System.in);
         boolean flag = false;
         while (!flag) {
