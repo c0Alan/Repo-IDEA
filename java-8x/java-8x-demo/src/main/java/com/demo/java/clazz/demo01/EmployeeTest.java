@@ -22,8 +22,7 @@ public class EmployeeTest {
 
         // print out information about all Employee objects
         for (Employee e : staff) {
-            System.out.println("name=" + e.getName() + ",salary=" + e.getSalary() + ",hireDay="
-                    + e.getHireDay());
+            System.out.println("name=" + e.getName() + ",salary=" + e.getSalary() + ",hireDay=" + e.getHireDay());
         }
     }
 }

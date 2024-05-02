@@ -9,7 +9,6 @@
     <packaging>pom</packaging>
     <version>1.0</version>
     <modules>
-        <module>java-8x-commons</module>
         <module>java-8x-demo</module>
     </modules>
 
@@ -23,6 +22,11 @@
 
     <dependencyManagement>
         <dependencies>
+            <dependency>
+                <groupId>com.demo.java</groupId>
+                <artifactId>java-8x-commons</artifactId>
+                <version>1.0</version>
+            </dependency>
 
             <dependency>
                 <groupId>junit</groupId>
@@ -154,6 +158,16 @@
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.demo.java</groupId>
+            <artifactId>java-8x-commons</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>cn.hutool</groupId>
+            <artifactId>hutool-all</artifactId>
         </dependency>
     </dependencies>
 

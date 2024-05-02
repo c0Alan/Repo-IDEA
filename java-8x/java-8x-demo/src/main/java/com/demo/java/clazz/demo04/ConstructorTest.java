@@ -16,8 +16,9 @@ public class ConstructorTest {
         staff[2] = new Employee();
 
         // print out information about all Employee objects
-        for (Employee e : staff)
+        for (Employee e : staff) {
             System.out.println("name=" + e.getName() + ",id=" + e.getId() + ",salary="
                     + e.getSalary());
+        }
     }
 }
