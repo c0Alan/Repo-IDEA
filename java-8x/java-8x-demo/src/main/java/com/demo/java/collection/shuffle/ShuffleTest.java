@@ -1,4 +1,4 @@
-package com.demo.java.base.collection.shuffle;
+package com.demo.java.collection.shuffle;
 
 import java.util.*;
 

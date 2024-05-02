@@ -1,4 +1,4 @@
-package com.demo.java.base.collection.priorityQueue;
+package com.demo.java.collection.priorityQueue;
 
 
 import java.time.LocalDate;

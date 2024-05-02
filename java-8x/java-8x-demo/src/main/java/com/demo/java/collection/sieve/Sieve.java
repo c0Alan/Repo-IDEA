@@ -1,4 +1,4 @@
-package com.demo.java.base.collection.sieve;
+package com.demo.java.collection.sieve;
 
 import java.util.*;
 

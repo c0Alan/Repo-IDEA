@@ -1,4 +1,4 @@
-package com.demo.java.base.collection.set;
+package com.demo.java.collection.set;
 
 import java.util.*;
 

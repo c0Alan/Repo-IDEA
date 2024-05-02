@@ -1,4 +1,4 @@
-package com.demo.java.base.collection.map;
+package com.demo.java.collection.map;
 
 /**
  * A minimalist employee class for testing purposes.

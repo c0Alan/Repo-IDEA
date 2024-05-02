@@ -1,4 +1,4 @@
-package com.demo.java.base.collection.treeSet;
+package com.demo.java.collection.treeSet;
 
 import java.util.*;
 

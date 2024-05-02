@@ -1,4 +1,4 @@
-package com.demo.java.base.collection.circularArrayQueue;
+package com.demo.java.collection.circularArrayQueue;
 
 import java.util.AbstractQueue;
 import java.util.ConcurrentModificationException;
