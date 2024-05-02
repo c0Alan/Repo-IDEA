@@ -23,8 +23,7 @@ public class HrefMatch {
             }
 
             // open reader for URL
-            InputStreamReader in = new InputStreamReader(new URL(urlString).openStream(),
-                    StandardCharsets.UTF_8);
+            InputStreamReader in = new InputStreamReader(new URL(urlString).openStream(), StandardCharsets.UTF_8);
 
             // read contents into string builder
             StringBuilder input = new StringBuilder();
