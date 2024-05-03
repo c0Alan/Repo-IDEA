@@ -1,4 +1,4 @@
-package com.demo.java.io.serialClone;
+package com.demo.java.entity;
 
 import java.io.*;
 

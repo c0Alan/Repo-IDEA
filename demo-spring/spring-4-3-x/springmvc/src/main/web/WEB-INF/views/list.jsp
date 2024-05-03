@@ -25,10 +25,10 @@
     <input type="hidden" name="_method" value="DELETE"/>
 </form>
 
-<c:if test="${empty requestScope.employees }">
+<c:if test="${empty requestScope.employee09s }">
     没有任何员工信息.
 </c:if>
-<c:if test="${!empty requestScope.employees }">
+<c:if test="${!empty requestScope.employee09s }">
     <table border="1" cellpadding="10" cellspacing="0">
         <tr>
             <th>ID</th>
@@ -40,7 +40,7 @@
             <th>Delete</th>
         </tr>
 
-        <c:forEach items="${requestScope.employees }" var="emp">
+        <c:forEach items="${requestScope.employee09s }" var="emp">
             <tr>
                 <td>${emp.id }</td>
                 <td>${emp.lastName }</td>

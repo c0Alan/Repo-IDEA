@@ -1,22 +1,36 @@
-package com.demo.java.io.textFile;
+package com.demo.java.io;
 
-import java.io.*;
-import java.time.*;
-import java.util.*;
+import com.demo.java.entity.Employee09;
+import org.junit.Test;
+
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.time.LocalDate;
+import java.util.Scanner;
 
 /**
- * 读写文件
+ * PrintWriter 示例
  *
  * @author liuxilin
  * @date 2022/8/6 17:15
  */
-public class TextFileTest {
-    public static void main(String[] args) throws IOException {
-        Employee[] staff = new Employee[3];
+public class PrintWriterDemo {
 
-        staff[0] = new Employee("Carl Cracker", 75000, 1987, 12, 15);
-        staff[1] = new Employee("Harry Hacker", 50000, 1989, 10, 1);
-        staff[2] = new Employee("Tony Tester", 40000, 1990, 3, 15);
+
+    public static void main(String[] args) throws IOException {}
+
+
+    /**
+     * 将对象写到文件中，并读取回jvm中
+     */
+    @Test
+    public void test01() throws IOException {
+        Employee09[] staff = new Employee09[3];
+
+        staff[0] = new Employee09("Carl Cracker", 75000, 1987, 12, 15);
+        staff[1] = new Employee09("Harry Hacker", 50000, 1989, 10, 1);
+        staff[2] = new Employee09("Tony Tester", 40000, 1990, 3, 15);
 
         // idea路径: ${project}/employee.dat
         try (PrintWriter out = new PrintWriter("employee.dat", "UTF-8")) {
@@ -24,12 +38,11 @@ public class TextFileTest {
         }
 
         // idea路径: ${project}/employee.dat
-        try (Scanner in = new Scanner(
-                new FileInputStream("employee.dat"), "UTF-8")) {
-            Employee[] newStaff = readData(in);
+        try (Scanner in = new Scanner(new FileInputStream("employee.dat"), "UTF-8")) {
+            Employee09[] newStaff = readData(in);
 
             // print the newly read employee records
-            for (Employee e : newStaff) {
+            for (Employee09 e : newStaff) {
                 System.out.println(e);
             }
         }
@@ -41,11 +54,11 @@ public class TextFileTest {
      * @param employees an array of employees
      * @param out       a print writer
      */
-    private static void writeData(Employee[] employees, PrintWriter out) throws IOException {
+    private static void writeData(Employee09[] employees, PrintWriter out) throws IOException {
         // write number of employees
         out.println(employees.length);
 
-        for (Employee e : employees) {
+        for (Employee09 e : employees) {
             writeEmployee(out, e);
         }
     }
@@ -56,12 +69,12 @@ public class TextFileTest {
      * @param in the scanner
      * @return the array of employees
      */
-    private static Employee[] readData(Scanner in) {
+    private static Employee09[] readData(Scanner in) {
         // retrieve the array size
         int n = in.nextInt();
         in.nextLine(); // consume newline
 
-        Employee[] employees = new Employee[n];
+        Employee09[] employees = new Employee09[n];
         for (int i = 0; i < n; i++) {
             employees[i] = readEmployee(in);
         }
@@ -73,7 +86,7 @@ public class TextFileTest {
      *
      * @param out the print writer
      */
-    public static void writeEmployee(PrintWriter out, Employee e) {
+    public static void writeEmployee(PrintWriter out, Employee09 e) {
         out.println(e.getName() + "|" + e.getSalary() + "|" + e.getHireDay());
     }
 
@@ -82,7 +95,7 @@ public class TextFileTest {
      *
      * @param in the scanner
      */
-    public static Employee readEmployee(Scanner in) {
+    public static Employee09 readEmployee(Scanner in) {
         String line = in.nextLine();
         String[] tokens = line.split("\\|");
         String name = tokens[0];
@@ -91,6 +104,6 @@ public class TextFileTest {
         int year = hireDate.getYear();
         int month = hireDate.getMonthValue();
         int day = hireDate.getDayOfMonth();
-        return new Employee(name, salary, year, month, day);
+        return new Employee09(name, salary, year, month, day);
     }
 }

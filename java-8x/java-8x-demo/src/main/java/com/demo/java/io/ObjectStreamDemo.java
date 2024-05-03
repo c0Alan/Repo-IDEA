@@ -1,22 +1,36 @@
-package com.demo.java.io.objectStream;
+package com.demo.java.io;
+
+import com.demo.java.entity.Employee08;
+import com.demo.java.entity.Manager04;
+import org.junit.Test;
 
 import java.io.*;
 
 /**
- * 对象输入输出流
+ * ObjectInputStream、ObjectOutputStream 示例
  *
  * @author liuxilin
  * @date 2022/8/6 20:17
  */
-class ObjectStreamTest {
+public class ObjectStreamDemo {
+
     public static void main(String[] args) throws IOException, ClassNotFoundException {
-        Employee harry = new Employee("Harry Hacker", 50000, 1989, 10, 1);
-        Manager carl = new Manager("Carl Cracker", 80000, 1987, 12, 15);
+        ObjectStreamDemo demo = new ObjectStreamDemo();
+        demo.test01();
+    }
+
+    /**
+     * 对象输入输出流
+     */
+    @Test
+    public void test01() throws IOException, ClassNotFoundException {
+        Employee08 harry = new Employee08("Harry Hacker", 50000, 1989, 10, 1);
+        Manager04 carl = new Manager04("Carl Cracker", 80000, 1987, 12, 15);
         carl.setSecretary(harry);
-        Manager tony = new Manager("Tony Tester", 40000, 1990, 3, 15);
+        Manager04 tony = new Manager04("Tony Tester", 40000, 1990, 3, 15);
         tony.setSecretary(harry);
 
-        Employee[] staff = new Employee[3];
+        Employee08[] staff = new Employee08[3];
 
         staff[0] = carl;
         staff[1] = harry;
@@ -31,13 +45,13 @@ class ObjectStreamTest {
         try (ObjectInputStream in = new ObjectInputStream(new FileInputStream("employee.dat"))) {
             // retrieve all records into a new array
 
-            Employee[] newStaff = (Employee[]) in.readObject();
+            Employee08[] newStaff = (Employee08[]) in.readObject();
 
             // raise secretary's salary
             newStaff[1].raiseSalary(10);
 
             // print the newly read employee records
-            for (Employee e : newStaff) {
+            for (Employee08 e : newStaff) {
                 System.out.println(e);
             }
         }

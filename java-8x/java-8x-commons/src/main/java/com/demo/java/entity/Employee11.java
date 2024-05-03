@@ -1,17 +1,17 @@
-package com.demo.java.io.objectStream;
+package com.demo.java.entity;
 
-import java.io.*;
-import java.time.*;
+import java.time.LocalDate;
 
-public class Employee implements Serializable {
+/**
+ * The familiar Employee class, redefined to extend the
+ * SerialCloneable class.
+ */
+public class Employee11 extends SerialCloneable {
     private String name;
     private double salary;
     private LocalDate hireDay;
 
-    public Employee() {
-    }
-
-    public Employee(String n, double s, int year, int month, int day) {
+    public Employee11(String n, double s, int year, int month, int day) {
         name = n;
         salary = s;
         hireDay = LocalDate.of(year, month, day);
@@ -39,8 +39,9 @@ public class Employee implements Serializable {
         salary += raise;
     }
 
+    @Override
     public String toString() {
-        return getClass().getName()
+        return getClass().getName() + "@" + Integer.toHexString(hashCode())
                 + "[name=" + name
                 + ",salary=" + salary
                 + ",hireDay=" + hireDay

@@ -1,17 +1,17 @@
-package com.demo.java.io.serialClone;
+package com.demo.java.entity;
 
-import java.time.LocalDate;
+import java.io.*;
+import java.time.*;
 
-/**
- * The familiar Employee class, redefined to extend the
- * SerialCloneable class.
- */
-class Employee extends SerialCloneable {
+public class Employee08 implements Serializable {
     private String name;
     private double salary;
     private LocalDate hireDay;
 
-    public Employee(String n, double s, int year, int month, int day) {
+    public Employee08() {
+    }
+
+    public Employee08(String n, double s, int year, int month, int day) {
         name = n;
         salary = s;
         hireDay = LocalDate.of(year, month, day);
@@ -39,7 +39,6 @@ class Employee extends SerialCloneable {
         salary += raise;
     }
 
-    @Override
     public String toString() {
         return getClass().getName()
                 + "[name=" + name

@@ -1,8 +1,8 @@
-package com.demo.java.io.randomAccess2;
+package com.demo.java.entity;
 
 import java.util.*;
 
-public class Employee
+public class Employee10
 {
    public static final int NAME_SIZE = 40;
    public static final int RECORD_SIZE = 2 * NAME_SIZE + 8 + 4 + 4 + 4;
@@ -11,9 +11,9 @@ public class Employee
    private double salary;
    private Date hireDay;
 
-   public Employee() {}
+   public Employee10() {}
 
-   public Employee(String n, double s, int year, int month, int day)
+   public Employee10(String n, double s, int year, int month, int day)
    {  
       name = n;
       salary = s;

@@ -1,8 +1,8 @@
-package com.demo.java.io.randomAccess;
+package com.demo.java.entity;
 
 import java.time.*;
 
-public class Employee {
+public class Employee09 {
     public static final int NAME_SIZE = 40;
     public static final int RECORD_SIZE = 2 * NAME_SIZE + 8 + 4 + 4 + 4;
 
@@ -10,10 +10,10 @@ public class Employee {
     private double salary;
     private LocalDate hireDay;
 
-    public Employee() {
+    public Employee09() {
     }
 
-    public Employee(String n, double s, int year, int month, int day) {
+    public Employee09(String n, double s, int year, int month, int day) {
         name = n;
         salary = s;
         hireDay = LocalDate.of(year, month, day);
@@ -42,7 +42,7 @@ public class Employee {
     }
 
     public String toString() {
-        return getClass().getName()
+        return getClass().getName() + "@" + Integer.toHexString(hashCode())
                 + "[name=" + name
                 + ",salary=" + salary
                 + ",hireDay=" + hireDay

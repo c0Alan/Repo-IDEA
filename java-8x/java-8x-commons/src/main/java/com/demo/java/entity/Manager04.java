@@ -1,7 +1,7 @@
-package com.demo.java.io.objectStream;
+package com.demo.java.entity;
 
-public class Manager extends Employee {
-    private Employee secretary;
+public class Manager04 extends Employee08 {
+    private Employee08 secretary;
 
     /**
      * Constructs a Manager without a secretary
@@ -12,7 +12,7 @@ public class Manager extends Employee {
      * @param month the hire month
      * @param day   the hire day
      */
-    public Manager(String n, double s, int year, int month, int day) {
+    public Manager04(String n, double s, int year, int month, int day) {
         super(n, s, year, month, day);
         secretary = null;
     }
@@ -22,7 +22,7 @@ public class Manager extends Employee {
      *
      * @param s the secretary
      */
-    public void setSecretary(Employee s) {
+    public void setSecretary(Employee08 s) {
         secretary = s;
     }
 

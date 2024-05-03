@@ -1,24 +1,34 @@
-package com.demo.java.io.randomAccess;
+package com.demo.java.io;
+
+import com.demo.java.entity.Employee09;
+import com.demo.java.entity.DataIO;
 
 import java.io.*;
 import java.time.LocalDate;
 
 /**
- * @author Cay Horstmann
- * @version 1.13 2016-07-11
+ * RandomAccessFile 示例
+ *
+ * @author liuxl
+ * @date 2024/5/3
  */
-public class RandomAccessTest {
-    public static void main(String[] args) throws IOException {
-        Employee[] staff = new Employee[3];
+public class RandomAccessFileDemo {
 
-        staff[0] = new Employee("Carl Cracker", 75000, 1987, 12, 15);
-        staff[1] = new Employee("Harry Hacker", 50000, 1989, 10, 1);
-        staff[2] = new Employee("Tony Tester", 40000, 1990, 3, 15);
+
+    /**
+     * 保存对象到文件，将文件转换为对象
+     */
+    public void test01() throws IOException {
+        Employee09[] staff = new Employee09[3];
+
+        staff[0] = new Employee09("Carl Cracker", 75000, 1987, 12, 15);
+        staff[1] = new Employee09("Harry Hacker", 50000, 1989, 10, 1);
+        staff[2] = new Employee09("Tony Tester", 40000, 1990, 3, 15);
 
         // idea路径: ${project}/employee.dat
         try (DataOutputStream out = new DataOutputStream(new FileOutputStream("employee.dat"))) {
             // save all employee records to the file employee.dat
-            for (Employee e : staff) {
+            for (Employee09 e : staff) {
                writeData(out, e);
             }
         }
@@ -28,18 +38,18 @@ public class RandomAccessTest {
             // retrieve all records into a new array
 
             // compute the array size
-            int n = (int) (in.length() / Employee.RECORD_SIZE);
-            Employee[] newStaff = new Employee[n];
+            int n = (int) (in.length() / Employee09.RECORD_SIZE);
+            Employee09[] newStaff = new Employee09[n];
 
             // read employees in reverse order
             for (int i = n - 1; i >= 0; i--) {
-                newStaff[i] = new Employee();
-                in.seek(i * Employee.RECORD_SIZE);
+                newStaff[i] = new Employee09();
+                in.seek(i * Employee09.RECORD_SIZE);
                 newStaff[i] = readData(in);
             }
 
             // print the newly read employee records
-            for (Employee e : newStaff) {
+            for (Employee09 e : newStaff) {
                System.out.println(e);
             }
         }
@@ -51,8 +61,8 @@ public class RandomAccessTest {
      * @param out the data output
      * @param e   the employee
      */
-    public static void writeData(DataOutput out, Employee e) throws IOException {
-        DataIO.writeFixedString(e.getName(), Employee.NAME_SIZE, out);
+    public static void writeData(DataOutput out, Employee09 e) throws IOException {
+        DataIO.writeFixedString(e.getName(), Employee09.NAME_SIZE, out);
         out.writeDouble(e.getSalary());
 
         LocalDate hireDay = e.getHireDay();
@@ -67,12 +77,12 @@ public class RandomAccessTest {
      * @param in the data input
      * @return the employee
      */
-    public static Employee readData(DataInput in) throws IOException {
-        String name = DataIO.readFixedString(Employee.NAME_SIZE, in);
+    public static Employee09 readData(DataInput in) throws IOException {
+        String name = DataIO.readFixedString(Employee09.NAME_SIZE, in);
         double salary = in.readDouble();
         int y = in.readInt();
         int m = in.readInt();
         int d = in.readInt();
-        return new Employee(name, salary, y, m - 1, d);
+        return new Employee09(name, salary, y, m - 1, d);
     }
 }
