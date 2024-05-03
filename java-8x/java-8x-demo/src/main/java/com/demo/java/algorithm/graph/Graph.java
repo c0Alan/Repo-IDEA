@@ -1,9 +1,9 @@
 package com.demo.java.algorithm.graph;
 
 
-import com.algorithm.exception.UnsupportedOperation;
-import com.algorithm.linearlist.Iterator;
-import com.algorithm.linearlist.Node;
+import com.demo.java.algorithm.exception.UnsupportedOperation;
+import com.demo.java.algorithm.linearlist.Iterator;
+import com.demo.java.algorithm.linearlist.Node;
 
 /**
  * 图的抽象数据类型, 接口实现

@@ -1,6 +1,6 @@
 package com.demo.java.algorithm.stack;
 
-import com.algorithm.exception.StackEmptyException;
+import com.demo.java.algorithm.exception.StackEmptyException;
 
 /**
  * 栈的顺序存储实现

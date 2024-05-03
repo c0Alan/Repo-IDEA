@@ -1,6 +1,7 @@
 package com.demo.java.algorithm.linearlist;
 
-import com.algorithm.exception.OutOfBoundaryException;
+
+import com.demo.java.algorithm.exception.OutOfBoundaryException;
 
 /**
  * 实现针对LinkedList 的迭代器

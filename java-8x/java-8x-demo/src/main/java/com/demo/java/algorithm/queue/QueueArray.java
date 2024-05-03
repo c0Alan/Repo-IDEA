@@ -1,7 +1,7 @@
 package com.demo.java.algorithm.queue;
 
 
-import com.algorithm.exception.QueueEmptyException;
+import com.demo.java.algorithm.exception.*;
 
 /**
  * 队列的顺序存储实现

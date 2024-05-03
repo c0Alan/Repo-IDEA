@@ -1,4 +1,4 @@
-package com.demo.java.io.memoryMap;
+package com.demo.java.io;
 
 import java.io.*;
 import java.nio.*;
@@ -6,38 +6,41 @@ import java.nio.channels.*;
 import java.nio.file.*;
 import java.util.zip.*;
 
+
 /**
- * 计算文件的32位的循环冗余校验和(CRC32)，判断文件是否损坏。
+ * 计算文件CRC checksum的4种方式
  *
- * @author liuxilin
- * @date 2022/8/7 9:15
+ * @author liuxl
+ * @date 2024/5/3
  */
-public class MemoryMapTest {
+public class ChecksumDemo {
+    public static int BLOCK_SIZE = 1024;
+
     public static void main(String[] args) throws IOException {
-        System.out.println("Input Stream:");
+        Path filename = Paths.get(System.getProperty("user.dir") + File.separator + "index.html");
+
+        System.out.println("InputStream:");
         long start = System.currentTimeMillis();
-        // idea路径:${projectRoot}\data\alice30.txt
-        Path filename = Paths.get("data\\alice30.txt");
         long crcValue = checksumInputStream(filename);
         long end = System.currentTimeMillis();
         System.out.println(Long.toHexString(crcValue));
         System.out.println((end - start) + " milliseconds");
 
-        System.out.println("Buffered Input Stream:");
+        System.out.println("BufferedInputStream:");
         start = System.currentTimeMillis();
         crcValue = checksumBufferedInputStream(filename);
         end = System.currentTimeMillis();
         System.out.println(Long.toHexString(crcValue));
         System.out.println((end - start) + " milliseconds");
 
-        System.out.println("Random Access File:");
+        System.out.println("RandomAccessFile:");
         start = System.currentTimeMillis();
         crcValue = checksumRandomAccessFile(filename);
         end = System.currentTimeMillis();
         System.out.println(Long.toHexString(crcValue));
         System.out.println((end - start) + " milliseconds");
 
-        System.out.println("Mapped File:");
+        System.out.println("MappedFile:");
         start = System.currentTimeMillis();
         crcValue = checksumMappedFile(filename);
         end = System.currentTimeMillis();
@@ -49,9 +52,10 @@ public class MemoryMapTest {
         try (InputStream in = Files.newInputStream(filename)) {
             CRC32 crc = new CRC32();
 
-            int c;
-            while ((c = in.read()) != -1) {
-                crc.update(c);
+            byte[] bytes = new byte[BLOCK_SIZE];
+            int n;
+            while ((n = in.read(bytes)) != -1) {
+                crc.update(bytes, 0, n);
             }
             return crc.getValue();
         }
@@ -61,9 +65,10 @@ public class MemoryMapTest {
         try (InputStream in = new BufferedInputStream(Files.newInputStream(filename))) {
             CRC32 crc = new CRC32();
 
-            int c;
-            while ((c = in.read()) != -1) {
-                crc.update(c);
+            byte[] bytes = new byte[BLOCK_SIZE];
+            int n;
+            while ((n = in.read(bytes)) != -1) {
+                crc.update(bytes, 0, n);
             }
             return crc.getValue();
         }
@@ -74,10 +79,11 @@ public class MemoryMapTest {
             long length = file.length();
             CRC32 crc = new CRC32();
 
-            for (long p = 0; p < length; p++) {
+            byte[] bytes = new byte[BLOCK_SIZE];
+            for (long p = 0; p < length; p += BLOCK_SIZE) {
                 file.seek(p);
-                int c = file.readByte();
-                crc.update(c);
+                int n = file.read(bytes);
+                crc.update(bytes, 0, n);
             }
             return crc.getValue();
         }
@@ -89,9 +95,11 @@ public class MemoryMapTest {
             int length = (int) channel.size();
             MappedByteBuffer buffer = channel.map(FileChannel.MapMode.READ_ONLY, 0, length);
 
-            for (int p = 0; p < length; p++) {
-                int c = buffer.get(p);
-                crc.update(c);
+            byte[] bytes = new byte[BLOCK_SIZE];
+            for (int p = 0; p < length; p += BLOCK_SIZE) {
+                int n = Math.min(BLOCK_SIZE, length - p);
+                buffer.get(bytes, 0, n);
+                crc.update(bytes, 0, n);
             }
             return crc.getValue();
         }

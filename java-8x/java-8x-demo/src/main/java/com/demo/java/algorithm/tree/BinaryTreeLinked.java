@@ -1,15 +1,14 @@
 package com.demo.java.algorithm.tree;
 
-import com.algorithm.linearlist.Iterator;
-import com.algorithm.linearlist.LinkedList;
-import com.algorithm.linearlist.LinkedListDLNode;
-import com.algorithm.queue.Queue;
-import com.algorithm.queue.QueueArray;
-import com.algorithm.stack.Stack;
-import com.algorithm.stack.StackSLinked;
-import com.algorithm.strategy.DefaultStrategy;
-import com.algorithm.strategy.Strategy;
-
+import com.demo.java.algorithm.linearlist.Iterator;
+import com.demo.java.algorithm.linearlist.LinkedList;
+import com.demo.java.algorithm.linearlist.LinkedListDLNode;
+import com.demo.java.algorithm.queue.Queue;
+import com.demo.java.algorithm.queue.QueueArray;
+import com.demo.java.algorithm.stack.Stack;
+import com.demo.java.algorithm.stack.StackSLinked;
+import com.demo.java.algorithm.strategy.DefaultStrategy;
+import com.demo.java.algorithm.strategy.Strategy;
 /**
  * 树的链式存储结构
  * 

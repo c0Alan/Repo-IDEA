@@ -1,12 +1,12 @@
 package com.demo.java.algorithm.graph;
 
 
-import com.algorithm.exception.UnsupportedOperation;
-import com.algorithm.linearlist.LinkedList;
-import com.algorithm.linearlist.LinkedListDLNode;
-import com.algorithm.stack.Stack;
-import com.algorithm.stack.StackSLinked;
-import com.algorithm.linearlist.Iterator;
+import com.demo.java.algorithm.exception.UnsupportedOperation;
+import com.demo.java.algorithm.linearlist.Iterator;
+import com.demo.java.algorithm.linearlist.LinkedList;
+import com.demo.java.algorithm.linearlist.LinkedListDLNode;
+import com.demo.java.algorithm.stack.Stack;
+import com.demo.java.algorithm.stack.StackSLinked;
 
 /**
  * 有向图的实现

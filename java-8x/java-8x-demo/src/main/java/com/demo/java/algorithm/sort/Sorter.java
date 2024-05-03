@@ -1,8 +1,8 @@
 package com.demo.java.algorithm.sort;
 
 
-import com.algorithm.strategy.DefaultStrategy;
-import com.algorithm.strategy.Strategy;
+import com.demo.java.algorithm.strategy.DefaultStrategy;
+import com.demo.java.algorithm.strategy.Strategy;
 
 public class Sorter {
     private Strategy strategy;

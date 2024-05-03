@@ -1,6 +1,6 @@
 package com.demo.java.algorithm.strategy;
 
-import com.algorithm.element.Student;
+import com.demo.java.algorithm.element.Student;
 
 public class StudentStrategy implements Strategy {
 

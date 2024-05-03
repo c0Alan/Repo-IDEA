@@ -1,9 +1,7 @@
 package com.demo.java.algorithm.stack;
 
-import com.algorithm.exception.StackEmptyException;
-
-import com.algorithm.linearlist.SLNode;
-
+import com.demo.java.algorithm.exception.StackEmptyException;
+import com.demo.java.algorithm.linearlist.SLNode;
 /**
  * 栈的链式存储实现
  *

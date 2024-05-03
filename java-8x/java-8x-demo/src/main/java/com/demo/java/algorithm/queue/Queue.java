@@ -1,7 +1,7 @@
 package com.demo.java.algorithm.queue;
 
 
-import com.algorithm.exception.QueueEmptyException;
+import com.demo.java.algorithm.exception.QueueEmptyException;
 
 /**
  * 队列的抽象数据类型, 实现接口

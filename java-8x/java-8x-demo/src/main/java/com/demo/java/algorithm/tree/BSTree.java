@@ -1,15 +1,12 @@
 package com.demo.java.algorithm.tree;
 
-import com.algorithm.linearlist.Iterator;
-import com.algorithm.linearlist.LinkedList;
-import com.algorithm.linearlist.LinkedListDLNode;
-import com.algorithm.linearlist.Node;
-import com.algorithm.search.SearchTable;
-import com.algorithm.strategy.DefaultStrategy;
-import com.algorithm.strategy.Strategy;
-import com.demo.java.algorithm.tree.BinTreeNode;
-import com.demo.java.algorithm.tree.BinaryTreeLinked;
-
+import com.demo.java.algorithm.linearlist.Iterator;
+import com.demo.java.algorithm.linearlist.LinkedList;
+import com.demo.java.algorithm.linearlist.LinkedListDLNode;
+import com.demo.java.algorithm.linearlist.Node;
+import com.demo.java.algorithm.search.SearchTable;
+import com.demo.java.algorithm.strategy.DefaultStrategy;
+import com.demo.java.algorithm.strategy.Strategy;
 
 public class BSTree extends BinaryTreeLinked implements SearchTable {
     protected BinTreeNode startBN;            //��AVL��������ƽ�����ʼ���

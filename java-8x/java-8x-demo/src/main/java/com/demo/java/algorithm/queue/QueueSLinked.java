@@ -1,8 +1,8 @@
 package com.demo.java.algorithm.queue;
 
 
-import com.algorithm.exception.QueueEmptyException;
-import com.algorithm.linearlist.SLNode;
+import com.demo.java.algorithm.exception.QueueEmptyException;
+import com.demo.java.algorithm.linearlist.SLNode;
 
 public class QueueSLinked implements Queue {
 	private SLNode front;

@@ -1,7 +1,6 @@
 package com.demo.java.algorithm.tree;
 
-import com.algorithm.linearlist.Iterator;
-
+import com.demo.java.algorithm.linearlist.Iterator;
 public interface BinTree {
     //返回树的规模
     public int getSize();

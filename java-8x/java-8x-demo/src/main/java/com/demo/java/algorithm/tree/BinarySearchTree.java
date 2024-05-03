@@ -1,7 +1,9 @@
 package com.demo.java.algorithm.tree;
 
-import com.algorithm.linearlist.Node;
-
+import com.demo.java.algorithm.exception.*;
+import com.demo.java.algorithm.linearlist.*;
+import com.demo.java.algorithm.strategy.*;
+import com.demo.java.algorithm.element.*;
 /**
  * 二叉查找树
  * 

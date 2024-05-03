@@ -1,7 +1,7 @@
 package com.demo.java.algorithm.linearlist;
 
-import com.algorithm.exception.InvalidNodeException;
-import com.algorithm.exception.OutOfBoundaryException;
+
+import com.demo.java.algorithm.exception.*;
 
 /**
  * 基于双向链表实现的链接表

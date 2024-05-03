@@ -1,14 +1,15 @@
 package com.demo.java.algorithm.graph;
 
-import com.algorithm.exception.UnsupportedOperation;
-import com.algorithm.linearlist.LinkedList;
-import com.algorithm.linearlist.LinkedListDLNode;
-import com.algorithm.queue.Queue;
-import com.algorithm.queue.QueueSLinked;
-import com.algorithm.stack.Stack;
-import com.algorithm.stack.StackSLinked;
-import com.algorithm.linearlist.Iterator;
-import com.algorithm.linearlist.Node;
+
+import com.demo.java.algorithm.exception.UnsupportedOperation;
+import com.demo.java.algorithm.linearlist.Iterator;
+import com.demo.java.algorithm.linearlist.LinkedList;
+import com.demo.java.algorithm.linearlist.LinkedListDLNode;
+import com.demo.java.algorithm.linearlist.Node;
+import com.demo.java.algorithm.queue.Queue;
+import com.demo.java.algorithm.queue.QueueSLinked;
+import com.demo.java.algorithm.stack.Stack;
+import com.demo.java.algorithm.stack.StackSLinked;
 
 public abstract class AbstractGraph implements Graph {
     protected LinkedList vertexs;//顶点表

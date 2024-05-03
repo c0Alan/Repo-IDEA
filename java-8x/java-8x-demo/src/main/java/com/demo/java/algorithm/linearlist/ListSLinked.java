@@ -1,8 +1,9 @@
 package com.demo.java.algorithm.linearlist;
 
-import com.algorithm.exception.OutOfBoundaryException;
-import com.algorithm.strategy.DefaultStrategy;
-import com.algorithm.strategy.Strategy;
+
+import com.demo.java.algorithm.exception.OutOfBoundaryException;
+import com.demo.java.algorithm.strategy.DefaultStrategy;
+import com.demo.java.algorithm.strategy.Strategy;
 
 /**
  * 线性表的链式存储 - 单链表

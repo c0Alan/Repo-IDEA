@@ -1,4 +1,6 @@
-package com.demo.java.io.match;
+package com.demo.java.io;
+
+import org.junit.Test;
 
 import java.io.*;
 import java.net.*;
@@ -11,16 +13,17 @@ import java.util.regex.*;
  * @author liuxilin
  * @date 2022/8/7 10:54
  */
-public class HrefMatch {
-    public static void main(String[] args) {
+public class InputStreamReaderDemo {
+
+
+    /**
+     * 打印网页中匹配 <a href 开头内容
+     */
+    @Test
+    public void test01() {
         try {
             // get URL string from command line or use default
-            String urlString;
-            if (args.length > 0) {
-               urlString = args[0];
-            } else {
-               urlString = "https://www.cnblogs.com";
-            }
+            String urlString = "https://www.cnblogs.com";
 
             // open reader for URL
             InputStreamReader in = new InputStreamReader(new URL(urlString).openStream(), StandardCharsets.UTF_8);

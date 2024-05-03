@@ -1,9 +1,7 @@
 package com.demo.java.algorithm.graph;
 
 
-import com.algorithm.linearlist.Iterator;
-import com.algorithm.linearlist.LinkedList;
-import com.algorithm.linearlist.LinkedListDLNode;
+import com.demo.java.algorithm.linearlist.*;
 
 /**
  * Path �ඨ��

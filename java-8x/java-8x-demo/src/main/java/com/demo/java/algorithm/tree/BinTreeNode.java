@@ -1,7 +1,6 @@
 package com.demo.java.algorithm.tree;
 
-import com.algorithm.linearlist.Node;
-
+import com.demo.java.algorithm.linearlist.Node;
 /**
  * 二叉树存储结构结点定义
  * 

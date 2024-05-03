@@ -1,8 +1,7 @@
 package com.demo.java.algorithm.search;
 
-
-import com.algorithm.linearlist.Iterator;
-import com.algorithm.linearlist.Node;
+import com.demo.java.algorithm.linearlist.Iterator;
+import com.demo.java.algorithm.linearlist.Node;
 
 /**
  * 查找表接口定义

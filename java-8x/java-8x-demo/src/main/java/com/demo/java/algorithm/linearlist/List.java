@@ -1,6 +1,7 @@
 package com.demo.java.algorithm.linearlist;
 
-import com.algorithm.exception.OutOfBoundaryException;
+
+import com.demo.java.algorithm.exception.OutOfBoundaryException;
 
 /**
  * 定义线性表的抽象数据类型

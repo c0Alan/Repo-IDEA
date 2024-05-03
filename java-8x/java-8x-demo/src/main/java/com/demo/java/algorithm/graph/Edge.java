@@ -1,6 +1,7 @@
 package com.demo.java.algorithm.graph;
 
-import com.algorithm.linearlist.Node;
+
+import com.demo.java.algorithm.linearlist.Node;
 
 /**
  * ˫��ʽ�洢�ṹ�ı߶���

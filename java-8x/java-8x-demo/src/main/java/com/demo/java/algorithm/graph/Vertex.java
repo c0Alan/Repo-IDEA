@@ -1,5 +1,7 @@
 package com.demo.java.algorithm.graph;
 
+import com.demo.java.algorithm.linearlist.*;
+
 public class Vertex {
     private Object info;		//顶点信息
     private LinkedList adjacentEdges;	//顶点的邻接边表
