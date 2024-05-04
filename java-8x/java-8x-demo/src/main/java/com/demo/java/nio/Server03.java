@@ -52,11 +52,13 @@ public class Server03 {
                 keys.remove();
                 try {
                     if (key.isAcceptable()) {
+                        System.out.println("Accepting connection");
                         ServerSocketChannel server = (ServerSocketChannel) key.channel();
                         SocketChannel channel = server.accept();
                         channel.configureBlocking(false);
                         channel.register(selector, SelectionKey.OP_READ);
                     } else if (key.isWritable()) {
+                        System.out.println("Writing response");
                         SocketChannel channel = (SocketChannel) key.channel();
                         ByteBuffer buffer = (ByteBuffer) key.attachment();
                         if (buffer.hasRemaining()) {
@@ -65,6 +67,7 @@ public class Server03 {
                             channel.close();
                         }
                     } else if (key.isReadable()) {
+                        System.out.println("Reading request");
                         // Don't bother trying to parse the HTTP header.
                         // Just read something.
                         SocketChannel channel = (SocketChannel) key.channel();

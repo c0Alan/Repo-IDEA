@@ -9,17 +9,25 @@ import java.nio.channels.ServerSocketChannel;
 import java.nio.channels.SocketChannel;
 import java.util.Iterator;
 
-public class TestServerSocketNio {
+/**
+ * 接收来自客户端的消息并打印
+ *
+ * @author liuxl
+ * @date 2024/5/4
+ */
+public class Server04 {
 
     private static final int BUF_SIZE = 1024;
     private static final int PORT = 9999;
     private static final int TIMEOUT = 3000;
+
 
     public static void main(String[] args) {
         selector();
     }
 
     public static void handleAccept(SelectionKey key) throws IOException {
+        System.out.println("Accepted connection from " + key.channel());
         ServerSocketChannel ssChannel = (ServerSocketChannel) key.channel();
         SocketChannel sc = ssChannel.accept();
         sc.configureBlocking(false); // 设置成非阻塞模式
@@ -27,6 +35,7 @@ public class TestServerSocketNio {
     }
 
     public static void handleRead(SelectionKey key) throws IOException {
+        System.out.println("Handling read");
         SocketChannel sc = (SocketChannel) key.channel();
         ByteBuffer buf = (ByteBuffer) key.attachment();
         long bytesRead = sc.read(buf);
@@ -42,16 +51,21 @@ public class TestServerSocketNio {
         if (bytesRead == -1) {
             sc.close();
         }
+
+        key.interestOps(SelectionKey.OP_WRITE);
     }
 
     public static void handleWrite(SelectionKey key) throws IOException {
+        System.out.println("Handling write");
         ByteBuffer buf = (ByteBuffer) key.attachment();
+        buf.put("hello world!".getBytes("UTF-8"));
         buf.flip();
         SocketChannel sc = (SocketChannel) key.channel();
         while (buf.hasRemaining()) {
             sc.write(buf);
         }
         buf.compact();
+        key.interestOps(SelectionKey.OP_READ);
     }
 
     public static void selector() {

@@ -6,14 +6,14 @@ import java.nio.ByteBuffer;
 import java.nio.channels.SocketChannel;
 import java.util.concurrent.TimeUnit;
 
-public class TestSocket {
+public class Server04Client01 {
     public static void client() {
         ByteBuffer buffer = ByteBuffer.allocate(1024);
         SocketChannel socketChannel = null;
         try {
             socketChannel = SocketChannel.open();
             socketChannel.configureBlocking(false);
-            socketChannel.connect(new InetSocketAddress("192.168.20.122", 9999));
+            socketChannel.connect(new InetSocketAddress("localhost", 9999));
 
             if (socketChannel.finishConnect()) {
                 int i = 0;
@@ -42,6 +42,10 @@ public class TestSocket {
         }
     }
 
+    /**
+     * 每隔1秒向服务端发送一条消息
+     * @param args
+     */
     public static void main(String[] args) {
         client();
     }
