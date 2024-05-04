@@ -176,7 +176,8 @@ public class Sorter {
         int[] del = {5, 3, 1};
 
         sorter.mergeSort(r, 0, r.length - 1);
-        for (int i = 0; i < r.length; i++)
+        for (int i = 0; i < r.length; i++) {
             System.out.println(r[i] + "\t");
+        }
     }
 }
