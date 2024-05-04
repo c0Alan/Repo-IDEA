@@ -6,20 +6,22 @@ import com.demo.java.entity.ParallelStreams;
 import com.demo.java.entity.WordCount;
 import org.junit.Test;
 
+import java.io.IOException;
 import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.*;
 import java.util.function.Function;
 import java.util.function.IntSupplier;
+import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
 import static com.demo.java.entity.Dish.menu;
 import static com.demo.java.entity.WordCount.SENTENCE;
 import static java.util.Comparator.comparing;
-import static java.util.stream.Collectors.groupingBy;
-import static java.util.stream.Collectors.toList;
+import static java.util.stream.Collectors.*;
 
 /**
  * Stream 流示例
@@ -29,11 +31,63 @@ import static java.util.stream.Collectors.toList;
  */
 public class StreamDemo {
 
+
+    /**
+     * Optional 示例
+     */
+    @Test
+    public void test10() throws IOException {
+        String contents = new String(Files.readAllBytes(Paths.get("alice30.txt")), StandardCharsets.UTF_8);
+        List<String> wordList = Arrays.asList(contents.split("\\PL+"));
+
+        Optional<String> optionalValue = wordList.stream()
+                .filter(s -> s.contains("fred"))
+                .findFirst();
+        System.out.println(optionalValue.orElse("No word") + " contains fred");
+
+        Optional<String> optionalString = Optional.empty();
+        String result = optionalString.orElse("N/A");
+        System.out.println("result: " + result);
+        result = optionalString.orElseGet(() -> Locale.getDefault().getDisplayName());
+        System.out.println("result: " + result);
+        try {
+            result = optionalString.orElseThrow(IllegalStateException::new);
+            System.out.println("result: " + result);
+        } catch (Throwable t) {
+            t.printStackTrace();
+        }
+
+        optionalValue = wordList.stream()
+                .filter(s -> s.contains("red"))
+                .findFirst();
+        optionalValue.ifPresent(s -> System.out.println(s + " contains red"));
+
+        Set<String> results = new HashSet<>();
+        optionalValue.ifPresent(results::add);
+        Optional<Boolean> added = optionalValue.map(results::add);
+        System.out.println(added);
+
+        System.out.println(inverse(4.0).flatMap(StreamDemo::squareRoot));
+        System.out.println(inverse(-1.0).flatMap(StreamDemo::squareRoot));
+        System.out.println(inverse(0.0).flatMap(StreamDemo::squareRoot));
+        Optional<Double> result2 = Optional.of(-4.0).flatMap(StreamDemo::inverse).flatMap(StreamDemo::squareRoot);
+        System.out.println(result2);
+    }
+
+    public static Optional<Double> inverse(Double x) {
+        return x == 0 ? Optional.empty() : Optional.of(1 / x);
+    }
+
+    public static Optional<Double> squareRoot(Double x) {
+        return x < 0 ? Optional.empty() : Optional.of(Math.sqrt(x));
+    }
+
+
     /**
      * 自定义Spliterator接口实现单词统计功能
      */
     @Test
-    public void test09(){
+    public void test09() {
         WordCount wc = new WordCount();
         System.out.println("Found " + wc.countWordsIteratively(SENTENCE) + " words");
         System.out.println("Found " + wc.countWords(SENTENCE) + " words");
@@ -46,12 +100,12 @@ public class StreamDemo {
     public void test08() {
         System.out.println("iterativeSum: " + measurePerf(ParallelStreams::iterativeSum, 10_000_000L) + " msecs");
         System.out.println("sequentialSum: " + measurePerf(ParallelStreams::sequentialSum, 10_000_000L) + " msecs");
-        System.out.println("parallelSum: " + measurePerf(ParallelStreams::parallelSum, 10_000_000L) + " msecs" );
+        System.out.println("parallelSum: " + measurePerf(ParallelStreams::parallelSum, 10_000_000L) + " msecs");
         System.out.println("rangedSum: " + measurePerf(ParallelStreams::rangedSum, 10_000_000L) + " msecs");
-        System.out.println("parallelRangedSum: " + measurePerf(ParallelStreams::parallelRangedSum, 10_000_000L) + " msecs" );
-        System.out.println("forkJoinSum: " + measurePerf(ForkJoinSumCalculator::forkJoinSum, 10_000_000L) + " msecs" );
-        System.out.println("sideEffectSum: " + measurePerf(ParallelStreams::sideEffectSum, 10_000_000L) + " msecs" );
-        System.out.println("sideEffectParallelSum: " + measurePerf(ParallelStreams::sideEffectParallelSum, 10_000_000L) + " msecs" );
+        System.out.println("parallelRangedSum: " + measurePerf(ParallelStreams::parallelRangedSum, 10_000_000L) + " msecs");
+        System.out.println("forkJoinSum: " + measurePerf(ForkJoinSumCalculator::forkJoinSum, 10_000_000L) + " msecs");
+        System.out.println("sideEffectSum: " + measurePerf(ParallelStreams::sideEffectSum, 10_000_000L) + " msecs");
+        System.out.println("sideEffectParallelSum: " + measurePerf(ParallelStreams::sideEffectParallelSum, 10_000_000L) + " msecs");
     }
 
     public static <T, R> long measurePerf(Function<T, R> f, T input) {
@@ -66,6 +120,57 @@ public class StreamDemo {
         return fastest;
     }
 
+    /**
+     * 并行流，线程不安全的示例
+     */
+    @Test
+    public void test081() throws IOException {
+        String contents = new String(Files.readAllBytes(Paths.get("alice30.txt")), StandardCharsets.UTF_8);
+        List<String> wordList = Arrays.asList(contents.split("\\PL+")); // 非字母分隔符
+
+        // 结果错误,线程不安全 Very bad code ahead
+        int[] shortWords = new int[10];
+        wordList.parallelStream().forEach(s -> {
+            if (s.length() < 10) {
+                shortWords[s.length()]++;
+            }
+        });
+        System.out.println(Arrays.toString(shortWords));
+        System.out.println("===========================================================");
+
+        // 结果错误 Try again--the result will likely be different (and also wrong)
+        Arrays.fill(shortWords, 0);
+        wordList.parallelStream().forEach(s -> {
+            if (s.length() < 10) {
+                shortWords[s.length()]++;
+            }
+        });
+        System.out.println(Arrays.toString(shortWords));
+        System.out.println("===========================================================");
+
+        // Remedy: Group and count
+        Map<Integer, Long> shortWordCounts = wordList.parallelStream()
+                .filter(s -> s.length() < 10)
+                .collect(groupingBy(String::length, counting()));
+        System.out.println(shortWordCounts);
+        System.out.println("===========================================================");
+
+        // Downstream order not deterministic
+        Map<Integer, List<String>> result = wordList.parallelStream().collect(
+                Collectors.groupingByConcurrent(String::length));
+        System.out.println(result.get(14));
+        System.out.println("===========================================================");
+
+        result = wordList.parallelStream().collect(
+                Collectors.groupingByConcurrent(String::length));
+        System.out.println(result.get(14));
+        System.out.println("===========================================================");
+
+        Map<Integer, Long> wordCounts = wordList.parallelStream().collect(
+                groupingByConcurrent(String::length, counting()));
+        System.out.println(wordCounts);
+    }
+
 
     /**
      * 构建流
@@ -74,7 +179,7 @@ public class StreamDemo {
      * Stream.generate
      */
     @Test
-    public void test07() throws Exception{
+    public void test07() throws Exception {
 
         // Stream.of
         Stream<String> stream = Stream.of("Java 8", "Lambdas", "In", "Action");
@@ -96,14 +201,14 @@ public class StreamDemo {
         System.out.println("===========================================================");
 
         // fibonnaci with iterate
-        Stream.iterate(new int[]{0, 1}, t -> new int[]{t[1],t[0] + t[1]})
+        Stream.iterate(new int[]{0, 1}, t -> new int[]{t[1], t[0] + t[1]})
                 .limit(10)
                 .forEach(t -> System.out.println("(" + t[0] + ", " + t[1] + ")"));
         System.out.println("===========================================================");
 
-        Stream.iterate(new int[]{0, 1}, t -> new int[]{t[1],t[0] + t[1]})
+        Stream.iterate(new int[]{0, 1}, t -> new int[]{t[1], t[0] + t[1]})
                 .limit(10)
-                . map(t -> t[0])
+                .map(t -> t[0])
                 .forEach(System.out::println);
         System.out.println("===========================================================");
 
@@ -119,8 +224,8 @@ public class StreamDemo {
                 .forEach(System.out::println);
         System.out.println("===========================================================");
 
-        IntStream.generate(new IntSupplier(){
-                    public int getAsInt(){
+        IntStream.generate(new IntSupplier() {
+                    public int getAsInt() {
                         return 2;
                     }
                 }).limit(5)
@@ -128,10 +233,11 @@ public class StreamDemo {
         System.out.println("===========================================================");
 
 
-        IntSupplier fib = new IntSupplier(){
+        IntSupplier fib = new IntSupplier() {
             private int previous = 0;
             private int current = 1;
-            public int getAsInt(){
+
+            public int getAsInt() {
                 int nextValue = this.previous + this.current;
                 this.previous = this.current;
                 this.current = nextValue;

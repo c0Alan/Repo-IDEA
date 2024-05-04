@@ -34,8 +34,7 @@ public class CreatingStreams {
     public static void main(String[] args) throws IOException {
         // 项目根路径
         Path path = Paths.get("alice30.txt");
-        String contents = new String(Files.readAllBytes(path),
-                StandardCharsets.UTF_8);
+        String contents = new String(Files.readAllBytes(path), StandardCharsets.UTF_8);
 
         Stream<String> words = Stream.of(contents.split("\\PL+"));
         show("words", words);

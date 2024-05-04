@@ -18,9 +18,7 @@ public class CollectingResults {
 
     public static <T> void show(String label, Set<T> set) {
         System.out.print(label + ": " + set.getClass().getName());
-        System.out.println("["
-                + set.stream().limit(10).map(Object::toString)
-                .collect(Collectors.joining(", ")) + "]");
+        System.out.println("[" + set.stream().limit(10).map(Object::toString).collect(Collectors.joining(", ")) + "]");
     }
 
     public static void main(String[] args) throws IOException {

@@ -1,15 +1,16 @@
 package com.demo.java.lambda;
 
-import com.demo.java.entity.CaloricLevel;
+import com.demo.java.entity.*;
 import com.demo.java.entity.Currency;
-import com.demo.java.entity.Dish;
-import com.demo.java.entity.Transaction02;
-import com.demo.java.entity.PartitionPrimeNumbers;
 import org.junit.Test;
 
+import java.io.IOException;
 import java.util.*;
 import java.util.function.BinaryOperator;
 import java.util.function.Consumer;
+import java.util.function.Function;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import static com.demo.java.entity.Dish.menu;
 import static com.demo.java.entity.Transaction02.transactions;
@@ -29,12 +30,63 @@ public class CollectorsDemo {
 
 
     /**
+     * Collectors.toMap
+     */
+    @Test
+    public void test08() throws IOException {
+        Map<Integer, String> idToName = people().collect(
+                Collectors.toMap(Person03::getId, Person03::getName));
+        System.out.println("idToName: " + idToName);
+        System.out.println("===========================================================");
+
+        Map<Integer, Person03> idToPerson = people().collect(
+                Collectors.toMap(Person03::getId, Function.identity()));
+        System.out.println("idToPerson: " + idToPerson.getClass().getName() + idToPerson);
+        System.out.println("===========================================================");
+
+        idToPerson = people().collect(
+                Collectors.toMap(Person03::getId, Function.identity(), (
+                        existingValue, newValue) -> {
+                    throw new IllegalStateException();
+                }, TreeMap::new));
+        System.out.println("idToPerson: " + idToPerson.getClass().getName() + idToPerson);
+        System.out.println("===========================================================");
+
+        Stream<Locale> locales = Stream.of(Locale.getAvailableLocales());
+        Map<String, String> languageNames = locales.collect(
+                Collectors.toMap(
+                        Locale::getDisplayLanguage,
+                        l -> l.getDisplayLanguage(l),
+                        (existingValue, newValue) -> existingValue));
+        System.out.println("languageNames: " + languageNames);
+        System.out.println("===========================================================");
+
+        locales = Stream.of(Locale.getAvailableLocales());
+        Map<String, Set<String>> countryLanguageSets = locales.collect(
+                Collectors.toMap(
+                        Locale::getDisplayCountry,
+                        l -> Collections.singleton(l.getDisplayLanguage()),
+                        // union of a and b
+                        (a, b) -> {
+                            Set<String> union = new HashSet<>(a);
+                            union.addAll(b);
+                            return union;
+                        }));
+        System.out.println("countryLanguageSets: " + countryLanguageSets);
+    }
+
+    public static Stream<Person03> people() {
+        return Stream.of(new Person03(1001, "Peter"), new Person03(1002, "Paul"), new Person03(1003, "Mary"));
+    }
+
+
+    /**
      * test06中自定义 Collector 的性能测试
      */
     @Test
-    public void test07()  {
+    public void test07() {
         System.out.println("Partitioning done in: " + execute(PartitionPrimeNumbers::partitionPrimes) + " msecs");
-        System.out.println("Partitioning done in: " + execute(PartitionPrimeNumbers::partitionPrimesWithCustomCollector) + " msecs" );
+        System.out.println("Partitioning done in: " + execute(PartitionPrimeNumbers::partitionPrimesWithCustomCollector) + " msecs");
     }
 
     private static long execute(Consumer<Integer> primePartitioner) {
