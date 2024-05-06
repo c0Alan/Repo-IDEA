@@ -1,0 +1,8 @@
+# node-v16 以上版本centos不支持，需要装新的gcc编译，比较麻烦
+pkg_name: node-v16.20.2-linux-x64.tar.xz
+tmp_dir: /opt/tmp/node
+install_dir: /opt/node-v16.20.2-linux-x64
+data_dir: /opt/node-v16.20.2-linux-x64/data
+log_dir: /opt/node-v16.20.2-linux-x64/logs
+unarchive_dir: /opt
+env_file: /etc/profile

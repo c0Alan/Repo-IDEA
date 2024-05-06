@@ -1,0 +1,4 @@
+- hosts: component
+  remote_user: root
+  roles:
+    - nodejs
