@@ -15,7 +15,7 @@
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
         <version>2.2.5.RELEASE</version>
-        <relativePath/>
+<!--        <version>2.5.15</version>-->
     </parent>
 
     <modules>
@@ -23,6 +23,7 @@
         <module>sch-demo</module>
         <module>sch-scheduler</module>
         <module>sch-gateway</module>
+        <module>sch-mysql</module>
     </modules>
 
     <properties>
