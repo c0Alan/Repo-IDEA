@@ -1,4 +1,4 @@
-package com.demo.springcloud.service.impl;
+package com.demo.springcloud.remote.impl;
 
 
 import cn.hutool.core.util.StrUtil;
@@ -7,9 +7,9 @@ import cn.hutool.poi.excel.ExcelUtil;
 import com.demo.springcloud.config.AppFileConfig;
 import com.demo.springcloud.entity.Dict;
 import com.demo.springcloud.entity.excel.XzqhExcelEntity;
-import com.demo.springcloud.service.ExcelService;
-import com.demo.springcloud.service.FileService;
-import com.demo.springcloud.service.MybatisService;
+import com.demo.springcloud.remote.ExcelService;
+import com.demo.springcloud.remote.FileService;
+import com.demo.springcloud.remote.MybatisService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

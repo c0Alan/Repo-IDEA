@@ -1,7 +1,7 @@
 package com.demo.springcloud.controller;
 
 import com.demo.springcloud.entity.Address;
-import com.demo.springcloud.service.AddressService;
+import com.demo.springcloud.remote.AddressService;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;

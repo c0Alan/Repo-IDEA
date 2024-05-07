@@ -1,11 +1,11 @@
-package com.demo.springcloud.service.impl;
+package com.demo.springcloud.remote.impl;
 
 import cn.hutool.core.util.StrUtil;
 import cn.hutool.json.JSON;
 import cn.hutool.json.JSONObject;
 import cn.hutool.json.JSONUtil;
 import com.demo.springcloud.config.AppFileConfig;
-import com.demo.springcloud.service.FileService;
+import com.demo.springcloud.remote.FileService;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.io.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;

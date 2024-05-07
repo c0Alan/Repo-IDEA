@@ -1,7 +1,7 @@
 package com.demo.springcloud.controller;
 
 import com.demo.springcloud.entity.Person;
-import com.demo.springcloud.service.PersonService;
+import com.demo.springcloud.remote.PersonService;
 import lombok.extern.slf4j.Slf4j;
 import org.elasticsearch.rest.RestStatus;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,8 +1,8 @@
-package com.demo.springcloud.service.impl;
+package com.demo.springcloud.remote.impl;
 
 import com.demo.springcloud.entity.DocBean;
 import com.demo.springcloud.repository.ElasticRepository;
-import com.demo.springcloud.service.IElasticService;
+import com.demo.springcloud.remote.IElasticService;
 import lombok.extern.slf4j.Slf4j;
 import org.elasticsearch.client.RestHighLevelClient;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,8 +1,8 @@
-package com.demo.springcloud.service.impl;
+package com.demo.springcloud.remote.impl;
 
 import cn.hutool.json.JSONObject;
-import com.demo.springcloud.service.BaseElasticsearchService;
-import com.demo.springcloud.service.ElasticsearchService;
+import com.demo.springcloud.remote.BaseElasticsearchService;
+import com.demo.springcloud.remote.ElasticsearchService;
 import lombok.extern.slf4j.Slf4j;
 import org.elasticsearch.action.support.master.AcknowledgedResponse;
 import org.elasticsearch.client.indices.CreateIndexRequest;

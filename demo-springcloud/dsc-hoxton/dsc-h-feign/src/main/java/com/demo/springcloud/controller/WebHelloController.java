@@ -1,6 +1,6 @@
 package com.demo.springcloud.controller;
 
-import com.demo.springcloud.service.WebHelloService;
+import com.demo.springcloud.remote.WebHelloService;
 import io.swagger.annotations.Api;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;

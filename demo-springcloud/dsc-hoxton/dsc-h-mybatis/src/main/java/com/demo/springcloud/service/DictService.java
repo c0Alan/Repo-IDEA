@@ -1,4 +1,4 @@
-package com.demo.springcloud.service;
+package com.demo.springcloud.remote;
 
 import com.demo.springcloud.entity.Dept;
 import com.demo.springcloud.entity.Dict;

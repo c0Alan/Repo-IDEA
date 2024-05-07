@@ -1,7 +1,7 @@
 package com.demo.springcloud.controller;
 
 import com.demo.springcloud.entity.DocBean;
-import com.demo.springcloud.service.IElasticService;
+import com.demo.springcloud.remote.IElasticService;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;

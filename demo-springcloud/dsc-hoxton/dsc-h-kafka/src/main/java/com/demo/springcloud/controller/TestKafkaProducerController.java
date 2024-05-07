@@ -1,6 +1,6 @@
 package com.demo.springcloud.controller;
 
-import com.demo.springcloud.service.kafka.TestKafkaProducerService;
+import com.demo.springcloud.remote.kafka.TestKafkaProducerService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;

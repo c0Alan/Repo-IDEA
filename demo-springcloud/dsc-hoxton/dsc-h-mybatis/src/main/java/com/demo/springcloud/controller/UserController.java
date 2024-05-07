@@ -1,7 +1,7 @@
 package com.demo.springcloud.controller;
 
 import com.demo.springcloud.entity.User;
-import com.demo.springcloud.service.UserService;
+import com.demo.springcloud.remote.UserService;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;

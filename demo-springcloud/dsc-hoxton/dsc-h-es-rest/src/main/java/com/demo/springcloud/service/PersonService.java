@@ -1,4 +1,4 @@
-package com.demo.springcloud.service;
+package com.demo.springcloud.remote;
 
 import cn.hutool.core.bean.BeanUtil;
 import com.demo.springcloud.entity.Person;

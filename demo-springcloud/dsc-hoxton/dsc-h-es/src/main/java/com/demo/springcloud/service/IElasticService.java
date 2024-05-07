@@ -1,4 +1,4 @@
-package com.demo.springcloud.service;
+package com.demo.springcloud.remote;
 
 import com.demo.springcloud.entity.DocBean;
 import org.springframework.data.domain.Page;

@@ -1,8 +1,8 @@
-package com.demo.springcloud.service.impl;
+package com.demo.springcloud.remote.impl;
 
 import com.demo.springcloud.entity.User;
 import com.demo.springcloud.mapper.UserMapper;
-import com.demo.springcloud.service.UserService;
+import com.demo.springcloud.remote.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

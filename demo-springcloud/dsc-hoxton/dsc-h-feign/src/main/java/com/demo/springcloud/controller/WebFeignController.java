@@ -1,6 +1,6 @@
 package com.demo.springcloud.controller;
 
-import com.demo.springcloud.service.WebFeignService;
+import com.demo.springcloud.remote.WebFeignService;
 import io.swagger.annotations.Api;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;

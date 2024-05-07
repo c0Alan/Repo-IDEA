@@ -1,8 +1,8 @@
-package com.demo.springcloud.service.impl;
+package com.demo.springcloud.remote.impl;
 
 import com.demo.springcloud.entity.Address;
 import com.demo.springcloud.mapper.AddressMapper;
-import com.demo.springcloud.service.AddressService;
+import com.demo.springcloud.remote.AddressService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

@@ -1,8 +1,8 @@
-package com.demo.springcloud.service.impl;
+package com.demo.springcloud.remote.impl;
 
 import com.demo.springcloud.entity.Dict;
 import com.demo.springcloud.mapper.DictMapper;
-import com.demo.springcloud.service.DictService;
+import com.demo.springcloud.remote.DictService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

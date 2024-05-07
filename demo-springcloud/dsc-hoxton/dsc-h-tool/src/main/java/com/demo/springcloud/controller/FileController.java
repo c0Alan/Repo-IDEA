@@ -2,7 +2,7 @@ package com.demo.springcloud.controller;
 
 import cn.hutool.json.JSONObject;
 import com.demo.springcloud.config.AppFileConfig;
-import com.demo.springcloud.service.FileService;
+import com.demo.springcloud.remote.FileService;
 import io.swagger.annotations.Api;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;

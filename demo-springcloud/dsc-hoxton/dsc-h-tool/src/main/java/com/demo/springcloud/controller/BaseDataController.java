@@ -1,7 +1,7 @@
 package com.demo.springcloud.controller;
 
 import com.demo.springcloud.entity.User;
-import com.demo.springcloud.service.BaseDataService;
+import com.demo.springcloud.remote.BaseDataService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;

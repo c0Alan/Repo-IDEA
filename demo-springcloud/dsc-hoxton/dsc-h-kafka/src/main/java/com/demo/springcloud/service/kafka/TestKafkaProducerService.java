@@ -1,4 +1,4 @@
-package com.demo.springcloud.service.kafka;
+package com.demo.springcloud.remote.kafka;
 
 import lombok.extern.slf4j.Slf4j;
 import org.apache.kafka.clients.producer.ProducerRecord;

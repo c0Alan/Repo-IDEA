@@ -3,7 +3,7 @@ package com.demo.springcloud.manager;
 import cn.hutool.poi.excel.ExcelReader;
 import cn.hutool.poi.excel.ExcelUtil;
 import com.demo.springcloud.config.AppFileConfig;
-import com.demo.springcloud.service.FileService;
+import com.demo.springcloud.remote.FileService;
 import lombok.Data;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.springframework.beans.factory.annotation.Autowired;
