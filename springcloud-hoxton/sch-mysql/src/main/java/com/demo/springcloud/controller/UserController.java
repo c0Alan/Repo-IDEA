@@ -1,6 +1,6 @@
 package com.demo.springcloud.controller;
 
-import com.sch.entity.User;
+import com.demo.springcloud.entity.User;
 import com.demo.springcloud.jdbc.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;

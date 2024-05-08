@@ -1,4 +1,4 @@
-package com.demo.springcloud.util;
+package com.demo.springcloud.utils;
 
 import com.demo.springcloud.enums.Status;
 import lombok.extern.slf4j.Slf4j;

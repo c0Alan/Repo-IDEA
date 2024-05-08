@@ -8,24 +8,6 @@ spring:
     username: ${mysql.username}
     password: ${mysql.password}
 
-  # flyway配置
-  flyway:
-    # sql 脚本的位置，默认为 classpath:db/migration。可手动指定
-    locations: classpath:db/migration
-    # 指定数据源，如果没有指定的话，将使用配置的主数据源
-    url: jdbc:mysql://${mysql.ipPort}/${mysql.dbName}?useUnicode=true&characterEncoding=utf8&useSSL=false&allowMultiQueries=true
-    # Flyway 管理的 Schema列表，区分大小写。默认连接对应的默认 Schema。如果这里明确指定了库名，那么在 spring.flyway.url 连接中指定的库名将无效
-    schemas: ${mysql.dbName}
-    # 用户名
-    user: ${mysql.username}
-    # 密码
-    password: ${mysql.password}
-    # 是否开启，默认开启
-    enabled: true
-    baseline-on-migrate: true
-    # 如果数据库不是空表，需要设置成 true，否则启动报错
-    placeholder-replacement: false
-    validate-on-migrate: false
 mybatis-plus:
   configuration:
     map-underscore-to-camel-case: true

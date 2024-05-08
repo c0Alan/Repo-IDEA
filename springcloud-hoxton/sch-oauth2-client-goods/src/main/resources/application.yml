@@ -1,0 +1,37 @@
+spring:
+  devtools:
+    restart:
+      additional-paths: src/main/*
+# thymeleaf 模板引擎配置
+  thymeleaf:
+    mode: HTML5
+    encoding: utf-8
+    servlet:
+      content-type: text/html
+    # 开发时关闭缓存,不然没法看到实时页面
+    cache: true
+    # 页面的存放路径就使用默认配置了
+    prefix: classpath:/templates/
+    check-template-location: true
+    suffix: .html
+
+auth-server: http://${auth.server}/sso
+
+security:
+  oauth2:
+    client:
+      client-id: client1
+      client-secret: 123456
+      user-authorization-uri: ${auth-server}/oauth/authorize
+      access-token-uri: ${auth-server}/oauth/token
+    resource:
+      jwt:
+        key-uri: ${auth-server}/oauth/token_key
+
+
+
+
+
+
+
+

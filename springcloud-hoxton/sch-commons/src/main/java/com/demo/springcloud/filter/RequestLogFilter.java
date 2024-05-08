@@ -9,6 +9,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
+/**
+ * 接口日志过滤器
+ *
+ * @author liuxl
+ * @date 2024/5/8
+ */
 @Slf4j
 @Component
 public class RequestLogFilter implements Filter {

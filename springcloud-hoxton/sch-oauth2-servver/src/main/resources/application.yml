@@ -1,0 +1,35 @@
+spring:
+  devtools:
+    restart:
+      additional-paths: src/main/*
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver      # 配置MySQL的驱动程序类
+    url: jdbc:mysql://${mysql.ipPort}/${mysql.dbName}?useUnicode=true&characterEncoding=utf8&useSSL=false&allowMultiQueries=true           # 数据库连接地址
+    username: ${mysql.username}
+    password: ${mysql.password}
+
+mybatis-plus:
+  configuration:
+    map-underscore-to-camel-case: true
+    auto-mapping-behavior: full
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  mapper-locations: classpath*:mapper/**/*Mapper.xml
+  global-config:
+    # 逻辑删除配置
+    db-config:
+      # 删除前
+      logic-not-delete-value: 1
+      # 删除后
+      logic-delete-value: 0
+jks:
+  name: jwt.jks
+  storepassword: mySecretKey
+  keypassword: mySecretKey
+  alias: jwt
+
+
+
+
+
+
+

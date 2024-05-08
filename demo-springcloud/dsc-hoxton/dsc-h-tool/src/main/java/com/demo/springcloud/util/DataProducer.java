@@ -1,4 +1,4 @@
-package com.demo.springcloud.util;
+package com.demo.springcloud.utils;
 
 import org.springframework.stereotype.Component;
 

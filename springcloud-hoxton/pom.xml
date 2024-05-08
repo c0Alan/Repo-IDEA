@@ -24,6 +24,9 @@
         <module>sch-scheduler</module>
         <module>sch-gateway</module>
         <module>sch-mysql</module>
+        <module>sch-flyway</module>
+        <module>sch-oauth2-servver</module>
+        <!--<module>sch-oauth2-client-goods</module>-->
     </modules>
 
     <properties>
@@ -71,6 +74,27 @@
                 <artifactId>spring-cloud-starter-netflix-hystrix</artifactId>
                 <version>2.1.3.RELEASE</version>
             </dependency>
+
+            <!-- oauth2 -->
+            <!--<dependency>
+                <groupId>org.springframework.security.oauth.boot</groupId>
+                <artifactId>spring-security-oauth2-autoconfigure</artifactId>
+                <version>2.1.3.RELEASE</version>
+            </dependency>-->
+
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-starter-oauth2</artifactId>
+                <version>2.2.5.RELEASE</version>
+            </dependency>
+
+            <!-- thymeleaf 模板引擎 -->
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-thymeleaf</artifactId>
+                <version>2.1.0.RELEASE</version>
+            </dependency>
+
             <dependency>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-starter-data-elasticsearch</artifactId>
@@ -89,6 +113,13 @@
                 <version>3.2.0</version>
             </dependency>
 
+            <!--阿里数据库连接池 -->
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>druid-spring-boot-starter</artifactId>
+                <version>1.2.21</version>
+            </dependency>
+
             <dependency>
                 <groupId>com.baomidou</groupId>
                 <artifactId>mybatis-plus-annotation</artifactId>
@@ -99,6 +130,13 @@
                 <groupId>com.baomidou</groupId>
                 <artifactId>mybatis-plus-generator</artifactId>
                 <version>3.2.0</version>
+            </dependency>
+
+            <!-- pagehelper 分页插件 -->
+            <dependency>
+                <groupId>com.github.pagehelper</groupId>
+                <artifactId>pagehelper-spring-boot-starter</artifactId>
+                <version>1.3.0</version>
             </dependency>
 
             <dependency>
@@ -165,6 +203,8 @@
                 <version>1.18.22</version>
             </dependency>
 
+
+
             <!--中文转拼音-->
             <dependency>
                 <groupId>com.belerweb</groupId>
@@ -209,10 +249,13 @@
             </dependency>
 
             <dependency>
-                <groupId>org.apache.poi</groupId>
-                <artifactId>poi-ooxml</artifactId>
-                <version>4.1.2</version>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-lang3</artifactId>
+                <version>3.8.1</version>
             </dependency>
+
+
+
 
             <dependency>
                 <groupId>org.eweb4j</groupId>
@@ -249,6 +292,35 @@
                 <groupId>io.etcd</groupId>
                 <artifactId>jetcd-core</artifactId>
                 <version>0.7.1</version>
+            </dependency>
+
+            <!--文件上传工具类 -->
+            <dependency>
+                <groupId>commons-fileupload</groupId>
+                <artifactId>commons-fileupload</artifactId>
+                <version>1.3.3</version>
+            </dependency>
+
+            <!-- excel工具 -->
+            <dependency>
+                <groupId>org.apache.poi</groupId>
+                <artifactId>poi-ooxml</artifactId>
+                <version>4.1.2</version>
+            </dependency>
+
+            <!-- 阿里JSON解析器 -->
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>fastjson</artifactId>
+                <version>1.2.75</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.demo.springcloud</groupId>
+                <artifactId>sch-commons</artifactId>
+                <version>1.0-SNAPSHOT</version>
+                <scope>system</scope>
+                <systemPath>D:/Repository/com/demo/springcloud/sch-commons/1.0-SNAPSHOT/sch-commons-1.0-SNAPSHOT.jar</systemPath>
             </dependency>
 
         </dependencies>

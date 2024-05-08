@@ -1,4 +1,4 @@
-package com.demo.springcloud.util;
+package com.demo.springcloud.utils;
 
 import com.demo.springcloud.entity.BusReceiverEntity;
 import net.sourceforge.pinyin4j.PinyinHelper;

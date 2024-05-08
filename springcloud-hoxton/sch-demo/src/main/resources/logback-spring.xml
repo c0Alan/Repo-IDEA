@@ -64,7 +64,11 @@
 			<charset>UTF-8</charset>
 		</encoder>
 	</appender>
-	<root level="info">
+
+	<!-- 以下为要排除的 包，类，方法 -->
+	<logger name="com.alibaba.nacos" level="INFO" />
+
+	<root level="debug">
 		<appender-ref ref="STDOUT" />
 		<appender-ref ref="RollingFile" />
 		<appender-ref ref="ErrorLog" />
