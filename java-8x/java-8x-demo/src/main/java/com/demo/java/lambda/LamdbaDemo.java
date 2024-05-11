@@ -32,17 +32,17 @@ public class LamdbaDemo {
     public void test05() {
 
         // Filtering with lambdas
-        List<Apple> inventory = Arrays.asList(new Apple(80,"green"), new Apple(155, "green"), new Apple(120, "red"));
+        List<Apple> inventory = Arrays.asList(new Apple(80, "green"), new Apple(155, "green"), new Apple(120, "red"));
 
         // [Apple{color='green', weight=80}, Apple{color='green', weight=155}]
         List<Apple> greenApples = filter(inventory, (Apple a) -> "green".equals(a.getColor()));
         System.out.println(greenApples);
     }
 
-    public static List<Apple> filter(List<Apple> inventory, ApplePredicate p){
+    public static List<Apple> filter(List<Apple> inventory, ApplePredicate p) {
         List<Apple> result = new ArrayList<>();
-        for(Apple apple : inventory){
-            if(p.test(apple)){
+        for (Apple apple : inventory) {
+            if (p.test(apple)) {
                 result.add(apple);
             }
         }
@@ -138,12 +138,16 @@ public class LamdbaDemo {
         Arrays.sort(planets, (first, second) -> first.length() - second.length());
         System.out.println(Arrays.toString(planets));
 
-        Timer t = new Timer(1000, event -> System.out.println("The time is " + new Date()));
-        t.start();
+        int[] nums = {4, 2, 7, 1, 3, 9, 5};
+        Arrays.sort(nums);
+        System.out.println(Arrays.toString(nums));
+
+//        Timer t = new Timer(1000, event -> System.out.println("The time is " + new Date()));
+//        t.start();
 
         // keep program running until user selects "Ok"
-        JOptionPane.showMessageDialog(null, "Quit program?");
-        System.exit(0);
+//        JOptionPane.showMessageDialog(null, "Quit program?");
+//        System.exit(0);
     }
 
     /**

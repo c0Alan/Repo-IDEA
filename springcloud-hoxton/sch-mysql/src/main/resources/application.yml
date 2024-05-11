@@ -22,17 +22,7 @@ mybatis-plus:
       # 删除后
       logic-delete-value: 0
 
-app:
-  test:
-    users:
-      - id: 1
-        deptId: 1
-        username: aaa
-        age: 2
-      - id: 2
-        deptId: 1
-        username: bbb
-        age: 2
+
 
 
 

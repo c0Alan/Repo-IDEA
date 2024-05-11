@@ -8,7 +8,7 @@
 	<property name="log.charset" value="UTF-8" />
 	<property name="log.basedir" value="../logs" />  <!-- 日志文件存储位置 -->
 	<!--<property name="FILE_LOG_PATTERN" value="%green(%d{yyyy-MM-dd HH:mm:ss.SSS, Asia/Shanghai}) %boldMagenta([%t]) %highlight(%-5level) %cyan(%logger{50} [%file : %line] -) %msg%n" />-->
-	<property name="FILE_LOG_PATTERN" value="%green(%d{yyyy-MM-dd HH:mm:ss.SSS, Asia/Shanghai}) %highlight(%-5level) %cyan(%logger{50} [%file : %line] -) %msg%n" />
+	<property name="FILE_LOG_PATTERN" value="%boldMagenta([%t]) %green(%d{yyyy-MM-dd HH:mm:ss.SSS, Asia/Shanghai}) %highlight(%-5level) %cyan(%logger{50} [%file : %line] -) %msg%n" />
 	<property name="LOG_PATH" value="${LOG_PATH:-${LOG_TEMP:-${log.basedir:-${java.io.tmpdir:-/tmp}}}/}" />
 	<property name="LOG_FILE" value="${LOG_FILE:-${LOG_PATH}${log.context.name}.log}" />
 	<property name="ERROR_LOG_FILE" value="${ERROR_LOG_FILE:-${LOG_PATH}${log.error}.log}" />
@@ -67,7 +67,7 @@
 
 	<!-- 以下为要排除的 包，类，方法 -->
 	<logger name="com.alibaba.nacos" level="INFO" />
-	<root level="debug">
+	<root level="info">
 		<appender-ref ref="STDOUT" />
 		<appender-ref ref="RollingFile" />
 		<appender-ref ref="ErrorLog" />
