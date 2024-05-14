@@ -8,9 +8,9 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 @MapperScan("com.demo.springcloud.mapper")
 @EnableDiscoveryClient
 @SpringBootApplication
-public class MysqlApp {
+public class SeataAtApp {
 
     public static void main(String[] args) {
-        SpringApplication.run(MysqlApp.class, args);
+        SpringApplication.run(SeataAtApp.class, args);
     }
 }

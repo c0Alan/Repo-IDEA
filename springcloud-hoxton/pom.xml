@@ -30,6 +30,7 @@
         <module>sch-oauth2-client</module>
         <module>sch-redisson</module>
         <module>sch-springboot</module>
+        <module>sch-seata-at</module>
     </modules>
 
     <properties>
