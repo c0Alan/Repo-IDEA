@@ -1,0 +1,13 @@
+[Unit]
+Description=seata
+After=network.target
+ 
+[Service]
+User=root
+Type=forking
+ExecStart=/bin/bash -c "source /etc/profile; /opt/seata/bin/seata-server.sh start"
+ExecStop=/bin/bash -c "source /etc/profile; /opt/seata/bin/seata-server.sh stop"
+Restart=always
+ 
+[Install]
+WantedBy=multi-user.target

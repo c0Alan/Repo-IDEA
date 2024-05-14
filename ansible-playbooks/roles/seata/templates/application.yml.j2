@@ -1,0 +1,122 @@
+server:
+  port: 7091
+
+spring:
+  application:
+    name: seata-server
+
+logging:
+  config: classpath:logback-spring.xml
+  file:
+    path: {{ log_dir }}
+#   extend:
+#     logstash-appender:
+#       destination: 127.0.0.1:4560
+#     kafka-appender:
+#       bootstrap-servers: 127.0.0.1:9092
+#       topic: logback_to_logstash
+
+console:
+  user:
+    username: seata
+    password: seata
+seata:
+  config:
+    # support: nacos 、 consul 、 apollo 、 zk  、 etcd3
+    type: nacos
+    nacos:
+      server-addr: nacos-center.v-base:8848
+      namespace: c1c3193f-0436-4511-b3b6-cac0db957973
+      group: SEATA_GROUP
+      username: nacos
+      password: nacos
+      context-path:
+      # data-id: seataServer.properties
+      data-id: public-component.properties
+  registry:
+    # support: nacos 、 eureka 、 redis 、 zk  、 consul 、 etcd3 、 sofa
+    type: nacos
+    preferred-networks: 30.240.*
+    nacos:
+      application: seata-server
+      server-addr: nacos-center.v-base:8848
+      group: SEATA_GROUP
+      namespace: c1c3193f-0436-4511-b3b6-cac0db957973
+      cluster: default
+      username: nacos
+      password: nacos
+      context-path:
+
+  server:
+#     raft:
+#       group: default
+#       cluster:
+#       snapshot-interval: 600
+#       apply-batch: 32
+#       max-append-bufferSize: 262144
+#       max-replicator-inflight-msgs: 256
+#       disruptor-buffer-size: 16384
+#       election-timeout-ms: 1000
+#       reporter-enabled: false
+#       reporter-initial-delay: 60
+#       serialization: jackson
+#       compressor: none
+#       sync: true # sync log&snapshot to disk
+    service-port: 8091 #If not configured, the default is '${server.port} + 1000'
+    max-commit-retry-timeout: -1
+    max-rollback-retry-timeout: -1
+    rollback-retry-timeout-unlock-enable: false
+    enable-check-auth: true
+    enable-parallel-request-handle: true
+    enable-parallel-handle-branch: false
+    retry-dead-threshold: 130000
+    xaer-nota-retry-timeout: 60000
+    enableParallelRequestHandle: true
+    recovery:
+      committing-retry-period: 1000
+      async-committing-retry-period: 1000
+      rollbacking-retry-period: 1000
+      timeout-retry-period: 1000
+    undo:
+      log-save-days: 7
+      log-delete-period: 86400000
+    session:
+      branch-async-queue-size: 5000 #branch async remove queue size
+      enable-branch-async-remove: false #enable to asynchronous remove branchSession
+  store:
+    # support: file 、 db 、 redis 、 raft
+    mode: db
+    db:
+      datasource: druid
+      db-type: mysql
+      driver-class-name: com.mysql.jdbc.Driver
+      url: jdbc:mysql://${mysql.server}/seata?rewriteBatchedStatements=true
+      user: ${mysql.username}
+      password: ${mysql.password}
+      min-conn: 10
+      max-conn: 100
+      global-table: global_table
+      branch-table: branch_table
+      lock-table: lock_table
+      distributed-lock-table: distributed_lock
+      query-limit: 1000
+      max-wait: 5000
+  metrics:
+    enabled: false
+    registry-type: compact
+    exporter-list: prometheus
+    exporter-prometheus-port: 9898
+  transport:
+    rpc-tc-request-timeout: 15000
+    enable-tc-server-batch-send-response: false
+    shutdown:
+      wait: 3
+    thread-factory:
+      boss-thread-prefix: NettyBoss
+      worker-thread-prefix: NettyServerNIOWorker
+      boss-thread-size: 1
+  security:
+    secretKey: SeataSecretKey0c382ef121d778043159209298fd40bf3850a017
+    tokenValidityInMilliseconds: 1800000
+    ignore:
+      urls: /,/**/*.css,/**/*.js,/**/*.html,/**/*.map,/**/*.svg,/**/*.png,/**/*.jpeg,/**/*.ico,/api/v1/auth/login,/metadata/v1/**

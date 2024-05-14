@@ -1,0 +1,10 @@
+# vars file for jdk
+pkg_name: seata-server-2.0.0.zip
+tmp_dir: /opt/tmp/seata
+unarchive_dir: /opt
+install_dir: /opt/seata
+log_dir: /opt/seata/logs
+mysql_ip: 192.168.50.133
+mysql_port: 3306
+mysql_user: liuxl
+mysql_pwd: lxl123

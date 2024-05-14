@@ -4,7 +4,7 @@ spring:
       additional-paths: src/main/*
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver      # 配置MySQL的驱动程序类
-    url: jdbc:mysql://${mysql.ipPort}/${mysql.dbName}?useUnicode=true&characterEncoding=utf8&useSSL=false&allowMultiQueries=true           # 数据库连接地址
+    url: jdbc:mysql://${mysql.server}/${mysql.dbName}?useUnicode=true&characterEncoding=utf8&useSSL=false&allowMultiQueries=true           # 数据库连接地址
     username: ${mysql.username}
     password: ${mysql.password}
 

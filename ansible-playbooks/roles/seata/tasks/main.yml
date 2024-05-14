@@ -1,0 +1,23 @@
+- name: 创建临时目录
+  file: path={{ tmp_dir }} state=directory
+- name: 拷贝安装包
+  copy: src={{ pkg_name }} dest={{ tmp_dir }}/{{ pkg_name }}
+- name: 卸载
+  file: path={{ install_dir }} state=absent
+- name: 解压安装
+  unarchive: src={{ tmp_dir }}/{{ pkg_name }} dest={{ unarchive_dir }} remote_src=yes
+- name: 拷贝脚本
+  copy: src=mysql.sql dest={{ install_dir }}/script/server/db/mysql.sql
+- name: 拷贝配置文件
+  template: src=application.yml.j2 dest={{ install_dir }}/conf/application.yml
+- name: 拷贝systemd文件
+  copy: src=seata.service dest=/etc/systemd/system
+- name: 执行脚本
+  shell: mysql -u{{ mysql_user }} -p{{ mysql_pwd }} < {{ install_dir }}/script/server/db/mysql.sql
+- name: 启动
+  service: name=seata state=restarted enabled=true
+- name: 删除临时目录
+  file: path={{ tmp_dir }} state=absent
+
+
+
