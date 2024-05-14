@@ -1,7 +1,7 @@
 package com.demo.springcloud.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.demo.springcloud.entity.TUser;
+import com.demo.springcloud.entity.SysUser;
 
 /**
  * <p>
@@ -11,6 +11,6 @@ import com.demo.springcloud.entity.TUser;
  * @author liuxilin
  * @since 2023-08-15
  */
-public interface TUserService extends IService<TUser> {
+public interface SysUserService extends IService<SysUser> {
 
 }

@@ -1,6 +1,6 @@
 package com.demo.springcloud.controller;
 
-import com.demo.springcloud.entity.User;
+import com.demo.springcloud.entity.SysUser;
 import com.demo.springcloud.jdbc.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -44,7 +44,7 @@ public class UserController {
         //循环取出结果
         for (int i = 0; i < list.size(); i++) {
             //新建学生对象
-            User user = (User) list.get(i);
+            SysUser user = (SysUser) list.get(i);
             //填充数据
             newlist.add(user.getId());
             newlist.add(user.getUsername());
@@ -58,7 +58,7 @@ public class UserController {
      * 查询数据
      */
     @GetMapping("/queryList")
-    public List<User> queryList() {
+    public List<SysUser> queryList() {
         //查寻数据
         List list = userService.queryAllUser();
 
@@ -73,7 +73,7 @@ public class UserController {
     @GetMapping("/update")
     public String update() {
         //新建对象传递数据
-        User user = new User();
+        SysUser user = new SysUser();
         user.setId(2);
         user.setUsername("尼古拉斯");
         user.setAge(23);

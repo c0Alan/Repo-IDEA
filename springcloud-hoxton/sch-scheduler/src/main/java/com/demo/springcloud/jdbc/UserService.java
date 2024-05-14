@@ -1,7 +1,7 @@
 package com.demo.springcloud.jdbc;
 
 
-import com.sch.entity.User;
+import com.demo.springcloud.entity.SysUser;
 
 import java.util.List;
 
@@ -19,14 +19,14 @@ public interface UserService {
      * 查询数据
      * @return
      */
-    List<User> queryAllUser();
+    List<SysUser> queryAllUser();
 
     /**
      * 更新数据
      * @param User
      * @return
      */
-    int updateUser(User User);
+    int updateUser(SysUser User);
 
     /**
      * 删除数据

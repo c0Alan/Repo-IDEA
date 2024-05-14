@@ -1,9 +1,9 @@
 package com.demo.springcloud.service.impl;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.demo.springcloud.entity.TUser;
-import com.demo.springcloud.mapper.TUserMapper;
-import com.demo.springcloud.service.TUserService;
+import com.demo.springcloud.entity.SysUser;
+import com.demo.springcloud.mapper.SysUserMapper;
+import com.demo.springcloud.service.SysUserService;
 import org.springframework.stereotype.Service;
 
 /**
@@ -15,6 +15,6 @@ import org.springframework.stereotype.Service;
  * @since 2023-08-15
  */
 @Service
-public class TUserServiceImpl extends ServiceImpl<TUserMapper, TUser> implements TUserService {
+public class SysUserServiceImpl extends ServiceImpl<SysUserMapper, SysUser> implements SysUserService {
 
 }

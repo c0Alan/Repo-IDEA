@@ -1,6 +1,6 @@
 package com.demo.springcloud.config;
 
-import com.sch.entity.User;
+import com.demo.springcloud.entity.SysUser;
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.context.properties.ConfigurationProperties;
@@ -19,7 +19,7 @@ import java.util.List;
 @Configuration
 public class AppTestConfig {
 
-    List<User> users;
+    List<SysUser> users;
 
     @PostConstruct
     public void init() {

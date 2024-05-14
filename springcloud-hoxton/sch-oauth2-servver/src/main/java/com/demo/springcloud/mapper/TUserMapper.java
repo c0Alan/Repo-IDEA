@@ -1,7 +1,7 @@
 package com.demo.springcloud.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.demo.springcloud.entity.TUser;
+import com.demo.springcloud.entity.SysUser;
 
 /**
  * <p>
@@ -11,6 +11,6 @@ import com.demo.springcloud.entity.TUser;
  * @author liuxilin
  * @since 2023-08-15
  */
-public interface TUserMapper extends BaseMapper<TUser> {
+public interface TUserMapper extends BaseMapper<SysUser> {
 
 }

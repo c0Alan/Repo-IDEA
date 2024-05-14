@@ -1,8 +1,8 @@
 package com.demo.springcloud.controller;
 
 
-import com.demo.springcloud.entity.TUser;
-import com.demo.springcloud.service.TUserService;
+import com.demo.springcloud.entity.SysUser;
+import com.demo.springcloud.service.SysUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,13 +20,13 @@ import java.util.List;
  */
 @RestController
 @RequestMapping("/tUser")
-public class TUserController {
+public class SysUserController {
 
     @Autowired
-    TUserService tUserService;
+    SysUserService tUserService;
 
     @GetMapping("/list")
-    public List<TUser> listUsers(){
+    public List<SysUser> listUsers(){
         return tUserService.list();
     }
 

@@ -1,7 +1,7 @@
 package com.demo.springcloud.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.demo.springcloud.entity.UserInfo;
+import com.demo.springcloud.entity.SysUser;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
@@ -13,7 +13,7 @@ import org.apache.ibatis.annotations.Select;
  * @Description: UserMapper
  */
 @Mapper
-public interface UserMapper extends BaseMapper<UserInfo> {
+public interface SysUserMapper extends BaseMapper<SysUser> {
 
     /**
      * 根据用户名查询用户
@@ -22,5 +22,5 @@ public interface UserMapper extends BaseMapper<UserInfo> {
      * @return
      */
     @Select("select username,password,enabled from t_user where username = #{username} and enabled = 1")
-    UserInfo queryUserByUserName(@Param("username") String username);
+    SysUser queryUserByUserName(@Param("username") String username);
 }

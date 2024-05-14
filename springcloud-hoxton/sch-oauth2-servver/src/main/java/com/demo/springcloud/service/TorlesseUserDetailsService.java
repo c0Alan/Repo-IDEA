@@ -1,6 +1,6 @@
 package com.demo.springcloud.service;
 
-import com.demo.springcloud.entity.UserInfo;
+import com.demo.springcloud.entity.SysUser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.User;
@@ -23,15 +23,15 @@ import java.util.List;
 public class TorlesseUserDetailsService implements UserDetailsService {
 
     @Autowired
-    private UserSerivce userSerivce;
+    private SysUserSerivce sysUserSerivce;
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         //登录校验
-        if (userSerivce.queryByUserName(username) == null) {
+        if (sysUserSerivce.queryByUserName(username) == null) {
             throw new UsernameNotFoundException("the user is not found");
         } else {
-            UserInfo userInfo = userSerivce.queryByUserName(username);
+            SysUser userInfo = sysUserSerivce.queryByUserName(username);
 
             //授权
             List<SimpleGrantedAuthority> authorities = new ArrayList<>();

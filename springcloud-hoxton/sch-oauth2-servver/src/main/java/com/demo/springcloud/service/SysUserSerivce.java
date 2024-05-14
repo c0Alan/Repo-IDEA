@@ -1,7 +1,7 @@
 package com.demo.springcloud.service;
 
 
-import com.demo.springcloud.entity.UserInfo;
+import com.demo.springcloud.entity.SysUser;
 
 /**
  * Created with IntelliJ IDEA.
@@ -10,7 +10,7 @@ import com.demo.springcloud.entity.UserInfo;
  * @Date: 2022/04/11/22:40
  * @Description: UserSerivce
  */
-public interface UserSerivce {
+public interface SysUserSerivce {
 
     /**
      * 根据用户名查询用户信息
@@ -18,5 +18,5 @@ public interface UserSerivce {
      * @param username
      * @return
      */
-    public UserInfo queryByUserName(String username);
+    public SysUser queryByUserName(String username);
 }

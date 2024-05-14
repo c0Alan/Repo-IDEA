@@ -1,6 +1,6 @@
 package com.demo.springcloud.jdbc.impl;
 
-import com.demo.springcloud.entity.User;
+import com.demo.springcloud.entity.SysUser;
 import com.demo.springcloud.jdbc.UserService;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.PreparedStatementSetter;
@@ -30,15 +30,15 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public List<User> queryAllUser() {
+    public List<SysUser> queryAllUser() {
         //SQL
         String sql = "SELECT *  FROM t_user WHERE username='张三'";
 
-        List<User> list = jdbcTemplate.query(sql, new RowMapper<User>() {
+        List<SysUser> list = jdbcTemplate.query(sql, new RowMapper<SysUser>() {
             //映射每行数据  
             @Override
-            public User mapRow(ResultSet rs, int rowNum) throws SQLException {
-                User user = new User();
+            public SysUser mapRow(ResultSet rs, int rowNum) throws SQLException {
+                SysUser user = new SysUser();
                 user.setId(rs.getInt("id"));
                 user.setAge(rs.getInt("age"));
                 user.setUsername(rs.getString("username"));
@@ -50,7 +50,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public int updateUser(User User) {
+    public int updateUser(SysUser SysUser) {
 
         String sql = "update t_user set username=?,age=? where id=?";
 
@@ -58,9 +58,9 @@ public class UserServiceImpl implements UserService {
             //映射数据
             @Override
             public void setValues(PreparedStatement preparedStatement) throws SQLException {
-                preparedStatement.setString(1, User.getUsername());
-                preparedStatement.setInt(2, User.getAge());
-                preparedStatement.setInt(3, User.getId());
+                preparedStatement.setString(1, SysUser.getUsername());
+                preparedStatement.setInt(2, SysUser.getAge());
+                preparedStatement.setInt(3, SysUser.getId());
             }
         });
 

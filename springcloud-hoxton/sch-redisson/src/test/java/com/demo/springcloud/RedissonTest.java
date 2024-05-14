@@ -1,19 +1,28 @@
 package com.demo.springcloud;
 
+import com.demo.springcloud.entity.SysUser;
 import com.demo.springcloud.entity.User;
-import org.junit.jupiter.api.Test;
+import com.demo.springcloud.mapper.TUserMapper;
+import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.redisson.api.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.cache.annotation.Cacheable;
+import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.concurrent.TimeUnit;
 
+@RunWith(SpringRunner.class)
 @SpringBootTest
 public class RedissonTest {
 
     //注入RedissonClient
     @Autowired
     RedissonClient redissonClient;
+
+    @Autowired
+    TUserMapper tUserMapper;
 
     @Test
     public void test() {
@@ -96,6 +105,17 @@ public class RedissonTest {
             lock.unlock();
             System.out.println("释放锁成功");
         }
+    }
+
+    @Test
+    public void test1() {
+        SysUser user = tUserMapper.selectById(1);
+        System.out.println(user);
+    }
+
+    @Cacheable(value = "userCache",key = "#id",cacheManager = "cacheManager")
+    public void queryById() {
+        SysUser user =  tUserMapper.selectById(2);
     }
 
 }

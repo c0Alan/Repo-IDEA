@@ -1,6 +1,6 @@
 package com.demo.springcloud;
 
-import com.demo.springcloud.mapper.TUserMapper;
+import com.demo.springcloud.mapper.SysUserMapper;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,7 +11,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 @SpringBootTest
 public class MysqlTest {
 	@Autowired
-	TUserMapper tUserMapper;
+    SysUserMapper sysUserMapper;
 
 	@Test
 	public void contextLoads() {
@@ -20,7 +20,7 @@ public class MysqlTest {
 
 	@Test
 	public void test() {
-		System.out.println(tUserMapper.selectById(1));
+		System.out.println(sysUserMapper.selectById(1));
 	}
 
 }

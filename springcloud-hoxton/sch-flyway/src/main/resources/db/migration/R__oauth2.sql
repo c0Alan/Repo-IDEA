@@ -91,18 +91,4 @@ create table ClientDetails
     autoApproveScopes      VARCHAR(256)
 );
 
--- 用户表
-DROP TABLE IF EXISTS t_user;
-CREATE TABLE t_user
-(
-    id INT(11) UNSIGNED NOT NULL AUTO_INCREMENT COMMENT '自增id',
-    username  varchar(32) NULL DEFAULT NULL,
-    password  varchar(64) NULL DEFAULT NULL,
-    telephone varchar(11) NULL DEFAULT NULL COMMENT '手机号',
-    enabled   int(0) NULL DEFAULT 1 COMMENT '默认1  1有效 0 无效',
-    age   TINYINT UNSIGNED NULL DEFAULT NULL COMMENT '年龄',
-    PRIMARY KEY (id) USING BTREE,
-    UNIQUE INDEX idx_username(username) USING BTREE
-);
-INSERT INTO t_user VALUES (1, 'zhangsan', '$2a$10$rCNJoo6tg1Jb278KJJREk.XIAEHoArojMVGOW3ehjtW3Rb7ayhAZu', '12345678998', 1, null);
-INSERT INTO t_user VALUES (2, 'torlesse', '$2a$10$dIEID4LCcsWS2lXJLO2VCO.yTow70YIuPfM9sy9c8HtEArEokgpTm', '12345678999', 1, null);
+
