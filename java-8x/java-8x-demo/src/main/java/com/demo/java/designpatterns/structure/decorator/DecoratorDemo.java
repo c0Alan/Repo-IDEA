@@ -4,6 +4,7 @@ import org.junit.Test;
 
 /**
  * Decorator 装饰器模式, 给一个对象动态增加一些新的功能
+ * 常用于功能增强，如 HttpServletRequestWrapper、HttpServletResponseWrapper 实现敏感词处理，HTML标签处理等
  *
  * @author liuxl
  * @date 2024/4/29

@@ -22,18 +22,18 @@ public class MybatisPlusCodeGenerator {
     public static void main(String[] args) {
         //====================配置变量区域=====================//
         //生成文件的作者，可以不填
-        String author = "liuxilin";
+        String author = "liuxl";
         //生成的entity、controller、service等包所在的公共上一级包路径全限定名
-        String rootPackage = "com.sch";
-        String moduleName = "sch-demo";
+        String rootPackage = "com.demo.springcloud";
+        String moduleName = "sch-flyway";
         //数据库配置
-        String url = "jdbc:mysql://172.25.22.93:3306/db_dsc?useUnicode=true&characterEncoding=utf8&useSSL=false&allowMultiQueries=true";
+        String url = "jdbc:mysql://192.168.50.133:3306/demo?useUnicode=true&characterEncoding=utf8&useSSL=false&allowMultiQueries=true";
         //或者com.mysql.cj.jdbc.Driver
         String driverClassName = "com.mysql.cj.jdbc.Driver";
-        String username = "videoweb";
-        String password = "suntek";
+        String username = "liuxl";
+        String password = "lxl123";
         //表名，多个使用,分隔
-        String tableNames = "t_user";
+        String tableNames = "sys_user";
         //====================配置变量区域=====================//
 
         // 代码生成器
@@ -41,7 +41,7 @@ public class MybatisPlusCodeGenerator {
         // 全局配置
         GlobalConfig globalConfig = new GlobalConfig();
         String projectPath = System.getProperty("user.dir");
-        globalConfig.setOutputDir(projectPath + "/springcloud-hoxton-demo/" + moduleName + "/src/main/java");
+        globalConfig.setOutputDir(projectPath + "/springcloud-hoxton/" + moduleName + "/src/main/java");
         //是否覆盖已有文件，默认false
         globalConfig.setFileOverride(false);
         //是否打开输出目录
@@ -79,7 +79,7 @@ public class MybatisPlusCodeGenerator {
         // 策略配置：配置根据哪张表生成代码
         StrategyConfig strategy = new StrategyConfig();
         //表名，多个英文逗号分割（与exclude二选一配置）
-        strategy.setInclude(tableNames);
+        strategy.setInclude(tableNames.split(","));
         strategy.setNaming(NamingStrategy.underline_to_camel);
         strategy.setColumnNaming(NamingStrategy.underline_to_camel);
         //strategy.setSuperEntityClass("你自己的父类实体,没有就不用设置!");

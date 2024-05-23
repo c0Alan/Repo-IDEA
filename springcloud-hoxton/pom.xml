@@ -326,6 +326,25 @@
                 <version>4.1.109.Final</version>
             </dependency>
 
+            <!-- seata 相关依赖 -->
+            <dependency>
+                <groupId>io.seata</groupId>
+                <artifactId>seata-spring-boot-starter</artifactId>
+                <version>2.0.0</version>
+            </dependency>
+            <dependency>
+                <groupId>com.alibaba.cloud</groupId>
+                <artifactId>spring-cloud-starter-alibaba-seata</artifactId>
+                <version>2023.0.1.0</version>
+                <exclusions>
+                    <exclusion>
+                        <groupId>io.seata</groupId>
+                        <artifactId>seata-spring-boot-starter</artifactId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+
+
             <dependency>
                 <groupId>com.demo.springcloud</groupId>
                 <artifactId>sch-commons</artifactId>

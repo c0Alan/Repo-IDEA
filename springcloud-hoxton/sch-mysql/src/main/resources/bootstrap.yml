@@ -17,7 +17,7 @@ spring:
       discovery:
         server-addr: ${nacosServer}
         namespace: c1c3193f-0436-4511-b3b6-cac0db957973
-        group: dsc
+#        group: dsc
         username: nacos
         password: nacos
       config:

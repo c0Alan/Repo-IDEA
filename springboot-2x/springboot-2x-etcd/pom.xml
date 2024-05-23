@@ -24,6 +24,12 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
+
+		<!-- 接口文档使用 knife4j-spring-ui -->
+		<dependency>
+			<groupId>com.github.xiaoymin</groupId>
+			<artifactId>knife4j-openapi2-spring-boot-starter</artifactId>
+		</dependency>
 		
 		<dependency>
             <groupId>io.etcd</groupId>

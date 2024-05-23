@@ -61,9 +61,8 @@
         </dependency>
 
         <dependency>
-            <groupId>com.sch</groupId>
+            <groupId>com.demo.springcloud</groupId>
             <artifactId>sch-commons</artifactId>
-            <version>1.0</version>
         </dependency>
 
         <dependency>

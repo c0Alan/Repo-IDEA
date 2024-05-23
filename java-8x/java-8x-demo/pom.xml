@@ -113,6 +113,10 @@
             <artifactId>fastjson</artifactId>
         </dependency>
 
+        <dependency>
+            <groupId>com.demo.java</groupId>
+            <artifactId>java-8x-commons</artifactId>
+        </dependency>
 
     </dependencies>
 

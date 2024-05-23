@@ -1,7 +1,6 @@
 package com.demo.springcloud;
 
 import com.demo.springcloud.entity.SysUser;
-import com.demo.springcloud.entity.User;
 import com.demo.springcloud.mapper.TUserMapper;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -27,9 +26,9 @@ public class RedissonTest {
     @Test
     public void test() {
         //创建一个User对象
-        User user = new User(1, "test", "password");
+        SysUser user = new SysUser(1, "test", "password");
         //获得一个RBucket实现类，参数是redis数据库中的key值
-        RBucket<User> bucket = redissonClient.getBucket("user:" + user.getId());
+        RBucket<SysUser> bucket = redissonClient.getBucket("user:" + user.getId());
         //执行set语句，将user对象存入redis中
         bucket.set(user);
     }
@@ -37,22 +36,22 @@ public class RedissonTest {
     @Test
     public void get() {
         //获得一个RBucket实现类，参数是redis数据库中的key值
-        RBucket<User> bucket = redissonClient.getBucket("user:1");
-        User user = bucket.get();
+        RBucket<SysUser> bucket = redissonClient.getBucket("user:1");
+        SysUser user = bucket.get();
         System.out.println(user);
     }
 
     @Test
     public void update() {
-        User user = new User(1, "newName", "newPassword");
-        RBucket<User> bucket = redissonClient.getBucket("user:" + user.getId());
+        SysUser user = new SysUser(1, "newName", "newPassword");
+        RBucket<SysUser> bucket = redissonClient.getBucket("user:" + user.getId());
         //bucket.set(user); 不管key存在不存在都添加/修改值
         bucket.setIfExists(user);
     }
 
     @Test
     public void del() {
-        RBucket<User> bucket = redissonClient.getBucket("user:1");
+        RBucket<SysUser> bucket = redissonClient.getBucket("user:1");
         bucket.delete();
     }
 

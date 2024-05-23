@@ -10,6 +10,7 @@
     <version>1.0</version>
     <modules>
         <module>java-8x-demo</module>
+        <module>java-8x-web</module>
     </modules>
 
     <properties>
@@ -210,11 +211,6 @@
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>com.demo.java</groupId>
-            <artifactId>java-8x-commons</artifactId>
         </dependency>
 
         <dependency>

@@ -11,6 +11,3 @@ CREATE TABLE IF NOT EXISTS undo_log
     UNIQUE KEY ux_undo_log (xid, branch_id)
 ) AUTO_INCREMENT = 1 COMMENT ='AT transaction mode undo table';
 ALTER TABLE undo_log ADD INDEX ix_log_created (log_created);
-
-
-

@@ -4,7 +4,7 @@ spring:
       additional-paths: src/main/*
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver      # 配置MySQL的驱动程序类
-    url: jdbc:mysql://${mysql.ipPort}/${mysql.dbName}?useUnicode=true&characterEncoding=utf8&useSSL=false&allowMultiQueries=true           # 数据库连接地址
+    url: jdbc:mysql://${mysql.server}/${mysql.dbName}?useUnicode=true&characterEncoding=utf8&useSSL=false&allowMultiQueries=true           # 数据库连接地址
     username: ${mysql.username}
     password: ${mysql.password}
 
@@ -13,7 +13,7 @@ spring:
     # sql 脚本的位置，默认为 classpath:db/migration。可手动指定
     locations: classpath:db/migration
     # 指定数据源，如果没有指定的话，将使用配置的主数据源
-    url: jdbc:mysql://${mysql.ipPort}/${mysql.dbName}?useUnicode=true&characterEncoding=utf8&useSSL=false&allowMultiQueries=true
+    url: jdbc:mysql://${mysql.server}/${mysql.dbName}?useUnicode=true&characterEncoding=utf8&useSSL=false&allowMultiQueries=true
     # Flyway 管理的 Schema列表，区分大小写。默认连接对应的默认 Schema。如果这里明确指定了库名，那么在 spring.flyway.url 连接中指定的库名将无效
     schemas: ${mysql.dbName}
     # 用户名
