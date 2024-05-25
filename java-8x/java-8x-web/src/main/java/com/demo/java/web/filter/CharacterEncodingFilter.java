@@ -19,8 +19,8 @@ public class CharacterEncodingFilter implements Filter {
     //设置默认的字符编码
     private String defaultCharset = "UTF-8";
 
-    public void doFilter(ServletRequest req, ServletResponse resp,
-                         FilterChain chain) throws IOException, ServletException {
+    @Override
+    public void doFilter(ServletRequest req, ServletResponse resp, FilterChain chain) throws IOException, ServletException {
 
         HttpServletRequest request = (HttpServletRequest) req;
         HttpServletResponse response = (HttpServletResponse) resp;
@@ -36,11 +36,13 @@ public class CharacterEncodingFilter implements Filter {
         chain.doFilter(requestWrapper, response);
     }
 
+    @Override
     public void init(FilterConfig filterConfig) throws ServletException {
         //得到过滤器的初始化配置信息
         this.filterConfig = filterConfig;
     }
 
+    @Override
     public void destroy() {
 
     }

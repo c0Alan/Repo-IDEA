@@ -1,3 +1,4 @@
+// 参考：https://blog.csdn.net/iteye_1742/article/details/82606438
 var Ajax = {
 
     // 基础选项  

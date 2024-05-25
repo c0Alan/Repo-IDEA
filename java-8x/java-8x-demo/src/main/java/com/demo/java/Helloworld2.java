@@ -7,8 +7,10 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * @author liuxilin
- * @since 2023-07-30
+ * 层序遍历二叉树
+ *
+ * @author liuxl
+ * @date 2024/5/25
  */
 @Slf4j
 public class Helloworld2 {
@@ -108,8 +110,9 @@ public class Helloworld2 {
         }
 
         public boolean hasRChild() {
-            if (rChild != null)
+            if (rChild != null) {
                 return true;
+            }
             return false;
         }
 

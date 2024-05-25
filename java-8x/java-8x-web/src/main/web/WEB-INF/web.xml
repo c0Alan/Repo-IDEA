@@ -355,6 +355,33 @@
         <url-pattern>*.do</url-pattern>
     </servlet-mapping>
 
+    <!-- 文件上传下载 -->
+    <servlet>
+        <servlet-name>UploadHandleServlet</servlet-name>
+        <servlet-class>com.demo.java.web.servlet.UploadHandleServlet2</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>UploadHandleServlet</servlet-name>
+        <url-pattern>/servlet/UploadHandleServlet</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>ListFileServlet</servlet-name>
+        <servlet-class>com.demo.java.web.servlet.ListFileServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ListFileServlet</servlet-name>
+        <url-pattern>/servlet/ListFileServlet</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>DownLoadServlet</servlet-name>
+        <servlet-class>com.demo.java.web.servlet.DownLoadServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>DownLoadServlet</servlet-name>
+        <url-pattern>/servlet/DownLoadServlet</url-pattern>
+    </servlet-mapping>
 
     <!-- **************************** filter **************************** -->
     <!--配置过滤器-->
@@ -444,7 +471,8 @@
         <url-pattern>/*</url-pattern>
     </filter-mapping>
 
-    <filter>
+    <!-- 编码过滤器, 这里开起来会导致乱码 -->
+    <!--<filter>
         <filter-name>CharacterEncodingFilter</filter-name>
         <filter-class>com.demo.java.web.filter.CharacterEncodingFilter</filter-class>
         <init-param>
@@ -455,9 +483,10 @@
     <filter-mapping>
         <filter-name>CharacterEncodingFilter</filter-name>
         <url-pattern>/*</url-pattern>
-    </filter-mapping>
+    </filter-mapping>-->
 
-    <filter>
+    <!-- 编码&敏感词&html过滤器组合 -->
+    <!--<filter>
         <filter-name>AdvancedFilter</filter-name>
         <filter-class>com.demo.java.web.filter.AdvancedFilter</filter-class>
         <init-param>
@@ -469,13 +498,12 @@
             <param-value>/WEB-INF/DirtyWord.txt</param-value>
         </init-param>
     </filter>
-
     <filter-mapping>
         <filter-name>AdvancedFilter</filter-name>
         <url-pattern>/*</url-pattern>
-    </filter-mapping>
+    </filter-mapping>-->
 
-    <!--response 过滤器部分-->
+    <!-- response 过滤器部分 -->
     <filter>
         <description>配置压缩过滤器</description>
         <filter-name>GzipFilter</filter-name>
@@ -524,15 +552,15 @@
         <url-pattern>/test2.jsp</url-pattern>
     </filter-mapping>
 
-    <filter>
+    <!--<filter>
         <filter-name>NoCacheFilter</filter-name>
         <filter-class>com.demo.java.web.filter.NoCacheFilter</filter-class>
     </filter>
     <filter-mapping>
         <filter-name>NoCacheFilter</filter-name>
-        <!--只拦截Jsp请求-->
+        &lt;!&ndash;只拦截Jsp请求&ndash;&gt;
         <servlet-name>*.jsp</servlet-name>
-    </filter-mapping>
+    </filter-mapping>-->
 
     <!-- 配置缓存过滤器 -->
     <filter>

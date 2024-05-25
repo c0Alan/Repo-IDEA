@@ -37,6 +37,10 @@
     <a href="${pageContext.request.contextPath}/LoginUI/Login3.do">/LoginUI/Login3.do: 跳转登录页面</a><br/>
     <a href="${pageContext.request.contextPath}/login/handle.do?usename=gacl&pwd=xdp">/login/handle.do: 接口访问</a><br/>
 
+    <p>============================== 文件上传下载 ==============================</p>
+    <a href="${pageContext.request.contextPath}/jsp/upload.jsp">/jsp/upload.jsp: 文件上传界面</a><br/>
+    <a href="${pageContext.request.contextPath}/servlet/ListFileServlet">/servlet/ListFileServlet: 文件下载列表</a><br/>
+
 </div>
 <hr/>
 <label style="color: #007bff;">${msg}</label>

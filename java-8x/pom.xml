@@ -204,6 +204,18 @@
                 <version>1.2.75</version>
             </dependency>
 
+            <dependency>
+                <groupId>commons-fileupload</groupId>
+                <artifactId>commons-fileupload</artifactId>
+                <version>1.5</version>
+            </dependency>
+
+            <dependency>
+                <groupId>mysql</groupId>
+                <artifactId>mysql-connector-java</artifactId>
+                <version>8.0.28</version>
+            </dependency>
+
         </dependencies>
     </dependencyManagement>
 

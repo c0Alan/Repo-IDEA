@@ -12,8 +12,7 @@ public class DaemonDemo {
     }
 
     public static void test01() {
-        System.out.println(Thread.currentThread().getName()
-                + "(isDaemon=" + Thread.currentThread().isDaemon() + ")");
+        System.out.println(Thread.currentThread().getName() + "(isDaemon=" + Thread.currentThread().isDaemon() + ")");
 
         Thread t1 = new DaemonThread02("t1");    // 新建t1
         Thread t2 = new DaemonThread01("t2");    // 新建t2

@@ -27,8 +27,7 @@ public class AdvancedFilter implements Filter {
     }
 
     @Override
-    public void doFilter(ServletRequest req, ServletResponse resp,
-                         FilterChain chain) throws IOException, ServletException {
+    public void doFilter(ServletRequest req, ServletResponse resp, FilterChain chain) throws IOException, ServletException {
         HttpServletRequest request = (HttpServletRequest) req;
         HttpServletResponse response = (HttpServletResponse) resp;
         //得到在web.xml中配置的字符编码
