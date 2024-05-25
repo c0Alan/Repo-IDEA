@@ -1,7 +1,7 @@
 package com.demo.java.web.jdbc.myframework;
 
 import com.demo.java.web.domain.Account;
-import com.demo.java.web.jdbc.util.JdbcUtils;
+import com.demo.java.web.jdbc.utils.JdbcUtils;
 
 import java.sql.SQLException;
 import java.util.List;

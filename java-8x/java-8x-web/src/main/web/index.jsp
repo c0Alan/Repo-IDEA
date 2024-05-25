@@ -41,6 +41,10 @@
     <a href="${pageContext.request.contextPath}/jsp/upload.jsp">/jsp/upload.jsp: 文件上传界面</a><br/>
     <a href="${pageContext.request.contextPath}/servlet/ListFileServlet">/servlet/ListFileServlet: 文件下载列表</a><br/>
 
+    <p>============================== jdbc操作 ==============================</p>
+    <a href="${pageContext.request.contextPath}/jdbc/DataSourceJNDIServlet">/servlet/DataSourceJNDIServlet: JNDI数据库连接池</a><br/>
+    <a href="${pageContext.request.contextPath}/jdbc/AccountServlet">/servlet/AccountServlet: 模拟controller、service、dao三层访问链路及事务回滚</a><br/>
+
 </div>
 <hr/>
 <label style="color: #007bff;">${msg}</label>

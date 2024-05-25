@@ -31,7 +31,14 @@ DROP TABLE IF EXISTS testclob;
 create table testclob
 (
     id int primary key auto_increment,
-    resume text
+    resume MEDIUMTEXT
+);
+
+DROP TABLE IF EXISTS testblob;
+create table testblob
+(
+   id int primary key auto_increment,
+   image longblob
 );
 
 DROP TABLE IF EXISTS testbatch;

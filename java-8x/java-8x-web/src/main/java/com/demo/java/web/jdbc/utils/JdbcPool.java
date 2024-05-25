@@ -1,5 +1,6 @@
-package com.demo.java.web.jdbc.pool;
+package com.demo.java.web.jdbc.utils;
 
+import javax.sql.DataSource;
 import java.io.InputStream;
 import java.io.PrintWriter;
 import java.lang.reflect.InvocationHandler;
@@ -12,7 +13,6 @@ import java.sql.SQLFeatureNotSupportedException;
 import java.util.LinkedList;
 import java.util.Properties;
 import java.util.logging.Logger;
-import javax.sql.DataSource;
 
 /**
  * 编写数据库连接池
@@ -92,6 +92,7 @@ public class JdbcPool implements DataSource {
     /**
      * 获取数据库连接
      * 这种方式会存在线程安全问题
+     *
      * @see javax.sql.DataSource#getConnection()
      */
     @Override
@@ -104,8 +105,7 @@ public class JdbcPool implements DataSource {
             //返回Connection对象的代理对象
             return (Connection) Proxy.newProxyInstance(JdbcPool.class.getClassLoader(), conn.getClass().getInterfaces(), new InvocationHandler() {
                 @Override
-                public Object invoke(Object proxy, Method method, Object[] args)
-                        throws Throwable {
+                public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
                     if (!method.getName().equals("close")) {
                         return method.invoke(conn, args);
                     } else {
@@ -123,8 +123,7 @@ public class JdbcPool implements DataSource {
     }
 
     @Override
-    public Connection getConnection(String username, String password)
-            throws SQLException {
+    public Connection getConnection(String username, String password) throws SQLException {
         return null;
     }
 }

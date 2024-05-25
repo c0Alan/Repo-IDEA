@@ -1,6 +1,6 @@
-package com.demo.java.web.jdbc.metadata;
+package com.demo.java.web.jdbc;
 
-import com.demo.java.web.jdbc.util.JdbcUtils;
+import com.demo.java.web.jdbc.utils.JdbcUtils;
 import org.junit.Test;
 
 import java.sql.*;

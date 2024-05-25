@@ -383,6 +383,36 @@
         <url-pattern>/servlet/DownLoadServlet</url-pattern>
     </servlet-mapping>
 
+
+    <!-- JNDI 数据库连接池 -->
+    <servlet>
+        <servlet-name>DataSourceJNDIServlet</servlet-name>
+        <servlet-class>com.demo.java.web.jdbc.DataSourceJNDIServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>DataSourceJNDIServlet</servlet-name>
+        <url-pattern>/jdbc/JNDIServlet</url-pattern>
+    </servlet-mapping>
+
+    <!-- 模拟 controller、service、dao 三层访问链路及事务回滚 -->
+    <servlet>
+        <servlet-name>AccountServlet</servlet-name>
+        <servlet-class>com.demo.java.web.jdbc.dbutils.AccountServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>AccountServlet</servlet-name>
+        <url-pattern>/jdbc/AccountServlet</url-pattern>
+    </servlet-mapping>
+
+    <filter>
+        <filter-name>TransactionFilter</filter-name>
+        <filter-class>com.demo.java.web.jdbc.dbutils.TransactionFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>TransactionFilter</filter-name>
+        <url-pattern>/jdbc/*</url-pattern>
+    </filter-mapping>
+
     <!-- **************************** filter **************************** -->
     <!--配置过滤器-->
     <filter>

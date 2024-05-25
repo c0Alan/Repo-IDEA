@@ -4,7 +4,7 @@ import java.sql.Connection;
 import java.sql.SQLException;
 
 import com.demo.java.web.domain.Account;
-import com.demo.java.web.jdbc.util.JdbcUtils;
+import com.demo.java.web.jdbc.utils.JdbcUtils;
 
 /**
  * @ClassName: AccountService

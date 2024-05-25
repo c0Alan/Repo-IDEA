@@ -1,6 +1,4 @@
-package com.demo.java.web.jdbc.util;
-
-import com.demo.java.web.jdbc.pool.JdbcPool;
+package com.demo.java.web.jdbc.utils;
 
 import java.sql.Connection;
 import java.sql.ResultSet;

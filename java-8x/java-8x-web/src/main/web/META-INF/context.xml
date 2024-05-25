@@ -1,0 +1,12 @@
+<Context>
+    <Resource
+            name="jdbc/datasource"
+            auth="Container"
+            type="javax.sql.DataSource"
+            username="liuxl"
+            password="lxl123"
+            driverClassName="com.mysql.cj.jdbc.Driver"
+            url="jdbc:mysql://192.168.50.133:3306/db_javaweb"
+            maxActive="8"
+            maxIdle="4"/>
+</Context>

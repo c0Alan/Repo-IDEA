@@ -1,7 +1,7 @@
 package com.demo.java.web.jdbc.dbutils;
 
 import com.demo.java.web.domain.Account;
-import com.demo.java.web.jdbc.util.JdbcUtils3;
+import com.demo.java.web.jdbc.utils.JdbcUtils3;
 import org.apache.commons.dbutils.QueryRunner;
 import org.apache.commons.dbutils.handlers.BeanHandler;
 

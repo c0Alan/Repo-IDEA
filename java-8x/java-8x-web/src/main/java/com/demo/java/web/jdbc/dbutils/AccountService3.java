@@ -14,8 +14,7 @@ public class AccountService3 {
      * @param money
      * @throws SQLException
      */
-    public void transfer(int sourceid, int tartgetid, float money)
-            throws SQLException {
+    public void transfer(int sourceid, int tartgetid, float money) throws SQLException {
         AccountDao3 dao = new AccountDao3();
         Account source = dao.find(sourceid);
         Account target = dao.find(tartgetid);

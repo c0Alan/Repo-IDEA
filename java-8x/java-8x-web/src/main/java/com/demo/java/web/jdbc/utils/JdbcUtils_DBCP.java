@@ -1,4 +1,4 @@
-package com.demo.java.web.jdbc.util;
+package com.demo.java.web.jdbc.utils;
 
 import java.io.InputStream;
 import java.sql.Connection;

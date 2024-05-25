@@ -8,12 +8,8 @@ import java.util.Date;
 import java.util.Locale;
 
 /**
-* @ClassName: DateFormatDemo
 * @Description: DateFormat类测试
 * DateFormat类可以将一个日期/时间对象格式化为表示某个国家地区的日期/时间字符串
-* @author: 孤傲苍狼
-* @date: 2014-8-29 下午10:03:26
-*
 */ 
 public class DateFormatDemo {
 

@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
+ * 模拟 controller、service、dao 三层访问链路
  * Web层的Servlet调用businessService层的业务方法处理用户请求
  * 
  * @author liuxilin
@@ -15,8 +16,7 @@ import javax.servlet.http.HttpServletResponse;
  */
 public class AccountServlet extends HttpServlet {
 
-    public void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+    public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         AccountService3 service = new AccountService3();
         try {
             service.transfer(1, 2, 100);
@@ -27,8 +27,7 @@ public class AccountServlet extends HttpServlet {
         }
     }
 
-    public void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+    public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         doGet(request, response);
     }
 }

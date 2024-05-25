@@ -1,11 +1,12 @@
-package com.demo.java.web.jdbc.datasource;
+package com.demo.java.web.jdbc;
+
+import com.demo.java.web.jdbc.utils.JdbcUtils_C3P0;
+import org.junit.Test;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-
-import com.demo.java.web.jdbc.util.JdbcUtils_C3P0;
-import org.junit.Test;
+import java.sql.Statement;
 
 public class DataSourceC3p0Demo {
     
@@ -17,8 +18,8 @@ public class DataSourceC3p0Demo {
         try{
             //获取数据库连接
             conn = JdbcUtils_C3P0.getConnection();
-            String sql = "insert into springdemo.test1(name) values(?)";
-            st = conn.prepareStatement(sql);
+            String sql = "insert into users(name) values(?)";
+            st = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             st.setString(1, "小桃红");
             st.executeUpdate();
             //获取数据库自动生成的主键

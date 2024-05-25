@@ -1,9 +1,9 @@
 package com.demo.java.web.jdbc.dbutils;
 
-import java.sql.SQLException;
-
 import com.demo.java.web.domain.Account;
-import com.demo.java.web.jdbc.util.JdbcUtils3;
+import com.demo.java.web.jdbc.utils.JdbcUtils3;
+
+import java.sql.SQLException;
 
 public class AccountService2 {
 

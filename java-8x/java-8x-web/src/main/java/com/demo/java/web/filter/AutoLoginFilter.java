@@ -2,7 +2,7 @@ package com.demo.java.web.filter;
 
 import com.demo.java.web.dao.UserDao;
 import com.demo.java.web.domain.User;
-import com.demo.java.web.util.WebUtils;
+import com.demo.java.web.utils.WebUtils;
 
 import javax.servlet.*;
 import javax.servlet.http.Cookie;

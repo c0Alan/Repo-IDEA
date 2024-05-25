@@ -1,21 +1,15 @@
 package com.demo.java.web.jdbc.dbutils;
 
+import com.demo.java.web.jdbc.utils.JdbcUtils3;
+import org.apache.commons.dbutils.QueryRunner;
+import org.apache.commons.dbutils.handlers.*;
+import org.apache.log4j.Logger;
+import org.junit.Test;
+
 import java.sql.SQLException;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
-
-import com.demo.java.web.jdbc.util.JdbcUtils3;
-import org.apache.commons.dbutils.QueryRunner;
-import org.apache.commons.dbutils.handlers.ArrayHandler;
-import org.apache.commons.dbutils.handlers.ArrayListHandler;
-import org.apache.commons.dbutils.handlers.ColumnListHandler;
-import org.apache.commons.dbutils.handlers.KeyedHandler;
-import org.apache.commons.dbutils.handlers.MapHandler;
-import org.apache.commons.dbutils.handlers.MapListHandler;
-import org.apache.commons.dbutils.handlers.ScalarHandler;
-import org.apache.log4j.Logger;
-import org.junit.Test;
 
 /**
  * 测试dbutils各种类型的处理器
@@ -23,8 +17,8 @@ import org.junit.Test;
  * @author liuxilin
  * @date 2018/5/16 20:54
  */
-public class ResultSetHandlerTest {
-    private static final Logger logger = Logger.getLogger(ResultSetHandlerTest.class);
+public class ResultSetHandlerDemo {
+    private static final Logger logger = Logger.getLogger(ResultSetHandlerDemo.class);
 
     /**
      * 以Array的方式返回第一条记录
@@ -33,7 +27,7 @@ public class ResultSetHandlerTest {
     @Test
     public void testArrayHandler() throws SQLException {
         QueryRunner qr = new QueryRunner(JdbcUtils3.getDataSource());
-        String sql = "select * from springdemo.users";
+        String sql = "select * from users";
         Object result[] = (Object[]) qr.query(sql, new ArrayHandler());
        logger.info(Arrays.asList(result));  // [2, 李清照, 123, bjy@sina.com, 2018-05-16]
     }
@@ -46,7 +40,7 @@ public class ResultSetHandlerTest {
     public void testArrayListHandler() throws SQLException {
 
         QueryRunner qr = new QueryRunner(JdbcUtils3.getDataSource());
-        String sql = "select * from springdemo.users";
+        String sql = "select * from users";
         List<Object[]> list = (List) qr.query(sql, new ArrayListHandler());
 
 //        [2, 李清照, 123, bjy@sina.com, 2018-05-16]
@@ -63,7 +57,7 @@ public class ResultSetHandlerTest {
     @Test
     public void testColumnListHandler() throws SQLException {
         QueryRunner qr = new QueryRunner(JdbcUtils3.getDataSource());
-        String sql = "select * from springdemo.users";
+        String sql = "select * from users";
         List list = (List) qr.query(sql, new ColumnListHandler("id"));
         logger.error(list); // [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]
     }
@@ -75,7 +69,7 @@ public class ResultSetHandlerTest {
     @Test
     public void testKeyedHandler() throws Exception {
         QueryRunner qr = new QueryRunner(JdbcUtils3.getDataSource());
-        String sql = "select * from springdemo.users";
+        String sql = "select * from users";
 
         Map<Integer, Map> map = (Map) qr.query(sql, new KeyedHandler("id"));
         for (Map.Entry<Integer, Map> me : map.entrySet()) {
@@ -98,7 +92,7 @@ public class ResultSetHandlerTest {
     public void testMapHandler() throws SQLException {
 
         QueryRunner qr = new QueryRunner(JdbcUtils3.getDataSource());
-        String sql = "select * from springdemo.users";
+        String sql = "select * from users";
 
         Map<String, Object> map = (Map) qr.query(sql, new MapHandler());
         for (Map.Entry<String, Object> me : map.entrySet()) {
@@ -114,7 +108,7 @@ public class ResultSetHandlerTest {
     @Test
     public void testMapListHandler() throws SQLException {
         QueryRunner qr = new QueryRunner(JdbcUtils3.getDataSource());
-        String sql = "select * from springdemo.users";
+        String sql = "select * from users";
         List<Map> list = (List) qr.query(sql, new MapListHandler());
         for (Map<String, Object> map : list) {
             for (Map.Entry<String, Object> me : map.entrySet()) {
@@ -130,7 +124,7 @@ public class ResultSetHandlerTest {
     @Test
     public void testScalarHandler() throws SQLException {
         QueryRunner qr = new QueryRunner(JdbcUtils3.getDataSource());
-        String sql = "select count(*) from springdemo.users";  //[13]  list[13]
+        String sql = "select count(*) from users";  //[13]  list[13]
         int count = ((Long) qr.query(sql, new ScalarHandler(1))).intValue();
         System.out.println(count);
     }

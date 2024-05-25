@@ -2,7 +2,7 @@ package com.demo.java.web.servlet;
 
 import com.demo.java.web.dao.UserDao;
 import com.demo.java.web.domain.User;
-import com.demo.java.web.util.WebUtils;
+import com.demo.java.web.utils.WebUtils;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.Cookie;

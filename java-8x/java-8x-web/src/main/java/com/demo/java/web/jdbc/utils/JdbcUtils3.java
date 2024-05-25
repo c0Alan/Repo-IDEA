@@ -1,10 +1,10 @@
-package com.demo.java.web.jdbc.util;
-
-import java.sql.Connection;
-import java.sql.SQLException;
-import javax.sql.DataSource;
+package com.demo.java.web.jdbc.utils;
 
 import com.mchange.v2.c3p0.ComboPooledDataSource;
+
+import javax.sql.DataSource;
+import java.sql.Connection;
+import java.sql.SQLException;
 
 /**
  * 数据库连接工具类, 通过threadLocal 存放 connection 对象到当前线程中
@@ -33,7 +33,7 @@ public class JdbcUtils3 {
 
             //通过读取C3P0的xml配置文件创建数据源，C3P0的xml配置文件c3p0-config.xml必须放在src目录下
             //ds = new ComboPooledDataSource();//使用C3P0的默认配置来创建数据源
-            ds = new ComboPooledDataSource("pg");//使用C3P0的命名配置来创建数据源
+            ds = new ComboPooledDataSource("MySQL");//使用C3P0的命名配置来创建数据源
 
         } catch (Exception e) {
             throw new ExceptionInInitializerError(e);

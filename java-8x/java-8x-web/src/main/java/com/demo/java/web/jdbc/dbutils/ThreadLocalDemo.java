@@ -1,6 +1,6 @@
 package com.demo.java.web.jdbc.dbutils;
 
-public class ThreadLocalTest {
+public class ThreadLocalDemo {
 
     public static void main(String[] args) {
         //得到程序运行时的当前线程
