@@ -1,6 +1,0 @@
-system=dsb-2-1-x
-module=dsb-2-1-x-controller
-version = ${project.version}
-git.commit.id=${git.commit.id.abbrev}
-git.commit.time=${git.commit.time}
-git.branch=${git.branch}
