@@ -17,6 +17,12 @@
         <location>/error/404Error.jsp</location>
     </error-page>
 
+    <!-- 针对500错误的处理页面 -->
+    <error-page>
+          <error-code>500</error-code>
+          <location>/error/500Error.jsp</location>
+    </error-page>
+
     <!-- **************************** context-param **************************** -->
     <!-- 配置WEB应用的初始化参数 -->
     <context-param>
@@ -39,7 +45,7 @@
     </servlet>
     <servlet-mapping>
         <servlet-name>ServletDemo01</servlet-name>
-        <url-pattern>/web/ServletDemo1</url-pattern>
+        <url-pattern>/servlet/ServletDemo01</url-pattern>
     </servlet-mapping>
 
 
@@ -49,7 +55,7 @@
     </servlet>
     <servlet-mapping>
         <servlet-name>ServletDemo02</servlet-name>
-        <url-pattern>/web/ServletDemo02</url-pattern>
+        <url-pattern>/servlet/ServletDemo02</url-pattern>
     </servlet-mapping>
 
     <servlet>
@@ -58,7 +64,7 @@
     </servlet>
     <servlet-mapping>
         <servlet-name>ServletDemo03</servlet-name>
-        <url-pattern>/web/ServletDemo03</url-pattern>
+        <url-pattern>/servlet/ServletDemo03</url-pattern>
     </servlet-mapping>
 
     <servlet>
@@ -67,7 +73,7 @@
     </servlet>
     <servlet-mapping>
         <servlet-name>ServletDemo04</servlet-name>
-        <url-pattern>/web/ServletDemo04</url-pattern>
+        <url-pattern>/servlet/ServletDemo04</url-pattern>
     </servlet-mapping>
 
     <servlet>
@@ -76,7 +82,38 @@
     </servlet>
     <servlet-mapping>
         <servlet-name>ServletDemo05</servlet-name>
-        <url-pattern>/web/ServletDemo05</url-pattern>
+        <url-pattern>/servlet/ServletDemo05</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>ServletDemo1</servlet-name>
+        <servlet-class>com.demo.java.web.servlet.ServletDemo1</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ServletDemo1</servlet-name>
+        <url-pattern>/servlet/ServletDemo1</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServletDemo1</servlet-name>
+        <url-pattern>/1.htm</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>ServletDemo2</servlet-name>
+        <servlet-class>com.demo.java.web.servlet.ServletDemo2</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ServletDemo2</servlet-name>
+        <url-pattern>/servlet/ServletDemo2</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>ServletDemo3</servlet-name>
+        <servlet-class>com.demo.java.web.servlet.ServletDemo3</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ServletDemo3</servlet-name>
+        <url-pattern>/servlet/ServletDemo3</url-pattern>
     </servlet-mapping>
 
     <servlet>
@@ -98,7 +135,7 @@
     </servlet>
     <servlet-mapping>
         <servlet-name>ServletConfigDemo1</servlet-name>
-        <url-pattern>/web/ServletConfigDemo1</url-pattern>
+        <url-pattern>/servlet/ServletConfigDemo1</url-pattern>
     </servlet-mapping>
 
     <servlet>
@@ -107,7 +144,7 @@
     </servlet>
     <servlet-mapping>
         <servlet-name>ServletContextDemo1</servlet-name>
-        <url-pattern>/web/ServletContextDemo1</url-pattern>
+        <url-pattern>/servlet/ServletContextDemo1</url-pattern>
     </servlet-mapping>
 
     <servlet>
@@ -116,7 +153,7 @@
     </servlet>
     <servlet-mapping>
         <servlet-name>ServletContextDemo2</servlet-name>
-        <url-pattern>/web/ServletContextDemo2</url-pattern>
+        <url-pattern>/servlet/ServletContextDemo2</url-pattern>
     </servlet-mapping>
 
     <servlet>
@@ -125,7 +162,7 @@
     </servlet>
     <servlet-mapping>
         <servlet-name>ServletContextDemo3</servlet-name>
-        <url-pattern>/web/ServletContextDemo3</url-pattern>
+        <url-pattern>/servlet/ServletContextDemo3</url-pattern>
     </servlet-mapping>
 
     <servlet>
@@ -134,7 +171,7 @@
     </servlet>
     <servlet-mapping>
         <servlet-name>ServletContextDemo4</servlet-name>
-        <url-pattern>/web/ServletContextDemo4</url-pattern>
+        <url-pattern>/servlet/ServletContextDemo4</url-pattern>
     </servlet-mapping>
 
     <servlet>
@@ -143,7 +180,7 @@
     </servlet>
     <servlet-mapping>
         <servlet-name>ServletContextDemo5</servlet-name>
-        <url-pattern>/web/ServletContextDemo5</url-pattern>
+        <url-pattern>/servlet/ServletContextDemo5</url-pattern>
     </servlet-mapping>
 
     <servlet>
@@ -152,7 +189,7 @@
     </servlet>
     <servlet-mapping>
         <servlet-name>ServletContextDemo6</servlet-name>
-        <url-pattern>/web/ServletContextDemo6</url-pattern>
+        <url-pattern>/servlet/ServletContextDemo6</url-pattern>
     </servlet-mapping>
 
     <servlet>
@@ -161,7 +198,7 @@
     </servlet>
     <servlet-mapping>
         <servlet-name>ServletDemo5</servlet-name>
-        <url-pattern>/web/ServletDemo5</url-pattern>
+        <url-pattern>/servlet/ServletDemo5</url-pattern>
     </servlet-mapping>
 
     <servlet>
@@ -211,20 +248,20 @@
 
     <!--验证码-->
     <servlet>
-        <servlet-name>CheckServlet</servlet-name>
-        <servlet-class>com.demo.java.web.servlet.CheckServlet</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>CheckServlet</servlet-name>
-        <url-pattern>/servlet/CheckServlet</url-pattern>
-    </servlet-mapping>
-    <servlet>
         <servlet-name>DrawImage</servlet-name>
         <servlet-class>com.demo.java.web.servlet.DrawImage</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>DrawImage</servlet-name>
         <url-pattern>/servlet/DrawImage</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>CheckServlet</servlet-name>
+        <servlet-class>com.demo.java.web.servlet.CheckServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>CheckServlet</servlet-name>
+        <url-pattern>/servlet/CheckServlet</url-pattern>
     </servlet-mapping>
 
     <!--request 部分-->
@@ -253,6 +290,14 @@
         <url-pattern>/servlet/RequestDemo03</url-pattern>
     </servlet-mapping>
     <servlet>
+        <servlet-name>RequestDemo04</servlet-name>
+        <servlet-class>com.demo.java.web.servlet.RequestDemo04</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>RequestDemo04</servlet-name>
+        <url-pattern>/servlet/RequestDemo04</url-pattern>
+    </servlet-mapping>
+    <servlet>
         <servlet-name>RequestDemo06</servlet-name>
         <servlet-class>com.demo.java.web.servlet.RequestDemo06</servlet-class>
     </servlet>
@@ -279,7 +324,7 @@
         <url-pattern>/servlet/CookieDemo02</url-pattern>
     </servlet-mapping>
 
-    <!--session-->
+    <!-- session -->
     <servlet>
         <servlet-name>SessionDemo1</servlet-name>
         <servlet-class>com.demo.java.web.servlet.SessionDemo1</servlet-class>
@@ -288,6 +333,7 @@
         <servlet-name>SessionDemo1</servlet-name>
         <url-pattern>/servlet/SessionDemo1</url-pattern>
     </servlet-mapping>
+    <!-- 表单重复提交解决方案 -->
     <servlet>
         <servlet-name>DoFormServlet</servlet-name>
         <servlet-class>com.demo.java.web.servlet.DoFormServlet</servlet-class>
@@ -298,42 +344,19 @@
     </servlet-mapping>
     <servlet>
         <servlet-name>FormServlet</servlet-name>
-        <servlet-class>com.demo.java.web.servlet.dulsubmit.FormServlet</servlet-class>
+        <servlet-class>com.demo.java.web.servlet.FormServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>FormServlet</servlet-name>
-        <url-pattern>/servlet/dulsubmit/FormServlet</url-pattern>
+        <url-pattern>/servlet/FormServlet</url-pattern>
     </servlet-mapping>
     <servlet>
         <servlet-name>DoFormServlet2</servlet-name>
-        <servlet-class>com.demo.java.web.servlet.dulsubmit.DoFormServlet</servlet-class>
+        <servlet-class>com.demo.java.web.servlet.DoFormServlet2</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>DoFormServlet2</servlet-name>
-        <url-pattern>/servlet/dulsubmit/DoFormServlet2</url-pattern>
-    </servlet-mapping>
-
-    <servlet>
-        <servlet-name>ServletDemo1</servlet-name>
-        <servlet-class>com.demo.java.web.servlet.ServletDemo1</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>ServletDemo1</servlet-name>
-        <url-pattern>/servlet/ServletDemo1</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>ServletDemo1</servlet-name>
-        <url-pattern>/1.htm</url-pattern>
-    </servlet-mapping>
-
-    <servlet>
-        <servlet-name>ServletDemo2</servlet-name>
-        <servlet-class>com.demo.java.web.servlet.ServletDemo2</servlet-class>
-    </servlet>
-
-    <servlet-mapping>
-        <servlet-name>ServletDemo2</servlet-name>
-        <url-pattern>/servlet/ServletDemo2</url-pattern>
+        <url-pattern>/servlet/DoFormServlet2</url-pattern>
     </servlet-mapping>
 
 

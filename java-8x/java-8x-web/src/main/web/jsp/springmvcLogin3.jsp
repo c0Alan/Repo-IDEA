@@ -32,7 +32,7 @@
                 你不能通过“前进”和“后 退”来访问已经被替换的URL，这个特点对于做一些过渡页面非常有用！
                 */
                 // location.replace(g_basePath+"/index.jsp");
-                location.replace(g_basePath+"/springmvcIndex6.jsp");
+                location.replace(g_basePath+"/jsp/springmvcIndex6.jsp");
             }else{
                 alert("用户名和密码错误");
             }

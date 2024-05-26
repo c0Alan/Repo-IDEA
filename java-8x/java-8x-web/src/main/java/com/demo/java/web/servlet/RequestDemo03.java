@@ -18,8 +18,7 @@ import java.util.Map;
 public class RequestDemo03 extends HttpServlet {
 
     @Override
-    public void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+    public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         // 客户端是以UTF-8编码提交表单数据的，
         // 所以需要设置服务器端以UTF-8的编码进行接收，

@@ -1,4 +1,5 @@
 package com.demo.java.web.servlet;
+
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -8,14 +9,13 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  * 通过request对象获取客户端请求信息
- * 
+ *
  * @author liuxl
  * @date 2018/5/4 12:29
  */
 public class RequestDemo01 extends HttpServlet {
 
-    public void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+    public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         /**
          * 1.获得客户机信息
          */
@@ -36,31 +36,30 @@ public class RequestDemo01 extends HttpServlet {
         PrintWriter out = response.getWriter();
         out.write("获取到的客户机信息如下：");
         out.write("<hr/>");
-        out.write("请求的URL地址："+requestUrl);
+        out.write("请求的URL地址：" + requestUrl);
         out.write("<br/>");
-        out.write("请求的资源："+requestUri);
+        out.write("请求的资源：" + requestUri);
         out.write("<br/>");
-        out.write("请求的URL地址中附带的参数："+queryString);
+        out.write("请求的URL地址中附带的参数：" + queryString);
         out.write("<br/>");
-        out.write("来访者的IP地址："+remoteAddr);
+        out.write("来访者的IP地址：" + remoteAddr);
         out.write("<br/>");
-        out.write("来访者的主机名："+remoteHost);
+        out.write("来访者的主机名：" + remoteHost);
         out.write("<br/>");
-        out.write("使用的端口号："+remotePort);
+        out.write("使用的端口号：" + remotePort);
         out.write("<br/>");
-        out.write("remoteUser："+remoteUser);
+        out.write("remoteUser：" + remoteUser);
         out.write("<br/>");
-        out.write("请求使用的方法："+method);
+        out.write("请求使用的方法：" + method);
         out.write("<br/>");
-        out.write("pathInfo："+pathInfo);
+        out.write("pathInfo：" + pathInfo);
         out.write("<br/>");
-        out.write("localAddr："+localAddr);
+        out.write("localAddr：" + localAddr);
         out.write("<br/>");
-        out.write("localName："+localName);
+        out.write("localName：" + localName);
     }
 
-    public void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+    public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         doGet(request, response);
     }
 

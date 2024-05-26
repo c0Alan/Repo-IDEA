@@ -15,13 +15,13 @@ public class LoginUI {
     @RequestMapping("LoginUI/Login2")
     public View forward1(){
         //执行完forward1方法之后返回的视图
-        return new View("/springmvcLogin2.jsp");
+        return new View("/jsp/springmvcLogin2.jsp");
     }
 
     //使用RequestMapping注解指明forward2方法的访问路径
     @RequestMapping("LoginUI/Login3")
     public View forward2(){
         //执行完forward2方法之后返回的视图
-        return new View("/springmvcLogin3.jsp");
+        return new View("/jsp/springmvcLogin3.jsp");
     }
 }

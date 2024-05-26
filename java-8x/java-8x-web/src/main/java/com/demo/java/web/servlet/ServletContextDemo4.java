@@ -16,16 +16,14 @@ import java.io.IOException;
  */
 public class ServletContextDemo4 extends HttpServlet {
 
-    public void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+    public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String data = "<h1><font color='red'>abcdefghjkl</font></h1>";
         response.getOutputStream().write(data.getBytes());
         ServletContext context = this.getServletContext();//获取ServletContext对象
-        RequestDispatcher rd = context.getRequestDispatcher("/web/ServletContextDemo5");//获取请求转发对象(RequestDispatcher)
+        RequestDispatcher rd = context.getRequestDispatcher("/servlet/ServletContextDemo5");//获取请求转发对象(RequestDispatcher)
         rd.forward(request, response);//调用forward方法实现请求转发
     }
 
-    public void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+    public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     }
 }

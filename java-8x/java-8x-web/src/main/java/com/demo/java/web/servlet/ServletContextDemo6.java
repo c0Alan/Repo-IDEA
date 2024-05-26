@@ -19,8 +19,7 @@ import java.util.Properties;
  */
 public class ServletContextDemo6 extends HttpServlet {
 
-    public void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+    public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         /**
          * response.setContentType("text/html;charset=UTF-8");目的是控制浏览器用UTF-8进行解码；
          * 这样就不会出现中文乱码了
@@ -41,8 +40,7 @@ public class ServletContextDemo6 extends HttpServlet {
      * @param response
      * @throws IOException
      */
-    private void readPropCfgFile2(HttpServletResponse response)
-            throws IOException {
+    private void readPropCfgFile2(HttpServletResponse response) throws IOException {
         InputStream in = this.getServletContext().getResourceAsStream("/WEB-INF/classes/gacl/servlet/study/db4.properties");
         Properties prop = new Properties();
         prop.load(in);
@@ -63,8 +61,7 @@ public class ServletContextDemo6 extends HttpServlet {
      * @throws FileNotFoundException
      * @throws IOException
      */
-    private void readPropCfgFile(HttpServletResponse response)
-            throws FileNotFoundException, IOException {
+    private void readPropCfgFile(HttpServletResponse response) throws FileNotFoundException, IOException {
         //通过ServletContext获取web资源的绝对路径
         String path = this.getServletContext().getRealPath("/WEB-INF/classes/db/config/db3.properties");
         InputStream in = new FileInputStream(path);
@@ -86,8 +83,7 @@ public class ServletContextDemo6 extends HttpServlet {
      * @param response
      * @throws IOException
      */
-    private void readWebRootDirPropCfgFile(HttpServletResponse response)
-            throws IOException {
+    private void readWebRootDirPropCfgFile(HttpServletResponse response) throws IOException {
         /**
          * 通过ServletContext对象读取WebRoot目录下的properties配置文件
          * “/”代表的是项目根目录
@@ -129,8 +125,7 @@ public class ServletContextDemo6 extends HttpServlet {
                         driver,url, username, password));
     }
 
-    public void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+    public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         this.doGet(request, response);
     }
 

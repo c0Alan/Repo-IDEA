@@ -1,5 +1,7 @@
 package com.demo.java.web.domain;
 
+import java.util.Date;
+
 /**
  * @author liuxilin
  * @date 2018/5/5 7:54
@@ -14,6 +16,11 @@ public class Person {
 
     private String sex;
     private Address address;
+
+    //是否已婚 boolean类型
+    private boolean married;
+
+    private Date birthday;
 
     public int getAge() {
         return age;
@@ -54,5 +61,21 @@ public class Person {
 
     public Address getAddress() {
         return address;
+    }
+
+    public boolean isMarried() {
+        return married;
+    }
+
+    public void setMarried(boolean married) {
+        this.married = married;
+    }
+
+    public Date getBirthday() {
+        return birthday;
+    }
+
+    public void setBirthday(Date birthday) {
+        this.birthday = birthday;
     }
 }

@@ -1,4 +1,4 @@
-package com.demo.java.web.servlet.dulsubmit;
+package com.demo.java.web.servlet;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;

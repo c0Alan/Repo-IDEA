@@ -12,13 +12,13 @@ import java.util.Random;
 
 /**
  * 生成随机图片，用来作为验证码
- * 
+ *
  * @author liuxilin
  * @date 2018/5/4 7:28
  */
 public class DrawImage extends HttpServlet {
     private static final long serialVersionUID = 3038623696184546092L;
-    
+
     public static final int WIDTH = 120;//生成的图片的宽度
     public static final int HEIGHT = 30;//生成的图片的高度
 
@@ -27,11 +27,10 @@ public class DrawImage extends HttpServlet {
         this.doPost(request, response);
     }
 
-    public void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+    public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String createTypeFlag = request.getParameter("createTypeFlag");//接收客户端传递的createTypeFlag标识
         //1.在内存中创建一张图片
-        BufferedImage bi = new BufferedImage(WIDTH, HEIGHT,BufferedImage.TYPE_INT_RGB);
+        BufferedImage bi = new BufferedImage(WIDTH, HEIGHT, BufferedImage.TYPE_INT_RGB);
         //2.得到图片
         Graphics g = bi.getGraphics();
         //3.设置图片的背影色
@@ -45,7 +44,7 @@ public class DrawImage extends HttpServlet {
         //String random = drawRandomNum((Graphics2D) g,"nl");//生成数字和字母组合的验证码图片
         //String random = drawRandomNum((Graphics2D) g,"n");//生成纯数字的验证码图片
         //String random = drawRandomNum((Graphics2D) g,"l");//生成纯字母的验证码图片
-        String random = drawRandomNum((Graphics2D) g,createTypeFlag);//根据客户端传递的createTypeFlag标识生成验证码图片
+        String random = drawRandomNum((Graphics2D) g, createTypeFlag);//根据客户端传递的createTypeFlag标识生成验证码图片
         //7.将随机数存在session中
         request.getSession().setAttribute("checkcode", random);
         //8.设置响应头通知浏览器以图片的形式打开
@@ -60,6 +59,7 @@ public class DrawImage extends HttpServlet {
 
     /**
      * 设置图片的背景色
+     *
      * @param g
      */
     private void setBackGround(Graphics g) {
@@ -71,6 +71,7 @@ public class DrawImage extends HttpServlet {
 
     /**
      * 设置图片的边框
+     *
      * @param g
      */
     private void setBorder(Graphics g) {
@@ -82,6 +83,7 @@ public class DrawImage extends HttpServlet {
 
     /**
      * 在图片上画随机线条
+     *
      * @param g
      */
     private void drawRandomLine(Graphics g) {
@@ -99,13 +101,13 @@ public class DrawImage extends HttpServlet {
 
     /**
      * 画随机字符
+     *
      * @param g
      * @param createTypeFlag
-     * @return
-     * String... createTypeFlag是可变参数，
+     * @return String... createTypeFlag是可变参数，
      * Java1.5增加了新特性：可变参数：适用于参数个数不确定，类型确定的情况，java把可变参数当做数组处理。注意：可变参数必须位于最后一项
      */
-    private String drawRandomNum(Graphics2D g,String... createTypeFlag) {
+    private String drawRandomNum(Graphics2D g, String... createTypeFlag) {
         // 设置颜色
         g.setColor(Color.RED);
         // 设置字体
@@ -123,34 +125,35 @@ public class DrawImage extends HttpServlet {
             if (createTypeFlag[0].equals("ch")) {
                 // 截取汉字
                 return createRandomChar(g, baseChineseChar);
-            }else if (createTypeFlag[0].equals("nl")) {
+            } else if (createTypeFlag[0].equals("nl")) {
                 // 截取数字和字母的组合
                 return createRandomChar(g, baseNumLetter);
-            }else if (createTypeFlag[0].equals("n")) {
+            } else if (createTypeFlag[0].equals("n")) {
                 // 截取数字
                 return createRandomChar(g, baseNum);
-            }else if (createTypeFlag[0].equals("l")) {
+            } else if (createTypeFlag[0].equals("l")) {
                 // 截取字母
                 return createRandomChar(g, baseLetter);
             }
-        }else {
+        } else {
             // 默认截取数字和字母的组合
             return createRandomChar(g, baseNumLetter);
         }
-        
+
         return "";
     }
 
     /**
      * 创建随机字符
+     *
      * @param g
      * @param baseChar
      * @return 随机字符
      */
-    private String createRandomChar(Graphics2D g,String baseChar) {
+    private String createRandomChar(Graphics2D g, String baseChar) {
         StringBuffer sb = new StringBuffer();
         int x = 5;
-        String ch ="";
+        String ch = "";
         // 控制字数
         for (int i = 0; i < 4; i++) {
             // 设置字体旋转角度
@@ -160,7 +163,7 @@ public class DrawImage extends HttpServlet {
             // 正向角度
             g.rotate(degree * Math.PI / 180, x, 20);
             g.drawString(ch, x, 20);
-            // 反向角度
+            // 反向角度,摆正图片
             g.rotate(-degree * Math.PI / 180, x, 20);
             x += 30;
         }

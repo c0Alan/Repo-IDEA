@@ -3,7 +3,7 @@
 <%
     pageContext.setAttribute("name", "孤傲苍狼");
     pageContext.setAttribute("date", new Date());
-    response.sendRedirect("/jsp/pageScopeDemo03.jsp");
+//    response.sendRedirect("/jsp/pageScopeDemo03.jsp");
 %>
 <%--使用jsp:forward标签进行服务器端跳转--%>
-<%--<jsp:forward page="/jsp/pageScopeDemo03.jsp"/>--%>
+<jsp:forward page="/jsp/pageScopeDemo03.jsp"/>

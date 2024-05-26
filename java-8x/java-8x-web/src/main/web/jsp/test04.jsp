@@ -14,5 +14,5 @@ pppppppppppppppppppppppp
     pageContext.forward("/jsp/test02.jsp"); // 乱码
     //使用pageContext.forward(relativeUrlPath)替代RequestDispatcher.forward(relativeUrlPath)
     //使用RequestDispatcher的forward方法实现的跳转方式
-    //pageContext.getRequest().getRequestDispatcher("/pageContextDemo05.jsp").forward(request, response);
+//    pageContext.getRequest().getRequestDispatcher("/pageContextDemo05.jsp").forward(request, response);
 %>

@@ -20,8 +20,7 @@ import java.util.Properties;
  */
 public class ServletContextDemo7 extends HttpServlet {
 
-    public void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+    public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         /**
          * response.setContentType("text/html;charset=UTF-8");目的是控制浏览器用UTF-8进行解码；
          * 这样就不会出现中文乱码了
@@ -29,8 +28,8 @@ public class ServletContextDemo7 extends HttpServlet {
         response.setHeader("content-type","text/html;charset=UTF-8");
         test1(response);
         response.getWriter().println("<hr/>");
-        test2(response);
-        response.getWriter().println("<hr/>");
+//        test2(response);
+//        response.getWriter().println("<hr/>");
         //test3();
         test4();
         
@@ -45,7 +44,7 @@ public class ServletContextDemo7 extends HttpServlet {
         //获取到装载当前类的类装载器
         ClassLoader loader = ServletContextDemo7.class.getClassLoader();
         //用类装载器读取src目录下的db1.properties配置文件
-        InputStream in = loader.getResourceAsStream("db1.properties");
+        InputStream in = loader.getResourceAsStream("db.properties");
         Properties prop = new Properties();
         prop.load(in);
         String driver = prop.getProperty("driver");
@@ -68,7 +67,7 @@ public class ServletContextDemo7 extends HttpServlet {
         //获取到装载当前类的类装载器
         ClassLoader loader = ServletContextDemo7.class.getClassLoader();
         //用类装载器读取src目录下的gacl.servlet.study包中的db4.properties配置文件
-        InputStream in = loader.getResourceAsStream("com/servlet/basic/db1.properties");
+        InputStream in = loader.getResourceAsStream("com/demo/java/web/servlet/db.properties");
         Properties prop = new Properties();
         prop.load(in);
         String driver = prop.getProperty("driver");
@@ -102,15 +101,15 @@ public class ServletContextDemo7 extends HttpServlet {
     public void test4() throws IOException {
         // path=G:\Java学习视频\JavaWeb学习视频\JavaWeb\day05视频\01.avi
         // path=01.avi
-        String path = this.getServletContext().getRealPath("/WEB-INF/classes/01.avi");
+        String path = this.getServletContext().getRealPath("/WEB-INF/classes/db.properties");
         /**
          * path.lastIndexOf("\\") + 1是一个非常绝妙的写法
          */
         String filename = path.substring(path.lastIndexOf("\\") + 1);//获取文件名
-        InputStream in = this.getServletContext().getResourceAsStream("/WEB-INF/classes/01.avi");
+        InputStream in = this.getServletContext().getResourceAsStream("/WEB-INF/classes/db.properties");
         byte buffer[] = new byte[1024];
         int len = 0;
-        OutputStream out = new FileOutputStream("e:\\" + filename);
+        OutputStream out = new FileOutputStream("d:\\" + filename);
         while ((len = in.read(buffer)) > 0) {
             out.write(buffer, 0, len);
         }
@@ -118,8 +117,7 @@ public class ServletContextDemo7 extends HttpServlet {
         in.close();
     }
 
-    public void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+    public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         this.doGet(request, response);
     }

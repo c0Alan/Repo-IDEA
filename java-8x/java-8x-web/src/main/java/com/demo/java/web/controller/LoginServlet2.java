@@ -36,12 +36,12 @@ public class LoginServlet2 {
             //将响应数据存储到ViewData对象中
             viewData.put("msg", "欢迎您！" + username);
             //返回一个View对象，指明要跳转的视图的路径
-            return new View("/springmvcIndex6.jsp");
+            return new View("/jsp/springmvcIndex6.jsp");
         } else {
             //将响应数据存储到ViewData对象中
             viewData.put("msg", "登录失败，请检查用户名和密码是否正确！");
             //返回一个View对象，指明要跳转的视图的路径
-            return new View("/springmvcLogin2.jsp");
+            return new View("/jsp/springmvcLogin2.jsp");
         }
     }
 

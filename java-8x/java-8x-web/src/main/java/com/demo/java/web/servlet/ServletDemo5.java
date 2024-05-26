@@ -15,8 +15,7 @@ import java.io.IOException;
 public class ServletDemo5 extends HttpServlet {
 
     @Override
-    public void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+    public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String data = "abc" + System.currentTimeMillis();
         /**
          * 设置数据合理的缓存时间值，以避免浏览器频繁向服务器发送请求，提升服务器的性能
@@ -27,8 +26,7 @@ public class ServletDemo5 extends HttpServlet {
     }
 
     @Override
-    public void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+    public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         this.doGet(request, response);
     }

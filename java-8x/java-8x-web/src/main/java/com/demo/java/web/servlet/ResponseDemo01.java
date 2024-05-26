@@ -35,10 +35,6 @@ public class ResponseDemo01 extends HttpServlet {
      * 使用OutputStream流输出中文
      * getBytes()方法如果不带参数，那么就会根据操作系统的语言环境来选择转换码表，
      * 如果是中文操作系统，那么就使用GB2312的码表
-     *
-     * @param request
-     * @param response
-     * @throws IOException
      */
     public void outputChineseByOutputStream(HttpServletResponse response) throws IOException{
 

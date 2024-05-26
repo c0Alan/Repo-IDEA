@@ -1,67 +1,54 @@
 package com.demo.java.web.servlet;
 
-import com.demo.java.web.dao.UserDao;
 import com.demo.java.web.domain.User;
-import com.demo.java.web.utils.WebUtils;
+import com.demo.java.web.service.IUserService;
+import com.demo.java.web.service.UserServiceImpl;
 
 import javax.servlet.ServletException;
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
+
 /**
- * 实现用户自动登陆
- * 处理用户登录的控制器：LoginServlet
+ * 处理用户登录的servlet
+ * @author gacl
  *
- * @author liuxl
- * @date 2018/5/18 13:05
  */
 public class LoginServlet extends HttpServlet {
 
     public void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
+        //获取用户填写的登录用户名
         String username = request.getParameter("username");
+        //获取用户填写的登录密码
         String password = request.getParameter("password");
 
-        UserDao dao = new UserDao();
-        User user = dao.find(username, password);
-        if (user == null) {
-            request.setAttribute("message", "用户名或密码不对！！");
+        IUserService service = new UserServiceImpl();
+        //用户登录
+        User user = service.loginUser(username, password);
+        if(user==null){
+            String message = String.format(
+                    "对不起，用户名或密码有误！！请重新登录！2秒后为您自动跳到登录页面！！<meta http-equiv='refresh' content='2;url=%s'",
+                    request.getContextPath()+"/servlet/LoginUIServlet");
+            request.setAttribute("message",message);
             request.getRequestDispatcher("/message.jsp").forward(request, response);
             return;
         }
+        //登录成功后，就将用户存储到session中
         request.getSession().setAttribute("user", user);
-        //发送自动登陆cookie给客户端浏览器进行存储
-        sendAutoLoginCookie(request, response, user);
-        request.getRequestDispatcher("/index.jsp").forward(request, response);
-    }
-
-    /**
-     * 发送自动登录cookie给客户端浏览器
-     * @param request
-     * @param response
-     * @param user
-     */
-    private void sendAutoLoginCookie(HttpServletRequest request, HttpServletResponse response, User user) {
-        if (request.getParameter("logintime") != null) {
-            int logintime = Integer.parseInt(request.getParameter("logintime"));
-            //创建cookie,cookie的名字是autologin，值是用户登录的用户名和密码，用户名和密码之间使用.进行分割，密码经过md5加密处理
-            Cookie cookie = new Cookie("autologin", user.getUsername() + "." + WebUtils.md5(user.getPassword()));
-            //设置cookie的有效期
-            cookie.setMaxAge(logintime);
-            //设置cookie的有效路径
-            cookie.setPath(request.getContextPath());
-            //将cookie写入到客户端浏览器
-            response.addCookie(cookie);
-        }
+        String message = String.format(
+                "恭喜：%s,登陆成功！本页将在3秒后跳到首页！！<meta http-equiv='refresh' content='3;url=%s'",
+                user.getUsername(),
+                request.getContextPath()+"/index.jsp");
+        request.setAttribute("message",message);
+        request.getRequestDispatcher("/message.jsp").forward(request, response);
     }
 
     public void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
         doGet(request, response);
     }
 

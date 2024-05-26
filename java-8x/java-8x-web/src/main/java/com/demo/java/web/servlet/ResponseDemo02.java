@@ -18,16 +18,23 @@ import java.net.URLEncoder;
 public class ResponseDemo02 extends HttpServlet {
 
     @Override
-    public void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-//        downloadFileByOutputStream(response);
-//        downloadChineseFileByOutputStream(response);
-        downloadFileByPrintWriter(response);
+    public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String type = request.getParameter("type");
+        if (null == type || "downloadFileByOutputStream".equals(type)) {
+            downloadFileByOutputStream(response);
+        }
+
+        if ("downloadChineseFileByOutputStream".equals(type)) {
+            downloadChineseFileByOutputStream(response);
+        }
+
+        if ("downloadFileByPrintWriter".equals(type)) {
+            downloadFileByPrintWriter(response);
+        }
     }
 
     @Override
-    public void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+    public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         doGet(request, response);
     }
 
@@ -38,8 +45,7 @@ public class ResponseDemo02 extends HttpServlet {
      * @throws FileNotFoundException
      * @throws IOException
      */
-    private void downloadFileByOutputStream(HttpServletResponse response)
-            throws FileNotFoundException, IOException {
+    private void downloadFileByOutputStream(HttpServletResponse response) throws FileNotFoundException, IOException {
         //1.获取要下载的文件的绝对路径
         String realPath = this.getServletContext().getRealPath("/img/img1.png");
         //2.获取要下载的文件名
@@ -68,8 +74,7 @@ public class ResponseDemo02 extends HttpServlet {
      * @throws FileNotFoundException
      * @throws IOException
      */
-    private void downloadChineseFileByOutputStream(HttpServletResponse response)
-            throws FileNotFoundException, IOException {
+    private void downloadChineseFileByOutputStream(HttpServletResponse response) throws FileNotFoundException, IOException {
         String realPath = this.getServletContext().getRealPath("/img/中文名称.png");//获取要下载的文件的绝对路径
         String fileName = realPath.substring(realPath.lastIndexOf("\\") + 1);//获取要下载的文件名
         //设置content-disposition响应头控制浏览器以下载的形式打开文件，中文文件名要使用URLEncoder.encode方法进行编码，否则会出现文件名乱码
@@ -93,8 +98,7 @@ public class ResponseDemo02 extends HttpServlet {
      * @throws FileNotFoundException
      * @throws IOException
      */
-    private void downloadFileByPrintWriter(HttpServletResponse response)
-            throws FileNotFoundException, IOException {
+    private void downloadFileByPrintWriter(HttpServletResponse response) throws FileNotFoundException, IOException {
         String realPath = this.getServletContext().getRealPath("/img/中文名称.png");//获取要下载的文件的绝对路径
         String fileName = realPath.substring(realPath.lastIndexOf("\\") + 1);//获取要下载的文件名
         //设置content-disposition响应头控制浏览器以下载的形式打开文件，中文文件名要使用URLEncoder.encode方法进行编码
