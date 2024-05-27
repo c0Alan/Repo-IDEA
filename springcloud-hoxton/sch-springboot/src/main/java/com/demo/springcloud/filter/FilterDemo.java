@@ -1,6 +1,8 @@
 package com.demo.springcloud.filter;
 
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.boot.web.servlet.FilterRegistrationBean;
+import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Component;
 
 import javax.servlet.*;
@@ -8,6 +10,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
+/**
+ * 过滤器demo
+ *
+ * @author liuxl
+ * @date 2024/5/27
+ */
 @Slf4j
 @Component
 public class FilterDemo implements Filter {
@@ -18,17 +26,26 @@ public class FilterDemo implements Filter {
 
     @Override
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
-        HttpServletRequest request = (HttpServletRequest) servletRequest;
-        HttpServletResponse response = (HttpServletResponse) servletResponse;
-
-        log.info("FilterDemo 过滤器执行！");
-
-        //执行
+        log.info("过滤器 FilterDemo 执行前！");
         filterChain.doFilter(servletRequest, servletResponse);
+        log.info("过滤器 FilterDemo 执行后！");
     }
 
     @Override
     public void destroy() {
 
+    }
+
+    /**
+     * 注册过滤器，配置过滤规则，如果不加下面的配置，则默认注册，过滤所有请求
+     */
+    @Bean
+    public FilterRegistrationBean<Filter> getFilterRegistrationBean(FilterDemo filterDemo) {
+        FilterRegistrationBean<Filter> filterRegistrationBean = new FilterRegistrationBean<>();
+        filterRegistrationBean.setFilter(filterDemo);
+        filterRegistrationBean.setOrder(2);
+        filterRegistrationBean.addUrlPatterns("/demo/*");
+        filterRegistrationBean.setName("filterDemo");
+        return filterRegistrationBean;
     }
 }

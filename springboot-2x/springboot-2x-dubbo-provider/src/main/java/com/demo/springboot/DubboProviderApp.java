@@ -6,10 +6,10 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @EnableDubboConfiguration
 @SpringBootApplication
-public class WebApplication {
+public class DubboProviderApp {
 
 	public static void main(String[] args) {
-		SpringApplication.run(WebApplication.class, args);
+		SpringApplication.run(DubboProviderApp.class, args);
 	}
 
 }

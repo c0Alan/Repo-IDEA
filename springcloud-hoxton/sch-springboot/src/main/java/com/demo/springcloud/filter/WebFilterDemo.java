@@ -8,44 +8,47 @@ import javax.servlet.annotation.WebFilter;
 import javax.servlet.annotation.WebInitParam;
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
 
 /**
- * 参考：https://www.cnblogs.com/huanzi-qch/p/11239167.html
- *
  * @author liuxilin
+ * @WebFilter 方式定义过滤器，需要在启动类中加@ServletComponentScan注解
  * @date 2023-08-13 16:11
  */
 @Slf4j
 @Order(5)
-@WebFilter(filterName = "WebFilterDemo", urlPatterns = {"/*"},
-        initParams = {
-                @WebInitParam(name = "excludeUrl", value = "/exclude")
-        })
+@WebFilter(filterName = "WebFilterDemo", urlPatterns = {"/demo2/*"}, initParams = {@WebInitParam(name = "excludes", value = "/exclude")})
 public class WebFilterDemo implements Filter {
-    private String exclusions = null;
+    private List<String> exclusions = null;
 
     @Override
     public void init(FilterConfig filterConfig) {
-        exclusions = filterConfig.getInitParameter("excludeUrl");
-        //项目启动时初始化,只始化一次
-        log.info("filter 初始化,excludeUrl:" + exclusions);
+        String excludes = filterConfig.getInitParameter("excludes");
+        if (excludes != null) {
+            String[] arr = excludes.split(",");
+            exclusions = Arrays.asList(arr);
+        }
     }
 
     @Override
-    public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse,FilterChain filterChain) throws IOException, ServletException {
+    public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
         HttpServletRequest request = (HttpServletRequest) servletRequest;
-        log.info(request.getRequestURI());
-        if (request.getRequestURI().equals(exclusions)) {
+        String requestUri = request.getRequestURI();
+        if (exclusions.contains(requestUri)) {
             filterChain.doFilter(servletRequest, servletResponse);
             return;
         }
-        log.info("WebFilterDemo 过滤器执行！");
-
+        log.info("过滤器 WebFilterDemo 执行前！");
         filterChain.doFilter(servletRequest, servletResponse);
+        log.info("过滤器 WebFilterDemo 执行后！");
     }
 
     @Override
     public void destroy() {
         log.info("filter 销毁");
     }
+
 }

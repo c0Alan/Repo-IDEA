@@ -21,10 +21,10 @@ public class SwaggerConfig {
                 .apis(RequestHandlerSelectors.basePackage("com.demo.springboot"))
                 .paths(PathSelectors.any())
                 .build().apiInfo(new ApiInfoBuilder()
-                        .title("sch-scheduler")
-                        .description("sch-scheduler")
+                        .title("springboot-2x-demo")
+                        .description("springboot-2x-demo")
                         .version("1.0")
-                        .contact(new Contact("c0", "https://blog.csdn.net/c0tianning", ""))
+                        .contact(new Contact("liuxl", "https://blog.csdn.net/c0tianning", ""))
                         .build());
     }
 }

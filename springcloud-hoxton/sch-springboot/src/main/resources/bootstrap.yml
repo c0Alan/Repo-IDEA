@@ -1,7 +1,7 @@
 nacosServer: ${NACOS_SERVER:nacos-center.v-base:8848}
 
 server:
-  port: 9000
+  port: 9009
 spring:
   application:
     name: sch-demo
