@@ -2,10 +2,7 @@ package com.demo.java.io;
 
 import org.junit.Test;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 
 /**
  * BufferedReader 示例
@@ -20,15 +17,28 @@ public class BufferedReaderDemo {
         demo.test01();
     }
 
+
+
     /**
      * 文件读取
      */
     @Test
     public void test01() throws IOException {
         String fileName = System.getProperty("user.dir") + File.separator + "data.txt";
-        try (BufferedReader br = new BufferedReader(new FileReader(fileName))) {
+        String copyName = System.getProperty("user.dir") + File.separator + "data2.txt";
+        BufferedReader br = new BufferedReader(new FileReader(fileName));
+        BufferedWriter bw = new BufferedWriter(new FileWriter(copyName));
+        try {
             String result = br.readLine();
+            while (result != null){
+                bw.write(result);
+                bw.newLine();
+                result = br.readLine();
+            }
+            bw.flush();
             System.out.println(result);
+        }catch (Exception e){
+            e.printStackTrace();
         }
 
     }
