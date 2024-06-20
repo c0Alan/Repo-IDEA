@@ -4,13 +4,58 @@ import com.demo.java.entity.*;
 import org.junit.Test;
 
 /**
- *
- *
  * @author liuxilin
  * @date 2022/6/23 22:27
  */
 public class ClassDemo {
     public static void main(String[] args) {
+
+    }
+
+    /**
+     * Class.forName()
+     */
+    @Test
+    public void test05() {
+        try {
+            // 获取Class对象
+            Class<?> cl = Class.forName("com.demo.java.entity.Employee");
+            // 获取构造器, 这里要有空参数的构造方法, 否则会报错
+            Employee employee = (Employee) cl.newInstance();
+            // 获取属性
+            employee.setSalary(10000);
+            employee.setHireDay(2024, 5, 17);
+            System.out.println(employee.getDescription());
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        } catch (InstantiationException e) {
+            throw new RuntimeException(e);
+        } catch (IllegalAccessException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+
+
+
+    public final Employee employee = new Employee("张三", 10000, 2024, 5, 17);
+
+    /**
+     * final 修饰符
+     */
+    @Test
+    public void test04() {
+        Employee employee2 = new Employee("张三", 10000, 2024, 5, 17);
+
+        ClassDemo classDemo = new ClassDemo();
+        // final 引用不能修改
+//        testApp.employee = employee2;
+        // final 引用的对象属性可以修改
+        classDemo.employee.setHireDay(2024, 5, 17);
+
+        // final 变量不能修改
+//        testApp.a = 3;
+
 
     }
 

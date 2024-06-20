@@ -45,8 +45,7 @@ public class CancelAutoLoginServlet extends HttpServlet {
         response.addCookie(cookie);
     }
     
-    public void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+    public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         doGet(request, response);
     }
 }

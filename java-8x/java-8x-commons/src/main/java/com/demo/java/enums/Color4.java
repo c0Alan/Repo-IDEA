@@ -1,4 +1,6 @@
-package com.demo.java.entity;
+package com.demo.java.enums;
+
+import com.demo.java.entity.Behaviour;
 
 /**
  * 用法五：实现接口

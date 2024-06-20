@@ -1,4 +1,4 @@
-package com.demo.java.entity;
+package com.demo.java.enums;
 
 /**
  * 用法三：向枚举中添加新方法

@@ -1,4 +1,4 @@
-package com.demo.java.entity;
+package com.demo.java.enums;
 
 /**
  * 用法四：覆盖枚举的方法

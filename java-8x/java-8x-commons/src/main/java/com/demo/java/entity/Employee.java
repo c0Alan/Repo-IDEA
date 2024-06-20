@@ -7,6 +7,10 @@ public class Employee extends Person {
     private double salary;
     private LocalDate hireDay;
 
+    public Employee() {
+        super("super");
+    }
+
     public Employee(String name, double salary, int year, int month, int day) {
         super(name);
         this.salary = salary;
@@ -19,6 +23,14 @@ public class Employee extends Person {
 
     public LocalDate getHireDay() {
         return hireDay;
+    }
+
+    public void setSalary(double salary) {
+        this.salary = salary;
+    }
+
+    public void setHireDay(int year, int month, int day) {
+        hireDay = LocalDate.of(year, month, day);
     }
 
     @Override

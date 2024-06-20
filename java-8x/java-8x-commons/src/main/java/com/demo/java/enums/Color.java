@@ -1,4 +1,4 @@
-package com.demo.java.entity;
+package com.demo.java.enums;
 
 
 /**

@@ -74,6 +74,7 @@
     <a href="${pageContext.request.contextPath}/jsp/test02.jsp">/jsp/test02.jsp: 使用pageContext的findAttribute方法查找属性值</a><br/>
     <a href="${pageContext.request.contextPath}/jsp/test03.jsp">/jsp/test03.jsp: pageContext访问其它域</a><br/>
     <a href="${pageContext.request.contextPath}/jsp/test04.jsp">/jsp/test04.jsp: 使用pageContext的forward方法跳转到其他页面</a><br/>
+    <a href="${pageContext.request.contextPath}/jsp/nineObject01from.jsp">/jsp/nineObject01from.jsp: 9个内置对象</a><br/>
 
     <p>============================== JSP属性范围 ==============================</p>
     <a href="${pageContext.request.contextPath}/jsp/pageContextDemo01.jsp">/jsp/pageContextDemo01.jsp: page属性范围</a><br/>

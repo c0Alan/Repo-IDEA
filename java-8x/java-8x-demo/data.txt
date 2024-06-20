@@ -1,5 +1,6 @@
-Java
-8
+JavaJavaJava
+8888888888888888
 Lambdas
 In
 Action
+这是一串中文字符串

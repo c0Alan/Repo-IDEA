@@ -2,6 +2,8 @@ package com.demo.java.clazz;
 
 import com.demo.java.entity.Employee07;
 import com.demo.java.entity.Employee06;
+import com.demo.java.entity.Interface01;
+import com.demo.java.entity.InterfaceChild01;
 import org.junit.Test;
 
 import java.util.Arrays;
@@ -13,6 +15,13 @@ import java.util.Arrays;
  * @date 2022/6/25 16:44
  */
 public class InterfaceDemo {
+
+    @Test
+    public void test03() {
+        Interface01 i = new InterfaceChild01();
+        i.method01();
+        i.method02();
+    }
 
 
     /**

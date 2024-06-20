@@ -1,7 +1,7 @@
 package com.demo.java.lambda;
 
 import com.demo.java.entity.*;
-import com.demo.java.entity.Currency;
+import com.demo.java.enums.Currency;
 import org.junit.Test;
 
 import java.io.IOException;
@@ -311,7 +311,7 @@ public class CollectorsDemo {
     private static void groupImperatively() {
         Map<Currency, List<Transaction02>> transactionsByCurrencies = new HashMap<>();
         for (Transaction02 transaction : transactions) {
-            com.demo.java.entity.Currency currency = transaction.getCurrency();
+            Currency currency = transaction.getCurrency();
             List<Transaction02> transactionsForCurrency = transactionsByCurrencies.get(currency);
             if (transactionsForCurrency == null) {
                 transactionsForCurrency = new ArrayList<>();

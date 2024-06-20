@@ -1,5 +1,7 @@
 package com.demo.java.juc.lock;
 
+import org.junit.Test;
+
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.locks.LockSupport;
 
@@ -16,16 +18,16 @@ import java.util.concurrent.locks.LockSupport;
  */
 public class LockSupportDemo {
 
-    private static Thread mainThread;
+    private Thread mainThread;
 
     public static void main(String[] args) {
-        test01();
     }
 
     /**
      * unpark 先于 park 执行也可以
      */
-    public static void test01() {
+    @Test
+    public void test01() {
         ThreadA ta = new ThreadA("ta");
         // 获取主线程
         mainThread = Thread.currentThread();
@@ -47,15 +49,21 @@ public class LockSupportDemo {
 
     }
 
-    static class ThreadA extends Thread {
+    class ThreadA extends Thread {
 
         public ThreadA(String name) {
             super(name);
         }
 
+        @Override
         public void run() {
             System.out.println(Thread.currentThread().getName() + " wakup others");
-            // 唤醒“主线程”
+            /*try {
+                TimeUnit.SECONDS.sleep(3);
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }*/
+            // 唤醒“主线程”, unpark 先于 park 执行也可以
             LockSupport.unpark(mainThread);
             System.out.println(Thread.currentThread().getName() + " wakup others");
         }

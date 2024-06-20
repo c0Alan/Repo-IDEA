@@ -17,5 +17,9 @@ public class MathDemo {
         // round 方法, 它表示"四舍五入", 算法为Math.floor(x+0.5), 即将原来的数字加上0.5后再向下取整, 所以,
         System.out.println(Math.round(11.5)); // 12
         System.out.println(Math.round(-11.5)); // -11
+        System.out.println(Math.round(-11.4)); // -11
+        System.out.println(Math.round(-11.6)); // -12
+        System.out.println(Math.ceil(-10.9)); // -10.0
+        System.out.println(Math.floor(-10.9)); // -11.0
     }
 }

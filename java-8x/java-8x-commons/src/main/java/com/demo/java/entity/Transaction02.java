@@ -1,5 +1,7 @@
 package com.demo.java.entity;
 
+import com.demo.java.enums.Currency;
+
 import java.util.Arrays;
 import java.util.List;
 

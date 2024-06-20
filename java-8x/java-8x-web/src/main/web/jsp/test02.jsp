@@ -6,10 +6,10 @@
     <title>pageContext的findAttribute方法查找属性值</title>
 </head>
 <%
-    pageContext.setAttribute("name1", "孤傲苍狼");
-    request.setAttribute("name2", "白虎神皇");
-    session.setAttribute("name3", "玄天邪帝");
-    application.setAttribute("name4", "灭世魔尊");
+    pageContext.setAttribute("name1", "pageContext");
+    request.setAttribute("name2", "request");
+    session.setAttribute("name3", "session");
+    application.setAttribute("name4", "application");
 %>
 <%
     //使用pageContext的findAttribute方法查找属性，由于取得的值为Object类型，因此必须使用String强制向下转型，转换成String类型

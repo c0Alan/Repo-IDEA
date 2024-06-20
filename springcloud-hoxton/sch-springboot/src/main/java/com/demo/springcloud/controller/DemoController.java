@@ -22,6 +22,7 @@ public class DemoController {
     @GetMapping("/users/{id}")
     public SysUser getUser(@PathVariable Integer id) {
         SysUser user = new SysUser();
+        user.setUsername("user" + id);
         user.setId(id);
         return user;
     }

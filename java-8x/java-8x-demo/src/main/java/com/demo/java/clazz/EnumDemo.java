@@ -2,6 +2,9 @@ package com.demo.java.clazz;
 
 
 import com.demo.java.entity.*;
+import com.demo.java.enums.Color;
+import com.demo.java.enums.Color2;
+import com.demo.java.enums.Color3;
 import org.junit.Test;
 
 import java.util.Scanner;

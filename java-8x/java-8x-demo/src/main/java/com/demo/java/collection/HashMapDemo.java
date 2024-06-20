@@ -1,6 +1,7 @@
 package com.demo.java.collection;
 
 import com.demo.java.entity.Employee04;
+import org.junit.Test;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -31,7 +32,16 @@ public class HashMapDemo {
 
         // iterate through all entries
 
-        staff.forEach((k, v) ->
-                System.out.println("key=" + k + ", value=" + v));
+        staff.forEach((k, v) -> System.out.println("key=" + k + ", value=" + v));
+    }
+
+    /**
+     * HashMap允许将null作为一个entry的key或者value，而Hashtable不允许
+     */
+    @Test
+    public void test01() {
+        HashMap<String, String> map = new HashMap<>();
+        map.put(null, "aaa");
+        System.out.println(map.get(null));
     }
 }

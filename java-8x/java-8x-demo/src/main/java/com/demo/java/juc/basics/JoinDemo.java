@@ -9,22 +9,21 @@ import lombok.SneakyThrows;
  */
 public class JoinDemo {
 
-    private static Object obj = new Object();
+    private Object obj = new Object();
 
     public static void main(String[] args) {
-        test02();
     }
 
     /**
      * join不会释放锁
      */
-    public static void test02() {
+    public void test02() {
         try {
             ThreadB t1 = new ThreadB("t1"); // 新建“线程t1”
             ThreadB t2 = new ThreadB("t2"); // 新建“线程t1”
             ThreadB t3 = new ThreadB("t3"); // 新建“线程t1”
 
-//            synchronized (obj) {
+//            synchronized (obj) { // join不会释放锁, 这里放开会导致死锁
             System.out.printf("%s start\n", Thread.currentThread().getName());
             t2.start();                     // 启动“线程t1”
             t3.start();                     // 启动“线程t1”
@@ -38,12 +37,13 @@ public class JoinDemo {
         }
     }
 
-    static class ThreadB extends Thread {
+    class ThreadB extends Thread {
 
         public ThreadB(String name) {
             super(name);
         }
 
+        @Override
         @SneakyThrows
         public void run() {
             synchronized (obj) {
@@ -60,7 +60,7 @@ public class JoinDemo {
     /**
      * 将“线程t1”加入到“主线程main”中，并且“主线程main()会等待它的完成
      */
-    public static void test01() {
+    public void test01() {
         try {
             ThreadA t1 = new ThreadA("t1"); // 新建“线程t1”
 
@@ -72,12 +72,13 @@ public class JoinDemo {
         }
     }
 
-    static class ThreadA extends Thread {
+    class ThreadA extends Thread {
 
         public ThreadA(String name) {
             super(name);
         }
 
+        @Override
         @SneakyThrows
         public void run() {
             System.out.printf("%s start\n", this.getName());
