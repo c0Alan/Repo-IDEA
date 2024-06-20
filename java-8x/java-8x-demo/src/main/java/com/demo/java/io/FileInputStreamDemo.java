@@ -8,7 +8,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 
 /**
- * FileInputStream、FileOutputStream 示例
+ * 文件流，FileInputStream、FileOutputStream 示例
  *
  * @author liuxl
  * @date 2024/6/20

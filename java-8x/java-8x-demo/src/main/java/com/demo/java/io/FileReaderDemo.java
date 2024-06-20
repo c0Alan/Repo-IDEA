@@ -8,7 +8,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 
 /**
- * FileReader、FileWriter 读写文件
+ * 文件流，FileReader、FileWriter 读写文件
  *
  * @author liuxl
  * @date 2024/6/20
