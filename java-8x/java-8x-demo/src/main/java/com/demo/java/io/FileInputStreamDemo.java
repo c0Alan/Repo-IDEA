@@ -64,7 +64,7 @@ public class FileInputStreamDemo {
 
 
     /**
-     * 使用字节流FileInputStream处理文本文件，可能出现乱码。
+     * 使用字节流FileInputStream处理文本文件，可能出现乱码。使用 InputStreamReader 转 utf-8 编码解决中文乱码问题
      */
     @Test
     public void test01() {
