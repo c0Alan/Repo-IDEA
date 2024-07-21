@@ -70,12 +70,12 @@ public class ConditionDemo {
      */
     public static void test02() {
 
-        ThreadB ta = new ThreadB("ta");
+        ThreadB tb = new ThreadB("tb");
 
         lock.lock(); // 获取锁
         try {
-            System.out.println(Thread.currentThread().getName() + " start ta");
-            ta.start();
+            System.out.println(Thread.currentThread().getName() + " start tb");
+            tb.start();
 
             System.out.println(Thread.currentThread().getName() + " block");
             condition.await();    // 等待

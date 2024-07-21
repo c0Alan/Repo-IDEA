@@ -3,6 +3,7 @@ package com.demo.java.entity;
 import java.io.*;
 
 /**
+ * 深拷贝
  * A class whose clone method uses serialization.
  */
 public class SerialCloneable implements Cloneable, Serializable {

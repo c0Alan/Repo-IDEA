@@ -17,8 +17,7 @@ public class CallableDemo {
      * 新建线程计算1-99的和
      */
     @Test
-    public void test01()
-            throws ExecutionException, InterruptedException {
+    public void test01() throws ExecutionException, InterruptedException {
         //创建一个线程池
         ExecutorService pool = Executors.newSingleThreadExecutor();
         //创建有返回值的任务

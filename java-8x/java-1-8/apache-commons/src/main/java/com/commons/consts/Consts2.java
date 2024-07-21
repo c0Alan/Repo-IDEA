@@ -1,4 +1,4 @@
-package com.commons.consts;
+package com.demo.java.apachecommons.commons.consts;
 
 public class Consts2 {
     

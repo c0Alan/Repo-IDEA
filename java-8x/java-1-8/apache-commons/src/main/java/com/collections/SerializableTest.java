@@ -1,4 +1,4 @@
-package com.collections;
+package com.demo.java.apachecommons.collections;
 
 /**
  * 序列化：内存中创建可复用的Java对象，在分布式系统中会经常用到，

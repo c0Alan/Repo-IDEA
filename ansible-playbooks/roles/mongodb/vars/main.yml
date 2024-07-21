@@ -1,0 +1,8 @@
+# 需要手工将安装包放到 /opt/ansible-playbooks/roles/mongodb/files 目录下
+pkg_name: mongodb-linux-x86_64-rhel70-5.0.27.tgz
+tmp_dir: /opt/tmp/mongodb
+install_dir: /opt/mongodb
+data_dir: /opt/mongodb/data
+log_dir: /opt/mongodb/logs
+unarchive_dir: /opt/tmp/mongodb
+env_file: /etc/profile

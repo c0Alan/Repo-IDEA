@@ -1,7 +1,7 @@
-package com.net.app;
+package com.demo.java.apachecommons.net.app;
 
 import com.net.ip.JInetAddress;
-import com.net.program.NetProgram;
+import com.demo.java.apachecommons.net.program.NetProgram;
 
 /**
  * jdk 测试类入口

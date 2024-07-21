@@ -1,13 +1,10 @@
-package com.pool;
+package com.demo.java.apachecommons.pool;
 
 import org.apache.commons.pool2.BasePooledObjectFactory;
 import org.apache.commons.pool2.PooledObject;
 import org.apache.commons.pool2.impl.DefaultPooledObject;
 import org.apache.commons.pool2.impl.GenericObjectPool;
 import org.apache.commons.pool2.impl.GenericObjectPoolConfig;
-import org.junit.Test;
-
-import java.io.*;
 
 /**
  * JdbcUtils工具类对象池工厂

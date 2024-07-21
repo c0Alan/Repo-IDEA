@@ -1,4 +1,4 @@
-package com.collections;
+package com.demo.java.apachecommons.collections;
 
 import com.jd.model.Employee;
 import com.jd.model.Level;

@@ -10,6 +10,12 @@ import java.util.Iterator;
 import java.util.Scanner;
 import java.util.Set;
 
+/**
+ * 参考：https://blog.csdn.net/qq_33807380/article/details/134190775
+ *
+ * @author liuxl
+ * @date 2024/5/4
+ */
 public class Server05Client01 {
     ByteBuffer writeBuffer = ByteBuffer.allocate(1024);
     ByteBuffer readBuffer = ByteBuffer.allocate(1024);

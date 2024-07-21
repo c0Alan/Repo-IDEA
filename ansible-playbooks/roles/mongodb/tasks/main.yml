@@ -1,0 +1,33 @@
+- name: 创建临时目录
+  file: path={{ tmp_dir }} state=directory
+- name: 拷贝安装包
+  copy: src={{ pkg_name }} dest={{ tmp_dir }}/{{ pkg_name }}
+- name: 卸载
+  file: path={{ install_dir }} state=absent
+- name: 解压安装
+  unarchive: src={{ tmp_dir }}/{{ pkg_name }} dest={{ unarchive_dir }} remote_src=yes
+- name: 拷贝目录
+  shell: mv {{ unarchive_dir }}/mongodb*/ {{ install_dir }}
+- name: 创建数据目录
+  file: path={{ data_dir }} state=directory
+- name: 创建日志目录
+  file: path={{ log_dir }} state=directory
+- name: 拷贝配置文件
+  template: src=mongodb.conf.j2 dest={{ install_dir }}/mongodb.conf
+- name: 清除环境变量
+  shell: sed -i '/MONGODB_HOME/d' {{ env_file }}
+- name: 新增环境变量
+  lineinfile: dest={{ env_file }} insertafter="{{ item.position }}" line="{{ item.value }}" state=present
+  with_items:
+    - { position: EOF, value: "export MONGODB_HOME={{ install_dir }}" }
+    - { position: EOF, value: "export PATH=$PATH:$MONGODB_HOME/bin" }
+- name: 拷贝systemd文件
+  copy: src=mongod.service dest=/etc/systemd/system
+- name: 刷新环境变量
+  shell: source {{ env_file }}
+- name: 启动
+  service: name=mongod state=restarted enabled=true
+- name: 删除临时目录
+  file: path={{ tmp_dir }} state=absent
+
+

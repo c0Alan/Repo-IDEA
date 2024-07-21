@@ -65,14 +65,14 @@ public class ClassDemo {
      */
     @Test
     public void test03() {
-        Person[] people = new Person[2];
+        AbstractPerson[] people = new AbstractPerson[2];
 
         // fill the people array with Student and Employee objects
         people[0] = new Employee("Harry Hacker", 50000, 1989, 10, 1);
         people[1] = new Student("Maria Morris", "computer science");
 
         // print out names and descriptions of all Person objects
-        for (Person p : people) {
+        for (AbstractPerson p : people) {
             System.out.println(p.getName() + ", " + p.getDescription());
         }
     }

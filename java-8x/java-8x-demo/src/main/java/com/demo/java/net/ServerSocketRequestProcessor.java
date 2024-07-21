@@ -18,8 +18,7 @@ public class ServerSocketRequestProcessor implements Runnable {
     public ServerSocketRequestProcessor(File rootDirectory, String indexFileName, Socket connection) {
 
         if (rootDirectory.isFile()) {
-            throw new IllegalArgumentException(
-                    "rootDirectory must be a directory, not a file");
+            throw new IllegalArgumentException("rootDirectory must be a directory, not a file");
         }
         try {
             rootDirectory = rootDirectory.getCanonicalFile();
@@ -121,8 +120,7 @@ public class ServerSocketRequestProcessor implements Runnable {
         }
     }
 
-    private void sendHeader(Writer out, String responseCode,
-                            String contentType, int length)
+    private void sendHeader(Writer out, String responseCode, String contentType, int length)
             throws IOException {
         out.write(responseCode + "\r\n");
         Date now = new Date();

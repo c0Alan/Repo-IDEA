@@ -1,7 +1,12 @@
 package com.demo.java.basic;
 
+import com.demo.java.entity.Person;
 import com.demo.java.enums.Color;
 import org.junit.Test;
+
+import java.io.*;
+import java.nio.file.Files;
+import java.util.ArrayList;
 
 /**
  * Java 基础知识示例
@@ -10,6 +15,70 @@ import org.junit.Test;
  * @date 2024/6/17
  */
 public class BasicDemo {
+
+
+    /**
+     * finally 语句块
+     */
+    @Test
+    public void test10() {
+        System.out.println(finallyTest());
+    }
+
+    public int finallyTest() {
+        try {
+            System.out.println("try");
+            return 1;
+        } finally {
+            System.out.println("finally");
+            return 2;
+        }
+    }
+
+    /**
+     * 序列化：将对象转换为字节序列的过程
+     * 反序列化：将字节序列转换为对象的过程
+     */
+    @Test
+    public void test09() {
+        try {
+            //解析本地文件
+            File file = new File("序列化.txt");
+            InputStream inputStream = Files.newInputStream(file.toPath());
+            ObjectInputStream objectInputStream = new ObjectInputStream(inputStream);
+            ArrayList<Person> list = (ArrayList<Person>) objectInputStream.readObject();
+            for (Person person : list) {
+                System.out.println(person.getName());
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+
+    /**
+     * 序列化：将对象转换为字节序列的过程
+     * 反序列化：将字节序列转换为对象的过程
+     */
+    @Test
+    public void test08() {
+        Person persion1 = new Person("张三");
+        Person persion2 = new Person("李四");
+        ArrayList<Person> list = new ArrayList<>();
+        list.add(persion1);
+        list.add(persion2);
+        try {
+            //将类序列化到本地文件，便于测试
+            File file = new File("序列化.txt");
+            OutputStream stream = Files.newOutputStream(file.toPath());
+            ObjectOutputStream objectOutputStream = new ObjectOutputStream(stream);
+            objectOutputStream.writeObject(list);
+            objectOutputStream.flush();
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+    }
 
     /**
      * Assert 断言
@@ -63,7 +132,7 @@ public class BasicDemo {
                 System.out.println("short bad");
         }
 
-        System.out.println((int)c); // 49
+        System.out.println((int) c); // 49
         switch (c) { // bad 此处会进行类型转换, char 转换为 int
             case 1:
                 System.out.println("good");
@@ -125,7 +194,7 @@ public class BasicDemo {
         System.out.println(c);
 
         // & 作为位运算符
-        System.out.println( 1 & 2);
+        System.out.println(1 & 2);
     }
 
     /**
@@ -146,7 +215,7 @@ public class BasicDemo {
      * 位运算符
      */
     @Test
-    public void test02() {
+    public void test02()  {
         int a = 8;
         int b = 2;
         System.out.println(a & b);

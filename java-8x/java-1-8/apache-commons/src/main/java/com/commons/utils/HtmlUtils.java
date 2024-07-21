@@ -1,4 +1,4 @@
-package com.commons.utils;
+package com.demo.java.apachecommons.commons.utils;
 
 public class HtmlUtils {
     public static String HtmlEncode(String theString) {

@@ -22,10 +22,8 @@ public class Server02 {
         ServerSocket serverSocket = new ServerSocket(port);
         // 监听来自客户端的连接
         Socket socket = serverSocket.accept();
-        DataInputStream dis = new DataInputStream(
-                new BufferedInputStream(socket.getInputStream()));
-        DataOutputStream dos = new DataOutputStream(
-                new BufferedOutputStream(socket.getOutputStream()));
+        DataInputStream dis = new DataInputStream(new BufferedInputStream(socket.getInputStream()));
+        DataOutputStream dos = new DataOutputStream(new BufferedOutputStream(socket.getOutputStream()));
         do {
 
             double length = dis.readDouble();

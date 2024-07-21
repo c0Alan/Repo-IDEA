@@ -3,7 +3,7 @@ package com.demo.java.entity;
 
 import java.time.LocalDate;
 
-public class Employee extends Person {
+public class Employee extends AbstractPerson {
     private double salary;
     private LocalDate hireDay;
 

@@ -1,4 +1,4 @@
-package com.commons.model;
+package com.demo.java.apachecommons.commons.model;
 
 import java.sql.Date;
 import java.util.List;

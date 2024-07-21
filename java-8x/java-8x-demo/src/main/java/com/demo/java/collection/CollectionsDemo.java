@@ -1,10 +1,10 @@
 package com.demo.java.collection;
 
-import cn.hutool.core.date.DateTime;
-import com.demo.java.entity.Person02;
+import com.demo.java.entity.Person;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 
+import java.sql.Date;
 import java.util.*;
 
 /**
@@ -68,16 +68,16 @@ public class CollectionsDemo {
      */
     @Test
     public void max() {
-        Person02 p1 = (new Person02(null));
-        Person02 p2 = (new Person02(new DateTime("2018-06-20").toJdkDate()));
-        Person02 p3 = (new Person02(new DateTime("2018-07-21").toJdkDate()));
-        List<Person02> persons = new ArrayList<>();
+        Person p1 = (new Person());
+        Person p2 = (new Person(Date.valueOf("2018-06-20")));
+        Person p3 = (new Person(Date.valueOf("2018-07-21")));
+        List<Person> persons = new ArrayList<>();
         persons.add(p1);
         persons.add(p2);
         persons.add(p3);
-        Person02 p = Collections.max(persons, new Comparator<Person02>() {
+        Person p = Collections.max(persons, new Comparator<Person>() {
             @Override
-            public int compare(Person02 o1, Person02 o2) {
+            public int compare(Person o1, Person o2) {
                 if (o1.getBirthDay() == null) {
                     return -1;
                 }

@@ -22,8 +22,9 @@ public class CountDownLatchDemo {
             doneSignal = new CountDownLatch(LATCH_SIZE);
 
             // 新建5个任务
-            for (int i = 0; i < LATCH_SIZE; i++)
+            for (int i = 0; i < LATCH_SIZE; i++) {
                 new InnerThread().start();
+            }
 
             System.out.println("main await begin.");
             // "主线程"等待线程池中5个任务的完成

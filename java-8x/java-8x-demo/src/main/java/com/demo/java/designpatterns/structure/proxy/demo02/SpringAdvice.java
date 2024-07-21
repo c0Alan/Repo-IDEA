@@ -1,5 +1,6 @@
 package com.demo.java.designpatterns.structure.proxy.demo02;
 
+import com.demo.java.designpatterns.structure.proxy.JdkProxyFactory;
 import com.demo.java.designpatterns.structure.proxy.demo01.IMath;
 import com.demo.java.designpatterns.structure.proxy.demo01.Math2;
 import org.junit.Test;
@@ -42,7 +43,7 @@ public class SpringAdvice {
     @Test
     public void test2() {
         //从代理工厂中获得代理对象
-        IMath math = (IMath) DynamicProxyFactory.getProxy(new Math2());
+        IMath math = (IMath) JdkProxyFactory.getProxy(new Math2());
         int n1 = 100, n2 = 5;
         math.add(n1, n2);
         math.sub(n1, n2);

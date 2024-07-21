@@ -3,6 +3,7 @@ package com.demo.springcloud.controller;
 
 import com.demo.springcloud.entity.SysUser;
 import com.demo.springcloud.service.TUserService;
+import org.redisson.api.RedissonClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -12,9 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 /**
- * <p>
  *  前端控制器
- * </p>
  *
  * @author liuxilin
  * @since 2023-08-15
@@ -25,6 +24,9 @@ public class TUserController {
 
     @Autowired
     TUserService tUserService;
+
+    @Autowired
+    private RedissonClient redissonClient;
 
     @GetMapping("/list")
     public List<SysUser> listUsers(){
@@ -37,6 +39,7 @@ public class TUserController {
         sysUser.setUsername("test");
         sysUser.setAge(18);
         tUserService.save(sysUser);
+
         return "success";
     }
 

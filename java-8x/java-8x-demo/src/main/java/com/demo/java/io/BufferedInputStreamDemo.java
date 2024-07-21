@@ -12,8 +12,10 @@ import java.io.*;
  */
 public class BufferedInputStreamDemo {
 
+
+
     /**
-     * BufferedInputStream 读，BufferedOutputStream 写
+     * BufferedInputStream 读文件，BufferedOutputStream 写文件
      */
     @Test
     public void test01() throws FileNotFoundException {

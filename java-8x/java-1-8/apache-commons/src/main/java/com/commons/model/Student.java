@@ -1,4 +1,4 @@
-package com.commons.model;
+package com.demo.java.apachecommons.commons.model;
 
 /**
  * 学生 bean

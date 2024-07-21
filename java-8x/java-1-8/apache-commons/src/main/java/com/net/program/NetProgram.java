@@ -1,4 +1,4 @@
-package com.net.program;
+package com.demo.java.apachecommons.net.program;
 
 import java.io.IOException;
 import java.net.InetAddress;

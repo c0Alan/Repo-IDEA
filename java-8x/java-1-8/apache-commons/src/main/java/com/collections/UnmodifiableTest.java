@@ -1,4 +1,4 @@
-package com.collections;
+package com.demo.java.apachecommons.collections;
 
 public class UnmodifiableTest {
 }

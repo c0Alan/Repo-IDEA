@@ -1,4 +1,4 @@
-package com.httpclient;
+package com.demo.java.apachecommons.httpclient;
 
 import java.io.IOException;
 import java.io.InterruptedIOException;

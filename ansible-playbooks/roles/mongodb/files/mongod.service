@@ -1,0 +1,12 @@
+[Unit]
+Description=mongod
+After=syslog.target network.target
+
+[Service]
+User=root
+Type=forking
+ExecStart=/opt/mongodb/bin/mongod -f /opt/mongodb/mongodb.conf
+Restart=always
+
+[Install]
+WantedBy=multi-user.target

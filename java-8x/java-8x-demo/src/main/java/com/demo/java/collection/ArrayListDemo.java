@@ -1,10 +1,10 @@
 package com.demo.java.collection;
 
-import com.demo.java.entity.Person02;
+import com.demo.java.entity.Person;
 import org.junit.Test;
 
 import java.util.ArrayList;
-import java.util.Date;
+import java.sql.Date;
 import java.util.List;
 
 /**
@@ -17,10 +17,10 @@ public class ArrayListDemo {
 
     @Test
     public void test(){
-        List<Person02> list = new ArrayList<>();
-        list.add(new Person02(new Date()));
-        list.add(new Person02(new Date()));
-        Person02 p = list.get(1);
+        List<Person> list = new ArrayList<>();
+        list.add(new Person(Date.valueOf("2024-05-02")));
+        list.add(new Person(Date.valueOf("2024-05-02")));
+        Person p = list.get(1);
         System.out.println(p == list.get(1));
         list = null;
         System.out.println(p);

@@ -1,0 +1,13 @@
+# 数据文件存放目录
+dbpath = {{ data_dir }}
+# 日志文件存放目录
+logpath = {{ log_dir }}/mongodb.log
+logappend=true
+# 端口
+port = 27017
+# 以守护程序的方式启用，即在后台运行
+fork = true
+# 认证模式
+auth=true
+# 远程连接
+bind_ip=0.0.0.0

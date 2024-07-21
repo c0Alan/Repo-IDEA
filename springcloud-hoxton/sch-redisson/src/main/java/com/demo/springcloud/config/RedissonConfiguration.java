@@ -34,7 +34,7 @@ public class RedissonConfiguration {
     @Bean
     public CacheManager cacheManager(RedissonClient redissonClient) {
         /*
-        为Redisson的缓存管理器设置参数：
+            为Redisson的缓存管理器设置参数：
             1.缓存数据30秒过期，缓存最长保留时间，超过这个时间则一定删除
             2.最长空闲时间为 10 秒, 这个时间内访问缓存则续期10秒，超过这个时间没访问缓存则删除
         */

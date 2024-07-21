@@ -1,4 +1,4 @@
-package com.collections;
+package com.demo.java.apachecommons.collections;
 
 import org.apache.commons.collections4.CollectionUtils;
 import org.junit.Test;

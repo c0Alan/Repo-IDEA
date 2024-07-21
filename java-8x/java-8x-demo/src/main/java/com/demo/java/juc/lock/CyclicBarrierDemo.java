@@ -24,19 +24,19 @@ public class CyclicBarrierDemo {
      */
     public static void test02() {
 
-        cb = new CyclicBarrier(SIZE, new Runnable () {
+        cb = new CyclicBarrier(SIZE, new Runnable() {
             public void run() {
-                System.out.println("CyclicBarrier's parties is: "+ cb.getParties());
+                System.out.println("CyclicBarrier's parties is: " + cb.getParties());
             }
         });
 
         // 新建5个任务
-        for(int i=0; i<SIZE; i++) {
+        for (int i = 0; i < SIZE; i++) {
             new InnerThread2().start();
         }
     }
 
-    static class InnerThread2 extends Thread{
+    static class InnerThread2 extends Thread {
         public void run() {
             try {
                 TimeUnit.SECONDS.sleep(1);
