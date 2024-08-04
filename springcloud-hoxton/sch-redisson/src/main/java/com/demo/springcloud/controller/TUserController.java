@@ -2,7 +2,7 @@ package com.demo.springcloud.controller;
 
 
 import com.demo.springcloud.entity.SysUser;
-import com.demo.springcloud.service.TUserService;
+import com.demo.springcloud.sse.TUserService;
 import org.redisson.api.RedissonClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;

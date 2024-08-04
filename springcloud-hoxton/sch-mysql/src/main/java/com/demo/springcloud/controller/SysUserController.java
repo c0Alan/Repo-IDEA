@@ -2,7 +2,7 @@ package com.demo.springcloud.controller;
 
 
 import com.demo.springcloud.entity.SysUser;
-import com.demo.springcloud.service.SysUserService;
+import com.demo.springcloud.sse.SysUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;

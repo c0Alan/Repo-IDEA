@@ -254,8 +254,6 @@
             </dependency>
 
 
-
-
             <dependency>
                 <groupId>org.eweb4j</groupId>
                 <artifactId>fel</artifactId>
@@ -342,6 +340,18 @@
                         <artifactId>seata-spring-boot-starter</artifactId>
                     </exclusion>
                 </exclusions>
+            </dependency>
+
+            <!-- okhttp 相关依赖 -->
+            <dependency>
+                <groupId>com.squareup.okhttp3</groupId>
+                <artifactId>okhttp</artifactId>
+                <version>4.12.0</version>
+            </dependency>
+            <dependency>
+                <groupId>com.squareup.okhttp3</groupId>
+                <artifactId>okhttp-sse</artifactId>
+                <version>4.12.0</version>
             </dependency>
 
 

@@ -118,6 +118,16 @@
             <artifactId>fastjson</artifactId>
         </dependency>
 
+        <!-- projectreactor 相关依赖-->
+        <dependency>
+            <groupId>io.projectreactor</groupId>
+            <artifactId>reactor-core</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>io.projectreactor</groupId>
+            <artifactId>reactor-test</artifactId>
+        </dependency>
+
         <dependency>
             <groupId>com.demo.java</groupId>
             <artifactId>java-8x-commons</artifactId>

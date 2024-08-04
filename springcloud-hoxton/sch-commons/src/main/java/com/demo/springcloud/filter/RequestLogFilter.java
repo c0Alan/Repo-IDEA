@@ -2,14 +2,11 @@ package com.demo.springcloud.filter;
 
 import com.demo.springcloud.entity.RequestLogDto;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.stereotype.Component;
 
 import javax.servlet.*;
 import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.Arrays;
 
 /**
  * 接口日志过滤器
@@ -18,7 +15,8 @@ import java.util.Arrays;
  * @date 2024/5/8
  */
 @Slf4j
-@WebFilter(filterName = "RequestLogFilter", urlPatterns = {"/*"})
+// @WebFilter 不加 asyncSupported = true 会导致sse请求报错：Async support must be enabled
+@WebFilter(filterName = "RequestLogFilter", urlPatterns = {"/*"}, asyncSupported = true)
 public class RequestLogFilter implements Filter {
     @Override
     public void init(FilterConfig filterConfig) {

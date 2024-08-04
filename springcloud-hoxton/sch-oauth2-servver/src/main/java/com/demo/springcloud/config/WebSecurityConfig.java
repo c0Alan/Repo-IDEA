@@ -1,6 +1,6 @@
 package com.demo.springcloud.config;
 
-import com.demo.springcloud.service.TorlesseUserDetailsService;
+import com.demo.springcloud.sse.TorlesseUserDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
