@@ -19,19 +19,23 @@ public class CallableDemo {
     @Test
     public void test01() throws ExecutionException, InterruptedException {
         //创建一个线程池
-        ExecutorService pool = Executors.newSingleThreadExecutor();
+        ExecutorService pool = Executors.newFixedThreadPool(2);
         //创建有返回值的任务
-        Callable c1 = new MyCallable();
+        Callable<Integer> c1 = new MyCallable();
         //执行任务并获取Future对象
-        Future f1 = pool.submit(c1);
+        Future<Integer> f1 = pool.submit(c1);
+        Future<Integer> f2 = pool.submit(c1);
         // 输出结果
-        System.out.println(f1.get());
+        System.out.println(f1.get() + f2.get());
+
+        System.out.println("main");
+
         //关闭线程池
         pool.shutdown();
     }
 
 
-    static class MyCallable implements Callable {
+    static class MyCallable implements Callable<Integer> {
 
         @Override
         public Integer call() throws Exception {
@@ -40,6 +44,8 @@ public class CallableDemo {
             for (int i = 0; i < 100; i++) {
                 sum += i;
             }
+
+            TimeUnit.SECONDS.sleep(5);
             //return sum;
             return Integer.valueOf(sum);
         }

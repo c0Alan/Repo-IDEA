@@ -6,12 +6,11 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Component;
 
 import javax.servlet.*;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 /**
- * 过滤器demo
+ * 非注解方式实现过滤器
+ * 参考: https://blog.csdn.net/Microhoo_/article/details/129968379
  *
  * @author liuxl
  * @date 2024/5/27

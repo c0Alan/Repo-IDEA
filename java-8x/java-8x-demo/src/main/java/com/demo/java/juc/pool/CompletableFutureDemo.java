@@ -20,12 +20,14 @@ import java.util.stream.Collectors;
 public class CompletableFutureDemo {
 
     public static void main(String[] args) throws ExecutionException, InterruptedException {
-        CompletableFutureDemo demo = new CompletableFutureDemo();
-        demo.test12();
+        /*CompletableFutureDemo demo = new CompletableFutureDemo();
+        demo.test12();*/
+
+        test05();
     }
 
     /**
-     * CompletableFuture.allOf , 并行执行，多任务结果合并。
+     * CompletableFuture.allOf, 并行执行，多任务结果合并。
      */
     @Test
     public void test12() throws ExecutionException, InterruptedException {
@@ -73,7 +75,8 @@ public class CompletableFutureDemo {
     }
 
     /**
-     * CompletableFuture.runAfterBothAsync , 跟runAfterBoth不同的是，这个方法会使用指定的线程池来执行操作，可以使操作在另外一个线程上异步执行，避免当前线程阻塞等待操作完成。
+     * CompletableFuture.runAfterBothAsync,
+     * 跟runAfterBoth不同的是，这个方法会使用指定的线程池来执行操作，可以使操作在另外一个线程上异步执行，避免当前线程阻塞等待操作完成。
      */
     public static void test11() throws ExecutionException, InterruptedException {
         long startTime = System.currentTimeMillis();
@@ -105,7 +108,8 @@ public class CompletableFutureDemo {
     }
 
     /**
-     * CompletableFuture.runAfterBoth ,在当前 CompletableFuture 和另一个 CompletableFuture 都完成后执行一个特定的操作，无需合并结果，并返回一个新的 CompletableFuture<Void> 对象（因为该方法没有返回值）。
+     * CompletableFuture.runAfterBoth ,
+     * 在当前 CompletableFuture 和另一个 CompletableFuture 都完成后执行一个特定的操作，无需合并结果，并返回一个新的 CompletableFuture<Void> 对象（因为该方法没有返回值）。
      */
     public static void test10() throws ExecutionException, InterruptedException {
         long startTime = System.currentTimeMillis();
@@ -169,7 +173,8 @@ public class CompletableFutureDemo {
     }
 
     /**
-     * CompletableFuture.thenAcceptBoth, 并行执行，将两个 CompletableFuture 的结果合并，然后执行特定的操作（使用传入的 BiConsumer 对象对合并结果进行处理），并返回一个新的 CompletableFuture<Void> 对象（因为该方法没有返回值）。
+     * CompletableFuture.thenAcceptBoth,
+     * 并行执行，将两个 CompletableFuture 的结果合并，然后执行特定的操作（使用传入的 BiConsumer 对象对合并结果进行处理），并返回一个新的 CompletableFuture<Void> 对象（因为该方法没有返回值）。
      */
     public static void test08() throws ExecutionException, InterruptedException {
         long startTime = System.currentTimeMillis();
@@ -201,7 +206,8 @@ public class CompletableFutureDemo {
     }
 
     /**
-     * CompletableFuture.thenCombineAsync,并行执行有返回，对当前 CompletableFuture 对象和另一个 CompletableFuture 对象的结果进行转换，并返回一个新的 CompletableFuture 对象，使用默认的 ForkJoinPool 执行异步任务。
+     * CompletableFuture.thenCombineAsync,
+     * 并行执行有返回，对当前 CompletableFuture 对象和另一个 CompletableFuture 对象的结果进行转换，并返回一个新的 CompletableFuture 对象，使用默认的 ForkJoinPool 执行异步任务。
      * 与 thenComposeAsync 方法不同的是，thenCombineAsync 方法返回的 CompletableFuture 对象只包含两个异步任务的结果中的一个。
      */
     public static void test07() throws ExecutionException, InterruptedException {
@@ -234,7 +240,8 @@ public class CompletableFutureDemo {
     }
 
     /**
-     * CompletableFuture.thenCompose , 串行执行有返回，将上一个 CompletableFuture 的结果转换为另一个 CompletableFuture输入
+     * CompletableFuture.thenCompose ,
+     * 串行执行有返回，将上一个 CompletableFuture 的结果转换为另一个 CompletableFuture输入
      */
     @Test
     public void test06() throws ExecutionException, InterruptedException {
@@ -262,10 +269,11 @@ public class CompletableFutureDemo {
     }
 
     /**
-     * CompletableFuture.thenApplyAsync, 串行执行有返回 ,对已有 CompletableFuture 对象的结果进行异步转换。
+     * CompletableFuture.thenApplyAsync,
+     * 串行执行有返回 ,对已有 CompletableFuture 对象的结果进行异步转换。
      * 串行执行，任务B需等任务A执行完再执行
      */
-    public static void test05() throws ExecutionException, InterruptedException {
+    public static void test05() {
         long startTime = System.currentTimeMillis();
         CompletableFuture<String> future = CompletableFuture.supplyAsync(() -> {
             try {
@@ -290,7 +298,8 @@ public class CompletableFutureDemo {
     }
 
     /**
-     * CompletableFuture.thenApply, 串行执行有返回 ,对已有 CompletableFuture 对象的结果进行异步转换。
+     * CompletableFuture.thenApply,
+     * 串行执行有返回 ,对已有 CompletableFuture 对象的结果进行异步转换。
      * 串行执行，任务B需等任务A执行完再执行
      */
     @Test
@@ -322,7 +331,8 @@ public class CompletableFutureDemo {
     }
 
     /**
-     * CompletableFuture.thenAccept, 串行执行有返回 , 套路和thenApply一样，都是任务A和任务B的拼接。
+     * CompletableFuture.thenAccept,
+     * 串行执行有返回 , 套路和thenApply一样，都是任务A和任务B的拼接。
      * 前置任务需要有返回结果，后置任务会接收前置任务的结果，返回后置任务，没有返回值
      */
     @Test
@@ -355,7 +365,8 @@ public class CompletableFutureDemo {
 
 
     /**
-     * CompletableFuture.anyOf, 并行执行，返回值为第一个结束线程的返回值，根据多个 CompletableFuture 对象生成一个新的 CompletableFuture 对象，等待任意一个异步任务执行完毕后，返回该异步任务的结果。
+     * CompletableFuture.anyOf,
+     * 并行执行，返回值为第一个结束线程的返回值，根据多个 CompletableFuture 对象生成一个新的 CompletableFuture 对象，等待任意一个异步任务执行完毕后，返回该异步任务的结果。
      * 使用 CompletableFuture.anyOf 方法等待多个 CompletableFuture 对象中的任意一个执行完毕
      * anyOf 方法返回第一个 CompletableFuture 对象结果值
      */
@@ -390,7 +401,8 @@ public class CompletableFutureDemo {
     }
 
     /**
-     * CompletableFuture.allOf, 并行执行无返回值，根据多个 CompletableFuture 对象生成一个新的 CompletableFuture 对象，等待所有异步任务执行完毕后，把所有的异步任务结果封装到一个数组对象中并返回。
+     * CompletableFuture.allOf,
+     * 并行执行无返回值，根据多个 CompletableFuture 对象生成一个新的 CompletableFuture 对象，等待所有异步任务执行完毕后，把所有的异步任务结果封装到一个数组对象中并返回。
      * allOf 方法返回的 CompletableFuture 对象并不包含任何结果值
      */
     public static void test03() throws ExecutionException, InterruptedException {
@@ -424,7 +436,8 @@ public class CompletableFutureDemo {
     }
 
     /**
-     * CompletableFuture.runAsync,根据指定的 Runnable 函数生成一个新的 CompletableFuture 对象，使用默认的 ForkJoinPool 执行异步任务。
+     * CompletableFuture.runAsync
+     * 并行执行无返回值,根据指定的 Runnable 函数生成一个新的 CompletableFuture 对象，使用默认的 ForkJoinPool 执行异步任务。
      * 实现对一个任务进行异步处理，并在任务完成后输出一条日志
      */
     @Test
@@ -455,7 +468,8 @@ public class CompletableFutureDemo {
     }
 
     /**
-     * CompletableFuture.supplyAsync, 并行执行，根据指定的 Supplier 函数生成一个新的 CompletableFuture 对象，使用默认的 ForkJoinPool 执行异步任务。
+     * CompletableFuture.supplyAsync,
+     * 并行执行有返回值，根据指定的 Supplier 函数生成一个新的 CompletableFuture 对象，使用默认的 ForkJoinPool 执行异步任务。
      * 实现对两个字符串进行异步处理，并将它们合并起来
      */
     @Test
@@ -481,11 +495,20 @@ public class CompletableFutureDemo {
             return "World";
         });
 
+//        future2.thenRun(() -> System.out.println("World returned."));
+
         CompletableFuture<String> result = future1.thenCombine(future2, (str1, str2) -> str1 + " " + str2);
 
         //当异步任务完成后，获取结果并输出到控制台
 //        result.thenAccept(System.out::println);
         System.out.println(result.get());
         System.out.println("cost time: " + (System.currentTimeMillis() - startTime) + "ms");
+    }
+
+    @Test
+    public void test(){
+        CompletableFuture.runAsync(() -> {
+            System.out.println("Hello");
+        });
     }
 }

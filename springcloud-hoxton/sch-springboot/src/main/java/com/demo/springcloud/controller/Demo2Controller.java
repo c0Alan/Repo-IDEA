@@ -14,7 +14,7 @@ import java.util.List;
 @Slf4j
 @RestController
 @RequestMapping("/demo2")
-public class DemoController2 {
+public class Demo2Controller {
 
     @ApiOperation(value = "GetMapping, PathVariable方式")
     @GetMapping("/users/{id}")

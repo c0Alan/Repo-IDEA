@@ -8,14 +8,14 @@ import javax.servlet.annotation.WebFilter;
 import javax.servlet.annotation.WebInitParam;
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 
 /**
- * @author liuxilin
  * @WebFilter 方式定义过滤器，需要在启动类中加@ServletComponentScan注解
+ * 参考: https://blog.csdn.net/Microhoo_/article/details/129968379
+ *
+ * @author liuxilin
  * @date 2023-08-13 16:11
  */
 @Slf4j
