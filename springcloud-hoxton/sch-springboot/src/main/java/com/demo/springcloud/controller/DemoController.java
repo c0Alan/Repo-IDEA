@@ -4,11 +4,15 @@ import cn.hutool.core.bean.BeanUtil;
 import com.demo.springcloud.entity.SysUser;
 import com.demo.springcloud.entity.qo.SysUserQo;
 import com.demo.springcloud.enums.BizExceptionEnum;
+import com.demo.springcloud.event.UserUpdatePublisher;
 import com.demo.springcloud.exception.BizException;
 import com.demo.springcloud.response.ResponseResult;
+import com.demo.springcloud.service.DemoService;
+import com.demo.springcloud.validate.SysUserQoValidGroupA;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.util.Base64Utils;
 import org.springframework.util.FileCopyUtils;
@@ -35,6 +39,12 @@ import java.util.Map;
 @RestController
 @RequestMapping("/demo")
 public class DemoController {
+
+    @Autowired
+    UserUpdatePublisher userUpdatePublisher;
+
+    @Autowired
+    DemoService demoService;
 
     @ApiOperation(value = "pathVariable")
     @GetMapping("/pathVariable/{id}")
@@ -224,6 +234,35 @@ public class DemoController {
         SysUser sysUser = BeanUtil.copyProperties(userQo, SysUser.class);
         sysUser.setId(1);
         return ResponseResult.success(sysUser);
+    }
+
+    @ApiOperation(value = "validated2")
+    @PostMapping("/validated2")
+    public ResponseResult<SysUser> validated2(@Validated({SysUserQoValidGroupA.class}) @RequestBody SysUserQo userQo) {
+        SysUser sysUser = BeanUtil.copyProperties(userQo, SysUser.class);
+        sysUser.setId(1);
+        return ResponseResult.success(sysUser);
+    }
+
+    /***************************************** 事件监听 *****************************************/
+    /**
+     * 事件监听
+     * 参考：https://blog.csdn.net/qq_41296669/article/details/135087823
+     */
+    @ApiOperation(value = "eventListener")
+    @PostMapping("/eventListener")
+    public ResponseResult<SysUser> eventListener() {
+        SysUser sysUser = new SysUser(1, "张三", "123456");
+        userUpdatePublisher.publishEvent(sysUser);
+        return ResponseResult.success(sysUser);
+    }
+
+    /***************************************** @Async *****************************************/
+    @ApiOperation(value = "asyncMethod")
+    @GetMapping("/asyncMethod")
+    public ResponseResult<String> asyncMethod() {
+        demoService.asyncMethod();
+        return ResponseResult.success("asyncMethod");
     }
 
 }

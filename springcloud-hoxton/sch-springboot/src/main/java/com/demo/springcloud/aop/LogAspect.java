@@ -1,5 +1,7 @@
 package com.demo.springcloud.aop;
 
+import com.demo.springcloud.entity.RequestLogDto;
+import com.demo.springcloud.response.ResponseResult;
 import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.AfterReturning;
@@ -50,6 +52,13 @@ public class LogAspect {
 
     @AfterReturning(returning = "ret", pointcut = "log()")
     public void doAfterReturning(Object ret) {
+        ServletRequestAttributes attributes = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
+        HttpServletRequest request = attributes.getRequest();
+
+        if (ret instanceof ResponseResult){
+            ((ResponseResult)ret).setRequestId(RequestLogDto.getRequestId(request));
+        }
+
         // 处理完请求，返回内容
         log.info("AOP日志, RESPONSE : " + ret);
         log.info("AOP日志, SPEND TIME : " + (System.currentTimeMillis() - startTime.get()));

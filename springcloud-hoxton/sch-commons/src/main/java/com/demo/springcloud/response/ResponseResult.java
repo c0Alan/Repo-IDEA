@@ -11,6 +11,11 @@ import javax.servlet.http.HttpServletResponse;
  */
 @Data
 public class ResponseResult<T> {
+
+    /**
+     * 请求id
+     */
+    private String requestId;
     /**
      * 响应状态码，200是正常，非200表示异常
      */

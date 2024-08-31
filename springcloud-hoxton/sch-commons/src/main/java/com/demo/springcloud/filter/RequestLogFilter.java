@@ -30,7 +30,7 @@ public class RequestLogFilter implements Filter {
             filterChain.doFilter(servletRequest, servletResponse);
             return;
         }
-        RequestLogDto requestLog = RequestLogDto.init(request);
+        RequestLogDto requestLog = RequestLogDto.of(request);
         log.info(requestLog.getRequestLogBegin());
         filterChain.doFilter(servletRequest, servletResponse);
         log.info(requestLog.getRequestLogEnd());
@@ -47,18 +47,6 @@ public class RequestLogFilter implements Filter {
         if (uri.contains(".")){
             return true;
         }
-        /*String excludePrefix = "/v2/api-docs,/swagger-resources,/webjars/,/doc.html";
-        for (String prefix : excludePrefix.split(",")){
-            if (uri.startsWith(prefix)){
-                return true;
-            }
-        }
-        String excludeSuffix = ".html,.css,.js,.ico";
-        for (String suffix : excludeSuffix.split(",")){
-            if (uri.endsWith(suffix)){
-                return true;
-            }
-        }*/
         return false;
     }
 }

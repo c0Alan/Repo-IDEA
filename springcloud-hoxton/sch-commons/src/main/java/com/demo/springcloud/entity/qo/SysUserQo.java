@@ -1,5 +1,6 @@
 package com.demo.springcloud.entity.qo;
 
+import com.demo.springcloud.validate.SysUserQoValidGroupA;
 import io.swagger.annotations.ApiModel;
 import lombok.Data;
 
@@ -25,7 +26,7 @@ public class SysUserQo {
     private String password;
     private Integer enabled;
 
-    @NotNull(message = "年龄不能为空")
+    @NotNull(message = "年龄不能为空", groups = {SysUserQoValidGroupA.class})
     @Min(value = 0, message = "年龄不能小于0")
     @Max(value = 200, message = "年龄不能大于200")
     private Integer age;

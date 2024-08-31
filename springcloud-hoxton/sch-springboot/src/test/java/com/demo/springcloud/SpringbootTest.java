@@ -23,8 +23,6 @@ import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 
-import javax.servlet.http.Cookie;
-
 @Slf4j
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -83,7 +81,7 @@ public class SpringbootTest {
 	 */
 	@Test
 	public void test02() {
-		SysUser user = demoController.getUser(3);
+		SysUser user = demoController.pathVariable(3);
 		log.info("user: " + user);
 	}
 
