@@ -12,11 +12,11 @@ public class RequestListener implements ServletRequestListener {
 	
 	@Override
 	public void requestDestroyed(ServletRequestEvent sre) {
-		log.info("初始化一个requestListener......");
+		log.debug("初始化一个requestListener......");
 	}
 
 	@Override
 	public void requestInitialized(ServletRequestEvent sre) {
-		log.info("销毁一个requestListener......");
+		log.debug("销毁一个requestListener......");
 	}
 }

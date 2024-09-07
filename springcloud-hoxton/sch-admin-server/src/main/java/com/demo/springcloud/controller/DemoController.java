@@ -9,14 +9,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import javax.servlet.http.HttpServletRequest;
-
-@Api(tags = "测试微服务调用服务端")
+@Api(tags = "接口示例")
 @RestController
 @Slf4j
-@RequestMapping("/helloService")
-public class HelloController {
-    
+@RequestMapping("/demo")
+public class DemoController {
+
+    /***************************************** hello *****************************************/
     @ApiOperation(value = "hello方法", notes = "hello方法")
     @GetMapping("/hello")
     public String hello(@RequestParam String name) {
@@ -25,22 +24,4 @@ public class HelloController {
         return " sch-demo serverIp: " + serverIp + ",hello " + name;
     }
 
-    @GetMapping("/hello2")
-    public String hello2(@RequestParam String name) {
-        log.info("invoked hello2，name = " + name);
-        return "hello2 " + name;
-    }
-
-    @GetMapping("/hello3")
-    public String hello3(@RequestParam String name) {
-        log.info("invoked hello3，name = " + name);
-        return "hello3 " + name;
-    }
-
-    @GetMapping("/hello4")
-    public String hello4(HttpServletRequest request) {
-        String clientIp = request.getRemoteAddr();
-        log.info("invoked hello4，client ip = " + clientIp);
-        return "hello4 " + clientIp;
-    }
 }

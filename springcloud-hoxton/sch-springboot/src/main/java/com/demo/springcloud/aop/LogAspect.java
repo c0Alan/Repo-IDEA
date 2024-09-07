@@ -1,7 +1,7 @@
 package com.demo.springcloud.aop;
 
-import com.demo.springcloud.entity.RequestLogDto;
 import com.demo.springcloud.response.ResponseResult;
+import com.demo.springcloud.utils.LogUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.AfterReturning;
@@ -43,11 +43,11 @@ public class LogAspect {
         HttpServletRequest request = attributes.getRequest();
 
         // 记录下请求内容
-        log.info("AOP日志, URL : " + request.getRequestURL().toString());
-        log.info("AOP日志, HTTP_METHOD : " + request.getMethod());
-        log.info("AOP日志, IP : " + request.getRemoteAddr());
-        log.info("AOP日志, CLASS_METHOD : " + joinPoint.getSignature().getDeclaringTypeName() + "." + joinPoint.getSignature().getName());
-        log.info("AOP日志, ARGS : " + Arrays.toString(joinPoint.getArgs()));
+        log.debug("AOP日志, URL : " + request.getRequestURL().toString());
+        log.debug("AOP日志, HTTP_METHOD : " + request.getMethod());
+        log.debug("AOP日志, IP : " + request.getRemoteAddr());
+        log.debug("AOP日志, CLASS_METHOD : " + joinPoint.getSignature().getDeclaringTypeName() + "." + joinPoint.getSignature().getName());
+        log.debug("AOP日志, ARGS : " + Arrays.toString(joinPoint.getArgs()));
     }
 
     @AfterReturning(returning = "ret", pointcut = "log()")
@@ -56,11 +56,11 @@ public class LogAspect {
         HttpServletRequest request = attributes.getRequest();
 
         if (ret instanceof ResponseResult){
-            ((ResponseResult)ret).setRequestId(RequestLogDto.getRequestId(request));
+            ((ResponseResult)ret).setRequestId(LogUtil.getRequestId());
         }
 
         // 处理完请求，返回内容
-        log.info("AOP日志, RESPONSE : " + ret);
-        log.info("AOP日志, SPEND TIME : " + (System.currentTimeMillis() - startTime.get()));
+        log.debug("AOP日志, RESPONSE : " + ret);
+        log.debug("AOP日志, SPEND TIME : " + (System.currentTimeMillis() - startTime.get()));
     }
 }

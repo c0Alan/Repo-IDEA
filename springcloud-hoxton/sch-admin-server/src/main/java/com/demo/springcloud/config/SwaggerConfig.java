@@ -1,3 +1,4 @@
+/*
 package com.demo.springcloud.config;
 
 import org.springframework.context.annotation.Bean;
@@ -21,8 +22,8 @@ public class SwaggerConfig {
                 .apis(RequestHandlerSelectors.basePackage("com.demo.springcloud"))
                 .paths(PathSelectors.any())
                 .build().apiInfo(new ApiInfoBuilder()
-                        .title("sch-mysql")
-                        .description("sch-mysql")
+                        .title("sch-demo")
+                        .description("sch-demo")
                         .version("1.0")
                         .contact(new Contact("c0","https://blog.csdn.net/c0tianning",""))
                         .build());
@@ -30,3 +31,4 @@ public class SwaggerConfig {
 }
 
 
+*/

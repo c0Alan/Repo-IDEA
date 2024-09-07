@@ -1,0 +1,45 @@
+spring:
+  devtools:
+    restart:
+      additional-paths: src/main/*
+  resttemplate:
+    connect-timeout: 3200
+    read-timeout: 3200
+
+
+# 整合knife4j, 参考: https://blog.csdn.net/ZhangXS9722/article/details/136906546
+knife4j:
+  enable: true
+  openapi:
+    title: sch-springcloud
+    description: "sch-springcloud"
+    email: ""
+    concat: admin
+    url: https://docs.xiaominfo.com
+    version: v1.0
+    license: Apache 2.0
+    license-url: https://stackoverflow.com/
+    terms-of-service-url: https://stackoverflow.com/
+    group:
+      sch-demo:
+        group-name: sch-springcloud
+        api-rule: package
+        api-rule-resources:
+          - com.demo.springcloud
+
+
+feign:
+  client:
+    config:
+      default:
+        connectTimeout: 5000
+        readTimeout: 5000
+#        loggerLevel: basic
+
+# Actuator 配置, 参考：https://blog.csdn.net/qq_36850813/article/details/90481882
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+

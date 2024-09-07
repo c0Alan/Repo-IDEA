@@ -1,6 +1,6 @@
 package com.demo.springcloud.filter;
 
-import com.demo.springcloud.entity.RequestLogDto;
+import com.demo.springcloud.utils.LogUtil;
 import lombok.extern.slf4j.Slf4j;
 
 import javax.servlet.*;
@@ -30,10 +30,10 @@ public class RequestLogFilter implements Filter {
             filterChain.doFilter(servletRequest, servletResponse);
             return;
         }
-        RequestLogDto requestLog = RequestLogDto.of(request);
-        log.info(requestLog.getRequestLogBegin());
+        long beginTime = System.currentTimeMillis();
+        LogUtil.printRequestLog();
         filterChain.doFilter(servletRequest, servletResponse);
-        log.info(requestLog.getRequestLogEnd());
+        LogUtil.printResponseLog(beginTime);
     }
 
     @Override

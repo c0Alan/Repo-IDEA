@@ -1,17 +1,19 @@
 # 端口清单
-| 模块名                 | 端口号  |
-|---------------------|------|
-| sch-demo            | 9000 |
-| sch-gateway         | 9001 |
-| sch-mysql           | 9002 |
-| sch-scheduler       | 9003 |
-| sch-oauth2-servver  | 9005 |
-| sch-oauth2-resource | 9006 |
-| sch-oauth2-client   | 9007 |
-| sch-redisson        | 9008 |
-| sch-springboot      | 9009 |
-| sch-seata-at        | 9010 |
-| sch-flyway          | 9011 |
+| 模块名              | 端口号 |
+| ------------------- | ------ |
+| sch-demo            | 9000   |
+| sch-gateway         | 9001   |
+| sch-mysql           | 9002   |
+| sch-scheduler       | 9003   |
+| sch-oauth2-servver  | 9005   |
+| sch-oauth2-resource | 9006   |
+| sch-oauth2-client   | 9007   |
+| sch-redisson        | 9008   |
+| sch-springboot      | 9009   |
+| sch-seata-at        | 9010   |
+| sch-flyway          | 9011   |
+| sch-feign           | 9012   |
+| sch-admin-server    | 9013   |
 
 # sch-demo  
 
@@ -80,9 +82,71 @@
 
 参考：https://blog.csdn.net/qq_41296669/article/details/135087823
 
+## springboot-admin-client
+
+参考：https://blog.csdn.net/m0_46897923/article/details/136263841
+
+
+
 ## AOP
 
 参考：https://blog.csdn.net/weixin_41605937/article/details/115335283
+
+
+
+## cache
+
+参考：https://blog.csdn.net/cowbin2012/article/details/85220033
+
+
+
+## 定时任务
+
+参考：https://blog.csdn.net/cowbin2012/article/details/85219887
+
+
+
+## websocket
+
+参考：https://blog.csdn.net/cowbin2012/article/details/85220055
+
+
+
+## mail
+
+参考：https://blog.csdn.net/cowbin2012/article/details/85252433
+
+
+
+## mybatis
+
+参考：https://blog.csdn.net/xu7382/article/details/139811192
+
+# sch-admin-server  
+
+参考：https://blog.csdn.net/m0_46897923/article/details/136263841
+
+# sch-springcloud
+
+## feign
+
+参考：https://www.cnblogs.com/jingzh/p/16820530.html
+
+## hystrix
+
+参考：https://www.cnblogs.com/shigongp/p/17280398.html
+
+## Actuator
+
+参考：https://blog.csdn.net/qq_36850813/article/details/90481882
+
+## RestTemplate 
+
+参考：https://blog.csdn.net/dazhong2012/article/details/140646131
+
+## 
+
+
 
 # oauth2系列
 

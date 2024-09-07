@@ -51,6 +51,7 @@ echo ""
 echo "h|H|help|HELP             ---Print help information."
 echo "start                     ---Start the ${MODEL_NAME} server."
 echo "stop                      ---Stop the ${MODEL_NAME} server."
+echo "restart                    ---restart the ${MODEL_NAME} server."
 echo "status                    ---Status the ${MODEL_NAME} server."
 }
 
@@ -155,6 +156,16 @@ fi
 }
 
 #-------------------------------------------------------------------
+# function model_restart
+#-------------------------------------------------------------------
+
+model_restart()
+{
+model_stop
+model_start
+}
+
+#-------------------------------------------------------------------
 # function model_status
 #-------------------------------------------------------------------
 
@@ -182,6 +193,7 @@ parse_para()
 case "$1" in
 start) model_start;;
 stop) model_stop;;
+restart) model_restart;;
 status) model_status;;
 *) echo "illage parameter : $1";print_usage;;
 esac

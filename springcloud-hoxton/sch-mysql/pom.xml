@@ -71,7 +71,7 @@
         </dependency>
 
         <!-- 接口文档使用 knife4j-spring-ui -->
-        <dependency>
+        <!--<dependency>
             <groupId>com.github.xiaoymin</groupId>
             <artifactId>knife4j-spring-ui</artifactId>
         </dependency>
@@ -82,6 +82,11 @@
         <dependency>
             <groupId>io.springfox</groupId>
             <artifactId>springfox-spring-webmvc</artifactId>
+        </dependency>-->
+        <dependency>
+            <groupId>com.github.xiaoymin</groupId>
+            <artifactId>knife4j-openapi2-spring-boot-starter</artifactId>
+            <version>4.4.0</version>
         </dependency>
 
         <dependency>

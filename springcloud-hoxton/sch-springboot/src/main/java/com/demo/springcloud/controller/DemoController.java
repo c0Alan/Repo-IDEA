@@ -265,4 +265,32 @@ public class DemoController {
         return ResponseResult.success("asyncMethod");
     }
 
+    /***************************************** cache *****************************************/
+    @ApiOperation(value = "getUserCache")
+    @PostMapping("/getUserCache")
+    public ResponseResult<SysUser> getUserCache(@RequestBody SysUserQo user) {
+        return ResponseResult.success(demoService.getUserCache(user));
+    }
+
+    @ApiOperation(value = "saveUserCache")
+    @PostMapping("/saveUserCache")
+    public ResponseResult saveUserCache(@RequestBody SysUser user) {
+        demoService.saveUserCache(user);
+        return ResponseResult.success("OK");
+    }
+
+    @ApiOperation(value = "deleteUserCache")
+    @GetMapping("/deleteUserCache")
+    public ResponseResult deleteUserCache(@RequestParam String username) {
+        demoService.deleteUserCache(username);
+        return ResponseResult.success("OK");
+    }
+
+    @ApiOperation(value = "deleteAllUserCache")
+    @GetMapping("/deleteAllUserCache")
+    public ResponseResult deleteAllUserCache() {
+        demoService.deleteAllUserCache();
+        return ResponseResult.success("OK");
+    }
+
 }

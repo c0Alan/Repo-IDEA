@@ -1,5 +1,6 @@
 package com.demo.springcloud.response;
 
+import com.demo.springcloud.utils.LogUtil;
 import lombok.Data;
 
 import javax.servlet.http.HttpServletResponse;
@@ -54,6 +55,7 @@ public class ResponseResult<T> {
         r.setStatus(status);
         r.setMessage(message);
         r.setData(data);
+        r.setRequestId(LogUtil.getRequestId());
 
         return r;
     }
@@ -68,6 +70,7 @@ public class ResponseResult<T> {
         r.setErrorCode(errorCode);
         r.setMessage(message);
         r.setData(data);
+        r.setRequestId(LogUtil.getRequestId());
         return r;
     }
 

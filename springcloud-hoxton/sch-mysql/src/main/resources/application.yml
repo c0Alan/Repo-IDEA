@@ -8,6 +8,26 @@ spring:
     username: ${mysql.username}
     password: ${mysql.password}
 
+# 整合knife4j, 参考: https://blog.csdn.net/ZhangXS9722/article/details/136906546
+knife4j:
+  enable: true
+  openapi:
+    title: sch-mysql
+    description: "sch-mysql"
+    email: ""
+    concat: admin
+    url: https://docs.xiaominfo.com
+    version: v1.0
+    license: Apache 2.0
+    license-url: https://stackoverflow.com/
+    terms-of-service-url: https://stackoverflow.com/
+    group:
+      sch-mysql:
+        group-name: sch-mysql
+        api-rule: package
+        api-rule-resources:
+          - com.demo.springcloud
+
 mybatis-plus:
   configuration:
     map-underscore-to-camel-case: true

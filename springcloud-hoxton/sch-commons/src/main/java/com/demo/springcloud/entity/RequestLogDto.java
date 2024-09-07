@@ -7,9 +7,11 @@ import lombok.Data;
 import javax.servlet.http.HttpServletRequest;
 
 /**
+ * 请求日志类，已废弃
  * @author liuxilin
  * @since 2023-08-13
  */
+@Deprecated
 @Data
 public class RequestLogDto {
     String requestId;
@@ -35,9 +37,9 @@ public class RequestLogDto {
             requestId = (String) request.getAttribute("requestId");
             if (StrUtil.isBlank(requestId)) {
                 requestId = UUID.fastUUID().toString(true);
-                request.setAttribute("requestId", requestId);
             }
         }
+        request.setAttribute("requestId", requestId);
         return requestId;
     }
 

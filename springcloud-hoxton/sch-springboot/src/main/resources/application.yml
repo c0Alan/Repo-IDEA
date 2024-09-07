@@ -2,7 +2,93 @@ spring:
   devtools:
     restart:
       additional-paths: src/main/*
+  boot:
+    admin:
+      client:
+        # 指定admin-server的地址
+        url: http://192.168.50.133:9013
+  mail:
+    host: smtp.qq.com
+    username: xxx@qq.com
+    password: xxx
+    sendTo: xxx@qq.com
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+            required: true
+    default-encoding: UTF-8
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver      # 配置MySQL的驱动程序类
+    url: jdbc:mysql://${mysql.server}/${mysql.dbName}?useUnicode=true&characterEncoding=utf8&useSSL=false&allowMultiQueries=true           # 数据库连接地址
+    username: ${mysql.username}
+    password: ${mysql.password}
 
+# 整合knife4j, 参考: https://blog.csdn.net/ZhangXS9722/article/details/136906546
+knife4j:
+  enable: true
+  openapi:
+    title: sch-springboot
+    description: "sch-springboot"
+    email: ""
+    concat: admin
+    url: https://docs.xiaominfo.com
+    version: v1.0
+    license: Apache 2.0
+    license-url: https://stackoverflow.com/
+    terms-of-service-url: https://stackoverflow.com/
+    group:
+      sch-springboot:
+        group-name: sch-springboot
+        api-rule: package
+        api-rule-resources:
+          - com.demo.springcloud
+
+
+# 暴露监控端点
+management:
+  endpoints:
+    web:
+      exposure:
+        # 配置需要暴露出去的端点，一般直接*暴露全部就行
+        include: "*"
+      # 这是监控的默认根路径，支持自定义
+#      base-path: /observe
+  endpoint:
+    health:
+      # health 默认只展示 是否在线，增加该配置后会展示更多信息
+      show-details: ALWAYS
+    shutdown:
+      # 启用关闭应用的功能，不启用则无法关闭应用
+      enabled: true
+  info:
+    env:
+      # 开启info端点的配置支持，即使配置了info也无信息
+      enabled: true
+  health:
+    mail:
+      enabled: false
+# 自定以info端点信息，info端点获取的就是这里的信息
+info:
+  title: ${spring.application.name}服务
+  version: ${spring.application.name}-${spring.application.version}
+  description: ${spring.application.name}服务监控
+
+mybatis-plus:
+  configuration:
+    map-underscore-to-camel-case: true
+    auto-mapping-behavior: full
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  mapper-locations: classpath*:mapper/*Mapper.xml
+  global-config:
+    # 逻辑删除配置
+    db-config:
+      # 删除前
+      logic-not-delete-value: 1
+      # 删除后
+      logic-delete-value: 0
 
 app:
   test:
