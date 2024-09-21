@@ -8,6 +8,7 @@ import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
 
 import java.io.Serializable;
+import java.sql.Date;
 
 /**
  * 系统用户表
@@ -29,6 +30,12 @@ public class SysUser implements Serializable {
     private Integer id;
 
     /**
+     * 用户账号
+     */
+    @TableField(value = "usercode")
+    private String usercode;
+
+    /**
      * 用户名
      */
     @TableField(value = "username")
@@ -41,10 +48,16 @@ public class SysUser implements Serializable {
     private String password;
 
     /**
+     * 密码
+     */
+    @TableField(value = "role_ids")
+    private String roleIds;
+
+    /**
      * 年龄
      */
-    @TableField("age")
-    private Integer age;
+    @TableField("birthday")
+    private Date birthday;
 
 
     /**
@@ -56,8 +69,8 @@ public class SysUser implements Serializable {
     /**
      * 是否有效
      */
-    @TableField(value = "enabled")
-    private Integer enabled;
+    @TableField(value = "status")
+    private Integer status;
 
 
     public SysUser() {
