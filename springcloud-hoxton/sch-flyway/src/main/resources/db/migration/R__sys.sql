@@ -17,8 +17,10 @@ CREATE TABLE sys_user
 )COMMENT='用户信息表';
 
 /*Data for the table sys_user */
-INSERT INTO `demo`.`sys_user` (`id`, `usercode`, `username`, `password`, `role_ids`, `status`, `telephone`, `birthday`, `remark`, `create_time`, `update_time`) VALUES
-('1', 'liuxl', 'liuxl', '$2a$10$c8x/qdeQtU3Xa1guAPRRc.3ypHXNjNYMHuU6YqHg9ou0rNiPdodSy', '1', '0', NULL, NULL, NULL, '2024-09-17 22:34:56', '2024-09-17 22:50:21');
+-- liuxl:lxl123, guest:123
+INSERT INTO sys_user (id, usercode, username, password, role_ids, status, telephone, birthday, remark, create_time, update_time) VALUES
+('1', 'liuxl', 'liuxl', '$2a$10$c8x/qdeQtU3Xa1guAPRRc.3ypHXNjNYMHuU6YqHg9ou0rNiPdodSy', '1', '0', NULL, NULL, NULL, '2024-09-17 22:34:56', '2024-09-17 22:50:21'),
+('2', 'guest', 'guest', '$2a$10$i5.9ycBI/vTJQVV7Ry504.818PX0URH9c6t3jFhwDfb06rRuu8b4q', '2', '0', '', NULL, NULL, '2024-09-21 09:51:37', '2024-09-21 09:51:37');
 
 
 /*Table structure for table sys_role */

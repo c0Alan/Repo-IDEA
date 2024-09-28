@@ -48,7 +48,6 @@ public class UserController {
             //填充数据
             newlist.add(user.getId());
             newlist.add(user.getUsername());
-            newlist.add(user.getAge());
         }
         //返回数据
         return newlist.toString();
@@ -76,7 +75,6 @@ public class UserController {
         SysUser user = new SysUser();
         user.setId(2);
         user.setUsername("尼古拉斯");
-        user.setAge(23);
         //执行更新操作
         int row = userService.updateUser(user);
         //判断结果

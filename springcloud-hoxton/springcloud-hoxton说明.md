@@ -133,7 +133,9 @@
 
 ## thymeleaf
 
-参考：https://blog.csdn.net/qq_60506984/article/details/128403838
+参考：https://blog.csdn.net/chenyunjiangNN/article/details/127141633
+
+参考：https://cloud.tencent.com/developer/article/1522712
 
 
 
@@ -142,6 +144,25 @@
 参考：https://www.cnblogs.com/Chary/p/17972919
 
 
+
+## redis
+
+参考：https://blog.csdn.net/qq_20236937/article/details/137561788
+
+
+
+## redisson
+
+参考：
+
+- https://blog.csdn.net/weixin_43759352/article/details/135874990
+- https://blog.csdn.net/qq_20236937/article/details/137561788
+
+
+
+## springsession
+
+参考：https://blog.csdn.net/weixin_65462805/article/details/139691844
 
 # sch-admin-server  
 

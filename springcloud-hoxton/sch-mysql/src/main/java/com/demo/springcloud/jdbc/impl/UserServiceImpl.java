@@ -40,7 +40,6 @@ public class UserServiceImpl implements UserService {
             public SysUser mapRow(ResultSet rs, int rowNum) throws SQLException {
                 SysUser user = new SysUser();
                 user.setId(rs.getInt("id"));
-                user.setAge(rs.getInt("age"));
                 user.setUsername(rs.getString("username"));
                 return user;
             }
@@ -59,7 +58,6 @@ public class UserServiceImpl implements UserService {
             @Override
             public void setValues(PreparedStatement preparedStatement) throws SQLException {
                 preparedStatement.setString(1, SysUser.getUsername());
-                preparedStatement.setInt(2, SysUser.getAge());
                 preparedStatement.setInt(3, SysUser.getId());
             }
         });

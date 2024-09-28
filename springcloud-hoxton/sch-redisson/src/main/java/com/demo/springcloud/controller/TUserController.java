@@ -37,7 +37,6 @@ public class TUserController {
     public String addUser(){
         SysUser sysUser = new SysUser();
         sysUser.setUsername("test");
-        sysUser.setAge(18);
         tUserService.save(sysUser);
 
         return "success";

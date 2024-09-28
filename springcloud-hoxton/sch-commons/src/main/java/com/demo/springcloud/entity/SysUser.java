@@ -48,13 +48,13 @@ public class SysUser implements Serializable {
     private String password;
 
     /**
-     * 密码
+     * 角色
      */
     @TableField(value = "role_ids")
     private String roleIds;
 
     /**
-     * 年龄
+     * 生日
      */
     @TableField("birthday")
     private Date birthday;

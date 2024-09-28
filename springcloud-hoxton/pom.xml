@@ -232,7 +232,6 @@
             </dependency>
 
             <!-- knife4j -->
-
             <dependency>
                 <groupId>com.github.xiaoymin</groupId>
                 <artifactId>knife4j-spring-ui</artifactId>
@@ -315,13 +314,14 @@
                 <version>0.8</version>
             </dependency>
 
-            <!--JPA标准中，面向对象的语法检查、识别，fel 功能依赖包-->
+            <!-- JPA标准中，面向对象的语法检查、识别，fel 功能依赖包 -->
             <dependency>
                 <groupId>org.antlr</groupId>
                 <artifactId>antlr-runtime</artifactId>
                 <version>3.5.2</version>
             </dependency>
 
+            <!-- apache commons -->
             <dependency>
                 <groupId>org.apache.commons</groupId>
                 <artifactId>commons-pool2</artifactId>
@@ -346,7 +346,7 @@
                 <version>0.7.1</version>
             </dependency>
 
-            <!--文件上传工具类 -->
+            <!-- 文件上传工具类 -->
             <dependency>
                 <groupId>commons-fileupload</groupId>
                 <artifactId>commons-fileupload</artifactId>
@@ -367,12 +367,27 @@
                 <version>1.2.75</version>
             </dependency>
 
+            <!-- redis -->
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-data-redis</artifactId>
+                <version>2.7.18</version>
+            </dependency>
+
             <dependency>
                 <groupId>org.redisson</groupId>
                 <artifactId>redisson-spring-boot-starter</artifactId>
-                <version>3.25.2</version>
+                <version>3.26.0</version>
             </dependency>
 
+            <!-- session -->
+            <dependency>
+                <groupId>org.springframework.session</groupId>
+                <artifactId>spring-session-data-redis</artifactId>
+                <version>2.6.3</version>
+            </dependency>
+
+            <!-- netty -->
             <dependency>
                 <groupId>io.netty</groupId>
                 <artifactId>netty-all</artifactId>

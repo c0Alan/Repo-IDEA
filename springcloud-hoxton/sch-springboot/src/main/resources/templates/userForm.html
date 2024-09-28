@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <script type="text/javascript" th:src="@{https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js}"></script>
+    <link th:href="@{https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css}" rel="stylesheet"/>
+    <link th:href="@{/css/default.css}" rel="stylesheet"/>
+    <link rel="icon" th:href="@{/images/favicon.ico}" type="image/x-icon"/>
+    <meta charset="UTF-8"/>
+    <title>用户管理系统</title>
+    <style>
+        .center {
+            text-align:center;
+        }
+        table,td,th
+        {
+            text-align:center;
+        }
+    </style>
+</head>
+
+<body>
+<div class="contentDiv">
+
+    <h2 class="center"> 用户管理系统 </h2>
+
+    <legend>
+        <strong class="center">注册用户信息</strong>
+    </legend>
+
+    <form th:action="@{/thymeleaf/user/{action}(action=${action})}" method="post" class="form-horizontal">
+
+        <div class="form-group">
+            <label for="user_Id" class="col-sm-2 control-label">id:</label>
+            <div class="col-xs-4">
+                <input type="text" class="form-control" id="user_Id" name="name" th:value="${user.id}"
+                       th:field="*{user.id}"/>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="user_code" class="col-sm-2 control-label">账号:</label>
+            <div class="col-xs-4">
+                <input type="text" class="form-control" id="user_code" name="usercode" th:value="${user.usercode}"
+                       th:field="*{user.usercode}"/>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="user_name" class="col-sm-2 control-label">姓名:</label>
+            <div class="col-xs-4">
+                <input type="text" class="form-control" id="user_name" name="username" th:value="${user.username}"
+                       th:field="*{user.username}"/>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="password" class="col-sm-2 control-label">密码:</label>
+            <div class="col-xs-4">
+                <input type="password" class="form-control" id="password" name="password" th:value="${user.password}"
+                       th:field="*{user.password}"/>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="roleIds" class="col-sm-2 control-label">角色id:</label>
+            <div class="col-xs-4">
+                <input type="text" class="form-control" id="roleIds" name="roleIds" th:value="${user.roleIds}"
+                       th:field="*{user.roleIds}"/>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="user_age" class="col-sm-2 control-label">生日:</label>
+            <div class="col-xs-4">
+                <input type="date" class="form-control" id="user_age" name="name" th:value="${user.birthday}"
+                       th:field="*{user.birthday}"/>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="user_major" class="col-sm-2 control-label">电话:</label>
+            <div class="col-xs-4">
+                <input type="text" class="form-control" id="user_major" name="name" th:value="${user.telephone}"
+                       th:field="*{user.telephone}"/>
+            </div>
+        </div>
+
+
+
+        <div class="form-group">
+            <div class="col-sm-offset-3 col-sm-10">
+                <input class="btn btn-primary" type="submit" value="提交"/>&nbsp;&nbsp;
+                <input class="btn" type="button" value="返回" onclick="history.back()"/>
+            </div>
+        </div>
+    </form>
+</div>
+</body>
+</html>

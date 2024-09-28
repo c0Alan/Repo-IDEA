@@ -1,16 +1,12 @@
 package com.demo.springcloud.controller;
 
-import cn.hutool.core.util.StrUtil;
 import com.demo.springcloud.entity.SysUser;
 import com.demo.springcloud.response.ResponseResult;
-import com.demo.springcloud.service.SysUserService;
+import com.demo.springcloud.service.impl.SysUserServiceImpl;
 import io.swagger.annotations.Api;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
-
-import javax.annotation.Resource;
 
 /**
  * sysUser 操作接口
@@ -24,10 +20,7 @@ import javax.annotation.Resource;
 @RequestMapping("/sysUser")
 public class SysUserController {
     @Autowired
-    private SysUserService sysUserService;
-
-    @Resource
-    private PasswordEncoder passwordEncoder;
+    private SysUserServiceImpl sysUserService;
 
     @GetMapping("/getAllUser")
     public ResponseResult getAllUser() {
@@ -36,11 +29,8 @@ public class SysUserController {
 
     @PostMapping("/saveUser")
     public ResponseResult saveUser(@RequestBody SysUser sysUser) {
-        if (StrUtil.isNotBlank(sysUser.getPassword())){
-            sysUser.setPassword(passwordEncoder.encode(sysUser.getPassword()));
-        }
 
-        return ResponseResult.success(sysUserService.save(sysUser));
+        return ResponseResult.success(sysUserService.saveEncrypt(sysUser));
     }
 
 }

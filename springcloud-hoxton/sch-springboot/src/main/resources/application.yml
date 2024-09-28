@@ -1,12 +1,25 @@
+
 spring:
   devtools:
     restart:
       additional-paths: src/main/*
+  session:
+    store-type: redis
+    timeout: 180
+
+  thymeleaf:
+    cache: false
   boot:
     admin:
       client:
         # 指定admin-server的地址
         url: http://192.168.50.133:9013
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver      # 配置MySQL的驱动程序类
+    url: jdbc:mysql://${mysql.server}/${mysql.dbName}?useUnicode=true&characterEncoding=utf8&useSSL=false&allowMultiQueries=true           # 数据库连接地址
+    username: ${mysql.username}
+    password: ${mysql.password}
+
   mail:
     host: smtp.qq.com
     username: xxx@qq.com
@@ -20,11 +33,6 @@ spring:
             enable: true
             required: true
     default-encoding: UTF-8
-  datasource:
-    driver-class-name: com.mysql.cj.jdbc.Driver      # 配置MySQL的驱动程序类
-    url: jdbc:mysql://${mysql.server}/${mysql.dbName}?useUnicode=true&characterEncoding=utf8&useSSL=false&allowMultiQueries=true           # 数据库连接地址
-    username: ${mysql.username}
-    password: ${mysql.password}
 
 # 整合knife4j, 参考: https://blog.csdn.net/ZhangXS9722/article/details/136906546
 knife4j:
@@ -95,10 +103,8 @@ app:
     users:
       - id: 1
         username: aaa
-        age: 2
       - id: 2
         username: bbb
-        age: 2
 
 myframe:
   user:
@@ -112,7 +118,6 @@ myframe:
     maps: "{key1: 'value1', key2: 'value2'}"
 
 spring.profiles.active: profile2
-
 ---
 spring.profiles: profile1
 myframe:
