@@ -1,0 +1,31 @@
+spring:
+  devtools:
+    restart:
+      additional-paths: src/main/*
+  data:
+    mongodb:
+      uri: mongodb://liuxl:lxl123@192.168.50.133:27017/db_test?authSource=admin
+
+# 整合knife4j, 参考: https://blog.csdn.net/ZhangXS9722/article/details/136906546
+knife4j:
+  enable: true
+  openapi:
+    title: sch-mongodb
+    description: "sch-mongodb"
+    email: ""
+    concat: admin
+    url: https://docs.xiaominfo.com
+    version: v1.0
+    license: Apache 2.0
+    license-url: https://stackoverflow.com/
+    terms-of-service-url: https://stackoverflow.com/
+    group:
+      sch-mongodb:
+        group-name: sch-mongodb
+        api-rule: package
+        api-rule-resources:
+          - com.demo.springcloud
+
+
+
+

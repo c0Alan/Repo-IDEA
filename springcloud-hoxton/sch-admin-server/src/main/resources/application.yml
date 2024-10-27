@@ -24,6 +24,11 @@ knife4j:
         api-rule-resources:
           - com.demo.springcloud
 
-
+# Actuator 配置, 参考：https://blog.csdn.net/qq_36850813/article/details/90481882
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
 
 

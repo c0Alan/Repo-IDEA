@@ -16,7 +16,7 @@ import java.util.List;
 
 
 /**
- * security 的 UserDetailsService
+ * 自定义 security 的 UserDetailsService
  *
  * @author liuxl
  * @date 2024/9/17

@@ -1,0 +1,14 @@
+[Unit]
+Description=sentinel
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+User=root
+Type=forking
+WorkingDirectory=/opt/sentinel
+ExecStart=/bin/bash -c "source /etc/profile && /bin/sh {{ install_dir }}/run.sh"
+Restart=always
+
+[Install]
+WantedBy=multi-user.target

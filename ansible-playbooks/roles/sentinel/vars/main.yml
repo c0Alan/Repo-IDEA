@@ -1,0 +1,6 @@
+# 参数配置
+install_dir: /opt/sentinel
+log_dir: /opt/sentinel/logs
+env_file: /etc/profile
+pkg_name: sentinel-dashboard-1.8.5.jar
+

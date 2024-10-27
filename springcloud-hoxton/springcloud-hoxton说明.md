@@ -1,4 +1,18 @@
 # 端口清单
+
+## 基础组件
+
+
+
+| 组件名   | 端口号 |
+| -------- | ------ |
+| sentinel | 8090   |
+|          |        |
+
+
+
+## 应用
+
 | 模块名              | 端口号 |
 | ------------------- | ------ |
 | sch-demo            | 9000   |
@@ -15,6 +29,10 @@
 | sch-springcloud     | 9012   |
 | sch-admin-server    | 9013   |
 | sch-jpa             | 9015   |
+| sch-sso-server      | 9016   |
+| sch-sso-resource    | 9017   |
+| sch-mongodb         | 9018   |
+| sch-kafka           | 9019   |
 
 # sch-demo  
 
@@ -164,6 +182,14 @@
 
 参考：https://blog.csdn.net/weixin_65462805/article/details/139691844
 
+
+
+## kafka
+
+参考：https://blog.csdn.net/qq_20236937/article/details/140718313
+
+
+
 # sch-admin-server  
 
 参考：https://blog.csdn.net/m0_46897923/article/details/136263841
@@ -207,5 +233,20 @@ sch-oauth2-servver、sch-oauth2-resource、sch-oauth2-client
 参考1：https://blog.csdn.net/m0_64361728/article/details/136609535
 
 参考2：https://seata.apache.org/zh-cn/docs/user/quickstart
+
+# sch-sso-server、sch-sso-resource
+
+参考：https://oollxianluo.blog.csdn.net/article/details/127575556
+
+# sch-mongodb
+
+参考：https://blog.csdn.net/shenzhennba/article/details/140659582
+
+
+
+# sch-kafka
+
+参考：https://blog.csdn.net/qq_20236937/article/details/140718313
+
 
 

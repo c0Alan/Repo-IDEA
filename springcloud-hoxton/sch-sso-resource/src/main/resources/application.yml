@@ -1,0 +1,33 @@
+spring:
+  devtools:
+    restart:
+      additional-paths: src/main/*
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver      # 配置MySQL的驱动程序类
+    url: jdbc:mysql://${mysql.server}/${mysql.dbName}?useUnicode=true&characterEncoding=utf8&useSSL=false&allowMultiQueries=true           # 数据库连接地址
+    username: ${mysql.username}
+    password: ${mysql.password}
+
+# 整合knife4j, 参考: https://blog.csdn.net/ZhangXS9722/article/details/136906546
+knife4j:
+  enable: true
+  openapi:
+    title: sch-sso-resource
+    description: "sch-sso-resource"
+    email: ""
+    concat: admin
+    url: https://docs.xiaominfo.com
+    version: v1.0
+    license: Apache 2.0
+    license-url: https://stackoverflow.com/
+    terms-of-service-url: https://stackoverflow.com/
+    group:
+      sch-sso-resource:
+        group-name: sch-sso-resource
+        api-rule: package
+        api-rule-resources:
+          - com.demo.springcloud
+
+
+
+

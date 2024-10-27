@@ -1,0 +1,15 @@
+{
+  "index": {
+    "number_of_shards": 1,
+    "number_of_replicas": 0,
+    "max_result_window": "500000",
+    "analysis": {
+      "filter": {
+        "limit_len": {
+          "type": "length",
+          "min": "1"
+        }
+      }
+    }
+  }
+}

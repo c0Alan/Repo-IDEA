@@ -42,12 +42,6 @@
             <artifactId>springfox-spring-webmvc</artifactId>
         </dependency>
 
-        <!-- gateway 只支持webflux，不兼容WebMvc，故与spring-boot-starter-web不兼容 -->
-        <!--<dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
-        </dependency>-->
-
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
@@ -68,11 +62,6 @@
         <dependency>
             <groupId>com.baomidou</groupId>
             <artifactId>mybatis-plus-boot-starter</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>com.baomidou</groupId>
-            <artifactId>mybatis-plus-generator</artifactId>
         </dependency>
 
         <dependency>

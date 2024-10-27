@@ -1,0 +1,14 @@
+- name: 创建安装目录
+  file: path={{ install_dir }} state=directory
+- name: 拷贝安装包
+  copy: src={{ pkg_name }} dest={{ install_dir }}/{{ pkg_name }}
+- name: 创建日志目录
+  file: path={{ log_dir }} state=directory
+- name: 拷贝run脚本
+  template: src=run.sh.j2 dest={{ install_dir }}/run.sh
+- name: 拷贝systemd文件
+  template: src=sentinel.service.j2 dest=/etc/systemd/system/sentinel.service
+- name: 启动
+  service: name=sentinel state=restarted enabled=true
+
+

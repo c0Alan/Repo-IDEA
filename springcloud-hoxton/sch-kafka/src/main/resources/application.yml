@@ -1,0 +1,54 @@
+spring:
+  devtools:
+    restart:
+      additional-paths: src/main/*
+
+  kafka:
+    listener:
+      poll-timeout: 300000 #每两次poll拉取数据时间间隔最大超时时间，超过这个值，broker就会认为你这个消费者挂了，并且重新平衡
+      concurrency: 1 #消费线程数（配置为小于等于所有主题partition之和）
+      auto-startup: true #默认值为true，表示启动kafka监听，如果现场没有用到kafka,这里配置为false即可
+    producer:
+      retries: 3 #设置一个比零大的值，客户端如果发送失败则会重新发送
+      batch-size: 4096 #当多个消息要发送到相同分区的时，生产者尝试将消息批量打包在一起，以减少请求交互。不会打包大于此配置大小的消息。
+      linger: 100 #将达到减少发送的请求数量的效果，但对于在没有负载情况，将增加“linger”时间的延迟。此设置给出批量延迟的上限：一旦我们达到分区的batch.size值的记录，将立即发送，不管这个设置如何，但是，如果比这个小，我们将在指定的“linger”时间内等待更多的消息加入
+      buffer-memory: 16777216 #生产者用来缓存等待发送到服务器的消息的内存总字节数
+      # 需配置，kafka集群(可拓展),必填
+      bootstrap-servers: ${kafka.server}
+      user-name: ${kafka.username}
+      password: ${kafka.password}
+    consumer:
+      group-id: sch #消费者组id
+      auto-offset-reset: latest #从最近的地方开始始消费,保证每个组一个消费者消费同一条消息,若设置为earliest，那么会从头开始读partition
+      enable-auto-commit: true #指定消息被消费之后自动提交偏移量（即消息的编号，表示消费到了哪个位置，消费者每消费完一条消息就会向kafka服务器汇报自己消消费到的那个消息的编号，以便于下次继续消费）
+      auto-commit-interval: 1000 #自动提交间隔ms
+      max-poll-records: 50 #一次poll里拉取最大偏移量数据
+      # 需配置，kafka集群(可拓展),必填
+      bootstrap-servers: ${kafka.server}
+      heartbeat-interval: 30000 #心跳周期
+      user-name: ${kafka.username}
+      password: ${kafka.password}
+
+# 整合knife4j, 参考: https://blog.csdn.net/ZhangXS9722/article/details/136906546
+knife4j:
+  enable: true
+  openapi:
+    title: sch-kafka
+    description: "sch-kafka"
+    email: ""
+    concat: admin
+    url: https://docs.xiaominfo.com
+    version: v1.0
+    license: Apache 2.0
+    license-url: https://stackoverflow.com/
+    terms-of-service-url: https://stackoverflow.com/
+    group:
+      sch-kafka:
+        group-name: sch-kafka
+        api-rule: package
+        api-rule-resources:
+          - com.demo.springcloud
+
+
+
+

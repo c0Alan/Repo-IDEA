@@ -9,6 +9,8 @@
   unarchive: src={{ tmp_dir }}/{{ pkg_name }} dest={{ unarchive_dir }} remote_src=yes
 - name: 修改目录
   shell: mv {{ unarchive_dir }}/kibana-* {{ install_dir }}
+- name: 创建日志目录
+  file: path={{ log_dir }} state=directory mode=0777
 - name: 拷贝配置文件
   template: src=kibana.yml.j2 dest={{ install_dir }}/config/kibana.yml
 - name: 拷贝systemd文件

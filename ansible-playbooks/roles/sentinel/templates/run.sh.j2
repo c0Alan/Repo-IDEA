@@ -1,0 +1,4 @@
+#!/bin/bash
+
+nohup java -Dserver.port=8090 -jar {{ pkg_name }} >> {{ log_dir }}/sentinel.log 2>&1 &
+

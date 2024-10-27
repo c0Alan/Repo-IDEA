@@ -1,0 +1,32 @@
+nacosServer: ${NACOS_SERVER:nacos-center.v-base:8848}
+
+server:
+  port: 9019
+spring:
+  application:
+    name: sch-kafka
+  cloud:
+    inetutils:
+      ignored-interfaces:
+        - docker.*
+        - veth.*
+        - VMware.*
+        - VMnet.*
+        - lo
+    nacos:
+      discovery:
+        server-addr: ${nacosServer}
+        namespace: c1c3193f-0436-4511-b3b6-cac0db957973
+        group: dsc
+        username: nacos
+        password: nacos
+      config:
+        server-addr: ${nacosServer}
+        prefix: public-component
+        file-extension: properties
+        namespace: c1c3193f-0436-4511-b3b6-cac0db957973
+        username: nacos
+        password: nacos
+
+logging:
+  config: classpath:logback-spring.xml

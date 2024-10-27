@@ -1,4 +1,5 @@
 nacosServer: ${NACOS_SERVER:nacos-center.v-base:8848}
+sentinelServer: ${NACOS_SERVER:nacos-center.v-base:8090}
 
 server:
   port: 9012
@@ -6,6 +7,11 @@ spring:
   application:
     name: sch-springcloud
   cloud:
+    sentinel:
+      transport:
+        dashboard: 192.168.50.133:8090
+      # 不统一请求入口，不将资源挂在 sentinel_spring_web_context 下
+#      web-context-unify: false
     inetutils:
       ignored-interfaces:
         - docker.*
