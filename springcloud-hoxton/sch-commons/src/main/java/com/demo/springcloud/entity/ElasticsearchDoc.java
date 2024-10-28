@@ -19,17 +19,16 @@ import org.springframework.data.elasticsearch.annotations.FieldType;
 @NoArgsConstructor
 @AllArgsConstructor
 @Accessors(chain = true)
-@Document(indexName = "idx_doc", type = "_doc", shards = 1, replicas = 0)
+@Document(indexName = "idx_doc", shards = 1, replicas = 0)
 public class ElasticsearchDoc {
 
     @Id
     private Long id;
 
-
     @Field(type = FieldType.Keyword)
     private String title;
 
-    @Field(type = FieldType.Text, analyzer = "ik_max_word")
+    @Field(type = FieldType.Keyword)
     private String content;
 
 }

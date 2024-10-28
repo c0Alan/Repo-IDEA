@@ -20,11 +20,11 @@ import org.springframework.data.elasticsearch.annotations.FieldType;
 @Document(indexName = "idx_phone", shards = 1, replicas = 0)
 public class ElasticsearchPhone {
     @Id
-    private Long id;
+    private Integer id;
 
     @Field(type = FieldType.Keyword)
     private String brand;
 
-    @Field(type = FieldType.Text, analyzer = "ik_max_word")
+    @Field(type = FieldType.Keyword)
     private String name;
 }

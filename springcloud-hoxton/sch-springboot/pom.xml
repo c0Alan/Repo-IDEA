@@ -118,15 +118,7 @@
             <artifactId>commons-pool2</artifactId>
         </dependency>
 
-        <dependency>
-            <groupId>com.demo.springcloud</groupId>
-            <artifactId>sch-commons</artifactId>
-        </dependency>
 
-        <dependency>
-            <groupId>com.demo.springcloud</groupId>
-            <artifactId>sch-commons-mysql</artifactId>
-        </dependency>
 
         <!-- knife4j -->
         <dependency>
@@ -175,6 +167,17 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-elasticsearch</artifactId>
+        </dependency>
+
+        <!-- sch -->
+        <dependency>
+            <groupId>com.demo.springcloud</groupId>
+            <artifactId>sch-commons</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.demo.springcloud</groupId>
+            <artifactId>sch-commons-mysql</artifactId>
         </dependency>
 
 

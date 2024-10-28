@@ -20,7 +20,7 @@ import java.nio.charset.StandardCharsets;
 @Configuration
 public class ElasticsearchConfig {
     @Autowired
-    private ElasticsearchRestTemplate restTemplate;
+    private ElasticsearchRestTemplate elasticsearchRestTemplate;
 
     @Value("classpath:elasticsearch/phone_setting.json")
     private Resource esSetting;
@@ -28,8 +28,9 @@ public class ElasticsearchConfig {
     @PostConstruct
     public void init() throws Exception {
         String setting = IOUtils.toString(esSetting.getInputStream(), StandardCharsets.UTF_8);
-        if (!restTemplate.indexExists(ElasticsearchPhone.class)){
-            boolean result = restTemplate.createIndex(ElasticsearchPhone.class, setting);
+        if (!elasticsearchRestTemplate.indexExists(ElasticsearchPhone.class)){
+            boolean result = elasticsearchRestTemplate.createIndex(ElasticsearchPhone.class, setting);
+            elasticsearchRestTemplate.putMapping(ElasticsearchPhone.class);
             log.info("es index inited：" + result);
         }
 
