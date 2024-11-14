@@ -3,6 +3,7 @@ package com.demo.springcloud.controller;
 import com.demo.springcloud.response.ResponseResult;
 import com.demo.springcloud.service.SchSpringbootService;
 import com.demo.springcloud.utils.LogUtil;
+import com.demo.springcloud.utils.NetUtil;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -14,10 +15,11 @@ import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
-@Api(tags = "接口示例")
+@Api(tags = "demo接口示例")
 @RestController
 @Slf4j
 @RequestMapping("/demo")
@@ -31,6 +33,14 @@ public class DemoController {
 
     @Autowired
     private RestTemplate loadBalancedRestTemplate;
+
+    @ApiOperation(value = "hello方法", notes = "hello方法")
+    @GetMapping("/hello")
+    public String hello(@RequestParam String name) {
+        String serverIp = NetUtil.getServerIpList();
+        log.info("sch-springcloud serverIp: " + serverIp + ",invoked hello，name = " + name);
+        return "sch-springcloud serverIp: " + serverIp + ",hello " + name;
+    }
 
     /***************************************** feign *****************************************/
     /**

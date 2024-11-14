@@ -1,0 +1,17 @@
+[Unit]
+Description=sch-gateway
+After=network-online.target 
+Wants=network-online.target
+
+[Service]
+User=root
+Type=forking
+WorkingDirectory=/opt/apps/springcloud-hoxton/sch-gateway
+ExecStart=/bin/bash -c "source /etc/profile && /bin/sh /opt/apps/springcloud-hoxton/sch-gateway/bin/run.sh start"
+ExecStop=/bin/bash -c "source /etc/profile && /bin/sh /opt/apps/springcloud-hoxton/sch-gateway/bin/run.sh stop"
+ExecStartPost=/usr/bin/sleep 5
+Restart=on-failure
+RestartSec=10s
+
+[Install]
+WantedBy=multi-user.target

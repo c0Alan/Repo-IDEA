@@ -4,27 +4,10 @@ spring:
       additional-paths: src/main/*
   cloud:
     gateway:
-      routes:
-        - id: url-proxy-2
-          uri: http://192.168.80.128:30006/123/123
-          predicates:
-          - Path=/user/queryList
-        - id: url-proxy-3
-          uri: http://192.168.80.128:30006/123/123
-          predicates:
-          - Path=/user/queryString
       discovery:
         locator:
-          enabled: true
-#        - id: sch-scheduler
-#          uri: lb://sch-scheduler
-#          predicates:
-#          - Path=/sch-scheduler/**
-#          filters:
-#          - StripPrefix=
-
-
-
+          enabled: true #开启注册中心路由功能
+          lower-case-service-id: true
 
 
 

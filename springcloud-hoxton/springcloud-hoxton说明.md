@@ -40,6 +40,12 @@
 
 参考: https://blog.csdn.net/ZhangXS9722/article/details/136906546
 
+
+
+# sch-gateway
+
+参考：https://blog.csdn.net/weixin_42472027/article/details/131237577
+
 # sch-springboot
 
 参考：https://gitee.com/cowboy2016/springboot2-open
@@ -190,6 +196,12 @@
 
 
 
+## Elasticsearch
+
+参考：https://blog.csdn.net/jdbcmeng/article/details/125496006
+
+
+
 # sch-admin-server  
 
 参考：https://blog.csdn.net/m0_46897923/article/details/136263841
@@ -211,6 +223,10 @@
 ## RestTemplate 
 
 参考：https://blog.csdn.net/dazhong2012/article/details/140646131
+
+## sentinel
+
+参考：https://blog.csdn.net/qq_59308271/article/details/140360067
 
 # sch-jpa  
 

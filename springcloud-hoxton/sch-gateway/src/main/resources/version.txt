@@ -1,5 +1,3 @@
-system=dsc-greenwich
-module=dsc-g-gateway
 version = ${project.version}
 git.commit.id=${git.commit.id.abbrev}
 git.commit.time=${git.commit.time}

@@ -64,6 +64,8 @@
 
 	<!-- 以下为要排除的 包，类，方法 -->
 	<logger name="com.alibaba.nacos" level="INFO" />
+	<logger name="org.apache.kafka" level="INFO" />
+	<logger name="io.lettuce.core" level="INFO" />
 
 	<root level="INFO">
 		<appender-ref ref="STDOUT" />

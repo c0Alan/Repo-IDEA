@@ -10,7 +10,7 @@ source /etc/profile
 #-------------------------------------------------------------------
 
 # 模块名
-MODEL_NAME=`echo sch-feign*.jar`
+MODEL_NAME=`echo sch-springcloud*.jar`
 
 # 选项
 MODEL_OPTS=""

@@ -1,7 +1,7 @@
 nacosServer: ${NACOS_SERVER:nacos-center.v-base:8848}
 
 server:
-  port: 30010
+  port: 9001
 spring:
   application:
     name: sch-gateway
@@ -16,19 +16,19 @@ spring:
     nacos:
       discovery:
         server-addr: ${nacosServer}
-        namespace: aa9df720-741a-466f-9cd3-6963340616f6
+        namespace: c1c3193f-0436-4511-b3b6-cac0db957973
         group: dsc
-        username: liuxl
-        password: liu123
+        username: nacos
+        password: nacos
       config:
         server-addr: ${nacosServer}
-        prefix: dsc
+        prefix: public-component
         file-extension: properties
-        group: dsc
-        namespace: aa9df720-741a-466f-9cd3-6963340616f6
-        username: liuxl
-        password: liu123
-
+        namespace: c1c3193f-0436-4511-b3b6-cac0db957973
+        username: nacos
+        password: nacos
+        extension-configs:
+          - data-id: sch-gateway.yml
 
 logging:
   config: classpath:logback-spring.xml

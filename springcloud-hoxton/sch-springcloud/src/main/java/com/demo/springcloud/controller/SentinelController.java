@@ -7,6 +7,13 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+/**
+ * Sentinel接口示例
+ * 参考：https://blog.csdn.net/qq_59308271/article/details/140360067
+ *
+ * @author liuxl
+ * @date 2024/11/6
+ */
 @Api(tags = "Sentinel接口示例")
 @RestController
 @Slf4j

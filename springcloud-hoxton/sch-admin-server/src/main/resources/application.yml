@@ -2,6 +2,11 @@ spring:
   devtools:
     restart:
       additional-paths: src/main/*
+  boot:
+    admin:
+      discovery:
+        enabled: false
+
 
 
 # 整合knife4j, 参考: https://blog.csdn.net/ZhangXS9722/article/details/136906546

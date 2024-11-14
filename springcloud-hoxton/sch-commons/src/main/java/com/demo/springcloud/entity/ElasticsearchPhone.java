@@ -27,4 +27,7 @@ public class ElasticsearchPhone {
 
     @Field(type = FieldType.Keyword)
     private String name;
+
+    @Field(type = FieldType.Text)
+    private String desc;
 }
