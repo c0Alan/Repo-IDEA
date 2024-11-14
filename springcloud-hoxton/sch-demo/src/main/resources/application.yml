@@ -17,12 +17,12 @@ knife4j:
     license: Apache 2.0
     license-url: https://stackoverflow.com/
     terms-of-service-url: https://stackoverflow.com/
-    group:
-      sch-demo:
-        group-name: sch-demo
-        api-rule: package
-        api-rule-resources:
-          - com.demo.springcloud
+#    group:
+#      sch-demo:
+#        group-name: sch-demo
+#        api-rule: package
+#        api-rule-resources:
+#          - com.demo.springcloud
 
 
 

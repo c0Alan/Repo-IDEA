@@ -37,10 +37,6 @@
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
 
-        <dependency>
-            <groupId>com.demo.springcloud</groupId>
-            <artifactId>sch-commons</artifactId>
-        </dependency>
 
         <!-- 接口文档使用 knife4j-spring-ui -->
         <dependency>
@@ -56,6 +52,11 @@
         <dependency>
             <groupId>com.google.guava</groupId>
             <artifactId>guava</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.demo.springcloud</groupId>
+            <artifactId>sch-commons</artifactId>
         </dependency>
     </dependencies>
 

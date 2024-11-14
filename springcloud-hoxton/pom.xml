@@ -23,7 +23,7 @@
         <module>sch-commons-mysql</module>
         <module>sch-demo</module>
         <module>sch-scheduler</module>
-<!--        <module>sch-gateway</module>-->
+        <module>sch-security</module>
         <module>sch-mysql</module>
         <module>sch-flyway</module>
         <module>sch-oauth2-servver</module>

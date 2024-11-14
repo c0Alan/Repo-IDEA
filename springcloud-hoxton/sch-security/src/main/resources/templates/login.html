@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>登录</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/static/layui/css/layui.css}">
+</head>
+<body>
+<form method="POST" action="">
+    <div>
+        账号：<input type="text" name="username" id="username">
+    </div>
+    <div>
+        密码：<input type="password" name="password" id="password">
+    </div>
+    <div>
+        <input type="button" name="login" id="login" th:value="立即登陆" onclick="mylogin()">
+    </div>
+</form>
+
+<script type="text/javascript" charset="utf-8" th:src="@{/static/jquery/jquery-3.5.1.min.js}"></script>
+<script type="text/javascript" charset="utf-8" th:src="@{/static/layui/layui.js}"></script>
+<script th:inline="javascript" type="text/javascript">
+    layui.use(['form','jquery','layedit', 'laydate'], function () {
+        var $ = layui.jquery,
+            form = layui.form,
+            layer = layui.layer;
+    });
+    function mylogin() {
+        var username = $("#username").val();
+        var password = $("#password").val();
+        console.log("username:" + username + "password:" + password);
+        var index = layer.load(1);
+        $.ajax({
+            type: "POST",
+            dataType: "json",
+            url: "/user/login",
+            data: {
+                "username": username,
+                "password": password
+                //可加验证码参数等，后台登陆处理LoginSuccessHandler中会传入这些参数
+            },
+            success: function (data) {
+                layer.close(index);
+                console.log("data===>:" + JSON.stringify(data));
+                if (data.code == 200) { //登录成功
+                    window.location.href = "index";
+                } else {
+                    layer.msg(data.msg, {
+                        icon: 2,
+                        time: 5000 //2秒关闭（如果不配置，默认是3秒）
+                    });
+                }
+            },
+            error: function () {
+                layer.close(index);
+                layer.msg("数据请求异常！", {
+                    icon: 2,
+                    time: 5000 //2秒关闭（如果不配置，默认是3秒）
+                });
+            }
+        });
+    }
+</script>
+</body>
+</html>

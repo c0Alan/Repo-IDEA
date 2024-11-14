@@ -33,6 +33,7 @@
 | sch-sso-resource    | 9017   |
 | sch-mongodb         | 9018   |
 | sch-kafka           | 9019   |
+| sch-security        | 9020   |
 
 # sch-demo  
 
@@ -163,9 +164,7 @@
 
 
 
-## Security
 
-参考：https://www.cnblogs.com/Chary/p/17972919
 
 
 
@@ -200,6 +199,11 @@
 
 参考：https://blog.csdn.net/jdbcmeng/article/details/125496006
 
+
+
+# sch-security
+
+参考：https://www.cnblogs.com/Chary/p/17972919
 
 
 # sch-admin-server  

@@ -3,9 +3,6 @@ spring:
   devtools:
     restart:
       additional-paths: src/main/*
-  session:
-    store-type: redis
-    timeout: 180
 
   thymeleaf:
     cache: false
