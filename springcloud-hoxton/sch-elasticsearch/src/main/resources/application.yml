@@ -1,0 +1,31 @@
+spring:
+  devtools:
+    restart:
+      additional-paths: src/main/*
+
+  elasticsearch:
+    rest:
+      uris: ${elasticsearch.server}
+# 整合knife4j, 参考: https://blog.csdn.net/ZhangXS9722/article/details/136906546
+knife4j:
+  enable: true
+  openapi:
+    title: sch-elasticsearch
+    description: "sch-elasticsearch"
+    email: ""
+    concat: admin
+    url: https://docs.xiaominfo.com
+    version: v2.0
+    license: Apache 2.0
+    license-url: https://stackoverflow.com/
+    terms-of-service-url: https://stackoverflow.com/
+#    group:
+#      sch-elasticsearch:
+#        group-name: sch-elasticsearch
+#        api-rule: package
+#        api-rule-resources:
+#          - com.demo.springcloud
+
+
+
+

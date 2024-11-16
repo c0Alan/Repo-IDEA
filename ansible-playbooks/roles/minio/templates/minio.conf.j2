@@ -1,0 +1,10 @@
+# 对应minio的安装目录位置
+MINIO_VOLUMES="{{data_dir}}"
+# 注意这里的ip要改成你们自己的ip地址, 这里的ip特别注意，需要内网ip,否则服务起不来。固定端口号设置，避免重启后 端口号随机
+MINIO_OPTS="--address {{ inventory_hostname }}:9100 --console-address {{ inventory_hostname }}:9110 "
+
+# 设置用户名和密码
+MINIO_ROOT_USER=admin
+MINIO_ROOT_PASSWORD=lxl123456
+
+

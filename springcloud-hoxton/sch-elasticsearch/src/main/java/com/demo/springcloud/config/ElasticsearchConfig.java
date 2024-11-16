@@ -27,11 +27,15 @@ public class ElasticsearchConfig {
 
     @PostConstruct
     public void init() throws Exception {
-        String setting = IOUtils.toString(esSetting.getInputStream(), StandardCharsets.UTF_8);
-        if (!elasticsearchRestTemplate.indexExists(ElasticsearchPhone.class)){
-            boolean result = elasticsearchRestTemplate.createIndex(ElasticsearchPhone.class, setting);
-            elasticsearchRestTemplate.putMapping(ElasticsearchPhone.class);
-            log.info("es index inited：" + result);
+        try {
+            String setting = IOUtils.toString(esSetting.getInputStream(), StandardCharsets.UTF_8);
+            if (!elasticsearchRestTemplate.indexExists(ElasticsearchPhone.class)){
+                boolean result = elasticsearchRestTemplate.createIndex(ElasticsearchPhone.class, setting);
+                elasticsearchRestTemplate.putMapping(ElasticsearchPhone.class);
+                log.info("es index inited：" + result);
+            }
+        } catch (Exception e) {
+            log.error("es index init error:", e);
         }
 
     }

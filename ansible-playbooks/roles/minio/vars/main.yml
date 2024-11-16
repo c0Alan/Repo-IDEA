@@ -1,0 +1,9 @@
+# 参考：https://blog.csdn.net/nalanxiaoxiao2011/article/details/131919854
+pkg_name: minio
+tmp_dir: /opt/tmp/minio
+install_dir: /opt/minio
+log_dir: /opt/minio/logs
+data_dir: /opt/minio/data
+unarchive_dir: /opt
+env_file: /etc/profile
+

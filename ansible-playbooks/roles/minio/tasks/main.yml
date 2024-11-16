@@ -1,0 +1,21 @@
+# 参考：https://blog.csdn.net/nalanxiaoxiao2011/article/details/131919854
+- name: 卸载
+  file: path={{ install_dir }} state=absent
+- name: 创建安装目录
+  file: path={{ install_dir }} state=directory
+- name: 创建日志目录
+  file: path={{ log_dir }} state=directory
+- name: 创建数据目录
+  file: path={{ data_dir }} state=directory
+- name: 拷贝安装包
+  copy: src={{ pkg_name }} dest={{ install_dir }}/{{ pkg_name }} mode=0755
+- name: 拷贝配置文件
+  template: src=minio.conf.j2 dest={{ install_dir }}/minio.conf
+- name: 拷贝运行文件
+  template: src=run.sh.j2 dest={{ install_dir }}/run.sh mode=0755
+- name: 拷贝systemd文件
+  template: src=minio.service.j2 dest=/etc/systemd/system/minio.service
+- name: 启动
+  service: name=minio state=restarted enabled=true
+
+

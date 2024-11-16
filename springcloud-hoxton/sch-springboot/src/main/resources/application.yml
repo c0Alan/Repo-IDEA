@@ -55,9 +55,7 @@ spring:
         request:
           timeout:
             ms: 18000 # 消费请求的超时时间
-  elasticsearch:
-    rest:
-      uris: ${elasticsearch.server}
+
 
   mail:
     host: smtp.qq.com
@@ -73,6 +71,7 @@ spring:
             required: true
     default-encoding: UTF-8
 
+
 # 整合knife4j, 参考: https://blog.csdn.net/ZhangXS9722/article/details/136906546
 knife4j:
   enable: true
@@ -86,6 +85,7 @@ knife4j:
     license: Apache 2.0
     license-url: https://stackoverflow.com/
     terms-of-service-url: https://stackoverflow.com/
+
 #    group:
 #      sch-springboot:
 #        group-name: sch-springboot

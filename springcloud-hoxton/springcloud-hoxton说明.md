@@ -4,10 +4,13 @@
 
 
 
-| 组件名   | 端口号 |
-| -------- | ------ |
-| sentinel | 8090   |
-|          |        |
+| 组件名        | 端口号      |
+| ------------- | ----------- |
+| sentinel      | 8090        |
+| kafka         | 9092        |
+| zookeeper     | 2181        |
+| Elasticsearch | 9200、 9300 |
+| minio         | 9100、 9110 |
 
 
 
@@ -34,6 +37,7 @@
 | sch-mongodb         | 9018   |
 | sch-kafka           | 9019   |
 | sch-security        | 9020   |
+| sch-elasticsearch   | 9021   |
 
 # sch-demo  
 
@@ -195,7 +199,7 @@
 
 
 
-## Elasticsearch
+# sch-elasticsearch
 
 参考：https://blog.csdn.net/jdbcmeng/article/details/125496006
 
