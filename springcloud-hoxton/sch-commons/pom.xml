@@ -103,6 +103,12 @@
             <artifactId>spring-data-elasticsearch</artifactId>
         </dependency>
 
+        <!-- minio -->
+        <dependency>
+            <groupId>io.minio</groupId>
+            <artifactId>minio</artifactId>
+        </dependency>
+
     </dependencies>
 
     <build>

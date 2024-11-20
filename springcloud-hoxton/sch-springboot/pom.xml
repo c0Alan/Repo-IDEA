@@ -153,6 +153,11 @@
             <artifactId>spring-kafka</artifactId>
         </dependency>
 
+        <!-- minio -->
+        <dependency>
+            <groupId>io.minio</groupId>
+            <artifactId>minio</artifactId>
+        </dependency>
 
 
         <!-- sch -->

@@ -10,11 +10,11 @@ import org.springframework.web.bind.annotation.*;
 import java.util.ArrayList;
 import java.util.List;
 
-@Api(tags = "测试过滤器、拦截器")
+@Api(tags = "过滤器、拦截器接口示例")
 @Slf4j
 @RestController
-@RequestMapping("/demo2")
-public class Demo2Controller {
+@RequestMapping("/filter")
+public class FilterController {
 
     @ApiOperation(value = "GetMapping, PathVariable方式")
     @GetMapping("/users/{id}")

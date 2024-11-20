@@ -20,7 +20,7 @@ import java.util.List;
  */
 @Slf4j
 @Order(5)
-@WebFilter(filterName = "WebFilterDemo", urlPatterns = {"/demo2/*"}, initParams = {@WebInitParam(name = "excludes", value = "/exclude")})
+@WebFilter(filterName = "WebFilterDemo", urlPatterns = {"/filter/*"}, initParams = {@WebInitParam(name = "excludes", value = "/exclude")})
 public class WebFilterDemo implements Filter {
     private List<String> exclusions = null;
 

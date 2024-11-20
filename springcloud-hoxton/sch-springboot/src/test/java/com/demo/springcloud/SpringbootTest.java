@@ -4,7 +4,7 @@ package com.demo.springcloud;
 import com.demo.springcloud.config.AppTestConfig;
 import com.demo.springcloud.config.Config01;
 import com.demo.springcloud.config.Config02;
-import com.demo.springcloud.controller.DemoController;
+import com.demo.springcloud.controller.WebMvcController;
 import com.demo.springcloud.entity.SysUser;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Assert;
@@ -38,7 +38,7 @@ public class SpringbootTest {
 	Config02 config02;
 
 	@Autowired
-	DemoController demoController;
+    WebMvcController webMvcController;
 
 	private MockMvc mock;
 
@@ -81,7 +81,7 @@ public class SpringbootTest {
 	 */
 	@Test
 	public void test02() {
-		SysUser user = demoController.pathVariable(3);
+		SysUser user = webMvcController.pathVariable(3);
 		log.info("user: " + user);
 	}
 

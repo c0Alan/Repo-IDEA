@@ -3,7 +3,6 @@ spring:
   devtools:
     restart:
       additional-paths: src/main/*
-
   thymeleaf:
     cache: false
   boot:
@@ -136,6 +135,9 @@ mybatis-plus:
       logic-not-delete-value: 1
       # 删除后
       logic-delete-value: 0
+
+minio:
+  bucketName: bucket-sch
 
 app:
   test:

@@ -199,6 +199,10 @@
 
 
 
+## minio
+
+参考：https://blog.csdn.net/cmh1008611/article/details/142777493
+
 # sch-elasticsearch
 
 参考：https://blog.csdn.net/jdbcmeng/article/details/125496006
