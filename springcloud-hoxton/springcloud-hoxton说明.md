@@ -38,6 +38,7 @@
 | sch-kafka           | 9019   |
 | sch-security        | 9020   |
 | sch-elasticsearch   | 9021   |
+| sch-flowable        | 9022   |
 
 # sch-demo  
 
@@ -275,6 +276,12 @@ sch-oauth2-servver、sch-oauth2-resource、sch-oauth2-client
 # sch-kafka
 
 参考：https://blog.csdn.net/qq_20236937/article/details/140718313
+
+
+
+# sch-flowable  
+
+参考：https://blog.csdn.net/qq_38930804/article/details/139440622
 
 
 

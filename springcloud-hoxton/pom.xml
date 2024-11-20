@@ -40,6 +40,7 @@
         <module>sch-mongodb</module>
         <module>sch-kafka</module>
         <module>sch-elasticsearch</module>
+        <module>sch-flowable</module>
     </modules>
 
     <properties>
@@ -246,6 +247,18 @@
                 <groupId>org.freemarker</groupId>
                 <artifactId>freemarker</artifactId>
                 <version>2.3.28</version>
+            </dependency>
+
+            <!-- Flowable -->
+            <dependency>
+                <groupId>org.flowable</groupId>
+                <artifactId>flowable-spring-boot-starter-process</artifactId>
+                <version>6.8.0</version>
+            </dependency>
+            <dependency>
+                <groupId>org.flowable</groupId>
+                <artifactId>flowable-spring-boot-starter-actuator</artifactId>
+                <version>6.8.0</version>
             </dependency>
 
             <!-- knife4j -->
